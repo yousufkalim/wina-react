@@ -4,7 +4,7 @@ import { Container, Row, Col, Table } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import Modal from "../../components/UI/Modal";
 import { useSelector, useDispatch } from "react-redux";
-import { addProduct, deleteProductById } from "../../actions";
+import { addProduct, deleteProductById } from "../../Redux/actions";
 import "./style.css";
 
 /**

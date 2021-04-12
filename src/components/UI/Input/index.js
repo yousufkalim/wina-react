@@ -15,7 +15,11 @@ const Input = (props) => {
         <div className="modal-select">
           {props.label && <label>{props.label}</label>}
 
-          <select value={props.value} onChange={props.onChange}>
+          <select
+            name={props.name}
+            value={props.value}
+            onChange={props.onChange}
+          >
             <option value="">{props.placeholder}</option>
             {props.options.length > 0
               ? props.options.map((option, index) => (
@@ -28,6 +32,22 @@ const Input = (props) => {
         </div>
       );
       break;
+    case "file":
+      input = (
+        <div className="modal-input">
+          {props.label && <label>{props.label}</label>}
+          <input
+            type={props.type}
+            name={props.name}
+            placeholder={props.placeholder}
+            value={props.value}
+            onChange={props.onChange}
+            {...props}
+          />
+          <label className="text-muted">{props.errorMessage}</label>
+        </div>
+      );
+      break;
     case "text":
     default:
       input = (
@@ -35,6 +55,7 @@ const Input = (props) => {
           {props.label && <label>{props.label}</label>}
           <input
             type={props.type}
+            name={props.name}
             placeholder={props.placeholder}
             value={props.value}
             onChange={props.onChange}

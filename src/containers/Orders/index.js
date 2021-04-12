@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateOrder } from "../../actions";
+import { updateOrder } from "../../Redux/actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
 

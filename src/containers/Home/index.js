@@ -11,9 +11,9 @@ import "./style.css";
 const Home = (props) => {
   return (
     <>
-      <div class="HomePagefontStyle">
+      <div className="HomePagefontStyle">
         <Header />
-      
+
         <div className="collapseMenu">
           <Accordion defaultActiveKey="0" className="">
             <Card>
@@ -24,7 +24,7 @@ const Home = (props) => {
                   eventKey="0"
                   className="clickIcons"
                 >
-                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">

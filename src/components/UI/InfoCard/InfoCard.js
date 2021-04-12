@@ -1,35 +1,81 @@
 import React from "react";
 import "./InfoCard.css";
-import { FiEdit2 } from "react-icons/all";
-
+import { FiEdit2, MdDelete } from "react-icons/all";
+import { DEFAULT_IMAGE } from "../../../Globals";
 const InfoCard = (props) => {
-  const { item } = props;
-  return (
-    <div
-      className="info-card"
-      style={{ borderTop: props.cindex > 0 && "1px solid #F7C40D" }}
-    >
-      <div className="info-card-wrapper">
-        <div className="info-card-image">
-          {item.image && <img src={`../images/${item.image}.png`} />}
-        </div>
-        <div className="info-card-container">
-          <div className="info-card-title">
-            <div>{item.title}</div>
-            <div>
-              <FiEdit2 />
-            </div>
+  const {
+    item,
+    type,
+    EditSchoolModalShow,
+    EditProfessionalCareerModal,
+  } = props;
+  if (type === "PROFESSIONAL") {
+    return (
+      <div
+        className="info-card"
+        style={{ borderTop: props.cindex > 0 && "1px solid #F7C40D" }}
+      >
+        <div className="info-card-wrapper">
+          <div className="info-card-image">
+            <img src={DEFAULT_IMAGE} alt="DEFAULT_IMAGE" />
           </div>
-          <div className="info-card-content pb-3">
-            <div>{item.duration}</div>
-            <div>{item.location}</div>
-          </div>
+          <div className="info-card-container">
+            <div className="info-card-title">
+              <div>{item.company}</div>
 
-          <div className="info-card-desc">{item.description}</div>
+              <div className="modal-icon">
+                <FiEdit2
+                  onClick={() => EditProfessionalCareerModal(item._id)}
+                  className="edit_Icon"
+                />
+                <MdDelete className="delete_icon" onClick={props.onDelete} />
+              </div>
+              <div></div>
+            </div>
+            <div className="info-card-content pb-3">
+              <div>{item.position}</div>
+              <div>
+                {item.duration.start_date}-{item.duration.end_date}
+              </div>
+            </div>
+
+            <div className="info-card-desc">{item.description}</div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else
+    return (
+      <div
+        className="info-card"
+        style={{ borderTop: props.cindex > 0 && "1px solid #F7C40D" }}
+      >
+        <div className="info-card-wrapper">
+          <div className="info-card-image">
+            <img src={DEFAULT_IMAGE} alt="DEFAULT_IMAGE" />
+          </div>
+          <div className="info-card-container">
+            <div className="info-card-title">
+              <div>{item.school}</div>
+              <div className="modal-icon">
+                <FiEdit2
+                  onClick={() => EditSchoolModalShow(item._id)}
+                  className="edit_Icon"
+                />
+                <MdDelete className="delete_icon" onClick={props.onDelete} />
+              </div>
+            </div>
+            <div className="info-card-content pb-3">
+              <div>
+                {item.start_Date}-{item.end_Date}
+              </div>
+            </div>
+
+            <div className="info-card-desc">{item.description}</div>
+          </div>
+        </div>
+      </div>
+    );
 };
 
 export default InfoCard;

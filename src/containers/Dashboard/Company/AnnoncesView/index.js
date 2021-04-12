@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "../Header";
 import BrowseOffers from "./BrowseOffers";
 import OverviewOfOffers from "./OverviewOfOffers";
+import Footer from "../../Components/footer";
 
 const AnnoncesView = (props) => {
   return (
@@ -19,11 +20,7 @@ const AnnoncesView = (props) => {
               <Nav.Link eventKey="second">Vue générale des offres</Nav.Link>
             </Nav.Item>
           </Nav>
-          <div className="signoutLabel">
-            <Link to="#">
-              <Image src="../images/signout.png" /> Se déconnecter
-            </Link>
-          </div>
+          <Footer />
         </div>
 
         <div className="dashbordLayout">

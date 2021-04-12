@@ -1,61 +1,14 @@
 import React from "react";
-import { Row, Col, Tab, Nav, Image, Container } from "react-bootstrap";
-import DashbordView from "./DashbordView";
-import OffersView from "./OffersView";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-const Dashboard = (props) => {
+import StudentDashboard from "./Student";
+
+export default function UnAuth() {
   return (
-    <div className="dashbordMain">
-      <Tab.Container id="dashbordBox" defaultActiveKey="first">
-        <div className="h-100 w-100 d-flex justify-content-between">
-          <div className="main-coloum">
-            <Nav variant="pills" className="flex-column align-items-center">
-              <Nav.Item>
-                <Nav.Link eventKey="first">
-                  <div className="imagebackground">
-                    <Image
-                      className="hideOnactive img-fluid"
-                      src="../images/dashboard.png"
-                    />
-                    <Image
-                      className="showonactive img-fluid"
-                      src="../images/dashboard_hover.png"
-                    />
-                  </div>
-                  <div className="label">Dashboard</div>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">
-                  <div className="imagebackground">
-                    <Image
-                      className="hideOnactive"
-                      src="../images/offers.png"
-                    />
-                    <Image
-                      className="showonactive"
-                      src="../images/offer_hover.png"
-                    />
-                  </div>
-                  <div className="label">Offers</div>
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </div>
+    <Switch>
+      <Route exact path="/" exact component={StudentDashboard} />
 
-          <div className="main-column-2">
-            <Tab.Content className="h-100">
-              <Tab.Pane eventKey="first" className="h-100">
-                <DashbordView />
-              </Tab.Pane>
-              <Tab.Pane eventKey="second" className="h-100">
-                <OffersView />
-              </Tab.Pane>
-            </Tab.Content>
-          </div>
-        </div>
-      </Tab.Container>
-    </div>
+      <Redirect from="*" to="/" />
+    </Switch>
   );
-};
-export default Dashboard;
+}

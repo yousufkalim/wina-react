@@ -24,29 +24,24 @@ export default function header(props) {
         </Nav>
         <Nav>
           <Nav.Link
-           
-            onClick={() => handleModal("company")}
             className="navbar-right-link"
+            onClick={() => handleModal("company")}
           >
             Entreprise
           </Nav.Link>
           <Nav.Link
-           
             className=" navbar-right-link"
             onClick={() => handleModal("student")}
           >
             Étudiant
           </Nav.Link>
           <Nav.Link
-           
             className=" navbar-right-link"
             onClick={() => handleModal("main")}
           >
             S’inscrire
           </Nav.Link>
-          <Nav.Link className=" navbar-right-link-end">
-            En savoir plus
-          </Nav.Link>
+          <Nav.Link className=" navbar-right-link-end">En savoir plus</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

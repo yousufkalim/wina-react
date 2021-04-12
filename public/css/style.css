@@ -18,13 +18,13 @@ html {
                     STUDENT MODAL 
     ===========================================  */
 
-.student-modal .modal-dialog{
-    width: 80% !important;
-    max-width: 80% !important;
-    /* padding-bottom: 5rem; */
-    height: 100%;
-      min-height: 100% !important;
-      margin: auto !important;
+.student-modal .modal-dialog {
+  width: 80% !important;
+  max-width: 80% !important;
+  /* padding-bottom: 5rem; */
+  height: 100%;
+  min-height: 100% !important;
+  margin: auto !important;
 }
 
 .student-modal .modal-header .close {
@@ -34,10 +34,10 @@ html {
   font-weight: 300;
   color: #454545;
   display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
-.modal-social-btn{
+.modal-social-btn {
   color: #fff;
   font-size: 1.5rem !important;
   margin-top: 5rem;
@@ -49,19 +49,19 @@ html {
   align-items: center;
   justify-content: flex-start;
 }
-.modal-facebook-btn{
+.modal-facebook-btn {
   background-color: #26468b;
   border-radius: 2.5rem 0 0 2.5rem;
 }
-.modal-google-btn{
-  background-color: #F44336;
+.modal-google-btn {
+  background-color: #f44336;
   border-radius: 0 2.5rem 2.5rem 0;
 }
-.modal-social-icon{
+.modal-social-icon {
   font-size: 1.5rem;
   margin-left: 2rem;
 }
-.modal-social-icon-google{
+.modal-social-icon-google {
   font-size: 2rem;
   margin-left: 2rem;
 }
@@ -93,11 +93,9 @@ html {
 .student-modal .modal-body .heading {
   font-size: 3rem;
 }
-.modal-register-btn{
+.modal-register-btn {
   margin-top: 6.4rem;
 }
-
-
 
 .student-modal .modal-header {
   padding: 0px;
@@ -115,22 +113,21 @@ html {
   padding: 0px 5rem 0px 4rem;
 }
 
-
 .student-modal .modal-body .Login .email {
   margin-bottom: 10px;
 }
 
-.modal-left-side{
+.modal-left-side {
   flex-basis: 50%;
 }
-.modal-right-side{
+.modal-right-side {
   flex-basis: 50%;
 }
 .student-modal .Login .forgetpassword {
   padding-top: 10px;
 }
 
-.modal-social-buttons{
+.modal-social-buttons {
   display: flex;
   width: 100%;
   align-items: center;
@@ -294,7 +291,6 @@ html {
   font-family: "Lato", sans-serif !important;
 }
 
-
 /* ============================================
                     NAVBAR
   =========================================== */
@@ -305,46 +301,45 @@ html {
   padding: 0rem 0rem !important;
   box-shadow: none !important;
 }
-.homeNavBar .navbar-collapse{
+.homeNavBar .navbar-collapse {
   z-index: 1;
   padding-right: 2rem;
-
 }
-.homeNavBar .navbar-brand{
+.homeNavBar .navbar-brand {
   padding-left: 2rem;
 }
-.homeNavBar .navbar-toggler{
+.homeNavBar .navbar-toggler {
   padding-right: 2rem;
 }
 
-.navbar-image{
+.navbar-image {
   width: 10rem;
 }
 
-.homeNavBar .navbar-left-link{
+.homeNavBar .navbar-left-link {
   font-size: 1.375rem !important;
   font-weight: 400 !important;
   padding: 0rem 1rem !important;
   align-items: center !important;
   display: flex !important;
 }
-.navbar-right-link{
+.navbar-right-link {
   border-radius: 41px !important;
   color: #fff !important;
   padding: 0.5rem 2rem !important;
-  background-color: #2879D9 !important;
+  background-color: #2879d9 !important;
   font-size: 1.375rem !important;
   margin: 0rem 1rem !important;
   align-items: center !important;
   display: flex !important;
 }
-.navbar-right-link-end{
+.navbar-right-link-end {
   border-radius: 41px !important;
-  color: #2879D9 !important;
+  color: #2879d9 !important;
   padding: 0.5rem 1.5rem !important;
   background-color: #fff !important;
   font-size: 1.375rem !important;
-  border: 1px solid #2879D9;
+  border: 1px solid #2879d9;
   margin-left: 1rem !important;
   align-items: center !important;
   display: flex !important;
@@ -354,12 +349,11 @@ html {
                     NAVBAR END
   =========================================== */
 
-
-  /* ============================================
+/* ============================================
                      HOME
   =========================================== */
 
-  /*          Home          */
+/*          Home          */
 .homeBackground {
   background-image: url(../images/home_background.png);
   background-repeat: no-repeat;
@@ -370,7 +364,7 @@ html {
   /* position: relative; */
 }
 
-.homebackground-text{
+.homebackground-text {
   position: absolute;
   top: 50%;
   left: 4%;
@@ -385,11 +379,10 @@ html {
   font-size: 2.3125rem;
   font-weight: 400;
   color: white;
-  
 }
 /*            Home End           */
 
-  /*            Home Cards           */
+/*            Home Cards           */
 .post_mobile-view-content .post_icons {
   background: white;
   border-radius: 6px;
@@ -411,7 +404,6 @@ html {
 .homeBackground .post_icons .label {
   font-size: 10px;
   font-weight: bold;
-
 }
 .homeBackground .post_icons a {
   color: #454545;
@@ -421,7 +413,7 @@ html {
 }
 .collapseMenu .card-body {
   width: 100%;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 .collapseMenu .card-header {
   width: 6rem;
@@ -463,21 +455,20 @@ html {
   width: 100%;
   padding: 10rem 5rem;
 }
-.post_mobile-view-content{
+.post_mobile-view-content {
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 6rem;
   align-items: center;
 }
-  /*            Home Cards End          */
+/*            Home Cards End          */
 
-  /* ============================================
+/* ============================================
                      HOME END
   =========================================== */
 
-
-  /* ============================================
+/* ============================================
                      STUDENT DASHBOARD
   =========================================== */
 
@@ -502,7 +493,7 @@ html {
   border-radius: 1.3125rem 0px 0px 1.3125rem;
   padding-top: 1.3rem;
   flex-basis: 7%;
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -512,7 +503,7 @@ html {
 .dashbordMain .main-coloum .nav-item {
   padding-top: 3rem;
 }
-.dashbordMain .main-coloum .nav-item .nav-link{
+.dashbordMain .main-coloum .nav-item .nav-link {
   padding: 0rem !important;
 }
 .dashbordMain .main-coloum img {
@@ -632,7 +623,6 @@ html {
   padding-left: 1rem !important;
 }
 
-
 /*  ==========================================================
                           Layout Children
     =======================================================  */
@@ -706,48 +696,42 @@ html {
   text-align: right;
 }
 
-
-
 /*  =================================================
                     TABS STYLING
     =============================================== */
-    .custom-tabs .nav-item {
-      border-color: #2879d9 !important;
-      font-size: 1.25rem;
-      color: #454545;
-      border-radius: 2.56rem;
-      border: 1px solid #2879d9;
-      border-top-left-radius: 2.56rem !important;
-      border-top-right-radius:  2.56rem !important;
-      border-bottom-left-radius: 2.56rem !important;
-      border-bottom-right-radius:  2.56rem !important;
-      padding: 0.8rem 3rem;
-      text-align: center;
-    }
-    
-    .custom-tabs .nav-item:hover {
-      border: 1px solid #2879d9;
-    }
-    .custom-tabs .nav-item.show .nav-link,
-    .custom-tabs .nav-link.active {
-      font-size: 1.25rem;
-      color: #fff !important;
-      border-radius: 2.56rem;
-      border-color: #2879d9 !important;
-      border: 1px solid #707070;
-      background: #2879d9 !important;
-   
-      padding: 0.8rem 3rem;
-      text-align: center;
-    }
+.custom-tabs .nav-item {
+  border-color: #2879d9 !important;
+  font-size: 1.25rem;
+  color: #454545;
+  border-radius: 2.56rem;
+  border: 1px solid #2879d9;
+  border-top-left-radius: 2.56rem !important;
+  border-top-right-radius: 2.56rem !important;
+  border-bottom-left-radius: 2.56rem !important;
+  border-bottom-right-radius: 2.56rem !important;
+  padding: 0.8rem 3rem;
+  text-align: center;
+}
+
+.custom-tabs .nav-item:hover {
+  border: 1px solid #2879d9;
+}
+.custom-tabs .nav-item.show .nav-link,
+.custom-tabs .nav-link.active {
+  font-size: 1.25rem;
+  color: #fff !important;
+  border-radius: 2.56rem;
+  border-color: #2879d9 !important;
+  border: 1px solid #707070;
+  background: #2879d9 !important;
+
+  padding: 0.8rem 3rem;
+  text-align: center;
+}
 
 /*  =================================================
                     TABS STYLING END  
     =============================================== */
-
-
-
-
 
 /*      Layout Searchbar End   */
 
@@ -860,58 +844,53 @@ html {
                 STUDENT GENERAL INFORMATION END
     ===================================================  */
 
-
-
 /*  ======================================================
                       CUSTOM MODAL
     =================================================== */
 
-    /*      Custom Modal small    */
-    .custom-modal .modal-dialog{
-      width: 80% !important;
-      max-width: 80% !important;
-      /* padding-bottom: 3rem; */
-      height: 100%;
-      min-height: 100% !important;
-      margin: auto !important;
-    }
-    .custom-modal .modal-content {
-      padding: 3rem;
-    }
-    .custom-modal .close {
-      padding-top: 3rem;
-      padding-right: 2.7rem;
-      font-size: 2.75rem;
-      font-weight: 300;
-      color: #454545;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .custom-modal .close:focus {
-      border: none;
-      outline: none;
-    }
-    /*      Custom Modal small End    */
+/*      Custom Modal small    */
+.custom-modal .modal-dialog {
+  width: 80% !important;
+  max-width: 80% !important;
+  /* padding-bottom: 3rem; */
+  height: 100%;
+  min-height: 100% !important;
+  margin: auto !important;
+}
+.custom-modal .modal-content {
+  padding: 3rem;
+}
+.custom-modal .close {
+  padding-top: 3rem;
+  padding-right: 2.7rem;
+  font-size: 2.75rem;
+  font-weight: 300;
+  color: #454545;
+  display: flex;
+  justify-content: flex-end;
+}
+.custom-modal .close:focus {
+  border: none;
+  outline: none;
+}
+/*      Custom Modal small End    */
 
-
-    /*        Custom Modal Big         */
-    .custom-modal-big .modal-dialog{
-      width: 90% !important;
-      max-width: 90% !important;
-      height: 100%;
-    min-height: 100% !important;
-    margin: auto !important;
-      
-    }
-    .custom-modal-big .modal-content {
-      padding: 3rem;
-    }
-    /*        Custom Modal Big End     */
+/*        Custom Modal Big         */
+.custom-modal-big .modal-dialog {
+  width: 90% !important;
+  max-width: 90% !important;
+  height: 100%;
+  min-height: 100% !important;
+  margin: auto !important;
+}
+.custom-modal-big .modal-content {
+  padding: 3rem;
+}
+/*        Custom Modal Big End     */
 
 /*  ======================================================
                    CUSTOM MODAL END
     =================================================== */
-
 
 /* diplomaSchoolBox */
 .diplomaSchoolBox .diplomaSchool {
@@ -927,7 +906,7 @@ html {
 .diplomaSchool .modal-icon {
   position: absolute;
   right: 2.2rem;
-  width: 1.6rem;
+
   cursor: pointer;
 }
 .diplomaSchoolBox .diplomaSchool .diplomaImage {
@@ -966,7 +945,6 @@ html {
 .schoolDiplomaModal .modal-header {
   border-bottom: none;
   padding-top: 0px;
- 
 }
 .schoolDiplomaModal .modal-header .close {
   margin-right: -3rem;
@@ -980,7 +958,6 @@ html {
   outline: none;
 }
 .schoolDiplomaModal .modal-title {
-
   color: #454545;
   font-size: 2.8rem;
   font-weight: bold;
@@ -1082,18 +1059,18 @@ html {
   margin-right: 1.2rem;
 }
 .schoolDiplomaModal .modal-body .description {
-  margin-top: 2.7rem;
+  margin-top: 1rem;
 }
 .schoolDiplomaModal .modal-body .description label {
   color: #8d8d8d;
   font-size: 1.37rem;
 }
-.schoolDiplomaModal .modal-body .description textarea {
+/* .schoolDiplomaModal .modal-body .description textarea {
   border: 1px solid #454545;
   border-radius: 10px;
   margin-top: 6px;
   font-size: 1.37rem;
-}
+} */
 .schoolDiplomaModal .modal-body .Enregistrer {
   border-radius: 2.5rem;
   margin-top: 3rem;
@@ -1108,19 +1085,18 @@ html {
 }
 /*schoolDiplomaModal End*/
 
-
 /*  ============================================================
                         CUSTOM BOX
     ========================================================== */
-    .custom-box {
-      border: 1px solid #e4e4e4;
-      border-radius: 5px;
-      padding: 3rem 2.1rem 2.1rem 3rem;
-      width:95%;
-      margin-top: 2rem;
-      height: 94%;
-      overflow: auto;
-    }
+.custom-box {
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  padding: 3rem 2.1rem 2.1rem 3rem;
+  width: 95%;
+  margin-top: 2rem;
+  height: 94%;
+  overflow: auto;
+}
 /*  ============================================================
                         CUSTOM BOX END
     ========================================================== */
@@ -1143,9 +1119,10 @@ html {
 .Professionalcareer .modal-icon {
   position: absolute;
   right: 1.9rem;
-  width: 2rem;
+  /* width: 2rem; */
   cursor: pointer;
 }
+
 .ProfessionalcareerBox .Professionalcareer .row {
   margin-top: 0 !important;
   margin-left: 0 !important;
@@ -1189,7 +1166,7 @@ html {
 /* ********************************* */
 .ViewOffersBox {
   height: 100%;
-  width: 100%;  
+  width: 100%;
 }
 .ViewOffersBox .offers .OffersImage {
   width: 150px;
@@ -1812,7 +1789,6 @@ html {
   padding-bottom: 0px;
   border-bottom: 1px solid #f7c40d;
   color: #2879d9;
-  
 }
 .CVOnlineBox .CVOnline .companyNameH {
   font-size: 1.37rem;
@@ -1872,7 +1848,7 @@ html {
   position: absolute;
   right: 28px;
 }
-.CVOnlineBox .CVOnline .edit_icons img{
+.CVOnlineBox .CVOnline .edit_icons img {
   width: 1.5rem;
 }
 .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
@@ -1909,14 +1885,12 @@ html {
 }
 /*CVOnline END*/
 
-
-
 /* ====================================================
                STUDENT ProfessionalCareerModal
    ================================================== */
-   .ProfessionalCareerModal{
-     position: relative;
-   }
+.ProfessionalCareerModal {
+  position: relative;
+}
 .ProfessionalCareerModal .modal-header {
   border-bottom: none !important;
 }
@@ -1931,7 +1905,7 @@ html {
   border: none;
   outline: none;
 }
-.professional-modal-first{
+.professional-modal-first {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1945,16 +1919,16 @@ html {
   border-bottom: 1px solid #f7c40d;
 }
 
-.ProfessionalCareerModal .modal-body .Job_title{
+.ProfessionalCareerModal .modal-body .Job_title {
   flex-basis: 30%;
   padding: 2rem 1rem !important;
   border-radius: 0.6rem;
   font-size: 1.37rem;
-  color: #8D8D8D;
+  color: #8d8d8d;
 }
-.ProfessionalCareerModal .modal-body .Job_title::placeholder{
+.ProfessionalCareerModal .modal-body .Job_title::placeholder {
   font-size: 1.37rem;
-  color: #8D8D8D;
+  color: #8d8d8d;
 }
 .ProfessionalCareerModal .modal-body .Job_title .MuiOutlinedInput-root {
   border-radius: 0.6rem;
@@ -1998,7 +1972,7 @@ html {
 }
 
 .ProfessionalCareerModal .modal-body .Business {
- flex-basis: 20%;
+  flex-basis: 20%;
 }
 .ProfessionalCareerModal .modal-body .Business .MuiInputBase-root {
   border-radius: 3rem !important;
@@ -2064,7 +2038,7 @@ html {
   display: none;
 }
 
-.professional-modal-second{
+.professional-modal-second {
   display: flex;
   align-items: flex-end;
   margin-top: 2rem;
@@ -2082,7 +2056,7 @@ html {
   font-size: 1.37rem;
   color: #8d8d8d;
 }
-.ProfessionalCareerModal .modal-body .startEndDate{
+.ProfessionalCareerModal .modal-body .startEndDate {
   flex-basis: 15%;
 }
 .ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root {
@@ -2244,7 +2218,7 @@ html {
 }
 /* GeneralSkillsBox*/
 
-.custom-box-edit-icon{
+.custom-box-edit-icon {
   width: 1.3rem;
 }
 /* SpecializedSkillsBox start */
@@ -2460,9 +2434,7 @@ html {
 } */
 .ResearchBox .Research .Field .MuiFormControl-fullWidth {
   /* max-width: 16rem; */
- 
 }
-
 
 .ResearchBox .Research .Field .MuiInputBase-root:focus-within,
 .ResearchBox .Research .LevelOfStudy .MuiInputBase-root:focus-within {
@@ -2657,7 +2629,7 @@ html {
   border-color: none !important;
 }
 
-.publishBox .publish{
+.publishBox .publish {
   position: relative;
   padding-right: 5rem;
 }
@@ -2669,12 +2641,12 @@ html {
 .publishBox .publish .edit_icons img {
   width: 1.5rem;
 }
-.publish-header{
+.publish-header {
   margin-left: 0 !important;
   margin-right: 0 !important;
   padding: 3rem 0;
 }
-.publish-header-content{
+.publish-header-content {
   width: 100%;
   padding-left: 8rem;
 }
@@ -2695,16 +2667,14 @@ html {
   display: block;
 }
 
-
-
-.publish-jobname{
+.publish-jobname {
   font-size: 1.37rem !important;
   color: #8d8d8d;
   border-radius: 0.6rem;
   padding: 2rem 1rem !important;
   width: 100%;
 }
-.publish-jobname::placeholder{
+.publish-jobname::placeholder {
   font-size: 1.37rem !important;
   color: #8d8d8d;
 }
@@ -2714,14 +2684,13 @@ html {
   justify-content: space-between;
   align-items: center;
 }
-.publish-fieldname{
+.publish-fieldname {
   padding: 2rem 1rem !important;
   border-radius: 2.56rem !important;
   font-size: 1.37rem !important;
   flex-basis: 48%;
   text-align: center;
-  border: 1px solid #2879D9 !important;
-
+  border: 1px solid #2879d9 !important;
 }
 
 .publishBox .publish .startDateandDuration {
@@ -2805,6 +2774,11 @@ html {
   .MuiButtonBase-root {
   color: white;
 }
+.DateRow {
+  padding-top: 8px !important;
+  display: flex;
+  flex-direction: row;
+}
 
 .MuiSlider-markLabel {
 }
@@ -2821,19 +2795,22 @@ html {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
-.GSkillsBox-2 .skills{
+.GSkillsBox-2 .skills {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 2rem;
 }
-.GeneralSkillsBox .GeneralSkills .GSkillsBox-2 .skills .MuiFormControl-fullWidth {
+.GeneralSkillsBox
+  .GeneralSkills
+  .GSkillsBox-2
+  .skills
+  .MuiFormControl-fullWidth {
   width: 18rem;
 }
-.generalSkills-skills{
+.generalSkills-skills {
   padding-left: 0 !important;
   padding-right: 0 !important;
- 
 }
 .publishBox .publish .generalSkills .MuiInputBase-root {
   border-radius: 50px !important;
@@ -2925,7 +2902,6 @@ textarea.form-control {
 /*  ==========================================================
           COMPANY > ANNOUNCES > BROWSE OFFERS ENDS
     ======================================================= */
-
 
 /*Overview of offers section*/
 .OverviewOfOffers {
@@ -3081,7 +3057,7 @@ textarea.form-control {
 }
 /* view Offers end */
 /*Overview of offers End  section*/
-.header-profile .notification{
+.header-profile .notification {
   width: 2rem;
 }
 /*    Company Coaching  start   */
@@ -3123,7 +3099,7 @@ textarea.form-control {
   /* background-size: cover; */
   background-size: 100% 100%;
   /* background-size: cover; */
-  
+
   /* background-position: center; */
   align-items: center;
   padding: 0 1.2rem;
@@ -3258,7 +3234,7 @@ textarea.form-control {
   width: 100%;
   overflow: hidden;
   margin-top: 0.7rem;
-  border: 1px solid rgba(112,112,112,20%);
+  border: 1px solid rgba(112, 112, 112, 20%);
 }
 .student-slider-card {
 }
@@ -3388,7 +3364,7 @@ textarea.form-control {
   font-size: 0.75rem;
   border: 1px solid #fff;
   border-radius: 2.56rem;
-  padding: 0.5rem  0.5rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .offer-card-btn {
@@ -3453,7 +3429,7 @@ textarea.form-control {
   border: 1px solid rgba(112, 112, 112, 20%);
   position: relative;
 }
-.offer-detail-location-icon{
+.offer-detail-location-icon {
   font-size: 2rem;
 }
 .student-offer-detail-percentage {
@@ -3486,7 +3462,7 @@ textarea.form-control {
 }
 .offer-detail-header-line {
   padding-left: 3.5rem;
-  border-left: 1px solid #F7C40D;
+  border-left: 1px solid #f7c40d;
 }
 .offer-detail-location {
   flex-basis: 50%;
@@ -3560,7 +3536,7 @@ textarea.form-control {
   gap: 1.9rem;
   padding-top: 2.5rem;
 }
-.publish-jobname.form-control{
+.publish-jobname.form-control {
   border: 1px solid #454545;
 }
 .sliderBox .slider {
@@ -3614,7 +3590,8 @@ textarea.form-control {
   /* font-size: 22px !important; */
   /* color: #454545; */
 }
-.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input {
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-input {
   padding: 0.5rem 4px !important;
 }
 
@@ -3656,11 +3633,53 @@ textarea.form-control {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #8D8D8D;
+  background: #8d8d8d;
   border-radius: 5px;
 }
 
-.card-item-cancel-icon{
+.card-item-cancel-icon {
   font-size: 1rem;
   margin-left: 1rem;
+}
+
+/* shehzad css*/
+.formikError {
+  color: red;
+  display: block;
+  margin-top: -1.7rem;
+}
+.formikErrorAuto {
+  color: red;
+  display: block;
+  margin-top: 0rem;
+}
+.formikErrorDate {
+  color: red;
+  display: block;
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
+}
+.formikErrorDesc {
+  color: red;
+  display: block;
+  margin-top: -0.5rem;
+}
+.info-card img {
+  width: 100%;
+  height: 100%;
+}
+.Professionalcareer .modal-icon .delete_icon {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.diplomaSchool .modal-icon .delete_icon {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.GeneralSkillsBox .GeneralSkills .GSkillsBox .languagesDiv {
+  display: flex;
+  padding: 15px;
+}
+.GeneralSkillsBox .GeneralSkills .GSkillsBox .languagesDiv .t1 {
+  margin-right: 10px;
 }

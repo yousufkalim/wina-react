@@ -1,0 +1,47 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { isUserLoggedIn, Get_User_Student } from "../Redux/actions";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+import Student from "./Dashboard/Student";
+import Company from "./Dashboard/Company";
+import UnAuth from "./unAuth";
+import Loader from "../components/UI/Loader";
+import { user } from "../urlConfig";
+function App() {
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state.auth);
+
+  const [loading, setLoading] = useState(true);
+
+  //componentDidMount or componentDidUpdate
+  React.useEffect(() => {
+    dispatch(isUserLoggedIn()).then(() => {
+      dispatch(Get_User_Student());
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    });
+  }, []);
+  return (
+    <>
+      {store.loading && <Loader.AbsoluteLinear />}
+      {loading ? (
+        <Loader.CenterProgress size={80} />
+      ) : store.auth ? (
+        store.user.type === "student" ? (
+          <Student />
+        ) : store.user.type === "company" ? (
+          <Company />
+        ) : (
+          <UnAuth />
+        )
+      ) : (
+        <UnAuth />
+      )}
+    </>
+  );
+}
+
+export default App;

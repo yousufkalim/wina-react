@@ -4,7 +4,7 @@ import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { signup } from "../../actions";
+import { Student_Signup } from "../../Redux/actions";
 import { useEffect } from "react";
 
 /**
@@ -41,7 +41,7 @@ const Signup = (props) => {
       password,
     };
 
-    dispatch(signup(user));
+    dispatch(Student_Signup(user));
   };
 
   if (auth.authenticate) {

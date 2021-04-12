@@ -1,38 +1,62 @@
-import React, { useState } from "react";
-import {
-  Row,
-  Col,
-  Nav,
-  Tab,
-  Tabs,
-  Image,
-  Modal,
-  Form,
-  Button,
-} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Row, Col, Tab, Tabs } from "react-bootstrap";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+import ModalInput from "../../../../../components/UI/TextField";
+import Select from "../../../../../components/UI/Select";
+import DatePicker from "../../../../../components/UI/DatePicker";
+import RadioButton from "../../../../../components/UI/RadioButton";
+import CheckBox from "../../../../../components/UI/CheckBox";
+import Button from "../../../../../components/UI/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { Add_info_Student } from "../../../../../Redux/actions";
+import { useFormik } from "formik";
+
+import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
+import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
 
 const ResearchedJob = () => {
-  const schoolName = [
-    { title: "The Shawshank Redemption", year: 1994 },
-    { title: "The Godfather", year: 1972 },
-    { title: "The Godfather: Part II", year: 1974 },
-    { title: "The Dark Knight", year: 2008 },
-  ];
-  const [state, setState] = useState({
-    checked: false,
+  const store = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const POSITION_SOUGHT = store.user && store.user.student.positionSought;
+
+  const formik = useFormik({
+    initialValues: POSITION_SOUGHT_STATE,
+    validationSchema: POSITION_SOUGHT_YUP,
+    onSubmit: (values) => {
+      let obj = {};
+      obj.positionSought = values;
+      dispatch(Add_info_Student(obj, formik));
+    },
   });
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    formik.setFieldValue(name, value);
   };
+
+  useEffect(() => {
+    if (Object.keys(POSITION_SOUGHT).length > 0) {
+      formik.setFieldValue("domain", POSITION_SOUGHT.domain);
+      formik.setFieldValue("position", POSITION_SOUGHT.position);
+      formik.setFieldValue("duration", POSITION_SOUGHT.duration);
+      formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
+      formik.setFieldValue(
+        "alternationRhythm",
+        POSITION_SOUGHT.alternationRhythm
+      );
+      formik.setFieldValue(
+        "levelOfEducation",
+        POSITION_SOUGHT.levelOfEducation
+      );
+    }
+  }, []);
+
   return (
     <>
       <Tabs
@@ -42,207 +66,133 @@ const ResearchedJob = () => {
       >
         <Tab eventKey="Research" title="Recherche">
           <div className="ResearchBox custom-box">
-            <Row className="Research align-items-center">
-              <Col lg={6} md={6} className="col-6-width pl-0">
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Control
-                    as="textarea"
-                    rows={1}
-                    placeholder="Description"
+            <form onSubmit={formik.handleSubmit}>
+              <Row className="Research align-items-center">
+                <Col lg={6} md={6} className="col-6-width pl-0">
+                  <ModalInput
+                    name="position"
+                    label="Position"
+                    // className="Job_title"
+                    placeholder="Intitulé du poste . Ex : Chef de projet"
+                    value={formik.values.position}
+                    onChange={handleChange}
+                    type="text"
                   />
-                </Form.Group>
-              </Col>
-              <Col lg={3} md={3}>
-                <div className="Field">
-                  <Autocomplete
-                    //   multiple
-                    id="checkboxes-tags-demo"
-                    className="Field"
-                    options={schoolName}
-                    disableCloseOnSelect
-                    getOptionLabel={(option) => option.title}
-                    renderOption={(option, { selected }) => (
-                      <React.Fragment>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                          color={"primary"}
-                        />
-                        {option.title}
-                      </React.Fragment>
-                    )}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        //   label="École"
-                        placeholder="Domaine"
-                      />
-                    )}
+                  {formik.touched.position && formik.errors.position ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.position}
+                    </div>
+                  ) : null}
+                </Col>
+                <Col lg={3} md={3}>
+                  <Select
+                    name="domain"
+                    value={formik.values.domain}
+                    onChange={handleChange}
+                    options={DomainOptions}
+                    label="Domaine"
                   />
-                </div>
-              </Col>
-              <Col lg={3} md={3}>
-                <div className="LevelOfStudy">
-                  <Autocomplete
-                    //   multiple
-                    id="checkboxes-tags-demo"
-                    className="Field"
-                    options={schoolName}
-                    disableCloseOnSelect
-                    getOptionLabel={(option) => option.title}
-                    renderOption={(option, { selected }) => (
-                      <React.Fragment>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                          color={"primary"}
-                        />
-                        {option.title}
-                      </React.Fragment>
-                    )}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        //   label="École"
-                        placeholder="Niveau d’étude"
-                      />
-                    )}
-                  />
-                </div>
-              </Col>
-            </Row>
-            <Row className="levelofStudyBox">
-              <Col lg={3} md={3} className="col-3-width">
-                <div className="LevelOfStudy">
-                  <label>Date de début</label>
-                  <Autocomplete
-                    //   multiple
-                    id="checkboxes-tags-demo"
-                    className="Field"
-                    options={schoolName}
-                    disableCloseOnSelect
-                    getOptionLabel={(option) => option.title}
-                    renderOption={(option, { selected }) => (
-                      <React.Fragment>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                          color={"primary"}
-                        />
-                        {option.title}
-                      </React.Fragment>
-                    )}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        //   label="École"
-                        placeholder="Mois"
-                      />
-                    )}
-                  />
-                </div>
-              </Col>
-              <Col lg={3} md={3} className="col-3-width">
-                <div className="LevelOfStudy">
-                  <label>&nbsp;</label>
-                  <Autocomplete
-                    //   multiple
-                    id="checkboxes-tags-demo"
-                    className="Field"
-                    options={schoolName}
-                    disableCloseOnSelect
-                    getOptionLabel={(option) => option.title}
-                    renderOption={(option, { selected }) => (
-                      <React.Fragment>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                          color={"primary"}
-                        />
-                        {option.title}
-                      </React.Fragment>
-                    )}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        //   label="École"
-                        placeholder="Année"
-                      />
-                    )}
-                  />
-                </div>
-              </Col>
-              <Col lg={3} md={3} className="col-3-width">
-                <div className="LevelOfStudy">
-                  <label>Durée</label>
-                  <Autocomplete
-                    //   multiple
-                    id="checkboxes-tags-demo"
-                    className="Field"
-                    options={schoolName}
-                    disableCloseOnSelect
-                    getOptionLabel={(option) => option.title}
-                    renderOption={(option, { selected }) => (
-                      <React.Fragment>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                          color={"primary"}
-                        />
-                        {option.title}
-                      </React.Fragment>
-                    )}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        //   label="École"
-                        placeholder="Choisir"
-                      />
-                    )}
-                  />
-                </div>
-              </Col>
-              <Col lg={3} md={3}></Col>
-            </Row>
-            <div className="checkBoxes">
-              <div className="alternationRhythm-width">
-                <div className="alternationRhythm">Rythme alternances :</div>
-              </div>
-              <div className="oneBusinessWeekWidth">
-                <Form.Check type="checkbox" label="1 semaine entreprise" />
-              </div>
-              <div className="oneSchoolWeekWidth">
-                <Form.Check type="checkbox" label="1 semaine école" />
-              </div>
-              <div className="choicetwoWidth">
-                <Form.Check type="checkbox" label="Choix 2" />
-              </div>
-              <div className="choicetwoWidth">
-                <Form.Check type="checkbox" label="Choix 3" />
-              </div>
-              <div className="choicetwoWidth">
-                <Form.Check type="checkbox" label="Choix 4" />
-              </div>
-            </div>
 
-            <div className="jobIsProvided text-left">
-              <Form.Check type="checkbox" label="Le poste est pourvu" />
-            </div>
+                  {formik.touched.domain && formik.errors.domain ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.domain}
+                    </div>
+                  ) : null}
+                </Col>
+                <Col lg={3} md={3}>
+                  <Select
+                    name="levelOfEducation"
+                    value={formik.values.levelOfEducation}
+                    onChange={handleChange}
+                    options={levelOfEducation}
+                    label="Niveau d’étude"
+                  />
+
+                  {formik.touched.levelOfEducation &&
+                  formik.errors.levelOfEducation ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.levelOfEducation}
+                    </div>
+                  ) : null}
+                </Col>
+              </Row>
+              <Row className="levelofStudyBox">
+                <Col lg={3} md={3}>
+                  <DatePicker
+                    name="startDate"
+                    label={"Date de début"}
+                    value={formik.values.startDate}
+                    onChange={handleChange}
+                  />
+                  {formik.touched.startDate && formik.errors.startDate ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.startDate}
+                    </div>
+                  ) : null}
+                </Col>
+                <Col lg={3} md={3} className="col-3-width"></Col>
+
+                <Col lg={3} md={3} className="col-3-width">
+                  <Select
+                    name="duration"
+                    value={formik.values.duration}
+                    onChange={handleChange}
+                    options={DurationOptions}
+                    label="Durée"
+                  />
+
+                  {formik.touched.duration && formik.errors.duration ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.duration}
+                    </div>
+                  ) : null}
+                </Col>
+                <Col lg={3} md={3}></Col>
+              </Row>
+              <div className="checkBoxes">
+                <RadioButton
+                  options={RythmeOptions}
+                  name="alternationRhythm"
+                  label="Rythme alternances :"
+                  value={formik.values.alternationRhythm}
+                  onChange={handleChange}
+                />
+              </div>
+              {formik.touched.alternationRhythm &&
+              formik.errors.alternationRhythm ? (
+                <div className="formikErrorAuto">
+                  {" "}
+                  {formik.errors.alternationRhythm}
+                </div>
+              ) : null}
+              <div className="jobIsProvided text-left">
+                <CheckBox label="Le poste est pourvu" name="availibilty" />
+              </div>
+              <div className="jobIsProvided text-right">
+                {store.loading ? (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="Loading...."
+                    disabled={store.loading}
+                  />
+                ) : (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="Enregistrer"
+                    disabled={false}
+                  />
+                )}
+              </div>
+            </form>
           </div>
         </Tab>
         {/* <Tab eventKey="Favoris" title="Favoris">
@@ -256,3 +206,42 @@ const ResearchedJob = () => {
   );
 };
 export default ResearchedJob;
+const DomainOptions = [
+  { title: "IT" },
+  { title: "Softwear Enginer" },
+  { title: "Electrical Enginer" },
+  { title: "Mechanical Engineer" },
+  { title: "NEXT BRIDGE" },
+];
+const RythmeOptions = [
+  { title: "1 semaine entreprise" },
+  { title: "1 semaine école" },
+  { title: "Choix 2" },
+  { title: "Choix 3" },
+  { title: "Choix 4" },
+];
+const DurationOptions = [
+  { title: "1 year" },
+  { title: "2 years" },
+  { title: "3 years" },
+  { title: "4 years" },
+  { title: "5 years" },
+];
+const levelOfEducation = [
+  {
+    title: "1:Brevet",
+  },
+
+  {
+    title: "2:CAP",
+  },
+  {
+    title: "3:BEP",
+  },
+  {
+    title: "4:MC",
+  },
+  {
+    title: "5:BacGénéral",
+  },
+];
