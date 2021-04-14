@@ -1,4 +1,4 @@
-import { actionGlobals } from "../actions/constants";
+import { actionGlobals, actionTypes } from "../actions/constants";
 
 const initialState = {
   items: "",
@@ -37,6 +37,13 @@ export default (state = initialState, action) => {
         ...state,
         error: null,
         hard_skills: action.skills,
+        loading: action.loading,
+      };
+      break;
+    case actionTypes.SET_REQUEST_PASSWORD_LOADING:
+      state = {
+        ...state,
+        error: null,
         loading: action.loading,
       };
       break;

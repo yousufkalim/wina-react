@@ -38,6 +38,7 @@ const Input = (props) => {
           {props.label && <label>{props.label}</label>}
           <input
             type={props.type}
+            accept={props.accept}
             name={props.name}
             placeholder={props.placeholder}
             value={props.value}

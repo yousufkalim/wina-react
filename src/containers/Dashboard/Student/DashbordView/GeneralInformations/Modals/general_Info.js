@@ -9,7 +9,7 @@ import Button from "../../../../../../components/UI/Button";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getApiAdress,
+  Add_Image_info_Student,
   Add_info_Student,
 } from "../../../../../../Redux/actions";
 
@@ -32,16 +32,21 @@ const GeneralInformationsModal = ({ show, setShow }) => {
     validationSchema: GENERAL_INFO_YUP,
     onSubmit: (values) => {
       let form_data = new FormData();
+      if (image) {
+        form_data.append("image", image);
+      }
+      if (video) {
+        form_data.append("video", video);
+      }
+
       form_data.append(
         "professional_networks",
         JSON.stringify(networkFormData)
       );
       form_data.append("general_Presentation", values.general_Presentation);
-      console.log(form_data.get("general_Presentation"));
-      let obj = {};
-      obj.professional_networks = networkFormData;
-      obj.general_Presentation = values.general_Presentation;
-      dispatch(Add_info_Student(obj, formik));
+
+      dispatch(Add_Image_info_Student(form_data));
+
       setShow(false);
     },
   });
@@ -52,6 +57,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       const {
         professional_networks: { linkedIn, Behance, Dribble, Github },
         general_Presentation,
+        professional_Picture,
+        presentation_Video,
       } = store.user.student;
       setnetworkFormData({
         linkedIn: linkedIn || "",
@@ -60,6 +67,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
         Github: Github || "",
       });
       formik.setFieldValue("general_Presentation", general_Presentation);
+      formik.setFieldValue("image", professional_Picture.image);
+      formik.setFieldValue("video", presentation_Video.video);
     }
   }, [store.user.student, setShow, show]);
   // handle networks chnages
@@ -81,10 +90,15 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       if (file.type !== "application/pdf") {
         const uri = URL.createObjectURL(file);
         if (file.type === "video/mp4") {
-          file.size <= 200000000
-            ? setVideo(file)
-            : alert("you can upload upto 200mb video");
+          if (file.size <= 200000000) {
+            setVideo(file);
+            formik.setFieldValue("video", file.name);
+          } else {
+            alert("you can upload upto 200mb video");
+          }
         } else if (file.type === "image/png" || file.type === "image/jpeg") {
+          formik.setFieldValue("image", file.name);
+
           setImage(file);
         }
       } else {
@@ -104,22 +118,40 @@ const GeneralInformationsModal = ({ show, setShow }) => {
           <div className="row">
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
-                {/* <div>
+                <div>
+                  <label>Upload Image</label>
                   <ModalInput
+                    id="upload-image-button"
                     name="image"
-                    placeholder="professional_Picture"
+                    accept="image/*"
                     onChange={handleFileUpload}
+                    placeholder="professional_Picture"
                     type="file"
                   />
+                  {formik.values.image ? (
+                    <div>
+                      {" "}
+                      <b>{formik.values.image}</b>
+                    </div>
+                  ) : null}
                 </div>
                 <div className="my-4">
+                  <label>Upload Video</label>
+
                   <ModalInput
                     placeholder="professional_Video"
                     name="video"
+                    accept="video/*"
                     onChange={handleFileUpload}
                     type="file"
                   />
-                </div> */}
+                  {formik.values.video ? (
+                    <div>
+                      {" "}
+                      <b>{formik.values.video}</b>
+                    </div>
+                  ) : null}
+                </div>
                 <div>
                   <ModalInput
                     name="linkedIn"

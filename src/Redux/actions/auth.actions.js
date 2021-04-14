@@ -7,7 +7,7 @@ import {
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
 import { token, user } from "../../urlConfig";
-
+import { Get_Student_Jobs } from "./job";
 export const set_loading = (loading) => ({
   type: actionTypes.SET_LOADING_AUTH,
   loading,
@@ -16,7 +16,10 @@ export const set_loading_data = (loading) => ({
   type: actionGlobals.SET_DATA_LOADING,
   loading,
 });
-
+export const set_req_password = (loading) => ({
+  type: actionGlobals.SET_REQUEST_PASSWORD_LOADING,
+  loading,
+});
 export const login = (data, formik) => async (dispatch) => {
   try {
     dispatch(set_loading(true));
@@ -27,7 +30,10 @@ export const login = (data, formik) => async (dispatch) => {
     const { token, user } = res.data;
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
-    Get_User_Student();
+    if (user.type === "student") {
+      Get_User_Student();
+      Get_Student_Jobs();
+    }
     dispatch({
       type: authConstants.LOGIN_SUCCESS,
       payload: {
@@ -122,5 +128,88 @@ export const Get_User_Student = () => async (dispatch) => {
         )
       );
     }
+  }
+};
+
+export const Request_ForgotPassword = (data, formik, props) => async (
+  dispatch
+) => {
+  try {
+    dispatch(set_req_password(true));
+
+    const res = await axios.post(`profile/request-forget-password`, data);
+    dispatch({
+      type: studentConstants.REQUEST_PASSWORD_SUCCESS,
+      payload: { loading: true },
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
+    );
+    props.handleModal("reqforgotPassword");
+    formik.handleReset();
+  } catch (error) {
+    dispatch(set_req_password(false));
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar(error.response.data.message, "error")
+      )
+    );
+  }
+};
+export const Reset_ForgotPassword = (data, formik, props, history) => async (
+  dispatch
+) => {
+  try {
+    dispatch(set_req_password(true));
+
+    const res = await axios.post(
+      `profile/reset-password/?passwordToken=${props.id}`,
+      data
+    );
+    dispatch({
+      type: studentConstants.RESET_PASSWORD_SUCCESS,
+      payload: { loading: true },
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
+    );
+    props.handleModal("resetPassword");
+    formik.handleReset();
+    history.push("/");
+  } catch (error) {
+    dispatch(set_req_password(false));
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar(error.response.data.message, "error")
+      )
+    );
+  }
+};
+// email verification
+
+export const Verify_email = (token, formik, props, history) => async (
+  dispatch
+) => {
+  try {
+    dispatch(set_loading(true));
+
+    const res = await axios.post(`auth/verify-email/${token}`, {});
+    dispatch({
+      type: authConstants.EMAIL_VERIFY_SUCCESS,
+      payload: { loading: true },
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
+    );
+    props.handleModal("emailVerify");
+    history.push("/");
+    formik.handleReset();
+  } catch (error) {
+    dispatch(set_loading(false));
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar(error.response.data.message, "error")
+      )
+    );
   }
 };

@@ -46,6 +46,24 @@ export default (state = initialState, action) => {
         user: action.payload.user,
       };
       break;
+    case studentConstants.REQUEST_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
+    case studentConstants.RESET_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
+    case authConstants.EMAIL_VERIFY_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
   }
 
   return state;

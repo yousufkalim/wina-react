@@ -1,25 +1,28 @@
 import React from "react";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import {MdLocationOn} from 'react-icons/all';
-import {Link} from 'react-router-dom';
-
-
+import { MdLocationOn } from "react-icons/all";
+import { Link } from "react-router-dom";
 
 export default function RecipeReviewCard(props) {
-  
-  const {cards, isDetailPage} = props;
+  const { cards, handleDetail } = props;
 
   return (
     <div className="offer-card">
       <div className="offer-card-wrapper">
         <div className="offer-card-header">
-          <img src={`../images/${cards.image}.png`} className="offer-card-img" />
+          <img
+            src={`../images/${cards.image}.png`}
+            className="offer-card-img"
+          />
         </div>
         <div className="offer-card-body offer-card-body-1">
           <div className="offer-card-description">{cards.title}</div>
           <div className="offer-card-content">
-            <span><MdLocationOn /></span> {cards.location}
+            <span>
+              <MdLocationOn />
+            </span>{" "}
+            {cards.location}
           </div>
           <div className="offer-card-price text-center">
             <div className="offer-card-price-item">{cards.content1}</div>
@@ -29,7 +32,7 @@ export default function RecipeReviewCard(props) {
         </div>
         <div className="offer-card-overlay"></div>
       </div>
-      <Link onClick={() =>isDetailPage(true)} className="offer-card-btn">
+      <Link onClick={() => handleDetail(true)} className="offer-card-btn">
         <Fab color="primary" aria-label="add">
           <AddIcon />
         </Fab>

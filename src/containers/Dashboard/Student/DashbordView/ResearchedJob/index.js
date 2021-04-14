@@ -17,6 +17,13 @@ import { Add_info_Student } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
+import {
+  DomainOptions,
+  RythmeOptions,
+  DurationOptions,
+  levelOfEducation,
+} from "../../../../../Globals";
+
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
 
 const ResearchedJob = () => {
@@ -206,42 +213,3 @@ const ResearchedJob = () => {
   );
 };
 export default ResearchedJob;
-const DomainOptions = [
-  { title: "IT" },
-  { title: "Softwear Enginer" },
-  { title: "Electrical Enginer" },
-  { title: "Mechanical Engineer" },
-  { title: "NEXT BRIDGE" },
-];
-const RythmeOptions = [
-  { title: "1 semaine entreprise" },
-  { title: "1 semaine école" },
-  { title: "Choix 2" },
-  { title: "Choix 3" },
-  { title: "Choix 4" },
-];
-const DurationOptions = [
-  { title: "1 year" },
-  { title: "2 years" },
-  { title: "3 years" },
-  { title: "4 years" },
-  { title: "5 years" },
-];
-const levelOfEducation = [
-  {
-    title: "1:Brevet",
-  },
-
-  {
-    title: "2:CAP",
-  },
-  {
-    title: "3:BEP",
-  },
-  {
-    title: "4:MC",
-  },
-  {
-    title: "5:BacGénéral",
-  },
-];

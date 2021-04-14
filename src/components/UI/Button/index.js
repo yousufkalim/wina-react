@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 export default function index(props) {
   return (
     <Button
-      className="Enregistrer"
+      className={props.className ? props.className : "Enregistrer"}
       type={props.type}
       variant={props.variant}
       onClick={props.onClick}

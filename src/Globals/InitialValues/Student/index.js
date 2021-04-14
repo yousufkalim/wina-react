@@ -23,6 +23,7 @@ export const SCOOL_STATE = {
   start_Date: "",
   end_Date: "",
   description: "",
+  image: "",
 };
 export const GENERAL_INFO_STATE = {
   general_Presentation: "",
@@ -46,6 +47,7 @@ export const PROFESSIONAL_PROFILE_STATE = {
   type: "",
   position_hold: false,
   description: "",
+  image: "",
 };
 export const POSITION_SOUGHT_STATE = {
   domain: "",
@@ -54,4 +56,17 @@ export const POSITION_SOUGHT_STATE = {
   startDate: "",
   alternationRhythm: "",
   levelOfEducation: "",
+};
+export const FORGOT_PASSWORD_STATE = {
+  email: "",
+};
+
+export const VERIFY_STATE = {
+  token: "",
+};
+// rESET password
+
+export const RESET_PASSWORD_STATE = {
+  password: "",
+  confirm: "",
 };

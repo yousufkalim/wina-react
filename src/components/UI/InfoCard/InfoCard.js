@@ -2,6 +2,8 @@ import React from "react";
 import "./InfoCard.css";
 import { FiEdit2, MdDelete } from "react-icons/all";
 import { DEFAULT_IMAGE } from "../../../Globals";
+import { baseUri } from "../../../urlConfig";
+
 const InfoCard = (props) => {
   const {
     item,
@@ -17,7 +19,10 @@ const InfoCard = (props) => {
       >
         <div className="info-card-wrapper">
           <div className="info-card-image">
-            <img src={DEFAULT_IMAGE} alt="DEFAULT_IMAGE" />
+            <img
+              src={item.image ? `${baseUri}/${item.image}` : DEFAULT_IMAGE}
+              alt="DEFAULT_IMAGE"
+            />
           </div>
           <div className="info-card-container">
             <div className="info-card-title">
@@ -52,7 +57,10 @@ const InfoCard = (props) => {
       >
         <div className="info-card-wrapper">
           <div className="info-card-image">
-            <img src={DEFAULT_IMAGE} alt="DEFAULT_IMAGE" />
+            <img
+              src={item.image ? `${baseUri}/${item.image}` : DEFAULT_IMAGE}
+              alt="DEFAULT_IMAGE"
+            />
           </div>
           <div className="info-card-container">
             <div className="info-card-title">

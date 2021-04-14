@@ -59,39 +59,6 @@ export const Student_Signup = (user, formik) => async (dispatch) => {
   }
 };
 
-export const Company_Signup = (user, formik) => async (dispatch) => {
-  try {
-    dispatch(set_loading(true));
-    const res = await axios.post(
-      `company/register-company`,
-      {
-        ...user,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    let message = res.data.message;
-    dispatch({
-      type: companyConstants.COMPANY_REGISTER_SUCCESS,
-      payload: { message, loading: false },
-    });
-    formik.setSubmitting(false);
-    formik.handleReset();
-  } catch (error) {
-    // console.log(error, "error");
-    dispatch(set_loading(false));
-
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-  }
-};
 export const Add_info_Student = (user, formik) => async (dispatch) => {
   try {
     dispatch(set_loading_school(true));

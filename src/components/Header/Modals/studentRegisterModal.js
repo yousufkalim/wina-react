@@ -90,6 +90,7 @@ export default function StudentRegister(props) {
             LOGIN_YUP={LOGIN_YUP}
             login={login}
             useSelector={useSelector}
+            handleModal={props.handleModal}
           />
           <div className="modal-right-side">
             <div className="Register">

@@ -36,17 +36,9 @@ export const getSkills = (type) => async (dispatch) => {
   dispatch(set_skill_loading(true));
 
   try {
-    const res = await axios.post(
-      `student/get_skills`,
-      {
-        type: type,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await axios.post(`student/get_skills`, {
+      type: type,
+    });
     if (type === "Soft_Skill") {
       dispatch({
         type: actionGlobals.GET_SOFT_SKILLS_SUCCESS,

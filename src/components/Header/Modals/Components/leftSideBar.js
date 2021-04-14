@@ -10,6 +10,7 @@ export default function Sidebar({
   LOGIN_STATE,
   LOGIN_YUP,
   login,
+  handleModal,
 }) {
   const store = useSelector((state) => state.auth);
   const formik = useFormik({
@@ -65,7 +66,10 @@ export default function Sidebar({
         </form>
         <div className="mt-5">
           <div className="forgetpassword">
-            <Link to="/">Mot de passe oublié ?</Link>
+            <a onClick={() => handleModal("reqforgotPassword")}>
+              {" "}
+              Mot de passe oublié ?
+            </a>
           </div>
           <div className="faceBookGoogleGroup">
             <div color="primary" className="w-100 modal-social-buttons">

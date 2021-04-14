@@ -12,7 +12,7 @@ const Home = (props) => {
   return (
     <>
       <div className="HomePagefontStyle">
-        <Header />
+        <Header id={props.match.params.id} token={props.match.params.token} />
 
         <div className="collapseMenu">
           <Accordion defaultActiveKey="0" className="">

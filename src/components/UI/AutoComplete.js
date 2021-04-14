@@ -9,7 +9,7 @@ export default function AutoComplete({
   loading,
   onSubmit,
   name,
-  value,
+  // value,
   renderOption,
 }) {
   const [address, setAddress] = useState("");
@@ -17,11 +17,11 @@ export default function AutoComplete({
     setAddress(value);
     onChange(value);
   };
-  useEffect(() => {
-    if (value) {
-      setAddress(value);
-    }
-  }, [value]);
+  // useEffect(() => {
+  //   if (value) {
+  //     setAddress(value);
+  //   }
+  // }, [value]);
   return (
     <>
       <Autocomplete

@@ -1,78 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Image } from "react-bootstrap";
 import CarosoulCard from "./CarosoulCard";
 import Slider from "react-slick";
-import {
-  BsChevronRight,
-  BsChevronLeft,
-  IoLocationSharp,
-} from "react-icons/all";
-import OfferCardDetail from "./OfferCardDetail";
+import { BsChevronRight, BsChevronLeft } from "react-icons/all";
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <div style={{ marginLeft: "0.5rem" }} onClick={onClick}>
-      <BsChevronRight style={{fontSize: "2rem"}} />
+      <BsChevronRight style={{ fontSize: "2rem" }} />
     </div>
   );
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
     <div style={{ marginRight: "0.5rem" }} onClick={onClick}>
-      <BsChevronLeft style={{fontSize: "2rem"}} />
+      <BsChevronLeft style={{ fontSize: "2rem" }} />
     </div>
   );
 }
-
-const offerCards = [
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  
-  
-];
 
 export default function MultiCarouselPage(props) {
   const [isGoDetail, setIsGoDetail] = useState(false);
@@ -118,26 +66,26 @@ export default function MultiCarouselPage(props) {
     ],
   };
 
-  useEffect(
-    () => {
-      setIsGoDetail(false);
-     
-      // window.location.reload(false);
-    },
-    [
-      // window.location.reload(false)
-    ]
-  );
+  useEffect(() => {
+    setIsGoDetail(false);
+  }, []);
 
   return (
-    <div className="multiCarosoul">
-     
+    <>
+      <div
+        className="d-flex justify-content-start align-items-center"
+        style={{ height: "10%" }}
+      >
+        <h5>Store & Supply </h5>
+        <span className="offer-apply-btn ml-5">Postuler</span>
+      </div>
+      <div className="multiCarosoul">
         <div className="student-slider-container">
           <Slider {...settings}>
             {offerCards.map((card, index) => (
               <div className="h-100 w-100">
                 <CarosoulCard
-                  isDetailPage={props.setDetail}
+                  handleDetail={props.handleDetail}
                   cards={card}
                   key={index}
                   name="this is first"
@@ -147,7 +95,64 @@ export default function MultiCarouselPage(props) {
             ))}
           </Slider>
         </div>
-    
-    </div>
+      </div>
+    </>
   );
 }
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+// ******************************
+
+const offerCards = [
+  {
+    image: "offer-card-1",
+    title: "Comundi",
+    location: "4 Rue du Général - 75015 Paris",
+    content1: "Domaine : Webdesign",
+    content2: "Durée : 1 an",
+    content3: "Niveau d’étude : Brevet",
+  },
+  {
+    image: "offer-card-1",
+    title: "Comundi",
+    location: "4 Rue du Général - 75015 Paris",
+    content1: "Domaine : Webdesign",
+    content2: "Durée : 1 an",
+    content3: "Niveau d’étude : Brevet",
+  },
+  {
+    image: "offer-card-1",
+    title: "Comundi",
+    location: "4 Rue du Général - 75015 Paris",
+    content1: "Domaine : Webdesign",
+    content2: "Durée : 1 an",
+    content3: "Niveau d’étude : Brevet",
+  },
+  {
+    image: "offer-card-1",
+    title: "Comundi",
+    location: "4 Rue du Général - 75015 Paris",
+    content1: "Domaine : Webdesign",
+    content2: "Durée : 1 an",
+    content3: "Niveau d’étude : Brevet",
+  },
+  {
+    image: "offer-card-1",
+    title: "Comundi",
+    location: "4 Rue du Général - 75015 Paris",
+    content1: "Domaine : Webdesign",
+    content2: "Durée : 1 an",
+    content3: "Niveau d’étude : Brevet",
+  },
+];

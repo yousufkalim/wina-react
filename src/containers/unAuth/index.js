@@ -10,6 +10,9 @@ export default function UnAuth() {
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/reset/:id" component={Home} />
+      <Route path="/verifyEmail/:token" component={Home} />
+
       <Redirect from="*" to="/" />
     </Switch>
   );

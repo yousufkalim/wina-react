@@ -1,43 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { SCOOL_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { SCOOL_YUP } from "../../../../../../components/Formik/Student/yupValidation";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import Button from "../../../../../../components/UI/Button";
-
+import axios from "axios";
 import TextArea from "../../../../../../components/UI/Textarea";
 import SchoolModal from "../../../../../../components/UI/Modal";
 import ModalInput from "../../../../../../components/UI/TextField";
 import Input from "../../../../../../components/UI/Input";
-
+import { baseUrl } from "../../../../../../urlConfig";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getApiAdress,
-  Add_info_Student,
-  Add_Image_info_Student,
-} from "../../../../../../Redux/actions";
+import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
-  const store2 = useSelector((state) => state.globals);
   const store = useSelector((state) => state.user);
   const [Image, setImage] = useState("");
   // formik
   const formik = useFormik({
     initialValues: SCOOL_STATE,
     validationSchema: SCOOL_YUP,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       let check = schoolsArray.some((sa) => sa.school === values.school);
+      const formdataImage = new FormData();
+      formdataImage.append("image", Image);
+      const imageData = await axios({
+        method: "post",
+        url: `${baseUrl}/FileUpload`,
+        data: formdataImage,
+      });
+      let imagePath = imageData.data;
       if (check === false) {
-        let obj = {};
-
-        schoolsArray.push(values);
-        obj.education = schoolsArray;
-        // let form_data = new FormData();
-        // form_data.append("school_image", Image);
-        // form_data.append("education", JSON.stringify(obj));
-        // dispatch(Add_Image_info_Student(form_data));
-        dispatch(Add_info_Student(obj, formik));
+        values.image = imagePath;
+        let array = [...schoolsArray, values];
+        let form_data = new FormData();
+        form_data.append("education", JSON.stringify(array));
+        dispatch(Add_Image_info_Student(form_data));
         setShow(false);
       } else {
         dispatch(
@@ -48,27 +47,18 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       }
     },
   });
-  // handle file change
 
-  const handleFileUpload = (e) => {
-    if (e.target.files.length) {
-      let file = e.target.files[0];
-      if (file.type === "image/png" || file.type === "image/jpeg") {
-        // let form_data = new FormData();
-        // form_data.append("school_image", file);
-        // dispatch(Add_Image_info_Student(form_data));
-        setImage(file);
-      } else {
-        alert("You can upload only images ");
-      }
-    }
-  };
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "image") {
       let file = e.target.files[0];
-      formik.setFieldValue(name, file);
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        setImage(file);
+        formik.setFieldValue("image", file.name);
+      } else {
+        alert("You can upload only images ");
+      }
     }
     formik.setFieldValue(name, value);
   };
@@ -131,14 +121,22 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-2">
+                <div className="mt-4">
+                  <label>Upload Image</label>
                   <Input
                     name="image"
                     placeholder="professional_Picture"
-                    onChange={handleFileUpload}
+                    onChange={handleChange}
                     type="file"
-                    accept="image"
+                    accept="image/*"
                   />
+
+                  {formik.touched.image && formik.errors.image ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.image}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="description">
                   <TextArea

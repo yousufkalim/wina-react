@@ -5,7 +5,138 @@ import CardItem from "./OfferCardItem";
 import DoneIcon from "@material-ui/icons/Done";
 import Calendar from "react-calendar";
 import { ImLocation } from "react-icons/all";
+import { DEFAULT_IMAGE } from "../../../Globals";
 
+const CardWithImage = (props) => {
+  const classes = useStyles();
+  const { item, eventKey, handleDetail } = props;
+
+  const [value, onChange] = useState(new Date());
+
+  return (
+    <div className="card-with-image">
+      <div className="card-with-image-wrapper">
+        <div className="card-with-image-image">
+          {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
+          <img src={DEFAULT_IMAGE} />
+        </div>
+        <div className="card-with-image-container">
+          <div className="card-with-image-title">
+            <div>
+              <h3>
+                <b>{item.company && item.company.name}</b>
+              </h3>
+            </div>
+            {item.startDate && (
+              <div className="card-with-image-date">{item.startDate}</div>
+            )}
+          </div>
+          <div className="card-with-image-content text-left">
+            {item.position} <br />
+            <p className="card-with-image-location">
+              <span className="mr-2">
+                <ImLocation className="card-with-image-location-icon" />
+              </span>
+              {item.location.street},{item.location.zip} {item.location.city}
+            </p>
+            <br />
+          </div>
+
+          <div className="card-with-image-desc">
+            {item.domain && (
+              <CardItem
+                className="offer-card-item-bordered company-offer-detail-content"
+                content={item.domain}
+              />
+            )}
+            {item.duration && (
+              <CardItem
+                className="offer-card-item-bordered company-offer-detail-content"
+                content={item.duration}
+              />
+            )}
+            {item.levelOfEducation && (
+              <CardItem
+                className="offer-card-item-bordered company-offer-detail-content"
+                content={item.levelOfEducation}
+              />
+            )}
+          </div>
+          {eventKey === "Suggestion" ? (
+            <div className="card-with-image-buttons">
+              <div
+                className="card-with-image-btn card-with-image-btn-yellow"
+                onClick={() => handleDetail(item._id)}
+              >
+                Voir
+              </div>
+
+              <div className="card-with-image-btn card-with-image-btn-green">
+                Accepter
+              </div>
+
+              <div className="card-with-image-btn card-with-image-btn-red">
+                Refuser
+              </div>
+            </div>
+          ) : eventKey === "RefusedOffers" ? (
+            <div className="card-with-image-buttons">
+              <div
+                onClick={() => handleDetail(item._id)}
+                className="card-with-image-btn card-with-image-btn-yellow"
+              >
+                Voir
+              </div>
+
+              <div className="card-with-image-btn card-with-image-btn-gray">
+                Impossible
+              </div>
+            </div>
+          ) : eventKey === "PreSelectedOffers" ? (
+            <div className="card-with-image-buttons">
+              <div
+                onClick={() => handleDetail(item._id)}
+                className="card-with-image-btn card-with-image-btn-yellow"
+              >
+                Voir
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      </div>
+      {item.calender && (
+        <div className="card-with-image-calender-container">
+          <div className="card-with-image-calender-wrapper">
+            <div className="card-with-image-calender-heading">
+              Félicitations vous avez accepté le match !
+            </div>
+          </div>
+
+          <div className="card-with-image-calender-wrapper">
+            <div className="card-with-image-calender">
+              <Calendar onChange={onChange} value={value} />
+            </div>
+          </div>
+          <div className="text-right">
+            <Button
+              classes={{
+                root: classes.root4,
+                label: classes.label,
+              }}
+            >
+              Envoyer
+            </Button>
+          </div>
+        </div>
+      )}
+      {item.matches && <div className="matches">{item.matches}</div>}
+    </div>
+  );
+};
+
+export default CardWithImage;
 const useStyles = makeStyles({
   root1: {
     "&:hover": {
@@ -93,123 +224,3 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
   },
 });
-
-const CardWithImage = (props) => {
-  const classes = useStyles();
-  const { item, setDetailHandler } = props;
-
-  const [learn, setLearn] = useState(false);
-  const [value, onChange] = useState(new Date());
-
-  useEffect(() => {
-    setLearn(false);
-  }, []);
-
-  const learnHandler = (btn) => {
-    setLearn(btn);
-  };
-
-  return (
-    <div className="card-with-image">
-      <div className="card-with-image-wrapper">
-        <div className="card-with-image-image">
-          {item.image && <img src={`../images/${item.image}.png`} />}
-        </div>
-        <div className="card-with-image-container">
-          <div className="card-with-image-title">
-            <div>{item.title}</div>
-            {item.cdate && (
-              <div className="card-with-image-date">{item.cdate}</div>
-            )}
-          </div>
-          <div className="card-with-image-content text-left">
-            {item.content}
-            <br />
-            <p className="card-with-image-location">
-              <span className="mr-2">
-                <ImLocation className="card-with-image-location-icon" />
-              </span>
-              {item.location}
-            </p>
-          </div>
-
-          <div className="card-with-image-desc">
-            {item.desc1 && (
-              <CardItem
-                className="offer-card-item-bordered company-offer-detail-content"
-                content={item.desc1}
-              />
-            )}
-            {item.desc2 && (
-              <CardItem
-                className="offer-card-item-bordered company-offer-detail-content"
-                content={item.desc2}
-              />
-            )}
-            {item.desc3 && (
-              <CardItem
-                className="offer-card-item-bordered company-offer-detail-content"
-                content={item.desc3}
-              />
-            )}
-          </div>
-
-          <div className="card-with-image-buttons">
-            {item.btn1 && (
-              <div
-                onClick={() => setDetailHandler(true)}
-                className="card-with-image-btn card-with-image-btn-yellow"
-              >
-                {item.btn1}
-              </div>
-            )}
-            {item.btn2 ? (
-              <div className="card-with-image-btn card-with-image-btn-green">
-                {item.btn2}
-              </div>
-            ) : (
-              item.btn2Gray && (
-                <div className="card-with-image-btn card-with-image-btn-gray">
-                  {item.btn2Gray}
-                </div>
-              )
-            )}
-            {item.btn3 && (
-              <div className="card-with-image-btn card-with-image-btn-red">
-                {item.btn3}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      {item.calender && (
-        <div className="card-with-image-calender-container">
-          <div className="card-with-image-calender-wrapper">
-            <div className="card-with-image-calender-heading">
-              Félicitations vous avez accepté le match !
-            </div>
-          </div>
-
-          <div className="card-with-image-calender-wrapper">
-            <div className="card-with-image-calender">
-              <Calendar onChange={onChange} value={value} />
-            </div>
-          </div>
-          <div className="text-right">
-            <Button
-              classes={{
-                root: classes.root4,
-                label: classes.label,
-              }}
-            >
-              Envoyer
-            </Button>
-          </div>
-        </div>
-      )}
-      {item.matches && <div className="matches">{item.matches}</div>}
-    </div>
-  );
-};
-
-export default CardWithImage;

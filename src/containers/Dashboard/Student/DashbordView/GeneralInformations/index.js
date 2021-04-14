@@ -6,6 +6,7 @@ import General_Info from "./Modals/general_Info";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
+import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Delete_School_Info,
@@ -24,8 +25,6 @@ const GeneralInformations = () => {
   const [general_info, setgeneral_info] = useState(false);
   const [schoolsArray, setschoolsArray] = useState([]);
 
-  const [image, setImage] = useState("");
-  const [video, setVideo] = useState("");
   const formik = useFormik({});
   // useEffect
   useEffect(() => {
@@ -34,7 +33,7 @@ const GeneralInformations = () => {
       delete v._id;
     });
     setschoolsArray(tempEducation);
-  }, []);
+  }, [Education]);
   const SchoolModalShow = () => {
     setShow(!show);
   };
@@ -52,29 +51,7 @@ const GeneralInformations = () => {
     }
     setedit_school_show(!edit_school_show);
   };
-  const handleFileUpload = (e) => {
-    let form_data = new FormData();
 
-    if (e.target.files.length) {
-      let file = e.target.files[0];
-      if (file.type !== "application/pdf") {
-        const uri = URL.createObjectURL(file);
-        if (file.type === "video/mp4") {
-          form_data.append("video", file);
-          file.size <= 200000000
-            ? setVideo(uri)
-            : alert("you can upload upto 200mb video");
-        } else if (file.type === "image/png" || file.type === "image/jpeg") {
-          form_data.append("image2", file);
-
-          setImage(uri);
-        }
-        dispatch(Add_Image_info_Student(form_data));
-      } else {
-        alert("You can upload only images or videos ");
-      }
-    }
-  };
   return (
     <>
       <AddSchool show={show} setShow={setShow} schoolsArray={schoolsArray} />
@@ -106,9 +83,9 @@ const GeneralInformations = () => {
                     <Image
                       alt="iamge2"
                       src={
-                        image
-                          ? image
-                          : `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
+                        store.user.student.professional_Picture.image
+                          ? `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
+                          : DEFAULT_IMAGE
                       }
                       hidden={
                         store.user.student.professional_Picture.image
@@ -128,31 +105,14 @@ const GeneralInformations = () => {
                         className="embed-responsive-item"
                         // src={`../images/video.mp4`}
                         src={
-                          video
-                            ? video
-                            : `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
+                          `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
+                            ? `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
+                            : `../images/video.mp4`
                         }
                         allowFullScreen
                       ></iframe>
                     </div>
                   </div>
-                  <div className="profileImage">
-                    <Image
-                      src={`../images/uploadcons.png`}
-                      onClick={() =>
-                        document
-                          .getElementById("upload-canvas-pdf-button")
-                          .click()
-                      }
-                    />
-                  </div>
-                  <input
-                    hidden
-                    type="file"
-                    accept="video/mp4,image/x-png,image/gif,image/jpeg"
-                    id="upload-canvas-pdf-button"
-                    onChange={handleFileUpload}
-                  />
                 </Col>
                 <Col lg={9} md={8}>
                   <div className="profilename">{Loggin_User}</div>

@@ -7,3 +7,5 @@ export * from "./page.action";
 export * from "./order.action";
 export * from "./notistack";
 export * from "./globals";
+export * from "./job";
+export * from "./company";

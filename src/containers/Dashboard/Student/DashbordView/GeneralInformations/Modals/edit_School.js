@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { SCOOL_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { SCOOL_YUP } from "../../../../../../components/Formik/Student/yupValidation";
-import AutoComplete from "../../../../../../components/UI/AutoComplete";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import SchoolModal from "../../../../../../components/UI/Modal";
-import Texts from "../../../../../../Globals/Texts";
 import { useDispatch, useSelector } from "react-redux";
 import ModalInput from "../../../../../../components/UI/TextField";
 import Button from "../../../../../../components/UI/Button";
-
-import {
-  getApiAdress,
-  Add_info_Student,
-} from "../../../../../../Redux/actions";
+import Input from "../../../../../../components/UI/Input";
+import { baseUrl } from "../../../../../../urlConfig";
+import axios from "axios";
+import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 
 const GeneralInformationsModal = ({
   show,
@@ -25,24 +22,32 @@ const GeneralInformationsModal = ({
   setedit_school_id,
 }) => {
   const dispatch = useDispatch();
-  const store2 = useSelector((state) => state.globals);
   const store = useSelector((state) => state.user);
-
-  // states
-  const [items, setItems] = useState([]);
+  const [Image, setImage] = useState("");
 
   // formik
   const formik = useFormik({
     initialValues: SCOOL_STATE,
     validationSchema: SCOOL_YUP,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       if (id) {
-        let obj = {};
+        if (Image) {
+          const formdataImage = new FormData();
+          formdataImage.append("image", Image);
+          const imageData = await axios({
+            method: "post",
+            url: `${baseUrl}/FileUpload`,
+            data: formdataImage,
+          });
+          let imagePath = imageData.data;
+
+          values.image = imagePath;
+        }
         let temp = data.findIndex((dt) => dt._id === id);
-        console.log(temp, "temp");
         schoolsArray[temp] = values;
-        obj.education = schoolsArray;
-        dispatch(Add_info_Student(obj, formik));
+        let form_data = new FormData();
+        form_data.append("education", JSON.stringify(schoolsArray));
+        dispatch(Add_Image_info_Student(form_data));
         setShow(false);
         setedit_school_id("");
       }
@@ -57,6 +62,7 @@ const GeneralInformationsModal = ({
         formik.setFieldValue("end_Date", temp.end_Date);
         formik.setFieldValue("start_Date", temp.start_Date);
         formik.setFieldValue("school", temp.school);
+        formik.setFieldValue("image", temp.image);
       }
     }
   }, [id, show, setShow]);
@@ -65,33 +71,16 @@ const GeneralInformationsModal = ({
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "phone") {
-      if (value.length <= 10) {
-        formik.setFieldValue(name, value.replace(/\D/g, ""));
+    if (name === "image") {
+      let file = e.target.files[0];
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        setImage(file);
+        formik.setFieldValue("image", file.name);
+      } else {
+        alert("You can upload only images ");
       }
-    } else {
-      formik.setFieldValue(name, value);
     }
-  };
-  const handleAddressChange = (value) => {
-    dispatch(getApiAdress(value));
-    if (store2.items.length > 0) {
-      setItems(
-        store2.items.map((item) => {
-          return {
-            id: item.properties.id,
-            name: item.properties.label,
-            city: item.properties.city,
-            postalCode: item.properties.postcode,
-            lat: item.geometry.coordinates[1],
-            lng: item.geometry.coordinates[0],
-          };
-        })
-      );
-    }
-  };
-  const onSubmitAddress = (value) => {
-    formik.setFieldValue("school", value.city);
+    formik.setFieldValue(name, value);
   };
 
   return (
@@ -152,6 +141,24 @@ const GeneralInformationsModal = ({
                         </div>
                       ) : null}
                     </div>
+                  </div>
+                  <div className="mt-4">
+                    <Input
+                      name="image"
+                      placeholder="professional_Picture"
+                      onChange={handleChange}
+                      type="file"
+                      accept="image"
+                    />
+                    {formik.values.image ? (
+                      <div> {formik.values.image}</div>
+                    ) : null}
+                    {formik.touched.image && formik.errors.image ? (
+                      <div className="formikErrorAuto">
+                        {" "}
+                        {formik.errors.image}
+                      </div>
+                    ) : null}
                   </div>
                   <div className="description">
                     <TextArea

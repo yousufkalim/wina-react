@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isUserLoggedIn, Get_User_Student } from "../Redux/actions";
+import {
+  isUserLoggedIn,
+  Get_User_Student,
+  Get_Student_Jobs,
+} from "../Redux/actions";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -14,11 +18,13 @@ function App() {
   const store = useSelector((state) => state.auth);
 
   const [loading, setLoading] = useState(true);
-
   //componentDidMount or componentDidUpdate
   React.useEffect(() => {
     dispatch(isUserLoggedIn()).then(() => {
-      dispatch(Get_User_Student());
+      if (store.user && store.user.type === "student") {
+        dispatch(Get_User_Student());
+        dispatch(Get_Student_Jobs());
+      }
       setTimeout(() => {
         setLoading(false);
       }, 1000);

@@ -14,9 +14,12 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getApiAdress,
-  Add_info_Student,
+  Add_Image_info_Student,
 } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
+import Input from "../../../../../../components/UI/Input";
+import axios from "axios";
+import { baseUrl } from "../../../../../../urlConfig";
 
 import { PROFESSIONAL_PROFILE_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { PROFESSIONAL_PROFILE_YUP } from "../../../../../../components/Formik/Student/yupValidation";
@@ -25,24 +28,33 @@ const PPModal = ({ show, setShow, professionalArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.user);
   // const classes = useStyles();
+  const [Image, setImage] = useState("");
 
   const formik = useFormik({
     initialValues: PROFESSIONAL_PROFILE_STATE,
     validationSchema: PROFESSIONAL_PROFILE_YUP,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       let check = professionalArray.some((sa) => sa.company === values.company);
+      const formdataImage = new FormData();
+      formdataImage.append("image", Image);
+      const imageData = await axios({
+        method: "post",
+        url: `${baseUrl}/FileUpload`,
+        data: formdataImage,
+      });
+      let imagePath = imageData.data;
       if (check === false) {
-        let obj = {};
         values.duration = {
           start_date: values.start_date,
           end_date: values.end_date,
         };
-        professionalArray.push(values);
         delete values.start_date;
         delete values.end_date;
-        obj.professional_profile = professionalArray;
-
-        dispatch(Add_info_Student(obj, formik));
+        values.image = imagePath;
+        let array = [...professionalArray, values];
+        let form_data = new FormData();
+        form_data.append("professional_profile", JSON.stringify(array));
+        dispatch(Add_Image_info_Student(form_data));
         setShow(false);
       } else {
         dispatch(
@@ -53,25 +65,19 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       }
     },
   });
-  // const handleFileUpload = (e) => {
-  //   if (e.target.files.length) {
-  //     let file = e.target.files[0];
-  //     if (file.type !== "application/pdf") {
-  //       let form_data = new FormData();
-  //       form_data.append("school_image", file);
-  //       dispatch(Add_Image_info_Student(form_data));
 
-  //       const uri = URL.createObjectURL(file);
-
-  //       setPDF(uri);
-  //     } else {
-  //       alert("You can upload only images ");
-  //     }
-  //   }
-  // };
+  // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    if (name === "image") {
+      let file = e.target.files[0];
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        setImage(file);
+        formik.setFieldValue("image", file.name);
+      } else {
+        alert("You can upload only images ");
+      }
+    }
     formik.setFieldValue(name, value);
   };
 
@@ -167,7 +173,19 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 label="J’occupe actuellement ce poste"
               />
             </div>
+            <div className="position">
+              <Input
+                name="image"
+                placeholder="professional_Picture"
+                onChange={handleChange}
+                type="file"
+                accept="image/*"
+              />
 
+              {formik.touched.image && formik.errors.image ? (
+                <div className="formikErrorAuto"> {formik.errors.image}</div>
+              ) : null}
+            </div>
             <div className="DateRow ">
               <div>
                 <DatePicker

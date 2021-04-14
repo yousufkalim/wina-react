@@ -62,6 +62,7 @@ export default (state = initState, action) => {
         loading: false,
         user: action.payload.user,
       };
+
     case studentConstants.PROFESSIONAL_INFO_DELETE_SUCCESS:
       state = {
         ...state,

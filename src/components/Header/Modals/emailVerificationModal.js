@@ -1,0 +1,85 @@
+import React, { useState, useEffect } from "react";
+import { Modal } from "react-bootstrap";
+import ModalInput from "../../UI/Input";
+import LeftSidebar from "./Components/leftSideBar";
+import { useFormik } from "formik";
+import { VERIFY_STATE } from "../../../Globals/InitialValues/Student";
+import { VERIFY_YUP } from "../../Formik/Student/yupValidation";
+import { Verify_email } from "../../../Redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../../UI/Button";
+import * as Yup from "yup";
+import { useHistory } from "react-router-dom";
+export default function StudentRegister(props) {
+  // Dispatch
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const store = useSelector((state) => state.auth);
+
+  // formik
+  const formik = useFormik({
+    initialValues: VERIFY_STATE,
+    validationSchema: VERIFY_YUP,
+    onSubmit: (values) => {
+      console.log(values, "values");
+      dispatch(Verify_email(values.token, formik, props, history));
+    },
+    handleChange: (e) => {
+      const { name, value } = e.target;
+      formik.setFieldValue(name, value);
+    },
+  });
+  return (
+    <Modal
+      className="student-modal"
+      show={props.show}
+      centered
+      onHide={() => props.handleModal("emailVerify")}
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <Modal.Body>
+        <div className="d-flex justify-content-between p-3">
+          <div className="modal-left-side">
+            <div className="Login">
+              <div className="heading pb-4">Connexion</div>
+              <form onSubmit={formik.handleSubmit}>
+                <div>
+                  <ModalInput
+                    placeholder="Enter verify token"
+                    type="text"
+                    name="token"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.token}
+                  />
+                  {formik.touched.token && formik.errors.token ? (
+                    <div className="formikError">{formik.errors.token}</div>
+                  ) : null}
+                </div>
+
+                {store.loading ? (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="Loading...."
+                    disabled={store.loading}
+                  />
+                ) : (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="Enregistrer"
+                    disabled={false}
+                  />
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+}
