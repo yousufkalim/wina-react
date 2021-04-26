@@ -53,19 +53,30 @@ const GeneralInformationsModal = ({ show, setShow }) => {
 
   // useEffect
   useEffect(() => {
-    if (store.user) {
+    if (store.user.student) {
       const {
-        professional_networks: { linkedIn, Behance, Dribble, Github },
+        professional_networks,
         general_Presentation,
         professional_Picture,
         presentation_Video,
       } = store.user.student;
-      setnetworkFormData({
-        linkedIn: linkedIn || "",
-        Behance: Behance || "",
-        Dribble: Dribble || "",
-        Github: Github || "",
-      });
+      if (
+        professional_networks &&
+        Object.keys(professional_networks).length > 0
+      ) {
+        const {
+          linkedIn,
+          Behance,
+          Dribble,
+          Github,
+        } = store.user.student.professional_networks;
+        setnetworkFormData({
+          linkedIn: linkedIn || "",
+          Behance: Behance || "",
+          Dribble: Dribble || "",
+          Github: Github || "",
+        });
+      }
       formik.setFieldValue("general_Presentation", general_Presentation);
       formik.setFieldValue("image", professional_Picture.image);
       formik.setFieldValue("video", presentation_Video.video);

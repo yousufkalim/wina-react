@@ -2,7 +2,7 @@ import React from "react";
 import { Nav, Tab, Image } from "react-bootstrap";
 import ViewOffers from "./OfferTab/ViewOffers";
 import MatchResearch from "./ResearchTab/MatchResearch";
-import Header from "../Header";
+import Header from "../../Components/header";
 import Footer from "../../Components/footer";
 const OffersView = (props) => {
   const selectTab = () => {

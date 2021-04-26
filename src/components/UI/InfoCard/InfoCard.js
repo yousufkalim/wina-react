@@ -10,6 +10,7 @@ const InfoCard = (props) => {
     type,
     EditSchoolModalShow,
     EditProfessionalCareerModal,
+    EditPermission,
   } = props;
   if (type === "PROFESSIONAL") {
     return (
@@ -65,13 +66,17 @@ const InfoCard = (props) => {
           <div className="info-card-container">
             <div className="info-card-title">
               <div>{item.school}</div>
-              <div className="modal-icon">
-                <FiEdit2
-                  onClick={() => EditSchoolModalShow(item._id)}
-                  className="edit_Icon"
-                />
-                <MdDelete className="delete_icon" onClick={props.onDelete} />
-              </div>
+              {EditPermission && EditPermission === false ? (
+                ""
+              ) : (
+                <div className="modal-icon">
+                  <FiEdit2
+                    onClick={() => EditSchoolModalShow(item._id)}
+                    className="edit_Icon"
+                  />
+                  <MdDelete className="delete_icon" onClick={props.onDelete} />
+                </div>
+              )}
             </div>
             <div className="info-card-content pb-3">
               <div>

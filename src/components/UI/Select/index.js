@@ -47,6 +47,7 @@ export default function ControlledOpenSelect(props) {
                   <MenuItem value={op._id}>{op.skillField}</MenuItem>
                 ))
               : "No data found"}
+            <MenuItem value="other">{props.other ? "other" : ""}</MenuItem>
           </Select>
         </FormControl>
       </div>

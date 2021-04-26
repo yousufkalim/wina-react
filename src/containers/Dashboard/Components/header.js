@@ -7,8 +7,9 @@ import { DEFAULT_IMAGE } from "../../../Globals";
 const Header = () => {
   const store = useSelector((state) => state.user);
   const STUDENT_IMAGE =
-    store.user.student.professional_Picture &&
-    store.user.student.professional_Picture.image;
+    store.user.student && store.user.student.professional_Picture
+      ? store.user.student.professional_Picture.image
+      : "";
   return (
     <>
       <div className="generalInformation d-flex justify-content-between align-items-center">

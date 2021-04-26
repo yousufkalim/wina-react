@@ -66,6 +66,13 @@ const StudentRegister = (props) => {
     }
   };
   const handleAddressChange = (value) => {
+    formik.setFieldValue("address", {
+      city: "",
+      street: "",
+      zip: "",
+      longitude: "",
+      latitude: "",
+    });
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
       setItems(
@@ -125,120 +132,8 @@ const StudentRegister = (props) => {
               <form onSubmit={formik.handleSubmit}>
                 {Show === false ? (
                   <>
-                    <div>
-                      <ModalInput
-                        placeholder="Nom de l’entreprise"
-                        name="name"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.name}
-                        type="text"
-                      />
-                      {formik.touched.name && formik.errors.name ? (
-                        <div className="formikError">{formik.errors.name}</div>
-                      ) : null}
-                    </div>
-                    <div className="my-4">
-                      <AutoComplete
-                        formik={formik}
-                        onChange={handleAddressChange}
-                        placeholder="Adresse"
-                        items={items}
-                        loading={store2.loading}
-                        name={"address"}
-                        onSubmit={onSubmitAddress}
-                      />
-                      {formik.touched.address && formik.errors.address ? (
-                        <div className="formikErrorAuto">
-                          {" "}
-                          {formik.errors.address.city}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className="my-4">
-                      <ModalInput
-                        placeholder="Type d Entreprise"
-                        type="select"
-                        options={Company_Types}
-                        name="company_type"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.company_type}
-                      />
-                      {formik.touched.company_type &&
-                      formik.errors.company_type ? (
-                        <div className="formikError">
-                          {formik.errors.company_type}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className="my-4">
-                      <ModalInput
-                        placeholder="Numéro SIRET"
-                        type="text"
-                        name="siretNumber"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.siretNumber}
-                      />
-                      {formik.touched.siretNumber &&
-                      formik.errors.siretNumber ? (
-                        <div className="formikError">
-                          {formik.errors.siretNumber}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className="my-4">
-                      <ModalInput
-                        placeholder="Site internet"
-                        type="text"
-                        name="website"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.website}
-                      />
-                    </div>
-
-                    <div className="my-4">
-                      <ModalInput
-                        placeholder="Profil Linkedin"
-                        type="text"
-                        name="linkedIn"
-                        onChange={handleChange}
-                        value={formik.values.linkedIn}
-                      />
-                    </div>
-
-                    <div className="my-4">
-                      <ModalInput
-                        placeholder="L’entreprise fait-elle partie d’un groupement ? Si oui, préciser le nom"
-                        type="text"
-                        name="groupName"
-                        onChange={handleChange}
-                        value={formik.values.groupName}
-                      />
-                    </div>
-                    <div>
-                      <Button
-                        value="Next"
-                        variant="primary"
-                        className="Enregistrer"
-                        onClick={handleNextChange}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
                     {/* back button */}
-                    <div>
-                      <ModalInput
-                        value="Back"
-                        variant="primary"
-                        className="Enregistrer"
-                        type="button"
-                        onClick={handleNextChange}
-                      />
-                    </div>
+
                     {/* ** */}
                     <div>
                       <ModalInput
@@ -342,6 +237,119 @@ const StudentRegister = (props) => {
                           {formik.errors.positionHeld}
                         </div>
                       ) : null}
+                    </div>
+                    <div>
+                      <Button
+                        value="Next"
+                        variant="primary"
+                        className="Enregistrer"
+                        onClick={handleNextChange}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <ModalInput
+                        value="Back"
+                        variant="primary"
+                        className="Enregistrer"
+                        type="button"
+                        onClick={handleNextChange}
+                      />
+                    </div>
+                    <div>
+                      <ModalInput
+                        placeholder="Nom de l’entreprise"
+                        name="name"
+                        onChange={handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.name}
+                        type="text"
+                      />
+                      {formik.touched.name && formik.errors.name ? (
+                        <div className="formikError">{formik.errors.name}</div>
+                      ) : null}
+                    </div>
+                    <div className="my-4">
+                      <AutoComplete
+                        formik={formik}
+                        onChange={handleAddressChange}
+                        placeholder="Adresse"
+                        items={items}
+                        loading={store2.loading}
+                        name={"address"}
+                        onSubmit={onSubmitAddress}
+                      />
+                      {formik.touched.address && formik.errors.address ? (
+                        <div className="formikErrorAuto">
+                          {" "}
+                          {formik.errors.address.city}
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className="my-4">
+                      <ModalInput
+                        placeholder="Type d Entreprise"
+                        type="select"
+                        options={Company_Types}
+                        name="company_type"
+                        onChange={handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.company_type}
+                      />
+                      {formik.touched.company_type &&
+                      formik.errors.company_type ? (
+                        <div className="formikError">
+                          {formik.errors.company_type}
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className="my-4">
+                      <ModalInput
+                        placeholder="Numéro SIRET"
+                        type="text"
+                        name="siretNumber"
+                        onChange={handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.siretNumber}
+                      />
+                      {formik.touched.siretNumber &&
+                      formik.errors.siretNumber ? (
+                        <div className="formikError">
+                          {formik.errors.siretNumber}
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className="my-4">
+                      <ModalInput
+                        placeholder="Site internet"
+                        type="text"
+                        name="website"
+                        onChange={handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.website}
+                      />
+                    </div>
+
+                    <div className="my-4">
+                      <ModalInput
+                        placeholder="Profil Linkedin"
+                        type="text"
+                        name="linkedIn"
+                        onChange={handleChange}
+                        value={formik.values.linkedIn}
+                      />
+                    </div>
+
+                    <div className="my-4">
+                      <ModalInput
+                        placeholder="L’entreprise fait-elle partie d’un groupement ? Si oui, préciser le nom"
+                        type="text"
+                        name="groupName"
+                        onChange={handleChange}
+                        value={formik.values.groupName}
+                      />
                     </div>
                     <button
                       className="modal-button modal-register-btn"

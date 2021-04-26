@@ -9,12 +9,12 @@ import { Verify_email } from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 export default function StudentRegister(props) {
   // Dispatch
   const dispatch = useDispatch();
   const history = useHistory();
-
+  let params = useParams();
   const store = useSelector((state) => state.auth);
 
   // formik
@@ -22,7 +22,6 @@ export default function StudentRegister(props) {
     initialValues: VERIFY_STATE,
     validationSchema: VERIFY_YUP,
     onSubmit: (values) => {
-      console.log(values, "values");
       dispatch(Verify_email(values.token, formik, props, history));
     },
     handleChange: (e) => {
@@ -30,6 +29,9 @@ export default function StudentRegister(props) {
       formik.setFieldValue(name, value);
     },
   });
+  useEffect(() => {
+    formik.setFieldValue("token", params.token);
+  }, [params.token]);
   return (
     <Modal
       className="student-modal"

@@ -9,7 +9,7 @@ export default function AutoComplete({
   loading,
   onSubmit,
   name,
-  // value,
+  value,
   renderOption,
 }) {
   const [address, setAddress] = useState("");
@@ -28,6 +28,7 @@ export default function AutoComplete({
         freeSolo
         id={name}
         name={name}
+        clearOnEscape={true}
         disableClearable
         inputValue={address}
         onInputChange={getAddress}

@@ -33,6 +33,7 @@ export default function Hard_skilltab(props) {
         DB_Array.push(values);
         obj.languages = DB_Array;
         dispatch(Add_info_Student(obj, formik));
+        formik.handleReset();
       } else {
         dispatch(
           Notistack.enqueueSnackbar(

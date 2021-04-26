@@ -19,8 +19,8 @@ import { useFormik } from "formik";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
 import {
   DomainOptions,
-  RythmeOptions,
   DurationOptions,
+  RythmeOptions,
   levelOfEducation,
 } from "../../../../../Globals";
 
@@ -48,7 +48,7 @@ const ResearchedJob = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(POSITION_SOUGHT).length > 0) {
+    if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
       formik.setFieldValue("domain", POSITION_SOUGHT.domain);
       formik.setFieldValue("position", POSITION_SOUGHT.position);
       formik.setFieldValue("duration", POSITION_SOUGHT.duration);
@@ -63,7 +63,6 @@ const ResearchedJob = () => {
       );
     }
   }, []);
-
   return (
     <>
       <Tabs
@@ -169,14 +168,15 @@ const ResearchedJob = () => {
                   value={formik.values.alternationRhythm}
                   onChange={handleChange}
                 />
+                {formik.touched.alternationRhythm &&
+                formik.errors.alternationRhythm ? (
+                  <div className="formikErrorAuto">
+                    {" "}
+                    {formik.errors.alternationRhythm}
+                  </div>
+                ) : null}
               </div>
-              {formik.touched.alternationRhythm &&
-              formik.errors.alternationRhythm ? (
-                <div className="formikErrorAuto">
-                  {" "}
-                  {formik.errors.alternationRhythm}
-                </div>
-              ) : null}
+
               <div className="jobIsProvided text-left">
                 <CheckBox label="Le poste est pourvu" name="availibilty" />
               </div>

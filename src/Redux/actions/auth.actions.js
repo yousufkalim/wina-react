@@ -3,11 +3,11 @@ import {
   actionTypes,
   studentConstants,
   actionGlobals,
+  companyConstants,
 } from "./constants";
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
 import { token, user } from "../../urlConfig";
-import { Get_Student_Jobs } from "./job";
 export const set_loading = (loading) => ({
   type: actionTypes.SET_LOADING_AUTH,
   loading,
@@ -30,9 +30,11 @@ export const login = (data, formik) => async (dispatch) => {
     const { token, user } = res.data;
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
-    if (user.type === "student") {
-      Get_User_Student();
+    if (user.type && user.type === "student") {
       Get_Student_Jobs();
+      Get_User_Student();
+    } else if (user.type && user.type === "company") {
+      dispatch(Get_Company_Jobs());
     }
     dispatch({
       type: authConstants.LOGIN_SUCCESS,
@@ -104,6 +106,7 @@ export const signout = () => async (dispatch) => {
 
 export const Get_User_Student = () => async (dispatch) => {
   if (user && token) {
+    console.log("hello");
     try {
       dispatch(set_loading_data(true));
 
@@ -116,6 +119,7 @@ export const Get_User_Student = () => async (dispatch) => {
           },
         }
       );
+      console.log(res, "response");
       dispatch({
         type: studentConstants.STUDENT_DATA_SUCCESS,
         payload: { loading: false, user: res.data.user },
@@ -211,5 +215,51 @@ export const Verify_email = (token, formik, props, history) => async (
         Notistack.snackBar(error.response.data.message, "error")
       )
     );
+  }
+};
+// get student jobs
+export const Get_Student_Jobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(`student/search-job`, {});
+      dispatch({
+        type: studentConstants.GET_STUDENT_JOBS,
+        payload: { loading: false, jobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
+  }
+};
+
+//get compnay jobs
+
+export const Get_Company_Jobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/get-jobs`);
+      dispatch({
+        type: companyConstants.COMPANY_GET_JOBS_SUCCESS,
+        payload: { loading: false, jobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };

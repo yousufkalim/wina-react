@@ -68,6 +68,7 @@ export default function Hard_skilltab(props) {
                 options={options}
                 label="Type d’emploi"
                 type="skills"
+                // other="other"
               />
 
               {formik.touched.name && formik.errors.name ? (

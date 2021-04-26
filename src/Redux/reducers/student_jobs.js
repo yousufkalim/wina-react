@@ -23,6 +23,12 @@ export default (state = initState, action) => {
         job: action.payload.job,
       };
       break;
+    case studentConstants.OFFER_DECISION_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
   }
 
   return state;

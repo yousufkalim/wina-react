@@ -148,7 +148,7 @@ const GeneralInformationsModal = ({
                       placeholder="professional_Picture"
                       onChange={handleChange}
                       type="file"
-                      accept="image"
+                      accept="image/*"
                     />
                     {formik.values.image ? (
                       <div> {formik.values.image}</div>

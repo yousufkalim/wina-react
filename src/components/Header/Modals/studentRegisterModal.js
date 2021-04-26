@@ -30,10 +30,9 @@ export default function StudentRegister(props) {
     validationSchema: SIGNUP_YUP,
     onSubmit: (values) => {
       dispatch(Student_Signup(values, formik));
-
-      // console.log(values, "values");
     },
   });
+
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +46,14 @@ export default function StudentRegister(props) {
   };
 
   const handleAddressChange = (value) => {
+    formik.setFieldValue("address", {
+      city: "",
+      street: "",
+      zip: "",
+      longitude: "",
+      latitude: "",
+    });
+
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
       setItems(
@@ -67,7 +74,7 @@ export default function StudentRegister(props) {
     formik.setFieldValue("address", {
       city: value.city,
       street: "Street",
-      zip: value.PostalCode,
+      zip: value.PostalCode ? value.PostalCode : "40180",
       longitude: value.lng,
       latitude: value.lat,
     });
@@ -104,6 +111,7 @@ export default function StudentRegister(props) {
                     onBlur={formik.handleBlur}
                     value={formik.values.firstName}
                     type="text"
+                    require={true}
                   />
                   {formik.touched.firstName && formik.errors.firstName ? (
                     <div className="formikError">{formik.errors.firstName}</div>

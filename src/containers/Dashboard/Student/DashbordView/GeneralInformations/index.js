@@ -19,6 +19,10 @@ const GeneralInformations = () => {
   const dispatch = useDispatch();
   const Loggin_User = store.user.firstName + " " + store.user.lastName;
   const Education = store.user.student && store.user.student.education;
+  const STUDENT_IMAGE =
+    store.user.student && store.user.student.professional_Picture
+      ? store.user.student.professional_Picture.image
+      : "";
   const [show, setShow] = useState(false);
   const [edit_school_show, setedit_school_show] = useState(false);
   const [edit_school_id, setedit_school_id] = useState("");
@@ -129,64 +133,88 @@ const GeneralInformations = () => {
                       <Image src="../images/linkedIn.png" />
                     </li>
                     <li>Linkedin &nbsp;&nbsp;: </li>
-                    <li>
-                      <a
-                        href={`${store.user.student.professional_networks.linkedIn}`}
-                        target="_blank"
-                      >
-                        {store.user.student.professional_networks.linkedIn
-                          ? store.user.student.professional_networks.linkedIn
-                          : ""}
-                      </a>
-                    </li>
+                    {store.user.student.professional_networks &&
+                    Object.keys(store.user.student.professional_networks)
+                      .length > 0 ? (
+                      <li>
+                        <a
+                          href={`${store.user.student.professional_networks.linkedIn}`}
+                          target="_blank"
+                        >
+                          {store.user.student.professional_networks.linkedIn
+                            ? store.user.student.professional_networks.linkedIn
+                            : ""}
+                        </a>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                   </ul>
                   <ul className="PLinks">
                     <li>
                       <Image src="../images/behance.png" />
                     </li>
                     <li>Behance &nbsp;&nbsp;: </li>
-                    <li>
-                      <a
-                        href={`${store.user.student.professional_networks.Behance}`}
-                        target="_blank"
-                      >
-                        {store.user.student.professional_networks.Behance
-                          ? store.user.student.professional_networks.Behance
-                          : ""}
-                      </a>
-                    </li>
+                    {store.user.student.professional_networks &&
+                    Object.keys(store.user.student.professional_networks)
+                      .length > 0 ? (
+                      <li>
+                        <a
+                          href={`${store.user.student.professional_networks.Behance}`}
+                          target="_blank"
+                        >
+                          {store.user.student.professional_networks.Behance
+                            ? store.user.student.professional_networks.Behance
+                            : ""}
+                        </a>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                   </ul>
                   <ul className="PLinks">
                     <li>
                       <Image src="../images/dribble.png" />
                     </li>
                     <li>Dribble &nbsp;&nbsp;: </li>
-                    <li>
-                      <a
-                        href={`${store.user.student.professional_networks.Dribble}`}
-                        target="_blank"
-                      >
-                        {store.user.student.professional_networks.Dribble
-                          ? store.user.student.professional_networks.Dribble
-                          : ""}
-                      </a>
-                    </li>
+                    {store.user.student.professional_networks &&
+                    Object.keys(store.user.student.professional_networks)
+                      .length > 0 ? (
+                      <li>
+                        <a
+                          href={`${store.user.student.professional_networks.Dribble}`}
+                          target="_blank"
+                        >
+                          {store.user.student.professional_networks.Dribble
+                            ? store.user.student.professional_networks.Dribble
+                            : ""}
+                        </a>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                   </ul>
                   <ul className="PLinks">
                     <li>
                       <Image src="../images/github.png" />
                     </li>
                     <li>Github &nbsp;&nbsp;: </li>
-                    <li>
-                      <a
-                        href={`${store.user.student.professional_networks.Github}`}
-                        target="_blank"
-                      >
-                        {store.user.student.professional_networks.Github
-                          ? store.user.student.professional_networks.Github
-                          : ""}
-                      </a>
-                    </li>
+                    {store.user.student.professional_networks &&
+                    Object.keys(store.user.student.professional_networks)
+                      .length > 0 ? (
+                      <li>
+                        <a
+                          href={`${store.user.student.professional_networks.Github}`}
+                          target="_blank"
+                        >
+                          {store.user.student.professional_networks.Github
+                            ? store.user.student.professional_networks.Github
+                            : ""}
+                        </a>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                   </ul>
                 </Col>
                 <Link to="#" className="edit_icons">

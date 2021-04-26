@@ -9,7 +9,7 @@ import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Delete_Professional_Info } from "../../../../../Redux/actions";
 import _ from "lodash";
-
+import CVENGINE from "./CVEngine";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -144,76 +144,7 @@ const ProfessionalProfile = () => {
           title="CV en ligne"
           className="h-100"
         >
-          <div className="CVOnlineBox">
-            <div className="CVOnline custom-box">
-              {USER && Object.keys(USER).length > 0 ? (
-                <Row>
-                  <Col lg={3} md={4}>
-                    <div className="profileImage">
-                      <Image src="../images/profileImage_.png" />
-                    </div>
-                  </Col>
-                  <Col lg={9} md={8}>
-                    <div className="profilename">
-                      {USER.firstName} {USER.lastName}
-                    </div>
-                    <div className="profileProfession">
-                      <div className="pb-1">{USER.type}</div>
-
-                      <div className="pb-1">
-                        {USER.address.zip},{USER.address.street}{" "}
-                        {USER.address.city}
-                      </div>
-
-                      <div className="pb-1">Mobile : {USER.phone}</div>
-
-                      <div className="pb-1">Email : {USER.email}</div>
-                    </div>
-                    <div className="formation">FORMATION</div>
-                    {USER.student.education.length > 0 ? (
-                      USER.student.education.map((ed) => (
-                        <>
-                          <div className="companyNameH">{ed.school}</div>
-                          <div className="companydate">
-                            {ed.start_Date}-{ed.end_Date}
-                            <br />
-                            {/* Région de Paris, France */}
-                          </div>
-                          <div className="description">{ed.description}</div>
-                        </>
-                      ))
-                    ) : (
-                      <p className="text-center">No school found.....</p>
-                    )}
-                    <div className="formation">
-                      EXPÉRIENCES PROFESSIONNELLES
-                    </div>
-                    {USER.student.professional_profile.length > 0 ? (
-                      USER.student.professional_profile.map((ed) => (
-                        <>
-                          <div className="companyNameH">{ed.position}</div>
-                          <div className="companyName">{ed.company}</div>
-                          <div className="companyName">{ed.type}</div>
-                          <div className="companyName">{ed.place}</div>
-
-                          <div className="companydateDuration">
-                            {ed.duration.start_date}-{ed.duration.end_date}
-                          </div>
-                          <div className="description">{ed.description}</div>
-                        </>
-                      ))
-                    ) : (
-                      <p className="text-center">
-                        No professional info found.....
-                      </p>
-                    )}
-                  </Col>
-                </Row>
-              ) : (
-                <h1 className="text-center">No data Found</h1>
-              )}
-            </div>
-          </div>
+          <CVENGINE USER={USER} />
         </Tab>
       </Tabs>
     </>

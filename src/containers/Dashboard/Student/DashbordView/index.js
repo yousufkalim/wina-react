@@ -5,7 +5,7 @@ import GeneralInformations from "./GeneralInformations";
 import ResearchedJob from "./ResearchedJob";
 import Skills from "./Skills";
 import ProfessionalProfile from "./ProfessionalProfile";
-// import Header from "../../Components/header";
+import Header from "../../Components/header";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../../../Redux/actions";
 import Footer from "../../Components/footer";
@@ -36,7 +36,7 @@ const DashbordView = (props) => {
         </div>
 
         <div className="dashbordLayout">
-          {/* <Header /> */}
+          <Header />
           <Tab.Content className="children-tab-container">
             <Tab.Pane eventKey="first" className="h-100">
               <GeneralInformations />

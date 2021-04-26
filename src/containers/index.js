@@ -4,6 +4,7 @@ import {
   isUserLoggedIn,
   Get_User_Student,
   Get_Student_Jobs,
+  Get_Company_Jobs,
 } from "../Redux/actions";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -24,12 +25,14 @@ function App() {
       if (store.user && store.user.type === "student") {
         dispatch(Get_User_Student());
         dispatch(Get_Student_Jobs());
+      } else if (store.user && store.user.type === "company") {
+        dispatch(Get_Company_Jobs());
       }
       setTimeout(() => {
         setLoading(false);
       }, 1000);
     });
-  }, []);
+  }, [loading]);
   return (
     <>
       {store.loading && <Loader.AbsoluteLinear />}

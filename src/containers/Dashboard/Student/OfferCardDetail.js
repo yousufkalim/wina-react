@@ -8,20 +8,21 @@ import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CardItem from "../../../components/UI/CardWithImage/OfferCardItem";
 import { useDispatch, useSelector } from "react-redux";
-import { Get_Student_Job } from "../../../Redux/actions";
+import { Get_Job } from "../../../Redux/actions";
 import Loader from "../../../components/UI/Loader";
 const OfferCardDetail = (props) => {
   const { offerID } = props;
   const dispatch = useDispatch();
   const store = useSelector((state) => state.jobs);
-  const classes = useStyles();
   const JOB = store.job && store.job;
+  const classes = useStyles();
+
   // state
   const [value, setValue] = useState(30);
 
   useEffect(() => {
     console.log(offerID, "OfferID");
-    if (offerID) dispatch(Get_Student_Job(offerID));
+    if (offerID) dispatch(Get_Job(offerID));
   }, [offerID]);
 
   const handleSliderChange = (event, newValue) => {

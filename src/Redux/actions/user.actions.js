@@ -28,9 +28,10 @@ export const Student_Signup = (user, formik) => async (dispatch) => {
       type: studentConstants.STUDENT_REGISTER_SUCCESS,
       payload: { message, loading: false },
     });
-    formik.setSubmitting(false);
-    formik.handleReset();
+
     try {
+      dispatch(set_loading(true));
+
       const res = await axios.post(`/auth/email-verfication`, {
         email: user.email,
       });
@@ -43,7 +44,12 @@ export const Student_Signup = (user, formik) => async (dispatch) => {
           Notistack.snackBar(res.data.message, "success")
         )
       );
+      formik.setSubmitting(false);
+      formik.handleReset();
+      dispatch(set_loading(false));
     } catch (error) {
+      dispatch(set_loading(false));
+
       dispatch({
         type: studentConstants.STUDENT_EMAIL_SENT_FAILURE,
         payload: { message: error.response.data.message },

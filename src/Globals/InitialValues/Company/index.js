@@ -37,7 +37,7 @@ export const POSITION_SOUGHT_STATE = {
   levelOfEducation: "",
   softSkills: "",
   hardSkills: "",
-  ageRange: "",
+  // ageRange: "",
   photo: "",
   location: {
     city: "",

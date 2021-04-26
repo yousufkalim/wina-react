@@ -65,7 +65,7 @@ export const POSITION_SOUGHT_YUP = Yup.object({
   levelOfEducation: Yup.string().required("Required"),
   softSkills: Yup.string().required("Required"),
   hardSkills: Yup.string().required("Required"),
-  ageRange: Yup.string().required("Required"),
+  // ageRange: Yup.string().required("Required"),
   photo: Yup.string().required("Required"),
   location: Yup.object().shape({
     street: Yup.string().required("Required"),

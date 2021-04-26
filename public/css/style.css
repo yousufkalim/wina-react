@@ -2959,6 +2959,16 @@ textarea.form-control {
   bottom: 0%;
   right: 0%;
 }
+.AnnoncesViewOffersBox .offers .tabOffer .matches50 {
+  background-color: orange;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  padding: 15px 50px;
+  bottom: 0%;
+  right: 0%;
+}
 
 .AnnoncesViewOffersBox .offers .OffersImage {
   /* width: 150px;
