@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProfessionalProfile = () => {
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const dispatch = useDispatch();
 
   const Professional_Profile =

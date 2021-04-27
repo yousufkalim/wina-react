@@ -15,7 +15,7 @@ import {
 
 const GeneralInformationsModal = ({ show, setShow }) => {
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
 
   // states
   const [image, setImage] = useState("");

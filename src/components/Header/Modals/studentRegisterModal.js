@@ -16,7 +16,7 @@ import Texts from "../../../Globals/Texts";
 export default function StudentRegister(props) {
   // Dispatch
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const store2 = useSelector((state) => state.globals);
 
   //states

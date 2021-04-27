@@ -27,7 +27,7 @@ import Tab3 from "./Tabs/language_tab";
 import _ from "lodash";
 
 export default function Skills() {
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const store2 = useSelector((state) => state.globals);
   const SOFT_SKILLS_DB = store.user.student && store.user.student.softSkills;
   const HARD_SKILLS_DB = store.user.student && store.user.student.hardSkills;

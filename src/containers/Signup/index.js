@@ -19,7 +19,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.student);
   const dispatch = useDispatch();
 
   useEffect(() => {

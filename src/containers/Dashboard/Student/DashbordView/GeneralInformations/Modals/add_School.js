@@ -15,7 +15,7 @@ import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
   // formik
   const formik = useFormik({

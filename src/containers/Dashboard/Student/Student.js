@@ -6,7 +6,7 @@ import OffersView from "./OffersView";
 import Loader from "../../../components/UI/Loader";
 
 const Dashboard = (props) => {
-  const store2 = useSelector((state) => state.user);
+  const store2 = useSelector((state) => state.student);
   if (store2.user.student && Object.keys(store2.user.student).length > 0) {
     return (
       <div className="dashbordMain">

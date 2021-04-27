@@ -22,7 +22,7 @@ const GeneralInformationsModal = ({
   setedit_school_id,
 }) => {
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
 
   // formik

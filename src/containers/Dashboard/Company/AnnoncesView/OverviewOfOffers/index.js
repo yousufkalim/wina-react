@@ -14,6 +14,8 @@ import CVEngine from "../../../Student/DashbordView/ProfessionalProfile/CVEngine
 import {
   Get_Company_Jobs,
   Offer_Decion_By_Company,
+  Get_Applied_Jobs,
+  RecievedOffer_Decion_By_Company,
 } from "../../../../../Redux/actions";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
@@ -22,6 +24,7 @@ const OverviewOfOffers = () => {
   let STUDENT = store.studentBySearch && store.studentBySearch;
   let ACCEPTED_OFFERS =
     JOBS && JOBS.filter((jb) => jb.offer_status === "accepted");
+  let RECIEVED_OFFERS = store.appliedJobs && store.appliedJobs;
 
   const [key, setKey] = useState("Offres");
   const [key2, setKey2] = useState("first");
@@ -38,14 +41,19 @@ const OverviewOfOffers = () => {
   const [studentFormData, setstudentFormData] = useState("");
 
   // offers functions
-  const handleOfferAccepted = (id, decision) => {
-    setKey("Matchsent");
-    dispatch(Offer_Decion_By_Company(id, decision));
+  const handleOfferAccepted = (id, offerID, decision) => {
+    dispatch(
+      Offer_Decion_By_Company(id, offerID, decision, setKey, "Matchsent")
+    );
   };
-  const handleOfferRejected = (id, decision) => {
-    setKey("MatchReceived");
-
-    dispatch(Offer_Decion_By_Company(id, decision));
+  const handlerRecievedOfferAccepted = (id, decision) => {
+    dispatch(RecievedOffer_Decion_By_Company(id, decision, setKey, "Offres"));
+  };
+  const handleOfferRejected = (id, offerID, decision) => {
+    dispatch(Get_Applied_Jobs());
+    dispatch(
+      Offer_Decion_By_Company(id, offerID, decision, setKey, "MatchReceived")
+    );
   };
   const handleStudentDetail = (id) => {
     setstudentID(id);
@@ -60,7 +68,9 @@ const OverviewOfOffers = () => {
 
   useEffect(() => {
     dispatch(Get_Company_Jobs());
+    dispatch(Get_Applied_Jobs());
   }, [key, setKey]);
+
   const handleDetail = (id) => {
     setofferID(id);
     setisDetail(!isDetail);
@@ -143,13 +153,22 @@ const OverviewOfOffers = () => {
           <div className="AnnoncesViewOffersBox">
             <div className="offers custom-box">
               {matchReceiveDetail === false ? (
-                matchReceive.map((item, index) => (
-                  <CardWithImage
-                    key={index}
-                    item={item}
-                    setDetailHandler={matchReceiveDetailHandler}
-                  />
-                ))
+                RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
+                  RECIEVED_OFFERS.map((item, index) => (
+                    <CardWithImage
+                      key={index}
+                      item={item}
+                      type="company"
+                      setDetailHandler={matchSentDetailHandler}
+                      handleStudentDetail={handleStudentDetail}
+                      offerID={offerID}
+                      handleOfferAccepted={handlerRecievedOfferAccepted}
+                      handleOfferRejected={handleOfferRejected}
+                    />
+                  ))
+                ) : (
+                  <h1 className="text-center">No offers found</h1>
+                )
               ) : matchReceiveDetail === true && userDetail === false ? (
                 matchUsers.map((item, index) => (
                   <CardWithImage

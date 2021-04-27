@@ -98,6 +98,29 @@ const CardWithImage = (props) => {
                   Refuser
                 </div>
               </div>
+            ) : eventKey === "OffersRecieved" ? (
+              <div className="card-with-image-buttons">
+                <div
+                  className="card-with-image-btn card-with-image-btn-yellow"
+                  onClick={() => handleDetail(item._id)}
+                >
+                  Voir
+                </div>
+
+                <div
+                  onClick={() => handleOfferAccepted(item._id, "accepted")}
+                  className="card-with-image-btn card-with-image-btn-green"
+                >
+                  Accepter
+                </div>
+
+                <div
+                  onClick={() => handleOfferRejected(item._id, "rejected")}
+                  className="card-with-image-btn card-with-image-btn-red"
+                >
+                  Refuser
+                </div>
+              </div>
             ) : eventKey === "RefusedOffers" ? (
               <div className="card-with-image-buttons">
                 <div
@@ -111,7 +134,7 @@ const CardWithImage = (props) => {
                   Impossible
                 </div>
               </div>
-            ) : eventKey === "PreSelectedOffers" ? (
+            ) : eventKey === "OffersSent" ? (
               <div className="card-with-image-buttons">
                 <div
                   onClick={() => handleDetail(item._id)}
@@ -236,7 +259,28 @@ const CardWithImage = (props) => {
                 </div>
               </div>
             ) : (
-              ""
+              <div className="card-with-image-buttons">
+                <div
+                  className="card-with-image-btn card-with-image-btn-yellow"
+                  onClick={() => handleDetail(item._id)}
+                >
+                  Voir
+                </div>
+
+                <div
+                  onClick={() => handleOfferAccepted(item._id, "accepted")}
+                  className="card-with-image-btn card-with-image-btn-green"
+                >
+                  Accepter
+                </div>
+
+                <div
+                  onClick={() => handleOfferRejected(item._id, "rejected")}
+                  className="card-with-image-btn card-with-image-btn-red"
+                >
+                  Refuser
+                </div>
+              </div>
             )}
           </div>
         </div>
@@ -335,14 +379,18 @@ const CardWithImage = (props) => {
               </div>
 
               <div
-                onClick={() => handleOfferAccepted(item._id, "accepted")}
+                onClick={() =>
+                  handleOfferAccepted(item._id, props.offerID, "requested")
+                }
                 className="card-with-image-btn card-with-image-btn-green"
               >
-                Accepter
+                Matcher
               </div>
 
               <div
-                onClick={() => handleOfferRejected(item._id, "rejected")}
+                onClick={() =>
+                  handleOfferRejected(item._id, props.offerID, "rejected")
+                }
                 className="card-with-image-btn card-with-image-btn-red"
               >
                 Refuser

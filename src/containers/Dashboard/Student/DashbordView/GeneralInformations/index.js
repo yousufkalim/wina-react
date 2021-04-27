@@ -15,7 +15,7 @@ import {
 import { useFormik } from "formik";
 import { baseUri } from "../../../../../urlConfig";
 const GeneralInformations = () => {
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const dispatch = useDispatch();
   const Loggin_User = store.user.firstName + " " + store.user.lastName;
   const Education = store.user.student && store.user.student.education;

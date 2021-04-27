@@ -1,7 +1,12 @@
-import { actionTypes, studentConstants, companyConstants } from "./constants";
+import {
+  actionTypes,
+  studentConstants,
+  companyConstants,
+  actionGlobals,
+} from "./constants";
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
-import { token, baseUrl } from "../../urlConfig";
+import { token, baseUrl, user } from "../../urlConfig";
 export const set_loading = (loading) => ({
   type: actionTypes.SET_LOADING_USER,
   loading,
@@ -16,6 +21,12 @@ export const headers = {
     Authorization: `Bearer ${token}`,
   },
 };
+
+export const set_loading_data = (loading) => ({
+  type: actionGlobals.SET_DATA_LOADING,
+  loading,
+});
+
 export const Student_Signup = (user, formik) => async (dispatch) => {
   try {
     dispatch(set_loading(true));
@@ -186,5 +197,171 @@ export const Delete_Professional_Info = (id) => async (dispatch) => {
         Notistack.snackBar(error.response.data.message, "error")
       )
     );
+  }
+};
+
+// jobs
+
+// single job
+
+export const Get_Job = (id) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/get-job/${id}`);
+      dispatch({
+        type: studentConstants.GET_STUDENT_JOB,
+        payload: { loading: false, job: res.data.job },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+//GET STUDENT APPLIED JOBS
+
+export const GetCompanyAppliedJobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/GetCompanyAppliedJobs`);
+      dispatch({
+        type: studentConstants.GET_COMPANY_APPLIED_JOBS,
+        payload: { loading: false, company_appliedJobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
+    }
+  }
+};
+
+//GET STUDENT APPLIED JOBS
+
+export const Get_Student_Applied_Jobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/GetStudentAppliedJobs`);
+      dispatch({
+        type: studentConstants.GET_STUDENT_APPLIED_JOBS,
+        payload: { loading: false, appliedJobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
+    }
+  }
+};
+//GET STUDENT REJECTED JOBS
+
+export const Get_Student_Rejected_Jobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/GetStudentRejectedJobs`);
+      dispatch({
+        type: studentConstants.GET_STUDENT_REJECTED_JOBS,
+        payload: { loading: false, rejectedJobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
+    }
+  }
+};
+
+//offer decision by students
+export const Offer_Decion_By_Students = (id, decision, setKey, key) => async (
+  dispatch
+) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(`job/offer-decision-by-student/${id}`, {
+        status: decision,
+      });
+      dispatch({
+        type: studentConstants.OFFER_DECISION_SUCCESS,
+        payload: { loading: false },
+      });
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      );
+      setKey(key);
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
+  }
+};
+//offer decision by students
+export const RecievedOffer_Decion_By_Students = (
+  id,
+  decision,
+  setKey,
+  key
+) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(
+        `job/OffersRecievedDecisionByStudent/${id}`,
+        {
+          status: decision,
+        }
+      );
+      dispatch({
+        type: studentConstants.RECIEVDED_OFFER_DECISION_SUCCESS,
+        payload: { loading: false },
+      });
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      );
+      setKey(key);
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
   }
 };

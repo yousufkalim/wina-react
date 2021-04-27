@@ -26,7 +26,7 @@ import { PROFESSIONAL_PROFILE_YUP } from "../../../../../../components/Formik/St
 
 const PPModal = ({ show, setShow, professionalArray }) => {
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   // const classes = useStyles();
   const [Image, setImage] = useState("");
 

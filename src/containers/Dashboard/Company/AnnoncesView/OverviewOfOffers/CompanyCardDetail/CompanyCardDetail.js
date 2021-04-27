@@ -50,7 +50,6 @@ const CompanyCardDetail = (props) => {
     handleOfferRejected,
   } = props;
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.jobs);
   const store2 = useSelector((state) => state.globals);
   const store3 = useSelector((state) => state.company);
 
@@ -70,7 +69,7 @@ const CompanyCardDetail = (props) => {
   const [items, setItems] = useState([]);
 
   let SOFT_SKILLS = store2.soft_skills;
-  const JOB = store.job && store.job;
+  const JOB = store3.job && store3.job;
   let HARD_SKILLS = store2.hard_skills;
   let JOB_MESSAGE_SUCCESS = store3.message;
   let SEARCH_STUDENTS =
@@ -572,6 +571,7 @@ const CompanyCardDetail = (props) => {
                 handleDetail={handleStudentDetail}
                 handleOfferAccepted={handleOfferAccepted}
                 handleOfferRejected={handleOfferRejected}
+                offerID={offerID}
               />
             ))
           ) : (

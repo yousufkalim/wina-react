@@ -5,7 +5,7 @@ import { baseUri } from "../../../../urlConfig";
 import { DEFAULT_IMAGE } from "../../../../Globals";
 
 const Header = () => {
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const STUDENT_IMAGE =
     store.user.student &&
     store.user.student.professional_picture &&

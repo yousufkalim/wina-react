@@ -31,7 +31,7 @@ const PPModal = ({
   setedit_profile_id,
 }) => {
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   // const classes = useStyles();
   const [Image, setImage] = useState("");
 

@@ -1,4 +1,8 @@
-import { actionTypes, companyConstants } from "../actions/constants";
+import {
+  actionTypes,
+  companyConstants,
+  studentConstants,
+} from "../actions/constants";
 
 const initState = {
   error: null,
@@ -7,6 +11,8 @@ const initState = {
   user: "",
   jobs: "",
   studentBySearch: "",
+  appliedJobs: "",
+  job: "",
 };
 
 export default (state = initState, action) => {
@@ -18,7 +24,13 @@ export default (state = initState, action) => {
         loading: action.loading,
       };
       break;
-
+    case studentConstants.GET_STUDENT_JOB:
+      state = {
+        ...state,
+        loading: false,
+        job: action.payload.job,
+      };
+      break;
     case companyConstants.COMPANY_REGISTER_SUCCESS:
       state = {
         ...state,
@@ -46,6 +58,13 @@ export default (state = initState, action) => {
         jobs: action.payload.jobs,
       };
       break;
+    case companyConstants.GET_APPLIED_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        appliedJobs: action.payload.appliedJobs,
+      };
+      break;
     case companyConstants.GET_STUDENT_BY_SEARCH:
       state = {
         ...state,
@@ -53,6 +72,11 @@ export default (state = initState, action) => {
         studentBySearch: action.payload.studentBySearch,
       };
     case companyConstants.OFFER_DECISION_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+    case companyConstants.RECIEVED_OFFER_DECISION_SUCCESS:
       state = {
         ...state,
         loading: false,

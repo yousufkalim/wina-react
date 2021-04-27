@@ -1,15 +1,15 @@
-import {
-  studentConstants,
-  actionTypes,
-  companyConstants,
-  authConstants,
-} from "../actions/constants";
+import { studentConstants, actionTypes } from "../actions/constants";
 
 const initState = {
   error: null,
   message: "",
   loading: false,
   user: "",
+  jobs: "",
+  rejectedJobs: "",
+  appliedJobs: "",
+  job: "",
+  company_appliedJobs: "",
 };
 
 export default (state = initState, action) => {
@@ -36,13 +36,7 @@ export default (state = initState, action) => {
         message: action.payload.message,
       };
       break;
-    case companyConstants.COMPANY_REGISTER_SUCCESS:
-      state = {
-        ...state,
-        loading: false,
-        message: action.payload.message,
-      };
-      break;
+
     case studentConstants.STUDENT_EMAIL_SENT_SUCCESS:
       state = {
         ...state,
@@ -74,6 +68,49 @@ export default (state = initState, action) => {
         ...state,
         loading: action.payload.loading,
         user: action.payload.user,
+      };
+      break;
+
+    // jobs
+    case studentConstants.GET_STUDENT_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        jobs: action.payload.jobs,
+      };
+      break;
+    case studentConstants.GET_STUDENT_JOB:
+      state = {
+        ...state,
+        loading: false,
+        job: action.payload.job,
+      };
+      break;
+    case studentConstants.GET_STUDENT_APPLIED_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        appliedJobs: action.payload.appliedJobs,
+      };
+      break;
+    case studentConstants.GET_COMPANY_APPLIED_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        company_appliedJobs: action.payload.company_appliedJobs,
+      };
+      break;
+    case studentConstants.GET_STUDENT_REJECTED_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        rejectedJobs: action.payload.rejectedJobs,
+      };
+      break;
+    case studentConstants.OFFER_DECISION_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
       };
       break;
   }

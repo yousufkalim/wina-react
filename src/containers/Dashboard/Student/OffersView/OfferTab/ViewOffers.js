@@ -7,20 +7,23 @@ import OfferCardDetail from "../OfferCardDetail";
 import {
   Offer_Decion_By_Students,
   Get_Student_Jobs,
+  Get_Student_Applied_Jobs,
+  Get_Student_Rejected_Jobs,
+  GetCompanyAppliedJobs,
+  RecievedOffer_Decion_By_Students,
 } from "../../../../../Redux/actions";
 export default function ViewOffers() {
   // store
-  const store = useSelector((state) => state.jobs);
+  const store = useSelector((state) => state.student);
   const dispatch = useDispatch();
   let JOBS = store.jobs && store.jobs;
-  let PROPOSED_OFFERS =
-    JOBS && JOBS.filter((jb) => jb.student_offer_status === "proposal");
-  let ACCEPTED_OFFERS =
-    JOBS && JOBS.filter((jb) => jb.student_offer_status === "accepted");
-  let REJECTED_OFFERS =
-    JOBS && JOBS.filter((jb) => jb.student_offer_status === "rejected");
+  let APPLIED_JOBS = store.appliedJobs && store.appliedJobs;
+  let COMPANY_APPLIED_JOBS =
+    store.company_appliedJobs && store.company_appliedJobs;
+
+  let REJECTED_OFFERS = store.rejectedJobs && store.rejectedJobs;
   // state
-  const [key, setKey] = useState("PreSelectedOffers");
+  const [key, setKey] = useState("OffersSent");
   const [isDetail, setisDetail] = useState(false);
   const [offerID, setofferID] = useState("");
 
@@ -31,8 +34,11 @@ export default function ViewOffers() {
 
   // offers functions
   const handleOfferAccepted = (id, decision) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setKey, "OffersSent"));
+  };
+  const handlerRecievedOfferAccepted = (id, decision) => {
     dispatch(
-      Offer_Decion_By_Students(id, decision, setKey, "PreSelectedOffers")
+      RecievedOffer_Decion_By_Students(id, decision, setKey, "OffersSent")
     );
   };
   const handleOfferRejected = (id, decision) => {
@@ -40,27 +46,31 @@ export default function ViewOffers() {
   };
   useEffect(() => {
     dispatch(Get_Student_Jobs());
+    dispatch(Get_Student_Applied_Jobs());
+    dispatch(Get_Student_Rejected_Jobs());
+    dispatch(GetCompanyAppliedJobs());
   }, [key, setKey]);
+
   return (
     <>
       {isDetail === false ? (
         <Tabs
           activeKey={key}
-          defaultActiveKey="PreSelectedOffers"
+          defaultActiveKey="OffersSent"
           id="controlled-tab-example"
           className="Profile upper-nav custom-tabs"
           onSelect={(k) => setKey(k)}
         >
           <Tab
-            eventKey="PreSelectedOffers"
-            title="Offres pré-sélectionnés"
+            eventKey="OffersSent"
+            title="Offers Sent"
             className="h-100"
             onSelect={(k) => setKey(k)}
           >
             <div className="ViewOffersBox">
               <div className="offers custom-box">
-                {ACCEPTED_OFFERS.length > 0 ? (
-                  ACCEPTED_OFFERS.map((item, index) => (
+                {APPLIED_JOBS && APPLIED_JOBS.length > 0 ? (
+                  APPLIED_JOBS.map((item, index) => (
                     <CardWithImage
                       item={item}
                       key={index}
@@ -83,12 +93,38 @@ export default function ViewOffers() {
           >
             <div className="ViewOffersBox">
               <div className="offers custom-box">
-                {REJECTED_OFFERS.length > 0 ? (
+                {REJECTED_OFFERS && REJECTED_OFFERS.length > 0 ? (
                   REJECTED_OFFERS.map((item, index) => (
                     <CardWithImage
                       item={item}
                       key={index}
                       type="student"
+                      eventKey={key}
+                      handleDetail={handleDetail}
+                    />
+                  ))
+                ) : (
+                  <h1 className="text-center">No Offers Found</h1>
+                )}
+              </div>
+            </div>
+          </Tab>
+          <Tab
+            eventKey="OffersRecieved"
+            title="RecievedOffers"
+            onSelect={(k) => setKey(k)}
+            className="h-100"
+          >
+            <div className="ViewOffersBox">
+              <div className="offers custom-box">
+                {COMPANY_APPLIED_JOBS.length > 0 ? (
+                  COMPANY_APPLIED_JOBS.map((item, index) => (
+                    <CardWithImage
+                      item={item}
+                      key={index}
+                      type="student"
+                      handleOfferAccepted={handlerRecievedOfferAccepted}
+                      handleOfferRejected={handleOfferRejected}
                       eventKey={key}
                       handleDetail={handleDetail}
                     />

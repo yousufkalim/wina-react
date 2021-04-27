@@ -27,7 +27,7 @@ import {
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
 
 const ResearchedJob = () => {
-  const store = useSelector((state) => state.user);
+  const store = useSelector((state) => state.student);
   const dispatch = useDispatch();
   const POSITION_SOUGHT = store.user && store.user.student.positionSought;
 
