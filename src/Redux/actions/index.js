@@ -3,3 +3,4 @@ export * from "./student";
 export * from "./notistack";
 export * from "./globals";
 export * from "./company";
+export * from "./admin.actions";
