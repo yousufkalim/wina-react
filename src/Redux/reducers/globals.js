@@ -6,6 +6,7 @@ const initialState = {
   error: "",
   soft_skills: "",
   hard_skills: "",
+  notifications: "",
 };
 
 export default (state = initialState, action) => {
@@ -45,6 +46,14 @@ export default (state = initialState, action) => {
         ...state,
         error: null,
         loading: action.loading,
+      };
+      break;
+    case actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS:
+      state = {
+        ...state,
+        error: null,
+        loading: false,
+        notifications: action.payload.notifications,
       };
       break;
   }

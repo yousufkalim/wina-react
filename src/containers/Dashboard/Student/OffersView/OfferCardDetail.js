@@ -7,13 +7,17 @@ import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Get_Job } from "../../../../Redux/actions";
+import {
+  Get_Job,
+  Cancel_Offer_Decion_By_Students,
+} from "../../../../Redux/actions";
 import Loader from "../../../../components/UI/Loader";
 const OfferCardDetail = (props) => {
-  const { offerID } = props;
+  const { offerID, setisDetail } = props;
   const dispatch = useDispatch();
-  const store = useSelector((state) => state.jobs);
+  const store = useSelector((state) => state.student);
   const JOB = store.job && store.job;
   const classes = useStyles();
 
@@ -27,7 +31,9 @@ const OfferCardDetail = (props) => {
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const handleCancelRequest = (id) => {
+    dispatch(Cancel_Offer_Decion_By_Students(id, setisDetail));
+  };
   const handleInputChange = (event) => {
     setValue(event.target.value === "" ? "" : Number(event.target.value));
   };
@@ -56,7 +62,12 @@ const OfferCardDetail = (props) => {
           style={{ height: "10%" }}
         >
           <h5>{JOB.company && JOB.company.name}</h5>
-          <span className="offer-apply-btn ml-5">Postuler</span>
+          <span
+            onClick={() => handleCancelRequest(JOB._id)}
+            className="offer-apply-btn ml-5"
+          >
+            Se desinteresser
+          </span>
         </div>
         <div className="offer-detail">
           <div className="offer-detail-container">

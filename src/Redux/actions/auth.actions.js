@@ -33,8 +33,10 @@ export const login = (data, formik) => async (dispatch) => {
     if (user.type && user.type === "student") {
       Get_Student_Jobs();
       Get_User_Student();
+      GetAllNotifications();
     } else if (user.type && user.type === "company") {
       dispatch(Get_Company_Jobs());
+      GetAllNotifications();
     }
     dispatch({
       type: authConstants.LOGIN_SUCCESS,
@@ -98,6 +100,22 @@ export const signout = () => async (dispatch) => {
     const res = await axios.post(`/auth/logout`);
     localStorage.clear();
     dispatch({ type: authConstants.LOGOUT_SUCCESS, loading: false });
+    dispatch({
+      type: studentConstants.STUDENT_DATA_SUCCESS,
+      payload: { loading: false, user: [] },
+    });
+    dispatch({
+      type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
+      payload: { loading: false, notifications: [] },
+    });
+    dispatch({
+      type: studentConstants.GET_STUDENT_JOBS,
+      payload: { loading: false, jobs: [] },
+    });
+    dispatch({
+      type: companyConstants.COMPANY_GET_JOBS_SUCCESS,
+      payload: { loading: false, jobs: [] },
+    });
   } catch (err) {
     dispatch(set_loading(false));
   }
@@ -126,11 +144,11 @@ export const Get_User_Student = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(error.response.data.message, "error")
-        )
-      );
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
     }
   }
 };
@@ -230,13 +248,13 @@ export const Get_Student_Jobs = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      if (error.response) {
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(error.response.data.message, "error")
-          )
-        );
-      }
+      // if (error.response) {
+      //   dispatch(
+      //     Notistack.enqueueSnackbar(
+      //       Notistack.snackBar(error.response.data.message, "error")
+      //     )
+      //   );
+      // }
     }
   }
 };
@@ -255,11 +273,36 @@ export const Get_Company_Jobs = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(error.response.data.message, "error")
-        )
-      );
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
+    }
+  }
+};
+//get all notifications
+
+export const GetAllNotifications = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`profile/getAllNotifications`);
+      console.log(res.data.notifications, "resdata");
+      dispatch({
+        type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
+        payload: { loading: false, notifications: res.data.notifications },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      // if (error.response) {
+      //   dispatch(
+      //     Notistack.enqueueSnackbar(
+      //       Notistack.snackBar(error.response.data.message, "error")
+      //     )
+      //   );
+      // }
     }
   }
 };

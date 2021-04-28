@@ -3,7 +3,7 @@ import { Image, Form, InputGroup, FormControl } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { baseUri } from "../../../urlConfig";
 import { DEFAULT_IMAGE } from "../../../Globals";
-
+import NotificationMenu from "./NotificationMenu";
 const Header = () => {
   const store = useSelector((state) => state.student);
   const STUDENT_IMAGE =
@@ -27,10 +27,11 @@ const Header = () => {
           </InputGroup>
         </div>
 
-        <div className="header-profile">
-          <Image className="notification" src="../images/bell_icon.png" />
+        <div className="header-profile row">
+          {/* <Image className="notification" src="../images/bell_icon.png" /> */}
+          <NotificationMenu />
           <Image
-            className="profilePic"
+            className="profilePic text-right"
             src={
               STUDENT_IMAGE
                 ? `${baseUri}/views/uploads/${STUDENT_IMAGE}`
