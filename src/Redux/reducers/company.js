@@ -11,7 +11,8 @@ const initState = {
   user: "",
   jobs: "",
   studentBySearch: "",
-  appliedJobs: "",
+  student_appliedJobs: "",
+  company_appliedJobs: "",
   job: "",
 };
 
@@ -62,7 +63,19 @@ export default (state = initState, action) => {
       state = {
         ...state,
         loading: false,
-        appliedJobs: action.payload.appliedJobs,
+        student_appliedJobs: action.payload.student_appliedJobs,
+      };
+      break;
+    case companyConstants.GET_COMPANY_APPLIED_JOBS:
+      state = {
+        ...state,
+        loading: false,
+        company_appliedJobs: action.payload.company_appliedJobs,
+      };
+    case companyConstants.CANCEL_OFFER_DECISION_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
       };
       break;
     case companyConstants.GET_STUDENT_BY_SEARCH:

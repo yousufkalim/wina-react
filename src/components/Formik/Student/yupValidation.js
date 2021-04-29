@@ -11,7 +11,9 @@ export const SIGNUP_YUP = Yup.object().shape({
   address: Yup.object()
     .shape({
       street: Yup.string().required("Required"),
-      city: Yup.string().required("Required"),
+      city: Yup.string().required(
+        "Please select your complete address from list"
+      ),
       zip: Yup.string().required("Required"),
       latitude: Yup.string().required("Required"),
       longitude: Yup.string().required("Required"),

@@ -16,6 +16,8 @@ import {
   Offer_Decion_By_Company,
   Get_Applied_Jobs,
   RecievedOffer_Decion_By_Company,
+  Get_Company_Applied_Jobs,
+  Cancel_Offer_Decion_By_Company,
 } from "../../../../../Redux/actions";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
@@ -24,7 +26,8 @@ const OverviewOfOffers = () => {
   let STUDENT = store.studentBySearch && store.studentBySearch;
   let ACCEPTED_OFFERS =
     JOBS && JOBS.filter((jb) => jb.offer_status === "accepted");
-  let RECIEVED_OFFERS = store.appliedJobs && store.appliedJobs;
+  let RECIEVED_OFFERS = store.student_appliedJobs && store.student_appliedJobs;
+  let SENT_OFFERS = store.company_appliedJobs && store.company_appliedJobs;
 
   const [key, setKey] = useState("Offres");
   const [key2, setKey2] = useState("first");
@@ -36,31 +39,94 @@ const OverviewOfOffers = () => {
   const [userDetail, setUserDetail] = useState(false);
   const [isDetail, setisDetail] = useState(false);
   const [offerID, setofferID] = useState("");
+  const [RecievofferID, setRecievofferID] = useState("");
+  const [SentfferID, setSentfferID] = useState("");
+
   const [studentDetail, setstudentDetail] = useState(false);
   const [studentID, setstudentID] = useState("");
   const [studentFormData, setstudentFormData] = useState("");
-
   // offers functions
   const handleOfferAccepted = (id, offerID, decision) => {
     dispatch(
-      Offer_Decion_By_Company(id, offerID, decision, setKey, "Matchsent")
+      Offer_Decion_By_Company(
+        id,
+        offerID,
+        decision,
+        setKey,
+        "Offres",
+        setisDetail,
+        setstudentDetail
+      )
     );
   };
   const handlerRecievedOfferAccepted = (id, decision) => {
-    dispatch(RecievedOffer_Decion_By_Company(id, decision, setKey, "Offres"));
+    dispatch(
+      RecievedOffer_Decion_By_Company(
+        id,
+        RecievofferID,
+        decision,
+        setKey,
+        "Offres",
+        setstudentDetail,
+        setMatchReceiveDetail
+      )
+    );
   };
+  const handlerRecievedOfferRejected = (id, decision) => {
+    dispatch(
+      RecievedOffer_Decion_By_Company(
+        id,
+        RecievofferID,
+        decision,
+        setKey,
+        "Offres",
+        setstudentDetail,
+        setMatchReceiveDetail
+      )
+    );
+  };
+
+  //
+
   const handleOfferRejected = (id, offerID, decision) => {
-    dispatch(Get_Applied_Jobs());
     dispatch(
       Offer_Decion_By_Company(id, offerID, decision, setKey, "MatchReceived")
     );
   };
+
   const handleStudentDetail = (id) => {
     setstudentID(id);
     setstudentDetail(!studentDetail);
   };
+  const handleRecievedStudentDetail = (id) => {
+    if (RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0) {
+      let fill = RECIEVED_OFFERS.find((dt) => dt.student._id === id);
+      setstudentDetail(!studentDetail);
+      setstudentFormData(fill.student);
+    }
+  };
+  const handleSentStudentDetail = (id) => {
+    if (SENT_OFFERS && SENT_OFFERS.length > 0) {
+      let fill = SENT_OFFERS.find((dt) => dt.student._id === id);
+      setstudentDetail(!studentDetail);
+      setstudentFormData(fill.student);
+    }
+  };
+  const handleCancelOffer = (id, decision) => {
+    dispatch(
+      Cancel_Offer_Decion_By_Company(
+        id,
+        SentfferID,
+        setKey,
+        "Offres",
+        setstudentDetail,
+        setMatchSentDetail,
+        setisDetail
+      )
+    );
+  };
   useEffect(() => {
-    if (studentID) {
+    if (studentID && STUDENT) {
       let fill = STUDENT.find((dt) => dt._id === studentID);
       setstudentFormData(fill);
     }
@@ -68,7 +134,6 @@ const OverviewOfOffers = () => {
 
   useEffect(() => {
     dispatch(Get_Company_Jobs());
-    dispatch(Get_Applied_Jobs());
   }, [key, setKey]);
 
   const handleDetail = (id) => {
@@ -76,12 +141,15 @@ const OverviewOfOffers = () => {
     setisDetail(!isDetail);
   };
 
-  const matchSentDetailHandler = (btn) => {
-    setMatchSentDetail(btn);
+  const matchSentDetailHandler = (id) => {
+    dispatch(Get_Company_Applied_Jobs(id));
+    setSentfferID(id);
+    setMatchSentDetail(!matchSentDetail);
   };
 
   const matchReceiveDetailHandler = (id) => {
-    setofferID(id);
+    setRecievofferID(id);
+    dispatch(Get_Applied_Jobs(id));
 
     setMatchReceiveDetail(!matchReceiveDetail);
   };
@@ -92,15 +160,26 @@ const OverviewOfOffers = () => {
 
   if (studentDetail === false) {
     return (
-      <Tabs
-        activeKey={key}
-        id="OverviewOfOffers"
-        className="OverviewOfOffers upper-nav custom-tabs"
-        onSelect={(k) => setKey(k)}
-      >
-        <Tab eventKey="Offres" title="Offres" className="h-100">
-          <div className="AnnoncesViewOffersBox">
-            {isDetail === false ? (
+      <>
+        {isDetail === false ? (
+          ""
+        ) : (
+          <CompanyCardDetail
+            isPerc
+            offerID={offerID}
+            handleStudentDetail={handleStudentDetail}
+            handleOfferAccepted={handleOfferAccepted}
+            handleOfferRejected={handleOfferRejected}
+          />
+        )}
+        <Tabs
+          activeKey={key}
+          id="OverviewOfOffers"
+          className="OverviewOfOffers upper-nav custom-tabs"
+          onSelect={(k) => setKey(k)}
+        >
+          <Tab eventKey="Offres" title="Offres" className="h-100">
+            <div className="AnnoncesViewOffersBox">
               <div className="offers custom-box">
                 {JOBS && JOBS.length > 0 ? (
                   JOBS.map((item, index) => (
@@ -116,78 +195,84 @@ const OverviewOfOffers = () => {
                   <h1 className="text-center">No offers found</h1>
                 )}
               </div>
-            ) : (
-              <CompanyCardDetail
-                isPerc
-                offerID={offerID}
-                handleStudentDetail={handleStudentDetail}
-                handleOfferAccepted={handleOfferAccepted}
-                handleOfferRejected={handleOfferRejected}
-              />
-            )}
-          </div>
-        </Tab>
-        <Tab eventKey="Matchsent" title="Match envoyé" className="h-100">
-          <div className="AnnoncesViewOffersBox">
-            <div className="offers custom-box">
-              {matchSentDetail === false ? (
-                ACCEPTED_OFFERS && ACCEPTED_OFFERS.length > 0 ? (
-                  ACCEPTED_OFFERS.map((item, index) => (
-                    <CardWithImage
-                      key={index}
-                      item={item}
-                      type="company"
-                      setDetailHandler={matchSentDetailHandler}
-                    />
-                  ))
-                ) : (
-                  <h1 className="text-center">No offers found</h1>
-                )
-              ) : (
-                matchsentItems.map((item, index) => (
-                  <CardWithImage key={index} item={item} />
-                ))
-              )}
             </div>
-          </div>
-        </Tab>
-        <Tab eventKey="MatchReceived" title="Match reçu" className="h-100">
-          <div className="AnnoncesViewOffersBox">
-            <div className="offers custom-box">
-              {matchReceiveDetail === false ? (
-                JOBS && JOBS.length > 0 ? (
-                  JOBS.map((item, index) => (
+          </Tab>
+          <Tab eventKey="SentMatches" title="Match envoyé" className="h-100">
+            <div className="AnnoncesViewOffersBox">
+              <div className="offers custom-box">
+                {matchSentDetail === false ? (
+                  JOBS && JOBS.length > 0 ? (
+                    JOBS.map((item, index) => (
+                      <CardWithImage
+                        key={index}
+                        item={item}
+                        type="company"
+                        eventKey={key}
+                        handleDetail={handleDetail}
+                        matchSentDetailHandler={matchSentDetailHandler}
+                      />
+                    ))
+                  ) : (
+                    <h1 className="text-center">No offers found</h1>
+                  )
+                ) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
+                  SENT_OFFERS.map((item, index) => (
                     <CardWithImage
                       key={index}
-                      item={item}
+                      item={item.student}
                       eventKey={key}
-                      type="company"
-                      handleDetail={matchReceiveDetailHandler}
+                      type="student_offers"
+                      handleDetail={handleSentStudentDetail}
+                      handleOfferRejected={handleCancelOffer}
                       offerID={offerID}
                     />
                   ))
                 ) : (
                   <h1 className="text-center">No offers found</h1>
-                )
-              ) : JOBS && JOBS.length > 0 ? (
-                JOBS.map((item, index) => (
-                  <CardWithImage
-                    key={index}
-                    item={item}
-                    eventKey={key}
-                    // type="st"
-                    setDetailHandler={matchSentDetailHandler}
-                    handleStudentDetail={handleStudentDetail}
-                    offerID={offerID}
-                  />
-                ))
-              ) : (
-                <h1 className="text-center">No offers found</h1>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        </Tab>
-      </Tabs>
+          </Tab>
+          <Tab eventKey="MatchReceived" title="Match reçu" className="h-100">
+            <div className="AnnoncesViewOffersBox">
+              <div className="offers custom-box">
+                {matchReceiveDetail === false ? (
+                  JOBS && JOBS.length > 0 ? (
+                    JOBS.map((item, index) => (
+                      <CardWithImage
+                        key={index}
+                        item={item}
+                        eventKey={key}
+                        type="company"
+                        handleDetail={handleDetail}
+                        matchReceiveDetailHandler={matchReceiveDetailHandler}
+                        offerID={offerID}
+                      />
+                    ))
+                  ) : (
+                    <h1 className="text-center">No offers found</h1>
+                  )
+                ) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
+                  RECIEVED_OFFERS.map((item, index) => (
+                    <CardWithImage
+                      key={index}
+                      item={item.student}
+                      eventKey={key}
+                      type="student_offers"
+                      handleDetail={handleRecievedStudentDetail}
+                      handleOfferAccepted={handlerRecievedOfferAccepted}
+                      handleOfferRejected={handlerRecievedOfferRejected}
+                      offerID={offerID}
+                    />
+                  ))
+                ) : (
+                  <h1 className="text-center">No offers found</h1>
+                )}
+              </div>
+            </div>
+          </Tab>
+        </Tabs>
+      </>
     );
   } else {
     return (

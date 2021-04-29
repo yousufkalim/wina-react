@@ -72,37 +72,33 @@ export const Company_Signup = (user, formik) => async (dispatch) => {
 // jobs
 
 export const Create_Job = (user) => async (dispatch) => {
-  if (user && token) {
-    try {
-      dispatch(set_loading(true));
+  try {
+    dispatch(set_loading(true));
 
-      let res = await axios({
-        method: "post",
-        url: `${baseUrl}/job/create-job`,
-        data: user,
-        headers: {
-          Authorization: token ? `Bearer ${token}` : "",
-        },
-      });
-      dispatch({
-        type: companyConstants.COMPANY_CREATE_JOB_SUCCESS,
-        payload: { loading: false, message: res.data.message },
-      });
+    let res = await axios({
+      method: "post",
+      url: `${baseUrl}/job/create-job`,
+      data: user,
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+    dispatch({
+      type: companyConstants.COMPANY_CREATE_JOB_SUCCESS,
+      payload: { loading: false, message: res.data.message },
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
+    );
+  } catch (error) {
+    console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
-          Notistack.snackBar(res.data.message, "success")
+          Notistack.snackBar(error.response.data.message, "error")
         )
       );
-    } catch (error) {
-      console.log(error.message);
-      dispatch(set_loading(false));
-      if (error.response) {
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(error.response.data.message, "error")
-          )
-        );
-      }
     }
   }
 };
@@ -167,15 +163,15 @@ export const Search_Students = (id) => async (dispatch) => {
 
 //GET STUDENT APPLIED JOBS for company
 
-export const Get_Applied_Jobs = () => async (dispatch) => {
+export const Get_Applied_Jobs = (id) => async (dispatch) => {
   if (user && token) {
     try {
       dispatch(set_loading_data(true));
 
-      const res = await axios.get(`job/GetStudentAppliedJobs`);
+      const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
       dispatch({
         type: companyConstants.GET_APPLIED_JOBS,
-        payload: { loading: false, appliedJobs: res.data.jobs },
+        payload: { loading: false, student_appliedJobs: res.data.jobs },
       });
     } catch (error) {
       dispatch(set_loading_data(false));
@@ -189,14 +185,37 @@ export const Get_Applied_Jobs = () => async (dispatch) => {
     }
   }
 };
+export const Get_Company_Applied_Jobs = (id) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
 
+      const res = await axios.get(`job/GetAllCompanyAppliedJobs/${id}`);
+      dispatch({
+        type: companyConstants.GET_COMPANY_APPLIED_JOBS,
+        payload: { loading: false, company_appliedJobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      // if (error.response) {
+      //   dispatch(
+      //     Notistack.enqueueSnackbar(
+      //       Notistack.snackBar(error.response.data.message, "error")
+      //     )
+      //   );
+      // }
+    }
+  }
+};
 //offer decision by company
 export const Offer_Decion_By_Company = (
   id,
   offerID,
   decision,
   setKey,
-  key
+  key,
+  setisDetail,
+  setstudentDetail
 ) => async (dispatch) => {
   if (user && token) {
     try {
@@ -216,6 +235,8 @@ export const Offer_Decion_By_Company = (
         )
       );
       setKey(key);
+      setstudentDetail(false);
+      setisDetail(false);
     } catch (error) {
       dispatch(set_loading_data(false));
       if (error.response) {
@@ -231,9 +252,12 @@ export const Offer_Decion_By_Company = (
 //offer decision by company
 export const RecievedOffer_Decion_By_Company = (
   id,
+  RecievofferID,
   decision,
   setKey,
-  key
+  key,
+  setstudentDetail,
+  setMatchReceiveDetail
 ) => async (dispatch) => {
   if (user && token) {
     try {
@@ -243,6 +267,7 @@ export const RecievedOffer_Decion_By_Company = (
         `job/OffersRecievedDecisionByCompany/${id}`,
         {
           status: decision,
+          id: RecievofferID,
         }
       );
       dispatch({
@@ -255,6 +280,50 @@ export const RecievedOffer_Decion_By_Company = (
         )
       );
       setKey(key);
+      setstudentDetail(false);
+      setMatchReceiveDetail(false);
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
+  }
+};
+//cancel offer decision by company
+export const Cancel_Offer_Decion_By_Company = (
+  id,
+  offerID,
+  setKey,
+  key,
+  setstudentDetail,
+  setMatchReceiveDetail,
+  setisDetail
+) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(`job/CancelOfferDecisionByCompany/${id}`, {
+        id: offerID,
+      });
+      dispatch({
+        type: companyConstants.CANCEL_OFFER_DECISION_SUCCESS,
+        payload: { loading: false },
+      });
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      );
+      setKey(key);
+      setstudentDetail(false);
+      setisDetail(false);
+      setMatchReceiveDetail(false);
     } catch (error) {
       dispatch(set_loading_data(false));
       if (error.response) {

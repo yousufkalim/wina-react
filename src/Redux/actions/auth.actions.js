@@ -61,7 +61,7 @@ export const login = (data, formik) => async (dispatch) => {
     formik.handleReset();
   } catch (err) {
     dispatch(set_loading(false));
-    console.log(err.response, "error");
+    // console.log(err.response, "error");
     dispatch(
       Notistack.enqueueSnackbar(
         Notistack.snackBar(err.response.data.message, "error")
@@ -124,7 +124,7 @@ export const signout = () => async (dispatch) => {
 
 export const Get_User_Student = () => async (dispatch) => {
   if (user && token) {
-    console.log("hello");
+    // console.log("hello");
     try {
       dispatch(set_loading_data(true));
 
@@ -137,7 +137,7 @@ export const Get_User_Student = () => async (dispatch) => {
           },
         }
       );
-      console.log(res, "response");
+      // console.log(res, "response");
       dispatch({
         type: studentConstants.STUDENT_DATA_SUCCESS,
         payload: { loading: false, user: res.data.user },
@@ -289,7 +289,7 @@ export const GetAllNotifications = () => async (dispatch) => {
       dispatch(set_loading_data(true));
 
       const res = await axios.get(`profile/getAllNotifications`);
-      console.log(res.data.notifications, "resdata");
+      // console.log(res.data.notifications, "resdata");
       dispatch({
         type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
         payload: { loading: false, notifications: res.data.notifications },

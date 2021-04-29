@@ -13,8 +13,8 @@ const logger = (store) => {
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(logger, thunk)
-    // composeWithDevTools()
+    applyMiddleware(logger, thunk),
+    composeWithDevTools()
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );

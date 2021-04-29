@@ -60,7 +60,7 @@ export default function AutoComplete({
             margin="normal"
             // onBlur={onBlur}
             variant="outlined"
-            InputProps={{ ...params.InputProps, type: "search" }}
+            InputProps={{ ...params.InputProps, type: "text" }}
             label={placeholder}
           />
         )}
