@@ -17,7 +17,52 @@ const CardWithImage = (props) => {
     handleOfferRejected,
     handleOfferAccepted,
   } = props;
-
+  const recievedStudentMatchedFunc = (item) => {
+    let matchLength = item.student_requests.filter(
+      (dt) => dt.status === "requested"
+    ).length;
+    if (item.student_requests && item.student_requests.length > 0) {
+      return (
+        <div>
+          {matchLength > 0 ? (
+            <div
+              className="matches"
+              onClick={() => props.matchReceiveDetailHandler(item._id)}
+            >
+              Match ({matchLength})
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      );
+    } else {
+      return;
+    }
+  };
+  const sendStudentMatchedFunc = (item) => {
+    let matchLength = item.company_requests.filter(
+      (dt) => dt.status === "requested"
+    ).length;
+    if (item.company_requests && item.company_requests.length > 0) {
+      return (
+        <div>
+          {matchLength > 0 ? (
+            <div
+              className="matches"
+              onClick={() => props.matchSentDetailHandler(item._id)}
+            >
+              Match ({matchLength})
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      );
+    } else {
+      return;
+    }
+  };
   const [value, onChange] = useState(new Date());
   if (props.type && props.type === "student") {
     return (
@@ -260,7 +305,14 @@ const CardWithImage = (props) => {
                 </div>
               </div>
             ) : (
-              ""
+              <div className="card-with-image-buttons">
+                <div
+                  onClick={() => handleDetail(item._id)}
+                  className="card-with-image-btn card-with-image-btn-yellow"
+                >
+                  Voir
+                </div>
+              </div>
             )}
           </div>
         </div>
@@ -289,17 +341,11 @@ const CardWithImage = (props) => {
             </div>
           </div>
         )}
-        {eventKey === "MatchReceived" ? (
-          item.student_requests && item.student_requests.length > 0 ? (
-            <div className="matches" onClick={() => handleDetail(item._id)}>
-              Match ({item.student_requests.length})
-            </div>
-          ) : (
-            ""
-          )
-        ) : (
-          ""
-        )}
+        {eventKey === "SentMatches"
+          ? sendStudentMatchedFunc(item)
+          : eventKey === "MatchReceived"
+          ? recievedStudentMatchedFunc(item)
+          : ""}
       </div>
     );
   } else if (props.type && props.type === "search_student") {
@@ -386,6 +432,141 @@ const CardWithImage = (props) => {
                 Refuser
               </div>
             </div>
+          </div>
+        </div>
+        {item.calender && (
+          <div className="card-with-image-calender-container">
+            <div className="card-with-image-calender-wrapper">
+              <div className="card-with-image-calender-heading">
+                Félicitations vous avez accepté le match !
+              </div>
+            </div>
+
+            <div className="card-with-image-calender-wrapper">
+              <div className="card-with-image-calender">
+                <Calendar onChange={onChange} value={value} />
+              </div>
+            </div>
+            <div className="text-right">
+              <Button
+                classes={{
+                  root: classes.root4,
+                  label: classes.label,
+                }}
+              >
+                Envoyer
+              </Button>
+            </div>
+          </div>
+        )}
+        {item.score && item.score * 100 > 0 ? (
+          item.score * 100 > 50 ? (
+            <div className="matches">{Math.round(item.score * 100)}%</div>
+          ) : (
+            <div className="matches50">{Math.round(item.score * 100)}%</div>
+          )
+        ) : (
+          ""
+        )}
+      </div>
+    );
+  } else if (props.type && props.type === "student_offers") {
+    return (
+      <div className="card-with-image">
+        <div className="card-with-image-wrapper">
+          <div className="card-with-image-image">
+            {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
+            <img
+              src={
+                item.professional_Picture.image
+                  ? `${baseUri}/views/uploads/${item.professional_Picture.image}`
+                  : DEFAULT_IMAGE
+              }
+            />
+          </div>
+          <div className="card-with-image-container">
+            <div className="card-with-image-title">
+              <div>
+                <h3>
+                  <b>
+                    {item.user && item.user.firstName}{" "}
+                    {item.user && item.user.lastName}
+                  </b>
+                </h3>
+              </div>
+            </div>
+            <div className="card-with-image-content text-left">
+              {item.positionSought && item.positionSought.position} <br />
+              <p className="card-with-image-location">
+                <span className="mr-2">
+                  <ImLocation className="card-with-image-location-icon" />
+                </span>
+                {item.user.address.street},{item.user.address.zip}{" "}
+                {item.user.address.city}
+              </p>
+              <br />
+            </div>
+
+            <div className="card-with-image-desc">
+              {item.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.positionSought.domain}
+                />
+              )}
+              {item.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.positionSought.duration}
+                />
+              )}
+              {item.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.positionSought.levelOfEducation}
+                />
+              )}
+            </div>
+            {eventKey === "SentMatches" ? (
+              <div className="card-with-image-buttons">
+                <div
+                  className="card-with-image-btn card-with-image-btn-yellow"
+                  onClick={() => handleDetail(item._id)}
+                >
+                  Voir
+                </div>
+
+                <div
+                  onClick={() => handleOfferRejected(item._id, "rejected")}
+                  className="card-with-image-btn card-with-image-btn-red"
+                >
+                  Refuser
+                </div>
+              </div>
+            ) : (
+              <div className="card-with-image-buttons">
+                <div
+                  className="card-with-image-btn card-with-image-btn-yellow"
+                  onClick={() => handleDetail(item._id)}
+                >
+                  Voir
+                </div>
+
+                <div
+                  onClick={() => handleOfferAccepted(item._id, "accepted")}
+                  className="card-with-image-btn card-with-image-btn-green"
+                >
+                  Matcher
+                </div>
+
+                <div
+                  onClick={() => handleOfferRejected(item._id, "rejected")}
+                  className="card-with-image-btn card-with-image-btn-red"
+                >
+                  Refuser
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {item.calender && (
