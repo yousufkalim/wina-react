@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Nav, Tab, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "../Header";
+import Header from "../../Components/header";
 import BrowseOffers from "./BrowseOffers";
 import OverviewOfOffers from "./OverviewOfOffers";
 import Footer from "../../Components/footer";

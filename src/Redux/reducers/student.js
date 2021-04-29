@@ -93,6 +93,12 @@ export default (state = initState, action) => {
         appliedJobs: action.payload.appliedJobs,
       };
       break;
+    case studentConstants.CANCEL_OFFER_DECISION_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
     case studentConstants.GET_COMPANY_APPLIED_JOBS:
       state = {
         ...state,

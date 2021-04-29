@@ -41,6 +41,11 @@ export default function ViewOffers() {
       RecievedOffer_Decion_By_Students(id, decision, setKey, "OffersSent")
     );
   };
+  const handlerRecievedOfferRejected = (id, decision) => {
+    dispatch(
+      RecievedOffer_Decion_By_Students(id, decision, setKey, "RefusedOffers")
+    );
+  };
   const handleOfferRejected = (id, decision) => {
     dispatch(Offer_Decion_By_Students(id, decision, setKey, "RefusedOffers"));
   };
@@ -49,7 +54,7 @@ export default function ViewOffers() {
     dispatch(Get_Student_Applied_Jobs());
     dispatch(Get_Student_Rejected_Jobs());
     dispatch(GetCompanyAppliedJobs());
-  }, [key, setKey]);
+  }, [key, setKey, isDetail]);
 
   return (
     <>
@@ -124,7 +129,7 @@ export default function ViewOffers() {
                       key={index}
                       type="student"
                       handleOfferAccepted={handlerRecievedOfferAccepted}
-                      handleOfferRejected={handleOfferRejected}
+                      handleOfferRejected={handlerRecievedOfferRejected}
                       eventKey={key}
                       handleDetail={handleDetail}
                     />
@@ -163,7 +168,11 @@ export default function ViewOffers() {
           </Tab>
         </Tabs>
       ) : (
-        <OfferCardDetail type="student" offerID={offerID} />
+        <OfferCardDetail
+          type="student"
+          offerID={offerID}
+          setisDetail={setisDetail}
+        />
       )}
     </>
   );

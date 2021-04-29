@@ -1,5 +1,5 @@
 import { snackBarActions } from "./constants";
-
+import React from "react";
 export const enqueueSnackbar = (notification) => {
   const key = notification.options && notification.options.key;
 
@@ -24,7 +24,7 @@ export const removeSnackbar = (key) => ({
 });
 
 export const snackBar = (message, variant) => ({
-  message,
+  message: <span style={{ fontSize: "15px" }}>{message}</span>,
   options: {
     key: new Date().getTime() + Math.random(),
     variant,

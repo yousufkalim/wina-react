@@ -156,14 +156,15 @@ export const Search_Students = (id) => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(error.response.data.message, "error")
-        )
-      );
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
     }
   }
 };
+
 //GET STUDENT APPLIED JOBS for company
 
 export const Get_Applied_Jobs = () => async (dispatch) => {
@@ -171,20 +172,20 @@ export const Get_Applied_Jobs = () => async (dispatch) => {
     try {
       dispatch(set_loading_data(true));
 
-      const res = await axios.get(`job/GetAppliedJobsByCompany`);
+      const res = await axios.get(`job/GetStudentAppliedJobs`);
       dispatch({
         type: companyConstants.GET_APPLIED_JOBS,
         payload: { loading: false, appliedJobs: res.data.jobs },
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      if (error.response) {
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(error.response.data.message, "error")
-          )
-        );
-      }
+      // if (error.response) {
+      //   dispatch(
+      //     Notistack.enqueueSnackbar(
+      //       Notistack.snackBar(error.response.data.message, "error")
+      //     )
+      //   );
+      // }
     }
   }
 };

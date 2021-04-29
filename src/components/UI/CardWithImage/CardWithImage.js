@@ -190,6 +190,7 @@ const CardWithImage = (props) => {
         <div className="card-with-image-wrapper">
           <div className="card-with-image-image">
             {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
+
             <img
               src={
                 item.photo.image
@@ -259,28 +260,7 @@ const CardWithImage = (props) => {
                 </div>
               </div>
             ) : (
-              <div className="card-with-image-buttons">
-                <div
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                  onClick={() => handleDetail(item._id)}
-                >
-                  Voir
-                </div>
-
-                <div
-                  onClick={() => handleOfferAccepted(item._id, "accepted")}
-                  className="card-with-image-btn card-with-image-btn-green"
-                >
-                  Accepter
-                </div>
-
-                <div
-                  onClick={() => handleOfferRejected(item._id, "rejected")}
-                  className="card-with-image-btn card-with-image-btn-red"
-                >
-                  Refuser
-                </div>
-              </div>
+              ""
             )}
           </div>
         </div>
@@ -309,7 +289,17 @@ const CardWithImage = (props) => {
             </div>
           </div>
         )}
-        {item.matches && <div className="matches">{item.matches}</div>}
+        {eventKey === "MatchReceived" ? (
+          item.student_requests && item.student_requests.length > 0 ? (
+            <div className="matches" onClick={() => handleDetail(item._id)}>
+              Match ({item.student_requests.length})
+            </div>
+          ) : (
+            ""
+          )
+        ) : (
+          ""
+        )}
       </div>
     );
   } else if (props.type && props.type === "search_student") {

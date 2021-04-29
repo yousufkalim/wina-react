@@ -80,8 +80,10 @@ const OverviewOfOffers = () => {
     setMatchSentDetail(btn);
   };
 
-  const matchReceiveDetailHandler = (btn) => {
-    setMatchReceiveDetail(btn);
+  const matchReceiveDetailHandler = (id) => {
+    setofferID(id);
+
+    setMatchReceiveDetail(!matchReceiveDetail);
   };
 
   const userDetailHandler = (btn) => {
@@ -153,32 +155,34 @@ const OverviewOfOffers = () => {
           <div className="AnnoncesViewOffersBox">
             <div className="offers custom-box">
               {matchReceiveDetail === false ? (
-                RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
-                  RECIEVED_OFFERS.map((item, index) => (
+                JOBS && JOBS.length > 0 ? (
+                  JOBS.map((item, index) => (
                     <CardWithImage
                       key={index}
                       item={item}
+                      eventKey={key}
                       type="company"
-                      setDetailHandler={matchSentDetailHandler}
-                      handleStudentDetail={handleStudentDetail}
+                      handleDetail={matchReceiveDetailHandler}
                       offerID={offerID}
-                      handleOfferAccepted={handlerRecievedOfferAccepted}
-                      handleOfferRejected={handleOfferRejected}
                     />
                   ))
                 ) : (
                   <h1 className="text-center">No offers found</h1>
                 )
-              ) : matchReceiveDetail === true && userDetail === false ? (
-                matchUsers.map((item, index) => (
+              ) : JOBS && JOBS.length > 0 ? (
+                JOBS.map((item, index) => (
                   <CardWithImage
-                    item={item}
                     key={index}
-                    setDetailHandler={userDetailHandler}
+                    item={item}
+                    eventKey={key}
+                    // type="st"
+                    setDetailHandler={matchSentDetailHandler}
+                    handleStudentDetail={handleStudentDetail}
+                    offerID={offerID}
                   />
                 ))
               ) : (
-                <CardWithImage item={matchReceive2[0]} />
+                <h1 className="text-center">No offers found</h1>
               )}
             </div>
           </div>
