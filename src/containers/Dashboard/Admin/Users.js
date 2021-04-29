@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState ,Component} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ReactDOM from 'react-dom'
+import MaterialTable from 'material-table';  
 
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
@@ -16,10 +18,11 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-  
-import Loader from '../../../components/Loader';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'; 
 
+
+import Loader from '../../../components/Loader';
+import { getUser , deleteUser  } from "../../../Redux/actions";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -53,63 +56,57 @@ export default function Users() {
   const store = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const users = useSelector((state) => state.admin);   
-  
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow> 
-            <TableCell>Full Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Phone</TableCell> 
-            <TableCell>Role</TableCell> 
-            <TableCell>Action</TableCell> 
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.loading ? (
-            <TableRow>
-              <TableCell colSpan={5}>
-                <Loader.Progress />
-              </TableCell>
-            </TableRow>
-          ) : users.users.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={5} align="center">
-                Aucune donnée disponible!
-              </TableCell>
-            </TableRow>
-          ) : (
-            users.users.map((key ,index)=>{
-              return(<> 
-              <TableRow className={classes.root}> 
-              <TableCell component="th" scope="row">
-                {key.firstName+ " " +key.lastName}
-              </TableCell>
-              <TableCell>{key.email}</TableCell>
-              <TableCell>{key.phone}</TableCell>
-              <TableCell>{key.role}</TableCell>
-              <TableCell>
-              <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => {console.log("edit")}}
-            >
-              {<EditIcon/> }
-            </IconButton>
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() =>  {console.log("delete")}}
-            >
-              {<DeleteIcon/> }
-            </IconButton> </TableCell> 
-            </TableRow></>);  
-            })
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+  const [userflag , setUserflag ] = useState(false);
+  const dispatch = useDispatch(); 
+  const USERS = useSelector((state) => state.admin);  
+   function userdata() { 
+    let data = []; 
+    USERS.users && USERS.users.map((key ,index)=>{
+      data.push({
+        _id: key._id,
+        name:key.firstName+ " " +key.lastName,
+        email: key.email,
+        phone: key.phone,
+        role: key.role 
+      });   
+      return data;
+    })
+    setData(data);
+  } 
+  useEffect(()=>{
+    dispatch(getUser());
+    setUserflag(false);
+  },[userflag])
+ 
+  useEffect(()=>{
+    userdata(); 
+  },[USERS])
+  return ( 
+  <> 
+    <MaterialTable
+    columns={[
+      { title: 'Full Name', field: 'name' },
+      { title: 'Email', field: 'email' },
+      { title: 'Phone', field: 'phone' },
+      { title: 'Role', field: 'role' } 
+       ]} 
+    data={data}
+    title="User "
+    options={{ 
+      actionsColumnIndex: -1
+    }}
+    actions={[ 
+      {
+        icon: 'delete',
+        tooltip: 'Delete',
+        onClick: (event, rowData) => {
+          dispatch(deleteUser(rowData._id));
+          setUserflag(true);
+         
+        }
+      }
+    ]}
+  /> 
+    </>
+  ); 
 }

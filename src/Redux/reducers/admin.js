@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
           users: action.payload.users, 
           loading: false,
         };
-        break; 
+        break;  
     } 
     return state;
   };

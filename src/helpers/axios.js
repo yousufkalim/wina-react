@@ -22,7 +22,7 @@ axiosIntance.interceptors.request.use((req) => {
  
 axiosIntance.interceptors.response.use(
   (res) => {
-    console.log(res.data);
+    console.log(res);
     return res;
   },
   (error) => {

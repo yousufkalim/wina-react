@@ -20,7 +20,7 @@ import Users from './Users';
 import Companies from './Companies';
 import VerifyUsers from './VerifyUser';
 import VerifyCompanies from './VerifyCompany';
-import { getUser } from "../../../Redux/actions";
+import { getUser} from "../../../Redux/actions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
