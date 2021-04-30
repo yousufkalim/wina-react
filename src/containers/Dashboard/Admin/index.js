@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
+import { Switch, Route, Redirect, NavLink ,useHistory  } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,13 +14,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import WorkIcon from '@material-ui/icons/Work';
 import BusinessIcon from '@material-ui/icons/Business'; 
+import SchoolIcon from '@material-ui/icons/School';
+import PersonIcon from '@material-ui/icons/Person';
 
 import Users from './Users';
-import Companies from './Companies';
-import VerifyUsers from './VerifyUser';
-import VerifyCompanies from './VerifyCompany';
-import { getUser} from "../../../Redux/actions";
+import Companies from './Companies';  
+import skills from './skills';
+import { getUser , signout  } from "../../../Redux/actions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -63,20 +65,31 @@ const routes = [
     icon: <BusinessIcon />,
   },
   {
-    name: 'Verify Users',
-    path: '/verify/users',
-    icon: <PeopleOutlineIcon />,
+    name: 'Jobs',
+    path: '/jobs',
+    icon: <WorkIcon />,
   },
   {
-    name: 'Verify Companies',
-    path: '/verify/companies',
+    name: 'Appointments',
+    path: '/appointments',
     icon: <BusinessIcon />,
   },
+  {
+    name: "Schools",
+    path: "/schools",
+    icon: <SchoolIcon />
+  },
+  {
+    name: "Skills",
+    path: "/skills",
+    icon: <PersonIcon />
+  }
 ];
 
 const Profile = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch(); 
+  const history = useHistory();
 
   useEffect(() => {
     document.body.scrollTop = 0;
@@ -98,7 +111,10 @@ const Profile = (props) => {
           </Typography>
           <Button
             color="inherit"
-            onClick={() => {}}
+            onClick={() => {
+              dispatch(signout()); 
+              history.push("/");
+            }}
           >
             Logout
           </Button>
@@ -133,9 +149,8 @@ const Profile = (props) => {
         <Toolbar />
         <Switch>
           <Route exact path={`/users`} component={Users} />
-          <Route exact path={`/companies`} component={Companies} />
-          <Route exact path={`/verify/users`} component={VerifyUsers} />
-          <Route exact path={`/verify/companies`} component={VerifyCompanies} />
+          <Route exact path={`/companies`} component={Companies} /> 
+          <Route exact path={`/skills`} component={skills} /> 
           <Redirect from="*" to={'/users'} />
         </Switch>
       </main>

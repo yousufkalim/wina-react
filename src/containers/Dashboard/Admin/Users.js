@@ -1,27 +1,7 @@
 import React, { useEffect, useState ,Component} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import ReactDOM from 'react-dom'
-import MaterialTable from 'material-table';  
-
-import Table from '@material-ui/core/Table';
-import Paper from '@material-ui/core/Paper';
-import TableRow from '@material-ui/core/TableRow';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import { makeStyles } from '@material-ui/core/styles';
-import TableContainer from '@material-ui/core/TableContainer';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'; 
-
-
-import Loader from '../../../components/Loader';
+import { useSelector, useDispatch } from 'react-redux'; 
+import MaterialTable from 'material-table';   
+import { makeStyles } from '@material-ui/core/styles'; 
 import { getUser , deleteUser  } from "../../../Redux/actions";
 const useStyles = makeStyles({
   table: {
