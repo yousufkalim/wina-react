@@ -4,8 +4,7 @@ import MaterialTable from 'material-table';
 import { makeStyles } from '@material-ui/core/styles'; 
 import { getUser , deleteUser  } from "../../../Redux/actions";
 
-const Skills = () =>{
-   const classes = useStyles();
+const Skills = () =>{ 
   const store = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
