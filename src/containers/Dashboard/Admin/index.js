@@ -1,37 +1,37 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import { Switch, Route, Redirect, NavLink ,useHistory  } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import { Switch, Route, Redirect, NavLink, useHistory } from "react-router-dom";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
-import WorkIcon from '@material-ui/icons/Work';
-import BusinessIcon from '@material-ui/icons/Business'; 
-import SchoolIcon from '@material-ui/icons/School';
-import PersonIcon from '@material-ui/icons/Person';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Drawer from "@material-ui/core/Drawer";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import List from "@material-ui/core/List";
+import Button from "@material-ui/core/Button";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
+import WorkIcon from "@material-ui/icons/Work";
+import BusinessIcon from "@material-ui/icons/Business";
+import SchoolIcon from "@material-ui/icons/School";
+import PersonIcon from "@material-ui/icons/Person";
 
-import Users from './Users';
-import Companies from './Companies';  
-import skills from './skills';
-import { getUser , signout  } from "../../../Redux/actions";
+import Users from "./Users";
+import Companies from "./Companies";
+import skills from "../Admin/skills";
+import { listOfSkills, getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: '#4DA1FF',
+    backgroundColor: "#4DA1FF",
   },
   drawer: {
     width: drawerWidth,
@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerContainer: {
-    overflow: 'auto',
+    overflow: "auto",
   },
   content: {
-    height: '100vh',
-    width: '100vw',
+    height: "100vh",
+    width: "100vw",
     padding: theme.spacing(3),
   },
   title: {
@@ -55,51 +55,50 @@ const useStyles = makeStyles((theme) => ({
 
 const routes = [
   {
-    name: 'Users',
-    path: '/users',
+    name: "Users",
+    path: "/users",
     icon: <PeopleOutlineIcon />,
   },
   {
-    name: 'Companies',
-    path: '/companies',
+    name: "Companies",
+    path: "/companies",
     icon: <BusinessIcon />,
   },
   {
-    name: 'Jobs',
-    path: '/jobs',
+    name: "Jobs",
+    path: "/jobs",
     icon: <WorkIcon />,
   },
   {
-    name: 'Appointments',
-    path: '/appointments',
+    name: "Appointments",
+    path: "/appointments",
     icon: <BusinessIcon />,
   },
   {
     name: "Schools",
     path: "/schools",
-    icon: <SchoolIcon />
+    icon: <SchoolIcon />,
   },
   {
     name: "Skills",
     path: "/skills",
-    icon: <PersonIcon />
-  }
+    icon: <PersonIcon />,
+  },
 ];
 
 const Profile = (props) => {
   const classes = useStyles();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, [store]);
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getUser());
-  },[])
- 
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -112,7 +111,7 @@ const Profile = (props) => {
           <Button
             color="inherit"
             onClick={() => {
-              dispatch(signout()); 
+              dispatch(signout());
               history.push("/");
             }}
           >
@@ -149,9 +148,9 @@ const Profile = (props) => {
         <Toolbar />
         <Switch>
           <Route exact path={`/users`} component={Users} />
-          <Route exact path={`/companies`} component={Companies} /> 
-          <Route exact path={`/skills`} component={skills} /> 
-          <Redirect from="*" to={'/users'} />
+          <Route exact path={`/companies`} component={Companies} />
+          <Route exact path={`/skills`} component={skills} />
+          <Redirect from="*" to={"/users"} />
         </Switch>
       </main>
     </div>
