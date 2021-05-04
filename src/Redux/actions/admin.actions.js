@@ -174,3 +174,23 @@ export const Edit_skills = (_id, data) => async (dispatch) => {
     }
   }
 };
+export const listOfJobs = () => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.get(`admin/job-list`);
+    dispatch({
+      type: adminConstants.GET_ALL_JOBS,
+      payload: { loading: false, skills: res.data.ListOfJobs },
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};

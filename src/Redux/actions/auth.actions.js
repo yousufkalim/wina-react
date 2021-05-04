@@ -64,11 +64,13 @@ export const login = (data, formik) => async (dispatch) => {
   } catch (err) {
     dispatch(set_loading(false));
     // console.log(err.response, "error");
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(err.response.data.message, "error")
-      )
-    );
+    if (err.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(err.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 

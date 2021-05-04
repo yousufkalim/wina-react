@@ -115,7 +115,7 @@ export default function BrowseOffers() {
     dispatch(getSkills("Hard_Skill"));
   }, []);
   useEffect(() => {
-    if (COMPANY && Object.keys(COMPANY).length > 0) {
+    if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
       const {
         address: { city, street, zip, longitude, latitude },
       } = COMPANY;

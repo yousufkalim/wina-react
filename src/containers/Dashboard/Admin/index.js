@@ -22,6 +22,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import Users from "./Users";
 import Companies from "./Companies";
 import skills from "../Admin/skills";
+import Jobs from "../Admin/jobs";
 import { listOfSkills, getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
@@ -150,6 +151,7 @@ const Profile = (props) => {
           <Route exact path={`/users`} component={Users} />
           <Route exact path={`/companies`} component={Companies} />
           <Route exact path={`/skills`} component={skills} />
+          <Route exact path={`/Jobs`} component={Jobs} />
           <Redirect from="*" to={"/users"} />
         </Switch>
       </main>

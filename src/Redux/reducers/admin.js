@@ -2,6 +2,7 @@ import { adminConstants } from "../actions/constants";
 const initialState = {
   users: "",
   skills: "",
+  jobs: "",
   loading: true,
 };
 export default (state = initialState, action) => {
@@ -25,6 +26,13 @@ export default (state = initialState, action) => {
       state = {
         ...state,
         skills: action.payload.skills,
+        loading: false,
+      };
+      break;
+    case adminConstants.GET_ALL_JOBS:
+      state = {
+        ...state,
+        skills: action.payload.jobs,
         loading: false,
       };
       break;
