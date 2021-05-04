@@ -4,6 +4,7 @@ import DashbordView from "./DashbordView";
 import { useDispatch, useSelector } from "react-redux";
 import OffersView from "./OffersView";
 import Loader from "../../../components/UI/Loader";
+import Coaching from "./CoachingView";
 
 const Dashboard = (props) => {
   const store2 = useSelector((state) => state.student);
@@ -44,6 +45,21 @@ const Dashboard = (props) => {
                     <div className="label">Offers</div>
                   </Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="third">
+                    <div className="imagebackground">
+                      <Image
+                        className="showonactive"
+                        src="../images/twomen.png"
+                      />
+                      <Image
+                        className=" hideOnactive"
+                        src="../images/twomen_hover.png"
+                      />
+                    </div>
+                    <div className="label">Coaching</div>
+                  </Nav.Link>
+                </Nav.Item>
               </Nav>
             </div>
 
@@ -54,6 +70,9 @@ const Dashboard = (props) => {
                 </Tab.Pane>
                 <Tab.Pane eventKey="second" className="h-100">
                   <OffersView />
+                </Tab.Pane>
+                <Tab.Pane eventKey="third" className="h-100">
+                  <Coaching />
                 </Tab.Pane>
               </Tab.Content>
             </div>

@@ -6,7 +6,7 @@ const address_object = Yup.object({
   latitude: Yup.number().required(),
   longitude: Yup.number().required(),
 });
-export const SIGNUP_YUP = Yup.object().shape({
+export const SECOND_SIGNUP_YUP = Yup.object().shape({
   name: Yup.string().required("Required"),
   company_type: Yup.string().required("Required"),
   siretNumber: Yup.string()
@@ -25,7 +25,8 @@ export const SIGNUP_YUP = Yup.object().shape({
     })
     .required("Required"),
   // contactPerson
-  positionHeld: Yup.string().required("Required"),
+});
+export const FIRST_SIGNUP_YUP = Yup.object().shape({
   firstName: Yup.string().required("Required"),
   lastName: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -49,7 +50,9 @@ export const SIGNUP_YUP = Yup.object().shape({
     .min(6, "Must be 10 characters long")
     .max(255)
     .required("Required"),
+  positionHeld: Yup.string().required("Required"),
 });
+
 export const LOGIN_YUP = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().max(255).required("Required"),
@@ -58,7 +61,7 @@ export const LOGIN_YUP = Yup.object({
 // position sought
 
 export const POSITION_SOUGHT_YUP = Yup.object({
-  title: Yup.string().required("Required"),
+  // title: Yup.string().required("Required"),
   domain: Yup.string().required("Required"),
   position: Yup.string().required("Required"),
   duration: Yup.string().required("Required"),

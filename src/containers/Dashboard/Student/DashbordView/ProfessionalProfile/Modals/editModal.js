@@ -101,8 +101,11 @@ const PPModal = ({
       } else {
         alert("You can upload only images ");
       }
+    } else if (name === "position_hold") {
+      formik.setFieldValue(name, e.target.checked);
+    } else {
+      formik.setFieldValue(name, value);
     }
-    formik.setFieldValue(name, value);
   };
   return (
     <Modal

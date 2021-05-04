@@ -336,3 +336,34 @@ export const Cancel_Offer_Decion_By_Company = (
     }
   }
 };
+
+export const Booking_Decion_By_Company = (value) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(`company/book-coaching-appointment`, {
+        time: value,
+      });
+      dispatch({
+        type: companyConstants.BOOKING_DECISION_SUCCESS,
+        payload: { loading: false },
+      });
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      );
+      // setBooking(false);
+    } catch (error) {
+      dispatch(set_loading_data(false));
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
+  }
+};

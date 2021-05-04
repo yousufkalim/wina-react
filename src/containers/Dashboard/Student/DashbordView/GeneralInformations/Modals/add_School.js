@@ -95,7 +95,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                   <div>
                     <DatePicker
                       name="start_Date"
-                      label={"Date de fin"}
+                      label={"Date de début"}
                       value={formik.start_Date}
                       onChange={handleChange}
                     />

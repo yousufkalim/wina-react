@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import CarosoulCard from "./CarosoulCard";
 import Slider from "react-slick";
 import { BsChevronRight, BsChevronLeft } from "react-icons/all";
+import { useDispatch, useSelector } from "react-redux";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -23,6 +24,8 @@ function SamplePrevArrow(props) {
 }
 
 export default function MultiCarouselPage(props) {
+  const store = useSelector((state) => state.student);
+  let JOBS = store.jobs && store.jobs;
   const [isGoDetail, setIsGoDetail] = useState(false);
 
   const settings = {
@@ -69,7 +72,6 @@ export default function MultiCarouselPage(props) {
   useEffect(() => {
     setIsGoDetail(false);
   }, []);
-
   return (
     <>
       <div
@@ -79,23 +81,28 @@ export default function MultiCarouselPage(props) {
         <h5>Store & Supply </h5>
         <span className="offer-apply-btn ml-5">Postuler</span>
       </div>
-      <div className="multiCarosoul">
-        <div className="student-slider-container">
-          <Slider {...settings}>
-            {offerCards.map((card, index) => (
-              <div className="h-100 w-100">
-                <CarosoulCard
-                  handleDetail={props.handleDetail}
-                  cards={card}
-                  key={index}
-                  name="this is first"
-                  style={{ height: "100%" }}
-                />
-              </div>
-            ))}
-          </Slider>
+      {JOBS && JOBS.length > 0 ? (
+        <div className="multiCarosoul">
+          <div className="student-slider-container">
+            <Slider {...settings}>
+              {JOBS &&
+                JOBS.map((card, index) => (
+                  <div className="h-100 w-100">
+                    <CarosoulCard
+                      handleDetail={props.handleDetail}
+                      cards={card}
+                      key={index}
+                      name="this is first"
+                      style={{ height: "100%" }}
+                    />
+                  </div>
+                ))}
+            </Slider>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div>No jobs found</div>
+      )}
     </>
   );
 }

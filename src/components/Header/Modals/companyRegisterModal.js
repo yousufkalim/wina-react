@@ -4,10 +4,15 @@ import ModalInput from "../../UI/Input";
 import { Company_Types } from "../../Data";
 import LeftSidebar from "./Components/leftSideBar";
 import {
-  SIGNUP_STATE,
+  FIRST_SIGNUP_STATE,
+  SECOND_SIGNUP_STATE,
   LOGIN_STATE,
 } from "../../../Globals/InitialValues/Company";
-import { SIGNUP_YUP, LOGIN_YUP } from "../../Formik/Company/yupValidation";
+import {
+  FIRST_SIGNUP_YUP,
+  SECOND_SIGNUP_YUP,
+  LOGIN_YUP,
+} from "../../Formik/Company/yupValidation";
 import { login, getApiAdress, Company_Signup } from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
@@ -28,18 +33,25 @@ const StudentRegister = (props) => {
 
   // formik
   const formik = useFormik({
-    initialValues: SIGNUP_STATE,
-    validationSchema: SIGNUP_YUP,
+    initialValues: FIRST_SIGNUP_STATE,
+    validationSchema: FIRST_SIGNUP_YUP,
+    onSubmit: (values) => {
+      handleNextChange();
+    },
+  });
+  const formik2 = useFormik({
+    initialValues: SECOND_SIGNUP_STATE,
+    validationSchema: SECOND_SIGNUP_YUP,
     onSubmit: (values) => {
       let tempEducation = _.cloneDeep(values);
       tempEducation.contactPerson = {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-        confirm_password: values.confirm_password,
-        phone: values.phone,
-        positionHeld: values.positionHeld,
+        firstName: formik.values.firstName,
+        lastName: formik.values.lastName,
+        email: formik.values.email,
+        password: formik.values.password,
+        confirm_password: formik.values.confirm_password,
+        phone: formik.values.phone,
+        positionHeld: formik.values.positionHeld,
       };
       [
         "firstName",
@@ -51,6 +63,7 @@ const StudentRegister = (props) => {
         "positionHeld",
       ].forEach((e) => delete tempEducation[e]);
       dispatch(Company_Signup(tempEducation, formik));
+      formik2.setSubmitting(false);
       formik.setSubmitting(false);
     },
   });
@@ -65,8 +78,18 @@ const StudentRegister = (props) => {
       formik.setFieldValue(name, value);
     }
   };
+  const handleChange2 = (e) => {
+    const { name, value } = e.target;
+    if (name === "phone") {
+      if (value.length <= 10) {
+        formik2.setFieldValue(name, value.replace(/\D/g, ""));
+      }
+    } else {
+      formik2.setFieldValue(name, value);
+    }
+  };
   const handleAddressChange = (value) => {
-    formik.setFieldValue("address", {
+    formik2.setFieldValue("address", {
       city: "",
       street: "",
       zip: "",
@@ -90,8 +113,7 @@ const StudentRegister = (props) => {
     }
   };
   const onSubmitAddress = (value) => {
-    console.log(value.postalCode, "value");
-    formik.setFieldValue("address", {
+    formik2.setFieldValue("address", {
       city: value.city,
       street: "Street",
       zip: value.PostalCode ? value.postalCode : "76520",
@@ -129,9 +151,10 @@ const StudentRegister = (props) => {
           <div className="modal-right-side">
             <div className="Register">
               <div className="heading pb-4">S’inscrire - Société</div>
-              <form onSubmit={formik.handleSubmit}>
-                {Show === false ? (
-                  <>
+
+              {Show === false ? (
+                <>
+                  <form onSubmit={formik.handleSubmit}>
                     {/* back button */}
 
                     {/* ** */}
@@ -180,7 +203,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="enter password"
+                        placeholder="Enter Password"
                         type="password"
                         name="password"
                         onChange={handleChange}
@@ -195,7 +218,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="enter confirm_password"
+                        placeholder="Enter Confirm_Password"
                         type="password"
                         name="confirm_password"
                         onChange={handleChange}
@@ -243,12 +266,15 @@ const StudentRegister = (props) => {
                         value="Next"
                         variant="primary"
                         className="Enregistrer"
-                        onClick={handleNextChange}
+                        type="submit"
+                        // onClick={handleNextChange}
                       />
                     </div>
-                  </>
-                ) : (
-                  <>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <form onSubmit={formik2.handleSubmit}>
                     <div>
                       <ModalInput
                         value="Back"
@@ -262,18 +288,18 @@ const StudentRegister = (props) => {
                       <ModalInput
                         placeholder="Nom de l’entreprise"
                         name="name"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.name}
+                        onChange={handleChange2}
+                        onBlur={formik2.handleBlur}
+                        value={formik2.values.name}
                         type="text"
                       />
-                      {formik.touched.name && formik.errors.name ? (
-                        <div className="formikError">{formik.errors.name}</div>
+                      {formik2.touched.name && formik2.errors.name ? (
+                        <div className="formikError">{formik2.errors.name}</div>
                       ) : null}
                     </div>
                     <div className="my-4">
                       <AutoComplete
-                        formik={formik}
+                        formik={formik2}
                         onChange={handleAddressChange}
                         placeholder="Adresse"
                         items={items}
@@ -281,10 +307,10 @@ const StudentRegister = (props) => {
                         name={"address"}
                         onSubmit={onSubmitAddress}
                       />
-                      {formik.touched.address && formik.errors.address ? (
+                      {formik2.touched.address && formik2.errors.address ? (
                         <div className="formikErrorAuto">
                           {" "}
-                          {formik.errors.address.city}
+                          {formik2.errors.address.city}
                         </div>
                       ) : null}
                     </div>
@@ -294,14 +320,14 @@ const StudentRegister = (props) => {
                         type="select"
                         options={Company_Types}
                         name="company_type"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.company_type}
+                        onChange={handleChange2}
+                        onBlur={formik2.handleBlur}
+                        value={formik2.values.company_type}
                       />
-                      {formik.touched.company_type &&
-                      formik.errors.company_type ? (
+                      {formik2.touched.company_type &&
+                      formik2.errors.company_type ? (
                         <div className="formikError">
-                          {formik.errors.company_type}
+                          {formik2.errors.company_type}
                         </div>
                       ) : null}
                     </div>
@@ -310,14 +336,14 @@ const StudentRegister = (props) => {
                         placeholder="Numéro SIRET"
                         type="text"
                         name="siretNumber"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.siretNumber}
+                        onChange={handleChange2}
+                        onBlur={formik2.handleBlur}
+                        value={formik2.values.siretNumber}
                       />
-                      {formik.touched.siretNumber &&
-                      formik.errors.siretNumber ? (
+                      {formik2.touched.siretNumber &&
+                      formik2.errors.siretNumber ? (
                         <div className="formikError">
-                          {formik.errors.siretNumber}
+                          {formik2.errors.siretNumber}
                         </div>
                       ) : null}
                     </div>
@@ -326,9 +352,9 @@ const StudentRegister = (props) => {
                         placeholder="Site internet"
                         type="text"
                         name="website"
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.website}
+                        onChange={handleChange2}
+                        onBlur={formik2.handleBlur}
+                        value={formik2.values.website}
                       />
                     </div>
 
@@ -337,8 +363,8 @@ const StudentRegister = (props) => {
                         placeholder="Profil Linkedin"
                         type="text"
                         name="linkedIn"
-                        onChange={handleChange}
-                        value={formik.values.linkedIn}
+                        onChange={handleChange2}
+                        value={formik2.values.linkedIn}
                       />
                     </div>
 
@@ -347,8 +373,8 @@ const StudentRegister = (props) => {
                         placeholder="L’entreprise fait-elle partie d’un groupement ? Si oui, préciser le nom"
                         type="text"
                         name="groupName"
-                        onChange={handleChange}
-                        value={formik.values.groupName}
+                        onChange={handleChange2}
+                        value={formik2.values.groupName}
                       />
                     </div>
                     <button
@@ -358,9 +384,9 @@ const StudentRegister = (props) => {
                     >
                       {store.loading ? "Loading..." : "S’inscrire"}
                     </button>
-                  </>
-                )}
-              </form>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </div>

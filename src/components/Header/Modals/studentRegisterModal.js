@@ -145,7 +145,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="enter password"
+                    placeholder="Enter Password"
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -158,7 +158,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="enter confirm_password"
+                    placeholder="Enter Confirm_Password"
                     type="password"
                     name="confirm_password"
                     onChange={handleChange}
@@ -191,6 +191,7 @@ export default function StudentRegister(props) {
                     onChange={handleAddressChange}
                     placeholder={Texts.userProfile}
                     items={items}
+                    placeholder="Adresse"
                     name={"address"}
                     loading={store2.loading}
                     onSubmit={onSubmitAddress}

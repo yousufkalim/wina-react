@@ -42,6 +42,9 @@ export default function BrowseOffers() {
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
   const store = useSelector((state) => state.company);
+  const store3 = useSelector((state) => state.auth);
+
+  const COMPANY = store3.user && store3.user.company;
 
   const [image, setImage] = useState("");
   const [imageURI, setimageURI] = useState("");
@@ -105,12 +108,26 @@ export default function BrowseOffers() {
     formik.setFieldValue(name, value);
   };
   // useEffect
+
   useEffect(() => {
     dispatch(getSkills("Soft_Skill"));
 
     dispatch(getSkills("Hard_Skill"));
   }, []);
-
+  useEffect(() => {
+    if (COMPANY && Object.keys(COMPANY).length > 0) {
+      const {
+        address: { city, street, zip, longitude, latitude },
+      } = COMPANY;
+      formik.setFieldValue("location", {
+        city: city,
+        street: street,
+        zip: zip,
+        longitude: longitude,
+        latitude: latitude,
+      });
+    }
+  }, []);
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -126,16 +143,7 @@ export default function BrowseOffers() {
       setValue(100);
     }
   };
-
   const handleAddressChange = (value) => {
-    formik.setFieldValue("location", {
-      city: "",
-      street: "",
-      zip: "",
-      longitude: "",
-      latitude: "",
-    });
-
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
       setItems(
@@ -219,23 +227,6 @@ export default function BrowseOffers() {
                   </Col>
                   <Col lg={8} md={8}>
                     <div className="publish-header-content">
-                      <div>
-                        <ModalInput
-                          name="title"
-                          label="Nom du poste"
-                          // className="Job_title"
-                          placeholder="Title"
-                          value={formik.values.title}
-                          onChange={handleChange}
-                          type="text"
-                        />
-                        {formik.touched.title && formik.errors.title ? (
-                          <div className="formikErrorAuto">
-                            {" "}
-                            {formik.errors.title}
-                          </div>
-                        ) : null}
-                      </div>
                       <div className="FieldAndPlaces">
                         <div>
                           <ModalInput
@@ -258,8 +249,8 @@ export default function BrowseOffers() {
                           <AutoComplete
                             formik={formik}
                             onChange={handleAddressChange}
-                            placeholder={Texts.userProfile}
                             items={items}
+                            placeholder="Adresse"
                             name={"location"}
                             loading={store2.loading}
                             onSubmit={onSubmitAddress}
@@ -410,7 +401,7 @@ export default function BrowseOffers() {
                       placeholder="Compétences générales "
                       items={SOFT_SKILLS}
                       name={"softSkills"}
-                      loading={store2.loading}
+                      loading={store.loading}
                       onSubmit={onSoftSkillChange}
                     />
 
@@ -440,11 +431,11 @@ export default function BrowseOffers() {
                   </Col>
                 </Row>
 
-                <div className="description">
+                {/* <div className="description">
                   <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Ce poste est pourvu" />
                   </Form.Group>
-                </div>
+                </div> */}
 
                 <div className="text-right">
                   {store.loading ? (

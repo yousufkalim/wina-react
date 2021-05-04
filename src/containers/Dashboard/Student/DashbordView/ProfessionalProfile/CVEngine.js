@@ -1,8 +1,26 @@
 import React from "react";
 import { Row, Col, Tab, Tabs, Image } from "react-bootstrap";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
+import { baseUri } from "../../../../../urlConfig";
+
 export default function CVEngine(props) {
   const { USER, type } = props;
+
+  const ShowImage = (USER) => {
+    const STUDENT_IMAGE =
+      USER.student && USER.student.professional_Picture
+        ? USER.student.professional_Picture.image
+        : "";
+    return (
+      <Image
+        src={
+          STUDENT_IMAGE
+            ? `${baseUri}/views/uploads/${STUDENT_IMAGE}`
+            : DEFAULT_IMAGE
+        }
+      />
+    );
+  };
   if (type && type === "student_professional_info") {
     return (
       <div className="CVOnlineBox">
@@ -10,9 +28,7 @@ export default function CVEngine(props) {
           {USER && Object.keys(USER).length > 0 ? (
             <Row>
               <Col lg={3} md={4}>
-                <div className="profileImage">
-                  <Image src={DEFAULT_IMAGE} />
-                </div>
+                <div className="profileImage">{ShowImage(USER)}</div>
               </Col>
               <Col lg={9} md={8}>
                 <div className="profilename">
@@ -26,7 +42,7 @@ export default function CVEngine(props) {
                     {USER.user.address.city}
                   </div>
 
-                  <div className="pb-1">Mobile : {USER.user.phone}</div>
+                  <div className="pb-1">Mobile :(+92) {USER.user.phone}</div>
 
                   <div className="pb-1">Email : {USER.user.email}</div>
                 </div>
@@ -153,9 +169,7 @@ export default function CVEngine(props) {
           {USER && Object.keys(USER).length > 0 ? (
             <Row>
               <Col lg={3} md={4}>
-                <div className="profileImage">
-                  <Image src={DEFAULT_IMAGE} />
-                </div>
+                <div className="profileImage">{ShowImage(USER)}</div>
               </Col>
               <Col lg={9} md={8}>
                 <div className="profilename">
@@ -168,7 +182,7 @@ export default function CVEngine(props) {
                     {USER.address.zip},{USER.address.street} {USER.address.city}
                   </div>
 
-                  <div className="pb-1">Mobile : {USER.phone}</div>
+                  <div className="pb-1">Mobile :(+92) {USER.phone}</div>
 
                   <div className="pb-1">Email : {USER.email}</div>
                 </div>

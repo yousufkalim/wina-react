@@ -3,7 +3,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import { MdLocationOn } from "react-icons/all";
 import { Link } from "react-router-dom";
-
+import { DEFAULT_IMAGE } from "../../../../../Globals";
 export default function RecipeReviewCard(props) {
   const { cards, handleDetail } = props;
 
@@ -12,7 +12,12 @@ export default function RecipeReviewCard(props) {
       <div className="offer-card-wrapper">
         <div className="offer-card-header">
           <img
-            src={`../images/${cards.image}.png`}
+            src={
+              // cards.professional_Picture.image
+              //   ? `${baseUri}/views/uploads/${cards.professional_Picture.image}`
+              //   :
+              DEFAULT_IMAGE
+            }
             className="offer-card-img"
           />
         </div>
@@ -22,12 +27,15 @@ export default function RecipeReviewCard(props) {
             <span>
               <MdLocationOn />
             </span>{" "}
-            {cards.location}
+            {cards.user.address.street},{cards.user.address.zip}{" "}
+            {cards.user.address.city}
           </div>
           <div className="offer-card-price text-center">
-            <div className="offer-card-price-item">{cards.content1}</div>
-            <div className="offer-card-price-item mx-1">{cards.content2}</div>
-            <div className="offer-card-price-item">{cards.content3}</div>
+            <div className="offer-card-price-item">
+              {cards.positionSought.domain}
+            </div>
+            <div className="offer-card-price-item mx-1">cards.content2</div>
+            <div className="offer-card-price-item">cards.content3</div>
           </div>
         </div>
         <div className="offer-card-overlay"></div>

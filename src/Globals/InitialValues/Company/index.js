@@ -1,4 +1,4 @@
-export const SIGNUP_STATE = {
+export const SECOND_SIGNUP_STATE = {
   name: "",
   company_type: "",
   siretNumber: "",
@@ -13,6 +13,8 @@ export const SIGNUP_STATE = {
     longitude: "",
     latitude: "",
   },
+};
+export const FIRST_SIGNUP_STATE = {
   firstName: "",
   lastName: "",
   email: "",
@@ -21,14 +23,13 @@ export const SIGNUP_STATE = {
   phone: "",
   positionHeld: "",
 };
-
 export const LOGIN_STATE = {
   email: "",
   password: "",
 };
 
 export const POSITION_SOUGHT_STATE = {
-  title: "",
+  // title: "",
   domain: "",
   position: "",
   duration: "",

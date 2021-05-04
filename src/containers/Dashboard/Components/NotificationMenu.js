@@ -11,7 +11,10 @@ import NotificationList from "./NotificationList";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Badge from "@material-ui/core/Badge";
 import { Image } from "react-bootstrap";
-import { GetAllNotifications } from "../../../Redux/actions";
+import {
+  GetAllNotifications,
+  UpdateNotifications,
+} from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../../components/UI/Loader";
 
@@ -50,7 +53,7 @@ export default function MenuListComposition() {
   }
   React.useEffect(() => {
     dispatch(GetAllNotifications());
-  }, []);
+  }, [store, setOpen, open]);
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -63,13 +66,14 @@ export default function MenuListComposition() {
     // }
     prevOpen.current = open;
   }, [open]);
-  const onChangeStatus = () => {
-    alert("Checked!");
+  const onChangeStatus = (notify) => {
+    dispatch(UpdateNotifications(notify._id));
+    setOpen(false);
   };
   return (
     <div>
       <Badge
-        badgeContent={NOTIFICATIONS ? NOTIFICATIONS.length - count : ""}
+        badgeContent={NOTIFICATIONS ? NOTIFICATIONS.length : ""}
         color="secondary"
       >
         <Image
@@ -103,7 +107,10 @@ export default function MenuListComposition() {
                   autoFocusItem={open}
                   id="menu-list-grow"
                   style={{
-                    backgroundColor: "#fff",
+                    backgroundColor:
+                      NOTIFICATIONS && NOTIFICATIONS.length > 0
+                        ? "#f7f7f7"
+                        : "#fff",
                     // zIndex: 1,
                     height: "20rem",
                     // width: "100px",
@@ -128,7 +135,7 @@ export default function MenuListComposition() {
                       </div>
                     )
                   ) : (
-                    <Loader.CenterProgress size={80} />
+                    <div>Loading...</div>
                   )}
                 </MenuList>
               </ClickAwayListener>

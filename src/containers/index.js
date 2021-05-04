@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   isUserLoggedIn,
@@ -6,6 +6,7 @@ import {
   Get_Student_Jobs,
   Get_Company_Jobs,
   GetAllNotifications,
+  SocketNotifications,
 } from "../Redux/actions";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -15,6 +16,7 @@ import Company from "./Dashboard/Company";
 import UnAuth from "./unAuth";
 import Loader from "../components/UI/Loader";
 import { user } from "../urlConfig";
+
 function App() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.auth);
@@ -34,6 +36,12 @@ function App() {
         setLoading(false);
       }, 1000);
     });
+  }, [loading]);
+  useEffect(() => {
+    dispatch(SocketNotifications());
+    // return () => {
+    //   io.socket.off();
+    // };
   }, [loading]);
   return (
     <>

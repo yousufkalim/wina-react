@@ -6,8 +6,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import PPModal from "./Modals/addModal";
 import EditPPModal from "./Modals/editModal";
 import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
+import axios from "axios";
+import { baseUrl } from "../../../../../urlConfig";
+import * as Notistack from "../../../../../Redux/actions/notistack";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Delete_Professional_Info } from "../../../../../Redux/actions";
+import {
+  Delete_Professional_Info,
+  Add_Image_info_Student,
+} from "../../../../../Redux/actions";
 import _ from "lodash";
 import CVENGINE from "./CVEngine";
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfessionalProfile = () => {
   const store = useSelector((state) => state.student);
+  const STUDENT_ID = store.user && store.user.student._id;
+  const STUDENT_RESUME = store.user && store.user.student.resume;
+
   const dispatch = useDispatch();
 
   const Professional_Profile =
@@ -60,13 +70,35 @@ const ProfessionalProfile = () => {
     }
   };
   // handle pdf uploadcv
-  const handleFileUpload = (e) => {
+  const handleFileUpload = async (e) => {
     if (e.target.files.length) {
       let file = e.target.files[0];
       if (file.type === "application/pdf") {
-        const uri = URL.createObjectURL(file);
+        try {
+          const formdataImage = new FormData();
+          formdataImage.append("resume", file);
+          formdataImage.append("id", STUDENT_ID);
 
-        setPDF(uri);
+          const res = await axios({
+            method: "post",
+            url: `${baseUrl}/resumeUpload`,
+            data: formdataImage,
+          });
+          dispatch(
+            Notistack.enqueueSnackbar(
+              Notistack.snackBar(res.data.message, "success")
+            )
+          );
+        } catch (error) {
+          if (error.response) {
+            dispatch(
+              Notistack.enqueueSnackbar(
+                Notistack.snackBar(error.response.data.message, "error")
+              )
+            );
+          }
+        }
+        setPDF(file.name);
       } else {
         alert("You can upload only pdf ");
       }
@@ -87,22 +119,30 @@ const ProfessionalProfile = () => {
         data={Professional_Profile}
         professionalArray={professionalArray}
       />
-      <div className="importCV">
-        <div className={classes.root}>
-          <input
-            accept="application/pdf"
-            className={classes.input}
-            id="contained-button-file"
-            onChange={handleFileUpload}
-            type="file"
-          />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained" color="primary" component="span">
-              Importer CV
-            </Button>
-          </label>
+      <div className="row ml-4 mt-5">
+        <div className="col-lg-12 text-right">
+          <div className="row">
+            <div className="col-lg-6">
+              <input
+                accept="application/pdf"
+                className={classes.input}
+                id="contained-button-file"
+                onChange={handleFileUpload}
+                type="file"
+              />
+              <label htmlFor="contained-button-file">
+                <Button variant="contained" color="primary" component="span">
+                  Importer CV
+                </Button>
+              </label>
+            </div>
+            <div className="col-lg-6">
+              {PDF ? <div className="text-left">{PDF}</div> : ""}
+            </div>
+          </div>
         </div>
       </div>
+
       <Tabs
         activeKey={key}
         id="Profile"

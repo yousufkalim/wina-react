@@ -138,7 +138,6 @@ const CompanyCardDetail = (props) => {
   useEffect(() => {
     if (JOB) {
       formik.setFieldValue("position", JOB.position);
-      formik.setFieldValue("title", JOB.title);
 
       formik.setFieldValue("domain", JOB.domain);
       formik.setFieldValue("startDate", JOB.startDate);
@@ -246,6 +245,8 @@ const CompanyCardDetail = (props) => {
     }
   };
   if (JOB && Object.keys(JOB).length > 0) {
+    const Matched = SEARCH_STUDENTS ? SEARCH_STUDENTS.length : 0;
+    let MatchedDisable = Matched && Matched > 0 ? false : true;
     return (
       <div className="company-card-detail text-center">
         <div className="company-card-detail-container">
@@ -284,23 +285,7 @@ const CompanyCardDetail = (props) => {
                   className="offer-card-item-bordered offer-detail-content-detail text-center"
                   content={JOB.domain}
                 /> */}
-                  <div className="w-50">
-                    <ModalInput
-                      name="title"
-                      label="Nom du poste"
-                      // className="Job_title"
-                      placeholder="Title"
-                      value={formik.values.title}
-                      onChange={handleChange}
-                      type="text"
-                    />
-                    {formik.touched.title && formik.errors.title ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.title}
-                      </div>
-                    ) : null}
-                  </div>
+
                   <div className="w-50 pl-5">
                     <ModalInput
                       name="position"
@@ -533,13 +518,13 @@ const CompanyCardDetail = (props) => {
                 <div className="company-card-detail-buttons-container">
                   <Button
                     onClick={() => setIsNext(true)}
+                    disabled={MatchedDisable}
                     classes={{
                       root: classes.root1,
                       label: classes.label,
                     }}
                   >
-                    Consulter les matchs conseiller (
-                    {SEARCH_STUDENTS && SEARCH_STUDENTS.length})
+                    Consulter les matchs conseiller ({Matched})
                   </Button>
 
                   {store3.loading ? (

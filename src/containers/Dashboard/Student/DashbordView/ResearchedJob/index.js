@@ -177,9 +177,9 @@ const ResearchedJob = () => {
                 ) : null}
               </div>
 
-              <div className="jobIsProvided text-left">
-                <CheckBox label="Le poste est pourvu" name="availibilty" />
-              </div>
+              {/* <div className="jobIsProvided text-left">
+                <CheckBox onChange={handleChange} label="Le poste est pourvu" name="availibilty" />
+              </div> */}
               <div className="jobIsProvided text-right">
                 {store.loading ? (
                   <Button
