@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
-import ModalInput from "../../UI/Input";
-import LeftSidebar from "./Components/leftSideBar";
-import { useFormik } from "formik";
-import { RESET_PASSWORD_STATE } from "../../../Globals/InitialValues/Student";
-import { RESET_PASSWORD_YUP } from "../../Formik/Student/yupValidation";
-import { Reset_ForgotPassword } from "../../../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { Modal } from "react-bootstrap"
+import ModalInput from "../../UI/Input"
+import LeftSidebar from "./Components/leftSideBar"
+import { useFormik } from "formik"
+import { RESET_PASSWORD_STATE } from "../../../Globals/InitialValues/Student"
+import { RESET_PASSWORD_YUP } from "../../Formik/Student/yupValidation"
+import { Reset_ForgotPassword } from "../../../Redux/actions"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 
-import Button from "../../UI/Button";
+import Button from "../../UI/Button"
 export default function StudentRegister(props) {
-  let history = useHistory();
+  let history = useHistory()
 
   // Dispatch
-  const dispatch = useDispatch();
-  const store = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const store = useSelector((state) => state.auth)
 
   // formik
   const formik = useFormik({
     initialValues: RESET_PASSWORD_STATE,
     validationSchema: RESET_PASSWORD_YUP,
     onSubmit: (values) => {
-      dispatch(Reset_ForgotPassword(values, formik, props, history));
+      dispatch(Reset_ForgotPassword(values, formik, props, history))
     },
     handleChange: (e) => {
-      const { name, value } = e.target;
-      formik.setFieldValue(name, value);
+      const { name, value } = e.target
+      formik.setFieldValue(name, value)
     },
-  });
+  })
   return (
     <Modal
       className="student-modal"
@@ -45,7 +45,7 @@ export default function StudentRegister(props) {
               <form onSubmit={formik.handleSubmit}>
                 <div>
                   <ModalInput
-                    placeholder="Adresse mail"
+                    placeholder="Password"
                     type="password"
                     name="password"
                     onChange={formik.handleChange}
@@ -58,7 +58,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div>
                   <ModalInput
-                    placeholder="Adresse mail"
+                    placeholder="Confirm Passsword"
                     type="password"
                     name="confirm"
                     onChange={formik.handleChange}
@@ -92,5 +92,5 @@ export default function StudentRegister(props) {
         </div>
       </Modal.Body>
     </Modal>
-  );
+  )
 }
