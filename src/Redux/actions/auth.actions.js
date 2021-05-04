@@ -64,13 +64,11 @@ export const login = (data, formik) => async (dispatch) => {
   } catch (err) {
     dispatch(set_loading(false));
     // console.log(err.response, "error");
-    if (err.response) {
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(err.response.data.message, "error")
-        )
-      );
-    }
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar(err.response.data.message, "error")
+      )
+    );
   }
 };
 
@@ -175,11 +173,13 @@ export const Request_ForgotPassword = (data, formik, props) => async (
     formik.handleReset();
   } catch (error) {
     dispatch(set_req_password(false));
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 export const Reset_ForgotPassword = (data, formik, props, history) => async (
@@ -204,11 +204,13 @@ export const Reset_ForgotPassword = (data, formik, props, history) => async (
     history.push("/");
   } catch (error) {
     dispatch(set_req_password(false));
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 // email verification
@@ -232,11 +234,13 @@ export const Verify_email = (token, formik, props, history) => async (
     formik.handleReset();
   } catch (error) {
     dispatch(set_loading(false));
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 // get student jobs
