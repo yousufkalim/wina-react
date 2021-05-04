@@ -34,6 +34,7 @@ import {
 } from "../../../../../Redux/actions"
 import AutoComplete from "../../../../../components/UI/AutoComplete"
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect"
+import TextArea from "../../../../../components/UI/Textarea"
 import _ from "lodash"
 import Texts from "../../../../../Globals/Texts"
 import { baseUrl } from "../../../../../urlConfig"
@@ -331,7 +332,21 @@ export default function BrowseOffers() {
                           ) : null}
                         </div>
                       </div>
-
+                      <div className=" pt-4">
+                        <TextArea
+                          name="description"
+                          value={formik.values.description}
+                          onChange={handleChange}
+                          rows={3}
+                        />
+                        {formik.touched.description &&
+                        formik.errors.description ? (
+                          <div className="formikErrorDesc">
+                            {" "}
+                            {formik.errors.description}
+                          </div>
+                        ) : null}
+                      </div>
                       <div className="startDateandDuration pt-4">
                         <RadioButton
                           options={RythmeOptions}
@@ -351,48 +366,6 @@ export default function BrowseOffers() {
                     </div>
                   </Col>
                 </Row>
-
-                {/* <Row>
-                <Col lg={12} md={12}>
-                  <div className="sliderBox">
-                    <div className="label">Tranche de salaire</div>
-                    <div className={(classes.root, "slider")}>
-                      <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                          <Slider
-                            // disabled
-                            // disabledaria-labelledby="disabled-slider"
-                            value={typeof value === "number" ? value : 0}
-                            onChange={handleSliderChange}
-                            marks={marks}
-                            min={0}
-                            max={10000}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <Input
-                            className={classes.input}
-                            value={value}
-                            margin="dense"
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                            endAdornment={
-                              <InputAdornment position="end">€</InputAdornment>
-                            }
-                            inputProps={{
-                              step: 10,
-                              min: 0,
-                              max: 10000,
-                              type: "number",
-                              "aria-labelledby": "input-slider",
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                    </div>
-                  </div>
-                </Col>
-              </Row> */}
 
                 <Row>
                   <Col md={4}>
