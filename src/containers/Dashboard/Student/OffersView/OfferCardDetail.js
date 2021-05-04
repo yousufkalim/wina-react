@@ -7,11 +7,14 @@ import Grid from "@material-ui/core/Grid"
 import Input from "@material-ui/core/Input"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem"
+import { DEFAULT_IMAGE } from "../../../../Globals"
+import { baseUri } from "../../../../urlConfig"
 
 import { useDispatch, useSelector } from "react-redux"
 import {
   Get_Job,
   Cancel_Offer_Decion_By_Students,
+  Offer_Decion_By_Students,
 } from "../../../../Redux/actions"
 import Loader from "../../../../components/UI/Loader"
 const OfferCardDetail = (props) => {
@@ -54,6 +57,13 @@ const OfferCardDetail = (props) => {
       setValue(100)
     }
   }
+  // offers functions
+  const handleOfferAccepted = (id, decision) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail))
+  }
+  const handleOfferRejected = (id, decision) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail))
+  }
   if (JOB && Object.keys(JOB).length > 0) {
     return (
       <>
@@ -80,7 +90,14 @@ const OfferCardDetail = (props) => {
             )}
             <div className="offer-detail-header">
               <div className="offer-detail-header-image text-right">
-                <img src={`../images/offer-card-detail.png`} />
+                <img
+                  src={
+                    JOB.photo.image
+                      ? `${baseUri}/${JOB.photo.image}`
+                      : DEFAULT_IMAGE
+                  }
+                  style={{ width: "300px", height: "300px" }}
+                />
               </div>
               {/* <div className="offer-detail-line"></div> */}
               <div className="offer-detail-header-text text-left offer-detail-header-line">
@@ -169,6 +186,7 @@ const OfferCardDetail = (props) => {
             ) : (
               <div className="offer-detail-buttons-container">
                 <Button
+                  onClick={() => handleOfferAccepted(JOB._id, "requested")}
                   classes={{
                     root: classes.root1, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`
@@ -177,6 +195,7 @@ const OfferCardDetail = (props) => {
                   Matcher
                 </Button>
                 <Button
+                  onClick={() => handleOfferRejected(JOB._id, "rejected")}
                   classes={{
                     root: classes.root2, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`

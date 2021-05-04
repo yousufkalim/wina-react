@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import "./CardWithImage.css";
-import { Button, makeStyles } from "@material-ui/core";
-import CardItem from "./OfferCardItem";
-import DoneIcon from "@material-ui/icons/Done";
-import Calendar from "react-calendar";
-import { ImLocation } from "react-icons/all";
-import { DEFAULT_IMAGE } from "../../../Globals";
-import { baseUri } from "../../../urlConfig";
+import React, { useState, useEffect } from "react"
+import "./CardWithImage.css"
+import { Button, makeStyles } from "@material-ui/core"
+import CardItem from "./OfferCardItem"
+import DoneIcon from "@material-ui/icons/Done"
+import Calendar from "react-calendar"
+import { ImLocation } from "react-icons/all"
+import { DEFAULT_IMAGE } from "../../../Globals"
+import { baseUri } from "../../../urlConfig"
 
 const CardWithImage = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const {
     item,
     eventKey,
     handleDetail,
     handleOfferRejected,
     handleOfferAccepted,
-  } = props;
+  } = props
   const recievedStudentMatchedFunc = (item) => {
     let matchLength = item.student_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length;
+    ).length
 
     if (item.student_requests && item.student_requests.length > 0) {
       return (
@@ -36,15 +36,15 @@ const CardWithImage = (props) => {
             ""
           )}
         </div>
-      );
+      )
     } else {
-      return;
+      return
     }
-  };
+  }
   const sendStudentMatchedFunc = (item) => {
     let matchLength = item.company_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length;
+    ).length
     if (item.company_requests && item.company_requests.length > 0) {
       return (
         <div>
@@ -59,12 +59,12 @@ const CardWithImage = (props) => {
             ""
           )}
         </div>
-      );
+      )
     } else {
-      return;
+      return
     }
-  };
-  const [value, onChange] = useState(new Date());
+  }
+  const [value, onChange] = useState(new Date())
   if (props.type && props.type === "student") {
     return (
       <div className="card-with-image">
@@ -180,7 +180,7 @@ const CardWithImage = (props) => {
                   Impossible
                 </div>
               </div>
-            ) : eventKey === "OffersSent" ? (
+            ) : eventKey === "PreSelectedOffers" ? (
               <div className="card-with-image-buttons">
                 <div
                   onClick={() => handleDetail(item._id)}
@@ -194,32 +194,8 @@ const CardWithImage = (props) => {
             )}
           </div>
         </div>
-        {item.calender && (
-          <div className="card-with-image-calender-container">
-            <div className="card-with-image-calender-wrapper">
-              <div className="card-with-image-calender-heading">
-                Félicitations vous avez accepté le match !
-              </div>
-            </div>
 
-            <div className="card-with-image-calender-wrapper">
-              <div className="card-with-image-calender">
-                <Calendar onChange={onChange} value={value} />
-              </div>
-            </div>
-            <div className="text-right">
-              <Button
-                classes={{
-                  root: classes.root4,
-                  label: classes.label,
-                }}
-              >
-                Envoyer
-              </Button>
-            </div>
-          </div>
-        )}
-        {item.score && item.score * 100 > 0 ? (
+        {/* {item.score && item.score * 100 > 0 ? (
           item.score * 100 > 50 ? (
             <div className="matches">{item.score * 100}%</div>
           ) : (
@@ -227,9 +203,9 @@ const CardWithImage = (props) => {
           )
         ) : (
           ""
-        )}
+        )} */}
       </div>
-    );
+    )
   } else if (props.type && props.type === "company") {
     return (
       <div className="card-with-image">
@@ -348,7 +324,7 @@ const CardWithImage = (props) => {
           ? recievedStudentMatchedFunc(item)
           : ""}
       </div>
-    );
+    )
   } else if (props.type && props.type === "search_student") {
     return (
       <div className="card-with-image">
@@ -470,7 +446,7 @@ const CardWithImage = (props) => {
           ""
         )}
       </div>
-    );
+    )
   } else if (props.type && props.type === "student_offers") {
     return (
       <div className="card-with-image">
@@ -644,17 +620,17 @@ const CardWithImage = (props) => {
           ""
         )}
       </div>
-    );
+    )
   } else {
     return (
       <div>
         <h1>hello</h1>
       </div>
-    );
+    )
   }
-};
+}
 
-export default CardWithImage;
+export default CardWithImage
 const useStyles = makeStyles({
   root1: {
     "&:hover": {
@@ -741,4 +717,4 @@ const useStyles = makeStyles({
   label: {
     textTransform: "capitalize",
   },
-});
+})
