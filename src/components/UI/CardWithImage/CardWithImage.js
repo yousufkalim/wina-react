@@ -19,8 +19,9 @@ const CardWithImage = (props) => {
   } = props;
   const recievedStudentMatchedFunc = (item) => {
     let matchLength = item.student_requests.filter(
-      (dt) => dt.status === "requested"
+      (dt) => dt.status === "requested" || dt.status === "accepted"
     ).length;
+
     if (item.student_requests && item.student_requests.length > 0) {
       return (
         <div>
@@ -42,7 +43,7 @@ const CardWithImage = (props) => {
   };
   const sendStudentMatchedFunc = (item) => {
     let matchLength = item.company_requests.filter(
-      (dt) => dt.status === "requested"
+      (dt) => dt.status === "requested" || dt.status === "accepted"
     ).length;
     if (item.company_requests && item.company_requests.length > 0) {
       return (
@@ -486,14 +487,35 @@ const CardWithImage = (props) => {
           </div>
           <div className="card-with-image-container">
             <div className="card-with-image-title">
-              <div>
-                <h3>
-                  <b>
-                    {item.user && item.user.firstName}{" "}
-                    {item.user && item.user.lastName}
-                  </b>
-                </h3>
-              </div>
+              {props.status && props.status === "accepted" ? (
+                <div className="row">
+                  <div>
+                    <h3>
+                      <b>
+                        {item.user && item.user.firstName}{" "}
+                        {item.user && item.user.lastName}
+                      </b>
+                    </h3>
+                  </div>
+                  <div className="pl-3">
+                    <h3 className="text-success">
+                      CA MATCH!{" "}
+                      <small className="text-dark">
+                        Sélectionnez une date d'entretien
+                      </small>
+                    </h3>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <h3>
+                    <b>
+                      {item.user && item.user.firstName}{" "}
+                      {item.user && item.user.lastName}
+                    </b>
+                  </h3>
+                </div>
+              )}
             </div>
             <div className="card-with-image-content text-left">
               {item.positionSought && item.positionSought.position} <br />
@@ -535,13 +557,21 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
-
-                <div
-                  onClick={() => handleOfferRejected(item._id, "rejected")}
-                  className="card-with-image-btn card-with-image-btn-red"
-                >
-                  Refuser
-                </div>
+                {props.status && props.status === "accepted" ? (
+                  <div
+                    onClick={() => props.handleBooking()}
+                    className="card-with-image-btn card-with-image-btn-green"
+                  >
+                    Accepté
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => handleOfferRejected(item._id, "rejected")}
+                    className="card-with-image-btn card-with-image-btn-red"
+                  >
+                    Refuser
+                  </div>
+                )}
               </div>
             ) : (
               <div className="card-with-image-buttons">
@@ -551,20 +581,30 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
+                {props.status && props.status === "accepted" ? (
+                  <div
+                    onClick={() => props.handleBooking()}
+                    className="card-with-image-btn card-with-image-btn-green"
+                  >
+                    Accepté
+                  </div>
+                ) : (
+                  <>
+                    <div
+                      onClick={() => handleOfferAccepted(item._id, "accepted")}
+                      className="card-with-image-btn card-with-image-btn-green"
+                    >
+                      Matcher
+                    </div>
 
-                <div
-                  onClick={() => handleOfferAccepted(item._id, "accepted")}
-                  className="card-with-image-btn card-with-image-btn-green"
-                >
-                  Matcher
-                </div>
-
-                <div
-                  onClick={() => handleOfferRejected(item._id, "rejected")}
-                  className="card-with-image-btn card-with-image-btn-red"
-                >
-                  Refuser
-                </div>
+                    <div
+                      onClick={() => handleOfferRejected(item._id, "rejected")}
+                      className="card-with-image-btn card-with-image-btn-red"
+                    >
+                      Refuser
+                    </div>
+                  </>
+                )}
               </div>
             )}
           </div>

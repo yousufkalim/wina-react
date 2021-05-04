@@ -10,6 +10,7 @@ const initState = {
   appliedJobs: "",
   job: "",
   company_appliedJobs: "",
+  student_Jobs: "",
 };
 
 export default (state = initState, action) => {
@@ -72,6 +73,13 @@ export default (state = initState, action) => {
       break;
 
     // jobs
+    case studentConstants.OFFER_ACCEPTED_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        student_Jobs: action.payload.student_Jobs,
+      };
+      break;
     case studentConstants.GET_STUDENT_JOBS:
       state = {
         ...state,

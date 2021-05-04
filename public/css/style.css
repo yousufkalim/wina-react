@@ -2444,13 +2444,13 @@ html {
   outline: none;
 }
 .ResearchBox .Research .MuiInputBase-root:focus-within input {
-  color: white;
+  color: #000;
 }
 .ResearchBox .Research .MuiInputBase-root:focus-within .MuiButtonBase-root {
-  color: white;
+  color: #000;
 }
 .ResearchBox .Research .MuiSvgIcon-root:focus {
-  color: white;
+  color: #000;
 }
 
 /*input */
@@ -2474,13 +2474,13 @@ html {
   outline: none;
 }
 .ResearchBox .Research .MuiInputBase-root:focus-within input {
-  color: white;
+  color: #000;
 }
 .ResearchBox .Research .MuiInputBase-root:focus-within .MuiButtonBase-root {
-  color: white;
+  color: #000;
 }
 .ResearchBox .Research .MuiSvgIcon-root:focus {
-  color: white;
+  color: #000;
 }
 /*input */
 

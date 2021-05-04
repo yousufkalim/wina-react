@@ -8,7 +8,8 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
-import axios from "axios";
+import { DEFAULT_IMAGE } from "../../../Globals";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -23,10 +24,9 @@ const useStyles = makeStyles((theme) => ({
 export default function AlignItemsList({ not, onChangeStatus }) {
   const classes = useStyles();
   const [color, setColor] = useState(false);
-  const [countCheck, setCountCheck] = useState(false);
 
-  const HandleChangeStatus = () => {
-    alert("hello");
+  const HandleChangeStatus = (notify) => {
+    onChangeStatus(notify);
   };
   return (
     <List
@@ -34,7 +34,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
       style={{
         paddingTop: "0px",
         paddingBottom: "0px",
-        backgroundColor: "#fff",
+        backgroundColor: not.color,
         margin: 0,
         padding: 0,
       }}
@@ -48,7 +48,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
         }}
       >
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={DEFAULT_IMAGE} />
         </ListItemAvatar>
         <ListItemText
           style={{
@@ -57,17 +57,19 @@ export default function AlignItemsList({ not, onChangeStatus }) {
           primary={not.title}
           secondary={
             <React.Fragment style={{ fontSize: "0.6rem" }}>
-              <br />
               <p className="ml-2">{not.description}</p>
-              <div className="text-right">
-                <Chip
-                  //   icon={icon}
-                  className="MarkasRead"
-                  label={"Mark as read"}
-                  onClick={HandleChangeStatus}
-                  // className={classes.chip}
-                />
-              </div>
+              {not.color === "#ccc" ? (
+                <div className="text-right">
+                  <Chip
+                    //   icon={icon}
+                    label={"Mark as read"}
+                    onClick={() => HandleChangeStatus(not)}
+                    // className={classes.chip}
+                  />
+                </div>
+              ) : (
+                ""
+              )}
             </React.Fragment>
           }
         />

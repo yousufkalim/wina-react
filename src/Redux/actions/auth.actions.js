@@ -7,7 +7,9 @@ import {
 } from "./constants";
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
-import { token, user } from "../../urlConfig";
+import io from "socket.io-client";
+
+import { token, user, baseUri } from "../../urlConfig";
 export const set_loading = (loading) => ({
   type: actionTypes.SET_LOADING_AUTH,
   loading,
@@ -290,10 +292,19 @@ export const GetAllNotifications = () => async (dispatch) => {
 
       const res = await axios.get(`profile/getAllNotifications`);
       // console.log(res.data.notifications, "resdata");
+      let temp = res.data.notifications.sort((a, b) =>
+        new Date(a.createdAt) < new Date(b.createdAt) ? 1 : -1
+      );
+
       dispatch({
         type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
-        payload: { loading: false, notifications: res.data.notifications },
+        payload: { loading: false, notifications: temp },
       });
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(res.data.message, "success")
+      //   )
+      // );
     } catch (error) {
       dispatch(set_loading_data(false));
       // if (error.response) {
@@ -304,5 +315,52 @@ export const GetAllNotifications = () => async (dispatch) => {
       //   );
       // }
     }
+  }
+};
+export const UpdateNotifications = (id) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.post(`profile/updateNotifications/${id}`, {});
+      // console.log(res.data.notifications, "resdata");
+      dispatch({
+        type: actionGlobals.UPDATE_NOTIFICATION,
+        payload: { loading: false, notifications: res.data.notifications },
+      });
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      );
+    } catch (error) {
+      dispatch(set_loading_data(false));
+
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        );
+      }
+    }
+  }
+};
+
+export const SocketNotifications = () => async (dispatch) => {
+  try {
+    dispatch(set_loading_data(true));
+
+    window.socket = io(baseUri, {
+      query: `userConnectionId=${user._id}`,
+    });
+    if (window.socket) {
+      window.socket.on(`recieveNotification${user._id}`, (datas) => {
+        // setdata([...notificationsData, datas]);
+        console.log(datas, "datas");
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

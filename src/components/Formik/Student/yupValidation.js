@@ -47,7 +47,7 @@ export const SCOOL_YUP = Yup.object({
   image: Yup.string().required("Required"),
 });
 export const GENERAL_INFO_YUP = Yup.object({
-  general_Presentation: Yup.string().required("Required"),
+  general_Presentation: Yup.string(),
 });
 export const SOFT_SKILLS_YUP = Yup.object({
   name: Yup.string().required("Required"),

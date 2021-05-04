@@ -78,7 +78,7 @@ const Header = (props) => {
       <EmailVerificationModal
         show={emailVerifyModal}
         handleModal={handleModal}
-        id={props.id}
+        id={props.token}
       />
 
       <HomeHeader handleModal={handleModal} />

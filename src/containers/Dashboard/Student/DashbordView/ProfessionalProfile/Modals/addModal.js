@@ -77,8 +77,11 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       } else {
         alert("You can upload only images ");
       }
+    } else if (name === "position_hold") {
+      formik.setFieldValue(name, e.target.checked);
+    } else {
+      formik.setFieldValue(name, value);
     }
-    formik.setFieldValue(name, value);
   };
 
   return (
@@ -190,7 +193,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               <div>
                 <DatePicker
                   name="start_date"
-                  label={"Date de fin"}
+                  label={"Date de début"}
                   value={formik.start_date}
                   onChange={handleChange}
                 />

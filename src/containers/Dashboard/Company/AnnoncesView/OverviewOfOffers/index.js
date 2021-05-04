@@ -10,6 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { baseUri } from "../../../../../urlConfig";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
+import SubmitButton from "../../../../../components/UI/Button";
+
+import BookingModal from "../../../../../components/UI/Modal";
+import Calendar from "react-calendar";
+
 import CVEngine from "../../../Student/DashbordView/ProfessionalProfile/CVEngine";
 import {
   Get_Company_Jobs,
@@ -18,6 +23,7 @@ import {
   RecievedOffer_Decion_By_Company,
   Get_Company_Applied_Jobs,
   Cancel_Offer_Decion_By_Company,
+  Booking_Decion_By_Company,
 } from "../../../../../Redux/actions";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
@@ -40,7 +46,10 @@ const OverviewOfOffers = () => {
   const [isDetail, setisDetail] = useState(false);
   const [offerID, setofferID] = useState("");
   const [RecievofferID, setRecievofferID] = useState("");
+  const [bookingSlot, setbookingSlot] = useState(new Date());
+
   const [SentfferID, setSentfferID] = useState("");
+  const [booking, setBooking] = useState(false);
 
   const [studentDetail, setstudentDetail] = useState(false);
   const [studentID, setstudentID] = useState("");
@@ -134,7 +143,12 @@ const OverviewOfOffers = () => {
 
   useEffect(() => {
     dispatch(Get_Company_Jobs());
-  }, [key, setKey]);
+    if (SentfferID) {
+      dispatch(Get_Company_Applied_Jobs(SentfferID));
+    } else if (RecievofferID) {
+      dispatch(Get_Applied_Jobs(RecievofferID));
+    }
+  }, [key, setKey, setSentfferID, setRecievofferID]);
 
   const handleDetail = (id) => {
     setofferID(id);
@@ -157,10 +171,54 @@ const OverviewOfOffers = () => {
   const userDetailHandler = (btn) => {
     setUserDetail(btn);
   };
-
+  const handleBooking = () => {
+    setBooking(!booking);
+  };
+  const handleSubmitBooking = () => {
+    dispatch(Booking_Decion_By_Company(bookingSlot));
+    setBooking(!booking);
+  };
   if (studentDetail === false) {
     return (
       <>
+        <BookingModal
+          modalTitle="Booking Slot"
+          show={booking}
+          className="custom-modal"
+          handleClose={() => setBooking(false)}
+          children={
+            <div class="container">
+              <div className="row">
+                <div className="col-lg-12 ">
+                  <div className="card-with-image-calender-container">
+                    <div className="card-with-image-calender-wrapper">
+                      <div className="card-with-image-calender-heading">
+                        Book a time slot
+                      </div>
+                    </div>
+
+                    <div className="card-with-image-calender-wrapper">
+                      <div className="card-with-image-calender">
+                        <Calendar
+                          value={bookingSlot}
+                          onChange={(value) => setbookingSlot(value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <SubmitButton
+                        className="Enregistrer"
+                        onClick={handleSubmitBooking}
+                        variant="primary"
+                        value="Enregistrer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
         {isDetail === false ? (
           ""
         ) : (
@@ -220,7 +278,9 @@ const OverviewOfOffers = () => {
                     <CardWithImage
                       key={index}
                       item={item.student}
+                      status={item.status}
                       eventKey={key}
+                      handleBooking={handleBooking}
                       type="student_offers"
                       handleDetail={handleSentStudentDetail}
                       handleOfferRejected={handleCancelOffer}
@@ -258,7 +318,9 @@ const OverviewOfOffers = () => {
                       key={index}
                       item={item.student}
                       eventKey={key}
+                      status={item.status}
                       type="student_offers"
+                      handleBooking={handleBooking}
                       handleDetail={handleRecievedStudentDetail}
                       handleOfferAccepted={handlerRecievedOfferAccepted}
                       handleOfferRejected={handlerRecievedOfferRejected}

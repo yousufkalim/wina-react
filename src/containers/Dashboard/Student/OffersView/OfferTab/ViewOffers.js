@@ -11,19 +11,23 @@ import {
   Get_Student_Rejected_Jobs,
   GetCompanyAppliedJobs,
   RecievedOffer_Decion_By_Students,
+  GetStudentAppliedSuccessJobs,
 } from "../../../../../Redux/actions";
 export default function ViewOffers() {
   // store
-  const store = useSelector((state) => state.student);
   const dispatch = useDispatch();
+
+  const store = useSelector((state) => state.student);
   let JOBS = store.jobs && store.jobs;
   let APPLIED_JOBS = store.appliedJobs && store.appliedJobs;
+  let ACCEPTED_JOBS = store.student_Jobs && store.student_Jobs;
+
   let COMPANY_APPLIED_JOBS =
     store.company_appliedJobs && store.company_appliedJobs;
 
   let REJECTED_OFFERS = store.rejectedJobs && store.rejectedJobs;
   // state
-  const [key, setKey] = useState("OffersSent");
+  const [key, setKey] = useState("PreSelectedOffers");
   const [isDetail, setisDetail] = useState(false);
   const [offerID, setofferID] = useState("");
 
@@ -34,11 +38,18 @@ export default function ViewOffers() {
 
   // offers functions
   const handleOfferAccepted = (id, decision) => {
-    dispatch(Offer_Decion_By_Students(id, decision, setKey, "OffersSent"));
+    dispatch(
+      Offer_Decion_By_Students(id, decision, setKey, "PreSelectedOffers")
+    );
   };
   const handlerRecievedOfferAccepted = (id, decision) => {
     dispatch(
-      RecievedOffer_Decion_By_Students(id, decision, setKey, "OffersSent")
+      RecievedOffer_Decion_By_Students(
+        id,
+        decision,
+        setKey,
+        "PreSelectedOffers"
+      )
     );
   };
   const handlerRecievedOfferRejected = (id, decision) => {
@@ -54,6 +65,7 @@ export default function ViewOffers() {
     dispatch(Get_Student_Applied_Jobs());
     dispatch(Get_Student_Rejected_Jobs());
     dispatch(GetCompanyAppliedJobs());
+    dispatch(GetStudentAppliedSuccessJobs());
   }, [key, setKey, isDetail]);
 
   return (
@@ -61,14 +73,14 @@ export default function ViewOffers() {
       {isDetail === false ? (
         <Tabs
           activeKey={key}
-          defaultActiveKey="OffersSent"
+          defaultActiveKey="PreSelectedOffers"
           id="controlled-tab-example"
           className="Profile upper-nav custom-tabs"
           onSelect={(k) => setKey(k)}
         >
           <Tab
-            eventKey="OffersSent"
-            title="Offers Sent"
+            eventKey="PreSelectedOffers"
+            title="Offres pré-sélectionnés"
             className="h-100"
             onSelect={(k) => setKey(k)}
           >
@@ -116,13 +128,13 @@ export default function ViewOffers() {
           </Tab>
           <Tab
             eventKey="OffersRecieved"
-            title="RecievedOffers"
+            title="Propositions"
             onSelect={(k) => setKey(k)}
             className="h-100"
           >
             <div className="ViewOffersBox">
               <div className="offers custom-box">
-                {COMPANY_APPLIED_JOBS.length > 0 ? (
+                {COMPANY_APPLIED_JOBS && COMPANY_APPLIED_JOBS.length > 0 ? (
                   COMPANY_APPLIED_JOBS.map((item, index) => (
                     <CardWithImage
                       item={item}
@@ -130,32 +142,6 @@ export default function ViewOffers() {
                       type="student"
                       handleOfferAccepted={handlerRecievedOfferAccepted}
                       handleOfferRejected={handlerRecievedOfferRejected}
-                      eventKey={key}
-                      handleDetail={handleDetail}
-                    />
-                  ))
-                ) : (
-                  <h1 className="text-center">No Offers Found</h1>
-                )}
-              </div>
-            </div>
-          </Tab>
-          <Tab
-            eventKey="Suggestion"
-            title="Propositions"
-            onSelect={(k) => setKey(k)}
-            className="h-100"
-          >
-            <div className="ViewOffersBox">
-              <div className="offers custom-box">
-                {JOBS.length > 0 ? (
-                  JOBS.map((item, index) => (
-                    <CardWithImage
-                      item={item}
-                      key={index}
-                      type="student"
-                      handleOfferAccepted={handleOfferAccepted}
-                      handleOfferRejected={handleOfferRejected}
                       eventKey={key}
                       handleDetail={handleDetail}
                     />

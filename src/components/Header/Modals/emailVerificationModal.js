@@ -47,17 +47,7 @@ export default function StudentRegister(props) {
               <div className="heading pb-4">Connexion</div>
               <form onSubmit={formik.handleSubmit}>
                 <div>
-                  <ModalInput
-                    placeholder="Enter verify token"
-                    type="text"
-                    name="token"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.token}
-                  />
-                  {formik.touched.token && formik.errors.token ? (
-                    <div className="formikError">{formik.errors.token}</div>
-                  ) : null}
+                  <p>Click below to verify your email</p>
                 </div>
 
                 {store.loading ? (

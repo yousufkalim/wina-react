@@ -247,6 +247,29 @@ export const GetCompanyAppliedJobs = () => async (dispatch) => {
     }
   }
 };
+//GET STUDENT APPLIED JOBS Validated by company success
+
+export const GetStudentAppliedSuccessJobs = () => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true));
+
+      const res = await axios.get(`job/GetStudentAppliedSuccessJobs`);
+      dispatch({
+        type: studentConstants.OFFER_ACCEPTED_SUCCESS,
+        payload: { loading: false, student_Jobs: res.data.jobs },
+      });
+    } catch (error) {
+      dispatch(set_loading_data(false));
+
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
+    }
+  }
+};
 
 //GET STUDENT APPLIED JOBS
 
