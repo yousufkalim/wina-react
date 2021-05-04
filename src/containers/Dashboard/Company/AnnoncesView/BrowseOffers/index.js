@@ -1,150 +1,150 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image, Form } from "react-bootstrap";
-import TextField from "@material-ui/core/TextField";
-import { Link } from "react-router-dom";
-import Checkbox from "@material-ui/core/Checkbox";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import { makeStyles } from "@material-ui/core/styles";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Company";
-import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Company/yupValidation";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import ModalInput from "../../../../../components/UI/TextField";
-import DatePicker from "../../../../../components/UI/DatePicker";
-import Select from "../../../../../components/UI/Select";
-import Button from "../../../../../components/UI/Button";
-import axios from "axios";
-import RadioButton from "../../../../../components/UI/RadioButton";
+import React, { useState, useEffect } from "react"
+import { Row, Col, Nav, Tab, Tabs, Image, Form } from "react-bootstrap"
+import TextField from "@material-ui/core/TextField"
+import { Link } from "react-router-dom"
+import Checkbox from "@material-ui/core/Checkbox"
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
+import CheckBoxIcon from "@material-ui/icons/CheckBox"
+import { makeStyles } from "@material-ui/core/styles"
+import Slider from "@material-ui/core/Slider"
+import Grid from "@material-ui/core/Grid"
+import Input from "@material-ui/core/Input"
+import InputAdornment from "@material-ui/core/InputAdornment"
+import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Company"
+import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Company/yupValidation"
+import { useFormik } from "formik"
+import { useDispatch, useSelector } from "react-redux"
+import ModalInput from "../../../../../components/UI/TextField"
+import DatePicker from "../../../../../components/UI/DatePicker"
+import Select from "../../../../../components/UI/Select"
+import Button from "../../../../../components/UI/Button"
+import axios from "axios"
+import RadioButton from "../../../../../components/UI/RadioButton"
 
 import {
   DomainOptions,
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
-} from "../../../../../Globals";
+} from "../../../../../Globals"
 import {
   getSkills,
   getApiAdress,
   Create_Job,
-} from "../../../../../Redux/actions";
-import AutoComplete from "../../../../../components/UI/AutoComplete";
-import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
-import _ from "lodash";
-import Texts from "../../../../../Globals/Texts";
-import { baseUrl } from "../../../../../urlConfig";
+} from "../../../../../Redux/actions"
+import AutoComplete from "../../../../../components/UI/AutoComplete"
+import MultiAutoComplete from "../../../../../components/UI/MultiSelect"
+import _ from "lodash"
+import Texts from "../../../../../Globals/Texts"
+import { baseUrl } from "../../../../../urlConfig"
 export default function BrowseOffers() {
-  const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
-  const store2 = useSelector((state) => state.globals);
-  const store = useSelector((state) => state.company);
-  const store3 = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
+  const store2 = useSelector((state) => state.globals)
+  const store = useSelector((state) => state.company)
+  const store3 = useSelector((state) => state.auth)
 
-  const COMPANY = store3.user && store3.user.company;
+  const COMPANY = store3.user && store3.user.company
 
-  const [image, setImage] = useState("");
-  const [imageURI, setimageURI] = useState("");
+  const [image, setImage] = useState("")
+  const [imageURI, setimageURI] = useState("")
 
-  const [softSkillsArray, setsoftSkillsArray] = useState([]);
-  const [hardSkillsArray, sethardSkillsArray] = useState([]);
-  const [items, setItems] = useState([]);
+  const [softSkillsArray, setsoftSkillsArray] = useState([])
+  const [hardSkillsArray, sethardSkillsArray] = useState([])
+  const [items, setItems] = useState([])
 
-  const [value, setValue] = React.useState(30);
-  let SOFT_SKILLS = store2.soft_skills;
-  let HARD_SKILLS = store2.hard_skills;
-  let JOB_MESSAGE_SUCCESS = store.message;
+  const [value, setValue] = React.useState(30)
+  let SOFT_SKILLS = store2.soft_skills
+  let HARD_SKILLS = store2.hard_skills
+  let JOB_MESSAGE_SUCCESS = store.message
   // formik
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
     validationSchema: POSITION_SOUGHT_YUP,
     onSubmit: async (values) => {
-      let tempValues = _.cloneDeep(values);
-      const formdataImage = new FormData();
-      formdataImage.append("image", image);
+      let tempValues = _.cloneDeep(values)
+      const formdataImage = new FormData()
+      formdataImage.append("image", image)
       const imageData = await axios({
         method: "post",
         url: `${baseUrl}/FileUpload`,
         data: formdataImage,
-      });
-      let imagePath = imageData.data;
-      tempValues.softSkills = softSkillsArray;
-      tempValues.hardSkills = hardSkillsArray;
-      tempValues.photo = imagePath;
-      dispatch(Create_Job(tempValues, formik));
+      })
+      let imagePath = imageData.data
+      tempValues.softSkills = softSkillsArray
+      tempValues.hardSkills = hardSkillsArray
+      tempValues.photo = imagePath
+      dispatch(Create_Job(tempValues, formik))
       formik.setFieldValue("location", {
         city: "",
         street: "",
         zip: "",
         longitude: "",
         latitude: "",
-      });
-      formik.setSubmitting(false);
-      formik.handleReset();
-      setsoftSkillsArray([]);
-      sethardSkillsArray([]);
-      setItems([]);
-      setimageURI("");
-      setImage("");
+      })
+      formik.setSubmitting(false)
+      formik.handleReset()
+      setsoftSkillsArray([])
+      sethardSkillsArray([])
+      setItems([])
+      setimageURI("")
+      setImage("")
     },
-  });
+  })
   // onChange
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     if (name === "photo") {
-      let file = e.target.files[0];
+      let file = e.target.files[0]
       if (file.type === "image/png" || file.type === "image/jpeg") {
-        let uri = URL.createObjectURL(file);
-        setimageURI(uri);
-        setImage(file);
-        formik.setFieldValue("photo", file.name);
+        let uri = URL.createObjectURL(file)
+        setimageURI(uri)
+        setImage(file)
+        formik.setFieldValue("photo", file.name)
       } else {
-        alert("You can upload only images ");
+        alert("You can upload only images ")
       }
     }
-    formik.setFieldValue(name, value);
-  };
+    formik.setFieldValue(name, value)
+  }
   // useEffect
 
   useEffect(() => {
-    dispatch(getSkills("Soft_Skill"));
+    dispatch(getSkills("Soft Skill"))
 
-    dispatch(getSkills("Hard_Skill"));
-  }, []);
+    dispatch(getSkills("Hard Skill"))
+  }, [])
   useEffect(() => {
     if (COMPANY && Object.keys(COMPANY).length > 0) {
       const {
         address: { city, street, zip, longitude, latitude },
-      } = COMPANY;
+      } = COMPANY
       formik.setFieldValue("location", {
         city: city,
         street: street,
         zip: zip,
         longitude: longitude,
         latitude: latitude,
-      });
+      })
     }
-  }, []);
+  }, [])
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
+    setValue(event.target.value === "" ? "" : Number(event.target.value))
+  }
 
   const handleBlur = () => {
     if (value < 0) {
-      setValue(0);
+      setValue(0)
     } else if (value > 100) {
-      setValue(100);
+      setValue(100)
     }
-  };
+  }
   const handleAddressChange = (value) => {
-    dispatch(getApiAdress(value));
+    dispatch(getApiAdress(value))
     if (store2.items.length > 0) {
       setItems(
         store2.items.map((item) => {
@@ -155,11 +155,11 @@ export default function BrowseOffers() {
             postalCode: item.properties.citycode,
             lat: item.geometry.coordinates[1],
             lng: item.geometry.coordinates[0],
-          };
+          }
         })
-      );
+      )
     }
-  };
+  }
   const onSubmitAddress = (value) => {
     formik.setFieldValue("location", {
       city: value.city,
@@ -167,32 +167,32 @@ export default function BrowseOffers() {
       zip: value.postalCode ? value.postalCode : "40180",
       longitude: value.lng,
       latitude: value.lat,
-    });
-  };
+    })
+  }
   const onSoftSkillChange = (value) => {
-    const valueArray = [];
+    const valueArray = []
     for (let i = 0; i < value.length; i++) {
-      valueArray.push(value[i]._id);
+      valueArray.push(value[i]._id)
     }
     if (valueArray.length > 0) {
-      formik.setFieldValue("softSkills", valueArray[0]);
+      formik.setFieldValue("softSkills", valueArray[0])
     } else {
-      formik.setFieldValue("softSkills", "");
+      formik.setFieldValue("softSkills", "")
     }
-    setsoftSkillsArray(valueArray);
-  };
+    setsoftSkillsArray(valueArray)
+  }
   const onHardSkillChange = (value) => {
-    const valueArray = [];
+    const valueArray = []
     for (let i = 0; i < value.length; i++) {
-      valueArray.push(value[i]._id);
+      valueArray.push(value[i]._id)
     }
     if (valueArray.length > 0) {
-      formik.setFieldValue("hardSkills", valueArray[0]);
+      formik.setFieldValue("hardSkills", valueArray[0])
     } else {
-      formik.setFieldValue("hardSkills", "");
+      formik.setFieldValue("hardSkills", "")
     }
-    sethardSkillsArray(valueArray);
-  };
+    sethardSkillsArray(valueArray)
+  }
   // console.log(softSkillsArray, "value");
 
   return (
@@ -462,11 +462,11 @@ export default function BrowseOffers() {
         </Tab>
       </Tabs>
     </>
-  );
+  )
 }
 // ******************************
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
+const checkedIcon = <CheckBoxIcon fontSize="small" />
 
 const useStyles = makeStyles({
   root: {
@@ -478,13 +478,13 @@ const useStyles = makeStyles({
     position: "absolute",
     marginLeft: "6.2rem",
   },
-});
+})
 const schoolName = [
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
   { title: "The Godfather: Part II", year: 1974 },
   { title: "The Dark Knight", year: 2008 },
-];
+]
 const marks = [
   {
     value: 0,
@@ -494,4 +494,4 @@ const marks = [
     value: 10000,
     label: "10 000€",
   },
-];
+]
