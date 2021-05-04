@@ -2,7 +2,7 @@ import React, { useEffect, useState, Component } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MaterialTable from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
-import { listOfJobs, deleteUser } from "../../../../Redux/actions";
+import { listOfJobs, deleteJobs } from "../../../../Redux/actions";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -39,20 +39,16 @@ export default function Jobs() {
   const [userflag, setUserflag] = useState(false);
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.admin.jobs);
-  function userdata() {
-    // let data = [];
-    // USERS.users &&
-    //   USERS.users.map((key, index) => {
-    //     data.push({
-    //       _id: key._id,
-    //       name: key.firstName + " " + key.lastName,
-    //       email: key.email,
-    //       phone: key.phone,
-    //       role: key.role,
-    //     });
-    //     return data;
-    //   });
-    // setData(data);
+  function tableData() {
+    let data = [];
+    jobs &&
+      jobs.map((key, index) => {
+        data.push({
+          _id: key._id,
+        });
+        return data;
+      });
+    setData(data);
   }
   useEffect(() => {
     dispatch(listOfJobs());
@@ -60,17 +56,12 @@ export default function Jobs() {
   }, [userflag]);
 
   useEffect(() => {
-    userdata();
+    tableData();
   }, [jobs]);
   return (
     <>
       <MaterialTable
-        columns={[
-          { title: "Full Name", field: "name" },
-          { title: "Email", field: "email" },
-          { title: "Phone", field: "phone" },
-          { title: "Role", field: "role" },
-        ]}
+        columns={[{ title: "Id", field: "_id" }]}
         data={data}
         title="Jobs"
         options={{
@@ -81,7 +72,7 @@ export default function Jobs() {
             icon: "delete",
             tooltip: "Delete",
             onClick: (event, rowData) => {
-              dispatch(deleteUser(rowData._id));
+              dispatch(deleteJobs(rowData._id));
               setUserflag(true);
             },
           },

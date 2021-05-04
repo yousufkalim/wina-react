@@ -180,10 +180,37 @@ export const listOfJobs = () => async (dispatch) => {
     const res = await axios.get(`admin/job-list`);
     dispatch({
       type: adminConstants.GET_ALL_JOBS,
-      payload: { loading: false, skills: res.data.ListOfJobs },
+      payload: { loading: false, jobs: res.data.ListOfJobs },
     });
   } catch (error) {
     console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+export const deleteJobs = (id) => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.put(`admin/delete-job/${id}`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+    dispatch({
+      type: adminConstants.DELETE_SKILLS,
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar("Deleted Successfully", "success")
+      )
+    );
+  } catch (error) {
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(

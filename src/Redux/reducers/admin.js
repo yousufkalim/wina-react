@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
     case adminConstants.GET_ALL_JOBS:
       state = {
         ...state,
-        skills: action.payload.jobs,
+        jobs: action.payload.jobs,
         loading: false,
       };
       break;
