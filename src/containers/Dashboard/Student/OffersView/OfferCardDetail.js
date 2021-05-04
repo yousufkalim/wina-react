@@ -1,42 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { MdLocationOn } from "react-icons/all";
-import { Row, Col } from "react-bootstrap";
-import { Button, makeStyles } from "@material-ui/core";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem";
+import React, { useState, useEffect } from "react"
+import { MdLocationOn } from "react-icons/all"
+import { Row, Col } from "react-bootstrap"
+import { Button, makeStyles } from "@material-ui/core"
+import Slider from "@material-ui/core/Slider"
+import Grid from "@material-ui/core/Grid"
+import Input from "@material-ui/core/Input"
+import InputAdornment from "@material-ui/core/InputAdornment"
+import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem"
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 import {
   Get_Job,
   Cancel_Offer_Decion_By_Students,
-} from "../../../../Redux/actions";
-import Loader from "../../../../components/UI/Loader";
+} from "../../../../Redux/actions"
+import Loader from "../../../../components/UI/Loader"
 const OfferCardDetail = (props) => {
-  const { offerID, setisDetail } = props;
-  const dispatch = useDispatch();
-  const store = useSelector((state) => state.student);
-  const JOB = store.job && store.job;
-  const classes = useStyles();
+  const { offerID, setisDetail } = props
+  const dispatch = useDispatch()
+  const store = useSelector((state) => state.student)
+  const JOB = store.job && store.job
+  const classes = useStyles()
 
   // state
-  const [value, setValue] = useState(30);
+  const [value, setValue] = useState(30)
 
   useEffect(() => {
-    if (offerID) dispatch(Get_Job(offerID));
-  }, [offerID]);
+    if (offerID) dispatch(Get_Job(offerID))
+  }, [offerID])
 
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
   const handleCancelRequest = (id) => {
-    dispatch(Cancel_Offer_Decion_By_Students(id, setisDetail));
-  };
+    dispatch(Cancel_Offer_Decion_By_Students(id, setisDetail))
+  }
   const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
+    setValue(event.target.value === "" ? "" : Number(event.target.value))
+  }
   const marks = [
     {
       value: 0,
@@ -46,14 +46,14 @@ const OfferCardDetail = (props) => {
       value: 10000,
       label: "10 000€",
     },
-  ];
+  ]
   const handleBlur = () => {
     if (value < 0) {
-      setValue(0);
+      setValue(0)
     } else if (value > 100) {
-      setValue(100);
+      setValue(100)
     }
-  };
+  }
   if (JOB && Object.keys(JOB).length > 0) {
     return (
       <>
@@ -125,49 +125,6 @@ const OfferCardDetail = (props) => {
               />
             </div>
 
-            <Row>
-              <Col className="col-lg-12">
-                s
-                <div className="sliderBox">
-                  <div className="label">Tranche de salaire</div>
-                  <div className={(classes.root, "slider")}>
-                    <Grid container spacing={2} alignItems="center">
-                      <Grid item xs>
-                        <Slider
-                          disabled
-                          disabledaria-labelledby="disabled-slider"
-                          value={typeof value === "number" ? value : 0}
-                          onChange={handleSliderChange}
-                          marks={marks}
-                          min={0}
-                          max={10000}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Input
-                          className={classes.input}
-                          value={value}
-                          margin="dense"
-                          onChange={handleInputChange}
-                          onBlur={handleBlur}
-                          endAdornment={
-                            <InputAdornment position="end">€</InputAdornment>
-                          }
-                          inputProps={{
-                            step: 10,
-                            min: 0,
-                            max: 10000,
-                            type: "number",
-                            "aria-labelledby": "input-slider",
-                          }}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-
             <div className="offer-detail-date-container">
               <CardItem
                 className="offer-card-item-bordered offer-detail-skills-heading"
@@ -232,13 +189,13 @@ const OfferCardDetail = (props) => {
           </div>
         </div>
       </>
-    );
+    )
   } else {
-    return <Loader.CenterProgress size={80} />;
+    return <Loader.CenterProgress size={80} />
   }
-};
+}
 
-export default OfferCardDetail;
+export default OfferCardDetail
 const useStyles = makeStyles({
   root: {
     width: "15.6rem",
@@ -287,4 +244,4 @@ const useStyles = makeStyles({
   label: {
     textTransform: "capitalize",
   },
-});
+})

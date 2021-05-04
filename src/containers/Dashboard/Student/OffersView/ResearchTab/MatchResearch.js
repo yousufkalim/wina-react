@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import MultiCarouselPage from "./MultiCarouselPage";
-import OfferCardDetail from "../OfferCardDetail";
+import React, { useState } from "react"
+import MultiCarouselPage from "./MultiCarouselPage"
+import OfferCardDetail from "../OfferCardDetail"
 export default function MatchResearch() {
-  const [isDetail, setisDetail] = useState(false);
+  const [isDetail, setisDetail] = useState(false)
+  const [offerID, setofferID] = useState("")
 
-  const handleDetail = (btn) => {
-    setisDetail(btn);
-  };
+  const handleDetail = (id) => {
+    setofferID(id)
+    setisDetail(true)
+  }
 
   return (
     <div className="matchResearch">
@@ -15,10 +17,10 @@ export default function MatchResearch() {
           {isDetail === false ? (
             <MultiCarouselPage handleDetail={handleDetail} />
           ) : (
-            <OfferCardDetail />
+            <OfferCardDetail offerID={offerID} setisDetail={handleDetail} />
           )}
         </div>
       </div>
     </div>
-  );
+  )
 }
