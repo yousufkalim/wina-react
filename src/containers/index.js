@@ -13,6 +13,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import Student from "./Dashboard/Student";
 import Company from "./Dashboard/Company";
+import Admin from "./Dashboard/Admin";
 import UnAuth from "./unAuth";
 import Loader from "../components/UI/Loader";
 import { user } from "../urlConfig";
@@ -53,6 +54,8 @@ function App() {
           <Student />
         ) : store.user.type === "company" ? (
           <Company />
+        ): store.user.role === "admin" ? (
+          <Admin />
         ) : (
           <UnAuth />
         )
