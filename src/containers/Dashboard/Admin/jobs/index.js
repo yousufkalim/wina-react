@@ -45,6 +45,10 @@ export default function Jobs() {
       jobs.map((key, index) => {
         data.push({
           _id: key._id,
+          position: key.position,
+          description: key.description,
+          ageRange: key.ageRange,
+          domain: key.domain,
         });
         return data;
       });
@@ -61,7 +65,12 @@ export default function Jobs() {
   return (
     <>
       <MaterialTable
-        columns={[{ title: "Id", field: "_id" }]}
+        columns={[
+          { title: "position", field: "position" },
+          { title: "Domain", field: "domain" },
+          { title: "Description", field: "description" },
+          { title: "Age Range", field: "ageRange" },
+        ]}
         data={data}
         title="Jobs"
         options={{

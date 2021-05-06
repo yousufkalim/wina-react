@@ -3,6 +3,8 @@ const initialState = {
   users: "",
   skills: "",
   jobs: "",
+  Company: "",
+  Appointments: "",
   loading: true,
 };
 export default (state = initialState, action) => {
@@ -33,6 +35,20 @@ export default (state = initialState, action) => {
       state = {
         ...state,
         jobs: action.payload.jobs,
+        loading: false,
+      };
+      break;
+    case adminConstants.GET_ALL_COMPANY:
+      state = {
+        ...state,
+        Company: action.payload.Company,
+        loading: false,
+      };
+      break;
+    case adminConstants.GET_ALL_APPOINTMENT:
+      state = {
+        ...state,
+        Appointments: action.payload.Appointments,
         loading: false,
       };
       break;

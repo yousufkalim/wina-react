@@ -20,10 +20,11 @@ import SchoolIcon from "@material-ui/icons/School";
 import PersonIcon from "@material-ui/icons/Person";
 
 import Users from "./Users";
-import Companies from "./Companies";
 import skills from "../Admin/skills";
 import Jobs from "../Admin/jobs";
-import { listOfSkills, getUser, signout } from "../../../Redux/actions";
+import companies from "../Admin/Companies";
+import appointments from "../Admin/appointments";
+import { getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -149,9 +150,10 @@ const Profile = (props) => {
         <Toolbar />
         <Switch>
           <Route exact path={`/users`} component={Users} />
-          <Route exact path={`/companies`} component={Companies} />
           <Route exact path={`/skills`} component={skills} />
           <Route exact path={`/Jobs`} component={Jobs} />
+          <Route exact path={`/companies`} component={companies} />
+          <Route exact path={`/appointments`} component={appointments} />
           <Redirect from="*" to={"/users"} />
         </Switch>
       </main>

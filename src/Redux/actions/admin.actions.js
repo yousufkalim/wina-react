@@ -221,3 +221,100 @@ export const deleteJobs = (id) => async (dispatch) => {
     }
   }
 };
+export const listOfCompany = () => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.get(`admin/company-list`);
+    dispatch({
+      type: adminConstants.GET_ALL_COMPANY,
+      payload: { loading: false, Company: res.data.listOfCompanies },
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+
+export const deleteCompany = (id) => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.put(`admin/delete-company/${id}`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+    dispatch({
+      type: adminConstants.DELETE_SKILLS,
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar("Deleted Successfully", "success")
+      )
+    );
+  } catch (error) {
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+
+export const listOfAppointment = () => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.get(`admin/appointment-list`);
+    dispatch({
+      type: adminConstants.GET_ALL_APPOINTMENT,
+      payload: { loading: false, Appointments: res.data.Appointments },
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+
+export const deleteAppointment = (id) => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.put(`admin/delete-appointment/${id}`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+    dispatch({
+      type: adminConstants.DELETE_APPOINTMENT,
+    });
+    dispatch(
+      Notistack.enqueueSnackbar(
+        Notistack.snackBar("Deleted Successfully", "success")
+      )
+    );
+  } catch (error) {
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
