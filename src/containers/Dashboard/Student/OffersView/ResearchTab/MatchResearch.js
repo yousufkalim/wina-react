@@ -7,7 +7,7 @@ export default function MatchResearch() {
 
   const handleDetail = (id) => {
     setofferID(id)
-    setisDetail(true)
+    setisDetail(!isDetail)
   }
 
   return (

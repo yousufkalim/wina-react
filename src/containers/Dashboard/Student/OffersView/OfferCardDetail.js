@@ -7,11 +7,14 @@ import Grid from "@material-ui/core/Grid"
 import Input from "@material-ui/core/Input"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem"
+import { DEFAULT_IMAGE } from "../../../../Globals"
+import { baseUri } from "../../../../urlConfig"
 
 import { useDispatch, useSelector } from "react-redux"
 import {
   Get_Job,
   Cancel_Offer_Decion_By_Students,
+  Offer_Decion_By_Students,
 } from "../../../../Redux/actions"
 import Loader from "../../../../components/UI/Loader"
 const OfferCardDetail = (props) => {
@@ -54,121 +57,250 @@ const OfferCardDetail = (props) => {
       setValue(100)
     }
   }
+  // offers functions
+  const handleOfferAccepted = (id, decision) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail))
+  }
+  const handleOfferRejected = (id, decision) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail))
+  }
   if (JOB && Object.keys(JOB).length > 0) {
-    return (
-      <>
-        <div
-          className="d-flex justify-content-start align-items-center"
-          style={{ height: "10%" }}
-        >
-          <h5>{JOB.company && JOB.company.name}</h5>
-          <span
-            onClick={() => handleCancelRequest(JOB._id)}
-            className="offer-apply-btn ml-5"
+    if (props.type && props.type === "student") {
+      return (
+        <>
+          <div
+            className="d-flex justify-content-start align-items-center"
+            style={{ height: "10%" }}
           >
-            Se desinteresser
-          </span>
-        </div>
-        <div className="offer-detail">
-          <div className="offer-detail-container">
-            {JOB.score && JOB.score * 100 > 0 ? (
-              <div className="student-offer-detail-percentage">
-                {JOB.score * 100}%
-              </div>
-            ) : (
-              ""
-            )}
-            <div className="offer-detail-header">
-              <div className="offer-detail-header-image text-right">
-                <img src={`../images/offer-card-detail.png`} />
-              </div>
-              {/* <div className="offer-detail-line"></div> */}
-              <div className="offer-detail-header-text text-left offer-detail-header-line">
-                {JOB.company && JOB.company.name}
-              </div>
-            </div>
-
-            <div className="offer-detail-date-container">
-              <div className="offer-detail-location text-right">
-                <span>
-                  <MdLocationOn className="offer-detail-location-icon" />
-                </span>{" "}
-                {JOB.location.street},{JOB.location.zip} {JOB.location.city}
-              </div>
-            </div>
-
-            <div className="offer-detail-content">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-content-detail"
-                content={JOB.domain}
-              />
-              <CardItem
-                className="offer-card-item-bordered offer-detail-content-detail"
-                content={JOB.levelOfEducation}
-              />
-            </div>
-
-            <div className="offer-detail-date-headings">
-              <div className="offer-detail-date-heading text-left">
-                Date de début
-              </div>
-              <div className="offer-detail-date-heading text-left">Durée</div>
-            </div>
-            <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-date"
-                content={JOB.startDate}
-              />
-              <CardItem
-                className="offer-card-item-bordered offer-detail-date"
-                content={JOB.duration}
-              />
-            </div>
-
-            <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-skills-heading"
-                content="Compétences générales "
-              />
-            </div>
-
-            <div className="offer-detail-date-container">
-              {JOB.softSkills && JOB.softSkills.length > 0 ? (
-                JOB.softSkills.map((sf) => (
-                  <CardItem
-                    className="offer-detail-skills"
-                    content={sf.skillField}
-                  />
-                ))
+            <h5>{JOB.company && JOB.company.name}</h5>
+            <span
+              onClick={() => handleCancelRequest(JOB._id)}
+              className="offer-apply-btn ml-5"
+            >
+              Se desinteressers
+            </span>
+          </div>
+          <div className="offer-detail">
+            <div className="offer-detail-container">
+              {JOB.score && JOB.score * 100 > 0 ? (
+                <div className="student-offer-detail-percentage">
+                  {JOB.score * 100}%
+                </div>
               ) : (
-                <p>No Compétences générales found</p>
+                ""
               )}
-            </div>
-
-            <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-skills-heading"
-                content="Compétences spécialisées "
-              />
-            </div>
-
-            <div className="offer-detail-date-container">
-              {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
-                JOB.hardSkills.map((sf) => (
-                  <CardItem
-                    className="offer-detail-skills"
-                    content={sf.skillField}
+              <div className="offer-detail-header">
+                <div className="offer-detail-header-image text-right">
+                  <img
+                    src={
+                      JOB.photo.image
+                        ? `${baseUri}/${JOB.photo.image}`
+                        : DEFAULT_IMAGE
+                    }
+                    style={{ width: "300px", height: "300px" }}
                   />
-                ))
-              ) : (
-                <p>No Compétences spécialisées found</p>
-              )}
+                </div>
+                {/* <div className="offer-detail-line"></div> */}
+                <div className="offer-detail-header-text text-left offer-detail-header-line">
+                  {JOB.company && JOB.company.name}
+                </div>
+              </div>
+
+              <div className="offer-detail-date-container">
+                <div className="offer-detail-location text-right">
+                  <span>
+                    <MdLocationOn className="offer-detail-location-icon" />
+                  </span>{" "}
+                  {JOB.location.street},{JOB.location.zip} {JOB.location.city}
+                </div>
+              </div>
+
+              <div className="offer-detail-content">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-content-detail"
+                  content={JOB.domain}
+                />
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-content-detail"
+                  content={JOB.levelOfEducation}
+                />
+              </div>
+
+              <div className="offer-detail-date-headings">
+                <div className="offer-detail-date-heading text-left">
+                  Date de début
+                </div>
+                <div className="offer-detail-date-heading text-left">Durée</div>
+              </div>
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-date"
+                  content={JOB.startDate}
+                />
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-date"
+                  content={JOB.duration}
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-skills-heading"
+                  content="Compétences générales "
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                {JOB.softSkills && JOB.softSkills.length > 0 ? (
+                  JOB.softSkills.map((sf) => (
+                    <CardItem
+                      className="offer-detail-skills"
+                      content={sf.skillField}
+                    />
+                  ))
+                ) : (
+                  <p>No Compétences générales found</p>
+                )}
+              </div>
+
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-skills-heading"
+                  content="Compétences spécialisées "
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
+                  JOB.hardSkills.map((sf) => (
+                    <CardItem
+                      className="offer-detail-skills"
+                      content={sf.skillField}
+                    />
+                  ))
+                ) : (
+                  <p>No Compétences spécialisées found</p>
+                )}
+              </div>
             </div>
-            {props.type && props.type === "student" ? (
-              ""
-            ) : (
+          </div>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <div
+            className="d-flex justify-content-start align-items-center"
+            style={{ height: "10%" }}
+          >
+            <h5>{JOB.company && JOB.company.name}</h5>
+          </div>
+          <div className="offer-detail">
+            <div className="offer-detail-container">
+              {JOB.score && JOB.score * 100 > 0 ? (
+                <div className="student-offer-detail-percentage">
+                  {JOB.score * 100}%
+                </div>
+              ) : (
+                ""
+              )}
+              <div className="offer-detail-header">
+                <div className="offer-detail-header-image text-right">
+                  <img
+                    src={
+                      JOB.photo.image
+                        ? `${baseUri}/${JOB.photo.image}`
+                        : DEFAULT_IMAGE
+                    }
+                    style={{ width: "300px", height: "300px" }}
+                  />
+                </div>
+                {/* <div className="offer-detail-line"></div> */}
+                <div className="offer-detail-header-text text-left offer-detail-header-line">
+                  {JOB.company && JOB.company.name}
+                </div>
+              </div>
+
+              <div className="offer-detail-date-container">
+                <div className="offer-detail-location text-right">
+                  <span>
+                    <MdLocationOn className="offer-detail-location-icon" />
+                  </span>{" "}
+                  {JOB.location.street},{JOB.location.zip} {JOB.location.city}
+                </div>
+              </div>
+
+              <div className="offer-detail-content">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-content-detail"
+                  content={JOB.domain}
+                />
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-content-detail"
+                  content={JOB.levelOfEducation}
+                />
+              </div>
+
+              <div className="offer-detail-date-headings">
+                <div className="offer-detail-date-heading text-left">
+                  Date de début
+                </div>
+                <div className="offer-detail-date-heading text-left">Durée</div>
+              </div>
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-date"
+                  content={JOB.startDate}
+                />
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-date"
+                  content={JOB.duration}
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-skills-heading"
+                  content="Compétences générales "
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                {JOB.softSkills && JOB.softSkills.length > 0 ? (
+                  JOB.softSkills.map((sf) => (
+                    <CardItem
+                      className="offer-detail-skills"
+                      content={sf.skillField}
+                    />
+                  ))
+                ) : (
+                  <p>No Compétences générales found</p>
+                )}
+              </div>
+
+              <div className="offer-detail-date-container">
+                <CardItem
+                  className="offer-card-item-bordered offer-detail-skills-heading"
+                  content="Compétences spécialisées "
+                />
+              </div>
+
+              <div className="offer-detail-date-container">
+                {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
+                  JOB.hardSkills.map((sf) => (
+                    <CardItem
+                      className="offer-detail-skills"
+                      content={sf.skillField}
+                    />
+                  ))
+                ) : (
+                  <p>No Compétences spécialisées found</p>
+                )}
+              </div>
+
               <div className="offer-detail-buttons-container">
                 <Button
+                  onClick={() => handleOfferAccepted(JOB._id, "requested")}
                   classes={{
                     root: classes.root1, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`
@@ -177,6 +309,7 @@ const OfferCardDetail = (props) => {
                   Matcher
                 </Button>
                 <Button
+                  onClick={() => handleOfferRejected(JOB._id, "rejected")}
                   classes={{
                     root: classes.root2, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`
@@ -185,11 +318,11 @@ const OfferCardDetail = (props) => {
                   Refuser
                 </Button>
               </div>
-            )}
+            </div>
           </div>
-        </div>
-      </>
-    )
+        </>
+      )
+    }
   } else {
     return <Loader.CenterProgress size={80} />
   }

@@ -4,6 +4,7 @@ import AddIcon from "@material-ui/icons/Add"
 import { MdLocationOn } from "react-icons/all"
 import { Link } from "react-router-dom"
 import { DEFAULT_IMAGE } from "../../../../../Globals"
+import { baseUri } from "../../../../../urlConfig"
 export default function RecipeReviewCard(props) {
   const { cards, handleDetail } = props
 
@@ -13,16 +14,15 @@ export default function RecipeReviewCard(props) {
         <div className="offer-card-header">
           <img
             src={
-              // cards.professional_Picture.image
-              //   ? `${baseUri}/views/uploads/${cards.professional_Picture.image}`
-              //   :
-              DEFAULT_IMAGE
+              cards.photo.image
+                ? `${baseUri}/${cards.photo.image}`
+                : DEFAULT_IMAGE
             }
             className="offer-card-img"
           />
         </div>
         <div className="offer-card-body offer-card-body-1">
-          <div className="offer-card-description">{cards.title}</div>
+          <div className="offer-card-description">{cards.company.name}</div>
           <div className="offer-card-content">
             <span>
               <MdLocationOn />
