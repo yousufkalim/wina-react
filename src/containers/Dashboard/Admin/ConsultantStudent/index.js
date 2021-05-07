@@ -77,25 +77,25 @@ const ConsultantStudent = () => {
         options={{
           actionsColumnIndex: -1,
         }}
-        actions={[
-          {
-            icon: "edit",
-            tooltip: "Edit",
-            onClick: (event, rowData) => {
-              // setSkillflag(true);
-              // setEditSkills(true);
-              // setEditObj(rowData);
-            },
-          },
-          {
-            icon: "delete",
-            tooltip: "Delete",
-            onClick: (event, rowData) => {
-              // dispatch(deleteSkills(rowData._id));
-              // setSkillflag(true);
-            },
-          },
-        ]}
+        // actions={[
+        //   {
+        //     icon: "edit",
+        //     tooltip: "Edit",
+        //     onClick: (event, rowData) => {
+        //       // setSkillflag(true);
+        //       // setEditSkills(true);
+        //       // setEditObj(rowData);
+        //     },
+        //   },
+        //   {
+        //     icon: "delete",
+        //     tooltip: "Delete",
+        //     onClick: (event, rowData) => {
+        //       // dispatch(deleteSkills(rowData._id));
+        //       // setSkillflag(true);
+        //     },
+        //   },
+        // ]}
       />
     </>
   );
