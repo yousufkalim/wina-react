@@ -19,11 +19,12 @@ import BusinessIcon from "@material-ui/icons/Business";
 import SchoolIcon from "@material-ui/icons/School";
 import PersonIcon from "@material-ui/icons/Person";
 
-import Users from "./Users";
+import Users from "../Admin/Users";
 import skills from "../Admin/skills";
 import Jobs from "../Admin/jobs";
 import companies from "../Admin/Companies";
 import appointments from "../Admin/appointments";
+import Consultant from "../Admin/Consultant";
 import { getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
@@ -77,8 +78,8 @@ const routes = [
     icon: <BusinessIcon />,
   },
   {
-    name: "Schools",
-    path: "/schools",
+    name: "Consultant",
+    path: "/consultant",
     icon: <SchoolIcon />,
   },
   {
@@ -154,6 +155,7 @@ const Profile = (props) => {
           <Route exact path={`/Jobs`} component={Jobs} />
           <Route exact path={`/companies`} component={companies} />
           <Route exact path={`/appointments`} component={appointments} />
+          <Route exact path={`/consultant`} component={Consultant} />
           <Redirect from="*" to={"/users"} />
         </Switch>
       </main>
