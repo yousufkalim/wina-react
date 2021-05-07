@@ -45,7 +45,7 @@ const AddConsultant = (props) => {
     <>
       <FullScreenModal
         open={props.add}
-        title={`Consultant profiles`}
+        title={`Consultant profile`}
         onClose={() => {
           props.setAdd(false);
         }}
