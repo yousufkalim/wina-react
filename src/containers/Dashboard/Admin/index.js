@@ -24,7 +24,8 @@ import skills from "../Admin/skills";
 import Jobs from "../Admin/jobs";
 import companies from "../Admin/Companies";
 import appointments from "../Admin/appointments";
-import Consultant from "../Admin/Consultant";
+import ConsultantStudent from "../Admin/ConsultantStudent";
+import ConsultantCompany from "./ConsultantCompany";
 import { getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
@@ -78,8 +79,13 @@ const routes = [
     icon: <BusinessIcon />,
   },
   {
-    name: "Consultant",
-    path: "/consultant",
+    name: "School Consultant",
+    path: "/consultantStudent",
+    icon: <SchoolIcon />,
+  },
+  {
+    name: "Company Consultant",
+    path: "/consultantCompany",
     icon: <SchoolIcon />,
   },
   {
@@ -155,7 +161,16 @@ const Profile = (props) => {
           <Route exact path={`/Jobs`} component={Jobs} />
           <Route exact path={`/companies`} component={companies} />
           <Route exact path={`/appointments`} component={appointments} />
-          <Route exact path={`/consultant`} component={Consultant} />
+          <Route
+            exact
+            path={`/consultantStudent`}
+            component={ConsultantStudent}
+          />
+          <Route
+            exact
+            path={`/consultantCompany`}
+            component={ConsultantCompany}
+          />
           <Redirect from="*" to={"/users"} />
         </Switch>
       </main>

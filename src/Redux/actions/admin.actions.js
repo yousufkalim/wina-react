@@ -346,13 +346,40 @@ export const CreateConsultant = (data) => async (dispatch) => {
     }
   }
 };
-export const listOfConsultant = () => async (dispatch) => {
+export const listOfConsultantStudent = () => async (dispatch) => {
   try {
     dispatch(set_loading(true));
-    const res = await axios.get(`admin/appointment-list`);
+    const res = await axios.get(`admin/consultant-profile-student`);
     dispatch({
-      type: adminConstants.GET_ALL_APPOINTMENT,
-      payload: { loading: false, Appointments: res.data.Appointments },
+      type: adminConstants.GET_CONSULTANT_STUDENT,
+      payload: {
+        loading: false,
+        consultantStudent: res.data.consultantStudent,
+      },
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch(set_loading(false));
+    if (error.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+  }
+};
+
+export const listOfConsultantCompany = () => async (dispatch) => {
+  try {
+    dispatch(set_loading(true));
+    const res = await axios.get(`admin/consultant-profile-teacher`);
+    dispatch({
+      type: adminConstants.GET_CONSULTANT_COMPANY,
+      payload: {
+        loading: false,
+        consultantTeacher: res.data.consultantTeacher,
+      },
     });
   } catch (error) {
     console.log(error.message);

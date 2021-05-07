@@ -1,44 +1,50 @@
 import React, { useEffect, useState, Component } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MaterialTable from "material-table";
-import { listOfSkills, deleteSkills } from "../../../../Redux/actions";
+import {
+  listOfConsultantStudent,
+  listOfConsultantCompany,
+} from "../../../../Redux/actions";
 import Button from "../../../../components/Button";
 import Add from "./AddConsultant";
 import EditSkills from "./EditConsultant";
-const Skills = () => {
+const ConsultantCompany = () => {
   const store = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [skillflag, setSkillflag] = useState(false);
   const dispatch = useDispatch();
-  const skills = useSelector((state) => state.admin.skills);
+  const student = useSelector((state) => state.admin.consultantStudent);
+  const Teacher = useSelector((state) => state.admin.consultantTeacher);
   const [skillField, setSkillField] = useState("");
   const [add, setAdd] = useState(false);
   const [editSkills, setEditSkills] = useState(false);
   const [editObj, setEditObj] = useState();
-
   // formik
 
-  function skillsdata() {
+  function _data() {
     let data = [];
-    skills &&
-      skills.map((key, index) => {
+    Teacher &&
+      Teacher.map((key, index) => {
         data.push({
           _id: key._id,
-          name: key.skillField,
-          type: key.skillType,
+          firstName: key.user.firstName,
+          lastName: key.user.lastName,
+          email: key.user.email,
+          phone: key.user.phone,
         });
         return data;
       });
     setData(data);
   }
   useEffect(() => {
-    dispatch(listOfSkills());
-  }, [skillflag]);
+    dispatch(listOfConsultantStudent());
+    dispatch(listOfConsultantCompany());
+  }, [add]);
   useEffect(() => {
-    skillsdata();
+    _data();
     setSkillflag(false);
-  }, [skillflag, skills]);
+  }, [student, Teacher]);
 
   return (
     <>
@@ -62,11 +68,13 @@ const Skills = () => {
       />
       <MaterialTable
         columns={[
-          { title: "Name", field: "name" },
-          { title: "Type", field: "type" },
+          { title: "First Name", field: "firstName" },
+          { title: "Last Name", field: "lastName" },
+          { title: "Email", field: "email" },
+          { title: "Phone", field: "phone" },
         ]}
         data={data}
-        title="Consultant"
+        title="Consultant Company "
         options={{
           actionsColumnIndex: -1,
         }}
@@ -75,17 +83,17 @@ const Skills = () => {
             icon: "edit",
             tooltip: "Edit",
             onClick: (event, rowData) => {
-              setSkillflag(true);
-              setEditSkills(true);
-              setEditObj(rowData);
+              // setSkillflag(true);
+              // setEditSkills(true);
+              // setEditObj(rowData);
             },
           },
           {
             icon: "delete",
             tooltip: "Delete",
             onClick: (event, rowData) => {
-              dispatch(deleteSkills(rowData._id));
-              setSkillflag(true);
+              // dispatch(deleteSkills(rowData._id));
+              // setSkillflag(true);
             },
           },
         ]}
@@ -93,4 +101,4 @@ const Skills = () => {
     </>
   );
 };
-export default Skills;
+export default ConsultantCompany;

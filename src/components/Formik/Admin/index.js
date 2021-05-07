@@ -14,7 +14,6 @@ export const ADD_CONSULTANT_YUP = Yup.object({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("This field is required"),
-  type: Yup.string().required("This field is required"),
   status: Yup.string().required("This field is required"),
 
   email: Yup.string().email("Invalid email").required("This field is required"),

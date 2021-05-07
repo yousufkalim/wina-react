@@ -1,6 +1,9 @@
 import React, { useEffect, useState, Component } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { listOfSkills, CreateConsultant } from "../../../../Redux/actions";
+import {
+  listOfConsultantCompany,
+  CreateConsultant,
+} from "../../../../Redux/actions";
 import FullScreenModal from "../../../../components/FullScreenModal";
 import Button from "../../../../components/Button";
 import { useFormik } from "formik";
@@ -17,7 +20,7 @@ const AddConsultant = (props) => {
       let data = {
         firstName: values.firstName,
         lastName: values.lastName,
-        type: values.type,
+        type: "companyConsultant",
         status: values.status,
         email: values.email,
         password: values.password,
@@ -33,7 +36,7 @@ const AddConsultant = (props) => {
       };
       dispatch(CreateConsultant(data));
       props.setAdd(false);
-      //dispatch(listOfSkills());
+      dispatch(listOfConsultantCompany());
       actions.resetForm();
     },
   });
@@ -97,32 +100,6 @@ const AddConsultant = (props) => {
 
                   <Col md="4">
                     <Form.Group>
-                      <Form.Label>Type Consultant *</Form.Label>
-                      <Form.Control
-                        name="type"
-                        size="lg"
-                        value={formik.values.type}
-                        onChange={handleChange}
-                        onBlur={formik.handleBlur}
-                        as="select"
-                      >
-                        <option value="">Select Consultant</option>
-                        <option value="companyConsultant">
-                          Company Consultant
-                        </option>
-                        <option value="studentConsultant">
-                          Student Consultant
-                        </option>
-                      </Form.Control>
-                    </Form.Group>
-                    <div class="text-danger h6">
-                      {formik.errors.type && formik.touched.type
-                        ? formik.errors.type
-                        : null}
-                    </div>
-                  </Col>
-                  <Col md="4">
-                    <Form.Group>
                       <Form.Label>Type status *</Form.Label>
                       <Form.Control
                         name="status"
@@ -184,6 +161,7 @@ const AddConsultant = (props) => {
                         : null}
                     </div>
                   </Col>
+                  <Col md="4"></Col>
                   <Col md="4">
                     <Form.Group controlId="Password">
                       <Form.Label>Password *</Form.Label>
