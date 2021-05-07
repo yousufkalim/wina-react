@@ -54,7 +54,7 @@ function App() {
           <Student />
         ) : store.user.type === "company" ? (
           <Company />
-        ): store.user.role === "admin" ? (
+        ) : store.user.role === "admin" ? (
           <Admin />
         ) : (
           <UnAuth />

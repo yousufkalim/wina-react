@@ -19,11 +19,14 @@ import BusinessIcon from "@material-ui/icons/Business";
 import SchoolIcon from "@material-ui/icons/School";
 import PersonIcon from "@material-ui/icons/Person";
 
-import Users from "./Users";
-import Companies from "./Companies";
+import Users from "../Admin/Users";
 import skills from "../Admin/skills";
 import Jobs from "../Admin/jobs";
-import { listOfSkills, getUser, signout } from "../../../Redux/actions";
+import companies from "../Admin/Companies";
+import appointments from "../Admin/appointments";
+import ConsultantStudent from "../Admin/ConsultantStudent";
+import ConsultantCompany from "./ConsultantCompany";
+import { getUser, signout } from "../../../Redux/actions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -76,8 +79,13 @@ const routes = [
     icon: <BusinessIcon />,
   },
   {
-    name: "Schools",
-    path: "/schools",
+    name: "School Consultant",
+    path: "/consultantStudent",
+    icon: <SchoolIcon />,
+  },
+  {
+    name: "Company Consultant",
+    path: "/consultantCompany",
     icon: <SchoolIcon />,
   },
   {
@@ -149,9 +157,20 @@ const Profile = (props) => {
         <Toolbar />
         <Switch>
           <Route exact path={`/users`} component={Users} />
-          <Route exact path={`/companies`} component={Companies} />
           <Route exact path={`/skills`} component={skills} />
           <Route exact path={`/Jobs`} component={Jobs} />
+          <Route exact path={`/companies`} component={companies} />
+          <Route exact path={`/appointments`} component={appointments} />
+          <Route
+            exact
+            path={`/consultantStudent`}
+            component={ConsultantStudent}
+          />
+          <Route
+            exact
+            path={`/consultantCompany`}
+            component={ConsultantCompany}
+          />
           <Redirect from="*" to={"/users"} />
         </Switch>
       </main>
