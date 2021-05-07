@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image, NavItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import OfferCardItem from "../../../../../components/UI/CardWithImage/OfferCardItem";
-import CardWithImage from "../../../../../components/UI/CardWithImage/CardWithImage";
-import CompanyCardDetail from "./CompanyCardDetail/CompanyCardDetail";
-import { useDispatch, useSelector } from "react-redux";
-import { baseUri } from "../../../../../urlConfig";
-import { DEFAULT_IMAGE } from "../../../../../Globals/index";
-import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
-import SubmitButton from "../../../../../components/UI/Button";
+import React, { useState, useEffect } from "react"
+import { Row, Col, Nav, Tab, Tabs, Image, NavItem } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import Button from "@material-ui/core/Button"
+import { makeStyles } from "@material-ui/core/styles"
+import OfferCardItem from "../../../../../components/UI/CardWithImage/OfferCardItem"
+import CardWithImage from "../../../../../components/UI/CardWithImage/CardWithImage"
+import CompanyCardDetail from "./CompanyCardDetail/CompanyCardDetail"
+import { useDispatch, useSelector } from "react-redux"
+import { baseUri } from "../../../../../urlConfig"
+import { DEFAULT_IMAGE } from "../../../../../Globals/index"
+import InfoCard from "../../../../../components/UI/InfoCard/InfoCard"
+import SubmitButton from "../../../../../components/UI/Button"
+import BookingModal from "../../../../../components/UI/Modal"
+import Calendar from "../../../../../components/UI/DateTimePicker"
+import Chip from "../../../../../components/UI/Chip"
 
-import BookingModal from "../../../../../components/UI/Modal";
-import Calendar from "react-calendar";
-
-import CVEngine from "../../../Student/DashbordView/ProfessionalProfile/CVEngine";
+import CVEngine from "../../../Student/DashbordView/ProfessionalProfile/CVEngine"
 import {
   Get_Company_Jobs,
   Offer_Decion_By_Company,
@@ -24,38 +24,45 @@ import {
   Get_Company_Applied_Jobs,
   Cancel_Offer_Decion_By_Company,
   Booking_Decion_By_Company,
-} from "../../../../../Redux/actions";
+} from "../../../../../Redux/actions"
 const OverviewOfOffers = () => {
-  const store = useSelector((state) => state.company);
-  const dispatch = useDispatch();
-  let JOBS = store.jobs && store.jobs;
-  let STUDENT = store.studentBySearch && store.studentBySearch;
+  const store = useSelector((state) => state.company)
+  const dispatch = useDispatch()
+  let JOBS = store.jobs && store.jobs
+  let STUDENT = store.studentBySearch && store.studentBySearch
   let ACCEPTED_OFFERS =
-    JOBS && JOBS.filter((jb) => jb.offer_status === "accepted");
-  let RECIEVED_OFFERS = store.student_appliedJobs && store.student_appliedJobs;
-  let SENT_OFFERS = store.company_appliedJobs && store.company_appliedJobs;
+    JOBS && JOBS.filter((jb) => jb.offer_status === "accepted")
+  let RECIEVED_OFFERS = store.student_appliedJobs && store.student_appliedJobs
+  let SENT_OFFERS = store.company_appliedJobs && store.company_appliedJobs
 
-  const [key, setKey] = useState("Offres");
-  const [key2, setKey2] = useState("first");
+  const [key, setKey] = useState("Offres")
+  const [key2, setKey2] = useState("first")
 
-  const [show, setShow] = useState(false);
-  const classes = useStyles();
-  const [matchSentDetail, setMatchSentDetail] = useState(false);
-  const [matchReceiveDetail, setMatchReceiveDetail] = useState(false);
-  const [userDetail, setUserDetail] = useState(false);
-  const [isDetail, setisDetail] = useState(false);
-  const [offerID, setofferID] = useState("");
-  const [RecievofferID, setRecievofferID] = useState("");
-  const [bookingSlot, setbookingSlot] = useState(new Date());
+  const [show, setShow] = useState(false)
+  const classes = useStyles()
+  const [matchSentDetail, setMatchSentDetail] = useState(false)
+  const [matchReceiveDetail, setMatchReceiveDetail] = useState(false)
+  const [userDetail, setUserDetail] = useState(false)
+  const [isDetail, setisDetail] = useState(false)
+  const [offerID, setofferID] = useState("")
+  const [RecievofferID, setRecievofferID] = useState("")
+  const [bookingSlot, setbookingSlot] = useState()
+  const [AppointmentsArray, setAppointmentsArray] = useState("")
 
-  const [SentfferID, setSentfferID] = useState("");
-  const [booking, setBooking] = useState(false);
+  const [SentfferID, setSentfferID] = useState("")
+  const [jobID, setjobID] = useState("")
 
-  const [studentDetail, setstudentDetail] = useState(false);
-  const [studentID, setstudentID] = useState("");
-  const [studentFormData, setstudentFormData] = useState("");
+  const [booking, setBooking] = useState(false)
+  const [bookingError, setBookingError] = useState("")
+
+  const [studentDetail, setstudentDetail] = useState(false)
+  const [studentID, setstudentID] = useState("")
+  const [bookingstudentID, setbookingstudentID] = useState("")
+
+  const [studentFormData, setstudentFormData] = useState("")
   // offers functions
   const handleOfferAccepted = (id, offerID, decision) => {
+    setjobID(offerID)
     dispatch(
       Offer_Decion_By_Company(
         id,
@@ -64,10 +71,11 @@ const OverviewOfOffers = () => {
         setKey,
         "Offres",
         setisDetail,
-        setstudentDetail
+        setstudentDetail,
+        handleBooking
       )
-    );
-  };
+    )
+  }
   const handlerRecievedOfferAccepted = (id, decision) => {
     dispatch(
       RecievedOffer_Decion_By_Company(
@@ -79,8 +87,8 @@ const OverviewOfOffers = () => {
         setstudentDetail,
         setMatchReceiveDetail
       )
-    );
-  };
+    )
+  }
   const handlerRecievedOfferRejected = (id, decision) => {
     dispatch(
       RecievedOffer_Decion_By_Company(
@@ -92,35 +100,35 @@ const OverviewOfOffers = () => {
         setstudentDetail,
         setMatchReceiveDetail
       )
-    );
-  };
+    )
+  }
 
   //
 
   const handleOfferRejected = (id, offerID, decision) => {
     dispatch(
       Offer_Decion_By_Company(id, offerID, decision, setKey, "MatchReceived")
-    );
-  };
+    )
+  }
 
   const handleStudentDetail = (id) => {
-    setstudentID(id);
-    setstudentDetail(!studentDetail);
-  };
+    setstudentID(id)
+    setstudentDetail(!studentDetail)
+  }
   const handleRecievedStudentDetail = (id) => {
     if (RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0) {
-      let fill = RECIEVED_OFFERS.find((dt) => dt.student._id === id);
-      setstudentDetail(!studentDetail);
-      setstudentFormData(fill.student);
+      let fill = RECIEVED_OFFERS.find((dt) => dt.student._id === id)
+      setstudentDetail(!studentDetail)
+      setstudentFormData(fill.student)
     }
-  };
+  }
   const handleSentStudentDetail = (id) => {
     if (SENT_OFFERS && SENT_OFFERS.length > 0) {
-      let fill = SENT_OFFERS.find((dt) => dt.student._id === id);
-      setstudentDetail(!studentDetail);
-      setstudentFormData(fill.student);
+      let fill = SENT_OFFERS.find((dt) => dt.student._id === id)
+      setstudentDetail(!studentDetail)
+      setstudentFormData(fill.student)
     }
-  };
+  }
   const handleCancelOffer = (id, decision) => {
     dispatch(
       Cancel_Offer_Decion_By_Company(
@@ -132,52 +140,82 @@ const OverviewOfOffers = () => {
         setMatchSentDetail,
         setisDetail
       )
-    );
-  };
+    )
+  }
   useEffect(() => {
     if (studentID && STUDENT) {
-      let fill = STUDENT.find((dt) => dt._id === studentID);
-      setstudentFormData(fill);
+      let fill = STUDENT.find((dt) => dt._id === studentID)
+      setstudentFormData(fill)
     }
-  }, [studentID]);
+  }, [studentID])
 
   useEffect(() => {
-    dispatch(Get_Company_Jobs());
+    dispatch(Get_Company_Jobs())
     if (SentfferID) {
-      dispatch(Get_Company_Applied_Jobs(SentfferID));
+      dispatch(Get_Company_Applied_Jobs(SentfferID))
     } else if (RecievofferID) {
-      dispatch(Get_Applied_Jobs(RecievofferID));
+      dispatch(Get_Applied_Jobs(RecievofferID))
     }
-  }, [key, setKey, setSentfferID, setRecievofferID]);
+  }, [key, setKey, setSentfferID, setRecievofferID])
 
   const handleDetail = (id) => {
-    setofferID(id);
-    setisDetail(!isDetail);
-  };
+    setofferID(id)
+    setisDetail(!isDetail)
+  }
 
   const matchSentDetailHandler = (id) => {
-    dispatch(Get_Company_Applied_Jobs(id));
-    setSentfferID(id);
-    setMatchSentDetail(!matchSentDetail);
-  };
+    dispatch(Get_Company_Applied_Jobs(id))
+    setSentfferID(id)
+    setMatchSentDetail(!matchSentDetail)
+  }
 
   const matchReceiveDetailHandler = (id) => {
-    setRecievofferID(id);
-    dispatch(Get_Applied_Jobs(id));
+    setRecievofferID(id)
+    dispatch(Get_Applied_Jobs(id))
 
-    setMatchReceiveDetail(!matchReceiveDetail);
-  };
+    setMatchReceiveDetail(!matchReceiveDetail)
+  }
 
   const userDetailHandler = (btn) => {
-    setUserDetail(btn);
-  };
-  const handleBooking = () => {
-    setBooking(!booking);
-  };
+    setUserDetail(btn)
+  }
+  const handleBooking = (id) => {
+    if (booking === false && id) {
+      setbookingstudentID(id)
+    }
+    setAppointmentsArray([])
+    setBooking(!booking)
+  }
   const handleSubmitBooking = () => {
-    dispatch(Booking_Decion_By_Company(bookingSlot));
-    setBooking(!booking);
-  };
+    if (AppointmentsArray && bookingstudentID) {
+      dispatch(
+        Booking_Decion_By_Company(AppointmentsArray, bookingstudentID, jobID)
+      )
+      setBooking(!booking)
+    } else {
+      setBookingError("Please add atleast one appointment")
+    }
+  }
+  const handleMultipleAppointments = () => {
+    if (bookingSlot !== undefined) {
+      if (AppointmentsArray && AppointmentsArray.length > 0) {
+        let fill = AppointmentsArray.some((ft) => ft == bookingSlot)
+        if (fill == true) {
+          setBookingError("Appointment already existed")
+        } else {
+          setAppointmentsArray([...AppointmentsArray, bookingSlot])
+          setbookingSlot("")
+          setBookingError("")
+        }
+      } else {
+        setAppointmentsArray([...AppointmentsArray, bookingSlot])
+        setbookingSlot("")
+        setBookingError("")
+      }
+    } else {
+      setBookingError("Required")
+    }
+  }
   if (studentDetail === false) {
     return (
       <>
@@ -201,10 +239,29 @@ const OverviewOfOffers = () => {
                       <div className="card-with-image-calender">
                         <Calendar
                           value={bookingSlot}
-                          onChange={(value) => setbookingSlot(value)}
+                          onChange={(e) => setbookingSlot(e.target.value)}
+                        />
+                        <div>
+                          {bookingError ? (
+                            <div className="formikErrorAuto">
+                              {bookingError}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <SubmitButton
+                          className="Enregistrer"
+                          onClick={handleMultipleAppointments}
+                          variant="primary"
+                          value="Add"
                         />
                       </div>
                     </div>
+                    <div style={{ height: "200px", overflow: "auto" }}>
+                      <Chip data={AppointmentsArray} />
+                    </div>
+
                     <div className="text-right">
                       <SubmitButton
                         className="Enregistrer"
@@ -280,7 +337,6 @@ const OverviewOfOffers = () => {
                       item={item.student}
                       status={item.status}
                       eventKey={key}
-                      handleBooking={handleBooking}
                       type="student_offers"
                       handleDetail={handleSentStudentDetail}
                       handleOfferRejected={handleCancelOffer}
@@ -335,7 +391,7 @@ const OverviewOfOffers = () => {
           </Tab>
         </Tabs>
       </>
-    );
+    )
   } else {
     return (
       <>
@@ -516,10 +572,10 @@ const OverviewOfOffers = () => {
           <h1 className="text-center">No data found</h1>
         )}
       </>
-    );
+    )
   }
-};
-export default OverviewOfOffers;
+}
+export default OverviewOfOffers
 
 const overviewOffers = [
   {
@@ -544,7 +600,7 @@ const overviewOffers = [
     btn1: "Voir",
     matches: "+ de 10 Match",
   },
-];
+]
 
 const matchSent = [
   {
@@ -569,7 +625,7 @@ const matchSent = [
     btn1: "Voir",
     matches: "Match (12)",
   },
-];
+]
 
 const matchReceive = [
   {
@@ -594,7 +650,7 @@ const matchReceive = [
     btn1: "Voir",
     matches: "Match (12)",
   },
-];
+]
 
 const matchsentItems = [
   {
@@ -623,7 +679,7 @@ const matchsentItems = [
     matches: "90%",
     cdate: "04/10/2020",
   },
-];
+]
 
 const matchUsers = [
   {
@@ -654,7 +710,7 @@ const matchUsers = [
     matches: "40%",
     cdate: "04/10/2020",
   },
-];
+]
 
 const matchReceive2 = [
   {
@@ -670,7 +726,7 @@ const matchReceive2 = [
     btn3: "Refuser",
     calender: true,
   },
-];
+]
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -681,4 +737,4 @@ const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
   },
-}));
+}))

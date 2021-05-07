@@ -355,7 +355,8 @@ export const RecievedOffer_Decion_By_Students = (
   id,
   decision,
   setKey,
-  key
+  key,
+  handleBooking
 ) => async (dispatch) => {
   if (user && token) {
     try {
@@ -376,6 +377,7 @@ export const RecievedOffer_Decion_By_Students = (
           Notistack.snackBar(res.data.message, "success")
         )
       )
+      handleBooking()
       setKey(key)
     } catch (error) {
       dispatch(set_loading_data(false))
@@ -413,6 +415,42 @@ export const Cancel_Offer_Decion_By_Students = (id, setisDetail) => async (
           Notistack.snackBar(error.response.data.message, "error")
         )
       )
+    }
+  }
+}
+
+//validate time decision by students
+export const validateAppointment_By_Students = (
+  decision,
+  jobID,
+  setBooking
+) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data(true))
+
+      const res = await axios.post(`student/validateAppointment/${jobID}`, {
+        status: decision,
+      })
+      dispatch({
+        type: studentConstants.VALIDATE_APPOINTMENT_SUCCESS,
+        payload: { loading: false },
+      })
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(res.data.message, "success")
+        )
+      )
+      setBooking(false)
+    } catch (error) {
+      dispatch(set_loading_data(false))
+      if (error.response) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(error.response.data.message, "error")
+          )
+        )
+      }
     }
   }
 }

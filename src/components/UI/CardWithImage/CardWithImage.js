@@ -121,7 +121,7 @@ const CardWithImage = (props) => {
                 />
               )}
             </div>
-            {eventKey === "Suggestion" ? (
+            {eventKey === "OffersRecieved" ? (
               <div className="card-with-image-buttons">
                 <div
                   className="card-with-image-btn card-with-image-btn-yellow"
@@ -131,30 +131,13 @@ const CardWithImage = (props) => {
                 </div>
 
                 <div
-                  onClick={() => handleOfferAccepted(item._id, "requested")}
-                  className="card-with-image-btn card-with-image-btn-green"
-                >
-                  Accepter
-                </div>
-
-                <div
-                  onClick={() => handleOfferRejected(item._id, "rejected")}
-                  className="card-with-image-btn card-with-image-btn-red"
-                >
-                  Refuser
-                </div>
-              </div>
-            ) : eventKey === "OffersRecieved" ? (
-              <div className="card-with-image-buttons">
-                <div
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                  onClick={() => handleDetail(item._id)}
-                >
-                  Voir
-                </div>
-
-                <div
-                  onClick={() => handleOfferAccepted(item._id, "accepted")}
+                  onClick={() =>
+                    handleOfferAccepted(
+                      item._id,
+                      props.appointments,
+                      "accepted"
+                    )
+                  }
                   className="card-with-image-btn card-with-image-btn-green"
                 >
                   Accepter
@@ -534,12 +517,7 @@ const CardWithImage = (props) => {
                   Voir
                 </div>
                 {props.status && props.status === "accepted" ? (
-                  <div
-                    onClick={() => props.handleBooking()}
-                    className="card-with-image-btn card-with-image-btn-green"
-                  >
-                    Accepté
-                  </div>
+                  ""
                 ) : (
                   <div
                     onClick={() => handleOfferRejected(item._id, "rejected")}
@@ -558,12 +536,7 @@ const CardWithImage = (props) => {
                   Voir
                 </div>
                 {props.status && props.status === "accepted" ? (
-                  <div
-                    onClick={() => props.handleBooking()}
-                    className="card-with-image-btn card-with-image-btn-green"
-                  >
-                    Accepté
-                  </div>
+                  ""
                 ) : (
                   <>
                     <div

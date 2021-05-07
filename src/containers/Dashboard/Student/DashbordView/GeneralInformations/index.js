@@ -1,60 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image } from "react-bootstrap";
-import AddSchool from "./Modals/add_School";
-import EditSchool from "./Modals/edit_School";
-import General_Info from "./Modals/general_Info";
-import _ from "lodash";
-import { Link } from "react-router-dom";
-import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
-import { DEFAULT_IMAGE } from "../../../../../Globals/index";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react"
+import { Row, Col, Nav, Tab, Tabs, Image } from "react-bootstrap"
+import AddSchool from "./Modals/add_School"
+import EditSchool from "./Modals/edit_School"
+import General_Info from "./Modals/general_Info"
+import _ from "lodash"
+import { Link } from "react-router-dom"
+import InfoCard from "../../../../../components/UI/InfoCard/InfoCard"
+import { DEFAULT_IMAGE } from "../../../../../Globals/index"
+import { useDispatch, useSelector } from "react-redux"
 import {
   Delete_School_Info,
   Add_Image_info_Student,
-} from "../../../../../Redux/actions";
-import { useFormik } from "formik";
-import { baseUri } from "../../../../../urlConfig";
+} from "../../../../../Redux/actions"
+import { useFormik } from "formik"
+import { baseUri } from "../../../../../urlConfig"
 const GeneralInformations = () => {
-  const store = useSelector((state) => state.student);
-  const dispatch = useDispatch();
-  const Loggin_User = store.user.firstName + " " + store.user.lastName;
-  const Education = store.user.student && store.user.student.education;
+  const store = useSelector((state) => state.student)
+  const dispatch = useDispatch()
+  const Loggin_User = store.user.firstName + " " + store.user.lastName
+  const Education = store.user.student && store.user.student.education
   const STUDENT_IMAGE =
     store.user.student && store.user.student.professional_Picture
       ? store.user.student.professional_Picture.image
-      : "";
-  const [show, setShow] = useState(false);
-  const [edit_school_show, setedit_school_show] = useState(false);
-  const [edit_school_id, setedit_school_id] = useState("");
-  const [general_info, setgeneral_info] = useState(false);
-  const [schoolsArray, setschoolsArray] = useState([]);
+      : ""
+  const [show, setShow] = useState(false)
+  const [edit_school_show, setedit_school_show] = useState(false)
+  const [edit_school_id, setedit_school_id] = useState("")
+  const [general_info, setgeneral_info] = useState(false)
+  const [schoolsArray, setschoolsArray] = useState([])
 
-  const formik = useFormik({});
+  const formik = useFormik({})
   // useEffect
   useEffect(() => {
-    let tempEducation = _.cloneDeep(Education);
+    let tempEducation = _.cloneDeep(Education)
     tempEducation.forEach(function (v) {
-      delete v._id;
-    });
-    setschoolsArray(tempEducation);
-  }, [Education]);
+      delete v._id
+    })
+    setschoolsArray(tempEducation)
+  }, [Education])
   const SchoolModalShow = () => {
-    setShow(!show);
-  };
+    setShow(!show)
+  }
   const GeneralInfoModalShow = () => {
-    setgeneral_info(!general_info);
-  };
+    setgeneral_info(!general_info)
+  }
   const handleDeleteSchool = (id) => {
     if (id) {
-      dispatch(Delete_School_Info(id));
+      dispatch(Delete_School_Info(id))
     }
-  };
+  }
   const EditSchoolModalShow = (id) => {
     if (!edit_school_id) {
-      setedit_school_id(id);
+      setedit_school_id(id)
     }
-    setedit_school_show(!edit_school_show);
-  };
+    setedit_school_show(!edit_school_show)
+  }
 
   return (
     <>
@@ -99,7 +99,7 @@ const GeneralInformations = () => {
                     />
                   </div>
                   <div className="profileImage">
-                    <div class="embed-responsive embed-responsive-16by9">
+                    <div className="embed-responsive embed-responsive-16by9">
                       <iframe
                         hidden={
                           store.user.student.presentation_Video.video
@@ -262,6 +262,6 @@ const GeneralInformations = () => {
         </Tab>
       </Tabs>
     </>
-  );
-};
-export default GeneralInformations;
+  )
+}
+export default GeneralInformations
