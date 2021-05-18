@@ -131,8 +131,8 @@ export const Create_skills = (data) => async (dispatch) => {
     dispatch(
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
+    dispatch(set_loading(false));
   } catch (error) {
-    console.log(error.message);
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -332,18 +332,23 @@ export const CreateConsultant = (data) => async (dispatch) => {
     });
     dispatch({
       type: adminConstants.CREATE_CONSULTANT,
-      payload: { loading: false, message: res.data.message },
     });
     dispatch(
       Notistack.enqueueSnackbar(
         Notistack.snackBar("Added Successfully", "success")
       )
     );
+    return true;
   } catch (error) {
     dispatch(set_loading(false));
     if (error) {
-      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("ERROR", "error")));
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data, "error")
+        )
+      );
     }
+    return false;
   }
 };
 export const listOfConsultantStudent = () => async (dispatch) => {

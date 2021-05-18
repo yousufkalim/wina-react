@@ -35,9 +35,10 @@ const AddConsultant = (props) => {
         },
       };
       dispatch(CreateConsultant(data));
-      props.setAdd(false);
+      console.log(dispatch(CreateConsultant(data)));
+      //props.setAdd(false);
+      //actions.resetForm();
       dispatch(listOfConsultantCompany());
-      actions.resetForm();
     },
   });
   const handleChange = (e) => {
@@ -111,7 +112,7 @@ const AddConsultant = (props) => {
                       >
                         <option value="">Select Status</option>
                         <option value="active">Active</option>
-                        <option value="deactivate">Deactivate</option>
+                        <option value="deactive">Deactive</option>
                       </Form.Control>
                     </Form.Group>
                     <div class="text-danger h6">

@@ -10,14 +10,16 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 
 const AddSkills = (props) => {
   const dispatch = useDispatch();
+  const [addSkills, setAddSkills] = useState(false);
   const formik = useFormik({
     initialValues: ADD_SKILL_STATE,
     validationSchema: ADD_SKILL_YUP,
     onSubmit: async (values, actions) => {
       dispatch(Create_skills(values));
-      props.setAddSkills(false);
+      setAddSkills(false);
       dispatch(listOfSkills());
       actions.resetForm();
+      props.setUpdateSkills(true);
     },
   });
   const handleChange = (e) => {
@@ -26,11 +28,20 @@ const AddSkills = (props) => {
   };
   return (
     <>
+      <Button
+        fullWidth={false}
+        minWidth="10%"
+        text={props.text}
+        style={props.style}
+        onClick={() => {
+          setAddSkills(true);
+        }}
+      />
       <FullScreenModal
-        open={props.addSkills}
+        open={addSkills}
         title={`Skills`}
         onClose={() => {
-          props.setAddSkills(false);
+          setAddSkills(false);
         }}
         body={
           <>

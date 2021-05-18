@@ -36,8 +36,8 @@ const AddConsultant = (props) => {
       };
       dispatch(CreateConsultant(data));
       props.setAdd(false);
-      dispatch(listOfConsultantStudent());
       actions.resetForm();
+      dispatch(listOfConsultantStudent());
     },
   });
   const handleChange = (e) => {
@@ -111,7 +111,7 @@ const AddConsultant = (props) => {
                       >
                         <option value="">Select Status</option>
                         <option value="active">Active</option>
-                        <option value="deactivate">Deactivate</option>
+                        <option value="deactive">Deactive</option>
                       </Form.Control>
                     </Form.Group>
                     <div class="text-danger h6">

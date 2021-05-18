@@ -13,7 +13,6 @@ const Skills = () => {
   const dispatch = useDispatch();
   const skills = useSelector((state) => state.admin.skills);
   const [skillField, setSkillField] = useState("");
-  const [addSkills, setAddSkills] = useState(false);
   const [editSkills, setEditSkills] = useState(false);
   const [editObj, setEditObj] = useState();
 
@@ -42,7 +41,6 @@ const Skills = () => {
 
   return (
     <>
-      <AddSkills addSkills={addSkills} setAddSkills={setAddSkills} />
       {editSkills === true ? (
         <EditSkills
           editSkills={editSkills}
@@ -51,14 +49,9 @@ const Skills = () => {
         />
       ) : null}
 
-      <Button
-        fullWidth={false}
-        minWidth="10%"
-        text="CREATE"
+      <AddSkills
+        text="Create"
         style={{ margin: "0px 0px 8px auto", display: "block" }}
-        onClick={() => {
-          setAddSkills(true);
-        }}
       />
       <MaterialTable
         columns={[
