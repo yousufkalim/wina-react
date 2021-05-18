@@ -2,14 +2,10 @@
   html {
     font-size: 90%;
   }
-  .importCV {
-    right: 31%;
-  }
+ 
 }
 @media screen and (max-width: 1700px) {
-  .importCV {
-    right: 28%;
-  }
+  
 }
 @media screen and (max-width: 1600px) {
   html {
@@ -110,20 +106,12 @@
   .professional-modal-second{
     padding-right: 2rem;
   }
-  .importCV {
-    top: 12.3%;
-    right: 32%;
-  }
+   
 }
 
 @media screen and (max-width: 1400px) {
   html {
     font-size: 70%;
-  }
-  .importCV {
-    top: 12.7%;
-    right: 33%;
-    z-index: 1;
   }
   .offer-card {
     height: 28rem;
@@ -179,11 +167,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .importCV {
-    top: 13.4%;
-    right: 30%;
-    z-index: 1;
-  }
+  
   .generalInformation {
     height: auto;
     padding-top: 1.5rem;
@@ -228,11 +212,8 @@
     width: 97%;
     padding: 2rem 1.2rem;
   }
-.importCV {
-  top: 7%;
-  right: 27%;
+ 
 }
-
 @media screen and (max-width: 800px) {
   html {
     font-size: 45%;
@@ -345,6 +326,31 @@
   .homeBackground .post_mobile-view .col-lg-2 {
     width: 50%;
   }
+}
+@media (min-width: 768px) and (max-width: 800px) {
+  .importCV {
+    top: 34%;
+    right: 28%;
+}
+}
+
+@media (min-width: 800px) and (max-width: 991px) {
+  .importCV {
+    top: 38%;
+    right: 24%;
+}
+}
+@media (min-width: 992px) and (max-width: 1100px) {
+  .importCV {
+    top: 45%;
+    right: 24%;
+}
+}
+@media (min-width: 1100px) and (max-width: 1200px) {
+  .importCV { 
+    top: 90px; 
+    right: 31%;
+}
 }
 /* @media (min-width: 768px) and (max-width: 991px) {
 }
