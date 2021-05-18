@@ -34,11 +34,14 @@ const AddConsultant = (props) => {
           latitude: "995",
         },
       };
-      dispatch(CreateConsultant(data));
-      console.log(dispatch(CreateConsultant(data)));
-      //props.setAdd(false);
-      //actions.resetForm();
-      dispatch(listOfConsultantCompany());
+      let check = dispatch(CreateConsultant(data));
+      check.then(function (value) {
+        if (value === true) {
+          props.setAdd(false);
+          actions.resetForm();
+          dispatch(listOfConsultantCompany());
+        }
+      });
     },
   });
   const handleChange = (e) => {

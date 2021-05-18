@@ -49,6 +49,7 @@ export default function Users() {
           email: key.email,
           phone: key.phone,
           role: key.role,
+          type: key.type,
         });
         return data;
       });
@@ -70,6 +71,7 @@ export default function Users() {
           { title: "Email", field: "email" },
           { title: "Phone", field: "phone" },
           { title: "Role", field: "role" },
+          { title: "type", field: "type" },
         ]}
         data={data}
         title="User "
