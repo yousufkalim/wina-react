@@ -79,12 +79,12 @@ const routes = [
     icon: <BusinessIcon />,
   },
   {
-    name: "School Consultant",
+    name: "Consultant Student",
     path: "/consultantStudent",
     icon: <SchoolIcon />,
   },
   {
-    name: "Company Consultant",
+    name: "Consultant Company",
     path: "/consultantCompany",
     icon: <SchoolIcon />,
   },
