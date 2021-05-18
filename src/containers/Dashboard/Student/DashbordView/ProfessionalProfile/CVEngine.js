@@ -154,6 +154,34 @@ export default function CVEngine(props) {
                     No professional networks found.....
                   </p>
                 )}
+               <div className="formation">Compétences générales</div>
+                <ul className="PLinks">
+                  {USER.student.softSkills.length > 0 ? (
+                    USER.student.softSkills.map((ed) => (
+                    
+                        <li>{ed.skillField}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Compétences générales info found.....
+                    </p>
+                  )}
+                </ul>
+                <div className="formation">Compétences spécialisées</div>
+                <ul className="PLinks">
+                  {USER.student.hardSkills.length > 0 ? (
+                    USER.student.hardSkills.map((ed) => (
+                    
+                        <li>{ed.skillField}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Compétences spécialisées info found.....
+                    </p>
+                  )}
+                </ul>
               </Col>
             </Row>
           ) : (
@@ -294,6 +322,34 @@ export default function CVEngine(props) {
                     No professional networks found.....
                   </p>
                 )}
+                <div className="formation">Compétences générales</div>
+                <ul className="PLinks">
+                  {USER.student.softSkills.length > 0 ? (
+                    USER.student.softSkills.map((ed) => (
+                    
+                        <li>{ed.skillField}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Compétences générales info found.....
+                    </p>
+                  )}
+                </ul>
+                <div className="formation">Compétences spécialisées</div>
+                <ul className="PLinks">
+                  {USER.student.hardSkills.length > 0 ? (
+                    USER.student.hardSkills.map((ed) => (
+                    
+                        <li>{ed.skillField}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Compétences spécialisées info found.....
+                    </p>
+                  )}
+                </ul>
               </Col>
             </Row>
           ) : (

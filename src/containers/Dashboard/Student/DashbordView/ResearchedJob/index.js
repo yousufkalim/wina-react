@@ -1,65 +1,71 @@
-import React, { useState, useEffect } from "react"
-import { Row, Col, Tab, Tabs } from "react-bootstrap"
-import Checkbox from "@material-ui/core/Checkbox"
-import TextField from "@material-ui/core/TextField"
-import Autocomplete from "@material-ui/lab/Autocomplete"
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
-import CheckBoxIcon from "@material-ui/icons/CheckBox"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import ModalInput from "../../../../../components/UI/TextField"
-import Select from "../../../../../components/UI/Select"
-import DatePicker from "../../../../../components/UI/DatePicker"
-import RadioButton from "../../../../../components/UI/RadioButton"
-import CheckBox from "../../../../../components/UI/CheckBox"
-import Button from "../../../../../components/UI/Button"
-import { useDispatch, useSelector } from "react-redux"
-import { Add_info_Student } from "../../../../../Redux/actions"
-import { useFormik } from "formik"
+import React, { useState, useEffect } from "react";
+import { Row, Col, Tab, Tabs } from "react-bootstrap";
+import Checkbox from "@material-ui/core/Checkbox";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import ModalInput from "../../../../../components/UI/TextField";
+import Select from "../../../../../components/UI/Select";
+import DatePicker from "../../../../../components/UI/DatePicker";
+import RadioButton from "../../../../../components/UI/RadioButton";
+import CheckBox from "../../../../../components/UI/CheckBox";
+import Button from "../../../../../components/UI/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { Add_info_Student } from "../../../../../Redux/actions";
+import { useFormik } from "formik";
+import TextArea from "../../../../../components/UI/Textarea";
 
-import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student"
+import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
 import {
   DomainOptions,
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
-} from "../../../../../Globals"
+} from "../../../../../Globals";
 
-import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation"
+import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
 
 const ResearchedJob = () => {
-  const store = useSelector((state) => state.student)
-  const dispatch = useDispatch()
-  const POSITION_SOUGHT = store.user && store.user.student.positionSought
+  const store = useSelector((state) => state.student);
+  const dispatch = useDispatch();
+  const POSITION_SOUGHT = store.user && store.user.student.positionSought;
 
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
     validationSchema: POSITION_SOUGHT_YUP,
     onSubmit: (values) => {
-      let obj = {}
-      obj.positionSought = values
-      dispatch(Add_info_Student(obj, formik))
+      let obj = {};
+      obj.positionSought = values;
+      dispatch(Add_info_Student(obj, formik));
     },
-  })
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
-    formik.setFieldValue(name, value)
-  }
+    formik.setFieldValue(name, value);
+  };
 
   useEffect(() => {
     if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
-      formik.setFieldValue("domain", POSITION_SOUGHT.domain)
-      formik.setFieldValue("position", POSITION_SOUGHT.position)
-      formik.setFieldValue("duration", POSITION_SOUGHT.duration)
-      formik.setFieldValue("startDate", POSITION_SOUGHT.startDate)
+      formik.setFieldValue("domain", POSITION_SOUGHT.domain);
+      formik.setFieldValue("description", POSITION_SOUGHT.description);
+
+      formik.setFieldValue("position", POSITION_SOUGHT.position);
+      formik.setFieldValue("duration", POSITION_SOUGHT.duration);
+      formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
       formik.setFieldValue(
         "alternationRhythm",
         POSITION_SOUGHT.alternationRhythm
-      )
-      formik.setFieldValue("levelOfEducation", POSITION_SOUGHT.levelOfEducation)
+      );
+      formik.setFieldValue(
+        "levelOfEducation",
+        POSITION_SOUGHT.levelOfEducation
+      );
     }
-  }, [])
+  }, []);
   return (
     <>
       <Tabs
@@ -138,7 +144,20 @@ const ResearchedJob = () => {
                     </div>
                   ) : null}
                 </Col>
-                <Col lg={3} md={3} className="col-3-width"></Col>
+                <Col lg={3} md={3}>
+                  <DatePicker
+                    name="dateOfBirth"
+                    label={"Date Of Birth"}
+                    value={formik.values.dateOfBirth}
+                    onChange={handleChange}
+                  />
+                  {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.dateOfBirth}
+                    </div>
+                  ) : null}
+                </Col>
 
                 <Col lg={3} md={3} className="col-3-width">
                   <Select
@@ -156,7 +175,6 @@ const ResearchedJob = () => {
                     </div>
                   ) : null}
                 </Col>
-                <Col lg={3} md={3}></Col>
               </Row>
               <div className="checkBoxes">
                 <RadioButton
@@ -171,6 +189,21 @@ const ResearchedJob = () => {
                   <div className="formikErrorAuto">
                     {" "}
                     {formik.errors.alternationRhythm}
+                  </div>
+                ) : null}
+              </div>
+              <div className="col-lg-6">
+                <TextArea
+                  name="description"
+                  placeholder="Enter Description"
+                  value={formik.values.description}
+                  onChange={handleChange}
+                  rows={3}
+                />
+                {formik.touched.description && formik.errors.description ? (
+                  <div className="formikErrorDesc">
+                    {" "}
+                    {formik.errors.description}
                   </div>
                 ) : null}
               </div>
@@ -208,6 +241,6 @@ const ResearchedJob = () => {
         </Tab> */}
       </Tabs>
     </>
-  )
-}
-export default ResearchedJob
+  );
+};
+export default ResearchedJob;

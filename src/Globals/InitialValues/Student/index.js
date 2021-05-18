@@ -4,7 +4,7 @@ export const SIGNUP_STATE = {
   email: "",
   password: "",
   confirm_password: "",
-  // type: "student",
+  type: "student",
   phone: "",
   address: {
     city: "",
@@ -51,7 +51,7 @@ export const PROFESSIONAL_PROFILE_STATE = {
 }
 export const POSITION_SOUGHT_STATE = {
   domain: "",
-
+  dateOfBirth:"",
   position: "",
   duration: "",
   startDate: "",

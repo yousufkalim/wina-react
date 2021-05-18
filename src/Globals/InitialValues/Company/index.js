@@ -32,13 +32,15 @@ export const POSITION_SOUGHT_STATE = {
   description: "",
   domain: "",
   position: "",
+  title: "",
+
   duration: "",
   startDate: "",
   alternationRhythm: "",
   levelOfEducation: "",
   softSkills: "",
   hardSkills: "",
-  // ageRange: "",
+  ageRange: "",
   photo: "",
   location: {
     city: "",

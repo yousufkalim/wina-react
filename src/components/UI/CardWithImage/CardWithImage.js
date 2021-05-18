@@ -1,26 +1,65 @@
-import React, { useState, useEffect } from "react"
-import "./CardWithImage.css"
-import { Button, makeStyles } from "@material-ui/core"
-import CardItem from "./OfferCardItem"
-import DoneIcon from "@material-ui/icons/Done"
-import Calendar from "react-calendar"
-import { ImLocation } from "react-icons/all"
-import { DEFAULT_IMAGE } from "../../../Globals"
-import { baseUri } from "../../../urlConfig"
-
+import React, { useState, useEffect } from "react";
+import "./CardWithImage.css";
+import { Button, makeStyles } from "@material-ui/core";
+import CardItem from "./OfferCardItem";
+import DoneIcon from "@material-ui/icons/Done";
+import Calendar from "react-calendar";
+import { ImLocation } from "react-icons/all";
+import { DEFAULT_IMAGE } from "../../../Globals";
+import { baseUri } from "../../../urlConfig";
+import moment from "moment";
 const CardWithImage = (props) => {
-  const classes = useStyles()
+  const classes = useStyles();
   const {
     item,
     eventKey,
     handleDetail,
     handleOfferRejected,
     handleOfferAccepted,
-  } = props
+  } = props;
+  const [date, setdate] = useState("");
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  var days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  // useEffect(() => {
+  //   if (props.app) {
+  //     var check = moment(props.app.timmings[0], "YYYY/MM/DD");
+
+  //     var month = check.format("M");
+  //     var day = check.format("D");
+  //     var year = check.format("YYYY");
+  //     let checkDate = days[day]
+  //       // + " " + month + "th" + monthNames[month] + year;
+  //     // setDate(checkDate);
+  //     console.log(checkDate, "month");
+  //   }
+  // }, [props.app]);
+
   const recievedStudentMatchedFunc = (item) => {
     let matchLength = item.student_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length
+    ).length;
 
     if (item.student_requests && item.student_requests.length > 0) {
       return (
@@ -36,15 +75,15 @@ const CardWithImage = (props) => {
             ""
           )}
         </div>
-      )
+      );
     } else {
-      return
+      return;
     }
-  }
+  };
   const sendStudentMatchedFunc = (item) => {
     let matchLength = item.company_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length
+    ).length;
     if (item.company_requests && item.company_requests.length > 0) {
       return (
         <div>
@@ -59,12 +98,12 @@ const CardWithImage = (props) => {
             ""
           )}
         </div>
-      )
+      );
     } else {
-      return
+      return;
     }
-  }
-  const [value, onChange] = useState(new Date())
+  };
+  const [value, onChange] = useState(new Date());
   if (props.type && props.type === "student") {
     return (
       <div className="card-with-image">
@@ -81,10 +120,27 @@ const CardWithImage = (props) => {
           </div>
           <div className="card-with-image-container">
             <div className="card-with-image-title">
-              <div>
+              <div className="flex">
                 <h3>
                   <b>{item.company && item.company.name}</b>
                 </h3>
+                {props.app.status === "Approved" ? (
+                  <>
+                    <h3 className="text-success">
+                      Matched
+                      {console.log(props.app, "app,")}
+                    </h3>
+                    <p>
+                      Interview is on {new Date(props.app.timmings[0]).getDay()}
+                      th May
+                      {new Date(props.app.timmings[0]).getYear()} at{" "}
+                      {new Date(props.app.timmings[0]).getHours()}:
+                      {new Date(props.app.timmings[0]).getMinutes()}
+                    </p>
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
               {item.startDate && (
                 <div className="card-with-image-date">{item.startDate}</div>
@@ -129,7 +185,6 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
-
                 <div
                   onClick={() =>
                     handleOfferAccepted(
@@ -188,7 +243,7 @@ const CardWithImage = (props) => {
           ""
         )} */}
       </div>
-    )
+    );
   } else if (props.type && props.type === "company") {
     return (
       <div className="card-with-image">
@@ -307,7 +362,7 @@ const CardWithImage = (props) => {
           ? recievedStudentMatchedFunc(item)
           : ""}
       </div>
-    )
+    );
   } else if (props.type && props.type === "search_student") {
     return (
       <div className="card-with-image">
@@ -429,7 +484,7 @@ const CardWithImage = (props) => {
           ""
         )}
       </div>
-    )
+    );
   } else if (props.type && props.type === "student_offers") {
     return (
       <div className="card-with-image">
@@ -540,7 +595,9 @@ const CardWithImage = (props) => {
                 ) : (
                   <>
                     <div
-                      onClick={() => handleOfferAccepted(item._id, "accepted")}
+                      onClick={() =>
+                        handleOfferAccepted(item._id, props.jobID, "accepted")
+                      }
                       className="card-with-image-btn card-with-image-btn-green"
                     >
                       Matcher
@@ -593,17 +650,17 @@ const CardWithImage = (props) => {
           ""
         )}
       </div>
-    )
+    );
   } else {
     return (
       <div>
         <h1>hello</h1>
       </div>
-    )
+    );
   }
-}
+};
 
-export default CardWithImage
+export default CardWithImage;
 const useStyles = makeStyles({
   root1: {
     "&:hover": {
@@ -690,4 +747,4 @@ const useStyles = makeStyles({
   label: {
     textTransform: "capitalize",
   },
-})
+});

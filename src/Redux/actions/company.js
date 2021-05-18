@@ -259,7 +259,7 @@ export const RecievedOffer_Decion_By_Company = (
   setKey,
   key,
   setstudentDetail,
-  setMatchReceiveDetail
+  setMatchReceiveDetail,handleBooking
 ) => async (dispatch) => {
   if (user && token) {
     try {
@@ -282,6 +282,7 @@ export const RecievedOffer_Decion_By_Company = (
         )
       )
       setKey(key)
+      handleBooking(id)
       setstudentDetail(false)
       setMatchReceiveDetail(false)
     } catch (error) {
