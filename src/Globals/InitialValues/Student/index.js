@@ -51,6 +51,7 @@ export const PROFESSIONAL_PROFILE_STATE = {
 }
 export const POSITION_SOUGHT_STATE = {
   domain: "",
+
   position: "",
   duration: "",
   startDate: "",
