@@ -182,6 +182,20 @@ export default function CVEngine(props) {
                     </p>
                   )}
                 </ul>
+                <div className="formation">Languages</div>
+                <ul className="PLinks">
+                  {USER.student.languages.length > 0 ? (
+                    USER.student.languages.map((ed) => (
+                    
+                        <li>{ed.name}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Languages info found.....
+                    </p>
+                  )}
+                </ul>
               </Col>
             </Row>
           ) : (
@@ -347,6 +361,20 @@ export default function CVEngine(props) {
                   ) : (
                     <p className="text-center">
                       No Compétences spécialisées info found.....
+                    </p>
+                  )}
+                </ul>
+                <div className="formation">Languages</div>
+                <ul className="PLinks">
+                  {USER.student.languages.length > 0 ? (
+                    USER.student.languages.map((ed) => (
+                    
+                        <li>{ed.name}</li>
+                     
+                    ))
+                  ) : (
+                    <p className="text-center">
+                      No Languages info found.....
                     </p>
                   )}
                 </ul>
