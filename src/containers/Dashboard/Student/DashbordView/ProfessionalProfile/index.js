@@ -9,7 +9,7 @@ import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
 import axios from "axios";
 import { baseUrl } from "../../../../../urlConfig";
 import * as Notistack from "../../../../../Redux/actions/notistack";
-
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Delete_Professional_Info,
@@ -17,6 +17,7 @@ import {
 } from "../../../../../Redux/actions";
 import _ from "lodash";
 import CVENGINE from "./CVEngine";
+import { baseUri } from "../../../../../urlConfig";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -53,6 +54,9 @@ const ProfessionalProfile = () => {
       delete v._id;
     });
     setprofessionalArray(tempProfessional_Profile);
+    if (USER.student.resume !== "") {
+      setPDF(USER.student.resume);
+    }
   }, []);
   const EditProfessionalCareerModal = (id) => {
     if (!edit_profile_id) {
@@ -119,26 +123,28 @@ const ProfessionalProfile = () => {
         data={Professional_Profile}
         professionalArray={professionalArray}
       />
-      <div className="row ml-4 mt-5">
-        <div className="col-lg-12 text-right">
-          <div className="row">
-            <div className="col-lg-6">
-              <input
-                accept="application/pdf"
-                className={classes.input}
-                id="contained-button-file"
-                onChange={handleFileUpload}
-                type="file"
-              />
-              <label htmlFor="contained-button-file">
-                <Button variant="contained" color="primary" component="span">
-                  Importer CV
-                </Button>
-              </label>
-            </div>
-            <div className="col-lg-6">
-              {PDF ? <div className="text-left">{PDF}</div> : ""}
-            </div>
+      <div className="row importCV">
+        <div className="col-xs-6">
+          <input
+            accept="application/pdf"
+            className={classes.input}
+            id="contained-button-file"
+            onChange={handleFileUpload}
+            type="file"
+          />
+          <label htmlFor="contained-button-file">
+            <Button variant="contained" color="primary" component="span">
+              Importer CV
+            </Button>
+          </label>
+        </div>
+        <div className="col-xs-6">
+          <div style={{ margin: "6px 10px 0px 10px", width: "10px" }}>
+            {PDF ? (
+              <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
+                <PictureAsPdfIcon style={{ fontSize: 40 }} color="primary" />
+              </a>
+            ) : null}
           </div>
         </div>
       </div>
