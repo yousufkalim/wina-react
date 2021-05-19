@@ -27,7 +27,7 @@ export const set_loading_data = (loading) => ({
   loading,
 })
 
-export const Student_Signup = (user, formik) => async (dispatch) => {
+export const Student_Signup = (user, formik,handleModal) => async (dispatch) => {
   try {
     dispatch(set_loading(true))
 
@@ -57,6 +57,7 @@ export const Student_Signup = (user, formik) => async (dispatch) => {
       )
       formik.setSubmitting(false)
       formik.handleReset()
+      handleModal('student')
       dispatch(set_loading(false))
     } catch (error) {
       dispatch(set_loading(false))

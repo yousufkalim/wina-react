@@ -4,7 +4,7 @@ export const SIGNUP_STATE = {
   email: "",
   password: "",
   confirm_password: "",
-  type: "student",
+  // type: "student",
   phone: "",
   address: {
     city: "",

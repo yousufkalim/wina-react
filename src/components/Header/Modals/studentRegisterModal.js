@@ -29,7 +29,7 @@ export default function StudentRegister(props) {
     initialValues: SIGNUP_STATE,
     validationSchema: SIGNUP_YUP,
     onSubmit: (values) => {
-      dispatch(Student_Signup(values, formik));
+      dispatch(Student_Signup(values, formik,props.handleModal));
     },
   });
 

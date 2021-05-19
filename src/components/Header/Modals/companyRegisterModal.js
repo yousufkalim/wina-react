@@ -62,7 +62,7 @@ const StudentRegister = (props) => {
         "phone",
         "positionHeld",
       ].forEach((e) => delete tempEducation[e]);
-      dispatch(Company_Signup(tempEducation, formik));
+      dispatch(Company_Signup(tempEducation, formik,props.handleModal));
       formik2.setSubmitting(false);
       formik.setSubmitting(false);
     },
