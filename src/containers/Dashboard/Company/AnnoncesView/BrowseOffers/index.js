@@ -20,7 +20,7 @@ import Select from "../../../../../components/UI/Select";
 import Button from "../../../../../components/UI/Button";
 import axios from "axios";
 import RadioButton from "../../../../../components/UI/RadioButton";
-
+import { useHistory } from "react-router-dom";
 import {
   DomainOptions,
   DurationOptions,
@@ -40,6 +40,7 @@ import Texts from "../../../../../Globals/Texts";
 import { baseUrl } from "../../../../../urlConfig";
 import Skills from "../../../Admin/skills/AddSkills";
 export default function BrowseOffers() {
+  const history = useHistory();
   const [show, setShow] = useState(false);
   const [updateSkills, setUpdateSkills] = useState(false);
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ export default function BrowseOffers() {
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
     validationSchema: POSITION_SOUGHT_YUP,
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       let tempValues = _.cloneDeep(values);
       const formdataImage = new FormData();
       formdataImage.append("image", image);
@@ -93,6 +94,7 @@ export default function BrowseOffers() {
       setItems([]);
       setimageURI("");
       setImage("");
+      history.push("/invalid");
     },
   });
   // onChange
@@ -112,7 +114,9 @@ export default function BrowseOffers() {
     formik.setFieldValue(name, value);
   };
   // useEffect
-
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
   useEffect(() => {
     dispatch(getSkills("Soft Skill"));
     dispatch(getSkills("Hard Skill"));
@@ -403,11 +407,11 @@ export default function BrowseOffers() {
                     ) : null}
                   </Col>
                   <Col md={4}>
-                    <Skills
+                    {/* <Skills
                       text="Other Skills"
                       setUpdateSkills={setUpdateSkills}
                       style={{ margin: "14px 0px 0px 0px", height: "38px" }}
-                    />
+                    /> */}
                   </Col>
                 </Row>
 
