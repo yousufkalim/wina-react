@@ -58,3 +58,10 @@ export const levelOfEducation = [
     title: "11:Doctorat  ",
   },
 ];
+
+export const AgeRangeOptions = [
+  { title: "18-20" },
+  { title: "21-24" },
+  { title: "25+" },
+  
+];

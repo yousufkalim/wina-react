@@ -71,7 +71,7 @@ export const PROFESSIONAL_PROFILE_YUP = Yup.object({
 })
 export const POSITION_SOUGHT_YUP = Yup.object({
   domain: Yup.string().required("Required"),
-
+  dateOfBirth: Yup.string().required("Required"),
   position: Yup.string().required("Required"),
   duration: Yup.string().required("Required"),
   startDate: Yup.string().required("Required"),

@@ -40,9 +40,7 @@ function App() {
   }, [loading]);
   useEffect(() => {
     dispatch(SocketNotifications());
-    // return () => {
-    //   io.socket.off();
-    // };
+    
   }, [loading]);
   return (
     <>

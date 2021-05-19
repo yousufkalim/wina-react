@@ -26,6 +26,7 @@ import {
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
+  AgeRangeOptions,
 } from "../../../../../Globals";
 import {
   getSkills,
@@ -42,7 +43,7 @@ import Skills from "../../../Admin/skills/AddSkills";
 export default function BrowseOffers() {
   const history = useHistory();
   const [show, setShow] = useState(false);
-  const [updateSkills, setUpdateSkills] = useState(false);
+
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
 
@@ -120,8 +121,7 @@ export default function BrowseOffers() {
   useEffect(() => {
     dispatch(getSkills("Soft Skill"));
     dispatch(getSkills("Hard Skill"));
-    setUpdateSkills(false);
-  }, [updateSkills]);
+  }, []);
   useEffect(() => {
     if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
       const {
@@ -254,19 +254,19 @@ export default function BrowseOffers() {
                           ) : null}
                         </div>
                         <div className="w-50">
-                          <AutoComplete
-                            formik={formik}
-                            onChange={handleAddressChange}
-                            items={items}
-                            placeholder="Adresse"
-                            name={"location"}
-                            loading={store2.loading}
-                            onSubmit={onSubmitAddress}
+                          <ModalInput
+                            name="title"
+                            label="Title"
+                            // className="Job_title"
+                            placeholder="Title"
+                            value={formik.values.title}
+                            onChange={handleChange}
+                            type="text"
                           />
-                          {formik.touched.location && formik.errors.location ? (
+                          {formik.touched.title && formik.errors.title ? (
                             <div className="formikErrorAuto">
                               {" "}
-                              {formik.errors.location.city}
+                              {formik.errors.title}
                             </div>
                           ) : null}
                         </div>
@@ -338,9 +338,45 @@ export default function BrowseOffers() {
                           ) : null}
                         </div>
                       </div>
+                      <div className="pt-4 FieldAndPlaces">
+                        <div>
+                          <Select
+                            name="ageRange"
+                            value={formik.values.ageRange}
+                            onChange={handleChange}
+                            options={AgeRangeOptions}
+                            label="ageRange"
+                          />
+
+                          {formik.touched.ageRange && formik.errors.ageRange ? (
+                            <div className="formikErrorDate">
+                              {" "}
+                              {formik.errors.ageRange}
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="w-50">
+                          <AutoComplete
+                            formik={formik}
+                            onChange={handleAddressChange}
+                            items={items}
+                            placeholder="Adresse"
+                            name={"location"}
+                            loading={store2.loading}
+                            onSubmit={onSubmitAddress}
+                          />
+                          {formik.touched.location && formik.errors.location ? (
+                            <div className="formikErrorAuto">
+                              {" "}
+                              {formik.errors.location.city}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
                       <div className=" pt-4">
                         <TextArea
                           name="description"
+                          placeholder="Enter Description"
                           value={formik.values.description}
                           onChange={handleChange}
                           rows={3}
@@ -406,21 +442,7 @@ export default function BrowseOffers() {
                       </div>
                     ) : null}
                   </Col>
-                  <Col md={4}>
-                    {/* <Skills
-                      text="Other Skills"
-                      setUpdateSkills={setUpdateSkills}
-                      style={{ margin: "14px 0px 0px 0px", height: "38px" }}
-                    /> */}
-                  </Col>
                 </Row>
-
-                {/* <div className="description">
-                  <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Ce poste est pourvu" />
-                  </Form.Group>
-                </div> */}
-                {console.log(store)}
                 <div className="text-right">
                   {store.loading ? (
                     <Button

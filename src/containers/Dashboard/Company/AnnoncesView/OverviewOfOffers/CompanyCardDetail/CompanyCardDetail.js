@@ -6,6 +6,8 @@ import Slider from "@material-ui/core/Slider";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import TextArea from "../../../../../../components/UI/Textarea";
+
 import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 import "./CompanyCardDetail.css";
 import { FaTimes } from "react-icons/all";
@@ -26,6 +28,7 @@ import {
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
+  AgeRangeOptions,
 } from "../../../../../../Globals";
 import RadioButton from "../../../../../../components/UI/RadioButton";
 
@@ -107,6 +110,7 @@ const CompanyCardDetail = (props) => {
     }
   }, []);
   // onChange
+  console.log(formik,"formik")
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "photo") {
@@ -138,7 +142,10 @@ const CompanyCardDetail = (props) => {
   useEffect(() => {
     if (JOB) {
       formik.setFieldValue("position", JOB.position);
+      formik.setFieldValue("title", JOB.title);
+      formik.setFieldValue("description", JOB.description);
 
+      formik.setFieldValue("ageRange", JOB.ageRange);
       formik.setFieldValue("domain", JOB.domain);
       formik.setFieldValue("startDate", JOB.startDate);
       formik.setFieldValue("duration", JOB.duration);
@@ -258,6 +265,9 @@ const CompanyCardDetail = (props) => {
               <div className="offer-detail-header">
                 <div className="offer-detail-header-image text-right">
                   <img
+                  width={300}
+                  height={300}
+
                     src={
                       JOB.photo.image
                         ? `${baseUri}/${JOB.photo.image}`
@@ -300,6 +310,23 @@ const CompanyCardDetail = (props) => {
                       <div className="formikErrorAuto">
                         {" "}
                         {formik.errors.position}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="w-50 pl-5">
+                    <ModalInput
+                      name="title"
+                      label="Title"
+                      // className="Job_title"
+                      placeholder="Title"
+                      value={formik.values.title}
+                      onChange={handleChange}
+                      type="text"
+                    />
+                    {formik.touched.title && formik.errors.title ? (
+                      <div className="formikErrorAuto">
+                        {" "}
+                        {formik.errors.title}
                       </div>
                     ) : null}
                   </div>
@@ -350,6 +377,22 @@ const CompanyCardDetail = (props) => {
                       <div className="formikErrorDate">
                         {" "}
                         {formik.errors.domain}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="w-50">
+                    <Select
+                      name="ageRange"
+                      value={formik.values.ageRange}
+                      onChange={handleChange}
+                      options={AgeRangeOptions}
+                      label="ageRange"
+                    />
+
+                    {formik.touched.ageRange && formik.errors.ageRange ? (
+                      <div className="formikErrorDate">
+                        {" "}
+                        {formik.errors.ageRange}
                       </div>
                     ) : null}
                   </div>
@@ -405,6 +448,22 @@ const CompanyCardDetail = (props) => {
                     {formik.errors.alternationRhythm}
                   </div>
                 ) : null}
+                <div className=" pt-4">
+                        <TextArea
+                          name="description"
+                          placeholder="Enter Description"
+                          value={formik.values.description}
+                          onChange={handleChange}
+                          rows={3}
+                        />
+                        {formik.touched.description &&
+                        formik.errors.description ? (
+                          <div className="formikErrorDesc">
+                            {" "}
+                            {formik.errors.description}
+                          </div>
+                        ) : null}
+                      </div>
                 <div className="w-50">
                   <MultiAutoComplete
                     formik={formik}

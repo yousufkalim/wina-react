@@ -45,6 +45,8 @@ const OverviewOfOffers = () => {
   const [userDetail, setUserDetail] = useState(false)
   const [isDetail, setisDetail] = useState(false)
   const [offerID, setofferID] = useState("")
+  
+
   const [RecievofferID, setRecievofferID] = useState("")
   const [bookingSlot, setbookingSlot] = useState()
   const [AppointmentsArray, setAppointmentsArray] = useState("")
@@ -75,8 +77,12 @@ const OverviewOfOffers = () => {
         handleBooking
       )
     )
+    
+
   }
-  const handlerRecievedOfferAccepted = (id, decision) => {
+  const handlerRecievedOfferAccepted = (id, jobID, decision) => {
+    setjobID(jobID)
+    
     dispatch(
       RecievedOffer_Decion_By_Company(
         id,
@@ -85,7 +91,8 @@ const OverviewOfOffers = () => {
         setKey,
         "Offres",
         setstudentDetail,
-        setMatchReceiveDetail
+        setMatchReceiveDetail,
+        handleBooking
       )
     )
   }
@@ -187,7 +194,7 @@ const OverviewOfOffers = () => {
     setBooking(!booking)
   }
   const handleSubmitBooking = () => {
-    if (AppointmentsArray && bookingstudentID) {
+    if (AppointmentsArray ) {
       dispatch(
         Booking_Decion_By_Company(AppointmentsArray, bookingstudentID, jobID)
       )
@@ -196,6 +203,7 @@ const OverviewOfOffers = () => {
       setBookingError("Please add atleast one appointment")
     }
   }
+  
   const handleMultipleAppointments = () => {
     if (bookingSlot !== undefined) {
       if (AppointmentsArray && AppointmentsArray.length > 0) {
@@ -374,6 +382,7 @@ const OverviewOfOffers = () => {
                       key={index}
                       item={item.student}
                       eventKey={key}
+                      jobID={item._id}
                       status={item.status}
                       type="student_offers"
                       handleBooking={handleBooking}
