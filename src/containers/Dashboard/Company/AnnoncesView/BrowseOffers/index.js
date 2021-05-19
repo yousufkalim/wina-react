@@ -20,13 +20,13 @@ import Select from "../../../../../components/UI/Select";
 import Button from "../../../../../components/UI/Button";
 import axios from "axios";
 import RadioButton from "../../../../../components/UI/RadioButton";
-
+import { useHistory } from "react-router-dom";
 import {
   DomainOptions,
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
-  AgeRangeOptions
+  AgeRangeOptions,
 } from "../../../../../Globals";
 import {
   getSkills,
@@ -41,8 +41,9 @@ import Texts from "../../../../../Globals/Texts";
 import { baseUrl } from "../../../../../urlConfig";
 import Skills from "../../../Admin/skills/AddSkills";
 export default function BrowseOffers() {
+  const history = useHistory();
   const [show, setShow] = useState(false);
-  
+
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
 
@@ -66,7 +67,7 @@ export default function BrowseOffers() {
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
     validationSchema: POSITION_SOUGHT_YUP,
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       let tempValues = _.cloneDeep(values);
       const formdataImage = new FormData();
       formdataImage.append("image", image);
@@ -94,6 +95,7 @@ export default function BrowseOffers() {
       setItems([]);
       setimageURI("");
       setImage("");
+      history.push("/invalid");
     },
   });
   // onChange
@@ -113,11 +115,12 @@ export default function BrowseOffers() {
     formik.setFieldValue(name, value);
   };
   // useEffect
-
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
   useEffect(() => {
     dispatch(getSkills("Soft Skill"));
     dispatch(getSkills("Hard Skill"));
-    
   }, []);
   useEffect(() => {
     if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
@@ -267,7 +270,6 @@ export default function BrowseOffers() {
                             </div>
                           ) : null}
                         </div>
-                        
                       </div>
                       <div className="FieldAndPlaces">
                         <div className="w-50">
@@ -337,7 +339,7 @@ export default function BrowseOffers() {
                         </div>
                       </div>
                       <div className="pt-4 FieldAndPlaces">
-                      <div>
+                        <div>
                           <Select
                             name="ageRange"
                             value={formik.values.ageRange}
@@ -352,8 +354,8 @@ export default function BrowseOffers() {
                               {formik.errors.ageRange}
                             </div>
                           ) : null}
-                      </div>
-                      <div className="w-50">
+                        </div>
+                        <div className="w-50">
                           <AutoComplete
                             formik={formik}
                             onChange={handleAddressChange}
@@ -369,7 +371,7 @@ export default function BrowseOffers() {
                               {formik.errors.location.city}
                             </div>
                           ) : null}
-                      </div>
+                        </div>
                       </div>
                       <div className=" pt-4">
                         <TextArea
