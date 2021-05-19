@@ -60,6 +60,8 @@ export default function ViewOffers() {
     );
   };
   const handlerRecievedOfferAccepted = (id, appointments, decision) => {
+    alert(id)
+
     setAppointments(appointments);
     setjobID(id);
     dispatch(
@@ -92,8 +94,10 @@ export default function ViewOffers() {
     setBooking(!booking);
   };
   const handleSubmitBooking = () => {
+
     if (bookingSlot) {
       dispatch(validateAppointment_By_Students(bookingSlot, jobID, setBooking));
+      setjobID("")
     } else {
       setBookingError("Required");
     }
@@ -101,17 +105,25 @@ export default function ViewOffers() {
   useEffect(() => {
     if (Appointments && Appointments.length > 0) {
       let fill = Appointments.find(
-        (fl) => fl.student === `${student_ID}` && fl.jobID === `${jobID}`
+        (fl) =>
+          fl.student === `${student_ID}` &&
+          fl.jobID === `${jobID}`  &&
+          fl.status === "Pending"
       );
-      setTimmings(fill.timmings);
+      if (fill && fill.timmings) {
+        setTimmings(fill.timmings);
+      } else {
+        setTimmings([]);
+        
+      }
     }
   }, [Appointments, booking, setBooking]);
   const handleChange = (e) => {
     const { value } = e.target;
     if (value === "I am not available at the proposed time") {
-      setbookingSlot("Disapproved");
+      setbookingSlot("I am not available at the proposed time");
     } else {
-      setbookingSlot("Approved");
+      setbookingSlot(e.target.value);
     }
   };
   return (
@@ -156,7 +168,6 @@ export default function ViewOffers() {
                   ) : (
                     ""
                   )}
-
                   <div className="text-right">
                     <SubmitButton
                       className="Enregistrer"

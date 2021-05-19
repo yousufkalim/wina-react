@@ -382,7 +382,7 @@ const OverviewOfOffers = () => {
                       key={index}
                       item={item.student}
                       eventKey={key}
-                      jobID={item._id}
+                      jobID={item.jobID}
                       status={item.status}
                       type="student_offers"
                       handleBooking={handleBooking}

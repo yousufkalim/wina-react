@@ -124,11 +124,10 @@ const CardWithImage = (props) => {
                 <h3>
                   <b>{item.company && item.company.name}</b>
                 </h3>
-                {props.app.status === "Approved" ? (
+                {props.app && props.app.status === "Approved" ? (
                   <>
                     <h3 className="text-success">
                       Matched
-                      {console.log(props.app, "app,")}
                     </h3>
                     <p>
                       Interview is on {new Date(props.app.timmings[0]).getDay()}
@@ -185,25 +184,31 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
-                <div
-                  onClick={() =>
-                    handleOfferAccepted(
-                      item._id,
-                      props.appointments,
-                      "accepted"
-                    )
-                  }
-                  className="card-with-image-btn card-with-image-btn-green"
-                >
-                  Accepter
-                </div>
+                {props.app && props.app.status === "Approved" ? (
+                  ""
+                ) : (
+                  <>
+                    <div
+                      onClick={() =>
+                        handleOfferAccepted(
+                          props.app.jobID,
+                          props.appointments,
+                          "accepted"
+                        )
+                      }
+                      className="card-with-image-btn card-with-image-btn-green"
+                    >
+                      Accepter
+                    </div>
 
-                <div
-                  onClick={() => handleOfferRejected(item._id, "rejected")}
-                  className="card-with-image-btn card-with-image-btn-red"
-                >
-                  Refuser
-                </div>
+                    <div
+                      onClick={() => handleOfferRejected(item._id, "rejected")}
+                      className="card-with-image-btn card-with-image-btn-red"
+                    >
+                      Refuser
+                    </div>
+                  </>
+                )}
               </div>
             ) : eventKey === "RefusedOffers" ? (
               <div className="card-with-image-buttons">
@@ -226,6 +231,7 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
+                
               </div>
             ) : (
               ""

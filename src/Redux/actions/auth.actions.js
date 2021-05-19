@@ -334,11 +334,11 @@ export const UpdateNotifications = (id) => async (dispatch) => {
         type: actionGlobals.UPDATE_NOTIFICATION,
         payload: { loading: false, notifications: res.data.notifications },
       });
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(res.data.message, "success")
-        )
-      );
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(res.data.message, "success")
+      //   )
+      // );
     } catch (error) {
       dispatch(set_loading_data(false));
 

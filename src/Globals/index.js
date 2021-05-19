@@ -40,7 +40,7 @@ export const levelOfEducation = [
     title: "5:BacGénéral",
   },
   {
-    title: "6:Bac Professionel",
+    title: "6:BacProfessionel",
   },
   {
     title: "7:BTS",
@@ -49,13 +49,13 @@ export const levelOfEducation = [
     title: "8:DUT",
   },
   {
-    title: "9:Licence ",
+    title: "9:Licence",
   },
   {
-    title: "10:Master  ",
+    title: "10:Master",
   },
   {
-    title: "11:Doctorat  ",
+    title: "11:Doctorat",
   },
 ];
 

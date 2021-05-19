@@ -107,12 +107,9 @@ export default function MenuListComposition() {
                   autoFocusItem={open}
                   id="menu-list-grow"
                   style={{
-                    backgroundColor:
-                      NOTIFICATIONS && NOTIFICATIONS.length > 0
-                        ? "#f7f7f7"
-                        : "#fff",
+                    
                     // zIndex: 1,
-                    height: "20rem",
+                    height: "50vh",
                     // width: "100px",
                     overflow: "auto",
                     overflowY: "scroll",
