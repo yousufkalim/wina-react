@@ -11,69 +11,71 @@ import Chip from "@material-ui/core/Chip";
 import { DEFAULT_IMAGE } from "../../../Globals";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: "36ch",
-    backgroundColor: theme.palette.background.paper,
-  },
-  // inline: {
-  //   display: "inline",
-  // },
+	root: {
+		width: "100%",
+		maxWidth: "36ch",
+		backgroundColor: theme.palette.background.paper,
+	},
+	// inline: {
+	//   display: "inline",
+	// },
 }));
 
 export default function AlignItemsList({ not, onChangeStatus }) {
-  const classes = useStyles();
-  const [color, setColor] = useState(false);
+	const classes = useStyles();
+	const [color, setColor] = useState(false);
 
-  const HandleChangeStatus = (notify) => {
-    onChangeStatus(notify);
-  };
-  return (
-    <List
-      className={classes.root}
-      style={{
-        paddingTop: "0px",
-        paddingBottom: "0px",
-        backgroundColor: not.color,
-        margin: 0,
-        padding: 0,
-      }}
-    >
-      <ListItem
-        alignItems="flex-start"
-        style={{
-          paddingTop: "0px",
-          paddingBottom: "0px",
-          // borderBottom: "1px solid #ccc",
-        }}
-      >
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src={DEFAULT_IMAGE} />
-        </ListItemAvatar>
-        <ListItemText
-          style={{
-            fontSize: "0.8rem",
-          }}
-          primary={not.title}
-          secondary={
-            <React.Fragment style={{ fontSize: "0.6rem" }}>
-              <p className="ml-2">{not.description}</p>
-              {not.color === "#ccc" ? (
-                <div className="text-right">
-                  <Chip
-                    //   icon={icon}
-                    label={"Mark as read"}
-                    onClick={() => HandleChangeStatus(not)}
-                    // className={classes.chip}
-                  />
-                </div>
-              ) : (
-                ""
-              )}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-    </List>
-  );
+	const HandleChangeStatus = (notify) => {
+		onChangeStatus(notify);
+	};
+	return (
+		<List
+			className={classes.root}
+			style={{
+				paddingTop: "0px",
+				paddingBottom: "0px",
+				backgroundColor: not.color,
+				margin: 0,
+				padding: 0,
+			}}
+		>
+			<ListItem
+				alignItems="flex-start"
+				style={{
+					//	cursor: "pointer",
+					paddingTop: "0px",
+					paddingBottom: "0px",
+					// borderBottom: "1px solid #ccc",
+				}}
+			>
+				<ListItemAvatar>
+					<Avatar alt="Remy Sharp" src={DEFAULT_IMAGE} />
+				</ListItemAvatar>
+				<ListItemText
+					style={{
+						fontSize: "0.8rem",
+					}}
+					primary={not.title}
+					secondary={
+						<React.Fragment style={{ fontSize: "0.6rem" }}>
+							<p className="ml-2">{not.description}</p>
+							{not.color === "#ccc" ? (
+								<div className="text-right">
+									<Chip
+										//   icon={icon}
+										label={"Mark as read"}
+										onClick={() => HandleChangeStatus(not)}
+										// className={classes.chip}
+									/>
+								</div>
+							) : (
+								""
+							)}
+						</React.Fragment>
+					}
+				/>
+			</ListItem>
+			<hr style={{ border: ".8px solid #CCCCCC", marginTop: "4px" }} />
+		</List>
+	);
 }
