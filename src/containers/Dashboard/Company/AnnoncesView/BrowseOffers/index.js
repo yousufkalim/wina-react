@@ -307,7 +307,7 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="startDateandDuration">
+											<div className="startDateandDuration w-50">
 												<div>
 													<DatePicker
 														name="startDate"
@@ -322,7 +322,7 @@ export default function BrowseOffers() {
 														</div>
 													) : null}
 												</div>
-												<div>
+												<div style={{ marginLeft: "5rem" }}>
 													<Select
 														name="duration"
 														value={formik.values.duration}
@@ -390,7 +390,7 @@ export default function BrowseOffers() {
 													</div>
 												) : null}
 											</div>
-											<div className="startDateandDuration pt-4">
+											<div className="startDateandDuration w-50">
 												<RadioButton
 													options={RythmeOptions}
 													name="alternationRhythm"
@@ -411,7 +411,7 @@ export default function BrowseOffers() {
 								</Row>
 
 								<Row className=" d-flex justify-content-end row ">
-									<Col md={4}>
+									<Col md={3} style={{ marginRight: "2.5rem" }}>
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences générales "
@@ -427,7 +427,7 @@ export default function BrowseOffers() {
 											</div>
 										) : null}
 									</Col>
-									<Col md={4}>
+									<Col md={3} style={{ marginRight: "3rem" }}>
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences spécialisées"

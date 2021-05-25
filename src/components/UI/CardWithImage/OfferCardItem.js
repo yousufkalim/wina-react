@@ -10,7 +10,10 @@ const CardItem = (props) => {
 			<div>{props.content}</div>
 			{props.times && (
 				<span onClick={() => props.handleDelete(props.id)}>
-					<FaTimes className="card-item-cancel-icon" />
+					<FaTimes
+						style={{ marginLeft: "5rem" }}
+						className="card-item-cancel-icon"
+					/>
 				</span>
 			)}
 		</div>

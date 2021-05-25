@@ -3695,6 +3695,9 @@ textarea.form-control {
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .languagesDiv .t1 {
 	margin-right: 10px;
 }
+ListItemText .MuiTypography-root .MuiTypography-body2 {
+	font-size: 2rem;
+}
 @media screen and (max-width: 1200px) {
 	.CV-btn {
 		margin-right: -5rem;

@@ -260,22 +260,21 @@ const CompanyCardDetail = (props) => {
 		let MatchedDisable = Matched && Matched > 0 ? false : true;
 		return (
 			<div className="company-card-detail ">
-				<ArrowBackIosIcon
-					className=" text-left"
-					onClick={() => setisDetail(false)}
-					style={{ fontSize: "20", cursor: "pointer", color: "#F6C40D" }}
-				/>
-				<strong
-					style={{
-						marginTop: "5px",
-						color: "#F6C40D",
-						cursor: "pointer",
-						fontSize: "16px",
-					}}
+				<span
+					className="offer-apply-btn  "
+					style={{ padding: "0.1rem 3rem", cursor: "pointer" }}
 					onClick={() => setisDetail(false)}
 				>
+					<ArrowBackIosIcon
+						style={{
+							fontSize: "18",
+
+							justifyContent: "flex-start",
+						}}
+					/>
 					Back
-				</strong>
+				</span>
+
 				<div className="company-card-detail-container">
 					{isnext === false ? (
 						<div className="company-card-detail-wrapper">
@@ -316,7 +315,7 @@ const CompanyCardDetail = (props) => {
                   content={JOB.domain}
                 /> */}
 
-									<div className="w-50 pl-5">
+									<div className="w-50 pl-0">
 										<ModalInput
 											name="position"
 											label="Nom du poste"

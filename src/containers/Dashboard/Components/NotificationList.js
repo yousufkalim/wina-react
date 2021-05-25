@@ -36,6 +36,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 				paddingBottom: "0px",
 				backgroundColor: not.color,
 				margin: 0,
+				fontSize: "18px",
 				padding: 0,
 			}}
 		>
@@ -53,11 +54,11 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 				</ListItemAvatar>
 				<ListItemText
 					style={{
-						fontSize: "0.8rem",
+						fontSize: "2rem",
 					}}
 					primary={not.title}
 					secondary={
-						<React.Fragment style={{ fontSize: "0.6rem" }}>
+						<React.Fragment style={{ fontSize: "2rem" }}>
 							<p className="ml-2">{not.description}</p>
 							{not.color === "#ccc" ? (
 								<div className="text-right">
@@ -75,7 +76,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 					}
 				/>
 			</ListItem>
-			<hr style={{ border: ".8px solid #CCCCCC", marginTop: "4px" }} />
+			<hr style={{ border: ".8px solid #CCCCCC", marginLeft: "2rem" }} />
 		</List>
 	);
 }

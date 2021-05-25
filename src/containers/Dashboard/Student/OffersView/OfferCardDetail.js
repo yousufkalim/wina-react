@@ -18,6 +18,7 @@ import {
 	Offer_Decion_By_Students,
 } from "../../../../Redux/actions";
 import Loader from "../../../../components/UI/Loader";
+
 const OfferCardDetail = (props) => {
 	const { offerID, setisDetail } = props;
 	const dispatch = useDispatch();
@@ -73,12 +74,20 @@ const OfferCardDetail = (props) => {
 						className="d-flex justify-content-start align-items-center"
 						style={{ height: "10%" }}
 					>
-						<ArrowBackIosIcon
-							style={{ fontSize: "20", cursor: "pointer", color: "#F6C40D" }}
+						<span
+							className="offer-apply-btn ml-5"
 							onClick={() => setisDetail(false)}
-						/>
+							style={{ cursor: "pointer" }}
+						>
+							<ArrowBackIosIcon
+								style={{
+									fontSize: "18",
+									justifyContent: "flex-start",
+								}}
+							/>
 
-						<h5>{JOB.company && JOB.company.name}</h5>
+							{JOB.company && JOB.company.name}
+						</span>
 						<span
 							onClick={() => handleCancelRequest(JOB._id)}
 							className="offer-apply-btn ml-5"
@@ -199,17 +208,22 @@ const OfferCardDetail = (props) => {
 						className="d-flex justify-content-start align-items-center"
 						style={{ height: "10%" }}
 					>
-						<ArrowBackIosIcon
-							style={{ fontSize: "20", cursor: "pointer", color: "#F6C40D" }}
+						<span
+							className="offer-apply-btn "
 							onClick={() => setisDetail(false)}
-						/>
-
-						<h4
-							onClick={() => setisDetail(false)}
-							style={{ marginTop: "5px", cursor: "pointer", color: "#F6C40D" }}
+							style={{
+								cursor: "pointer",
+							}}
 						>
+							<ArrowBackIosIcon
+								style={{
+									fontSize: "18",
+									justifyContent: "flex-start",
+								}}
+							/>
+
 							{JOB.company && JOB.company.name}
-						</h4>
+						</span>
 					</div>
 					<div className="offer-detail">
 						<div className="offer-detail-container">
