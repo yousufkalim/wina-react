@@ -123,82 +123,99 @@ const ProfessionalProfile = () => {
 				data={Professional_Profile}
 				professionalArray={professionalArray}
 			/>
-			<div className="row importCV ">
-				<div className="col-xs-6">
-					<input
-						accept="application/pdf"
-						className={classes.input}
-						id="contained-button-file"
-						onChange={handleFileUpload}
-						type="file"
-					/>
-					<label htmlFor="contained-button-file">
-						<Button
-							className="CV-btn"
-							variant="contained"
-							color="primary"
-							component="span"
-							style={{ marginRight: "-5rem" }}
+			<div style={{ position: "relative" }}>
+				<Tabs
+					activeKey={key}
+					id="Profile"
+					className="Profile upper-nav custom-tabs"
+					onSelect={(k) => setKey(k)}
+				>
+					<Tab
+						eventKey="Professionalcareer"
+						title="Parcours professionnels"
+						className="w-100 h-100"
+					>
+						<div className="ProfessionalcareerBox">
+							<div className="Professionalcareer">
+								<Image
+									className="modal-icon"
+									src="../images/add_icons.png"
+									onClick={ProfessionalCareerModal}
+								/>
+
+								{Professional_Profile && Professional_Profile.length > 0 ? (
+									Professional_Profile.map((card, index) => (
+										<InfoCard
+											EditProfessionalCareerModal={EditProfessionalCareerModal}
+											onDelete={() => handleDeleteProfessional(card._id)}
+											item={card}
+											key={index}
+											cindex={index}
+											type="PROFESSIONAL"
+										/>
+									))
+								) : (
+									<h1 className="text-center">No Professional data found</h1>
+								)}
+							</div>
+						</div>
+					</Tab>
+					<Tab
+						eventKey="generalPresentation"
+						title="CV en ligne"
+						className="h-100"
+					>
+						<CVENGINE USER={USER} />
+					</Tab>
+				</Tabs>
+				<div
+					className="row importCV "
+					style={{ marginTop: "-6px", marginRight: "0 !important" }}
+				>
+					<div className="col-xs-6">
+						<input
+							accept="application/pdf"
+							className={classes.input}
+							id="contained-button-file"
+							onChange={handleFileUpload}
+							type="file"
+						/>
+						<label htmlFor="contained-button-file">
+							<Button
+								className="CV-btn"
+								variant="contained"
+								color="primary"
+								component="span"
+								style={{
+									marginLeft: "-53rem !important",
+									position: "absolute",
+								}}
+							>
+								Importer CV
+							</Button>
+						</label>
+					</div>
+					<div className="col-xs-6 ">
+						<div
+							style={{
+								marginLeft: "-33rem",
+								marginTop: "1rem",
+								width: "10px",
+							}}
 						>
-							Importer CV
-						</Button>
-					</label>
-				</div>
-				<div className="col-xs-6">
-					<div style={{ margin: "6px 10px 0px 10px", width: "10px" }}>
-						{PDF ? (
-							<a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
-								<PictureAsPdfIcon style={{ fontSize: 40 }} color="primary" />
-							</a>
-						) : null}
+							{PDF ? (
+								<a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
+									<PictureAsPdfIcon
+										className="path "
+										style={{ fontSize: 40 }}
+										color="primary"
+									/>
+								</a>
+							) : null}
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<Tabs
-				activeKey={key}
-				id="Profile"
-				className="Profile upper-nav custom-tabs"
-				onSelect={(k) => setKey(k)}
-			>
-				<Tab
-					eventKey="Professionalcareer"
-					title="Parcours professionnels"
-					className="w-100 h-100"
-				>
-					<div className="ProfessionalcareerBox">
-						<div className="Professionalcareer">
-							<Image
-								className="modal-icon"
-								src="../images/add_icons.png"
-								onClick={ProfessionalCareerModal}
-							/>
-
-							{Professional_Profile && Professional_Profile.length > 0 ? (
-								Professional_Profile.map((card, index) => (
-									<InfoCard
-										EditProfessionalCareerModal={EditProfessionalCareerModal}
-										onDelete={() => handleDeleteProfessional(card._id)}
-										item={card}
-										key={index}
-										cindex={index}
-										type="PROFESSIONAL"
-									/>
-								))
-							) : (
-								<h1 className="text-center">No Professional data found</h1>
-							)}
-						</div>
-					</div>
-				</Tab>
-				<Tab
-					eventKey="generalPresentation"
-					title="CV en ligne"
-					className="h-100"
-				>
-					<CVENGINE USER={USER} />
-				</Tab>
-			</Tabs>
 		</>
 	);
 };

@@ -76,7 +76,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 					}
 				/>
 			</ListItem>
-			<hr style={{ border: ".8px solid #CCCCCC", marginLeft: "2rem" }} />
+			<hr style={{ border: ".8px solid #CCCCCC" }} />
 		</List>
 	);
 }

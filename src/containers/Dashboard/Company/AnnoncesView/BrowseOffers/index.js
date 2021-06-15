@@ -273,7 +273,7 @@ export default function BrowseOffers() {
 												</div>
 											</div>
 											<div className="FieldAndPlaces">
-												<div className="w-50">
+												<div>
 													<Select
 														name="domain"
 														value={formik.values.domain}

@@ -105,7 +105,8 @@ export default function MenuListComposition() {
 								transformOrigin:
 									placement === "right" ? "right top" : "right bottom",
 
-								width: "35rem",
+								width: "30rem",
+								marginRight: "2rem",
 							}}
 						>
 							<Paper>

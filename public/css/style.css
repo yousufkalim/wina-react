@@ -1861,8 +1861,8 @@ html {
 	display: inline-block;
 	border: none;
 	position: absolute;
-	top: 13.05%;
-	right: 28%;
+	top: 0;
+	right: 0;
 }
 .importCV .MuiButton-containedPrimary {
 	background-color: #f6c40d;
@@ -3698,30 +3698,61 @@ textarea.form-control {
 ListItemText .MuiTypography-root .MuiTypography-body2 {
 	font-size: 2rem;
 }
+@media screen and (max-width: 2030px) {
+	.CV-btn {
+		margin-left: -49rem !important;
+		/* margin-right: 0 !important; */
+	}
+}
+@media screen and (max-width: 1780px) {
+	.CV-btn {
+		margin-left: -49rem !important;
+		/* margin-right: 0 !important; */
+	}
+	.path {
+		margin-left: -2rem !important;
+	}
+}
 @media screen and (max-width: 1200px) {
 	.CV-btn {
-		margin-right: -5rem;
-		position: relative;
-		margin-top: 3rem;
+		margin-left: -40rem !important;
+		margin-top: 2rem !important;
+	}
+	.path {
+		margin-top: 1.5rem;
+		margin-left: 12rem !important;
 	}
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 798px) {
 	.CV-btn {
-		margin-right: -9rem;
-		position: relative;
-		top: -23rem;
+		margin-left: -42rem !important;
+		margin-top: 2rem !important;
 	}
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 540px) {
 	.CV-btn {
-		margin-right: -3rem;
-		position: relative;
-		margin-top: 8rem;
+		margin-left: -20rem !important;
+	}
+	.path {
+		margin-left: 28rem !important;
 	}
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 411px) {
 	.CV-btn {
-		margin-right: -3rem;
-		position: absolute;
+		margin-left: -18rem !important;
+		margin-top: 8rem !important;
+	}
+	.path {
+		margin-left: 20rem !important;
+	}
+}
+@media screen and (max-width: 375px) {
+	.CV-btn {
+		margin-top: 2rem !important;
+		margin-left: -13rem !important;
+	}
+	.path {
+		margin-top: 6rem;
+		margin-left: 28rem !important;
 	}
 }
