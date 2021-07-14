@@ -237,8 +237,8 @@ export default function BrowseOffers() {
 									<Col lg={8} md={8}>
 										<div className="publish-header-content">
 											<div className="FieldAndPlaces">
-												<div>
-													<ModalInput
+												<div >
+													<ModalInput 
 														name="position"
 														label="Nom du poste"
 														// className="Job_title"
@@ -346,7 +346,7 @@ export default function BrowseOffers() {
 														value={formik.values.ageRange}
 														onChange={handleChange}
 														options={AgeRangeOptions}
-														label="ageRange"
+														label="Age Range"
 													/>
 
 													{formik.touched.ageRange && formik.errors.ageRange ? (
