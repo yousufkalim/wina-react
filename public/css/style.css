@@ -3698,6 +3698,18 @@ textarea.form-control {
 ListItemText .MuiTypography-root .MuiTypography-body2 {
 	font-size: 2rem;
 }
+/*form responsiveness*/
+label#standard-full-width-label {
+    font-size: 18px;
+}
+label#demo-controlled-open-select-label {
+    font-size: 17px;
+}
+.offer-detail-skills.d-flex.justify-content-center {
+    flex-basis: 22%;
+}
+
+/*----*/
 @media screen and (max-width: 2030px) {
 	.CV-btn {
 		margin-left: -49rem !important;

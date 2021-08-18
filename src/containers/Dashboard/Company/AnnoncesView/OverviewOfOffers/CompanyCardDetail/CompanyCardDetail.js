@@ -405,7 +405,7 @@ const CompanyCardDetail = (props) => {
 											value={formik.values.ageRange}
 											onChange={handleChange}
 											options={AgeRangeOptions}
-											label="ageRange"
+											label="Age Range"
 										/>
 
 										{formik.touched.ageRange && formik.errors.ageRange ? (
@@ -541,11 +541,12 @@ const CompanyCardDetail = (props) => {
                     </div>
                   </Col>
                 </Row> */}
-								<div className="offer-detail-date-container">
+								<div className="offer-detail-date-container" >
 									{softSkillsDB && softSkillsDB.length > 0
 										? softSkillsDB.map((job) => {
 												return (
 													<CardItem
+													
 														key={job._id}
 														id={job._id}
 														className="offer-detail-skills"
@@ -576,7 +577,7 @@ const CompanyCardDetail = (props) => {
 									) : null}
 								</div>
 
-								<div className="offer-detail-date-container">
+								<div className="offer-detail-date-container" >
 									{JOB.hardSkills && JOB.hardSkills.length > 0
 										? JOB.hardSkills.map((job) => {
 												return (
@@ -586,6 +587,7 @@ const CompanyCardDetail = (props) => {
 														content={job.skillField}
 														handleDelete={handlehardSkillDelete}
 														times
+													
 													/>
 												);
 										  })
