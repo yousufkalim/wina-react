@@ -2,7 +2,7 @@
 
 // export const baseUri = "http://160.153.249.64:9002";
 
-export const baseUrl = process.env.API || "http://localhost:9190/api/v1";
+export const baseUrl = "https://wina.falconconsulting.fr/api/v1";
 
 export const baseUri = "http://localhost:9190";
 export const token = localStorage.getItem("token");
