@@ -163,7 +163,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
             </div>
           </div>
           <div className="startEndDateRow professional-modal-second">
-            <div className="position">
+            <div className="position" style={{marginBottom: "-1.2rem"}}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -176,7 +176,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 label="J’occupe actuellement ce poste"
               />
             </div>
-            <div className="position">
+            <div className="position" style={{marginBottom: "-2rem",marginRight: "3rem"    }}>
               <Input
                 name="image"
                 placeholder="professional_Picture"
@@ -190,8 +190,8 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
             <div className="DateRow ">
-              <div>
-                <DatePicker
+              <div style={{marginRight: "5rem"    }}>
+                <DatePicker 
                   name="start_date"
                   label={"Date de début"}
                   value={formik.start_date}
