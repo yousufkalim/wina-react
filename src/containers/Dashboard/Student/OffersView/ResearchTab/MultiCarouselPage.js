@@ -101,7 +101,7 @@ export default function MultiCarouselPage(props) {
           </div>
         </div>
       ) : (
-        <div>No jobs found</div>
+        <div>Aucune offre disponible</div>
       )}
     </>
   );

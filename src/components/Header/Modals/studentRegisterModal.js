@@ -154,7 +154,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="Enter Password"
+                    placeholder={Texts.ENTER_PASSWORD}
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -167,7 +167,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="Enter Confirm_Password"
+                    placeholder={Texts.ENTER_CONFIRM_PASSWORD}
                     type="password"
                     name="confirm_password"
                     onChange={handleChange}

@@ -200,6 +200,10 @@ const OverviewOfOffers = () => {
 			setBookingError("Please add atleast one appointment");
 		}
 	};
+	const handleTabSelect=(k)=>{
+			dispatch(Get_Company_Jobs());
+			setKey(k)
+	}
 
 	const handleMultipleAppointments = () => {
 		if (bookingSlot !== undefined) {
@@ -272,7 +276,7 @@ const OverviewOfOffers = () => {
 												className="Enregistrer"
 												onClick={handleSubmitBooking}
 												variant="primary"
-												value="Enregistrer"
+												value="S’ENREGISTRER"
 											/>
 										</div>
 									</div>
@@ -297,7 +301,7 @@ const OverviewOfOffers = () => {
 					activeKey={key}
 					id="OverviewOfOffers"
 					className="OverviewOfOffers upper-nav custom-tabs"
-					onSelect={(k) => setKey(k)}
+					onSelect={(k) => handleTabSelect(k) }
 				>
 					<Tab eventKey="Offres" title="Offres" className="h-100">
 						<div className="AnnoncesViewOffersBox">
@@ -313,7 +317,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">No offers found</h1>
+									<h1 className="text-center">non des offres trouvé</h1>
 								)}
 							</div>
 						</div>
@@ -334,7 +338,7 @@ const OverviewOfOffers = () => {
 											/>
 										))
 									) : (
-										<h1 className="text-center">No offers found</h1>
+										<h1 className="text-center">non des offres trouvé</h1>
 									)
 								) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
 									SENT_OFFERS.map((item, index) => (
@@ -350,7 +354,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">No offers found</h1>
+									<h1 className="text-center">non des offres trouvé</h1>
 								)}
 							</div>
 						</div>
@@ -372,7 +376,7 @@ const OverviewOfOffers = () => {
 											/>
 										))
 									) : (
-										<h1 className="text-center">No offers found</h1>
+										<h1 className="text-center">non des offres trouvé</h1>
 									)
 								) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
 									RECIEVED_OFFERS.map((item, index) => (
@@ -391,7 +395,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">No offers found</h1>
+									<h1 className="text-center">non des offres trouvé</h1>
 								)}
 							</div>
 						</div>
@@ -556,7 +560,7 @@ const OverviewOfOffers = () => {
 											/>
 										))
 									) : (
-										<h1 className="text-center">No school found</h1>
+										<h1 className="text-center">Ajoutez une formation</h1>
 									)}
 								</div>
 							</div>

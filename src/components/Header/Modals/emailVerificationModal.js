@@ -64,7 +64,7 @@ export default function StudentRegister(props) {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="Enregistrer"
+                    value="S’ENREGISTRER"
                     disabled={false}
                   />
                 )}

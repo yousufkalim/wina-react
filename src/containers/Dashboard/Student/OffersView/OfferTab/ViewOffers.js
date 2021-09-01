@@ -173,7 +173,7 @@ export default function ViewOffers() {
                       className="Enregistrer"
                       onClick={handleSubmitBooking}
                       variant="primary"
-                      value="Enregistrer"
+                      value="S’ENREGISTRER"
                     />
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function ViewOffers() {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">No Offers Found</h1>
+                  <h1 className="text-center">non des offres trouvé</h1>
                 )}
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function ViewOffers() {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">No Offers Found</h1>
+                  <h1 className="text-center">non des offres trouvé</h1>
                 )}
               </div>
             </div>
@@ -285,7 +285,7 @@ export default function ViewOffers() {
                     )
                   )
                 ) : (
-                  <h1 className="text-center">No Offers Found</h1>
+                  <h1 className="text-center">non des offres trouvé</h1>
                 )}
               </div>
             </div>

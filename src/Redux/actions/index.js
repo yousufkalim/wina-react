@@ -1,4 +1,4 @@
-export * from "./auth.actions";
+export * from "./auth";
 export * from "./student";
 export * from "./notistack";
 export * from "./globals";

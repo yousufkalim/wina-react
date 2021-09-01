@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import AutoComplete from "../../UI/AutoComplete";
 import Button from "../../UI//Button";
 import _ from "lodash";
+import Texts from "../../../Globals/Texts";
 
 const StudentRegister = (props) => {
   // Dispatch
@@ -126,7 +127,7 @@ const StudentRegister = (props) => {
       );
     }
   };
-  console.log(loading, "loading");
+  
   const onSubmitAddress = (value) => {
     formik2.setFieldValue("address", {
       city: value.city,
@@ -218,7 +219,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="Enter Password"
+                        placeholder={Texts.ENTER_PASSWORD}
                         type="password"
                         name="password"
                         onChange={handleChange}
@@ -233,7 +234,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="Enter Confirm_Password"
+                        placeholder={Texts.ENTER_CONFIRM_PASSWORD}
                         type="password"
                         name="confirm_password"
                         onChange={handleChange}

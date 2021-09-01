@@ -83,8 +83,9 @@ export const Create_Job = (user) => async (dispatch) => {
     dispatch(
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
+    return true;
   } catch (error) {
-    console.log(error.message);
+   
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -93,6 +94,8 @@ export const Create_Job = (user) => async (dispatch) => {
         )
       );
     }
+    return false;
+
   }
 };
 // edit job

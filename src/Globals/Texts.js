@@ -81,6 +81,16 @@ let Texts = {
   userStep2Conditions1: "Je suis d’accord avec les",
   userStep2Conditions2: "Conditions d’utilisation",
   addTimeslot: "Ajouter la disponibilité",
+  ENTER_PASSWORD:"Mot de passe",
+  ENTER_CONFIRM_PASSWORD:"Confirmez le mot de passe",
+  REQUIRED:"Obligatoire",
+  PLEASE_SELECT_YOUR_COMPLETE_ADDRESS_FROM_LIST:"Merci d’informer votre adresse",
+  CLICK_BELOW_TO_VERIFY_EMAIL:"Cliquer dessus pour confirmer votre adresse e-mail. ",
+  DATE_OF_BIRTH:"Date de naissance",
+  ONE_YEAR:"1 an",
+  TWO_YEAR:"2 ans",
+
+
 };
 
 export default Texts;

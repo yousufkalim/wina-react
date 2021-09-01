@@ -25,6 +25,7 @@ import { POSITION_SOUGHT_STATE } from "../../../../../../Globals/InitialValues/C
 import { POSITION_SOUGHT_YUP } from "../../../../../../components/Formik/Company/yupValidation";
 import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { baseUrl } from "../../../../../../urlConfig";
 
 import {
 	DomainOptions,
@@ -65,8 +66,10 @@ const CompanyCardDetail = (props) => {
 	const [value, setValue] = useState(30);
 	const [isnext, setIsNext] = useState(false);
 
-	const [image, setImage] = useState("");
+
 	const [imageURI, setimageURI] = useState("");
+	const [image, setImage] = useState("");
+
 
 	const [softSkillsArray, setsoftSkillsArray] = useState([]);
 	const [softSkillsDB, setsoftSkillsDB] = useState([]);
@@ -91,7 +94,6 @@ const CompanyCardDetail = (props) => {
 			let soft_skills = _.cloneDeep(softSkillsArray);
 			let hard_skills = _.cloneDeep(hardSkillsArray);
 			let tempValues = _.cloneDeep(values);
-
 			if (softSkillsDB && softSkillsDB.length > 0) {
 				softSkillsDB.forEach((element) => {
 					soft_skills.push(element._id);
@@ -104,7 +106,24 @@ const CompanyCardDetail = (props) => {
 			}
 			tempValues.softSkills = soft_skills;
 			tempValues.hardSkills = hard_skills;
+
+			const formdataImage = new FormData();
+			let imageData;
+			let imagePath;
+			if (image) {
+				formdataImage.append("image", image);
+				imageData = await axios({
+					method: "post",
+					url: `${baseUrl}/FileUpload`,
+					data: formdataImage,
+				});
+				imagePath = imageData.data;
+				tempValues.photo = imagePath;
+			}
+
+
 			dispatch(Edit_Job(tempValues, offerID));
+			
 		},
 	});
 
@@ -114,9 +133,9 @@ const CompanyCardDetail = (props) => {
 		}
 	}, []);
 	// onChange
-	console.log(formik, "formik");
 	const handleChange = (e) => {
 		const { name, value } = e.target;
+
 		if (name === "photo") {
 			let file = e.target.files[0];
 			if (file.type === "image/png" || file.type === "image/jpeg") {
@@ -153,6 +172,7 @@ const CompanyCardDetail = (props) => {
 			formik.setFieldValue("domain", JOB.domain);
 			formik.setFieldValue("startDate", JOB.startDate);
 			formik.setFieldValue("duration", JOB.duration);
+
 			formik.setFieldValue("location", {
 				city: JOB.location.city,
 				street: JOB.location.street,
@@ -283,15 +303,30 @@ const CompanyCardDetail = (props) => {
 							)}
 							<div className="offer-detail-header">
 								<div className="offer-detail-header-image text-right">
-									<img
-										width={450}
-										height={280}
-										src={
-											JOB.photo.image
-												? `${baseUri}/${JOB.photo.image}`
-												: `../images/offer-card-detail.png`
-										}
+									<label htmlFor="upload-button2">
+										<img
+											width={450}
+											height={280}
+											src={
+												imageURI ? imageURI : 
+													JOB.photo.image
+													? `${baseUri}/${JOB.photo.image}`:
+													"../images/add_image_icon.png"
+											}
+
+										/>
+									</label>
+									<input
+										type="file"
+										id="upload-button2"
+										name="photo"
+										accept="image/*"
+										style={{ display: "none" }}
+										onChange={handleChange}
 									/>
+									{formik.touched.photo && formik.errors.photo ? (
+										<div className="formikError"> {formik.errors.photo}</div>
+									) : null}
 								</div>
 								{/* <div className="offer-detail-line"></div> */}
 								<div className="offer-detail-header-text text-left offer-detail-header-line">
@@ -443,7 +478,7 @@ const CompanyCardDetail = (props) => {
 										/>
 
 										{formik.touched.levelOfEducation &&
-										formik.errors.levelOfEducation ? (
+											formik.errors.levelOfEducation ? (
 											<div className="formikErrorAuto">
 												{" "}
 												{formik.errors.levelOfEducation}
@@ -461,7 +496,7 @@ const CompanyCardDetail = (props) => {
 									/>
 								</div>
 								{formik.touched.alternationRhythm &&
-								formik.errors.alternationRhythm ? (
+									formik.errors.alternationRhythm ? (
 									<div className="formikErrorAuto">
 										{" "}
 										{formik.errors.alternationRhythm}
@@ -544,18 +579,18 @@ const CompanyCardDetail = (props) => {
 								<div className="offer-detail-date-container" >
 									{softSkillsDB && softSkillsDB.length > 0
 										? softSkillsDB.map((job) => {
-												return (
-													<CardItem
-													
-														key={job._id}
-														id={job._id}
-														className="offer-detail-skills"
-														content={job.skillField}
-														handleDelete={handleSoftSkillDelete}
-														times
-													/>
-												);
-										  })
+											return (
+												<CardItem
+
+													key={job._id}
+													id={job._id}
+													className="offer-detail-skills"
+													content={job.skillField}
+													handleDelete={handleSoftSkillDelete}
+													times
+												/>
+											);
+										})
 										: ""}
 								</div>
 
@@ -580,17 +615,17 @@ const CompanyCardDetail = (props) => {
 								<div className="offer-detail-date-container" >
 									{JOB.hardSkills && JOB.hardSkills.length > 0
 										? JOB.hardSkills.map((job) => {
-												return (
-													<CardItem
-														key={job._id}
-														className="offer-detail-skills"
-														content={job.skillField}
-														handleDelete={handlehardSkillDelete}
-														times
-													
-													/>
-												);
-										  })
+											return (
+												<CardItem
+													key={job._id}
+													className="offer-detail-skills"
+													content={job.skillField}
+													handleDelete={handlehardSkillDelete}
+													times
+
+												/>
+											);
+										})
 										: ""}
 								</div>
 
@@ -639,7 +674,7 @@ const CompanyCardDetail = (props) => {
 							/>
 						))
 					) : (
-						<h1 className="text-center">No offers found</h1>
+						<h1 className="text-center">non des offres trouvé</h1>
 					)}
 				</div>
 			</div>
@@ -657,171 +692,171 @@ export default CompanyCardDetail;
 {
 	/* 
   <div className="offer-detail-content">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-content-detail text-center"
-                  content={JOB.domain}
-                />
-                
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-content-detail text-center"
-                  content="Niveau d’étude : Brevet"
-                />
-              </div>
+				<CardItem
+				  className="offer-card-item-bordered offer-detail-content-detail text-center"
+				  content={JOB.domain}
+				/>
+			    
+				<CardItem
+				  className="offer-card-item-bordered offer-detail-content-detail text-center"
+				  content="Niveau d’étude : Brevet"
+				/>
+			  </div>
 
-              <div className="company-card-detail-date-headings">
-                <div className="company-card-detail-date-heading text-left">
-                  Date de début
-                </div>
-                <div className="company-card-detail-date-heading text-left">
-                  Durée
-                </div>
-              </div>
-              <div className="company-card-detail-date-container">
-                <Dropdown className="custom-dropdown date-dropdown">
-                  <Dropdown.Toggle id="dropdown-basic">
-                    {JOB.startDate}
-                  </Dropdown.Toggle>
+			  <div className="company-card-detail-date-headings">
+				<div className="company-card-detail-date-heading text-left">
+				  Date de début
+				</div>
+				<div className="company-card-detail-date-heading text-left">
+				  Durée
+				</div>
+			  </div>
+			  <div className="company-card-detail-date-container">
+				<Dropdown className="custom-dropdown date-dropdown">
+				  <Dropdown.Toggle id="dropdown-basic">
+					{JOB.startDate}
+				  </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">2021</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">2022</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">2023</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown className="custom-dropdown date-dropdown">
-                  <Dropdown.Toggle id="dropdown-basic">
-                    {JOB.duration}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+				  <Dropdown.Menu>
+					<Dropdown.Item href="#/action-1">2021</Dropdown.Item>
+					<Dropdown.Item href="#/action-2">2022</Dropdown.Item>
+					<Dropdown.Item href="#/action-3">2023</Dropdown.Item>
+				  </Dropdown.Menu>
+				</Dropdown>
+				<Dropdown className="custom-dropdown date-dropdown">
+				  <Dropdown.Toggle id="dropdown-basic">
+					{JOB.duration}
+				  </Dropdown.Toggle>
+				  <Dropdown.Menu>
+					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
+				  </Dropdown.Menu>
+				</Dropdown>
+			  </div>
 
-              <Row>
-                <Col className="col-lg-12">
-                  <div className="sliderBox">
-                    <div className="label">Tranche de salaire</div>
-                    <div className={(classes.root, "slider")}>
-                      <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                          <Slider
-                            // disabled
-                            // disabledaria-labelledby="disabled-slider"
-                            value={typeof value === "number" ? value : 0}
-                            onChange={handleSliderChange}
-                            marks={marks}
-                            min={0}
-                            max={10000}
-                          />
-                        </Grid>
-                        <Grid item>
-                          <Input
-                            className={classes.input}
-                            value={value}
-                            margin="dense"
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                            endAdornment={
-                              <InputAdornment position="end">€</InputAdornment>
-                            }
-                            inputProps={{
-                              step: 10,
-                              min: 0,
-                              max: 10000,
-                              type: "number",
-                              "aria-labelledby": "input-slider",
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+			  <Row>
+				<Col className="col-lg-12">
+				  <div className="sliderBox">
+					<div className="label">Tranche de salaire</div>
+					<div className={(classes.root, "slider")}>
+					  <Grid container spacing={2} alignItems="center">
+						<Grid item xs>
+						  <Slider
+							// disabled
+							// disabledaria-labelledby="disabled-slider"
+							value={typeof value === "number" ? value : 0}
+							onChange={handleSliderChange}
+							marks={marks}
+							min={0}
+							max={10000}
+						  />
+						</Grid>
+						<Grid item>
+						  <Input
+							className={classes.input}
+							value={value}
+							margin="dense"
+							onChange={handleInputChange}
+							onBlur={handleBlur}
+							endAdornment={
+							  <InputAdornment position="end">€</InputAdornment>
+							}
+							inputProps={{
+							  step: 10,
+							  min: 0,
+							  max: 10000,
+							  type: "number",
+							  "aria-labelledby": "input-slider",
+							}}
+						  />
+						</Grid>
+					  </Grid>
+					</div>
+				  </div>
+				</Col>
+			  </Row>
 
-              <div className="company-card-detail-date-container">
-                <Dropdown className="custom-dropdown skills-dropdown">
-                  <Dropdown.Toggle id="dropdown-basic">
-                    Compétences générales
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+			  <div className="company-card-detail-date-container">
+				<Dropdown className="custom-dropdown skills-dropdown">
+				  <Dropdown.Toggle id="dropdown-basic">
+					Compétences générales
+				  </Dropdown.Toggle>
+				  <Dropdown.Menu>
+					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
+				  </Dropdown.Menu>
+				</Dropdown>
+			  </div>
 
-              <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-              </div>
-              <div className="company-card-detail-description">
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    placeholder="Description"
-                  />
-                </Form.Group>
-              </div>
+			  <div className="offer-detail-date-container">
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+			  </div>
+			  <div className="company-card-detail-description">
+				<Form.Group controlId="exampleForm.ControlTextarea1">
+				  <Form.Control
+					as="textarea"
+					rows={3}
+					placeholder="Description"
+				  />
+				</Form.Group>
+			  </div>
 
-              <div className="company-card-detail-date-container">
-                <Dropdown className="custom-dropdown skills-dropdown">
-                  <Dropdown.Toggle id="dropdown-basic">
-                    Compétences générales
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+			  <div className="company-card-detail-date-container">
+				<Dropdown className="custom-dropdown skills-dropdown">
+				  <Dropdown.Toggle id="dropdown-basic">
+					Compétences générales
+				  </Dropdown.Toggle>
+				  <Dropdown.Menu>
+					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
+					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
+				  </Dropdown.Menu>
+				</Dropdown>
+			  </div>
 
-              <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-                <CardItem
-                  className="offer-detail-skills"
-                  content="Compétences"
-                  times
-                />
-              </div>
+			  <div className="offer-detail-date-container">
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+				<CardItem
+				  className="offer-detail-skills"
+				  content="Compétences"
+				  times
+				/>
+			  </div>
 
-              <div className="company-card-detail-description">
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    placeholder="Description"
-                  />
-                </Form.Group>
-              </div> */
+			  <div className="company-card-detail-description">
+				<Form.Group controlId="exampleForm.ControlTextarea1">
+				  <Form.Control
+					as="textarea"
+					rows={3}
+					placeholder="Description"
+				  />
+				</Form.Group>
+			  </div> */
 }
 {
 	/* ************************************************ */

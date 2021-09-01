@@ -80,22 +80,27 @@ export default function BrowseOffers() {
 			tempValues.softSkills = softSkillsArray;
 			tempValues.hardSkills = hardSkillsArray;
 			tempValues.photo = imagePath;
-			dispatch(Create_Job(tempValues, formik));
-			formik.setFieldValue("location", {
-				city: "",
-				street: "",
-				zip: "",
-				longitude: "",
-				latitude: "",
-			});
-			formik.setSubmitting(false);
-			formik.handleReset();
-			setsoftSkillsArray([]);
-			sethardSkillsArray([]);
-			setItems([]);
-			setimageURI("");
-			setImage("");
-			history.push("/invalid");
+		let response=	dispatch(Create_Job(tempValues));
+		response.then((value)=>{
+			if (value === true) {
+				formik.setFieldValue("location", {
+					city: "",
+					street: "",
+					zip: "",
+					longitude: "",
+					latitude: "",
+				});
+				formik.setSubmitting(false);
+				formik.handleReset();
+				setsoftSkillsArray([]);
+				sethardSkillsArray([]);
+				setItems([]);
+				setimageURI("");
+				setImage("");
+			}
+		})
+			
+			
 		},
 	});
 	// onChange
@@ -377,7 +382,7 @@ export default function BrowseOffers() {
 											<div className=" pt-4">
 												<TextArea
 													name="description"
-													placeholder="Enter Description"
+													placeholder="Entrez une description"
 													value={formik.values.description}
 													onChange={handleChange}
 													rows={3}
@@ -458,7 +463,7 @@ export default function BrowseOffers() {
 											className="Enregistrer"
 											type="submit"
 											variant="primary"
-											value="Enregistrer"
+											value="S’ENREGISTRER"
 											disabled={false}
 										/>
 									)}

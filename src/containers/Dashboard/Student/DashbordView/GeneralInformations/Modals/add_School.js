@@ -166,7 +166,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                       className="Enregistrer"
                       type="submit"
                       variant="primary"
-                      value="Enregistrer"
+                      value="S’ENREGISTRER"
                       disabled={false}
                     />
                   )}

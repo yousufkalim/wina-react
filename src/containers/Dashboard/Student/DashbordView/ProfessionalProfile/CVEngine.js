@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Tab, Tabs, Image } from "react-bootstrap";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { baseUri } from "../../../../../urlConfig";
+import { useDispatch, useSelector } from "react-redux";
+import {
 
+	Get_User_Student,
+
+} from "../../../../../Redux/actions";
 export default function CVEngine(props) {
-	const { USER, type } = props;
+	const { USER, type, setKey, key } = props;
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state.auth);
+	useEffect(() => {
+		if (store.user && store.user.type === "student") {
+			dispatch(Get_User_Student());
+			
+
+		}
+	}, [setKey, key])
+
 
 	const ShowImage = (USER) => {
 		const STUDENT_IMAGE =
@@ -42,7 +57,7 @@ export default function CVEngine(props) {
 										{USER.user.address.city}
 									</div>
 
-									<div className="pb-1">Mobile :(+92) {USER.user.phone}</div>
+									<div className="pb-1">Mobile :(+33) {USER.user.phone}</div>
 
 									<div className="pb-1">Email : {USER.user.email}</div>
 								</div>
@@ -60,7 +75,7 @@ export default function CVEngine(props) {
 										</>
 									))
 								) : (
-									<p className="text-center">No school found.....</p>
+									<p className="text-center">Ajoutez une formation.....</p>
 								)}
 								<div className="formation">EXPÉRIENCES PROFESSIONNELLES</div>
 								{USER.professional_profile.length > 0 ? (
@@ -78,11 +93,11 @@ export default function CVEngine(props) {
 										</>
 									))
 								) : (
-									<p className="text-center">No professional info found.....</p>
+									<p className="text-center">Ajoutez une expérience professionnelle.....</p>
 								)}
 								<div className="formation">Professional Networks</div>
 								{USER.professional_networks &&
-								Object.keys(USER.professional_networks).length > 0 ? (
+									Object.keys(USER.professional_networks).length > 0 ? (
 									<>
 										<ul className="PLinks">
 											<li>
@@ -151,13 +166,13 @@ export default function CVEngine(props) {
 									</>
 								) : (
 									<p className="text-center">
-										No professional networks found.....
+										Ajoutez une expérience professionnelle.....
 									</p>
 								)}
 								<div className="formation">Compétences générales</div>
 								<ul className="PLinks">
 									{USER.student.softSkills &&
-									USER.student.softSkills.length > 0 ? (
+										USER.student.softSkills.length > 0 ? (
 										USER.student.softSkills.map((ed) => (
 											<li>{ed.skillField}</li>
 										))
@@ -170,7 +185,7 @@ export default function CVEngine(props) {
 								<div className="formation">Compétences spécialisées</div>
 								<ul className="PLinks">
 									{USER.student.hardSkills &&
-									USER.student.hardSkills.length > 0 ? (
+										USER.student.hardSkills.length > 0 ? (
 										USER.student.hardSkills.map((ed) => (
 											<li>{ed.skillField}</li>
 										))
@@ -216,7 +231,7 @@ export default function CVEngine(props) {
 										{USER.address.zip},{USER.address.street} {USER.address.city}
 									</div>
 
-									<div className="pb-1">Mobile :(+92) {USER.phone}</div>
+									<div className="pb-1">Mobile :(+33) {USER.phone}</div>
 
 									<div className="pb-1">Email : {USER.email}</div>
 								</div>
@@ -234,7 +249,7 @@ export default function CVEngine(props) {
 										</>
 									))
 								) : (
-									<p className="text-center">No school found.....</p>
+									<p className="text-center">Ajoutez une formation.....</p>
 								)}
 								<div className="formation">EXPÉRIENCES PROFESSIONNELLES</div>
 								{USER.student.professional_profile.length > 0 ? (
@@ -252,11 +267,11 @@ export default function CVEngine(props) {
 										</>
 									))
 								) : (
-									<p className="text-center">No professional info found.....</p>
+									<p className="text-center">Ajoutez une expérience professionnelle.....</p>
 								)}
 								<div className="formation">Professional Networks</div>
 								{USER.student.professional_networks &&
-								Object.keys(USER.student.professional_networks).length > 0 ? (
+									Object.keys(USER.student.professional_networks).length > 0 ? (
 									<>
 										<ul className="PLinks">
 											<li>
@@ -325,7 +340,7 @@ export default function CVEngine(props) {
 									</>
 								) : (
 									<p className="text-center">
-										No professional networks found.....
+										Ajoutez une expérience professionnelle.....
 									</p>
 								)}
 								<div className="formation">Compétences générales</div>

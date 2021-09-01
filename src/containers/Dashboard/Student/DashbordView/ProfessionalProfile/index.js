@@ -155,7 +155,7 @@ const ProfessionalProfile = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">No Professional data found</h1>
+									<h1 className="text-center">Ajoutez une expérience professionnelle</h1>
 								)}
 							</div>
 						</div>
@@ -165,7 +165,7 @@ const ProfessionalProfile = () => {
 						title="CV en ligne"
 						className="h-100"
 					>
-						<CVENGINE USER={USER} />
+						<CVENGINE USER={USER} setKey={setKey} key={key} />
 					</Tab>
 				</Tabs>
 				<div
