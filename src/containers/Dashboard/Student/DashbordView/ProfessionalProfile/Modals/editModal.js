@@ -280,7 +280,7 @@ const PPModal = ({
                 className="Enregistrer"
                 type="submit"
                 variant="primary"
-                value="Enregistrer"
+                value="S’ENREGISTRER"
                 disabled={false}
               />
             )}

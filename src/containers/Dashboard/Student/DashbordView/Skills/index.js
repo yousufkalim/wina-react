@@ -1,75 +1,75 @@
-import React, { useState, useEffect } from "react"
-import { Tab, Tabs } from "react-bootstrap"
+import React, { useState, useEffect } from "react";
+import { Tab, Tabs } from "react-bootstrap";
 
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
-import CheckBoxIcon from "@material-ui/icons/CheckBox"
-import Select from "../../../../../components/UI/Select"
-import ModalInput from "../../../../../components/UI/Input"
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import Select from "../../../../../components/UI/Select";
+import ModalInput from "../../../../../components/UI/Input";
 
 import {
   SOFT_SKILLS_STATE,
   HARD_SKILLS_STATE,
   LANGUAGE_STATE,
-} from "../../../../../Globals/InitialValues/Student"
+} from "../../../../../Globals/InitialValues/Student";
 import {
   SOFT_SKILLS_YUP,
   LANGUAGE_YUP,
   HARD_SKILLS_YUP,
-} from "../../../../../components/Formik/Student/yupValidation"
-import { useDispatch, useSelector } from "react-redux"
-import Button from "../../../../../components/UI/Button"
-import { getSkills, Add_info_Student } from "../../../../../Redux/actions"
-import * as Notistack from "../../../../../Redux/actions/notistack"
+} from "../../../../../components/Formik/Student/yupValidation";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../../../../../components/UI/Button";
+import { getSkills, Add_info_Student } from "../../../../../Redux/actions";
+import * as Notistack from "../../../../../Redux/actions/notistack";
 
-import Tab1 from "./Tabs/soft_skilltab"
-import Tab2 from "./Tabs/hard_skilltab"
-import Tab3 from "./Tabs/language_tab"
-import _ from "lodash"
+import Tab1 from "./Tabs/soft_skilltab";
+import Tab2 from "./Tabs/hard_skilltab";
+import Tab3 from "./Tabs/language_tab";
+import _ from "lodash";
 
 export default function Skills() {
-  const store = useSelector((state) => state.student)
-  const store2 = useSelector((state) => state.globals)
-  const SOFT_SKILLS_DB = store.user.student && store.user.student.softSkills
-  const HARD_SKILLS_DB = store.user.student && store.user.student.hardSkills
-  const LANGUAGES_DB = store.user.student && store.user.student.languages
+  const store = useSelector((state) => state.student);
+  const store2 = useSelector((state) => state.globals);
+  const SOFT_SKILLS_DB = store.user.student && store.user.student.softSkills;
+  const HARD_SKILLS_DB = store.user.student && store.user.student.hardSkills;
+  const LANGUAGES_DB = store.user.student && store.user.student.languages;
 
-  const dispatch = useDispatch()
-  let SOFT_SKILLS = store2.soft_skills
-  let HARD_SKILLS = store2.hard_skills
+  const dispatch = useDispatch();
+  let SOFT_SKILLS = store2.soft_skills;
+  let HARD_SKILLS = store2.hard_skills;
 
   // state
-  const [key, setKey] = useState("GeneralSkills")
-  const [softSkillsArray, setsoftSkillsArray] = useState([])
-  const [hardSkillsArray, sethardSkillsArray] = useState([])
-  const [languagesArray, setlanguagesArray] = useState([])
+  const [key, setKey] = useState("GeneralSkills");
+  const [softSkillsArray, setsoftSkillsArray] = useState([]);
+  const [hardSkillsArray, sethardSkillsArray] = useState([]);
+  const [languagesArray, setlanguagesArray] = useState([]);
 
   const handleChange = (k) => {
     if (k === "GeneralSkills") {
-      dispatch(getSkills("Soft Skill"))
+      dispatch(getSkills("Soft Skill"));
     } else if (k === "SpecializedSkills") {
-      dispatch(getSkills("Hard Skill"))
+      dispatch(getSkills("Hard Skill"));
     }
-    setKey(k)
-  }
+    setKey(k);
+  };
   // get softs skills from DB
   useEffect(() => {
-    setsoftSkillsArray(SOFT_SKILLS_DB)
-  }, [])
+    setsoftSkillsArray(SOFT_SKILLS_DB);
+  }, [SOFT_SKILLS_DB]);
   // get hard skills from DB
   useEffect(() => {
-    sethardSkillsArray(HARD_SKILLS_DB)
-  }, [])
+    sethardSkillsArray(HARD_SKILLS_DB);
+  }, [HARD_SKILLS_DB]);
   // get LANGAUGES from DB
   useEffect(() => {
-    let tempEducation = _.cloneDeep(LANGUAGES_DB)
+    let tempEducation = _.cloneDeep(LANGUAGES_DB);
     tempEducation.forEach(function (v) {
-      delete v._id
-    })
-    setlanguagesArray(tempEducation)
-  }, [])
+      delete v._id;
+    });
+    setlanguagesArray(tempEducation);
+  }, [LANGUAGES_DB]);
   useEffect(() => {
-    dispatch(getSkills("Soft_Skill"))
-  }, [])
+    dispatch(getSkills("Soft Skill"));
+  }, [dispatch]);
   return (
     <>
       <Tabs
@@ -143,7 +143,7 @@ export default function Skills() {
         </Tab>
       </Tabs>
     </>
-  )
+  );
 }
 
 const languages = [
@@ -151,12 +151,12 @@ const languages = [
   { title: "Urdu" },
   { title: "French" },
   { title: "Saraiki" },
-]
+];
 const Levels = [
   { title: "beginner" },
   { title: "intermediate" },
   { title: "fluent" },
   { title: "native" },
-]
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
-const checkedIcon = <CheckBoxIcon fontSize="small" />
+];
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;

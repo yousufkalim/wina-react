@@ -52,6 +52,8 @@ export default (state = initState, action) => {
         loading: false,
         message: action.payload.message,
       };
+      break;
+
     case companyConstants.COMPANY_GET_JOBS_SUCCESS:
       state = {
         ...state,
@@ -72,6 +74,8 @@ export default (state = initState, action) => {
         loading: false,
         company_appliedJobs: action.payload.company_appliedJobs,
       };
+      break;
+
     case companyConstants.CANCEL_OFFER_DECISION_SUCCESS:
       state = {
         ...state,
@@ -84,17 +88,28 @@ export default (state = initState, action) => {
         loading: false,
         studentBySearch: action.payload.studentBySearch,
       };
+      break;
+
     case companyConstants.OFFER_DECISION_SUCCESS:
       state = {
         ...state,
         loading: false,
       };
+      break;
+
     case companyConstants.RECIEVED_OFFER_DECISION_SUCCESS:
       state = {
         ...state,
         loading: false,
       };
       break;
+    default: {
+      state = {
+        ...state,
+        loading: false,
+      };
+      break;
+    }
   }
 
   return state;

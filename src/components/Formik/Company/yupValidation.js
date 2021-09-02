@@ -1,4 +1,6 @@
 import * as Yup from "yup"
+import Texts from "../../../Globals/Texts";
+
 const address_object = Yup.object({
   street: Yup.string().required(),
   city: Yup.string().required(),
@@ -8,37 +10,37 @@ const address_object = Yup.object({
 })
 export const SECOND_SIGNUP_YUP = Yup.object().shape({
   name: Yup.string().required("Required"),
-  company_type: Yup.string().required("Required"),
+  company_type: Yup.string().required(Texts.REQUIRED),
   siretNumber: Yup.string()
     .max(20, "siretNumber must be less than or equal to 20 characters")
-    .required("Required"),
+    .required(Texts.REQUIRED),
 
   address: Yup.object()
     .shape({
-      street: Yup.string().required("Required"),
+      street: Yup.string().required(Texts.REQUIRED),
       city: Yup.string().required(
-        "Please select your complete address from list"
+        Texts.PLEASE_SELECT_YOUR_COMPLETE_ADDRESS_FROM_LIST
       ),
-      zip: Yup.string().required("Required"),
-      latitude: Yup.string().required("Required"),
-      longitude: Yup.string().required("Required"),
+      zip: Yup.string().required(Texts.REQUIRED),
+      latitude: Yup.string().required(Texts.REQUIRED),
+      longitude: Yup.string().required(Texts.REQUIRED),
     })
-    .required("Required"),
+    .required(Texts.REQUIRED),
   // contactPerson
 })
 export const FIRST_SIGNUP_YUP = Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
+  firstName: Yup.string().required(Texts.REQUIRED),
+  lastName: Yup.string().required(Texts.REQUIRED),
+  email: Yup.string().email("Invalid email address").required(Texts.REQUIRED),
   phone: Yup.string()
     .min(10, "Must be 10 characters long")
     .max(10, "Must be 10 characters long")
-    .required("Required"),
+    .required(Texts.REQUIRED),
 
   password: Yup.string()
     .min(6, "Must be 6 characters long")
     .max(255)
-    .required("Required"),
+    .required(Texts.REQUIRED),
   confirm_password: Yup.string()
     .when("password", {
       is: (val) => (val && val.length > 0 ? true : false),
@@ -49,20 +51,20 @@ export const FIRST_SIGNUP_YUP = Yup.object().shape({
     })
     .min(6, "Must be 10 characters long")
     .max(255)
-    .required("Required"),
-  positionHeld: Yup.string().required("Required"),
+    .required(Texts.REQUIRED),
+  positionHeld: Yup.string().required(Texts.REQUIRED),
 })
 
 export const LOGIN_YUP = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().max(255).required("Required"),
+  email: Yup.string().email("Invalid email address").required(Texts.REQUIRED),
+  password: Yup.string().max(255).required(Texts.REQUIRED),
 })
 
 // position sought
 
 export const POSITION_SOUGHT_YUP = Yup.object({
-  title: Yup.string().required("Required"),
-  domain: Yup.string().required("Required"),
+  title: Yup.string().required(Texts.REQUIRED),
+  domain: Yup.string().required(Texts.REQUIRED),
   description: Yup.string().required("Required"),
 
   position: Yup.string().required("Required"),
@@ -77,7 +79,7 @@ export const POSITION_SOUGHT_YUP = Yup.object({
   location: Yup.object().shape({
     street: Yup.string().required("Required"),
     city: Yup.string().required(
-      "Please select your complete address from list"
+      Texts.PLEASE_SELECT_YOUR_COMPLETE_ADDRESS_FROM_LIST
     ),
     zip: Yup.string().required("Required"),
     latitude: Yup.string().required("Required"),

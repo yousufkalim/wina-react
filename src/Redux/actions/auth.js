@@ -126,7 +126,6 @@ export const signout = () => async (dispatch) => {
 
 export const Get_User_Student = () => async (dispatch) => {
   if (user && token) {
-    // console.log("hello");
     try {
       dispatch(set_loading_data(true));
 
@@ -139,18 +138,13 @@ export const Get_User_Student = () => async (dispatch) => {
           },
         }
       );
-      // console.log(res, "response");
       dispatch({
         type: studentConstants.STUDENT_DATA_SUCCESS,
         payload: { loading: false, user: res.data.user },
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      // dispatch(
-      //   Notistack.enqueueSnackbar(
-      //     Notistack.snackBar(error.response.data.message, "error")
-      //   )
-      // );
+     
     }
   }
 };
@@ -245,7 +239,7 @@ export const Verify_email = (token, formik, props, history) => async (
 };
 // get student jobs
 export const Get_Student_Jobs = () => async (dispatch) => {
-  if (user && token) {
+
     try {
       dispatch(set_loading_data(true));
 
@@ -256,21 +250,15 @@ export const Get_Student_Jobs = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      // if (error.response) {
-      //   dispatch(
-      //     Notistack.enqueueSnackbar(
-      //       Notistack.snackBar(error.response.data.message, "error")
-      //     )
-      //   );
-      // }
+      
     }
-  }
+ 
 };
 
 //get compnay jobs
 
 export const Get_Company_Jobs = () => async (dispatch) => {
-  if (user && token) {
+ 
     try {
       dispatch(set_loading_data(true));
 
@@ -281,13 +269,13 @@ export const Get_Company_Jobs = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      // dispatch(
-      //   Notistack.enqueueSnackbar(
-      //     Notistack.snackBar(error.response.data.message, "error")
-      //   )
-      // );
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
     }
-  }
+  
 };
 //get all notifications
 

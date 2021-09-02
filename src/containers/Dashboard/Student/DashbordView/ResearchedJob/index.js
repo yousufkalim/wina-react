@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Add_info_Student } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 import TextArea from "../../../../../components/UI/Textarea";
-
+import Texts from '../../../../../Globals/Texts.js'
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
 import {
 	DomainOptions,
@@ -148,7 +148,7 @@ const ResearchedJob = () => {
 								<Col lg={3} md={3}>
 									<DatePicker
 										name="dateOfBirth"
-										label={"Date Of Birth"}
+										label={Texts.DATE_OF_BIRTH}
 										value={formik.values.dateOfBirth}
 										onChange={handleChange}
 									/>
@@ -196,7 +196,7 @@ const ResearchedJob = () => {
 							<div className="col-lg-6">
 								<TextArea
 									name="description"
-									placeholder="Enter Description"
+									placeholder="Entrez une description"
 									value={formik.values.description}
 									onChange={handleChange}
 									rows={3}
@@ -226,7 +226,7 @@ const ResearchedJob = () => {
 										className="Enregistrer"
 										type="submit"
 										variant="primary"
-										value="Enregistrer"
+										value="S’ENREGISTRER"
 										disabled={false}
 									/>
 								)}

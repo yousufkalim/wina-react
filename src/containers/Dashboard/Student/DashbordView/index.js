@@ -6,13 +6,11 @@ import ResearchedJob from "./ResearchedJob";
 import Skills from "./Skills";
 import ProfessionalProfile from "./ProfessionalProfile";
 import Header from "../../Components/header";
-import { useDispatch, useSelector } from "react-redux";
-import { signout } from "../../../../Redux/actions";
+
 import Footer from "../../Components/footer";
 
 const DashbordView = (props) => {
-  const dispatch = useDispatch();
-  const store = useSelector((state) => state.auth);
+
   return (
     <Tab.Container id="dashbord" defaultActiveKey="first" className="h-100">
       <div className="dashbord">

@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import AutoComplete from "../../UI/AutoComplete";
 import Button from "../../UI//Button";
 import _ from "lodash";
+import Texts from "../../../Globals/Texts";
 
 const StudentRegister = (props) => {
   // Dispatch
@@ -29,6 +30,8 @@ const StudentRegister = (props) => {
   //states
   const [items, setItems] = useState([]);
   const [Show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   // end
 
   // formik
@@ -43,6 +46,7 @@ const StudentRegister = (props) => {
     initialValues: SECOND_SIGNUP_STATE,
     validationSchema: SECOND_SIGNUP_YUP,
     onSubmit: (values) => {
+      setLoading(true);
       let tempEducation = _.cloneDeep(values);
       tempEducation.contactPerson = {
         firstName: formik.values.firstName,
@@ -62,7 +66,18 @@ const StudentRegister = (props) => {
         "phone",
         "positionHeld",
       ].forEach((e) => delete tempEducation[e]);
-      dispatch(Company_Signup(tempEducation, formik,props.handleModal));
+      let response = dispatch(Company_Signup(tempEducation));
+      response.then((value) => {
+        if (value === false) {
+          setLoading(false);
+          formik.setSubmitting(false);
+          formik.handleReset();
+        } else {
+          setLoading(false);
+          props.handleModal("company");
+        }
+      });
+
       formik2.setSubmitting(false);
       formik.setSubmitting(false);
     },
@@ -112,6 +127,7 @@ const StudentRegister = (props) => {
       );
     }
   };
+  
   const onSubmitAddress = (value) => {
     formik2.setFieldValue("address", {
       city: value.city,
@@ -121,9 +137,9 @@ const StudentRegister = (props) => {
       latitude: value.lat,
     });
   };
-  useEffect(() => {
-    setShow(!Show);
-  }, [props.show]);
+  // useEffect(() => {
+  //   setShow(!Show);
+  // }, [Show, props.show]);
   const handleNextChange = () => {
     setShow(!Show);
   };
@@ -203,7 +219,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="Enter Password"
+                        placeholder={Texts.ENTER_PASSWORD}
                         type="password"
                         name="password"
                         onChange={handleChange}
@@ -218,7 +234,7 @@ const StudentRegister = (props) => {
                     </div>
                     <div className="my-4">
                       <ModalInput
-                        placeholder="Enter Confirm_Password"
+                        placeholder={Texts.ENTER_CONFIRM_PASSWORD}
                         type="password"
                         name="confirm_password"
                         onChange={handleChange}
@@ -380,9 +396,9 @@ const StudentRegister = (props) => {
                     <button
                       className="modal-button modal-register-btn"
                       type="submit"
-                      disabled={store.loading}
+                      disabled={loading}
                     >
-                      {store.loading ? "Loading..." : "S’inscrire"}
+                      {loading === true ? "Loading..." : "S’inscrire"}
                     </button>
                   </form>
                 </>

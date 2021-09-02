@@ -1,5 +1,6 @@
-export const DEFAULT_IMAGE =
-  "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png";
+
+
+export const DEFAULT_IMAGE ="https://secure.gravatar.com/avatar/97ff337efe1f8256691c950625d2e340?s=250&d=mm&r=g";
 
 export const DomainOptions = [
   { title: "IT" },
@@ -16,46 +17,46 @@ export const RythmeOptions = [
   { title: "Choix 4" },
 ];
 export const DurationOptions = [
-  { title: "1 year" },
-  { title: "2 years" },
-  { title: "3 years" },
-  { title: "4 years" },
-  { title: "5 years" },
+  { title: "1 an" },
+  { title: "2 ans" },
+  { title: "3 ans" },
+  { title: "4 ans" },
+  { title: "5 ans" },
 ];
 export const levelOfEducation = [
   {
-    title: "1:Brevet",
+    title: "Brevet",
   },
 
   {
-    title: "2:CAP",
+    title: "CAP",
   },
   {
-    title: "3:BEP",
+    title: "BEP",
   },
   {
-    title: "4:MC",
+    title: "MC",
   },
   {
-    title: "5:BacGénéral",
+    title: "BacGénéral",
   },
   {
-    title: "6:BacProfessionel",
+    title: "BacProfessionel",
   },
   {
-    title: "7:BTS",
+    title: "BTS",
   },
   {
-    title: "8:DUT",
+    title: "DUT",
   },
   {
-    title: "9:Licence",
+    title: "Licence",
   },
   {
-    title: "10:Master",
+    title: "Master",
   },
   {
-    title: "11:Doctorat",
+    title: "Doctorat",
   },
 ];
 

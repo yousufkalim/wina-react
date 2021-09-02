@@ -41,8 +41,10 @@ export default function Users() {
   const USERS = useSelector((state) => state.admin);
   function userdata() {
     let data = [];
-    USERS.users &&
-      USERS.users.map((key, index) => {
+    if(USERS.users){
+    let newUsers=USERS.users.filter(dt=>dt.role!=='admin')
+    newUsers&&
+    newUsers.map((key, index) => {
         data.push({
           _id: key._id,
           name: key.firstName + " " + key.lastName,
@@ -54,6 +56,7 @@ export default function Users() {
         return data;
       });
     setData(data);
+    }
   }
   useEffect(() => {
     dispatch(getUser());

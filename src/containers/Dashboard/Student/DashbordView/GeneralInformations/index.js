@@ -85,7 +85,7 @@ const GeneralInformations = () => {
                 <Col lg={3} md={4}>
                   <div className="profileImage">
                     <Image
-                      alt="iamge2"
+                      alt="image2"
                       src={
                         store.user.student.professional_Picture.image
                           ? `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
@@ -255,7 +255,7 @@ const GeneralInformations = () => {
                   />
                 ))
               ) : (
-                <h1 className="text-center">No school found</h1>
+                <h1 className="text-center">Ajoutez une formation</h1>
               )}
             </div>
           </div>

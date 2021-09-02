@@ -29,7 +29,16 @@ export default function StudentRegister(props) {
     initialValues: SIGNUP_STATE,
     validationSchema: SIGNUP_YUP,
     onSubmit: (values) => {
-      dispatch(Student_Signup(values, formik,props.handleModal));
+      let response = dispatch(Student_Signup(values));
+
+      response.then((value) => {
+        if (value === false) {
+          formik.setSubmitting(false);
+          formik.handleReset();
+        } else {
+          props.handleModal("student");
+        }
+      });
     },
   });
 
@@ -145,7 +154,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="Enter Password"
+                    placeholder={Texts.ENTER_PASSWORD}
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -158,7 +167,7 @@ export default function StudentRegister(props) {
                 </div>
                 <div className="my-4">
                   <ModalInput
-                    placeholder="Enter Confirm_Password"
+                    placeholder={Texts.ENTER_CONFIRM_PASSWORD}
                     type="password"
                     name="confirm_password"
                     onChange={handleChange}
