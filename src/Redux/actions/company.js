@@ -160,7 +160,8 @@ export const Search_Students = (id) => async (dispatch) => {
 //GET STUDENT APPLIED JOBS for company
 
 export const Get_Applied_Jobs = (id) => async (dispatch) => {
-  if (user && token) {
+  
+  
     try {
       dispatch(set_loading_data(true));
 
@@ -179,10 +180,10 @@ export const Get_Applied_Jobs = (id) => async (dispatch) => {
       //   );
       // }
     }
-  }
+  
 };
 export const Get_Company_Applied_Jobs = (id) => async (dispatch) => {
-  if (user && token) {
+
     try {
       dispatch(set_loading_data(true));
 
@@ -201,7 +202,7 @@ export const Get_Company_Applied_Jobs = (id) => async (dispatch) => {
       //   );
       // }
     }
-  }
+  
 };
 //offer decision by company
 export const Offer_Decion_By_Company =

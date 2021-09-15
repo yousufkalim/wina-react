@@ -12,7 +12,7 @@ export default function App() {
         dense={false}
         hideIconVariant={false}
         preventDuplicate={false}
-        autoHideDuration={2000}
+        autoHideDuration={1000}
         // persist={true}
         anchorOrigin={{
           vertical: "bottom",

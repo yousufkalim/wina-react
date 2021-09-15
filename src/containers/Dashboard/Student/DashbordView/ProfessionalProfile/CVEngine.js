@@ -50,7 +50,10 @@ export default function CVEngine(props) {
 									{USER.user.firstName} {USER.user.lastName}
 								</div>
 								<div className="profileProfession">
-									<div className="pb-1">{USER.user.type}</div>
+									<div className="pb-1">
+									
+									{USER.user.type=='student'?'Etudiant':USER.user.type}
+									</div>
 
 									<div className="pb-1">
 										{USER.user.address.zip},{USER.user.address.street}{" "}
@@ -67,8 +70,7 @@ export default function CVEngine(props) {
 										<>
 											<div className="companyNameH">{ed.school}</div>
 											<div className="companydate">
-												{ed.start_Date}-{ed.end_Date}
-												<br />
+												{ed.start_Date}{" "}{ed.end_Date}
 												{/* Région de Paris, France */}
 											</div>
 											<div className="description">{ed.description}</div>
@@ -87,7 +89,7 @@ export default function CVEngine(props) {
 											<div className="companyName">{ed.place}</div>
 
 											<div className="companydateDuration">
-												{ed.duration.start_date}-{ed.duration.end_date}
+												{ed.duration.start_date}{" "}{ed.duration.end_date}
 											</div>
 											<div className="description">{ed.description}</div>
 										</>
@@ -169,12 +171,14 @@ export default function CVEngine(props) {
 										Ajoutez une expérience professionnelle.....
 									</p>
 								)}
-								<div className="formation">Compétences générales</div>
-								<ul className="PLinks">
-									{USER.student.softSkills &&
+								<div className="formation mt-3 mb-3">Compétences générales</div>
+								<ul className="list-group">
+									{USER.student &&
 										USER.student.softSkills.length > 0 ? (
 										USER.student.softSkills.map((ed) => (
-											<li>{ed.skillField}</li>
+											
+											<li className="list-group-item mt-1">{ed.skillField}</li>
+										
 										))
 									) : (
 										<p className="text-center">
@@ -182,12 +186,14 @@ export default function CVEngine(props) {
 										</p>
 									)}
 								</ul>
-								<div className="formation">Compétences spécialisées</div>
-								<ul className="PLinks">
-									{USER.student.hardSkills &&
+								<div className="formation mt-3 mb-3">Compétences spécialisées</div>
+								<ul className="list-group">
+									{USER.student &&
 										USER.student.hardSkills.length > 0 ? (
 										USER.student.hardSkills.map((ed) => (
-											<li>{ed.skillField}</li>
+									
+											<li className="list-group-item mt-1">{ed.skillField}</li>
+										
 										))
 									) : (
 										<p className="text-center">
@@ -195,9 +201,9 @@ export default function CVEngine(props) {
 										</p>
 									)}
 								</ul>
-								<div className="formation">Languages</div>
-								<ul className="PLinks">
-									{USER.student.languages.length > 0 ? (
+								<div className="formation mt-3 mb-3">Languages</div>
+								<ul className="list-group">
+									{USER.student && USER.student.languages.length > 0 ? (
 										USER.student.languages.map((ed) => <li>{ed.name}</li>)
 									) : (
 										<p className="text-center">No Languages info found.....</p>
@@ -206,7 +212,7 @@ export default function CVEngine(props) {
 							</Col>
 						</Row>
 					) : (
-						<h1 className="text-center">No data Found</h1>
+						<h1 className="text-center">Aucune donnée disponible</h1>
 					)}
 				</div>
 			</div>
@@ -241,8 +247,7 @@ export default function CVEngine(props) {
 										<>
 											<div className="companyNameH">{ed.school}</div>
 											<div className="companydate">
-												{ed.start_Date}-{ed.end_Date}
-												<br />
+												{ed.start_Date}{" "}{ed.end_Date}
 												{/* Région de Paris, France */}
 											</div>
 											<div className="description">{ed.description}</div>
@@ -261,7 +266,7 @@ export default function CVEngine(props) {
 											<div className="companyName">{ed.place}</div>
 
 											<div className="companydateDuration">
-												{ed.duration.start_date}-{ed.duration.end_date}
+												{ed.duration.start_date}{" "}{ed.duration.end_date}
 											</div>
 											<div className="description">{ed.description}</div>
 										</>
@@ -343,11 +348,11 @@ export default function CVEngine(props) {
 										Ajoutez une expérience professionnelle.....
 									</p>
 								)}
-								<div className="formation">Compétences générales</div>
-								<ul className="PLinks">
+								<div className="formation mt-3 mb-3">Compétences générales</div>
+								<ul className="list-group">
 									{USER.student.softSkills.length > 0 ? (
 										USER.student.softSkills.map((ed) => (
-											<li>{ed.skillField}</li>
+											<li className="list-group-item mt-1">{ed.skillField}</li>
 										))
 									) : (
 										<p className="text-center">
@@ -355,11 +360,13 @@ export default function CVEngine(props) {
 										</p>
 									)}
 								</ul>
-								<div className="formation">Compétences spécialisées</div>
-								<ul className="PLinks">
+								<div className="formation mt-3 mb-3">Compétences spécialisées</div>
+								<ul className="list-group">
 									{USER.student.hardSkills.length > 0 ? (
 										USER.student.hardSkills.map((ed) => (
-											<li>{ed.skillField}</li>
+										
+											<li className="list-group-item">{ed.skillField}</li>
+										
 										))
 									) : (
 										<p className="text-center">
@@ -367,10 +374,10 @@ export default function CVEngine(props) {
 										</p>
 									)}
 								</ul>
-								<div className="formation">Languages</div>
-								<ul className="PLinks">
-									{USER.student.languages.length > 0 ? (
-										USER.student.languages.map((ed) => <li>{ed.name}</li>)
+								<div className="formation mt-3 mb-3">Languages</div>
+								<ul className="list-group">
+									{USER.student && USER.student.languages.length > 0 ? (
+										USER.student.languages.map((ed) => <li className="list-group-item">{ed.name}</li>)
 									) : (
 										<p className="text-center">No Languages info found.....</p>
 									)}
@@ -378,7 +385,7 @@ export default function CVEngine(props) {
 							</Col>
 						</Row>
 					) : (
-						<h1 className="text-center">No data Found</h1>
+						<h1 className="text-center">Aucune donnée disponible</h1>
 					)}
 				</div>
 			</div>

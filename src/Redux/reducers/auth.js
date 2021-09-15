@@ -35,8 +35,12 @@ export default (state = initialState, action) => {
     case authConstants.LOGOUT_SUCCESS:
       state = {
         ...initialState,
+      
+        token: null,
+        user: "",
         auth: false,
-        loading: action.loading,
+        loading: false,
+        error: null,
       };
       break;
     case studentConstants.STUDENT_DATA_SUCCESS:

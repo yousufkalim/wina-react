@@ -20,7 +20,7 @@ export const getUser = () => async (dispatch) => {
       payload: { loading: false, users: res.data.listOfUsers },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -49,7 +49,7 @@ export const deleteUser = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -72,7 +72,7 @@ export const listOfSkills = () => async (dispatch) => {
       payload: { loading: false, skills: res.data.listOfSkills },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -163,7 +163,7 @@ export const Edit_skills = (_id, data) => async (dispatch) => {
       )
     );
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -183,7 +183,7 @@ export const listOfJobs = () => async (dispatch) => {
       payload: { loading: false, jobs: res.data.ListOfJobs },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -230,7 +230,7 @@ export const listOfCompany = () => async (dispatch) => {
       payload: { loading: false, Company: res.data.listOfCompanies },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -279,7 +279,7 @@ export const listOfAppointment = () => async (dispatch) => {
       payload: { loading: false, Appointments: res.data.Appointments },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -363,7 +363,7 @@ export const listOfConsultantStudent = () => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -387,7 +387,7 @@ export const listOfConsultantCompany = () => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
+    
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(

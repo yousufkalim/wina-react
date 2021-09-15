@@ -30,6 +30,7 @@ import { classnames } from "classnames";
 
 const ResearchedJob = () => {
 	const store = useSelector((state) => state.student);
+
 	const dispatch = useDispatch();
 	const POSITION_SOUGHT = store.user && store.user.student.positionSought;
 
@@ -57,6 +58,9 @@ const ResearchedJob = () => {
 			formik.setFieldValue("position", POSITION_SOUGHT.position);
 			formik.setFieldValue("duration", POSITION_SOUGHT.duration);
 			formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
+			formik.setFieldValue("dateOfBirth", POSITION_SOUGHT.dateOfBirth);
+
+			
 			formik.setFieldValue(
 				"alternationRhythm",
 				POSITION_SOUGHT.alternationRhythm
@@ -77,8 +81,8 @@ const ResearchedJob = () => {
 				<Tab eventKey="Research" title="Recherche">
 					<div className="ResearchBox custom-box  ">
 						<form onSubmit={formik.handleSubmit}>
-							<Row className="Research ">
-								<Col lg={3} md={3} className="col-3-width pl-0">
+							<div className="row ">
+								<div className="col-lg-3">
 									<ModalInput
 										name="position"
 										label="Position"
@@ -94,9 +98,9 @@ const ResearchedJob = () => {
 											{formik.errors.position}
 										</div>
 									) : null}
-								</Col>
+								</div>
 
-								<Col lg={3} md={3}>
+								<div className="col-lg-3">
 									<Select
 										name="domain"
 										value={formik.values.domain}
@@ -111,56 +115,26 @@ const ResearchedJob = () => {
 											{formik.errors.domain}
 										</div>
 									) : null}
-								</Col>
-								<Col lg={3} md={3}>
+								</div>
+								<div className="col-lg-3">
 									<Select
 										name="levelOfEducation"
 										value={formik.values.levelOfEducation}
 										onChange={handleChange}
 										options={levelOfEducation}
 										label="Niveau d’étude"
+										className="ml-3"
 									/>
 
 									{formik.touched.levelOfEducation &&
-									formik.errors.levelOfEducation ? (
+										formik.errors.levelOfEducation ? (
 										<div className="formikErrorAuto">
 											{" "}
 											{formik.errors.levelOfEducation}
 										</div>
 									) : null}
-								</Col>
-							</Row>
-							<Row className="levelofStudyBox">
-								<Col lg={3} md={3}>
-									<DatePicker
-										name="startDate"
-										label={"Date de début"}
-										value={formik.values.startDate}
-										onChange={handleChange}
-									/>
-									{formik.touched.startDate && formik.errors.startDate ? (
-										<div className="formikErrorAuto">
-											{" "}
-											{formik.errors.startDate}
-										</div>
-									) : null}
-								</Col>
-								<Col lg={3} md={3}>
-									<DatePicker
-										name="dateOfBirth"
-										label={Texts.DATE_OF_BIRTH}
-										value={formik.values.dateOfBirth}
-										onChange={handleChange}
-									/>
-									{formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
-										<div className="formikErrorAuto">
-											{" "}
-											{formik.errors.dateOfBirth}
-										</div>
-									) : null}
-								</Col>
-
-								<Col lg={3} md={3} className="col-3-width">
+								</div>
+								<div className="col-lg-3">
 									<Select
 										name="duration"
 										value={formik.values.duration}
@@ -175,40 +149,77 @@ const ResearchedJob = () => {
 											{formik.errors.duration}
 										</div>
 									) : null}
-								</Col>
-							</Row>
-							<div className="checkBoxes">
-								<RadioButton
-									options={RythmeOptions}
-									name="alternationRhythm"
-									label="Rythme alternances :"
-									value={formik.values.alternationRhythm}
-									onChange={handleChange}
-								/>
-								{formik.touched.alternationRhythm &&
-								formik.errors.alternationRhythm ? (
-									<div className="formikErrorAuto">
-										{" "}
-										{formik.errors.alternationRhythm}
-									</div>
-								) : null}
+								</div>
 							</div>
-							<div className="col-lg-6">
-								<TextArea
-									name="description"
-									placeholder="Entrez une description"
-									value={formik.values.description}
-									onChange={handleChange}
-									rows={3}
-								/>
-								{formik.touched.description && formik.errors.description ? (
-									<div className="formikErrorDesc">
-										{" "}
-										{formik.errors.description}
-									</div>
-								) : null}
-							</div>
+							<div className="row mt-5 ">
+								<div className="col-lg-3">
+									<DatePicker
+										name="startDate"
+										label={"Date de début"}
+										value={formik.values.startDate}
+										onChange={handleChange}
+									/>
+									{formik.touched.startDate && formik.errors.startDate ? (
+										<div className="formikErrorAuto">
+											{" "}
+											{formik.errors.startDate}
+										</div>
+									) : null}
+								</div>
+								<div className="col-lg-3">
+									<DatePicker
+										name="dateOfBirth"
+										label={Texts.DATE_OF_BIRTH}
+										value={formik.values.dateOfBirth}
+										previous={true}
+										onChange={handleChange}
+									/>
+									{formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
+										<div className="formikErrorAuto">
+											{" "}
+											{formik.errors.dateOfBirth}
+										</div>
+									) : null}
+								</div>
 
+
+							</div>
+							<div className="d-flex mt-5">
+								<div className="col-lg-3">
+									<RadioButton
+										options={RythmeOptions}
+										name="alternationRhythm"
+										label="Rythme alternances :"
+										value={formik.values.alternationRhythm}
+										onChange={handleChange}
+									/>
+									{formik.touched.alternationRhythm &&
+										formik.errors.alternationRhythm ? (
+										<div className="formikErrorAuto">
+											{" "}
+											{formik.errors.alternationRhythm}
+										</div>
+									) : null}
+								</div>
+
+							</div>
+							<div className="d-flex  ">
+								<div className="col-lg-6 ptb-30">
+									<TextArea
+										name="description"
+										placeholder="Entrez une description"
+										value={formik.values.description}
+										onChange={handleChange}
+										rows={3}
+									/>
+									{formik.touched.description && formik.errors.description ? (
+										<div className="formikErrorDesc">
+											{" "}
+											{formik.errors.description}
+										</div>
+									) : null}
+								</div>
+							</div>
 							{/* <div className="jobIsProvided text-left">
                 <CheckBox onChange={handleChange} label="Le poste est pourvu" name="availibilty" />
               </div> */}

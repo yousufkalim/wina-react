@@ -45,6 +45,7 @@
     "slick-carousel": "^1.8.1",
     "socket.io": "^4.0.1",
     "socket.io-client": "^4.0.1",
+    "tailwindcss": "^2.2.14",
     "yup": "^0.32.9"
   },
   "scripts": {

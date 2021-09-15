@@ -23,7 +23,7 @@ import {
 	RecievedOffer_Decion_By_Company,
 	Get_Company_Applied_Jobs,
 	Cancel_Offer_Decion_By_Company,
-	Booking_Decion_By_Company,
+	Booking_Decion_By_Company,Get_Job
 } from "../../../../../Redux/actions";
 const OverviewOfOffers = () => {
 	const store = useSelector((state) => state.company);
@@ -163,6 +163,8 @@ const OverviewOfOffers = () => {
 	}, [key, setKey, setSentfferID, setRecievofferID]);
 
 	const handleDetail = (id) => {
+		dispatch(Get_Job(id))
+
 		setofferID(id);
 		setisDetail(!isDetail);
 	};
@@ -229,7 +231,7 @@ const OverviewOfOffers = () => {
 		return (
 			<>
 				<BookingModal
-					modalTitle="Booking Slot"
+					modalTitle="Aucune donnée disponible"
 					show={booking}
 					className="custom-modal"
 					handleClose={() => setBooking(false)}
@@ -317,7 +319,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">non des offres trouvé</h1>
+									<h1 className="text-center">Il n’y a pas d’offres</h1>
 								)}
 							</div>
 						</div>
@@ -338,7 +340,7 @@ const OverviewOfOffers = () => {
 											/>
 										))
 									) : (
-										<h1 className="text-center">non des offres trouvé</h1>
+										<h1 className="text-center">Il n’y a pas d’offres</h1>
 									)
 								) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
 									SENT_OFFERS.map((item, index) => (
@@ -354,7 +356,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">non des offres trouvé</h1>
+									<h1 className="text-center">Il n’y a pas d’offres</h1>
 								)}
 							</div>
 						</div>
@@ -376,7 +378,7 @@ const OverviewOfOffers = () => {
 											/>
 										))
 									) : (
-										<h1 className="text-center">non des offres trouvé</h1>
+										<h1 className="text-center">Il n’y a pas d’offres</h1>
 									)
 								) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
 									RECIEVED_OFFERS.map((item, index) => (
@@ -395,7 +397,7 @@ const OverviewOfOffers = () => {
 										/>
 									))
 								) : (
-									<h1 className="text-center">non des offres trouvé</h1>
+									<h1 className="text-center">Il n’y a pas d’offres</h1>
 								)}
 							</div>
 						</div>
@@ -431,11 +433,7 @@ const OverviewOfOffers = () => {
 																? `${baseUri}/views/uploads/${studentFormData.professional_Picture.image}`
 																: DEFAULT_IMAGE
 														}
-														hidden={
-															studentFormData.professional_Picture.image
-																? false
-																: true
-														}
+													
 													/>
 												</div>
 												<div className="profileImage">
@@ -574,13 +572,13 @@ const OverviewOfOffers = () => {
 										type="student_professional_info"
 									/>
 								) : (
-									<h1 className="text-center">No professional profile found</h1>
+									<h1 className="text-center">Ajoutez une expérience professionnelle</h1>
 								)}
 							</div>
 						</Tab>
 					</Tabs>
 				) : (
-					<h1 className="text-center">No data found</h1>
+					<h1 className="text-center">Aucune donnée disponible</h1>
 				)}
 			</>
 		);

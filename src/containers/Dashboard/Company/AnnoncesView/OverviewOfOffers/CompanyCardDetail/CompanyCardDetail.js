@@ -59,6 +59,7 @@ const CompanyCardDetail = (props) => {
 	} = props;
 	const dispatch = useDispatch();
 	const store2 = useSelector((state) => state.globals);
+	
 	const store3 = useSelector((state) => state.company);
 
 	const classes = useStyles();
@@ -674,7 +675,7 @@ const CompanyCardDetail = (props) => {
 							/>
 						))
 					) : (
-						<h1 className="text-center">non des offres trouvé</h1>
+						<h1 className="text-center">Il n’y a pas d’offres</h1>
 					)}
 				</div>
 			</div>

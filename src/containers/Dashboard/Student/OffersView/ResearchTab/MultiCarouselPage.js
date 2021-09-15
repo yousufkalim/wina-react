@@ -29,44 +29,44 @@ export default function MultiCarouselPage(props) {
   const [isGoDetail, setIsGoDetail] = useState(false);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    lazyLoad: true,
-    autoplaySpeed: 3000,
-    cssEase: "ease-out",
+    // lazyLoad: true,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
     autoplay: true,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    slidesToShow: 3,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
+    slidesToShow: 4,
     slidesToScroll: 1,
     speed: 1500,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       initialSlide: 3,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
   };
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function MultiCarouselPage(props) {
     <>
       <div
         className="d-flex justify-content-start align-items-center"
-        style={{ height: "10%" }}
+        // style={{ height: "10%" }}
       >
         <h5>Store & Supply </h5>
         <span className="offer-apply-btn ml-5">Postuler</span>

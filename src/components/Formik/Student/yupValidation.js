@@ -43,7 +43,11 @@ export const LOGIN_YUP = Yup.object({
 export const SCOOL_YUP = Yup.object({
   school: Yup.string().required(Texts.REQUIRED),
   start_Date: Yup.string().required(Texts.REQUIRED),
-  end_Date: Yup.string().required(Texts.REQUIRED),
+  // end_Date: Yup.string().required(Texts.REQUIRED),
+  end_Date:Yup.date().min(
+    Yup.ref('start_Date'),
+    "La date de fin ne peut pas être antérieure à la date de début"
+  ).required(Texts.REQUIRED),
   description: Yup.string().required(Texts.REQUIRED),
   image: Yup.string().required(Texts.REQUIRED),
 })
@@ -66,7 +70,10 @@ export const PROFESSIONAL_PROFILE_YUP = Yup.object({
   type: Yup.string().required(Texts.REQUIRED),
   place: Yup.string().required(Texts.REQUIRED),
   start_date: Yup.string().required(Texts.REQUIRED),
-  end_date: Yup.string().required(Texts.REQUIRED),
+  end_date:Yup.date().min(
+    Yup.ref('start_date'),
+    "La date de fin ne peut pas être antérieure à la date de début"
+  ).required(Texts.REQUIRED),
   description: Yup.string().required(Texts.REQUIRED),
   image: Yup.string().required(Texts.REQUIRED),
 })

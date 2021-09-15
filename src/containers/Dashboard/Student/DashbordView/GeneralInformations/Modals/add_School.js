@@ -17,6 +17,8 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
+  const [ImageUri, setImageURI] = useState("");
+
   // formik
   const formik = useFormik({
     initialValues: SCOOL_STATE,
@@ -54,6 +56,8 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
+        let uri = URL.createObjectURL(file);
+				setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -74,7 +78,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
           <div className="row">
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
-                <div>
+                <div className="mb-3">
                   <ModalInput
                     name="school"
                     label="École"
@@ -106,12 +110,13 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                       </div>
                     ) : null}
                   </div>
-                  <div>
+                  <div className="ml-3">
                     <DatePicker
                       name="end_Date"
                       label={"Date de fin"}
                       value={formik.end_Date}
                       onChange={handleChange}
+                      
                     />
                     {formik.touched.end_Date && formik.errors.end_Date ? (
                       <div className="formikErrorDate">
@@ -122,15 +127,23 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <label>Upload Image</label>
+                  <label className="inputLabel" for="files">Ajouter une photo</label>
+                  <br/>
+                  { ImageUri && <img
+												className="imageURI"
+													src={
+														ImageUri
+													}
+												/>}
                   <Input
                     name="image"
                     placeholder="professional_Picture"
                     onChange={handleChange}
                     type="file"
                     accept="image/*"
+                    id="files"
                   />
-
+                  
                   {formik.touched.image && formik.errors.image ? (
                     <div className="formikErrorAuto">
                       {" "}
@@ -138,12 +151,13 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                     </div>
                   ) : null}
                 </div>
-                <div className="description">
+              
                   <TextArea
                     name="description"
                     value={formik.description}
                     onChange={handleChange}
                     rows={3}
+                    placeholder="Description"
                   />
                   {formik.touched.description && formik.errors.description ? (
                     <div className="formikErrorDesc">
@@ -151,7 +165,6 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                       {formik.errors.description}
                     </div>
                   ) : null}
-                </div>
                 <div>
                   {store.loading ? (
                     <Button

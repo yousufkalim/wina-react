@@ -80,27 +80,27 @@ export default function BrowseOffers() {
 			tempValues.softSkills = softSkillsArray;
 			tempValues.hardSkills = hardSkillsArray;
 			tempValues.photo = imagePath;
-		let response=	dispatch(Create_Job(tempValues));
-		response.then((value)=>{
-			if (value === true) {
-				formik.setFieldValue("location", {
-					city: "",
-					street: "",
-					zip: "",
-					longitude: "",
-					latitude: "",
-				});
-				formik.setSubmitting(false);
-				formik.handleReset();
-				setsoftSkillsArray([]);
-				sethardSkillsArray([]);
-				setItems([]);
-				setimageURI("");
-				setImage("");
-			}
-		})
-			
-			
+			let response = dispatch(Create_Job(tempValues));
+			response.then((value) => {
+				if (value === true) {
+					formik.setFieldValue("location", {
+						city: "",
+						street: "",
+						zip: "",
+						longitude: "",
+						latitude: "",
+					});
+					formik.setSubmitting(false);
+					formik.handleReset();
+					setsoftSkillsArray([]);
+					sethardSkillsArray([]);
+					setItems([]);
+					setimageURI("");
+					setImage("");
+				}
+			})
+
+
 		},
 	});
 	// onChange
@@ -225,6 +225,9 @@ export default function BrowseOffers() {
 														imageURI ? imageURI : "../images/add_image_icon.png"
 													}
 												/>
+												{formik.touched.photo && formik.errors.photo ? (
+													<div className="formikError"> {formik.errors.photo}</div>
+												) : null}
 											</label>
 										</div>
 										<input
@@ -235,15 +238,13 @@ export default function BrowseOffers() {
 											style={{ display: "none" }}
 											onChange={handleChange}
 										/>
-										{formik.touched.photo && formik.errors.photo ? (
-											<div className="formikError"> {formik.errors.photo}</div>
-										) : null}
+
 									</Col>
 									<Col lg={8} md={8}>
 										<div className="publish-header-content">
 											<div className="FieldAndPlaces">
 												<div >
-													<ModalInput 
+													<ModalInput
 														name="position"
 														label="Nom du poste"
 														// className="Job_title"
@@ -304,7 +305,7 @@ export default function BrowseOffers() {
 													/>
 
 													{formik.touched.levelOfEducation &&
-													formik.errors.levelOfEducation ? (
+														formik.errors.levelOfEducation ? (
 														<div className="formikErrorAuto">
 															{" "}
 															{formik.errors.levelOfEducation}
@@ -321,7 +322,7 @@ export default function BrowseOffers() {
 														onChange={handleChange}
 													/>
 													{formik.touched.startDate &&
-													formik.errors.startDate ? (
+														formik.errors.startDate ? (
 														<div className="formikErrorDate">
 															{formik.errors.startDate}
 														</div>
@@ -388,7 +389,7 @@ export default function BrowseOffers() {
 													rows={3}
 												/>
 												{formik.touched.description &&
-												formik.errors.description ? (
+													formik.errors.description ? (
 													<div className="formikErrorDesc">
 														{" "}
 														{formik.errors.description}
@@ -405,7 +406,7 @@ export default function BrowseOffers() {
 												/>
 											</div>
 											{formik.touched.alternationRhythm &&
-											formik.errors.alternationRhythm ? (
+												formik.errors.alternationRhythm ? (
 												<div className="formikErrorAuto">
 													{" "}
 													{formik.errors.alternationRhythm}

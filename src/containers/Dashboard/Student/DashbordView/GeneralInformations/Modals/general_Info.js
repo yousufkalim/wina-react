@@ -19,6 +19,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
 
   // states
   const [image, setImage] = useState("");
+  const [ImageUri, setImageURI] = useState("");
+
   const [video, setVideo] = useState("");
   const [networkFormData, setnetworkFormData] = useState({
     linkedIn: "",
@@ -100,6 +102,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       let file = e.target.files[0];
       if (file.type !== "application/pdf") {
         const uri = URL.createObjectURL(file);
+				setImageURI(uri);
+
         if (file.type === "video/mp4") {
           if (file.size <= 200000000) {
             setVideo(file);
@@ -130,7 +134,14 @@ const GeneralInformationsModal = ({ show, setShow }) => {
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
                 <div>
-                  <label>Upload Image</label>
+                <label className="inputLabel" for="upload-image-button">Ajouter une photo</label>
+                  <br/>
+                  { ImageUri && <img
+												className="imageURI"
+													src={
+														ImageUri
+													}
+												/>}
                   <ModalInput
                     id="upload-image-button"
                     name="image"
@@ -139,22 +150,18 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     placeholder="professional_Picture"
                     type="file"
                   />
-                  {formik.values.image ? (
-                    <div>
-                      {" "}
-                      <b>{formik.values.image}</b>
-                    </div>
-                  ) : null}
+                  
                 </div>
-                <div className="my-4">
-                  <label>Upload Video</label>
-
+                <div >
+                 
+                  <label className="inputLabel" for="upload-video-button">Ajouter une video</label>
                   <ModalInput
                     placeholder="professional_Video"
                     name="video"
                     accept="video/*"
                     onChange={handleFileUpload}
                     type="file"
+                    id="upload-video-button"
                   />
                   {formik.values.video ? (
                     <div>

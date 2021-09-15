@@ -123,7 +123,7 @@ const ProfessionalProfile = () => {
 				data={Professional_Profile}
 				professionalArray={professionalArray}
 			/>
-			<div style={{ position: "relative" }}>
+			<div style={{ position: "relative",height:'100%' }}>
 				<Tabs
 					activeKey={key}
 					id="Profile"
@@ -165,7 +165,9 @@ const ProfessionalProfile = () => {
 						title="CV en ligne"
 						className="h-100"
 					>
+						<div className="AnnoncesViewOffersBox">
 						<CVENGINE USER={USER} setKey={setKey} key={key} />
+						</div>
 					</Tab>
 				</Tabs>
 				<div

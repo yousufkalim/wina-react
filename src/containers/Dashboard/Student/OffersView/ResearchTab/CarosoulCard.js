@@ -9,6 +9,7 @@ export default function RecipeReviewCard(props) {
   const { cards, handleDetail } = props
 
   return (
+    <div className="carosoulDiv">
     <div className="offer-card">
       <div className="offer-card-wrapper">
         <div className="offer-card-header">
@@ -45,6 +46,7 @@ export default function RecipeReviewCard(props) {
           <AddIcon />
         </Fab>
       </Link>
+    </div>
     </div>
   )
 }
