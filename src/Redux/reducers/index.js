@@ -1,4 +1,4 @@
-import authReducer from "./auth.reducers";
+import authReducer from "./auth";
 import studentReducer from "./student";
 
 import globals from "./globals";

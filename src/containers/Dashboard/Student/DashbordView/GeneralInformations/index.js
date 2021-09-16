@@ -91,11 +91,11 @@ const GeneralInformations = () => {
                           ? `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
                           : DEFAULT_IMAGE
                       }
-                      hidden={
-                        store.user.student.professional_Picture.image
-                          ? false
-                          : true
-                      }
+                      // hidden={
+                      //   store.user.student.professional_Picture.image
+                      //     ? false
+                      //     : true
+                      // }
                     />
                   </div>
                   <div className="profileImage">
@@ -120,7 +120,7 @@ const GeneralInformations = () => {
                 </Col>
                 <Col lg={9} md={8}>
                   <div className="profilename">{Loggin_User}</div>
-                  <div className="profileProfession">{store.user.type}</div>
+                  <div className="profileProfession">{store.user.type=='student'?'Etudiant':store.user.type}</div>
                   <div className="generalDescription">Description générale</div>
                   <div className="description">
                     {store.user.student.general_Presentation

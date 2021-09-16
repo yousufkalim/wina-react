@@ -29,6 +29,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
   const store = useSelector((state) => state.student);
   // const classes = useStyles();
   const [Image, setImage] = useState("");
+  const [ImageUri, setImageURI] = useState("");
 
   const formik = useFormik({
     initialValues: PROFESSIONAL_PROFILE_STATE,
@@ -72,6 +73,8 @@ const PPModal = ({ show, setShow, professionalArray }) => {
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
+        let uri = URL.createObjectURL(file);
+				setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -177,12 +180,21 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               />
             </div>
             <div className="position" style={{marginBottom: "-2rem",marginRight: "3rem"    }}>
+            <label className="inputLabel" for="professional_Picture">Ajouter une photo</label>
+                  <br/>
+                  { ImageUri && <img
+												className="imageURI"
+													src={
+														ImageUri
+													}
+												/>}
               <Input
                 name="image"
                 placeholder="professional_Picture"
                 onChange={handleChange}
                 type="file"
                 accept="image/*"
+                id="professional_Picture"
               />
 
               {formik.touched.image && formik.errors.image ? (

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Chip from "@material-ui/core/Chip"
 import Paper from "@material-ui/core/Paper"
 import TagFacesIcon from "@material-ui/icons/TagFaces"
-
+import moment  from "moment"
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -35,7 +35,7 @@ export default function ChipsArray(props) {
           return (
             <li key={index}>
               <Chip
-                label={data}
+                label={moment(data).format('DD/MM/YYY HH:SS')}
                 onDelete={handleDelete(data)}
                 className={classes.chip}
               />

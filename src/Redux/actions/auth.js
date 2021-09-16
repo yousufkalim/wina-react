@@ -269,11 +269,12 @@ export const Get_Company_Jobs = () => async (dispatch) => {
       });
     } catch (error) {
       dispatch(set_loading_data(false));
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(error.response.data.message, "error")
-        )
-      );
+
+      // dispatch(
+      //   Notistack.enqueueSnackbar(
+      //     Notistack.snackBar(error.response.data.message, "error")
+      //   )
+      // );
     }
   
 };
@@ -330,13 +331,13 @@ export const UpdateNotifications = (id) => async (dispatch) => {
     } catch (error) {
       dispatch(set_loading_data(false));
 
-      if (error.response) {
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(error.response.data.message, "error")
-          )
-        );
-      }
+      // if (error.response) {
+      //   dispatch(
+      //     Notistack.enqueueSnackbar(
+      //       Notistack.snackBar(error.response.data.message, "error")
+      //     )
+      //   );
+      // }
     }
   }
 };

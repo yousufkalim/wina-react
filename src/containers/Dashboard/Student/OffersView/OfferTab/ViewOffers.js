@@ -60,7 +60,7 @@ export default function ViewOffers() {
     );
   };
   const handlerRecievedOfferAccepted = (id, appointments, decision) => {
-    alert(id)
+   
 
     setAppointments(appointments);
     setjobID(id);
@@ -129,7 +129,7 @@ export default function ViewOffers() {
   return (
     <>
       <BookingModal
-        modalTitle="Booking Slot"
+        modalTitle="Emplacement de réservation"
         show={booking}
         className="custom-modal"
         handleClose={() => setBooking(false)}
@@ -140,7 +140,7 @@ export default function ViewOffers() {
                 <div className="card-with-image-calender-container">
                   <div className="card-with-image-calender-wrapper">
                     <div className="card-with-image-calender-heading">
-                      Validate a Time Slot{" "}
+                      Valider une plage horaire{" "}
                     </div>
                   </div>
                   {Timmings && Timmings.length > 0 ? (
@@ -209,7 +209,7 @@ export default function ViewOffers() {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">non des offres trouvé</h1>
+                  <h1 className="text-center">Il n’y a pas d’offres</h1>
                 )}
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function ViewOffers() {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">non des offres trouvé</h1>
+                  <h1 className="text-center">Il n’y a pas d’offres</h1>
                 )}
               </div>
             </div>
@@ -285,7 +285,7 @@ export default function ViewOffers() {
                     )
                   )
                 ) : (
-                  <h1 className="text-center">non des offres trouvé</h1>
+                  <h1 className="text-center">Il n’y a pas d’offres</h1>
                 )}
               </div>
             </div>

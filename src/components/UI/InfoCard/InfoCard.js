@@ -1,7 +1,7 @@
 import React from "react";
 import "./InfoCard.css";
 import { FiEdit2, MdDelete } from "react-icons/all";
-import { DEFAULT_IMAGE } from "../../../Globals";
+import { DEFAULT_IMAGE } from "../../../Globals/index";
 import { baseUri } from "../../../urlConfig";
 
 const InfoCard = (props) => {
@@ -41,7 +41,7 @@ const InfoCard = (props) => {
             <div className="info-card-content pb-3">
               <div>{item.position}</div>
               <div>
-                {item.duration.start_date}-{item.duration.end_date}
+                {item.duration.start_date}{" "}{item.duration.end_date}
               </div>
             </div>
 
@@ -67,20 +67,21 @@ const InfoCard = (props) => {
             <div className="info-card-title">
               <div>{item.school}</div>
               {EditPermission && EditPermission === false ? (
-                ""
+                 <div className="modal-icon">
+                 
+                 <FiEdit2
+                   onClick={() => EditSchoolModalShow(item._id)}
+                   className="edit_Icon"
+                 />
+                 <MdDelete className="delete_icon" onClick={props.onDelete} />
+               </div>
               ) : (
-                <div className="modal-icon">
-                  <FiEdit2
-                    onClick={() => EditSchoolModalShow(item._id)}
-                    className="edit_Icon"
-                  />
-                  <MdDelete className="delete_icon" onClick={props.onDelete} />
-                </div>
+               ""
               )}
             </div>
             <div className="info-card-content pb-3">
               <div>
-                {item.start_Date}-{item.end_Date}
+                {item.start_Date}{" "}{item.end_Date}
               </div>
             </div>
 

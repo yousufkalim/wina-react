@@ -47,7 +47,7 @@ function App() {
       {store.loading && <Loader.AbsoluteLinear />}
       {loading ? (
         <Loader.CenterProgress size={80} />
-      ) : store.auth ? (
+      ) : store.auth && store.user? (
         store.user.type === "student" ? (
           <Student />
         ) : store.user.type === "company" ? (

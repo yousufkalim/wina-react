@@ -73,7 +73,7 @@ export default function Hard_skilltab(props) {
                   <div className="formikErrorAuto"> {formik.errors.name}</div>
                 ) : null}
               </div>
-              <div>
+              <div className="ml-3">
                 <Select
                   name="skill"
                   value={formik.values.skill}

@@ -24,6 +24,7 @@ const GeneralInformationsModal = ({
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
+  const [ImageUri, setImageURI] = useState("");
 
   // formik
   const formik = useFormik({
@@ -74,6 +75,8 @@ const GeneralInformationsModal = ({
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
+        let uri = URL.createObjectURL(file);
+				setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -89,6 +92,7 @@ const GeneralInformationsModal = ({
       className="custom-modal"
       handleClose={() => setShow(false)}
       modalTitle="Formation / École"
+      size="sm"
       children={
         data && id ? (
           <div class="container">
@@ -143,16 +147,24 @@ const GeneralInformationsModal = ({
                     </div>
                   </div>
                   <div className="mt-4">
+                  <label className="inputLabel" for="edit_school">Ajouter une photo</label>
+                  <br/>
+                  { ImageUri && <img
+												className="imageURI"
+													src={
+														ImageUri
+													}
+												/>}
                     <Input
                       name="image"
                       placeholder="professional_Picture"
                       onChange={handleChange}
                       type="file"
                       accept="image/*"
+                      id="files"
+                      id="edit_school"
                     />
-                    {formik.values.image ? (
-                      <div> {formik.values.image}</div>
-                    ) : null}
+                 
                     {formik.touched.image && formik.errors.image ? (
                       <div className="formikErrorAuto">
                         {" "}
@@ -160,11 +172,11 @@ const GeneralInformationsModal = ({
                       </div>
                     ) : null}
                   </div>
-                  <div className="description">
                     <TextArea
                       name="description"
                       value={formik.values.description}
                       onChange={handleChange}
+                      placeholder="Description"
                       rows={3}
                     />
                     {formik.touched.description && formik.errors.description ? (
@@ -173,7 +185,6 @@ const GeneralInformationsModal = ({
                         {formik.errors.description}
                       </div>
                     ) : null}
-                  </div>
                   {store.loading ? (
                     <Button
                       className="Enregistrer"

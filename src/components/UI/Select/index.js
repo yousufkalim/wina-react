@@ -4,7 +4,7 @@ import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-
+import moment from "moment"
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
@@ -48,7 +48,7 @@ export default function ControlledOpenSelect(props) {
                     {op.skillField}
                   </MenuItem>
                 ))
-              : "No data found"}
+              : "Aucune donnée disponible"}
             <MenuItem value="other">{props.other ? "other" : ""}</MenuItem>
           </Select>
         </FormControl>
@@ -76,7 +76,7 @@ export default function ControlledOpenSelect(props) {
               ? props.options &&
                 props.options.map((op, i) => (
                   <MenuItem key={i} value={op}>
-                    {op}
+                    {moment(new Date(op)).format("DD/MM/YYYY HH:SS")}
                   </MenuItem>
                 ))
               : ""}
@@ -111,7 +111,7 @@ export default function ControlledOpenSelect(props) {
                     {op.title}
                   </MenuItem>
                 ))
-              : "No data found"}
+              : "Aucune donnée disponible"}
           </Select>
         </FormControl>
       </div>

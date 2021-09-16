@@ -9,6 +9,7 @@ import { Verify_email } from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button";
 import * as Yup from "yup";
+import Texts from  '../../../Globals/Texts'
 import { useHistory, useParams } from "react-router-dom";
 export default function StudentRegister(props) {
   // Dispatch
@@ -48,7 +49,7 @@ export default function StudentRegister(props) {
               <div className="heading pb-4">Connexion</div>
               <form onSubmit={formik.handleSubmit}>
                 <div>
-                  <p>Click below to verify your email</p>
+                  <p>{Texts.CLICK_BELOW_TO_VERIFY_EMAIL}</p>
                 </div>
 
                 {store.loading ? (

@@ -43,6 +43,9 @@ import Skills from "../../../Admin/skills/AddSkills";
 export default function BrowseOffers() {
 	const history = useHistory();
 	const [show, setShow] = useState(false);
+	const [address, setAddress] = useState("");
+	const [multiSelect, setmultiSelect] = useState(0);
+
 
 	const dispatch = useDispatch();
 	const store2 = useSelector((state) => state.globals);
@@ -56,6 +59,7 @@ export default function BrowseOffers() {
 	const [imageURI, setimageURI] = useState("");
 
 	const [softSkillsArray, setsoftSkillsArray] = useState([]);
+
 	const [hardSkillsArray, sethardSkillsArray] = useState([]);
 	const [items, setItems] = useState([]);
 
@@ -80,27 +84,29 @@ export default function BrowseOffers() {
 			tempValues.softSkills = softSkillsArray;
 			tempValues.hardSkills = hardSkillsArray;
 			tempValues.photo = imagePath;
-		let response=	dispatch(Create_Job(tempValues));
-		response.then((value)=>{
-			if (value === true) {
-				formik.setFieldValue("location", {
-					city: "",
-					street: "",
-					zip: "",
-					longitude: "",
-					latitude: "",
-				});
-				formik.setSubmitting(false);
-				formik.handleReset();
-				setsoftSkillsArray([]);
-				sethardSkillsArray([]);
-				setItems([]);
-				setimageURI("");
-				setImage("");
-			}
-		})
-			
-			
+			let response = dispatch(Create_Job(tempValues));
+			response.then((value) => {
+				if (value === true) {
+					formik.setFieldValue("location", {
+						city: "",
+						street: "",
+						zip: "",
+						longitude: "",
+						latitude: "",
+					});
+					setAddress("")
+					setmultiSelect(multiSelect+1)
+					formik.setSubmitting(false);
+					formik.handleReset();
+					setsoftSkillsArray([]);
+					sethardSkillsArray([]);
+					setItems([]);
+					setimageURI("");
+					setImage("");
+				}
+			})
+
+
 		},
 	});
 	// onChange
@@ -157,6 +163,7 @@ export default function BrowseOffers() {
 		}
 	};
 	const handleAddressChange = (value) => {
+		setAddress(value)
 		dispatch(getApiAdress(value));
 		if (store2.items.length > 0) {
 			setItems(
@@ -183,6 +190,7 @@ export default function BrowseOffers() {
 		});
 	};
 	const onSoftSkillChange = (value) => {
+
 		const valueArray = [];
 		for (let i = 0; i < value.length; i++) {
 			valueArray.push(value[i]._id);
@@ -198,6 +206,7 @@ export default function BrowseOffers() {
 		const valueArray = [];
 		for (let i = 0; i < value.length; i++) {
 			valueArray.push(value[i]._id);
+
 		}
 		if (valueArray.length > 0) {
 			formik.setFieldValue("hardSkills", valueArray[0]);
@@ -225,6 +234,9 @@ export default function BrowseOffers() {
 														imageURI ? imageURI : "../images/add_image_icon.png"
 													}
 												/>
+												{formik.touched.photo && formik.errors.photo ? (
+													<div className="formikError"> {formik.errors.photo}</div>
+												) : null}
 											</label>
 										</div>
 										<input
@@ -235,15 +247,13 @@ export default function BrowseOffers() {
 											style={{ display: "none" }}
 											onChange={handleChange}
 										/>
-										{formik.touched.photo && formik.errors.photo ? (
-											<div className="formikError"> {formik.errors.photo}</div>
-										) : null}
+
 									</Col>
 									<Col lg={8} md={8}>
 										<div className="publish-header-content">
 											<div className="FieldAndPlaces">
 												<div >
-													<ModalInput 
+													<ModalInput
 														name="position"
 														label="Nom du poste"
 														// className="Job_title"
@@ -304,7 +314,7 @@ export default function BrowseOffers() {
 													/>
 
 													{formik.touched.levelOfEducation &&
-													formik.errors.levelOfEducation ? (
+														formik.errors.levelOfEducation ? (
 														<div className="formikErrorAuto">
 															{" "}
 															{formik.errors.levelOfEducation}
@@ -321,7 +331,7 @@ export default function BrowseOffers() {
 														onChange={handleChange}
 													/>
 													{formik.touched.startDate &&
-													formik.errors.startDate ? (
+														formik.errors.startDate ? (
 														<div className="formikErrorDate">
 															{formik.errors.startDate}
 														</div>
@@ -366,6 +376,7 @@ export default function BrowseOffers() {
 														formik={formik}
 														onChange={handleAddressChange}
 														items={items}
+														address={address}
 														placeholder="Adresse"
 														name={"location"}
 														loading={store2.loading}
@@ -388,7 +399,7 @@ export default function BrowseOffers() {
 													rows={3}
 												/>
 												{formik.touched.description &&
-												formik.errors.description ? (
+													formik.errors.description ? (
 													<div className="formikErrorDesc">
 														{" "}
 														{formik.errors.description}
@@ -405,7 +416,7 @@ export default function BrowseOffers() {
 												/>
 											</div>
 											{formik.touched.alternationRhythm &&
-											formik.errors.alternationRhythm ? (
+												formik.errors.alternationRhythm ? (
 												<div className="formikErrorAuto">
 													{" "}
 													{formik.errors.alternationRhythm}
@@ -424,6 +435,7 @@ export default function BrowseOffers() {
 											name={"softSkills"}
 											loading={store.loading}
 											onSubmit={onSoftSkillChange}
+											multiSelect={multiSelect}
 										/>
 
 										{formik.touched.softSkills && formik.errors.softSkills ? (
@@ -440,6 +452,8 @@ export default function BrowseOffers() {
 											name={"hardSkills"}
 											loading={store2.loading}
 											onSubmit={onHardSkillChange}
+											multiSelect={multiSelect}
+
 										/>
 
 										{formik.touched.hardSkills && formik.errors.hardSkills ? (

@@ -30,6 +30,7 @@ export const LOGIN_STATE = {
 
 export const POSITION_SOUGHT_STATE = {
   description: "",
+
   domain: "",
   position: "",
   title: "",
