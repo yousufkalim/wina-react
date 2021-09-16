@@ -39,13 +39,13 @@ export default function RecipeReviewCard(props) {
             </div>
           </div>
         </div>
-        <div className="offer-card-overlay"></div>
+        <div className="offer-card-overlay">
+       
+        </div>
       </div>
-      <Link onClick={() => handleDetail(cards._id)} className="offer-card-btn">
-        <Fab color="primary" aria-label="add">
+      <Fab  onClick={() => handleDetail(cards._id)} color="primary" aria-label="add">
           <AddIcon />
         </Fab>
-      </Link>
     </div>
     </div>
   )

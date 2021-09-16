@@ -9,12 +9,10 @@ export default function AutoComplete({
   loading,
   onSubmit,
   name,
-  value,
+  address,
   renderOption,
 }) {
-  const [address, setAddress] = useState("");
   const getAddress = (event, value, reason) => {
-    setAddress(value);
     onChange(value);
   };
   // useEffect(() => {
@@ -34,7 +32,6 @@ export default function AutoComplete({
         onInputChange={getAddress}
         noOptionsText={placeholder}
         onOpen={formik.handleBlur}
-        loading={loading}
         onChange={(event, value) => {
           onSubmit(value);
         }}

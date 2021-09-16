@@ -15,11 +15,13 @@ export default function AutoComplete({
   loading,
   onSubmit,
   name,
+  multiSelect
 }) {
   return (
     <>
       <Autocomplete
         id={name}
+        key={multiSelect}
         name={name}
         disableCloseOnSelect
         multiple

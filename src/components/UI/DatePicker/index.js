@@ -9,9 +9,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
+    border:' 0.1px solid rgba(0, 0, 0, 0.23)',
+    padding: '12px 7px',
+    width: '17rem',
+    borderRadius: '4px',
   },
 }));
 
@@ -29,16 +30,12 @@ export default function DatePickers(props) {
             type="date"
             value={props.value}
             onChange={props.onChange}
-            min={moment(new Date()).format("YYYY-MM-DD")}
             className={classes.textField}
             InputLabelProps={{
               shrink: true,
             }}
           />
           :
-
-
-
           <input
             id="date"
             name={props.name}
