@@ -251,6 +251,7 @@ const GeneralInformations = () => {
                     item={card}
                     key={index}
                     cindex={index}
+                    EditPermission='true'
                     type="EDUCATION"
                   />
                 ))

@@ -251,8 +251,8 @@ export default function BrowseOffers() {
 									</Col>
 									<Col lg={8} md={8}>
 										<div className="publish-header-content">
-											<div className="FieldAndPlaces">
-												<div >
+											<div className="d-flex">
+												<div className="col-lg-6">
 													<ModalInput
 														name="position"
 														label="Nom du poste"
@@ -269,7 +269,7 @@ export default function BrowseOffers() {
 														</div>
 													) : null}
 												</div>
-												<div className="w-50">
+												<div className="col-lg-6 ml-3">
 													<ModalInput
 														name="title"
 														label="Title"
@@ -287,8 +287,8 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="FieldAndPlaces">
-												<div>
+											<div className="d-flex mt-4">
+											<div className="col-lg-6 ">
 													<Select
 														name="domain"
 														value={formik.values.domain}
@@ -304,7 +304,7 @@ export default function BrowseOffers() {
 														</div>
 													) : null}
 												</div>
-												<div className="w-50">
+												<div className="col-lg-6 ml-3">
 													<Select
 														name="levelOfEducation"
 														value={formik.values.levelOfEducation}
@@ -322,22 +322,24 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="startDateandDuration w-50">
-												<div>
-													<DatePicker
-														name="startDate"
-														label={"Date de début"}
-														value={formik.values.startDate}
+											<div className="mt-4 d-flex">
+											<div className="col-lg-6 ">
+													<Select
+														name="ageRange"
+														value={formik.values.ageRange}
 														onChange={handleChange}
+														options={AgeRangeOptions}
+														label="Age Range"
 													/>
-													{formik.touched.startDate &&
-														formik.errors.startDate ? (
+
+													{formik.touched.ageRange && formik.errors.ageRange ? (
 														<div className="formikErrorDate">
-															{formik.errors.startDate}
+															{" "}
+															{formik.errors.ageRange}
 														</div>
 													) : null}
 												</div>
-												<div style={{ marginLeft: "5rem" }}>
+												<div className="col-lg-6 ml-3">
 													<Select
 														name="duration"
 														value={formik.values.duration}
@@ -354,24 +356,23 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="pt-4 FieldAndPlaces">
-												<div>
-													<Select
-														name="ageRange"
-														value={formik.values.ageRange}
+											<div className="mt-4 d-flex">
+											<div className="col-lg-6 ">
+													<DatePicker
+														name="startDate"
+														label={"Date de début"}
+														value={formik.values.startDate}
 														onChange={handleChange}
-														options={AgeRangeOptions}
-														label="Age Range"
 													/>
-
-													{formik.touched.ageRange && formik.errors.ageRange ? (
+													{formik.touched.startDate &&
+														formik.errors.startDate ? (
 														<div className="formikErrorDate">
-															{" "}
-															{formik.errors.ageRange}
+															{formik.errors.startDate}
 														</div>
 													) : null}
 												</div>
-												<div className="w-50">
+										
+												<div className="col-lg-6 ml-3 pt-3">
 													<AutoComplete
 														formik={formik}
 														onChange={handleAddressChange}
@@ -390,7 +391,8 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className=" pt-4">
+											<div className="d-flex pt-4">
+												<div className="col-lg-12">
 												<TextArea
 													name="description"
 													placeholder="Entrez une description"
@@ -405,8 +407,10 @@ export default function BrowseOffers() {
 														{formik.errors.description}
 													</div>
 												) : null}
+													</div>
 											</div>
-											<div className="startDateandDuration w-50">
+											<div className=" d-flex pt-4">
+											<div className="col-lg-12">
 												<RadioButton
 													options={RythmeOptions}
 													name="alternationRhythm"
@@ -414,6 +418,7 @@ export default function BrowseOffers() {
 													value={formik.values.alternationRhythm}
 													onChange={handleChange}
 												/>
+												</div>
 											</div>
 											{formik.touched.alternationRhythm &&
 												formik.errors.alternationRhythm ? (
@@ -422,12 +427,8 @@ export default function BrowseOffers() {
 													{formik.errors.alternationRhythm}
 												</div>
 											) : null}
-										</div>
-									</Col>
-								</Row>
-
-								<Row className=" d-flex justify-content-end row ">
-									<Col md={3} style={{ marginRight: "2.5rem" }}>
+											<div className=" d-flex ">
+									<div className="col-lg-6">
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences générales "
@@ -443,8 +444,8 @@ export default function BrowseOffers() {
 												{formik.errors.softSkills}
 											</div>
 										) : null}
-									</Col>
-									<Col md={3} style={{ marginRight: "3rem" }}>
+									</div>
+									<div className="col-lg-6">
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences spécialisées"
@@ -461,9 +462,15 @@ export default function BrowseOffers() {
 												{formik.errors.hardSkills}
 											</div>
 										) : null}
+									</div>
+								</div>
+										</div>
+
+								
 									</Col>
 								</Row>
-								<div className="text-right">
+											<div className="d-flex">
+								<div className="col-lg-12 text-right">
 									{store.loading ? (
 										<Button
 											className="Enregistrer"
@@ -481,6 +488,7 @@ export default function BrowseOffers() {
 											disabled={false}
 										/>
 									)}
+								</div>
 								</div>
 							</form>
 						</div>

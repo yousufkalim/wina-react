@@ -584,7 +584,7 @@ html {
 .signoutLabel {
 	border-left: 5px solid transparent;
 	border-radius: 0px;
-	margin: 0.7rem 0px;
+	margin: 0.7rem ;
 	position: absolute;
 	bottom: 20px;
 	left: -5px;
@@ -1761,6 +1761,10 @@ html {
 	font-size: 18px;
 	margin-left: 10px;
 }
+.Professionalcareer .modal-icon .delete_icon {
+	font-size: 18px;
+	
+}
 /* .ProfessionalcareerBox END*/
 
 /*CVOnline*/
@@ -2900,6 +2904,9 @@ textarea.form-control {
 	font-size: 1.37rem;
 	font-weight: bold;
 	color: #454545;
+}
+.btn{
+    margin: .375rem 0rem !important;
 }
 .publishBox
 	.publish

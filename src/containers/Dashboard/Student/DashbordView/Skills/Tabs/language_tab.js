@@ -59,8 +59,9 @@ export default function Hard_skilltab(props) {
             <div className="skills-heading-line"></div>
           </div>
           <form onSubmit={formik.handleSubmit}>
-            <div className="languagesDiv">
-              <div className="t1">
+
+            <div className="d-flex mt-2 mb-4">
+              <div className="col-lg-4 ">
                 <Select
                   name="name"
                   value={formik.values.name}
@@ -73,7 +74,7 @@ export default function Hard_skilltab(props) {
                   <div className="formikErrorAuto"> {formik.errors.name}</div>
                 ) : null}
               </div>
-              <div className="ml-3">
+              <div className="col-lg-4 ml-3">
                 <Select
                   name="skill"
                   value={formik.values.skill}
@@ -87,33 +88,26 @@ export default function Hard_skilltab(props) {
                 ) : null}
               </div>
             </div>
-            <div className="description">
-              {/* <ModalInput
-              name="linkedIn"
-              placeholder="linkedIn"
-              onChange={handleNetworkChange}
-              value={networkFormData.linkedIn}
-              type="text"
-            /> */}
+            <div className="d-flex">
+              {store.loading ? (
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="Loading...."
+                  disabled={store.loading}
+                />
+              ) : (
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="S’ENREGISTRER"
+                  disabled={false}
+                />
+              )}
             </div>
 
-            {store.loading ? (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="Loading...."
-                disabled={store.loading}
-              />
-            ) : (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="S’ENREGISTRER"
-                disabled={false}
-              />
-            )}
           </form>
         </div>
       </div>
