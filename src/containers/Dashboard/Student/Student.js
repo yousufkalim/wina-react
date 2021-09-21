@@ -8,7 +8,7 @@ import Coaching from "./CoachingView";
 
 const Dashboard = (props) => {
 	const store2 = useSelector((state) => state.student);
-	if (store2.user.student && Object.keys(store2.user.student).length > 0) {
+	if (store2.user && store2.user.student && Object.keys(store2.user.student).length > 0) {
 		return (
 			<div className="dashbordMain">
 				<Tab.Container id="dashbordBox" defaultActiveKey="first">

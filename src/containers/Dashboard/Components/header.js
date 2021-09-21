@@ -6,7 +6,7 @@ import { DEFAULT_IMAGE } from "../../../Globals";
 import NotificationMenu from "./NotificationMenu";
 const Header = () => {
 	const store = useSelector((state) => state.student);
-	const STUDENT_IMAGE =
+	const STUDENT_IMAGE =store.user &&
 		store.user.student && store.user.student.professional_Picture
 			? store.user.student.professional_Picture.image
 			: "";

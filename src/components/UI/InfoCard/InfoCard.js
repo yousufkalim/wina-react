@@ -66,7 +66,7 @@ const InfoCard = (props) => {
           <div className="info-card-container">
             <div className="info-card-title">
               <div>{item.school}</div>
-              {EditPermission && EditPermission === false ? (
+              {EditPermission && EditPermission == 'true' ? (
                  <div className="modal-icon">
                  
                  <FiEdit2

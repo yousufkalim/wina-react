@@ -4,12 +4,13 @@ import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		display: "flex",
-		flexWrap: "noWrap",
+		// display: "flex",
+		// flexWrap: "noWrap",
 	},
 	textField: {
 		width: "100%",
 		fontSize: "16px",
+		textAlign:'left'
 	},
 }));
 export default function LayoutTextFields(props) {
@@ -17,7 +18,7 @@ export default function LayoutTextFields(props) {
 
 	return (
 		<TextField
-			id="standard-full-width"
+			
 			name={props.name}
 			label={props.label ? props.label : "Label"}
 			value={props.value}

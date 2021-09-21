@@ -92,120 +92,130 @@ const GeneralInformationsModal = ({
       className="custom-modal"
       handleClose={() => setShow(false)}
       modalTitle="Formation / École"
-      size="sm"
+ 
       children={
         data && id ? (
-          <div class="container">
-            <div className="row">
-              <div className="col-lg-12 ">
-                <form onSubmit={formik.handleSubmit}>
-                  <div>
-                    <ModalInput
-                      name="school"
-                      label="École"
-                      // className="Job_title"
-                      placeholder="École"
-                      value={formik.values.school}
-                      onChange={handleChange}
-                      type="text"
-                    />
-                    {formik.touched.school && formik.errors.school ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.school}
-                      </div>
-                    ) : null}
-                  </div>
-                  <div className="DateRow ">
-                    <div>
-                      <DatePicker
-                        name="start_Date"
-                        label={"Date de fin"}
-                        value={formik.values.start_Date}
-                        onChange={handleChange}
-                      />
-                      {formik.touched.start_Date && formik.errors.start_Date ? (
-                        <div className="formikErrorDate">
-                          {" "}
-                          {formik.errors.start_Date}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div>
-                      <DatePicker
-                        name="end_Date"
-                        label={"Date de fin"}
-                        value={formik.values.end_Date}
-                        onChange={handleChange}
-                      />
-                      {formik.touched.end_Date && formik.errors.end_Date ? (
-                        <div className="formikErrorDate">
-                          {" "}
-                          {formik.errors.end_Date}
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                  <label className="inputLabel" for="edit_school">Ajouter une photo</label>
-                  <br/>
-                  { ImageUri && <img
-												className="imageURI"
-													src={
-														ImageUri
-													}
-												/>}
-                    <Input
-                      name="image"
-                      placeholder="professional_Picture"
-                      onChange={handleChange}
-                      type="file"
-                      accept="image/*"
-                      id="files"
-                      id="edit_school"
-                    />
-                 
-                    {formik.touched.image && formik.errors.image ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.image}
-                      </div>
-                    ) : null}
-                  </div>
-                    <TextArea
-                      name="description"
-                      value={formik.values.description}
-                      onChange={handleChange}
-                      placeholder="Description"
-                      rows={3}
-                    />
-                    {formik.touched.description && formik.errors.description ? (
-                      <div className="formikErrorDesc">
-                        {" "}
-                        {formik.errors.description}
-                      </div>
-                    ) : null}
-                  {store.loading ? (
-                    <Button
-                      className="Enregistrer"
-                      type="submit"
-                      variant="primary"
-                      value="Loading...."
-                      disabled={store.loading}
-                    />
-                  ) : (
-                    <Button
-                      className="Enregistrer"
-                      type="submit"
-                      variant="primary"
-                      value="S’ENREGISTRER"
-                      disabled={false}
-                    />
-                  )}
-                </form>
-              </div>
-            </div>
-          </div>
+          <form onSubmit={formik.handleSubmit}>
+          <div className="d-flex ">
+       <div className="col-lg-6 mb-3">
+         <ModalInput
+           name="school"
+           label="École"
+           // className="Job_title"
+           placeholder="École"
+           value={formik.values.school}
+           onChange={handleChange}
+           type="text"
+         />
+         {formik.touched.school && formik.errors.school ? (
+           <div className="formikErrorAuto">
+             {" "}
+             {formik.errors.school}
+           </div>
+         ) : null}
+       </div>
+       </div>
+
+       <div className="d-flex mt-3">
+         <div className="col-lg-6">
+           <DatePicker
+             name="start_Date"
+             label={"Date de début"}
+             value={formik.values.start_Date}
+             onChange={handleChange}
+           />
+           {formik.touched.start_Date && formik.errors.start_Date ? (
+             <div className="formikErrorDate">
+               {" "}
+               {formik.errors.start_Date}
+             </div>
+           ) : null}
+         </div>
+         <div className="col-lg-6 ml-3">
+           <DatePicker
+             name="end_Date"
+             label={"Date de fin"}
+             value={formik.values.end_Date}
+             onChange={handleChange}
+
+           />
+           {formik.touched.end_Date && formik.errors.end_Date ? (
+             <div className="formikErrorDate">
+               {" "}
+               {formik.errors.end_Date}
+             </div>
+           ) : null}
+         </div>
+       </div>
+       <div className="d-flex ">
+
+       <div className="col-lg-6 mt-4">
+         <TextArea
+           name="description"
+           value={formik.values.description}
+           onChange={handleChange}
+           rows={3}
+           placeholder="Description"
+         />
+         {formik.touched.description && formik.errors.description ? (
+           <div className="formikErrorDesc">
+             {" "}
+             {formik.errors.description}
+           </div>
+         ) : null}
+       </div>
+       </div>
+
+       <div className="d-flex ">
+
+       <div className="col-lg-6 mt-4">
+         <label className="inputLabel" for="files">Ajouter une photo</label>
+         <br />
+         {ImageUri && <img
+           className="imageURI"
+           src={
+             ImageUri
+           }
+         />}
+         <Input
+           name="image"
+           placeholder="professional_Picture"
+           onChange={handleChange}
+           type="file"
+           accept="image/*"
+           id="files"
+         />
+
+         {formik.touched.image && formik.errors.image ? (
+           <div className="formikErrorAuto">
+             {" "}
+             {formik.errors.image}
+           </div>
+         ) : null}
+       </div>
+       </div>
+       <div className="d-flex ">
+         <div className="col-lg-12 text-right">
+           {store.loading ? (
+             <Button
+               className="Enregistrer"
+               type="submit"
+               variant="primary"
+               value="Loading...."
+               disabled={store.loading}
+             />
+           ) : (
+             <Button
+               className="Enregistrer"
+               type="submit"
+               variant="primary"
+               value="S’ENREGISTRER"
+               disabled={false}
+             />
+           )}
+         </div>
+       </div>
+     </form>
         ) : (
           "Loading data...."
         )

@@ -184,7 +184,7 @@ const ResearchedJob = () => {
 
 
 							</div>
-							<div className="d-flex mt-5">
+							<div className="row mt-5">
 								<div className="col-lg-3">
 									<RadioButton
 										options={RythmeOptions}
@@ -203,7 +203,7 @@ const ResearchedJob = () => {
 								</div>
 
 							</div>
-							<div className="d-flex  ">
+							<div className="row ">
 								<div className="col-lg-6 ptb-30">
 									<TextArea
 										name="description"

@@ -74,7 +74,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
         let uri = URL.createObjectURL(file);
-				setImageURI(uri);
+        setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -90,7 +90,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
   return (
     <Modal
       show={show}
-      className="custom-modal-big"
+      className="custom-modal"
       onHide={() => setShow(false)}
       dialogClassName="ProfessionalCareerModal"
       aria-labelledby="example-custom-modal-styling-title"
@@ -103,19 +103,16 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
-          <div className="professional-modal-first">
-            {/* <Form.Control
-              type="text"
-              placeholder="Intitulé du poste . Ex : Chef de projet"
-              className="Job_title"
-            /> */}
-            <div>
+
+          <div className="d-flex ">
+
+            <div className="col-lg-6 ">
               <ModalInput
                 name="position"
                 label="Position"
                 // className="Job_title"
                 placeholder="Intitulé du poste . Ex : Chef de projet"
-                value={formik.position}
+                value={formik.values.position}
                 onChange={handleChange}
                 type="text"
               />
@@ -123,10 +120,10 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.position}</div>
               ) : null}
             </div>
-            <div>
+            <div className="col-lg-6  ml-4">
               <Select
                 name="type"
-                value={formik.type}
+                value={formik.values.type}
                 onChange={handleChange}
                 options={EmployeeTypeOptions}
                 label="Type d’emploi"
@@ -137,10 +134,15 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
 
-            <div>
+         
+
+
+          </div>
+          <div className="d-flex mt-4 pt-3">
+          <div className="col-lg-6 ">
               <Select
                 name="company"
-                value={formik.company}
+                value={formik.values.company}
                 onChange={handleChange}
                 options={CompanyOptions}
                 label="company d’emploi"
@@ -150,11 +152,10 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.company}</div>
               ) : null}
             </div>
-
-            <div>
+            <div className="col-lg-6  ml-4 ">
               <Select
                 name="place"
-                value={formik.place}
+                value={formik.values.place}
                 onChange={handleChange}
                 options={CountryOptions}
                 label="place d’emploi"
@@ -164,13 +165,64 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.place}</div>
               ) : null}
             </div>
+          
+
           </div>
-          <div className="startEndDateRow professional-modal-second">
-            <div className="position" style={{marginBottom: "-1.2rem"}}>
+          <div className="d-flex mt-4 pt-3">
+
+          <div className="col-lg-6 ">
+              <DatePicker
+                name="start_date"
+                label={"Date de début"}
+                value={formik.values.start_date}
+                onChange={handleChange}
+              />
+              {formik.touched.start_date && formik.errors.start_date ? (
+                <div className="formikErrorAuto">
+                  {" "}
+                  {formik.errors.start_date}
+                </div>
+              ) : null}
+            </div>
+            <div className="col-lg-6  ml-4">
+              <DatePicker
+                name="end_date"
+                label={"Date de fin"}
+                value={formik.values.end_date}
+                onChange={handleChange}
+              />
+              {formik.touched.end_date && formik.errors.end_date ? (
+                <div className="formikErrorAuto">
+                  {" "}
+                  {formik.errors.end_date}
+                </div>
+              ) : null}
+            </div>
+            </div>
+          <div className="d-flex mt-4 pt-3">
+            <div className="col-lg-6">
+              <TextArea
+                name="description"
+                value={formik.values.description}
+                onChange={handleChange}
+                rows={3}
+                placeholder="Description"
+              />
+              {formik.touched.description && formik.errors.description ? (
+                <div className="formikErrorDesc">
+                  {" "}
+                  {formik.errors.description}
+                </div>
+              ) : null}
+            </div>
+
+          </div>
+          <div className="d-flex mt-4">
+            <div className="col-lg-6">
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={formik.position_hold}
+                    checked={formik.values.position_hold}
                     onChange={handleChange}
                     name="position_hold"
                     color="primary"
@@ -179,15 +231,19 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 label="J’occupe actuellement ce poste"
               />
             </div>
-            <div className="position" style={{marginBottom: "-2rem",marginRight: "3rem"    }}>
-            <label className="inputLabel" for="professional_Picture">Ajouter une photo</label>
-                  <br/>
-                  { ImageUri && <img
-												className="imageURI"
-													src={
-														ImageUri
-													}
-												/>}
+          </div>
+
+          <div className="d-flex ">
+
+            <div className="col-lg-6" >
+              <label className="inputLabel" for="professional_Picture">Ajouter une photo</label>
+              <br />
+              {ImageUri && <img
+                className="imageURI"
+                src={
+                  ImageUri
+                }
+              />}
               <Input
                 name="image"
                 placeholder="professional_Picture"
@@ -201,71 +257,29 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.image}</div>
               ) : null}
             </div>
-            <div className="DateRow ">
-              <div style={{marginRight: "5rem"    }}>
-                <DatePicker 
-                  name="start_date"
-                  label={"Date de début"}
-                  value={formik.start_date}
-                  onChange={handleChange}
-                />
-                {formik.touched.start_date && formik.errors.start_date ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.start_date}
-                  </div>
-                ) : null}
-              </div>
-              <div>
-                <DatePicker
-                  name="end_date"
-                  label={"Date de fin"}
-                  value={formik.end_date}
-                  onChange={handleChange}
-                />
-                {formik.touched.end_date && formik.errors.end_date ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.end_date}
-                  </div>
-                ) : null}
-              </div>
-            </div>
           </div>
-          <div className="description">
-            <TextArea
-              name="description"
-              value={formik.description}
-              onChange={handleChange}
-              rows={3}
-            />
-            {formik.touched.description && formik.errors.description ? (
-              <div className="formikErrorDesc">
-                {" "}
-                {formik.errors.description}
+          <div className="row ">
+            <div className="col-lg-12 text-right">
+            {store.loading ? (
+              <Button
+                className="Enregistrer"
+                type="submit"
+                variant="primary"
+                value="Loading...."
+                disabled={store.loading}
+              />
+            ) : (
+              <Button
+                className="Enregistrer"
+                type="submit"
+                variant="primary"
+                value="S’ENREGISTRER"
+                disabled={false}
+              />
+            )}
               </div>
-            ) : null}
           </div>
 
-          {/* <div className="text-right"> */}
-          {store.loading ? (
-            <Button
-              className="Enregistrer"
-              type="submit"
-              variant="primary"
-              value="Loading...."
-              disabled={store.loading}
-            />
-          ) : (
-            <Button
-              className="Enregistrer"
-              type="submit"
-              variant="primary"
-              value="S’ENREGISTRER"
-              disabled={false}
-            />
-          )}
-          {/* </div> */}
         </form>
       </Modal.Body>
     </Modal>

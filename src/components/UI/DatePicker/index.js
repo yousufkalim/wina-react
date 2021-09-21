@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     border:' 0.1px solid rgba(0, 0, 0, 0.23)',
     padding: '12px 7px',
-    width: '17rem',
+    width: '100%',
     borderRadius: '4px',
   },
 }));
@@ -21,7 +21,7 @@ export default function DatePickers(props) {
   return (
     <>
       <div className={classes.container}>
-        <label>{props.label}</label>
+        <label className="text-left">{props.label}</label>
         {props.previous && props.previous === true ?
           <input
             id="date"

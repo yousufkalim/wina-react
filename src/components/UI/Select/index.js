@@ -8,7 +8,7 @@ import moment from "moment"
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
-    minWidth: 220,
+    width: '100%',
     border: "none",
   },
 }))

@@ -345,13 +345,10 @@ const CompanyCardDetail = (props) => {
 								</div>
 							</div>
 							<form onSubmit={formik.handleSubmit}>
-								<div className="offer-detail-content">
-									{/* <CardItem
-                  className="offer-card-item-bordered offer-detail-content-detail text-center"
-                  content={JOB.domain}
-                /> */}
+								<div className="d-flex">
+					
 
-									<div className="w-50 pl-0">
+									<div className="col-lg-3">
 										<ModalInput
 											name="position"
 											label="Nom du poste"
@@ -368,7 +365,7 @@ const CompanyCardDetail = (props) => {
 											</div>
 										) : null}
 									</div>
-									<div className="w-50 pl-5">
+									<div className="col-lg-3 ml-3">
 										<ModalInput
 											name="title"
 											label="Title"
@@ -385,10 +382,10 @@ const CompanyCardDetail = (props) => {
 											</div>
 										) : null}
 									</div>
-									<div className="w-50 pl-5">
+									<div className="col-lg-3 ml-3">
 										<DatePicker
 											name="startDate"
-											label={" Date de début"}
+										
 											value={formik.values.startDate}
 											onChange={handleChange}
 										/>
@@ -399,7 +396,7 @@ const CompanyCardDetail = (props) => {
 											</div>
 										) : null}
 									</div>
-									<div className="w-50">
+									<div className="col-lg-3 ml-3 mb-3">
 										<AutoComplete
 											formik={formik}
 											onChange={handleAddressChange}
@@ -418,8 +415,8 @@ const CompanyCardDetail = (props) => {
 									</div>
 								</div>
 
-								<div className="company-card-detail-date-container text-left pt-5">
-									<div className="w-50">
+								<div className="d-flex pt-4">
+								<div className="col-lg-3  ">
 										<Select
 											name="domain"
 											value={formik.values.domain}
@@ -435,7 +432,8 @@ const CompanyCardDetail = (props) => {
 											</div>
 										) : null}
 									</div>
-									<div className="w-50">
+									<div className="col-lg-3 ml-3 ">
+
 										<Select
 											name="ageRange"
 											value={formik.values.ageRange}
@@ -452,7 +450,8 @@ const CompanyCardDetail = (props) => {
 										) : null}
 									</div>
 
-									<div className="w-50 pl-5">
+									<div className="col-lg-3 ml-3 ">
+
 										<Select
 											name="duration"
 											value={formik.values.duration}
@@ -469,7 +468,8 @@ const CompanyCardDetail = (props) => {
 										) : null}
 									</div>
 
-									<div className="w-50 pl-5">
+									<div className="col-lg-3 ml-3 ">
+
 										<Select
 											name="levelOfEducation"
 											value={formik.values.levelOfEducation}
@@ -487,7 +487,9 @@ const CompanyCardDetail = (props) => {
 										) : null}
 									</div>
 								</div>
-								<div className="w-50 pt-4 text-left">
+								<div className="d-flex pt-4 mt-4">
+								<div className="col-lg-6 ">
+
 									<RadioButton
 										options={RythmeOptions}
 										name="alternationRhythm"
@@ -503,7 +505,7 @@ const CompanyCardDetail = (props) => {
 										{formik.errors.alternationRhythm}
 									</div>
 								) : null}
-								<div className=" pt-4">
+								<div className="col-lg-6  ml-3">
 									<TextArea
 										name="description"
 										placeholder="Enter Description"
@@ -518,6 +520,8 @@ const CompanyCardDetail = (props) => {
 										</div>
 									) : null}
 								</div>
+								</div>
+								
 								<div className="w-50">
 									<MultiAutoComplete
 										formik={formik}

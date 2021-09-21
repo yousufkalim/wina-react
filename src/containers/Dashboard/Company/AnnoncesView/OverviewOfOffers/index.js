@@ -554,7 +554,7 @@ const OverviewOfOffers = () => {
 												key={index}
 												cindex={index}
 												type="EDUCATION"
-												EditPermission={false}
+												EditPermission='false'
 											/>
 										))
 									) : (

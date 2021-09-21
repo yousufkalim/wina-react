@@ -57,7 +57,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
         let uri = URL.createObjectURL(file);
-				setImageURI(uri);
+        setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -74,11 +74,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       handleClose={() => setShow(false)}
       modalTitle="Formation / École"
       children={
-        <div class="container">
-          <div className="row">
-            <div className="col-lg-12 ">
+      
               <form onSubmit={formik.handleSubmit}>
-                <div className="mb-3">
+                   <div className="d-flex ">
+                <div className="col-lg-6 mb-3">
                   <ModalInput
                     name="school"
                     label="École"
@@ -95,8 +94,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                     </div>
                   ) : null}
                 </div>
-                <div className="DateRow ">
-                  <div>
+                </div>
+
+                <div className="d-flex mt-3">
+                  <div className="col-lg-6">
                     <DatePicker
                       name="start_Date"
                       label={"Date de début"}
@@ -110,13 +111,13 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="ml-3">
+                  <div className="col-lg-6 ml-3">
                     <DatePicker
                       name="end_Date"
                       label={"Date de fin"}
                       value={formik.end_Date}
                       onChange={handleChange}
-                      
+
                     />
                     {formik.touched.end_Date && formik.errors.end_Date ? (
                       <div className="formikErrorDate">
@@ -126,32 +127,9 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-4">
-                  <label className="inputLabel" for="files">Ajouter une photo</label>
-                  <br/>
-                  { ImageUri && <img
-												className="imageURI"
-													src={
-														ImageUri
-													}
-												/>}
-                  <Input
-                    name="image"
-                    placeholder="professional_Picture"
-                    onChange={handleChange}
-                    type="file"
-                    accept="image/*"
-                    id="files"
-                  />
-                  
-                  {formik.touched.image && formik.errors.image ? (
-                    <div className="formikErrorAuto">
-                      {" "}
-                      {formik.errors.image}
-                    </div>
-                  ) : null}
-                </div>
-              
+                <div className="d-flex ">
+
+                <div className="col-lg-6 mt-4">
                   <TextArea
                     name="description"
                     value={formik.description}
@@ -165,29 +143,60 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                       {formik.errors.description}
                     </div>
                   ) : null}
-                <div>
-                  {store.loading ? (
-                    <Button
-                      className="Enregistrer"
-                      type="submit"
-                      variant="primary"
-                      value="Loading...."
-                      disabled={store.loading}
-                    />
-                  ) : (
-                    <Button
-                      className="Enregistrer"
-                      type="submit"
-                      variant="primary"
-                      value="S’ENREGISTRER"
-                      disabled={false}
-                    />
-                  )}
+                </div>
+                </div>
+
+                <div className="d-flex ">
+
+                <div className="col-lg-6 mt-4">
+                  <label className="inputLabel" for="files">Ajouter une photo</label>
+                  <br />
+                  {ImageUri && <img
+                    className="imageURI"
+                    src={
+                      ImageUri
+                    }
+                  />}
+                  <Input
+                    name="image"
+                    placeholder="professional_Picture"
+                    onChange={handleChange}
+                    type="file"
+                    accept="image/*"
+                    id="files"
+                  />
+
+                  {formik.touched.image && formik.errors.image ? (
+                    <div className="formikErrorAuto">
+                      {" "}
+                      {formik.errors.image}
+                    </div>
+                  ) : null}
+                </div>
+                </div>
+                <div className="d-flex ">
+                  <div className="col-lg-12 text-right">
+                    {store.loading ? (
+                      <Button
+                        className="Enregistrer"
+                        type="submit"
+                        variant="primary"
+                        value="Loading...."
+                        disabled={store.loading}
+                      />
+                    ) : (
+                      <Button
+                        className="Enregistrer"
+                        type="submit"
+                        variant="primary"
+                        value="S’ENREGISTRER"
+                        disabled={false}
+                      />
+                    )}
+                  </div>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
+          
       }
     />
   );
