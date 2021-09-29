@@ -78,7 +78,7 @@ export default function Appointments() {
           { title: "Status", field: "status" },
         ]}
         data={data}
-        title="Appointments"
+        title="Rendez-vous"
         options={{
           actionsColumnIndex: -1,
         }}

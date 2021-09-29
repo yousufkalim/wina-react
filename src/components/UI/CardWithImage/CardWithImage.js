@@ -69,7 +69,7 @@ const CardWithImage = (props) => {
               className="matches"
               onClick={() => props.matchReceiveDetailHandler(item._id)}
             >
-              Match ({matchLength})
+              Match ({Math.floor(matchLength)})
             </div>
           ) : (
             ""
@@ -92,7 +92,7 @@ const CardWithImage = (props) => {
               className="matches"
               onClick={() => props.matchSentDetailHandler(item._id)}
             >
-              Match ({matchLength})
+              Match ({Math.floor(matchLength)})
             </div>
           ) : (
             ""
@@ -126,9 +126,7 @@ const CardWithImage = (props) => {
                 </h3>
                 {props.app && props.app.status === "Approved" ? (
                   <>
-                    <h3 className="text-success">
-                      Matched
-                    </h3>
+                    <h3 className="text-success">Matched</h3>
                     <p>
                       Interview is on {new Date(props.app.timmings[0]).getDay()}
                       th May
@@ -231,7 +229,6 @@ const CardWithImage = (props) => {
                 >
                   Voir
                 </div>
-                
               </div>
             ) : (
               ""
@@ -482,9 +479,9 @@ const CardWithImage = (props) => {
         )}
         {item.score && item.score * 100 > 0 ? (
           item.score * 100 > 50 ? (
-            <div className="matches">{Math.round(item.score * 100)}%</div>
+            <div className="matches">{Math.floor(item.score * 100)}%</div>
           ) : (
-            <div className="matches50">{Math.round(item.score * 100)}%</div>
+            <div className="matches50">{Math.floor(item.score * 100)}%</div>
           )
         ) : (
           ""
@@ -648,9 +645,9 @@ const CardWithImage = (props) => {
         )}
         {item.score && item.score * 100 > 0 ? (
           item.score * 100 > 50 ? (
-            <div className="matches">{Math.round(item.score * 100)}%</div>
+            <div className="matches">{Math.floor(item.score * 100)}%</div>
           ) : (
-            <div className="matches50">{Math.round(item.score * 100)}%</div>
+            <div className="matches50">{Math.floor(item.score * 100)}%</div>
           )
         ) : (
           ""

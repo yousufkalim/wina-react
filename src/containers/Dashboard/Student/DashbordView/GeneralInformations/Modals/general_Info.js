@@ -66,12 +66,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
         professional_networks &&
         Object.keys(professional_networks).length > 0
       ) {
-        const {
-          linkedIn,
-          Behance,
-          Dribble,
-          Github,
-        } = store.user.student.professional_networks;
+        const { linkedIn, Behance, Dribble, Github } =
+          store.user.student.professional_networks;
         setnetworkFormData({
           linkedIn: linkedIn || "",
           Behance: Behance || "",
@@ -102,14 +98,14 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       let file = e.target.files[0];
       if (file.type !== "application/pdf") {
         const uri = URL.createObjectURL(file);
-				setImageURI(uri);
+        setImageURI(uri);
 
         if (file.type === "video/mp4") {
           if (file.size <= 200000000) {
             setVideo(file);
             formik.setFieldValue("video", file.name);
           } else {
-            alert("you can upload upto 200mb video");
+            alert("vous pouvez télécharger jusqu'à 200 Mo de vidéo");
           }
         } else if (file.type === "image/png" || file.type === "image/jpeg") {
           formik.setFieldValue("image", file.name);
@@ -117,7 +113,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
           setImage(file);
         }
       } else {
-        alert("You can upload only images or videos ");
+        alert("Vous ne pouvez télécharger que des images ou des vidéos ");
       }
     }
   };
@@ -134,14 +130,11 @@ const GeneralInformationsModal = ({ show, setShow }) => {
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
                 <div>
-                <label className="inputLabel" for="upload-image-button">Ajouter une photo</label>
-                  <br/>
-                  { ImageUri && <img
-												className="imageURI"
-													src={
-														ImageUri
-													}
-												/>}
+                  <label className="inputLabel" for="upload-image-button">
+                    Ajouter une photo
+                  </label>
+                  <br />
+                  {ImageUri && <img className="imageURI" src={ImageUri} />}
                   <ModalInput
                     id="upload-image-button"
                     name="image"
@@ -150,11 +143,11 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     placeholder="professional_Picture"
                     type="file"
                   />
-                  
                 </div>
-                <div >
-                 
-                  <label className="inputLabel" for="upload-video-button">Ajouter une video</label>
+                <div>
+                  <label className="inputLabel" for="upload-video-button">
+                    Ajouter une video
+                  </label>
                   <ModalInput
                     placeholder="professional_Video"
                     name="video"

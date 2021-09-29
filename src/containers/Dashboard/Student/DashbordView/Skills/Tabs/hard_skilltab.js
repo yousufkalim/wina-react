@@ -19,7 +19,6 @@ export default function Hard_skilltab(props) {
     Notistack,
   } = props;
   const dispatch = useDispatch();
-
   //   ************
   //   ******************************************
   const formik = useFormik({
@@ -36,7 +35,10 @@ export default function Hard_skilltab(props) {
       } else {
         dispatch(
           Notistack.enqueueSnackbar(
-            Notistack.snackBar("Hard skill name already existed", "error")
+            Notistack.snackBar(
+              "Le nom de la compétence matérielle existait déjà",
+              "error"
+            )
           )
         );
       }
@@ -58,7 +60,7 @@ export default function Hard_skilltab(props) {
             <div className="skills-heading-line"></div>
           </div>
           <form onSubmit={formik.handleSubmit}>
-          <div className="col-lg-4 mb-4 mt-2">
+            <div className="col-lg-4 mb-4 mt-2">
               <Select
                 name="name"
                 value={formik.values.name}
@@ -72,7 +74,7 @@ export default function Hard_skilltab(props) {
                 <div className="formikErrorAuto"> {formik.errors.name}</div>
               ) : null}
             </div>
-         
+
             {store.loading ? (
               <Button
                 className="Enregistrer"

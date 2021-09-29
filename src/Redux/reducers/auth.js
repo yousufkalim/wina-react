@@ -35,9 +35,9 @@ export default (state = initialState, action) => {
     case authConstants.LOGOUT_SUCCESS:
       state = {
         ...initialState,
-      
-        token: null,
-        user: "",
+
+        // token: null,
+        // user: "",
         auth: false,
         loading: false,
         error: null,

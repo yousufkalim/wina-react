@@ -30,7 +30,6 @@ const PPModal = ({ show, setShow, professionalArray }) => {
   // const classes = useStyles();
   const [Image, setImage] = useState("");
   const [ImageUri, setImageURI] = useState("");
-
   const formik = useFormik({
     initialValues: PROFESSIONAL_PROFILE_STATE,
     validationSchema: PROFESSIONAL_PROFILE_YUP,
@@ -57,10 +56,13 @@ const PPModal = ({ show, setShow, professionalArray }) => {
         form_data.append("professional_profile", JSON.stringify(array));
         dispatch(Add_Image_info_Student(form_data));
         setShow(false);
+        formik.resetForm();
+        setImage("");
+        setImageURI("");
       } else {
         dispatch(
           Notistack.enqueueSnackbar(
-            Notistack.snackBar("company name already existed", "error")
+            Notistack.snackBar("le nom de l'entreprise existait déjà", "error")
           )
         );
       }
@@ -78,7 +80,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
-        alert("You can upload only images ");
+        alert("Vous ne pouvez télécharger que des images");
       }
     } else if (name === "position_hold") {
       formik.setFieldValue(name, e.target.checked);
@@ -103,9 +105,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
-
           <div className="d-flex ">
-
             <div className="col-lg-6 ">
               <ModalInput
                 name="position"
@@ -133,13 +133,9 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.type}</div>
               ) : null}
             </div>
-
-         
-
-
           </div>
           <div className="d-flex mt-4 pt-3">
-          <div className="col-lg-6 ">
+            <div className="col-lg-6 ">
               <Select
                 name="company"
                 value={formik.values.company}
@@ -165,14 +161,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.place}</div>
               ) : null}
             </div>
-          
-
           </div>
           <div className="d-flex mt-4 pt-3">
-
-          <div className="col-lg-6 ">
+            <div className="col-lg-6 ">
               <DatePicker
                 name="start_date"
+                previous={true}
                 label={"Date de début"}
                 value={formik.values.start_date}
                 onChange={handleChange}
@@ -188,17 +182,15 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               <DatePicker
                 name="end_date"
                 label={"Date de fin"}
+                previous={true}
                 value={formik.values.end_date}
                 onChange={handleChange}
               />
               {formik.touched.end_date && formik.errors.end_date ? (
-                <div className="formikErrorAuto">
-                  {" "}
-                  {formik.errors.end_date}
-                </div>
+                <div className="formikErrorAuto"> {formik.errors.end_date}</div>
               ) : null}
             </div>
-            </div>
+          </div>
           <div className="d-flex mt-4 pt-3">
             <div className="col-lg-6">
               <TextArea
@@ -215,7 +207,6 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 </div>
               ) : null}
             </div>
-
           </div>
           <div className="d-flex mt-4">
             <div className="col-lg-6">
@@ -234,16 +225,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
           </div>
 
           <div className="d-flex ">
-
-            <div className="col-lg-6" >
-              <label className="inputLabel" for="professional_Picture">Ajouter une photo</label>
+            <div className="col-lg-6">
+              <label className="inputLabel" for="professional_Picture">
+                Ajouter une photo
+              </label>
               <br />
-              {ImageUri && <img
-                className="imageURI"
-                src={
-                  ImageUri
-                }
-              />}
+              {ImageUri && <img className="imageURI" src={ImageUri} />}
               <Input
                 name="image"
                 placeholder="professional_Picture"
@@ -260,26 +247,25 @@ const PPModal = ({ show, setShow, professionalArray }) => {
           </div>
           <div className="row ">
             <div className="col-lg-12 text-right">
-            {store.loading ? (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="Loading...."
-                disabled={store.loading}
-              />
-            ) : (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="S’ENREGISTRER"
-                disabled={false}
-              />
-            )}
-              </div>
+              {store.loading ? (
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="Loading...."
+                  disabled={store.loading}
+                />
+              ) : (
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="S’ENREGISTRER"
+                  disabled={false}
+                />
+              )}
+            </div>
           </div>
-
         </form>
       </Modal.Body>
     </Modal>

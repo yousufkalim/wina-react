@@ -52,6 +52,7 @@ export default (state = initState, action) => {
         user: action.payload.user,
       };
     case studentConstants.STUDENT_DATA_SUCCESS:
+      console.log(action.payload.user, " action.payload.user");
       state = {
         ...state,
         loading: false,

@@ -39,7 +39,10 @@ export default function Hard_skilltab(props) {
       } else {
         dispatch(
           Notistack.enqueueSnackbar(
-            Notistack.snackBar("Soft skill name already existed", "error")
+            Notistack.snackBar(
+              "Le nom de la compétence non technique existait déjà",
+              "error"
+            )
           )
         );
       }
@@ -75,7 +78,7 @@ export default function Hard_skilltab(props) {
                 <div className="formikErrorAuto"> {formik.errors.name}</div>
               ) : null}
             </div>
-          
+
             {store.loading ? (
               <Button
                 className="Enregistrer"
