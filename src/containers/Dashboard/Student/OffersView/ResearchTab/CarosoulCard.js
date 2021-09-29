@@ -20,7 +20,7 @@ export default function RecipeReviewCard(props) {
               }
               className="offer-card-img"
             />
-            {cards.score > 1 && Math.floor(cards.score)} %
+            {cards.score > 1 && Math.floor(cards.score)}
           </div>
           <div className="offer-card-body offer-card-body-1">
             <div className="offer-card-description">{cards.company.name}</div>

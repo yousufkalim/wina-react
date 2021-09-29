@@ -129,9 +129,11 @@ const CardWithImage = (props) => {
                     <h3 className="text-success">Matched</h3>
                     <p>
                       Interview is on {new Date(props.app.timmings[0]).getDay()}
-                      th May
-                      {new Date(props.app.timmings[0]).getYear()} at{" "}
-                      {new Date(props.app.timmings[0]).getHours()}:
+                      th May{" "}
+                      {moment(new Date(props.app.timmings[0])).format(
+                        "YYYY"
+                      )}{" "}
+                      at {moment(new Date(props.app.timmings[0])).format("DD")}:
                       {new Date(props.app.timmings[0]).getMinutes()}
                     </p>
                   </>

@@ -108,18 +108,19 @@ export const signout = () => async (dispatch) => {
     //   type: studentConstants.STUDENT_DATA_SUCCESS,
     //   payload: { loading: false, user: [] },
     // });
-    // dispatch({
-    //   type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
-    //   payload: { loading: false, notifications: [] },
-    // });
-    // dispatch({
-    //   type: studentConstants.GET_STUDENT_JOBS,
-    //   payload: { loading: false, jobs: [] },
-    // });
-    // dispatch({
-    //   type: companyConstants.COMPANY_GET_JOBS_SUCCESS,
-    //   payload: { loading: false, jobs: [] },
-    // });
+    dispatch({
+      type: actionGlobals.GET_ALL_NOTIFICATIONS_SUCCESS,
+      payload: { loading: false, notifications: [] },
+    });
+    dispatch({
+      type: studentConstants.GET_STUDENT_JOBS,
+      payload: { loading: false, jobs: [] },
+    });
+    dispatch({
+      type: companyConstants.COMPANY_GET_JOBS_SUCCESS,
+      payload: { loading: false, jobs: [] },
+    });
+    window.location("/");
   } catch (err) {
     dispatch(set_loading(false));
   }

@@ -645,7 +645,7 @@ const CompanyCardDetail = (props) => {
                       type="submit"
                       variant="primary"
                       value="Loading...."
-                      disabled={store3.loading}
+                      //   disabled={store3.loading}
                     />
                   ) : (
                     <ModifierButton
@@ -653,7 +653,6 @@ const CompanyCardDetail = (props) => {
                       type="submit"
                       variant="primary"
                       value="Modifier"
-                      disabled={false}
                     />
                   )}
                 </div>

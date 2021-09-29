@@ -47,7 +47,7 @@ function App() {
     <>
       {User ? (
         User.type === "student" ? (
-          <Student User={User} />
+          <Student />
         ) : User.type === "company" ? (
           <Company />
         ) : User.role === "admin" ? (
