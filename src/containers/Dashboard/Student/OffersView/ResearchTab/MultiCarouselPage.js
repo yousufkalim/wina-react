@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import CarosoulCard from "./CarosoulCard";
 import { BsChevronRight, BsChevronLeft } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
-import OwlCarousel from 'react-owl-carousel3';
+import OwlCarousel from "react-owl-carousel3";
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
@@ -29,7 +29,7 @@ export default function MultiCarouselPage(props) {
   const options = {
     loop: true,
     nav: true,
-    margin: 60,
+    margin: 80,
     items: 3,
     dots: false,
     //   autoplayTimeout: 2000,
@@ -65,17 +65,16 @@ export default function MultiCarouselPage(props) {
     <>
       <div
         className="d-flex justify-content-start align-items-center"
-      // style={{ height: "10%" }}
+        // style={{ height: "10%" }}
       >
         <h5>Store & Supply </h5>
         <span className="offer-apply-btn ml-5">Postuler</span>
       </div>
-      {JOBS && JOBS.length > 0 ? (
+      {JOBS && JOBS.length > 2 ? (
         <div className="multiCarosoul">
           <div className="student-slider-container">
             <OwlCarousel
               className="partner-slides owl-carousel owl-theme"
-
               {...options}
             >
               {JOBS &&
@@ -85,7 +84,6 @@ export default function MultiCarouselPage(props) {
                     cards={card}
                     key={index}
                     name="this is first"
-
                   />
                 ))}
             </OwlCarousel>

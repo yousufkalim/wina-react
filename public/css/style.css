@@ -599,6 +599,9 @@ html {
 .signoutLabel a img {
 	height: 1.5rem;
 }
+.signoutLabel:hover{
+	cursor: pointer;
+}
 /*    Sidebar bottom link End  */
 
 .diplomaSchool .row {

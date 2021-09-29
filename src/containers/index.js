@@ -23,36 +23,34 @@ function App() {
   const store = useSelector((state) => state.auth);
 
   const [loading, setLoading] = useState(true);
+  const [User, setUser] = useState("");
+  let Token = localStorage.getItem("token");
   //componentDidMount or componentDidUpdate
   React.useEffect(() => {
-    dispatch(isUserLoggedIn()).then(() => {
-      if (store.user && store.user.type === "student") {
+    dispatch(isUserLoggedIn()).then((response) => {
+      setUser(response);
+      if (response && response.type == "student") {
         dispatch(Get_User_Student());
         dispatch(Get_Student_Jobs());
-      } else if (store.user && store.user.type === "company") {
+      } else if (response && response.type === "company") {
         dispatch(Get_Company_Jobs());
       }
       dispatch(GetAllNotifications());
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setLoading(false);
     });
-  }, [loading]);
+  }, [loading, Token]);
   useEffect(() => {
     dispatch(SocketNotifications());
-    
   }, [loading]);
+
   return (
     <>
-      {store.loading && <Loader.AbsoluteLinear />}
-      {loading ? (
-        <Loader.CenterProgress size={80} />
-      ) : store.auth && store.user? (
-        store.user.type === "student" ? (
-          <Student />
-        ) : store.user.type === "company" ? (
+      {User ? (
+        User.type === "student" ? (
+          <Student User={User} />
+        ) : User.type === "company" ? (
           <Company />
-        ) : store.user.role === "admin" ? (
+        ) : User.role === "admin" ? (
           <Admin />
         ) : (
           <UnAuth />

@@ -37,7 +37,7 @@ export default function Hard_skilltab(props) {
       } else {
         dispatch(
           Notistack.enqueueSnackbar(
-            Notistack.snackBar("Language name already existed", "error")
+            Notistack.snackBar("Le nom de la langue existait déjà", "error")
           )
         );
       }
@@ -59,7 +59,6 @@ export default function Hard_skilltab(props) {
             <div className="skills-heading-line"></div>
           </div>
           <form onSubmit={formik.handleSubmit}>
-
             <div className="d-flex mt-2 mb-4">
               <div className="col-lg-4 ">
                 <Select
@@ -107,7 +106,6 @@ export default function Hard_skilltab(props) {
                 />
               )}
             </div>
-
           </form>
         </div>
       </div>

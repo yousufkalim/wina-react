@@ -98,11 +98,11 @@ const PPModal = ({
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
         let uri = URL.createObjectURL(file);
-				setImageURI(uri);
+        setImageURI(uri);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
-        alert("You can upload only images ");
+        alert("Vous ne pouvez télécharger que des images");
       }
     } else if (name === "position_hold") {
       formik.setFieldValue(name, e.target.checked);
@@ -126,10 +126,8 @@ const PPModal = ({
       </Modal.Header>
       <Modal.Body>
         {data && id ? (
-            <form onSubmit={formik.handleSubmit}>
-
+          <form onSubmit={formik.handleSubmit}>
             <div className="d-flex ">
-  
               <div className="col-lg-6 ">
                 <ModalInput
                   name="position"
@@ -141,7 +139,10 @@ const PPModal = ({
                   type="text"
                 />
                 {formik.touched.position && formik.errors.position ? (
-                  <div className="formikErrorAuto"> {formik.errors.position}</div>
+                  <div className="formikErrorAuto">
+                    {" "}
+                    {formik.errors.position}
+                  </div>
                 ) : null}
               </div>
               <div className="col-lg-6  ml-4">
@@ -152,18 +153,14 @@ const PPModal = ({
                   options={EmployeeTypeOptions}
                   label="Type d’emploi"
                 />
-  
+
                 {formik.touched.type && formik.errors.type ? (
                   <div className="formikErrorAuto"> {formik.errors.type}</div>
                 ) : null}
               </div>
-  
-           
-  
-  
             </div>
             <div className="d-flex mt-4 pt-3">
-            <div className="col-lg-6 ">
+              <div className="col-lg-6 ">
                 <Select
                   name="company"
                   value={formik.values.company}
@@ -171,9 +168,12 @@ const PPModal = ({
                   options={CompanyOptions}
                   label="company d’emploi"
                 />
-  
+
                 {formik.touched.company && formik.errors.company ? (
-                  <div className="formikErrorAuto"> {formik.errors.company}</div>
+                  <div className="formikErrorAuto">
+                    {" "}
+                    {formik.errors.company}
+                  </div>
                 ) : null}
               </div>
               <div className="col-lg-6  ml-4 ">
@@ -184,17 +184,14 @@ const PPModal = ({
                   options={CountryOptions}
                   label="place d’emploi"
                 />
-  
+
                 {formik.touched.place && formik.errors.place ? (
                   <div className="formikErrorAuto"> {formik.errors.place}</div>
                 ) : null}
               </div>
-            
-  
             </div>
             <div className="d-flex mt-4 pt-3">
-  
-            <div className="col-lg-6 ">
+              <div className="col-lg-6 ">
                 <DatePicker
                   name="start_date"
                   label={"Date de début"}
@@ -222,7 +219,7 @@ const PPModal = ({
                   </div>
                 ) : null}
               </div>
-              </div>
+            </div>
             <div className="d-flex mt-4 pt-3">
               <div className="col-lg-6">
                 <TextArea
@@ -239,7 +236,6 @@ const PPModal = ({
                   </div>
                 ) : null}
               </div>
-  
             </div>
             <div className="d-flex mt-4">
               <div className="col-lg-6">
@@ -256,18 +252,14 @@ const PPModal = ({
                 />
               </div>
             </div>
-  
+
             <div className="d-flex ">
-  
-              <div className="col-lg-6" >
-                <label className="inputLabel" for="professional_Picture">Ajouter une photo</label>
+              <div className="col-lg-6">
+                <label className="inputLabel" for="professional_Picture">
+                  Ajouter une photo
+                </label>
                 <br />
-                {ImageUri && <img
-                  className="imageURI"
-                  src={
-                    ImageUri
-                  }
-                />}
+                {ImageUri && <img className="imageURI" src={ImageUri} />}
                 <Input
                   name="image"
                   placeholder="professional_Picture"
@@ -276,7 +268,7 @@ const PPModal = ({
                   accept="image/*"
                   id="professional_Picture"
                 />
-  
+
                 {formik.touched.image && formik.errors.image ? (
                   <div className="formikErrorAuto"> {formik.errors.image}</div>
                 ) : null}
@@ -284,26 +276,25 @@ const PPModal = ({
             </div>
             <div className="row ">
               <div className="col-lg-12 text-right">
-              {store.loading ? (
-                <Button
-                  className="Enregistrer"
-                  type="submit"
-                  variant="primary"
-                  value="Loading...."
-                  disabled={store.loading}
-                />
-              ) : (
-                <Button
-                  className="Enregistrer"
-                  type="submit"
-                  variant="primary"
-                  value="S’ENREGISTRER"
-                  disabled={false}
-                />
-              )}
-                </div>
+                {store.loading ? (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="Loading...."
+                    disabled={store.loading}
+                  />
+                ) : (
+                  <Button
+                    className="Enregistrer"
+                    type="submit"
+                    variant="primary"
+                    value="S’ENREGISTRER"
+                    disabled={false}
+                  />
+                )}
+              </div>
             </div>
-  
           </form>
         ) : (
           <h1 className="">loading.....</h1>
