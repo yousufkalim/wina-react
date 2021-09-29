@@ -33,7 +33,7 @@ export default function ViewOffers() {
 
   const store = useSelector((state) => state.student);
   const store2 = useSelector((state) => state.auth);
-  let student_ID = store2.user.student._id;
+  let student_ID = store2.user && store2.user.student._id;
 
   let JOBS = store.jobs && store.jobs;
   let APPLIED_JOBS = store.appliedJobs && store.appliedJobs;
@@ -60,8 +60,6 @@ export default function ViewOffers() {
     );
   };
   const handlerRecievedOfferAccepted = (id, appointments, decision) => {
-   
-
     setAppointments(appointments);
     setjobID(id);
     dispatch(
@@ -94,10 +92,9 @@ export default function ViewOffers() {
     setBooking(!booking);
   };
   const handleSubmitBooking = () => {
-
     if (bookingSlot) {
       dispatch(validateAppointment_By_Students(bookingSlot, jobID, setBooking));
-      setjobID("")
+      setjobID("");
     } else {
       setBookingError("Required");
     }
@@ -107,14 +104,13 @@ export default function ViewOffers() {
       let fill = Appointments.find(
         (fl) =>
           fl.student === `${student_ID}` &&
-          fl.jobID === `${jobID}`  &&
+          fl.jobID === `${jobID}` &&
           fl.status === "Pending"
       );
       if (fill && fill.timmings) {
         setTimmings(fill.timmings);
       } else {
         setTimmings([]);
-        
       }
     }
   }, [Appointments, booking, setBooking]);
