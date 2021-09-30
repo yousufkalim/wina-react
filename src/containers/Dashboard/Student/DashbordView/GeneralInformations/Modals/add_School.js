@@ -13,6 +13,7 @@ import { baseUrl } from "../../../../../../urlConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
+import moment from "moment";
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
@@ -66,8 +67,24 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       } else {
         alert("Vous ne pouvez télécharger que des images");
       }
+    } else if (formik.values.start_Date && name == "end_Date") {
+      let end_Date = moment(value);
+      let start_Date = moment(formik.values.start_Date);
+      if (start_Date.isSame(end_Date, "day")) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(
+              "La date de fin ne peut pas être antérieure à la date de début",
+              "error"
+            )
+          )
+        );
+      } else {
+        formik.setFieldValue(name, value);
+      }
+    } else {
+      formik.setFieldValue(name, value);
     }
-    formik.setFieldValue(name, value);
   };
 
   return (
@@ -101,7 +118,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 name="start_Date"
                 previous={true}
                 label={"Date de début"}
-                value={formik.start_Date}
+                value={formik.values.start_Date}
                 onChange={handleChange}
               />
               {formik.touched.start_Date && formik.errors.start_Date ? (
@@ -116,7 +133,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 name="end_Date"
                 label={"Date de fin"}
                 previous={true}
-                value={formik.end_Date}
+                value={formik.values.end_Date}
                 onChange={handleChange}
               />
               {formik.touched.end_Date && formik.errors.end_Date ? (
