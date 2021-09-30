@@ -104,6 +104,7 @@ const CardWithImage = (props) => {
     }
   };
   const [value, onChange] = useState(new Date());
+
   if (props.type && props.type === "student") {
     return (
       <div className="card-with-image">
@@ -128,13 +129,15 @@ const CardWithImage = (props) => {
                   <>
                     <h3 className="text-success">Matched</h3>
                     <p>
-                      Interview is on {new Date(props.app.timmings[0]).getDay()}
-                      th May{" "}
+                      Interview is on {moment(props.app.timmings[0]).day()}
+                      th{" "}
+                      {
+                        monthNames[new Date(props.app.timmings[0]).getMonth()]
+                      }{" "}
+                      at{" "}
                       {moment(new Date(props.app.timmings[0])).format(
-                        "YYYY"
-                      )}{" "}
-                      at {moment(new Date(props.app.timmings[0])).format("DD")}:
-                      {new Date(props.app.timmings[0]).getMinutes()}
+                        "HH:MM A"
+                      )}
                     </p>
                   </>
                 ) : (

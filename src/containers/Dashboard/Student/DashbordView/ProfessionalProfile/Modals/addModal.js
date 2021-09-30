@@ -8,7 +8,7 @@ import Select from "../../../../../../components/UI/Select";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import Button from "../../../../../../components/UI/Button";
-
+import moment from "moment";
 import { useFormik } from "formik";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -84,6 +84,21 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       }
     } else if (name === "position_hold") {
       formik.setFieldValue(name, e.target.checked);
+    } else if (formik.values.start_date && name === "end_date") {
+      let end_Date = moment(value);
+      let start_Date = moment(formik.values.start_date);
+      if (start_Date.isSame(end_Date, "day")) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(
+              "La date de fin ne peut pas être antérieure à la date de début",
+              "error"
+            )
+          )
+        );
+      } else {
+        formik.setFieldValue(name, value);
+      }
     } else {
       formik.setFieldValue(name, value);
     }
