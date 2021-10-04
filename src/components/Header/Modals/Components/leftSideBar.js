@@ -63,14 +63,15 @@ export default function Sidebar({
           >
             {store.loading ? "LOADING...." : "Se connecter"}
           </button>
-        </form>
-        <div className="mt-5">
           <div className="forgetpassword">
             <a onClick={() => handleModal("reqforgotPassword")}>
               {" "}
               Mot de passe oublié ?
             </a>
           </div>
+        </form>
+        <div className="mt-5">
+          
           <div className="faceBookGoogleGroup">
             <div color="primary" className="w-100 modal-social-buttons">
               <div className="modal-social-btn modal-facebook-btn">

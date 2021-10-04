@@ -15,19 +15,21 @@ const Home = (props) => {
         <Header id={props.match.params.id} token={props.match.params.token} />
 
         <div className="collapseMenu">
-          <Accordion defaultActiveKey="0" className="">
+          <Accordion defaultActiveKey="1" className="">
             <Card>
               <Card.Header>
+                <a href="#more-info">
                 <Accordion.Toggle
                   as={Button}
                   variant="link"
-                  eventKey="0"
+                  eventKey="1"
                   className="clickIcons"
                 >
-                  <i className="fa fa-angle-down" aria-hidden="true"></i>
+                  <i className="fa fa-angle-down " aria-expanded="false"></i>
                 </Accordion.Toggle>
+                  </a>
               </Card.Header>
-              <Accordion.Collapse eventKey="0">
+              <Accordion.Collapse eventKey="1" id="more-info">
                 <Card.Body>
                   <div className="post_mobile-view">
                     <div

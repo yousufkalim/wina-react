@@ -4,6 +4,19 @@ import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyle = makeStyles({
+  root: {
+    "& .MuiFormLabel-root": {
+      fontSize: "1.5rem",
+    },
+    "& .MuiInputBase-root": {
+
+      fontSize: "1.5rem",
+    },
+  }
+})
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -17,9 +30,12 @@ export default function AutoComplete({
   name,
   multiSelect
 }) {
+
+  const classes = useStyle();
   return (
     <>
       <Autocomplete
+        className={classes.root}
         id={name}
         key={multiSelect}
         name={name}

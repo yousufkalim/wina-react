@@ -13,7 +13,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px 7px',
     width: '100%',
     borderRadius: '4px',
+    color: "#8D8D8D",
+    fontSize: '1.3rem'
   },
+  label: {
+    fontSize: '1.2rem',
+    color: '#8D8D8D',
+    fontWeight: 400,
+  }
 }));
 
 export default function DatePickers(props) {
@@ -21,7 +28,7 @@ export default function DatePickers(props) {
   return (
     <>
       <div className={classes.container}>
-        <label className="text-left">{props.label}</label>
+        <label className={`text-left ${classes.label}`}>{props.label}</label>
         {props.previous && props.previous === true ?
           <input
             id="date"
