@@ -4,14 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    fontSize: "1.5rem",
+    fontSize: "1.375rem",
     width: "100%",
     "& .MuiFormLabel-root": {
-      fontSize: "1.5rem",
+      fontSize: "1.375rem",
     },
     "& .MuiInputBase-root": {
       borderRadius: 10,
-      fontSize: "1.5rem",
+      fontSize: "1.375rem",
     },
   },
 });

@@ -804,6 +804,8 @@ html {
   width: 100%;
   overflow: hidden;
   margin-bottom: 2.2rem;
+  width: 100%;
+  max-height: 20rem;
 }
 .genProfileBox .genProfile .profileImage img {
   width: 100%;
@@ -1888,7 +1890,7 @@ html {
   width: 1.5rem;
 }
 .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-  padding: 0.5rem !important;
+  /* padding: 0.5rem !important; */
 }
 .importCV {
   color: #fff;
@@ -2701,7 +2703,7 @@ html {
   width: 100%;
   height: 100%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 20rem;
   object-fit: cover;
   display: block;
 }
@@ -3465,6 +3467,7 @@ textarea.form-control {
   padding: 0.6rem 4.3rem;
   font-size: 1.2rem;
   border-radius: 2.56rem;
+  display: inline-block;
   font-weight: 500;
 }
 
@@ -3508,6 +3511,15 @@ textarea.form-control {
 .offer-detail-header-image {
   padding-right: 1.2rem;
   flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.offer-detail-header-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 25rem;
+  object-fit: cover;
 }
 .offer-detail-header-text {
   flex-basis: 50%;
@@ -3580,7 +3592,7 @@ textarea.form-control {
   background-color: #f6c40d;
   color: #fff;
   border-radius: 2.56rem;
-  padding: 0.4rem 0;
+  padding: 0.4rem 1rem;
   margin-right: 1.9rem;
   flex-basis: 20%;
   font-size: 1.12rem;
@@ -3668,6 +3680,7 @@ textarea.form-control {
   padding: 0.4rem 2.5rem;
   margin-right: 1.2rem;
   color: #2879d9;
+  font-weight: 400;
   font-size: 0.9rem;
 }
 
@@ -3721,7 +3734,10 @@ textarea.form-control {
 }
 .info-card img {
   width: 100%;
-  height: 100%;
+    height: 100%;
+    max-height: 20rem;
+    max-width: 100%;
+    object-fit: cover;
 }
 .Professionalcareer .modal-icon .delete_icon {
   font-size: 18px;

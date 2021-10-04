@@ -6,13 +6,21 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyle = makeStyles({
   root: {
 
+    '& .MuiOutlinedInput-root':{
+      borderRadius: "3.5rem",
+      borderColor: "#2879d9"
+    },
+    '& .MuiOutlinedInput-notchedOutline':{
+      borderColor: "#2879d9",
+    },
+
     '& .MuiInput-underline:before': {
       borderBottom: '1px solid #f7c40d'
     },
 
-    '& .MuiFormLabel-root.Mui-focused': {
-      color: "#9a9a9a"
-    },
+    // '& .MuiFormLabel-root.Mui-focused': {
+    //   color: "#2879d9"
+    // },
     '& .MuiInput-underline:after': {
       borderBottom: '1px solid #f7c40d'
     },
@@ -24,23 +32,23 @@ const useStyle = makeStyles({
         // borderColor: "pink",
         // - Set the Input border
       },
-      "&:hover": {
-        borderColor: "#f7c40d", // - Set the Input border when parent has :hover
-      },
-      "&.Mui-focused fieldset": {
-        // - Set the Input border when parent is focused
-        borderColor: "#f7c40d",
-      },
+      // "&:hover": {
+      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+      // },
+      // "&.Mui-focused fieldset": {
+      //   // - Set the Input border when parent is focused
+      //   borderColor: "#2879d9",
+      // },
     },
     '& .MuiFormLabel-root': {
-      fontSize: '1.2rem',
+      fontSize: '1.375rem',
       '& .Mui-focused': {
         color: "#fff"
       }
     },
    
     '& .MuiInputBase-root ': {
-      fontSize: '1.2rem'
+      fontSize: '1.375rem'
     }
   }
 })
