@@ -9,11 +9,40 @@ import {makeStyles} from "@material-ui/core/styles";
 const useStyle = makeStyles({
   root: {
     "& .MuiFormLabel-root": {
-      fontSize: "1.5rem",
+      fontSize: "1.375rem",
+      '& .Mui-focused':{
+        color: "#2879d9"
+      }
     },
+    // "& .MuiFormLabel-root.Mui-focused": {
+    //   color: "#2879d9"
+    // },
     "& .MuiInputBase-root": {
 
-      fontSize: "1.5rem",
+      fontSize: "1.375rem",
+    },
+    '& .MuiOutlinedInput-notchedOutline':{
+      borderColor: "#2879d9",
+    },
+    '& .MuiOutlinedInput-root': {
+      borderRadius: "3.5rem"
+    },
+
+    "& .MuiAutocomplete-inputRoot": {
+      // borderBottom: "1px solid #f7c40d",
+      // - The Input-root, inside the TextField-root
+      "& fieldset": {
+        // - The <fieldset> inside the Input-root
+        // borderColor: "pink",
+        // - Set the Input border
+      },
+      // "&:hover": {
+      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+      // },
+      // "&.Mui-focused fieldset": {
+      //   // - Set the Input border when parent is focused
+      //   borderColor: "#2879d9",
+      // },
     },
   }
 })

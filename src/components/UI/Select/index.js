@@ -32,12 +32,36 @@ const useStyles = makeStyles((theme) => ({
     // margin: theme.spacing(1),
     width: '100%',
     border: "none",
+    '& .MuiOutlinedInput-root':{
+      borderRadius: "3.5rem",
+      borderColor: "#2879d9",
+       // borderBottom: "1px solid #f7c40d",
+      // - The Input-root, inside the TextField-root
+      "& fieldset": {
+        // - The <fieldset> inside the Input-root
+        // borderColor: "pink",
+        // - Set the Input border
+      },
+      // "&:hover": {
+      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+      // },
+      // "&.Mui-focused fieldset": {
+      //   // - Set the Input border when parent is focused
+      //   borderColor: "#2879d9",
+      // },
+    },
+    '& .MuiOutlinedInput-notchedOutline':{
+      borderColor: "#2879d9",
+    },
+    // "& .MuiFormLabel-root.Mui-focused": {
+    //   color: "#2879d9"
+    // },
     '& .MuiFormLabel-root': {
-      fontSize: '1.5rem',
+      fontSize: '1.37rem',
     },
     '& .MuiInputLabel-formControl':{ 
       top: -6,
-      left: 10
+      left: 15
     },
     '& .MuiInputLabel-shrink': {
       top: '-6px',
@@ -45,11 +69,23 @@ const useStyles = makeStyles((theme) => ({
       // width: '133.33%',
     },
     '& .MuiInputBase-root ': {
-      fontSize: '1.5rem'
-    }
+      fontSize: '1.375rem'
+    },
+    '& .MuiOutlinedInput-notchedOutline':{
+      borderColor: "#2879d9",
+    },
     
     
   },
+  textField: {
+
+    '& .MuiOutlinedInput-root':{
+
+      '& .MuiOutlinedInput-notchedOutline':{
+        borderColor: "#2879d9",
+      }
+    }
+  }
 }))
 
 export default function ControlledOpenSelect(props) {
@@ -75,6 +111,7 @@ export default function ControlledOpenSelect(props) {
             id="demo-simple-select"
             open={open}
             onClose={handleClose}
+            className={classes.textField}
             onOpen={handleOpen}
             name={props.name}
             variant="outlined"

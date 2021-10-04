@@ -9,11 +9,31 @@ const useStyles = makeStyles((theme) => ({
 	},
 	textField: {
 		width: "100%",
-		fontSize: "16px",
+		fontSize: "1.375rem",
 		textAlign:'left',
 		"& .MuiFormLabel-root": {
-			fontSize: "1.6rem"
-		}
+			fontSize: "1.375rem"
+		},
+
+		'& .MuiOutlinedInput-notchedOutline':{
+			borderColor: "#2879d9",
+		  },
+		"& .MuiOutlinedInput-root": {
+			// borderBottom: "1px solid #f7c40d",
+			// - The Input-root, inside the TextField-root
+			"& fieldset": {
+			  // - The <fieldset> inside the Input-root
+			  // borderColor: "pink",
+			  // - Set the Input border
+			},
+			// "&:hover": {
+			//   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+			// },
+			// "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+			//   // - Set the Input border when parent is focused
+			//   borderColor: "#2879d9",
+			// },
+		  },
 	},
 }));
 export default function LayoutTextFields(props) {

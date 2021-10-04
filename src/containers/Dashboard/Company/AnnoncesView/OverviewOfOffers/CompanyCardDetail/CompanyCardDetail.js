@@ -284,7 +284,7 @@ const CompanyCardDetail = (props) => {
       <div className="company-card-detail ">
         <span
           className="offer-apply-btn  "
-          style={{ padding: "0.1rem 3rem", cursor: "pointer" }}
+          style={{ padding: "0.8rem 3rem", cursor: "pointer" }}
           onClick={() => setisDetail(false)}
         >
           <ArrowBackIosIcon
@@ -381,7 +381,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3">
+                  <div className="col-lg-3 ml-3" style={{marginTop: '10px'}}>
                     <DatePicker
                       name="startDate"
                       value={formik.values.startDate}
@@ -394,7 +394,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3 mb-3">
+                  <div className="col-lg-3 ml-3">
                     <AutoComplete
                       formik={formik}
                       onChange={handleAddressChange}
@@ -483,8 +483,8 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="d-flex pt-4 mt-4">
-                  <div className="col-lg-6 ">
+               
+                  <div className="col-lg-12 my-4">
                     <RadioButton
                       options={RythmeOptions}
                       name="alternationRhythm"
@@ -500,7 +500,7 @@ const CompanyCardDetail = (props) => {
                       {formik.errors.alternationRhythm}
                     </div>
                   ) : null}
-                  <div className="col-lg-6  ml-3">
+                  <div className="col-lg-12 ">
                     <TextArea
                       name="description"
                       placeholder="Enter Description"
@@ -515,25 +515,26 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                </div>
+              
+                <Row>
+                  <Col md={4}>
+                    <MultiAutoComplete
+                      formik={formik}
+                      placeholder="Compétences générales "
+                      items={SOFT_SKILLS}
+                      name={"softSkills"}
+                      loading={store2.loading}
+                      onSubmit={onSoftSkillChange}
+                    />
 
-                <div className="w-50">
-                  <MultiAutoComplete
-                    formik={formik}
-                    placeholder="Compétences générales "
-                    items={SOFT_SKILLS}
-                    name={"softSkills"}
-                    loading={store2.loading}
-                    onSubmit={onSoftSkillChange}
-                  />
-
-                  {formik.touched.softSkills && formik.errors.softSkills ? (
-                    <div className="formikErrorDate">
-                      {" "}
-                      {formik.errors.softSkills}
-                    </div>
-                  ) : null}
-                </div>
+                    {formik.touched.softSkills && formik.errors.softSkills ? (
+                      <div className="formikErrorDate">
+                        {" "}
+                        {formik.errors.softSkills}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
                 {/* <Row>
                   <Col className="col-lg-12">
                     <div className="sliderBox">
@@ -592,8 +593,8 @@ const CompanyCardDetail = (props) => {
                       })
                     : ""}
                 </div>
-
-                <div className="w-50">
+                <Row>
+                  <Col md={4}>
                   <MultiAutoComplete
                     formik={formik}
                     placeholder="Compétences spécialisées "
@@ -609,7 +610,8 @@ const CompanyCardDetail = (props) => {
                       {formik.errors.hardSkills}
                     </div>
                   ) : null}
-                </div>
+                  </Col>
+                </Row>
 
                 <div className="offer-detail-date-container">
                   {JOB.hardSkills && JOB.hardSkills.length > 0
@@ -650,6 +652,7 @@ const CompanyCardDetail = (props) => {
                   ) : (
                     <ModifierButton
                       className="Enregistrer"
+                      modifier
                       type="submit"
                       variant="primary"
                       value="Modifier"

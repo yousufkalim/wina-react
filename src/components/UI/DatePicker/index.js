@@ -12,9 +12,10 @@ const useStyles = makeStyles((theme) => ({
     border:' 0.1px solid rgba(0, 0, 0, 0.23)',
     padding: '12px 7px',
     width: '100%',
-    borderRadius: '4px',
+    borderRadius: '3.5rem',
     color: "#8D8D8D",
-    fontSize: '1.3rem'
+    fontSize: '1.3rem',
+    borderColor: "#2879d9"
   },
   label: {
     fontSize: '1.2rem',
