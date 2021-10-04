@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
 	textField: {
 		width: "100%",
 		fontSize: "16px",
-		textAlign:'left'
+		textAlign:'left',
+		"& .MuiFormLabel-root": {
+			fontSize: "1.6rem"
+		}
 	},
 }));
 export default function LayoutTextFields(props) {
@@ -18,7 +21,6 @@ export default function LayoutTextFields(props) {
 
 	return (
 		<TextField
-			
 			name={props.name}
 			label={props.label ? props.label : "Label"}
 			value={props.value}

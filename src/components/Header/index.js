@@ -81,6 +81,7 @@ const Header = (props) => {
         id={props.token}
       />
 
+      <div className="home_container">
       <HomeHeader handleModal={handleModal} />
       <div className="homeBackground">
         <div className="homebackground-text">
@@ -90,6 +91,7 @@ const Header = (props) => {
           </h1>
           <p>Faire de l’alternance, la voix de l’excellence</p>
         </div>
+      </div>
       </div>
     </>
   );

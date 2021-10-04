@@ -194,12 +194,13 @@ export default function StudentRegister(props) {
                     <div className="formikError">{formik.errors.phone}</div>
                   ) : null}
                 </div>
-                <div className="my-4">
+                <div className="">
                   <AutoComplete
                     formik={formik}
                     onChange={handleAddressChange}
                     placeholder={Texts.userProfile}
                     items={items}
+                    standard="standard"
                     placeholder="Adresse"
                     name={"address"}
                     loading={store2.loading}

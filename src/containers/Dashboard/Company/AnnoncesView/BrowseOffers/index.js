@@ -40,6 +40,7 @@ import _ from "lodash";
 import Texts from "../../../../../Globals/Texts";
 import { baseUrl } from "../../../../../urlConfig";
 import Skills from "../../../Admin/skills/AddSkills";
+import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
 export default function BrowseOffers() {
 	const history = useHistory();
 	const [show, setShow] = useState(false);
@@ -111,6 +112,7 @@ export default function BrowseOffers() {
 	});
 	// onChange
 	const handleChange = (e) => {
+		console.log("typingg....");
 		const { name, value } = e.target;
 		if (name === "photo") {
 			let file = e.target.files[0];
@@ -224,12 +226,12 @@ export default function BrowseOffers() {
 					<div className="publishBox">
 						<div className="publish custom-box">
 							<form onSubmit={formik.handleSubmit}>
-								<Row className="publish-header align-items-center mt-0">
-									<Col lg={4} md={4}>
+								<Row className="publish-header align-items-start mt-0">
+									<Col lg={4} md={4} >
 										<div className="add_image_icon">
 											<label htmlFor="upload-button">
 												<Image
-													style={{ position: "relative", top: "-13rem" }}
+												
 													src={
 														imageURI ? imageURI : "../images/add_image_icon.png"
 													}
@@ -253,7 +255,15 @@ export default function BrowseOffers() {
 										<div className="publish-header-content">
 											<div className="d-flex">
 												<div className="col-lg-6">
-													<ModalInput
+													<CustomTextField
+														label="Nom du poste"
+														name="position"
+														id="outlined-basic"
+														onChange={handleChange}
+														value={formik.values.position}
+														variant="outlined"
+													/>
+													{/* <ModalInput
 														name="position"
 														label="Nom du poste"
 														// className="Job_title"
@@ -261,7 +271,7 @@ export default function BrowseOffers() {
 														value={formik.values.position}
 														onChange={handleChange}
 														type="text"
-													/>
+													/> */}
 													{formik.touched.position && formik.errors.position ? (
 														<div className="formikErrorAuto">
 															{" "}
@@ -270,7 +280,15 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 												<div className="col-lg-6 ml-3">
-													<ModalInput
+												<CustomTextField
+														label="Title"
+														name="title"
+														id="outlined-basic"
+														onChange={handleChange}
+														value={formik.values.title}
+														variant="outlined"
+													/>
+													{/* <ModalInput
 														name="title"
 														label="Title"
 														// className="Job_title"
@@ -278,7 +296,7 @@ export default function BrowseOffers() {
 														value={formik.values.title}
 														onChange={handleChange}
 														type="text"
-													/>
+													/> */}
 													{formik.touched.title && formik.errors.title ? (
 														<div className="formikErrorAuto">
 															{" "}
@@ -391,33 +409,39 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="d-flex pt-4">
+											
+							</div>
+
+								
+									</Col>
+								</Row>
+								<div className="d-flex pt-4">
 												<div className="col-lg-12">
-												<TextArea
-													name="description"
-													placeholder="Entrez une description"
-													value={formik.values.description}
-													onChange={handleChange}
-													rows={3}
-												/>
-												{formik.touched.description &&
-													formik.errors.description ? (
-													<div className="formikErrorDesc">
-														{" "}
-														{formik.errors.description}
-													</div>
-												) : null}
-													</div>
+													<TextArea
+														name="description"
+														placeholder="Entrez une description"
+														value={formik.values.description}
+														onChange={handleChange}
+														rows={3}
+													/>
+													{formik.touched.description &&
+														formik.errors.description ? (
+														<div className="formikErrorDesc">
+															{" "}
+															{formik.errors.description}
+														</div>
+													) : null}
+												</div>
 											</div>
 											<div className=" d-flex pt-4">
-											<div className="col-lg-12">
-												<RadioButton
-													options={RythmeOptions}
-													name="alternationRhythm"
-													label="Rythme alternances :"
-													value={formik.values.alternationRhythm}
-													onChange={handleChange}
-												/>
+												<div className="col-lg-12">
+													<RadioButton
+														options={RythmeOptions}
+														name="alternationRhythm"
+														label="Rythme alternances :"
+														value={formik.values.alternationRhythm}
+														onChange={handleChange}
+													/>
 												</div>
 											</div>
 											{formik.touched.alternationRhythm &&
@@ -427,25 +451,25 @@ export default function BrowseOffers() {
 													{formik.errors.alternationRhythm}
 												</div>
 											) : null}
-											<div className=" d-flex ">
-									<div className="col-lg-6">
-										<MultiAutoComplete
-											formik={formik}
-											placeholder="Compétences générales "
-											items={SOFT_SKILLS}
-											name={"softSkills"}
-											loading={store.loading}
-											onSubmit={onSoftSkillChange}
-											multiSelect={multiSelect}
-										/>
+								<div className=" d-flex ">
+										<div className="col-lg-4 softskills-input">
+											<MultiAutoComplete
+												formik={formik}
+												placeholder="Compétences générales "
+												items={SOFT_SKILLS}
+												name={"softSkills"}
+												loading={store.loading}
+												onSubmit={onSoftSkillChange}
+												multiSelect={multiSelect}
+											/>
 
-										{formik.touched.softSkills && formik.errors.softSkills ? (
-											<div className="formikErrorDate">
-												{formik.errors.softSkills}
-											</div>
-										) : null}
-									</div>
-									<div className="col-lg-6">
+											{formik.touched.softSkills && formik.errors.softSkills ? (
+												<div className="formikErrorDate">
+													{formik.errors.softSkills}
+												</div>
+											) : null}
+										</div>
+									<div className="col-lg-4">
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences spécialisées"
@@ -464,12 +488,7 @@ export default function BrowseOffers() {
 										) : null}
 									</div>
 								</div>
-										</div>
-
-								
-									</Col>
-								</Row>
-											<div className="d-flex">
+							<div className="d-flex">
 								<div className="col-lg-12 text-right">
 									{store.loading ? (
 										<Button
