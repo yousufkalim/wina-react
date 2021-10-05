@@ -699,8 +699,13 @@ html {
 .generalInformation .header-profile .profilePic {
   width: 3.5rem !important;
   height: 3.5rem;
-  margin-left: 2.2rem;
+  margin-left: 1.2rem;
   object-fit: cover;
+}
+
+.MuiBadge-anchorOriginTopRightRectangle {
+  top: 5px !important;
+  right: 5px !important;
 }
 .generalInformation .search_bar .fa-search {
   color: #9aaabf;
@@ -881,8 +886,8 @@ html {
   width: 80% !important;
   max-width: 80% !important;
   /* padding-bottom: 3rem; */
-  height: 100%;
-  min-height: 100% !important;
+  height: auto;
+  /* min-height: 100% !important; */
   margin: auto !important;
 }
 .custom-modal .modal-content {
@@ -900,6 +905,10 @@ html {
 .custom-modal .close:focus {
   border: none;
   outline: none;
+}
+
+.custom-modal .modal-header {
+  padding: 1rem 15px !important;
 }
 /*      Custom Modal small End    */
 
@@ -993,6 +1002,7 @@ html {
 }
 .schoolDiplomaModal .modal-body {
   padding-top: 3rem;
+  padding-left: 0;
 }
 .schoolDiplomaModal .modal-body .schoolName .MuiInputBase-root {
   border-radius: 50px !important;
@@ -1151,6 +1161,9 @@ html {
   cursor: pointer;
 }
 
+.modal-add-icon {
+  width: 1.8rem;
+}
 .ProfessionalcareerBox .Professionalcareer .row {
   margin-top: 0 !important;
   margin-left: 0 !important;
@@ -1782,11 +1795,11 @@ html {
 }
 
 .Professionalcareer .modal-icon .edit_Icon {
-  font-size: 18px;
+  font-size: 1.5rem;
   margin-left: 10px;
 }
 .Professionalcareer .modal-icon .delete_icon {
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 /* .ProfessionalcareerBox END*/
 
@@ -1932,6 +1945,9 @@ html {
 .ProfessionalCareerModal .modal-header {
   border-bottom: none !important;
 }
+.ProfessionalCareerModal .modal-body {
+  padding-left: 0 !important;
+}
 .ProfessionalCareerModal .modal-header .close {
   font-size: 3.5rem;
   position: absolute;
@@ -1957,6 +1973,41 @@ html {
   border-bottom: 1px solid #f7c40d;
 }
 
+.professional-modal-form-first {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.3rem;
+  flex-wrap: wrap;
+  padding-left: 15px;
+}
+
+.professional-modal-form-second {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  padding-left: 15px;
+}
+
+.professional-modal-form-position {
+  flex-basis: 30%;
+}
+
+.professional-modal-form-checkbox {
+  flex-basis: 30%;
+}
+.professional-modal-form-date {
+  flex-basis: 30%;
+}
+.professional-modal-form-other {
+  flex-basis: 20%;
+}
+
+.professional-modal-form-other {
+  flex-basis: 20%;
+}
 .ProfessionalCareerModal .modal-body .Job_title {
   flex-basis: 30%;
   padding: 2rem 1rem !important;
@@ -2187,6 +2238,7 @@ html {
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .skills-heading {
   font-size: 1.37rem;
   color: #454545;
+  font-weight: 500;
   /* border-bottom: 1px solid #f7c40d; */
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .skills-heading-line {
@@ -3734,17 +3786,17 @@ textarea.form-control {
 }
 .info-card img {
   width: 100%;
-    height: 100%;
-    max-height: 20rem;
-    max-width: 100%;
-    object-fit: cover;
+  height: 100%;
+  max-height: 20rem;
+  max-width: 100%;
+  object-fit: cover;
 }
 .Professionalcareer .modal-icon .delete_icon {
-  font-size: 18px;
+  font-size: 1.5rem;
   margin-left: 10px;
 }
 .diplomaSchool .modal-icon .delete_icon {
-  font-size: 18px;
+  font-size: 1.5rem;
   margin-left: 10px;
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .languagesDiv {
@@ -3843,8 +3895,8 @@ input[type="file"] {
   font-weight: 600;
 }
 .imageURI {
-  width: 50px;
-  height: 50px;
+  width: 11rem;
+  height: 11rem;
 }
 
 /* owl carosoul */
@@ -3954,3 +4006,8 @@ input[type="file"] {
   margin-top: 3rem !important;
 }
 /* end */
+
+.add-school-field {
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}

@@ -138,7 +138,7 @@ const ProfessionalProfile = () => {
             <div className="ProfessionalcareerBox">
               <div className="Professionalcareer">
                 <Image
-                  className="modal-icon"
+                  className="modal-icon modal-add-icon"
                   src="../images/add_icons.png"
                   onClick={ProfessionalCareerModal}
                 />

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 import moment from "moment";
+import TextFieldRound from './../../../../../../components/UI/CustomTextField/TextFieldRound';
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
@@ -95,15 +96,16 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       modalTitle="Formation / École"
       children={
         <form onSubmit={formik.handleSubmit}>
-          <div className="d-flex ">
-            <div className="col-lg-6 mb-3">
-              <ModalInput
+          <div className="d-flex mb-3 add-school-field">
+            <div className="col-lg-4">
+              <TextFieldRound
                 name="school"
                 label="École"
                 // className="Job_title"
-                placeholder="École"
+                // placeholder="École"
                 value={formik.school}
                 onChange={handleChange}
+                variant="outlined"
                 type="text"
               />
               {formik.touched.school && formik.errors.school ? (
@@ -113,7 +115,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
           </div>
 
           <div className="d-flex mt-3">
-            <div className="col-lg-6">
+            <div className="col-lg-3">
               <DatePicker
                 name="start_Date"
                 previous={true}
@@ -128,7 +130,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 </div>
               ) : null}
             </div>
-            <div className="col-lg-6 ml-3">
+            <div className="col-lg-3">
               <DatePicker
                 name="end_Date"
                 label={"Date de fin"}
@@ -141,14 +143,16 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
               ) : null}
             </div>
           </div>
-          <div className="d-flex ">
-            <div className="col-lg-6 mt-4">
+          <div className="d-flex mt-5">
+            <div className="col-lg-12">
               <TextArea
                 name="description"
+                label="Description"
+                grey
                 value={formik.description}
                 onChange={handleChange}
                 rows={3}
-                placeholder="Description"
+                // placeholder="Description"
               />
               {formik.touched.description && formik.errors.description ? (
                 <div className="formikErrorDesc">

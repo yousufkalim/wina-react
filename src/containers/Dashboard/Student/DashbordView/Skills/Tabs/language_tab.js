@@ -58,7 +58,7 @@ export default function Hard_skilltab(props) {
           <div className="text-left">
             <div className="skills-heading-line"></div>
           </div>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} className="mt-5">
             <div className="d-flex mt-2 mb-4">
               <div className="col-lg-4 ">
                 <Select
@@ -70,7 +70,7 @@ export default function Hard_skilltab(props) {
                 />
 
                 {formik.touched.name && formik.errors.name ? (
-                  <div className="formikErrorAuto"> {formik.errors.name}</div>
+                  <div className="formikErrorAuto mt-2"> {formik.errors.name}</div>
                 ) : null}
               </div>
               <div className="col-lg-4 ml-3">
@@ -83,7 +83,7 @@ export default function Hard_skilltab(props) {
                 />
 
                 {formik.touched.skill && formik.errors.skill ? (
-                  <div className="formikErrorAuto"> {formik.errors.skill}</div>
+                  <div className="formikErrorAuto mt-2"> {formik.errors.skill}</div>
                 ) : null}
               </div>
             </div>

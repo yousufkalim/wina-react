@@ -12,6 +12,7 @@ import Input from "../../../../../../components/UI/Input";
 import { baseUrl } from "../../../../../../urlConfig";
 import axios from "axios";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
+import TextFieldRound from './../../../../../../components/UI/CustomTextField/TextFieldRound';
 
 const GeneralInformationsModal = ({
   show,
@@ -95,15 +96,16 @@ const GeneralInformationsModal = ({
       children={
         data && id ? (
           <form onSubmit={formik.handleSubmit}>
-            <div className="d-flex ">
-              <div className="col-lg-6 mb-3">
-                <ModalInput
+            <div className="d-flex mb-3 add-school-field">
+              <div className="col-lg-4 col-6">
+                <TextFieldRound
                   name="school"
                   label="École"
                   // className="Job_title"
                   placeholder="École"
                   value={formik.values.school}
                   onChange={handleChange}
+                  variant="outlined"
                   type="text"
                 />
                 {formik.touched.school && formik.errors.school ? (
@@ -113,7 +115,7 @@ const GeneralInformationsModal = ({
             </div>
 
             <div className="d-flex mt-3">
-              <div className="col-lg-6">
+              <div className="col-lg-3 col-4">
                 <DatePicker
                   name="start_Date"
                   label={"Date de début"}
@@ -127,7 +129,7 @@ const GeneralInformationsModal = ({
                   </div>
                 ) : null}
               </div>
-              <div className="col-lg-6 ml-3">
+              <div className="col-lg-3 col-4">
                 <DatePicker
                   name="end_Date"
                   label={"Date de fin"}
@@ -142,14 +144,16 @@ const GeneralInformationsModal = ({
                 ) : null}
               </div>
             </div>
-            <div className="d-flex ">
-              <div className="col-lg-6 mt-4">
+            <div className="d-flex mt-5">
+              <div className="col-lg-12">
                 <TextArea
                   name="description"
+                  grey
+                  label="Description"
                   value={formik.values.description}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Description"
+                  // placeholder="Description"
                 />
                 {formik.touched.description && formik.errors.description ? (
                   <div className="formikErrorDesc">

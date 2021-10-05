@@ -30,14 +30,25 @@ const useStyles = makeStyles({
       borderColor: "#2879d9"
     }
 
+  },
+  label: {
+    fontSize: '1.375rem',
+    color: '#8D8D8D',
+    fontWeight: 400
   }
 })
 export default function Textarea(props) {
   const classes = useStyles();
   return (
     <div className="form-group">
+      {
+        props.label && (
+          <div className={classes.label}>{props.label}</div>
+        )
+      }
       <textarea
         className={`form-control ${classes.root}`}
+        style={props.grey && {borderColor: "#454545"}}
         id="exampleFormControlTextarea1"
         name={props.name}
         value={props.value}

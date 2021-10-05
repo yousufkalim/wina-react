@@ -208,6 +208,20 @@
     width: 97%;
     padding: 2rem 1.2rem;
   }
+
+  .professional-modal-form-first {
+    justify-content: space-between;
+    /* gap: 1.3rem; */
+    flex-wrap: no-wrap;
+    padding-left: 15px;
+  }
+  .professional-modal-form-position {
+    flex-basis: 48%;
+  }
+
+  .professional-modal-form-other {
+    flex-basis: 48%;
+  }
 }
 @media screen and (max-width: 800px) {
   html {

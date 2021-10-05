@@ -59,7 +59,7 @@ export default function Hard_skilltab(props) {
           <div className="text-left">
             <div className="skills-heading-line"></div>
           </div>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} className="mt-5">
             <div className="col-lg-4 mb-4 mt-2">
               <Select
                 name="name"
