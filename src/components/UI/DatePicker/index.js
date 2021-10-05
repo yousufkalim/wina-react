@@ -36,6 +36,7 @@ export default function DatePickers(props) {
             name={props.name}
             // label="Birthday"
             type="date"
+            // placeholder="startDate"
             value={props.value}
             onChange={props.onChange}
             className={classes.textField}
@@ -48,6 +49,7 @@ export default function DatePickers(props) {
             id="date"
             name={props.name}
             // label="Birthday"
+            // placeholder="startDate"
             type="date"
             value={props.value}
             onChange={props.onChange}

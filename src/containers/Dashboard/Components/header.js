@@ -27,7 +27,7 @@ const Header = () => {
 					</InputGroup>
 				</div>
 
-				<div className="header-profile row d-flex justify-content-end">
+				<div className="header-profile row d-flex justify-content-end align-items-center">
 					{/* <Image className="notification" src="../images/bell_icon.png" /> */}
 					<NotificationMenu />
 					<Image

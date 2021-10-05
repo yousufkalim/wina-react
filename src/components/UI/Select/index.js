@@ -58,6 +58,8 @@ const useStyles = makeStyles((theme) => ({
     // },
     '& .MuiFormLabel-root': {
       fontSize: '1.37rem',
+      color: '#454545',
+      fontWeight: 600,
     },
     '& .MuiInputLabel-formControl':{ 
       top: -6,
@@ -76,6 +78,57 @@ const useStyles = makeStyles((theme) => ({
     },
     
     
+  },
+  formControlGrey: {
+// margin: theme.spacing(1),
+width: '100%',
+border: "none",
+'& .MuiOutlinedInput-root':{
+  borderRadius: "3.5rem",
+  borderColor: "#2879d9",
+   // borderBottom: "1px solid #f7c40d",
+  // - The Input-root, inside the TextField-root
+  "& fieldset": {
+    // - The <fieldset> inside the Input-root
+    // borderColor: "pink",
+    // - Set the Input border
+  },
+  // "&:hover": {
+  //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+  // },
+  // "&.Mui-focused fieldset": {
+  //   // - Set the Input border when parent is focused
+  //   borderColor: "#2879d9",
+  // },
+},
+'& .MuiOutlinedInput-notchedOutline':{
+  borderColor: "#2879d9",
+},
+// "& .MuiFormLabel-root.Mui-focused": {
+//   color: "#2879d9"
+// },
+'& .MuiFormLabel-root': {
+  fontSize: '1.37rem',
+  color: '#8D8D8D',
+  // fontWeight: 600,
+},
+'& .MuiInputLabel-formControl':{ 
+  top: -6,
+  left: 15
+},
+'& .MuiInputLabel-shrink': {
+  top: '-6px',
+  center: 0,
+  // width: '133.33%',
+},
+'& .MuiInputBase-root ': {
+  fontSize: '1.375rem'
+},
+'& .MuiOutlinedInput-notchedOutline':{
+  borderColor: "#2879d9",
+},
+
+
   },
   textField: {
 

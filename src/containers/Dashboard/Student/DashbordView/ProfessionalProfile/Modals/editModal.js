@@ -8,7 +8,7 @@ import Select from "../../../../../../components/UI/Select";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import Button from "../../../../../../components/UI/Button";
-
+import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getApiAdress,
@@ -21,6 +21,17 @@ import { baseUrl } from "../../../../../../urlConfig";
 
 import { PROFESSIONAL_PROFILE_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { PROFESSIONAL_PROFILE_YUP } from "../../../../../../components/Formik/Student/yupValidation";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    '& .MuiTypography-body1': {
+      fontSize: '1.375rem',
+      color: "#8D8D8D",
+
+    }
+  }
+})
 
 const PPModal = ({
   show,
@@ -32,6 +43,7 @@ const PPModal = ({
 }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
+  const classes = useStyles();
   // const classes = useStyles();
   const [Image, setImage] = useState("");
   const [ImageUri, setImageURI] = useState("");
@@ -126,14 +138,15 @@ const PPModal = ({
       </Modal.Header>
       <Modal.Body>
         {data && id ? (
-          <form onSubmit={formik.handleSubmit}>
-            <div className="d-flex ">
-              <div className="col-lg-6 ">
-                <ModalInput
+          <form onSubmit={formik.handleSubmit} className="mt-5 professional-modal-form">
+            <div className="professional-modal-form-first">
+              <div className="professional-modal-form-position">
+                <CustomTextField
                   name="position"
-                  label="Position"
+                  label="Intitulé du poste . Ex : Chef de projet"
                   // className="Job_title"
-                  placeholder="Intitulé du poste . Ex : Chef de projet"
+                  // placeholder="Intitulé du poste . Ex : Chef de projet"
+                  variant="outlined"
                   value={formik.values.position}
                   onChange={handleChange}
                   type="text"
@@ -145,7 +158,7 @@ const PPModal = ({
                   </div>
                 ) : null}
               </div>
-              <div className="col-lg-6  ml-4">
+              <div className="professional-modal-form-other">
                 <Select
                   name="type"
                   value={formik.values.type}
@@ -158,9 +171,8 @@ const PPModal = ({
                   <div className="formikErrorAuto"> {formik.errors.type}</div>
                 ) : null}
               </div>
-            </div>
-            <div className="d-flex mt-4 pt-3">
-              <div className="col-lg-6 ">
+
+              <div className="professional-modal-form-other">
                 <Select
                   name="company"
                   value={formik.values.company}
@@ -176,7 +188,7 @@ const PPModal = ({
                   </div>
                 ) : null}
               </div>
-              <div className="col-lg-6  ml-4 ">
+              <div className="professional-modal-form-other">
                 <Select
                   name="place"
                   value={formik.values.place}
@@ -190,8 +202,24 @@ const PPModal = ({
                 ) : null}
               </div>
             </div>
-            <div className="d-flex mt-4 pt-3">
-              <div className="col-lg-6 ">
+       
+            <div className="professional-modal-form-second mt-5 align-items-end">
+
+            <div className="professional-modal-form-checkbox">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={formik.values.position_hold}
+                      onChange={handleChange}
+                      name="position_hold"
+                      color="primary"
+                    />
+                  }
+                  className={classes.root}
+                  label="J’occupe actuellement ce poste"
+                />
+              </div>
+              <div className="professional-modal-form-date ">
                 <DatePicker
                   name="start_date"
                   label={"Date de début"}
@@ -205,7 +233,7 @@ const PPModal = ({
                   </div>
                 ) : null}
               </div>
-              <div className="col-lg-6  ml-4">
+              <div className="professional-modal-form-date">
                 <DatePicker
                   name="end_date"
                   label={"Date de fin"}
@@ -220,14 +248,16 @@ const PPModal = ({
                 ) : null}
               </div>
             </div>
-            <div className="d-flex mt-4 pt-3">
-              <div className="col-lg-6">
+            <div className="d-flex my-4 pt-3">
+              <div className="col-lg-12">
                 <TextArea
                   name="description"
+                  grey
+                  label="Description"
                   value={formik.values.description}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Description"
+                  // placeholder="Description"
                 />
                 {formik.touched.description && formik.errors.description ? (
                   <div className="formikErrorDesc">
@@ -237,22 +267,6 @@ const PPModal = ({
                 ) : null}
               </div>
             </div>
-            <div className="d-flex mt-4">
-              <div className="col-lg-6">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={formik.values.position_hold}
-                      onChange={handleChange}
-                      name="position_hold"
-                      color="primary"
-                    />
-                  }
-                  label="J’occupe actuellement ce poste"
-                />
-              </div>
-            </div>
-
             <div className="d-flex ">
               <div className="col-lg-6">
                 <label className="inputLabel" for="professional_Picture">
