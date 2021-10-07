@@ -110,7 +110,7 @@ export default function StudentRegister(props) {
           />
           <div className="modal-right-side">
             <div className="Register">
-              <div className="heading pb-4">S’inscrire</div>
+              <div className="heading pb-5">S’inscrire</div>
               <form onSubmit={formik.handleSubmit}>
                 <div>
                   <ModalInput
@@ -181,7 +181,7 @@ export default function StudentRegister(props) {
                     </div>
                   ) : null}
                 </div>
-                <div className="my-4">
+                <div className="mt-4">
                   <ModalInput
                     placeholder="Numéro de téléphone"
                     type="text"
@@ -194,12 +194,13 @@ export default function StudentRegister(props) {
                     <div className="formikError">{formik.errors.phone}</div>
                   ) : null}
                 </div>
-                <div className="">
+                <div className="" style={{marginTop: "-30px"}}>
                   <AutoComplete
                     formik={formik}
                     onChange={handleAddressChange}
                     placeholder={Texts.userProfile}
                     items={items}
+                    studentModal
                     standard="standard"
                     placeholder="Adresse"
                     name={"address"}

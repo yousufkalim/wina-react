@@ -57,7 +57,7 @@ const OfferCardDetail = (props) => {
           style={{ height: "10%" }}
         >
           <h5>{JOB.company && JOB.company.name}</h5>
-          <span className="offer-apply-btn ml-5">Postuler</span>
+          <span className="offer-apply-btn ml-4">Postuler</span>
         </div>
         <div className="offer-detail">
           <div className="offer-detail-container">
@@ -83,11 +83,11 @@ const OfferCardDetail = (props) => {
 
             <div className="offer-detail-content">
               <CardItem
-                className="offer-card-item-bordered offer-detail-content-detail"
+                className="offer-card-item-bordered offer-detail-content-detail text-center"
                 content={JOB.domain}
               />
               <CardItem
-                className="offer-card-item-bordered offer-detail-content-detail"
+                className="offer-card-item-bordered offer-detail-content-detail text-center"
                 content={JOB.levelOfEducation}
               />
             </div>

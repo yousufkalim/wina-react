@@ -50,6 +50,59 @@ const useStyle = makeStyles({
     '& .MuiInputBase-root ': {
       fontSize: '1.375rem'
     }
+  },
+
+  root2: {
+    '& .MuiOutlinedInput-root':{
+      borderRadius: "3.5rem",
+      borderColor: "#2879d9"
+    },
+    '& .MuiOutlinedInput-notchedOutline':{
+      borderColor: "#2879d9",
+    },
+
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid #f7c40d'
+    },
+
+    // '& .MuiFormLabel-root.Mui-focused': {
+    //   color: "#2879d9"
+    // },
+    '& .MuiInput-underline:after': {
+      borderBottom: '1px solid #f7c40d'
+    },
+    "& .MuiAutocomplete-inputRoot": {
+      // borderBottom: "1px solid #f7c40d",
+      // - The Input-root, inside the TextField-root
+      "& fieldset": {
+        // - The <fieldset> inside the Input-root
+        // borderColor: "pink",
+        // - Set the Input border
+      },
+      // "&:hover": {
+      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+      // },
+      // "&.Mui-focused fieldset": {
+      //   // - Set the Input border when parent is focused
+      //   borderColor: "#2879d9",
+      // },
+    },
+    '& .MuiFormLabel-root.Mui-focused': {
+        display: "none"
+    },
+    '& .MuiFormLabel-root': {
+      fontSize: '1.12rem',
+      '& .Mui-focused': {
+        color: "#fff"
+      }
+    },
+    '& .MuiInputLabel-shrink ':{
+      display: "none"
+    },
+   
+    '& .MuiInputBase-root ': {
+      fontSize: '1.12rem'
+    }
   }
 })
 export default function AutoComplete({
@@ -62,7 +115,8 @@ export default function AutoComplete({
   name,
   address,
   renderOption,
-  standard
+  standard,
+  studentModal
 }) {
   const getAddress = (event, value, reason) => {
     onChange(value);
@@ -88,7 +142,7 @@ export default function AutoComplete({
         onChange={(event, value) => {
           onSubmit(value);
         }}
-        className={classes.root}
+        className={studentModal ? classes.root2 : classes.root}
         options={items}
         getOptionLabel={(option) => {
           return option.name;

@@ -10,6 +10,9 @@ const useStyle = makeStyles({
   root: {
     '& .MuiFormLabel-root': {
       fontSize: '1.6rem',
+      color: "#454545",
+      fontWeight: 500,
+      marginBottom: "10px"
     },
     '& .MuiTypography-root': {
       fontSize: '1.5rem'

@@ -39,7 +39,7 @@
   .dashbord .dashbordLayout {
     flex-basis: 84%;
     height: 100%;
-    padding: 1rem 1.6rem 0% 2rem;
+    padding: 1rem 1.5% 0% 4%;
   }
   .dashbord .dashbord-column {
     flex-basis: 16%;
@@ -220,6 +220,20 @@
   }
 
   .professional-modal-form-other {
+    flex-basis: 48%;
+  }
+
+  .research-form-first {
+    justify-content: space-between;
+    /* gap: 1.3rem; */
+    flex-wrap: no-wrap;
+    /* padding-left: 15px; */
+  }
+  .research-form-position {
+    flex-basis: 48%;
+  }
+
+  .research-form-other {
     flex-basis: 48%;
   }
 }

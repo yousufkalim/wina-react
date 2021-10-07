@@ -8,6 +8,10 @@ const useStyles = makeStyles({
     width: "100%",
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
+      color: "#8d8d8d",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#454545",
     },
     "& .MuiInputBase-root": {
       borderRadius: 10,

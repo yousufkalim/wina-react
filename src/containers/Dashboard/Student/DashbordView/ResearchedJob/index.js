@@ -17,6 +17,7 @@ import { Add_info_Student } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 import TextArea from "../../../../../components/UI/Textarea";
 import Texts from '../../../../../Globals/Texts.js'
+import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
 import {
 	DomainOptions,
@@ -80,17 +81,18 @@ const ResearchedJob = () => {
 			>
 				<Tab eventKey="Research" title="Recherche">
 					<div className="ResearchBox custom-box  ">
-						<form onSubmit={formik.handleSubmit}>
-							<div className="row ">
-								<div className="col-lg-3">
-									<ModalInput
+						<form onSubmit={formik.handleSubmit} className="mt-5">
+							<div className="research-form-first ">
+								<div className="research-form-position">
+									<CustomTextField
 										name="position"
-										label="Position"
+										label="Intitulé du poste . Ex : Chef de projet"
 										// className="Job_title"
-										placeholder="Intitulé du poste . Ex : Chef de projet"
+										// placeholder="Intitulé du poste . Ex : Chef de projet"
 										value={formik.values.position}
 										onChange={handleChange}
 										type="text"
+										variant="outlined"
 									/>
 									{formik.touched.position && formik.errors.position ? (
 										<div className="formikErrorAuto">
@@ -100,7 +102,7 @@ const ResearchedJob = () => {
 									) : null}
 								</div>
 
-								<div className="col-lg-3">
+								<div className="research-form-other">
 									<Select
 										name="domain"
 										value={formik.values.domain}
@@ -116,7 +118,7 @@ const ResearchedJob = () => {
 										</div>
 									) : null}
 								</div>
-								<div className="col-lg-3">
+								<div className="research-form-other">
 									<Select
 										name="levelOfEducation"
 										value={formik.values.levelOfEducation}
@@ -134,7 +136,7 @@ const ResearchedJob = () => {
 										</div>
 									) : null}
 								</div>
-								<div className="col-lg-3">
+								<div className="research-form-other">
 									<Select
 										name="duration"
 										value={formik.values.duration}
@@ -152,7 +154,7 @@ const ResearchedJob = () => {
 								</div>
 							</div>
 							<div className="row mt-5 ">
-								<div className="col-lg-3">
+								<div className="col-md-3">
 									<DatePicker
 										name="startDate"
 										label={"Date de début"}
@@ -166,7 +168,7 @@ const ResearchedJob = () => {
 										</div>
 									) : null}
 								</div>
-								<div className="col-lg-3">
+								<div className="col-md-3">
 									<DatePicker
 										name="dateOfBirth"
 										label={Texts.DATE_OF_BIRTH}
@@ -185,7 +187,7 @@ const ResearchedJob = () => {
 
 							</div>
 							<div className="row mt-5">
-								<div className="col-lg-3">
+								<div className="col-md-12">
 									<RadioButton
 										options={RythmeOptions}
 										name="alternationRhythm"
@@ -203,11 +205,12 @@ const ResearchedJob = () => {
 								</div>
 
 							</div>
-							<div className="row ">
-								<div className="col-lg-6 ptb-30">
+							<div className="row mt-5">
+								<div className="col-md-12 ptb-30">
 									<TextArea
 										name="description"
-										placeholder="Entrez une description"
+										// placeholder="Entrez une description"
+										label="Description"
 										value={formik.values.description}
 										onChange={handleChange}
 										rows={3}

@@ -28,8 +28,12 @@ const useStyles = makeStyles({
     },
     '& .MuiAutocomplete-inputRoot:hover':{
       borderColor: "#2879d9"
-    }
-
+    },
+    '&::placeholder': {
+      color: "#8D8D8D"
+    },
+    borderColor: "#454545",
+    color: "#454545",
   },
   label: {
     fontSize: '1.375rem',

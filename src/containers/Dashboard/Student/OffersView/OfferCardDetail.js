@@ -75,7 +75,7 @@ const OfferCardDetail = (props) => {
             style={{ height: "10%" }}
           >
             <span
-              className="offer-apply-btn ml-5"
+              className="offer-apply-btn"
               onClick={() => setisDetail(false)}
               style={{ cursor: "pointer" }}
             >
@@ -90,7 +90,7 @@ const OfferCardDetail = (props) => {
             </span>
             <span
               onClick={() => handleCancelRequest(JOB._id)}
-              className="offer-apply-btn ml-5"
+              className="offer-apply-btn offer-apply-btn-red ml-4"
             >
               Se desinteressers
             </span>
@@ -134,10 +134,12 @@ const OfferCardDetail = (props) => {
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
+                  title="Domaine : "
                 />
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               </div>
 
@@ -264,10 +266,13 @@ const OfferCardDetail = (props) => {
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
+                  title="Domaine : "
+
                 />
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               </div>
 
