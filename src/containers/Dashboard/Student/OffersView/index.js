@@ -9,7 +9,7 @@ const OffersView = (props) => {
     window.location.reload(true);
   };
   return (
-    <Tab.Container id="dashbord" defaultActiveKey="first" className="h-100">
+    <Tab.Container id="dashbord" defaultActiveKey="second" className="h-100">
       <div className="dashbord">
         <div className="dashbord-column">
           <div className="dashbordLabel">Offers</div>

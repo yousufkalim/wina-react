@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiOutlinedInput-root':{
       borderRadius: "3.5rem",
       borderColor: "#2879d9",
+
+      '& .MuiIconButton-root': {
+        color: '#454545'
+      },
+      '& MuiSelect-icon': {
+        color: '#454545'
+      },
        // borderBottom: "1px solid #f7c40d",
       // - The Input-root, inside the TextField-root
       "& fieldset": {
@@ -78,14 +85,15 @@ const useStyles = makeStyles((theme) => ({
     },
     
     
+    
   },
-  formControlGrey: {
+formControlGrey: {
 // margin: theme.spacing(1),
-width: '100%',
-border: "none",
-'& .MuiOutlinedInput-root':{
-  borderRadius: "3.5rem",
-  borderColor: "#2879d9",
+  width: '100%',
+  border: "none",
+  '& .MuiOutlinedInput-root':{
+    borderRadius: "3.5rem",
+    borderColor: "#2879d9",
    // borderBottom: "1px solid #f7c40d",
   // - The Input-root, inside the TextField-root
   "& fieldset": {
@@ -100,7 +108,9 @@ border: "none",
   //   // - Set the Input border when parent is focused
   //   borderColor: "#2879d9",
   // },
+  
 },
+
 '& .MuiOutlinedInput-notchedOutline':{
   borderColor: "#2879d9",
 },

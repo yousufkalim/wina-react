@@ -70,7 +70,7 @@
     padding: 1.3rem 0.6rem 0px 0.6rem;
   }
   .carosoulProfileBox .genProfile .multiCarosoul {
-    width: 75vw;
+    width: 68vw;
   }
   /*  ===================================================
                   Studnet Section End
@@ -86,6 +86,10 @@
     width: 95%;
     padding: 2rem 1.2rem;
   }
+  .coaching-card {
+    flex-basis: 31%;
+    height: 32rem;
+  }
   .coaching-card-price {
     padding-bottom: 10px;
   }
@@ -95,6 +99,7 @@
   .coaching-card-body {
     height: 46%;
   }
+
   /*      Company Coaching Card End   */
 
   /*      Student Professional Modal    */
@@ -103,6 +108,9 @@
   }
   .professional-modal-second {
     padding-right: 2rem;
+  }
+  .carosoulProfileBox .genProfile .multiCarosoul {
+    height: 95%;
   }
 }
 
@@ -167,6 +175,10 @@
   .generalInformation {
     height: auto;
     padding-top: 1.5rem;
+  }
+  .carosoulProfileBox .genProfile .multiCarosoul {
+    height: 90%;
+    /* width: 70vw; */
   }
   .upper-nav.nav.nav-tabs {
     height: auto;

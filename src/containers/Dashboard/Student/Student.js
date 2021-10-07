@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   ) {
     return (
       <div className="dashbordMain">
-        <Tab.Container id="dashbordBox" defaultActiveKey="first">
+        <Tab.Container id="dashbordBox" defaultActiveKey="second">
           <div className="h-100 w-100 d-flex justify-content-between">
             <div className="main-coloum " style={{ height: "100vh" }}>
               <Nav variant="pills" className="flex-column align-items-center">

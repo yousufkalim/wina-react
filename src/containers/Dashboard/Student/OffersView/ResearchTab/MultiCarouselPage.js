@@ -4,6 +4,14 @@ import CarosoulCard from "./CarosoulCard";
 import { BsChevronRight, BsChevronLeft } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
 import OwlCarousel from "react-owl-carousel3";
+
+//  react carousel
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
+
+
+
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
@@ -73,7 +81,7 @@ export default function MultiCarouselPage(props) {
       {JOBS && JOBS.length > 2 ? (
         <div className="multiCarosoul">
           <div className="student-slider-container">
-            <OwlCarousel
+            {/* <OwlCarousel
               className="partner-slides owl-carousel owl-theme"
               {...options}
             >
@@ -86,7 +94,30 @@ export default function MultiCarouselPage(props) {
                     name="this is first"
                   />
                 ))}
-            </OwlCarousel>
+            </OwlCarousel> */}
+             <Carousel centerSlidePercentage={33.34} infiniteLoop={true} centerMode={true} showArrows={true} >
+               {/* <div>
+                <img width="100%" src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg" />
+               </div>
+               <div>
+                <img width="100%" src="https://media.gettyimages.com/photos/wazir-khan-mosque-lahore-punjab-pakistan-picture-id637623678?s=612x612" />
+               </div>
+               <div>
+                <img width="100%" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" />
+               </div>
+               <div>
+                <img width="100%" src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg" />
+               </div> */}
+              {JOBS &&
+                  JOBS.map((card, index) => (
+                    <CarosoulCard
+                      handleDetail={props.handleDetail}
+                      cards={card}
+                      key={index}
+                      name="this is first"
+                    />
+                  ))}
+            </Carousel>
           </div>
         </div>
       ) : (

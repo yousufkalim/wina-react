@@ -375,7 +375,7 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="mt-4 d-flex align-items-end">
+											<div className="mt-4 d-flex">
 											<div className="col-lg-6 ">
 													<DatePicker
 														name="startDate"
@@ -391,7 +391,7 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 										
-												<div className="col-lg-6 ml-3 pt-2">
+												<div className="col-lg-6 ml-3" style={{paddingTop: '10px'}}>
 													<AutoComplete
 														formik={formik}
 														onChange={handleAddressChange}
