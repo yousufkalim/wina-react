@@ -112,7 +112,7 @@ const OfferCardDetail = (props) => {
                         ? `${baseUri}/${JOB.photo.image}`
                         : DEFAULT_IMAGE
                     }
-                    style={{ width: "500px", height: "280px" }}
+                    // style={{ width: "500px", height: "280px" }}
                   />
                 </div>
                 {/* <div className="offer-detail-line"></div> */}
@@ -244,7 +244,7 @@ const OfferCardDetail = (props) => {
                         ? `${baseUri}/${JOB.photo.image}`
                         : DEFAULT_IMAGE
                     }
-                    style={{ width: "500px", height: "280px" }}
+                    // style={{ width: "500px", height: "280px" }}
                   />
                 </div>
                 {/* <div className="offer-detail-line"></div> */}

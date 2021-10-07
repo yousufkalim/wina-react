@@ -26,6 +26,9 @@ const useStyle = makeStyles({
     '& .MuiIconButton-root': {
       color: '#454545'
     },
+    '& MuiSelect-icon': {
+      color: '#454545'
+    },
     '& .MuiOutlinedInput-notchedOutline':{
       borderColor: "#2879d9",
     },

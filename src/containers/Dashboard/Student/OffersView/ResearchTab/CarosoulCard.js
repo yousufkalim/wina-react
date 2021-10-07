@@ -32,15 +32,15 @@ export default function RecipeReviewCard(props) {
               {cards.company.address.city}
             </div>
             <div className="offer-card-price text-center">
-              <div className="offer-card-price-item">{cards.domain}</div>
-              <div className="offer-card-price-item mx-1">{cards.duration}</div>
-              <div className="offer-card-price-item">
-                {cards.levelOfEducation}
+              <div className="offer-card-price-item offer-card-price-item-1">Domaine : {cards.domain}</div>
+              <div className="offer-card-price-item offer-card-price-item-2 mx-1">Durée : {cards.duration}</div>
+              <div className="offer-card-price-item offer-card-price-item-3">
+              Niveau d’étude : {cards.levelOfEducation}
               </div>
             </div>
           </div>
-          <div className="offer-card-overlay"></div>
         </div>
+        <div className="offer-card-overlay"></div>
         <Fab
           onClick={() => handleDetail(cards._id)}
           color="primary"
