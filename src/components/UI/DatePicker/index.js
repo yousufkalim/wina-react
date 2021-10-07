@@ -15,7 +15,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '3.5rem',
     color: "#8D8D8D",
     fontSize: '1.3rem',
-    borderColor: "#2879d9"
+    borderColor: "#2879d9",
+
+    '&:focus-visible': {
+      outline: "none !important"
+    }
   },
   label: {
     fontSize: '1.2rem',

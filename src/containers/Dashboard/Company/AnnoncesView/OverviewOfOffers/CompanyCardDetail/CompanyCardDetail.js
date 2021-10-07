@@ -48,6 +48,7 @@ import _ from "lodash";
 import MultiAutoComplete from "../../../../../../components/UI/MultiSelect";
 import { SignalCellularConnectedNoInternet3BarRounded } from "@material-ui/icons";
 import { baseUri } from "../../../../../../urlConfig";
+import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 
 const CompanyCardDetail = (props) => {
   const {
@@ -346,16 +347,17 @@ const CompanyCardDetail = (props) => {
                 </div>
               </div>
               <form onSubmit={formik.handleSubmit}>
-                <div className="d-flex">
-                  <div className="col-lg-3">
-                    <ModalInput
+                <div className="d-flex flex-wrap align-items-center mb-4">
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
+                    <CustomTextField
                       name="position"
                       label="Nom du poste"
                       // className="Job_title"
-                      placeholder="Position"
+                      // placeholder="Position"
                       value={formik.values.position}
                       onChange={handleChange}
                       type="text"
+                      variant="outlined"
                     />
                     {formik.touched.position && formik.errors.position ? (
                       <div className="formikErrorAuto">
@@ -364,15 +366,16 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3">
-                    <ModalInput
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
+                    <CustomTextField
                       name="title"
                       label="Title"
                       // className="Job_title"
-                      placeholder="Title"
+                      // placeholder="Title"
                       value={formik.values.title}
                       onChange={handleChange}
                       type="text"
+                      variant="outlined"
                     />
                     {formik.touched.title && formik.errors.title ? (
                       <div className="formikErrorAuto">
@@ -381,7 +384,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3" style={{marginTop: '10px'}}>
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <DatePicker
                       name="startDate"
                       value={formik.values.startDate}
@@ -394,7 +397,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3">
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <AutoComplete
                       formik={formik}
                       onChange={handleAddressChange}
@@ -414,8 +417,8 @@ const CompanyCardDetail = (props) => {
                   </div>
                 </div>
 
-                <div className="d-flex pt-4">
-                  <div className="col-lg-3  ">
+                <div className="d-flex flex-wrap pt-4">
+                  <div className="col-lg-3 col-6">
                     <Select
                       name="domain"
                       value={formik.values.domain}
@@ -431,7 +434,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 ml-3 ">
+                  <div className="col-lg-3 col-6">
                     <Select
                       name="ageRange"
                       value={formik.values.ageRange}
@@ -448,7 +451,7 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
 
-                  <div className="col-lg-3 ml-3 ">
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <Select
                       name="duration"
                       value={formik.values.duration}
@@ -465,7 +468,7 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
 
-                  <div className="col-lg-3 ml-3 ">
+                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <Select
                       name="levelOfEducation"
                       value={formik.values.levelOfEducation}
@@ -484,7 +487,7 @@ const CompanyCardDetail = (props) => {
                   </div>
                 </div>
                
-                  <div className="col-lg-12 my-4">
+                  <div className="col-lg-12 my-5 pt-3">
                     <RadioButton
                       options={RythmeOptions}
                       name="alternationRhythm"
@@ -500,10 +503,10 @@ const CompanyCardDetail = (props) => {
                       {formik.errors.alternationRhythm}
                     </div>
                   ) : null}
-                  <div className="col-lg-12 ">
+                  <div className="col-lg-12 mt-4">
                     <TextArea
                       name="description"
-                      placeholder="Enter Description"
+                      placeholder="Description"
                       value={formik.values.description}
                       onChange={handleChange}
                       rows={3}
@@ -516,8 +519,8 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
               
-                <Row>
-                  <Col md={4}>
+                <div className="mt-5">
+                  <div className="col-lg-4 col-md-6 offer-detail-skill-container">
                     <MultiAutoComplete
                       formik={formik}
                       placeholder="Compétences générales "
@@ -533,8 +536,8 @@ const CompanyCardDetail = (props) => {
                         {formik.errors.softSkills}
                       </div>
                     ) : null}
-                  </Col>
-                </Row>
+                  </div>
+                </div>
                 {/* <Row>
                   <Col className="col-lg-12">
                     <div className="sliderBox">
@@ -577,7 +580,7 @@ const CompanyCardDetail = (props) => {
                     </div>
                   </Col>
                 </Row> */}
-                <div className="offer-detail-date-container">
+                <div className="offer-detail-date-container mt-4" style={{paddingLeft: "15px"}}>
                   {softSkillsDB && softSkillsDB.length > 0
                     ? softSkillsDB.map((job) => {
                         return (
@@ -593,8 +596,8 @@ const CompanyCardDetail = (props) => {
                       })
                     : ""}
                 </div>
-                <Row>
-                  <Col md={4}>
+                <div>
+                <div className="col-lg-4 col-md-6 offer-detail-skill-container">
                   <MultiAutoComplete
                     formik={formik}
                     placeholder="Compétences spécialisées "
@@ -610,10 +613,10 @@ const CompanyCardDetail = (props) => {
                       {formik.errors.hardSkills}
                     </div>
                   ) : null}
-                  </Col>
-                </Row>
+                  </div>
+                </div>
 
-                <div className="offer-detail-date-container">
+                <div className="offer-detail-date-container mt-4" style={{paddingLeft: "15px"}}>
                   {JOB.hardSkills && JOB.hardSkills.length > 0
                     ? JOB.hardSkills.map((job) => {
                         return (
@@ -628,7 +631,6 @@ const CompanyCardDetail = (props) => {
                       })
                     : ""}
                 </div>
-
                 <div className="company-card-detail-buttons-container">
                   <Button
                     onClick={() => setIsNext(true)}

@@ -122,13 +122,13 @@ const CardWithImage = (props) => {
           <div className="card-with-image-container">
             <div className="card-with-image-title">
               <div className="flex">
-                <h3>
-                  <b>{item.company && item.company.name}</b>
-                </h3>
+                <div className="card-with-image-name">
+                  <b>{item.company && item.company.name} {props.app && props.app.status === "Approved" && (<span className="ml-3 card-with-image-matched">Matched</span>)}</b>
+                </div>
                 {props.app && props.app.status === "Approved" ? (
                   <>
-                    <h3 className="text-success">Matched</h3>
-                    <p>
+                    {/* <h3 className="text-success">Matched</h3> */}
+                    <div className="card-with-image-interview">
                       Interview is on {moment(props.app.timmings[0]).day()}
                       th{" "}
                       {
@@ -138,7 +138,7 @@ const CardWithImage = (props) => {
                       {moment(new Date(props.app.timmings[0])).format(
                         "HH:MM A"
                       )}
-                    </p>
+                    </div>
                   </>
                 ) : (
                   ""
@@ -150,12 +150,12 @@ const CardWithImage = (props) => {
             </div>
             <div className="card-with-image-content text-left">
               {item.position} <br />
-              <p className="card-with-image-location">
+              <div className="card-with-image-location">
                 <span className="mr-2">
                   <ImLocation className="card-with-image-location-icon" />
                 </span>
                 {item.location.street},{item.location.zip} {item.location.city}
-              </p>
+              </div>
               <br />
             </div>
 
@@ -164,18 +164,21 @@ const CardWithImage = (props) => {
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.domain}
+                  title="Domaine : "
                 />
               )}
               {item.duration && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.duration}
+                  title="Durée : "
                 />
               )}
               {item.levelOfEducation && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               )}
             </div>
@@ -280,12 +283,12 @@ const CardWithImage = (props) => {
             </div>
             <div className="card-with-image-content text-left">
               {item.position} <br />
-              <p className="card-with-image-location">
+              <div className="card-with-image-location">
                 <span className="mr-2">
                   <ImLocation className="card-with-image-location-icon" />
                 </span>
                 {item.location.street},{item.location.zip} {item.location.city}
-              </p>
+              </div>
               <br />
             </div>
 
@@ -294,18 +297,21 @@ const CardWithImage = (props) => {
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.domain}
+                  title="Domaine : "
                 />
               )}
               {item.duration && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.duration}
+                  title="Durée : "
                 />
               )}
               {item.levelOfEducation && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               )}
             </div>
@@ -398,13 +404,13 @@ const CardWithImage = (props) => {
             </div>
             <div className="card-with-image-content text-left">
               {item.positionSought && item.positionSought.position} <br />
-              <p className="card-with-image-location">
+              <div className="card-with-image-location">
                 <span className="mr-2">
                   <ImLocation className="card-with-image-location-icon" />
                 </span>
                 {item.user.address.street},{item.user.address.zip}{" "}
                 {item.user.address.city}
-              </p>
+              </div>
               <br />
             </div>
 
@@ -413,18 +419,21 @@ const CardWithImage = (props) => {
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.domain}
+                  title="Domaine : "
                 />
               )}
               {item.positionSought && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.duration}
+                  title="Durée : "
                 />
               )}
               {item.positionSought && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               )}
             </div>
@@ -541,13 +550,13 @@ const CardWithImage = (props) => {
             </div>
             <div className="card-with-image-content text-left">
               {item.positionSought && item.positionSought.position} <br />
-              <p className="card-with-image-location">
+              <div className="card-with-image-location">
                 <span className="mr-2">
                   <ImLocation className="card-with-image-location-icon" />
                 </span>
                 {item.user.address.street},{item.user.address.zip}{" "}
                 {item.user.address.city}
-              </p>
+              </div>
               <br />
             </div>
 
@@ -556,18 +565,22 @@ const CardWithImage = (props) => {
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.domain}
+                  title="Domaine : "
                 />
               )}
               {item.positionSought && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.duration}
+                  title="Durée : "
+
                 />
               )}
               {item.positionSought && (
                 <CardItem
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.levelOfEducation}
+                  title="Niveau d’étude : "
                 />
               )}
             </div>

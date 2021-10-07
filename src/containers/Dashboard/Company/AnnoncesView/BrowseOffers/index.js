@@ -42,6 +42,7 @@ import { baseUrl } from "../../../../../urlConfig";
 import Skills from "../../../Admin/skills/AddSkills";
 import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
 export default function BrowseOffers() {
+	const classes = useStyles();
 	const history = useHistory();
 	const [show, setShow] = useState(false);
 	const [address, setAddress] = useState("");
@@ -374,7 +375,7 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 											</div>
-											<div className="mt-4 d-flex">
+											<div className="mt-4 d-flex align-items-end">
 											<div className="col-lg-6 ">
 													<DatePicker
 														name="startDate"
@@ -390,7 +391,7 @@ export default function BrowseOffers() {
 													) : null}
 												</div>
 										
-												<div className="col-lg-6 ml-3 pt-3">
+												<div className="col-lg-6 ml-3 pt-2">
 													<AutoComplete
 														formik={formik}
 														onChange={handleAddressChange}
@@ -419,7 +420,7 @@ export default function BrowseOffers() {
 												<div className="col-lg-12">
 													<TextArea
 														name="description"
-														placeholder="Entrez une description"
+														placeholder="Description"
 														value={formik.values.description}
 														onChange={handleChange}
 														rows={3}
@@ -437,6 +438,7 @@ export default function BrowseOffers() {
 												<div className="col-lg-12">
 													<RadioButton
 														options={RythmeOptions}
+														className={classes.radioButton}
 														name="alternationRhythm"
 														label="Rythme alternances :"
 														value={formik.values.alternationRhythm}
@@ -531,6 +533,12 @@ const useStyles = makeStyles({
 		position: "absolute",
 		marginLeft: "6.2rem",
 	},
+	radioButton: {
+		'& .MuiFormLabel-root': {
+			color: "#454545",
+			fontWeight: 600,
+		}
+	}
 });
 const schoolName = [
 	{ title: "The Shawshank Redemption", year: 1994 },

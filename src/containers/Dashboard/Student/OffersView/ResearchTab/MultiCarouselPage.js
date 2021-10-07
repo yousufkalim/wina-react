@@ -68,7 +68,7 @@ export default function MultiCarouselPage(props) {
         // style={{ height: "10%" }}
       >
         <h5>Store & Supply </h5>
-        <span className="offer-apply-btn ml-5">Postuler</span>
+        <span className="offer-apply-btn ml-4">Postuler</span>
       </div>
       {JOBS && JOBS.length > 2 ? (
         <div className="multiCarosoul">

@@ -10,8 +10,10 @@ const useStyle = makeStyles({
   root: {
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
+      color: "#454545",
+      fontWeight: 500,
       '& .Mui-focused':{
-        color: "#2879d9"
+        // color: "#2879d9"
       }
     },
     // "& .MuiFormLabel-root.Mui-focused": {
@@ -20,6 +22,9 @@ const useStyle = makeStyles({
     "& .MuiInputBase-root": {
 
       fontSize: "1.375rem",
+    },
+    '& .MuiIconButton-root': {
+      color: '#454545'
     },
     '& .MuiOutlinedInput-notchedOutline':{
       borderColor: "#2879d9",

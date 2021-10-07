@@ -27,7 +27,7 @@ export default function Sidebar({
   return (
     <div className="modal-left-side">
       <div className="Login">
-        <div className="heading pb-4">Connexion</div>
+        <div className="heading pb-5">Connexion</div>
         <form onSubmit={formik.handleSubmit}>
           <div>
             <ModalInput

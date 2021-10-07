@@ -223,6 +223,7 @@ const PPModal = ({
                 <DatePicker
                   name="start_date"
                   label={"Date de début"}
+                  previous={true}
                   value={formik.values.start_date}
                   onChange={handleChange}
                 />
@@ -237,6 +238,7 @@ const PPModal = ({
                 <DatePicker
                   name="end_date"
                   label={"Date de fin"}
+                  previous={true}
                   value={formik.values.end_date}
                   onChange={handleChange}
                 />

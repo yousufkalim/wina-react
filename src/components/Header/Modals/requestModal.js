@@ -37,7 +37,7 @@ export default function StudentRegister(props) {
         <div className="d-flex justify-content-between p-3">
           <div className="modal-left-side">
             <div className="Login">
-              <div className="heading pb-4">Connexion</div>
+              <div className="heading pb-5">Connexion</div>
               <form onSubmit={formik.handleSubmit}>
                 <div>
                   <ModalInput

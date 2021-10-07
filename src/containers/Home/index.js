@@ -25,7 +25,7 @@ const Home = (props) => {
                   eventKey="1"
                   className="clickIcons"
                 >
-                  <i className="fa fa-angle-down " aria-expanded="false"></i>
+                  <i className="fas fa-chevron-down" aria-expanded="false"></i>
                 </Accordion.Toggle>
                   </a>
               </Card.Header>

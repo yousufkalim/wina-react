@@ -166,7 +166,7 @@ const StudentRegister = (props) => {
           />
           <div className="modal-right-side">
             <div className="Register">
-              <div className="heading pb-4">S’inscrire - Société</div>
+              <div className="heading pb-5">S’inscrire - Société</div>
 
               {Show === false ? (
                 <>
