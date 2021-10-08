@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px 7px',
     width: '100%',
     borderRadius: '3.5rem',
-    color: "#8D8D8D",
+    color: "#454545",
     fontSize: '1.3rem',
     borderColor: "#2879d9",
 

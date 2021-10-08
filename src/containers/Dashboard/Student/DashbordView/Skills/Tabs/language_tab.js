@@ -60,7 +60,7 @@ export default function Hard_skilltab(props) {
           </div>
           <form onSubmit={formik.handleSubmit} className="mt-5">
             <div className="d-flex mt-2 mb-4">
-              <div className="col-lg-4 ">
+              <div className="col-lg-4 col-md-6 ">
                 <Select
                   name="name"
                   value={formik.values.name}
@@ -73,7 +73,7 @@ export default function Hard_skilltab(props) {
                   <div className="formikErrorAuto mt-2"> {formik.errors.name}</div>
                 ) : null}
               </div>
-              <div className="col-lg-4 ml-3">
+              <div className="col-lg-4 col-md-6 ml-3">
                 <Select
                   name="skill"
                   value={formik.values.skill}
