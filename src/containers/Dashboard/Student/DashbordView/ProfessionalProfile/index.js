@@ -124,6 +124,53 @@ const ProfessionalProfile = () => {
         professionalArray={professionalArray}
       />
       <div style={{ position: "relative", height: "100%" }}>
+      <div
+          className="row importCV"
+          // style={{ marginTop: "-6px", marginRight: "0 !important" }}
+        >
+          <div className="col-xs-6">
+            <input
+              accept="application/pdf"
+              className={classes.input}
+              id="contained-button-file"
+              onChange={handleFileUpload}
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <Button
+                className="CV-btn"
+                variant="contained"
+                color="primary"
+                component="span"
+                style={{
+                  // marginLeft: "-53rem !important",
+                  // position: "absolute",
+                }}
+              >
+                Importer CV
+              </Button>
+            </label>
+          </div>
+          <div className="col-xs-6 pl-5">
+            <div
+              // style={{
+              //   marginLeft: "-33rem",
+              //   marginTop: "1rem",
+              //   width: "10px",
+              // }}
+            >
+              {PDF ? (
+                <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
+                  <PictureAsPdfIcon
+                    className="path "
+                    style={{ fontSize: 40 }}
+                    color="primary"
+                  />
+                </a>
+              ) : null}
+            </div>
+          </div>
+        </div>
         <Tabs
           activeKey={key}
           id="Profile"
@@ -166,59 +213,14 @@ const ProfessionalProfile = () => {
             eventKey="generalPresentation"
             title="CV en ligne"
             className="h-100"
+            
           >
             <div className="AnnoncesViewOffersBox">
               <CVENGINE USER={USER} setKey={setKey} key={key} />
             </div>
           </Tab>
         </Tabs>
-        <div
-          className="row importCV "
-          style={{ marginTop: "-6px", marginRight: "0 !important" }}
-        >
-          <div className="col-xs-6">
-            <input
-              accept="application/pdf"
-              className={classes.input}
-              id="contained-button-file"
-              onChange={handleFileUpload}
-              type="file"
-            />
-            <label htmlFor="contained-button-file">
-              <Button
-                className="CV-btn"
-                variant="contained"
-                color="primary"
-                component="span"
-                style={{
-                  marginLeft: "-53rem !important",
-                  position: "absolute",
-                }}
-              >
-                Importer CV
-              </Button>
-            </label>
-          </div>
-          <div className="col-xs-6 ">
-            <div
-              style={{
-                marginLeft: "-33rem",
-                marginTop: "1rem",
-                width: "10px",
-              }}
-            >
-              {PDF ? (
-                <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
-                  <PictureAsPdfIcon
-                    className="path "
-                    style={{ fontSize: 40 }}
-                    color="primary"
-                  />
-                </a>
-              ) : null}
-            </div>
-          </div>
-        </div>
+        
       </div>
     </>
   );

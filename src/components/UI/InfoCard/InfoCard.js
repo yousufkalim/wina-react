@@ -39,7 +39,7 @@ const InfoCard = (props) => {
               <div></div>
             </div>
             <div className="info-card-content pb-3">
-              <div>{item.position}</div>
+              <div className="info-card-content-position">{item.position}</div>
               <div>
                 {item.duration.start_date}{" "}{item.duration.end_date}
               </div>
