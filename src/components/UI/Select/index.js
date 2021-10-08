@@ -32,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
     // margin: theme.spacing(1),
     width: '100%',
     border: "none",
+    '& .MuiSelect-selectMenu': {
+      borderRadius: "3.4rem"
+  },
+  '& .MuiSelect-select:focus': {
+    background: "transparent"
+},
     '& .MuiOutlinedInput-root':{
       borderRadius: "3.5rem",
       borderColor: "#2879d9",
