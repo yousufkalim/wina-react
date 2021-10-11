@@ -335,7 +335,7 @@ const OfferCardDetail = (props) => {
 
               <div
                 className="offer-detail-buttons-container "
-                style={{ justifyContent: "flex-end" }}
+                style={{ justifyContent: "center" }}
               >
                 <Button
                   onClick={() => handleOfferAccepted(JOB._id, "requested")}

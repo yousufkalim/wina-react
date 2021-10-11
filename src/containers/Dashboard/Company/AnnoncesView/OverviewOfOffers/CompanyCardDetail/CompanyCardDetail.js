@@ -580,7 +580,7 @@ const CompanyCardDetail = (props) => {
                     </div>
                   </Col>
                 </Row> */}
-                <div className="offer-detail-date-container mt-4" style={{paddingLeft: "15px"}}>
+                <div className="offer-detail-date-container mt-1" style={{paddingLeft: "15px"}}>
                   {softSkillsDB && softSkillsDB.length > 0
                     ? softSkillsDB.map((job) => {
                         return (
@@ -616,7 +616,7 @@ const CompanyCardDetail = (props) => {
                   </div>
                 </div>
 
-                <div className="offer-detail-date-container mt-4" style={{paddingLeft: "15px"}}>
+                <div className="offer-detail-date-container mt-1" style={{paddingLeft: "15px"}}>
                   {JOB.hardSkills && JOB.hardSkills.length > 0
                     ? JOB.hardSkills.map((job) => {
                         return (

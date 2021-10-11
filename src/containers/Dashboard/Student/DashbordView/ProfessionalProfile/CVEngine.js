@@ -42,8 +42,8 @@ export default function CVEngine(props) {
 				<div className="CVOnline custom-box">
 					{USER && Object.keys(USER).length > 0 ? (
 						<Row>
-							<Col lg={3} md={4}>
-								<div className="profileImage">{ShowImage(USER)}</div>
+							<Col lg={3} md={4} className="pt-4">
+								<div className="profileImage pr-5">{ShowImage(USER)}</div>
 							</Col>
 							<Col lg={9} md={8}>
 								<div className="profilename">
@@ -52,7 +52,7 @@ export default function CVEngine(props) {
 								<div className="profileProfession">
 									<div className="pb-1">
 									
-									{USER.user.type=='student'?'Etudiant':USER.user.type}
+									{USER.user.type == 'student'?'Etudiant':USER.user.type}
 									</div>
 
 									<div className="pb-1">
@@ -223,8 +223,8 @@ export default function CVEngine(props) {
 				<div className="CVOnline custom-box">
 					{USER && Object.keys(USER).length > 0 ? (
 						<Row>
-							<Col lg={3} md={4}>
-								<div className="profileImage">{ShowImage(USER)}</div>
+							<Col lg={3} md={4} className="pt-4">
+								<div className="profileImage pr-5">{ShowImage(USER)}</div>
 							</Col>
 							<Col lg={9} md={8}>
 								<div className="profilename">

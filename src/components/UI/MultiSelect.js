@@ -8,6 +8,13 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyle = makeStyles({
   root: {
+    '& .MuiAutocomplete-tag': {
+      background: "#f6c40d",
+      color: "#fff",
+      '& .MuiChip-deleteIcon': {
+        color: '#fff'
+      }
+    },
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
       color: "#454545",
@@ -68,7 +75,10 @@ export default function AutoComplete({
   multiSelect
 }) {
 
+  const [selectedBoxes, setSelectedBoxes] = useState([]);
+  
   const classes = useStyle();
+  console.log("all selected ", selectedBoxes)
   return (
     <>
       <Autocomplete
@@ -86,6 +96,7 @@ export default function AutoComplete({
         }}
         options={items}
         getOptionLabel={(option) => {
+          setSelectedBoxes(option);
           return option.skillField;
         }}
         getOptionSelected={(option, value) => {
@@ -115,6 +126,7 @@ export default function AutoComplete({
           />
         )}
       />
+      <div>{selectedBoxes._skillField}</div>
     </>
   );
 }

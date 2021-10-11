@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../components/Header";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
+// import downChevron from "../../images/down-chevron.png"
 import "./style.css";
 
 /**
@@ -25,7 +26,7 @@ const Home = (props) => {
                   eventKey="1"
                   className="clickIcons"
                 >
-                  <i className="fas fa-chevron-down" aria-expanded="false"></i>
+                  <img className="down-chevron" src="../images/down-chevron.png" />
                 </Accordion.Toggle>
                   </a>
               </Card.Header>
