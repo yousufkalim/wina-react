@@ -114,7 +114,7 @@ const GeneralInformationsModal = ({
               </div>
             </div>
 
-            <div className="d-flex mt-3">
+            <div className="d-flex mt-5 py-3">
               <div className="col-lg-3 col-4">
                 <DatePicker
                   name="start_Date"

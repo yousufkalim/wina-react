@@ -154,7 +154,7 @@ const ResearchedJob = () => {
 								</div>
 							</div>
 							<div className="row mt-5 ">
-								<div className="col-md-3">
+								<div className="col-lg-3 col-6">
 									<DatePicker
 										name="startDate"
 										label={"Date de début"}
@@ -168,7 +168,7 @@ const ResearchedJob = () => {
 										</div>
 									) : null}
 								</div>
-								<div className="col-md-3">
+								<div className="col-lg-3 col-6">
 									<DatePicker
 										name="dateOfBirth"
 										label={Texts.DATE_OF_BIRTH}

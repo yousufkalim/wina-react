@@ -8,14 +8,21 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyle = makeStyles({
   root: {
-    '& .MuiFormLabel-root': {
-      fontSize: '1.6rem',
+    display:"flex",
+  
       color: "#454545",
       fontWeight: 500,
-      marginBottom: "10px"
-    },
+      marginBottom: "10px",
+      fontSize: '1.5rem',
+      marginRight: '1rem'
+
+  },
+  radio: {
     '& .MuiTypography-root': {
-      fontSize: '1.5rem'
+      color: "#454545"
+    },
+    '& .MuiRadio-colorSecondary.Mui-checked': {
+      color: "#2879d9"
     }
   }
 })
@@ -23,10 +30,11 @@ export default function ControlledRadioButtonsGroup(props) {
 
   const classes = useStyle();
   return (
-    <FormControl component="fieldset" className={classes.root}>
-      <FormLabel component="legend">{props.label}</FormLabel>
+    <div component="fieldset" className="d-flex align-items-center">
+      <div className={classes.root}>{props.label}</div>
       <RadioGroup
         row
+        className={classes.radio}
         aria-label="gender"
         name={props.name}
         value={props.value}
@@ -42,6 +50,6 @@ export default function ControlledRadioButtonsGroup(props) {
             ))
           : ""}
       </RadioGroup>
-    </FormControl>
+    </div>
   );
 }

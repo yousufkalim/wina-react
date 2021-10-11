@@ -95,7 +95,7 @@ export default function MultiCarouselPage(props) {
                   />
                 ))}
             </OwlCarousel> */}
-             <Carousel autoPlay={false} interval={3000} transitionTime={2000} centerSlidePercentage={33.34} infiniteLoop={true} centerMode={true} showArrows={true} >
+             <Carousel autoPlay={true} interval={3000} transitionTime={2000} centerSlidePercentage={33.34} infiniteLoop={true} centerMode={true} showArrows={true} >
                {/* <div>
                 <img width="100%" src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg" />
                </div>

@@ -114,7 +114,7 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
             </div>
           </div>
 
-          <div className="d-flex mt-3">
+          <div className="d-flex mt-5 py-3">
             <div className="col-lg-3">
               <DatePicker
                 name="start_Date"

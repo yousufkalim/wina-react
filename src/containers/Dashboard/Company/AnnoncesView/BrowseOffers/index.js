@@ -41,6 +41,7 @@ import Texts from "../../../../../Globals/Texts";
 import { baseUrl } from "../../../../../urlConfig";
 import Skills from "../../../Admin/skills/AddSkills";
 import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
+import CardItem from "../../../../../components/UI/SkillsItem/skillsItem";
 export default function BrowseOffers() {
 	const classes = useStyles();
 	const history = useHistory();
@@ -61,6 +62,7 @@ export default function BrowseOffers() {
 	const [imageURI, setimageURI] = useState("");
 
 	const [softSkillsArray, setsoftSkillsArray] = useState([]);
+	const [softArray, setSoftArray] = useState([]);
 
 	const [hardSkillsArray, sethardSkillsArray] = useState([]);
 	const [items, setItems] = useState([]);
@@ -203,12 +205,16 @@ export default function BrowseOffers() {
 		} else {
 			formik.setFieldValue("softSkills", "");
 		}
+		setSoftArray(value);
+		
 		setsoftSkillsArray(valueArray);
 	};
 	const onHardSkillChange = (value) => {
 		const valueArray = [];
+		const allArray = [];
 		for (let i = 0; i < value.length; i++) {
 			valueArray.push(value[i]._id);
+			allArray.push(value[i]);
 
 		}
 		if (valueArray.length > 0) {
@@ -216,9 +222,10 @@ export default function BrowseOffers() {
 		} else {
 			formik.setFieldValue("hardSkills", "");
 		}
+		setSoftArray(value)
 		sethardSkillsArray(valueArray);
 	};
-	// console.log(softSkillsArray, "value");
+	console.log(softArray, "valuess");
 
 	return (
 		<>
@@ -453,8 +460,8 @@ export default function BrowseOffers() {
 													{formik.errors.alternationRhythm}
 												</div>
 											) : null}
-								<div className=" d-flex ">
-										<div className="col-lg-4 softskills-input">
+								<div className="d-flex my-3">
+										<div className="col-lg-6 softskills-input">
 											<MultiAutoComplete
 												formik={formik}
 												placeholder="Compétences générales "
@@ -471,7 +478,23 @@ export default function BrowseOffers() {
 												</div>
 											) : null}
 										</div>
-									<div className="col-lg-4">
+									
+								</div>
+								{/* <div className="d-flex">
+									{
+										softArray.map((item, index) => (
+
+											<CardItem
+												key={item._id}
+												className="offer-card-item-bordered company-offer-detail-content"
+												content={item.skillField}
+												item={item}
+												/>
+										))
+									}
+								</div> */}
+								<div className="d-flex">
+									<div className="col-lg-6 softskills-input">
 										<MultiAutoComplete
 											formik={formik}
 											placeholder="Compétences spécialisées"

@@ -82,7 +82,7 @@ const GeneralInformations = () => {
           <div className="genProfileBox">
             <div className="genProfile">
               <Row className="p-3 w-100">
-                <Col lg={3} md={4}>
+                <Col lg={3} md={4} className="pt-4">
                   <div className="profileImage">
                     <Image
                       alt="image2"

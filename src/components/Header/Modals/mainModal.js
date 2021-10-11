@@ -69,7 +69,7 @@ const StudentLogin = (props) => {
               <div className="modal-sub-heading">ENTREPRISE</div>
               <div className="BUSINESSRegisterbtn">
                 <div
-                  className="modal-button mt-4"
+                  className="modal-button"
                   onClick={() => handleModal("company")}
                 >
                   Société

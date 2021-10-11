@@ -5,8 +5,19 @@ import { MdLocationOn } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { DEFAULT_IMAGE } from "../../../../../Globals";
 import { baseUri } from "../../../../../urlConfig";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    '& .MuiSvgIcon-root:focus':{
+      outline: "none"
+    }
+  }
+})
 export default function RecipeReviewCard(props) {
   const { cards, handleDetail } = props;
+
+  const classes = useStyles();
   return (
     <div className="carosoulDiv">
       <div className="offer-card">
@@ -44,6 +55,7 @@ export default function RecipeReviewCard(props) {
         <Fab
           onClick={() => handleDetail(cards._id)}
           color="primary"
+          className={classes.root}
           aria-label="add"
         >
           <AddIcon />
