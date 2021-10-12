@@ -293,14 +293,14 @@ const OfferCardDetail = (props) => {
                 />
               </div>
 
-              <div className="offer-detail-date-container">
+              <div className="offer-detail-date-container-2">
                 <CardItem
                   className="offer-card-item-bordered offer-detail-skills-heading"
                   content="Compétences générales "
                 />
               </div>
 
-              <div className="offer-detail-date-container">
+              <div className="offer-detail-date-container mb-5">
                 {JOB.softSkills && JOB.softSkills.length > 0 ? (
                   JOB.softSkills.map((sf) => (
                     <CardItem
@@ -313,14 +313,14 @@ const OfferCardDetail = (props) => {
                 )}
               </div>
 
-              <div className="offer-detail-date-container">
+              <div className="offer-detail-date-container-2">
                 <CardItem
                   className="offer-card-item-bordered offer-detail-skills-heading"
                   content="Compétences spécialisées "
                 />
               </div>
 
-              <div className="offer-detail-date-container">
+              <div className="offer-detail-date-container mb-3">
                 {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
                   JOB.hardSkills.map((sf) => (
                     <CardItem
