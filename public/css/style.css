@@ -856,7 +856,7 @@ html {
   width: 16rem;
   /* height: 100%; */
   height: 12rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .genProfileBox .genProfile .profileImage .embed-responsive {
@@ -3720,6 +3720,11 @@ textarea.form-control {
   display: flex;
   justify-content: flex-start;
   padding-bottom: 3rem;
+}
+.offer-detail-date-container-2 {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
 }
 .offer-detail-date {
   flex-basis: 25%;
