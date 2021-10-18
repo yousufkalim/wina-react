@@ -6,6 +6,7 @@ import TextArea from "../../../../../../components/UI/Textarea";
 import SchoolModal from "../../../../../../components/UI/Modal";
 import ModalInput from "../../../../../../components/UI/Input";
 import Button from "../../../../../../components/UI/Button";
+import { baseUrl, Image_Uri, baseUri } from "../../../../../../urlConfig";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -19,7 +20,19 @@ const GeneralInformationsModal = ({ show, setShow }) => {
 
   // states
   const [image, setImage] = useState("");
-  const [ImageUri, setImageURI] = useState("");
+  const [ImageUri, setImageURI] = useState(
+    "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+  );
+  const [VideoUri, setVideoURI] = useState(
+    "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+  );
+  const hiddenFileInput = React.useRef(null);
+
+  // custom image
+
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
 
   const [video, setVideo] = useState("");
   const [networkFormData, setnetworkFormData] = useState({
@@ -78,6 +91,12 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       formik.setFieldValue("general_Presentation", general_Presentation);
       formik.setFieldValue("image", professional_Picture.image);
       formik.setFieldValue("video", presentation_Video.video);
+
+      professional_Picture.image &&
+        setImageURI(`${Image_Uri}/${professional_Picture.image}`);
+
+      presentation_Video.video &&
+        setVideoURI(`${baseUri}/views/uploads/${presentation_Video.video}`);
     }
   }, [store.user.student, setShow, show]);
   // handle networks chnages
@@ -96,18 +115,21 @@ const GeneralInformationsModal = ({ show, setShow }) => {
   const handleFileUpload = (e) => {
     if (e.target.files.length) {
       let file = e.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
       if (file.type !== "application/pdf") {
-        const uri = URL.createObjectURL(file);
-        setImageURI(uri);
-
         if (file.type === "video/mp4") {
           if (file.size <= 200000000) {
+            reader.onload = () => setVideoURI(reader.result);
+
             setVideo(file);
             formik.setFieldValue("video", file.name);
           } else {
             alert("vous pouvez télécharger jusqu'à 200 Mo de vidéo");
           }
         } else if (file.type === "image/png" || file.type === "image/jpeg") {
+          reader.onload = () => setImageURI(reader.result);
+
           formik.setFieldValue("image", file.name);
 
           setImage(file);
@@ -129,39 +151,58 @@ const GeneralInformationsModal = ({ show, setShow }) => {
           <div className="row">
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
-                <div>
-                  <label className="inputLabel" for="upload-image-button">
-                    Ajouter une photo
-                  </label>
-                  <br />
-                  {ImageUri && <img className="imageURI" src={ImageUri} />}
-                  <ModalInput
-                    id="upload-image-button"
-                    name="image"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    placeholder="professional_Picture"
-                    type="file"
+                <div className="mb-2">
+                  <img
+                    onClick={handleClick}
+                    src={ImageUri}
+                    alt=""
+                    style={{
+                      width: "200px",
+                      objectFit: "fill",
+                      height: "150px",
+                      borderRadius: "5px",
+                    }}
                   />
+                  <input
+                    name="image"
+                    onChange={handleFileUpload}
+                    type="file"
+                    ref={hiddenFileInput}
+                    accept="image/*"
+                    style={{ display: "none" }}
+                  />
+                  <br />
+                  <small
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      color: "red",
+                    }}
+                  >
+                    **Ajouter une photo.**
+                  </small>
                 </div>
-                <div>
-                  <label className="inputLabel" for="upload-video-button">
+
+                <div className="mb-2">
+                  <label className="inputLabel" for="professional_Picture">
                     Ajouter une video
                   </label>
+                  <br />
+
+                  <iframe
+                    className="embed-responsive-item"
+                    // src={`../images/video.mp4`}
+                    src={VideoUri}
+                    allowFullScreen
+                  ></iframe>
+
                   <ModalInput
-                    placeholder="professional_Video"
                     name="video"
-                    accept="video/*"
                     onChange={handleFileUpload}
                     type="file"
-                    id="upload-video-button"
+                    accept="video/*"
+                    id="professional_Picture"
                   />
-                  {formik.values.video ? (
-                    <div>
-                      {" "}
-                      <b>{formik.values.video}</b>
-                    </div>
-                  ) : null}
                 </div>
                 <div>
                   <ModalInput

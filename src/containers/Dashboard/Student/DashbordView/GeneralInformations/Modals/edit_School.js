@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalInput from "../../../../../../components/UI/TextField";
 import Button from "../../../../../../components/UI/Button";
 import Input from "../../../../../../components/UI/Input";
-import { baseUrl } from "../../../../../../urlConfig";
+import { baseUrl, baseUri } from "../../../../../../urlConfig";
 import axios from "axios";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
-import TextFieldRound from './../../../../../../components/UI/CustomTextField/TextFieldRound';
+import TextFieldRound from "./../../../../../../components/UI/CustomTextField/TextFieldRound";
 
 const GeneralInformationsModal = ({
   show,
@@ -25,7 +25,8 @@ const GeneralInformationsModal = ({
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
-  const [ImageUri, setImageURI] = useState("");
+  const [ImageUri, setImageURI] = useState(null);
+  const hiddenFileInput = React.useRef(null);
 
   // formik
   const formik = useFormik({
@@ -65,6 +66,7 @@ const GeneralInformationsModal = ({
         formik.setFieldValue("start_Date", temp.start_Date);
         formik.setFieldValue("school", temp.school);
         formik.setFieldValue("image", temp.image);
+        setImageURI(`${baseUri}/${temp.image}`);
       }
     }
   }, [id, show, setShow]);
@@ -76,8 +78,9 @@ const GeneralInformationsModal = ({
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
-        let uri = URL.createObjectURL(file);
-        setImageURI(uri);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => setImageURI(reader.result);
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -86,7 +89,11 @@ const GeneralInformationsModal = ({
     }
     formik.setFieldValue(name, value);
   };
+  // custom image
 
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
   return (
     <SchoolModal
       show={show}
@@ -119,6 +126,7 @@ const GeneralInformationsModal = ({
                 <DatePicker
                   name="start_Date"
                   label={"Date de début"}
+                  previous={true}
                   value={formik.values.start_Date}
                   onChange={handleChange}
                 />
@@ -133,6 +141,7 @@ const GeneralInformationsModal = ({
                 <DatePicker
                   name="end_Date"
                   label={"Date de fin"}
+                  previous={true}
                   value={formik.values.end_Date}
                   onChange={handleChange}
                 />
@@ -166,18 +175,24 @@ const GeneralInformationsModal = ({
 
             <div className="d-flex ">
               <div className="col-lg-6 mt-4">
-                <label className="inputLabel" for="files">
-                  Ajouter une photo
-                </label>
-                <br />
-                {ImageUri && <img className="imageURI" src={ImageUri} />}
-                <Input
+                <img
+                  onClick={handleClick}
+                  src={ImageUri}
+                  alt=""
+                  style={{
+                    width: "200px",
+                    objectFit: "fill",
+                    height: "150px",
+                    borderRadius: "5px",
+                  }}
+                />
+                <input
                   name="image"
-                  placeholder="professional_Picture"
                   onChange={handleChange}
                   type="file"
+                  ref={hiddenFileInput}
                   accept="image/*"
-                  id="files"
+                  style={{ display: "none" }}
                 />
 
                 {formik.touched.image && formik.errors.image ? (

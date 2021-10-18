@@ -54,11 +54,11 @@ export default function Skills() {
   // get softs skills from DB
   useEffect(() => {
     setsoftSkillsArray(SOFT_SKILLS_DB);
-  }, [SOFT_SKILLS_DB]);
+  }, []);
   // get hard skills from DB
   useEffect(() => {
     sethardSkillsArray(HARD_SKILLS_DB);
-  }, [HARD_SKILLS_DB]);
+  }, []);
   // get LANGAUGES from DB
   useEffect(() => {
     let tempEducation = _.cloneDeep(LANGUAGES_DB);
@@ -66,7 +66,7 @@ export default function Skills() {
       delete v._id;
     });
     setlanguagesArray(tempEducation);
-  }, [LANGUAGES_DB]);
+  }, []);
   useEffect(() => {
     dispatch(getSkills("Soft Skill"));
   }, [dispatch]);
@@ -94,6 +94,7 @@ export default function Skills() {
             SKILLS_STATE={SOFT_SKILLS_STATE}
             SKILLS_YUP={SOFT_SKILLS_YUP}
             ModalInput={ModalInput}
+            setDB_Array={setsoftSkillsArray}
             DB_Array={softSkillsArray}
             Add_info_Student={Add_info_Student}
             SOFT_SKILLS_DB={SOFT_SKILLS_DB}
@@ -114,6 +115,7 @@ export default function Skills() {
             SKILLS_STATE={HARD_SKILLS_STATE}
             SKILLS_YUP={HARD_SKILLS_YUP}
             ModalInput={ModalInput}
+            setDB_Array={sethardSkillsArray}
             DB_Array={hardSkillsArray}
             Add_info_Student={Add_info_Student}
             HARD_SKILLS_DB={HARD_SKILLS_DB}
@@ -135,6 +137,7 @@ export default function Skills() {
             SKILLS_STATE={LANGUAGE_STATE}
             SKILLS_YUP={LANGUAGE_YUP}
             ModalInput={ModalInput}
+            setDB_Array={setlanguagesArray}
             DB_Array={languagesArray}
             Add_info_Student={Add_info_Student}
             LANGUAGES_DB={LANGUAGES_DB}

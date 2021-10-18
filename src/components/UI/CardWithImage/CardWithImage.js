@@ -8,7 +8,17 @@ import { ImLocation } from "react-icons/all";
 import { DEFAULT_IMAGE } from "../../../Globals";
 import { baseUri } from "../../../urlConfig";
 import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  getSkills,
+  getApiAdress,
+  Search_Students,
+  Edit_Job,
+} from "../../../Redux/actions";
 const CardWithImage = (props) => {
+  const dispatch = useDispatch();
+
   const classes = useStyles();
   const {
     item,
@@ -41,21 +51,16 @@ const CardWithImage = (props) => {
     "Friday",
     "Saturday",
   ];
+  const store3 = useSelector((state) => state.company);
 
-  // useEffect(() => {
-  //   if (props.app) {
-  //     var check = moment(props.app.timmings[0], "YYYY/MM/DD");
-
-  //     var month = check.format("M");
-  //     var day = check.format("D");
-  //     var year = check.format("YYYY");
-  //     let checkDate = days[day]
-  //       // + " " + month + "th" + monthNames[month] + year;
-  //     // setDate(checkDate);
-  //     console.log(checkDate, "month");
-  //   }
-  // }, [props.app]);
-
+  let SEARCH_STUDENTS =
+    store3.studentBySearch &&
+    store3.studentBySearch.filter((st) => st.offer_status === "proposal");
+  useEffect(() => {
+    if (item._id) {
+      dispatch(Search_Students(item._id));
+    }
+  }, []);
   const recievedStudentMatchedFunc = (item) => {
     let matchLength = item.student_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
@@ -65,12 +70,7 @@ const CardWithImage = (props) => {
       return (
         <div>
           {matchLength > 0 ? (
-            <div
-              className="matches"
-              onClick={() => props.matchReceiveDetailHandler(item._id)}
-            >
-              Match ({Math.floor(matchLength)})
-            </div>
+            <div className="matches">Match ({Math.floor(matchLength)})</div>
           ) : (
             ""
           )}
@@ -80,6 +80,24 @@ const CardWithImage = (props) => {
       return;
     }
   };
+  const offersStudentMatchedFunc = (item) => {
+    let matchLength = SEARCH_STUDENTS ? SEARCH_STUDENTS.length : 0;
+
+    return (
+      <div>
+        {matchLength > 0 ? (
+          <div
+            className="matches"
+            onClick={() => props.matchReceiveDetailHandler(item._id)}
+          >
+            Match ({Math.floor(matchLength)})
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    );
+  };
   const sendStudentMatchedFunc = (item) => {
     let matchLength = item.company_requests.filter(
       (dt) => dt.status === "requested" || dt.status === "accepted"
@@ -88,12 +106,7 @@ const CardWithImage = (props) => {
       return (
         <div>
           {matchLength > 0 ? (
-            <div
-              className="matches"
-              onClick={() => props.matchSentDetailHandler(item._id)}
-            >
-              Match ({Math.floor(matchLength)})
-            </div>
+            <div className="matches">Match ({Math.floor(matchLength)})</div>
           ) : (
             ""
           )}
@@ -114,7 +127,7 @@ const CardWithImage = (props) => {
             <img
               src={
                 item.photo.image
-                  ? `${baseUri}/${item.photo.image}`
+                  ? `${baseUri}/views/uploads/${item.photo.image}`
                   : DEFAULT_IMAGE
               }
             />
@@ -123,7 +136,14 @@ const CardWithImage = (props) => {
             <div className="card-with-image-title">
               <div className="flex">
                 <div className="card-with-image-name">
-                  <b>{item.company && item.company.name} {props.app && props.app.status === "Approved" && (<span className="ml-3 card-with-image-matched">Matched</span>)}</b>
+                  <b>
+                    {item.company && item.company.name}{" "}
+                    {props.app && props.app.status === "Approved" && (
+                      <span className="ml-3 card-with-image-matched">
+                        Matched
+                      </span>
+                    )}
+                  </b>
                 </div>
                 {props.app && props.app.status === "Approved" ? (
                   <>
@@ -145,7 +165,9 @@ const CardWithImage = (props) => {
                 )}
               </div>
               {item.startDate && (
-                <div className="card-with-image-date">{moment(item.startDate).format("DD/MM/yyyy")}</div>
+                <div className="card-with-image-date">
+                  {moment(item.startDate).format("DD/MM/yyyy")}
+                </div>
               )}
             </div>
             <div className="card-with-image-content text-left">
@@ -278,7 +300,9 @@ const CardWithImage = (props) => {
                 </h3>
               </div>
               {item.startDate && (
-                <div className="card-with-image-date">{moment(item.startDate).format("DD/MM/yyyy")}</div>
+                <div className="card-with-image-date">
+                  {moment(item.startDate).format("DD/MM/yyyy")}
+                </div>
               )}
             </div>
             <div className="card-with-image-content text-left">
@@ -374,6 +398,8 @@ const CardWithImage = (props) => {
           ? sendStudentMatchedFunc(item)
           : eventKey === "MatchReceived"
           ? recievedStudentMatchedFunc(item)
+          : eventKey === "Offres"
+          ? offersStudentMatchedFunc(item)
           : ""}
       </div>
     );
@@ -573,7 +599,6 @@ const CardWithImage = (props) => {
                   className="offer-card-item-bordered company-offer-detail-content"
                   content={item.positionSought.duration}
                   title="Durée : "
-
                 />
               )}
               {item.positionSought && (

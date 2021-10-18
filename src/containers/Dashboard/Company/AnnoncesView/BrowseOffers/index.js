@@ -22,16 +22,16 @@ import axios from "axios";
 import RadioButton from "../../../../../components/UI/RadioButton";
 import { useHistory } from "react-router-dom";
 import {
-	DomainOptions,
-	DurationOptions,
-	RythmeOptions,
-	levelOfEducation,
-	AgeRangeOptions,
+  DomainOptions,
+  DurationOptions,
+  RythmeOptions,
+  levelOfEducation,
+  AgeRangeOptions,
 } from "../../../../../Globals";
 import {
-	getSkills,
-	getApiAdress,
-	Create_Job,
+  getSkills,
+  getApiAdress,
+  Create_Job,
 } from "../../../../../Redux/actions";
 import AutoComplete from "../../../../../components/UI/AutoComplete";
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
@@ -43,235 +43,230 @@ import Skills from "../../../Admin/skills/AddSkills";
 import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
 import CardItem from "../../../../../components/UI/SkillsItem/skillsItem";
 export default function BrowseOffers() {
-	const classes = useStyles();
-	const history = useHistory();
-	const [show, setShow] = useState(false);
-	const [address, setAddress] = useState("");
-	const [multiSelect, setmultiSelect] = useState(0);
+  const classes = useStyles();
+  const history = useHistory();
+  const [show, setShow] = useState(false);
+  const [address, setAddress] = useState("");
+  const [multiSelect, setmultiSelect] = useState(0);
 
+  const dispatch = useDispatch();
+  const store2 = useSelector((state) => state.globals);
 
-	const dispatch = useDispatch();
-	const store2 = useSelector((state) => state.globals);
+  const store = useSelector((state) => state.company);
+  const store3 = useSelector((state) => state.auth);
 
-	const store = useSelector((state) => state.company);
-	const store3 = useSelector((state) => state.auth);
+  const COMPANY = store3.user && store3.user.company;
 
-	const COMPANY = store3.user && store3.user.company;
+  const [image, setImage] = useState("");
+  const [imageURI, setimageURI] = useState("");
 
-	const [image, setImage] = useState("");
-	const [imageURI, setimageURI] = useState("");
+  const [softSkillsArray, setsoftSkillsArray] = useState([]);
+  const [softArray, setSoftArray] = useState([]);
 
-	const [softSkillsArray, setsoftSkillsArray] = useState([]);
-	const [softArray, setSoftArray] = useState([]);
+  const [hardSkillsArray, sethardSkillsArray] = useState([]);
+  const [items, setItems] = useState([]);
 
-	const [hardSkillsArray, sethardSkillsArray] = useState([]);
-	const [items, setItems] = useState([]);
+  const [value, setValue] = React.useState(30);
+  let SOFT_SKILLS = store2.soft_skills;
+  let HARD_SKILLS = store2.hard_skills;
+  let JOB_MESSAGE_SUCCESS = store.message;
+  // formik
+  const formik = useFormik({
+    initialValues: POSITION_SOUGHT_STATE,
+    validationSchema: POSITION_SOUGHT_YUP,
+    onSubmit: async (values, actions) => {
+      let tempValues = _.cloneDeep(values);
+      const formdataImage = new FormData();
+      formdataImage.append("image", image);
+      const imageData = await axios({
+        method: "post",
+        url: `${baseUrl}/FileUpload`,
+        data: formdataImage,
+      });
+      let imagePath = imageData.data;
+      tempValues.softSkills = softSkillsArray;
+      tempValues.hardSkills = hardSkillsArray;
+      tempValues.photo = imagePath;
+      let response = dispatch(Create_Job(tempValues));
+      response.then((value) => {
+        if (value === true) {
+          formik.setFieldValue("location", {
+            city: "",
+            street: "",
+            zip: "",
+            longitude: "",
+            latitude: "",
+          });
+          setAddress("");
+          setmultiSelect(multiSelect + 1);
+          formik.setSubmitting(false);
+          formik.handleReset();
+          setsoftSkillsArray([]);
+          sethardSkillsArray([]);
+          setItems([]);
+          setimageURI("");
+          setImage("");
+        }
+      });
+    },
+  });
+  // onChange
+  const handleChange = (e) => {
+    console.log("typingg....");
+    const { name, value } = e.target;
+    if (name === "photo") {
+      let file = e.target.files[0];
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        let uri = URL.createObjectURL(file);
+        setimageURI(uri);
+        setImage(file);
+        formik.setFieldValue("photo", file.name);
+      } else {
+        alert("You can upload only images ");
+      }
+    }
+    formik.setFieldValue(name, value);
+  };
+  // useEffect
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
+  useEffect(() => {
+    dispatch(getSkills("Soft Skill"));
+    dispatch(getSkills("Hard Skill"));
+  }, []);
+  useEffect(() => {
+    if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
+      const {
+        address: { city, street, zip, longitude, latitude },
+      } = COMPANY;
+      formik.setFieldValue("location", {
+        city: city,
+        street: street,
+        zip: zip,
+        longitude: longitude,
+        latitude: latitude,
+      });
+    }
+  }, []);
+  const handleSliderChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-	const [value, setValue] = React.useState(30);
-	let SOFT_SKILLS = store2.soft_skills;
-	let HARD_SKILLS = store2.hard_skills;
-	let JOB_MESSAGE_SUCCESS = store.message;
-	// formik
-	const formik = useFormik({
-		initialValues: POSITION_SOUGHT_STATE,
-		validationSchema: POSITION_SOUGHT_YUP,
-		onSubmit: async (values, actions) => {
-			let tempValues = _.cloneDeep(values);
-			const formdataImage = new FormData();
-			formdataImage.append("image", image);
-			const imageData = await axios({
-				method: "post",
-				url: `${baseUrl}/FileUpload`,
-				data: formdataImage,
-			});
-			let imagePath = imageData.data;
-			tempValues.softSkills = softSkillsArray;
-			tempValues.hardSkills = hardSkillsArray;
-			tempValues.photo = imagePath;
-			let response = dispatch(Create_Job(tempValues));
-			response.then((value) => {
-				if (value === true) {
-					formik.setFieldValue("location", {
-						city: "",
-						street: "",
-						zip: "",
-						longitude: "",
-						latitude: "",
-					});
-					setAddress("")
-					setmultiSelect(multiSelect+1)
-					formik.setSubmitting(false);
-					formik.handleReset();
-					setsoftSkillsArray([]);
-					sethardSkillsArray([]);
-					setItems([]);
-					setimageURI("");
-					setImage("");
-				}
-			})
+  const handleInputChange = (event) => {
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
+  };
 
+  const handleBlur = () => {
+    if (value < 0) {
+      setValue(0);
+    } else if (value > 100) {
+      setValue(100);
+    }
+  };
+  const handleAddressChange = (value) => {
+    setAddress(value);
+    dispatch(getApiAdress(value));
+    if (store2.items.length > 0) {
+      setItems(
+        store2.items.map((item) => {
+          return {
+            id: item.properties.id,
+            name: item.properties.label,
+            city: item.properties.city,
+            postalCode: item.properties.citycode,
+            lat: item.geometry.coordinates[1],
+            lng: item.geometry.coordinates[0],
+          };
+        })
+      );
+    }
+  };
+  const onSubmitAddress = (value) => {
+    formik.setFieldValue("location", {
+      city: value.city,
+      street: "Street",
+      zip: value.postalCode ? value.postalCode : "40180",
+      longitude: value.lng,
+      latitude: value.lat,
+    });
+  };
+  const onSoftSkillChange = (value) => {
+    const valueArray = [];
+    for (let i = 0; i < value.length; i++) {
+      valueArray.push(value[i]._id);
+    }
+    if (valueArray.length > 0) {
+      formik.setFieldValue("softSkills", valueArray[0]);
+    } else {
+      formik.setFieldValue("softSkills", "");
+    }
+    setSoftArray(value);
 
-		},
-	});
-	// onChange
-	const handleChange = (e) => {
-		console.log("typingg....");
-		const { name, value } = e.target;
-		if (name === "photo") {
-			let file = e.target.files[0];
-			if (file.type === "image/png" || file.type === "image/jpeg") {
-				let uri = URL.createObjectURL(file);
-				setimageURI(uri);
-				setImage(file);
-				formik.setFieldValue("photo", file.name);
-			} else {
-				alert("You can upload only images ");
-			}
-		}
-		formik.setFieldValue(name, value);
-	};
-	// useEffect
-	// useEffect(() => {
-	//   console.log(items);
-	// }, [items]);
-	useEffect(() => {
-		dispatch(getSkills("Soft Skill"));
-		dispatch(getSkills("Hard Skill"));
-	}, []);
-	useEffect(() => {
-		if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
-			const {
-				address: { city, street, zip, longitude, latitude },
-			} = COMPANY;
-			formik.setFieldValue("location", {
-				city: city,
-				street: street,
-				zip: zip,
-				longitude: longitude,
-				latitude: latitude,
-			});
-		}
-	}, []);
-	const handleSliderChange = (event, newValue) => {
-		setValue(newValue);
-	};
+    setsoftSkillsArray(valueArray);
+  };
+  const onHardSkillChange = (value) => {
+    const valueArray = [];
+    const allArray = [];
+    for (let i = 0; i < value.length; i++) {
+      valueArray.push(value[i]._id);
+      allArray.push(value[i]);
+    }
+    if (valueArray.length > 0) {
+      formik.setFieldValue("hardSkills", valueArray[0]);
+    } else {
+      formik.setFieldValue("hardSkills", "");
+    }
+    setSoftArray(value);
+    sethardSkillsArray(valueArray);
+  };
 
-	const handleInputChange = (event) => {
-		setValue(event.target.value === "" ? "" : Number(event.target.value));
-	};
-
-	const handleBlur = () => {
-		if (value < 0) {
-			setValue(0);
-		} else if (value > 100) {
-			setValue(100);
-		}
-	};
-	const handleAddressChange = (value) => {
-		setAddress(value)
-		dispatch(getApiAdress(value));
-		if (store2.items.length > 0) {
-			setItems(
-				store2.items.map((item) => {
-					return {
-						id: item.properties.id,
-						name: item.properties.label,
-						city: item.properties.city,
-						postalCode: item.properties.citycode,
-						lat: item.geometry.coordinates[1],
-						lng: item.geometry.coordinates[0],
-					};
-				})
-			);
-		}
-	};
-	const onSubmitAddress = (value) => {
-		formik.setFieldValue("location", {
-			city: value.city,
-			street: "Street",
-			zip: value.postalCode ? value.postalCode : "40180",
-			longitude: value.lng,
-			latitude: value.lat,
-		});
-	};
-	const onSoftSkillChange = (value) => {
-
-		const valueArray = [];
-		for (let i = 0; i < value.length; i++) {
-			valueArray.push(value[i]._id);
-		}
-		if (valueArray.length > 0) {
-			formik.setFieldValue("softSkills", valueArray[0]);
-		} else {
-			formik.setFieldValue("softSkills", "");
-		}
-		setSoftArray(value);
-		
-		setsoftSkillsArray(valueArray);
-	};
-	const onHardSkillChange = (value) => {
-		const valueArray = [];
-		const allArray = [];
-		for (let i = 0; i < value.length; i++) {
-			valueArray.push(value[i]._id);
-			allArray.push(value[i]);
-
-		}
-		if (valueArray.length > 0) {
-			formik.setFieldValue("hardSkills", valueArray[0]);
-		} else {
-			formik.setFieldValue("hardSkills", "");
-		}
-		setSoftArray(value)
-		sethardSkillsArray(valueArray);
-	};
-	console.log(softArray, "valuess");
-
-	return (
-		<>
-			<Tabs defaultActiveKey="publish" id="publish" className="publish">
-				<Tab eventKey="publish" title="Publier" className="h-100">
-					<div className="publishBox">
-						<div className="publish custom-box">
-							<form onSubmit={formik.handleSubmit}>
-								<Row className="publish-header align-items-start mt-0">
-									<Col lg={4} md={4} >
-										<div className="add_image_icon">
-											<label htmlFor="upload-button">
-												<Image
-												
-													src={
-														imageURI ? imageURI : "../images/add_image_icon.png"
-													}
-												/>
-												{formik.touched.photo && formik.errors.photo ? (
-													<div className="formikError"> {formik.errors.photo}</div>
-												) : null}
-											</label>
-										</div>
-										<input
-											type="file"
-											id="upload-button"
-											name="photo"
-											accept="image/*"
-											style={{ display: "none" }}
-											onChange={handleChange}
-										/>
-
-									</Col>
-									<Col lg={8} md={8}>
-										<div className="publish-header-content">
-											<div className="d-flex">
-												<div className="col-lg-6">
-													<CustomTextField
-														label="Nom du poste"
-														name="position"
-														id="outlined-basic"
-														onChange={handleChange}
-														value={formik.values.position}
-														variant="outlined"
-													/>
-													{/* <ModalInput
+  return (
+    <>
+      <Tabs defaultActiveKey="publish" id="publish" className="publish">
+        <Tab eventKey="publish" title="Publier" className="h-100">
+          <div className="publishBox">
+            <div className="publish custom-box">
+              <form onSubmit={formik.handleSubmit}>
+                <Row className="publish-header align-items-start mt-0">
+                  <Col lg={4} md={4}>
+                    <div className="add_image_icon">
+                      <label htmlFor="upload-button">
+                        <Image
+                          src={
+                            imageURI ? imageURI : "../images/add_image_icon.png"
+                          }
+                        />
+                        {formik.touched.photo && formik.errors.photo ? (
+                          <div className="formikError">
+                            {" "}
+                            {formik.errors.photo}
+                          </div>
+                        ) : null}
+                      </label>
+                    </div>
+                    <input
+                      type="file"
+                      id="upload-button"
+                      name="photo"
+                      accept="image/*"
+                      style={{ display: "none" }}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                  <Col lg={8} md={8}>
+                    <div className="publish-header-content">
+                      <div className="d-flex">
+                        <div className="col-lg-6">
+                          <CustomTextField
+                            label="Nom du poste"
+                            name="position"
+                            id="outlined-basic"
+                            onChange={handleChange}
+                            value={formik.values.position}
+                            variant="outlined"
+                          />
+                          {/* <ModalInput
 														name="position"
 														label="Nom du poste"
 														// className="Job_title"
@@ -280,23 +275,23 @@ export default function BrowseOffers() {
 														onChange={handleChange}
 														type="text"
 													/> */}
-													{formik.touched.position && formik.errors.position ? (
-														<div className="formikErrorAuto">
-															{" "}
-															{formik.errors.position}
-														</div>
-													) : null}
-												</div>
-												<div className="col-lg-6 ml-3">
-												<CustomTextField
-														label="Title"
-														name="title"
-														id="outlined-basic"
-														onChange={handleChange}
-														value={formik.values.title}
-														variant="outlined"
-													/>
-													{/* <ModalInput
+                          {formik.touched.position && formik.errors.position ? (
+                            <div className="formikErrorAuto">
+                              {" "}
+                              {formik.errors.position}
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="col-lg-6 ml-3">
+                          <CustomTextField
+                            label="Title"
+                            name="title"
+                            id="outlined-basic"
+                            onChange={handleChange}
+                            value={formik.values.title}
+                            variant="outlined"
+                          />
+                          {/* <ModalInput
 														name="title"
 														label="Title"
 														// className="Job_title"
@@ -305,182 +300,180 @@ export default function BrowseOffers() {
 														onChange={handleChange}
 														type="text"
 													/> */}
-													{formik.touched.title && formik.errors.title ? (
-														<div className="formikErrorAuto">
-															{" "}
-															{formik.errors.title}
-														</div>
-													) : null}
-												</div>
-											</div>
-											<div className="d-flex mt-4">
-											<div className="col-lg-6 ">
-													<Select
-														name="domain"
-														value={formik.values.domain}
-														onChange={handleChange}
-														options={DomainOptions}
-														label="Domaine"
-													/>
+                          {formik.touched.title && formik.errors.title ? (
+                            <div className="formikErrorAuto">
+                              {" "}
+                              {formik.errors.title}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                      <div className="d-flex mt-4">
+                        <div className="col-lg-6 ">
+                          <Select
+                            name="domain"
+                            value={formik.values.domain}
+                            onChange={handleChange}
+                            options={DomainOptions}
+                            label="Domaine"
+                          />
 
-													{formik.touched.domain && formik.errors.domain ? (
-														<div className="formikErrorDate">
-															{" "}
-															{formik.errors.domain}
-														</div>
-													) : null}
-												</div>
-												<div className="col-lg-6 ml-3">
-													<Select
-														name="levelOfEducation"
-														value={formik.values.levelOfEducation}
-														onChange={handleChange}
-														options={levelOfEducation}
-														label="Niveau d’étude"
-													/>
+                          {formik.touched.domain && formik.errors.domain ? (
+                            <div className="formikErrorDate">
+                              {" "}
+                              {formik.errors.domain}
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="col-lg-6 ml-3">
+                          <Select
+                            name="levelOfEducation"
+                            value={formik.values.levelOfEducation}
+                            onChange={handleChange}
+                            options={levelOfEducation}
+                            label="Niveau d’étude"
+                          />
 
-													{formik.touched.levelOfEducation &&
-														formik.errors.levelOfEducation ? (
-														<div className="formikErrorAuto">
-															{" "}
-															{formik.errors.levelOfEducation}
-														</div>
-													) : null}
-												</div>
-											</div>
-											<div className="mt-4 d-flex">
-											<div className="col-lg-6 ">
-													<Select
-														name="ageRange"
-														value={formik.values.ageRange}
-														onChange={handleChange}
-														options={AgeRangeOptions}
-														label="Age Range"
-													/>
+                          {formik.touched.levelOfEducation &&
+                          formik.errors.levelOfEducation ? (
+                            <div className="formikErrorAuto">
+                              {" "}
+                              {formik.errors.levelOfEducation}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                      <div className="mt-4 d-flex">
+                        <div className="col-lg-6 ">
+                          <Select
+                            name="ageRange"
+                            value={formik.values.ageRange}
+                            onChange={handleChange}
+                            options={AgeRangeOptions}
+                            label="Age Range"
+                          />
 
-													{formik.touched.ageRange && formik.errors.ageRange ? (
-														<div className="formikErrorDate">
-															{" "}
-															{formik.errors.ageRange}
-														</div>
-													) : null}
-												</div>
-												<div className="col-lg-6 ml-3">
-													<Select
-														name="duration"
-														value={formik.values.duration}
-														onChange={handleChange}
-														options={DurationOptions}
-														label="Durée"
-													/>
+                          {formik.touched.ageRange && formik.errors.ageRange ? (
+                            <div className="formikErrorDate">
+                              {" "}
+                              {formik.errors.ageRange}
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="col-lg-6 ml-3">
+                          <Select
+                            name="duration"
+                            value={formik.values.duration}
+                            onChange={handleChange}
+                            options={DurationOptions}
+                            label="Durée"
+                          />
 
-													{formik.touched.duration && formik.errors.duration ? (
-														<div className="formikErrorDate">
-															{" "}
-															{formik.errors.duration}
-														</div>
-													) : null}
-												</div>
-											</div>
-											<div className="mt-4 d-flex">
-											<div className="col-lg-6 ">
-													<DatePicker
-														name="startDate"
-														label={"Date de début"}
-														value={formik.values.startDate}
-														onChange={handleChange}
-													/>
-													{formik.touched.startDate &&
-														formik.errors.startDate ? (
-														<div className="formikErrorDate">
-															{formik.errors.startDate}
-														</div>
-													) : null}
-												</div>
-										
-												<div className="col-lg-6 ml-3" style={{paddingTop: '10px'}}>
-													<AutoComplete
-														formik={formik}
-														onChange={handleAddressChange}
-														items={items}
-														address={address}
-														placeholder="Adresse"
-														name={"location"}
-														loading={store2.loading}
-														onSubmit={onSubmitAddress}
-													/>
-													{formik.touched.location && formik.errors.location ? (
-														<div className="formikErrorAuto">
-															{" "}
-															{formik.errors.location.city}
-														</div>
-													) : null}
-												</div>
-											</div>
-											
-							</div>
+                          {formik.touched.duration && formik.errors.duration ? (
+                            <div className="formikErrorDate">
+                              {" "}
+                              {formik.errors.duration}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                      <div className="mt-4 d-flex">
+                        <div className="col-lg-6 ">
+                          <DatePicker
+                            name="startDate"
+                            label={"Date de début"}
+                            value={formik.values.startDate}
+                            onChange={handleChange}
+                          />
+                          {formik.touched.startDate &&
+                          formik.errors.startDate ? (
+                            <div className="formikErrorDate">
+                              {formik.errors.startDate}
+                            </div>
+                          ) : null}
+                        </div>
 
-								
-									</Col>
-								</Row>
-								<div className="d-flex pt-4">
-												<div className="col-lg-12">
-													<TextArea
-														name="description"
-														placeholder="Description"
-														value={formik.values.description}
-														onChange={handleChange}
-														rows={3}
-													/>
-													{formik.touched.description &&
-														formik.errors.description ? (
-														<div className="formikErrorDesc">
-															{" "}
-															{formik.errors.description}
-														</div>
-													) : null}
-												</div>
-											</div>
-											<div className=" d-flex pt-4">
-												<div className="col-lg-12">
-													<RadioButton
-														options={RythmeOptions}
-														className={classes.radioButton}
-														name="alternationRhythm"
-														label="Rythme alternances :"
-														value={formik.values.alternationRhythm}
-														onChange={handleChange}
-													/>
-												</div>
-											</div>
-											{formik.touched.alternationRhythm &&
-												formik.errors.alternationRhythm ? (
-												<div className="formikErrorAuto">
-													{" "}
-													{formik.errors.alternationRhythm}
-												</div>
-											) : null}
-								<div className="d-flex my-3">
-										<div className="col-lg-6 softskills-input">
-											<MultiAutoComplete
-												formik={formik}
-												placeholder="Compétences générales "
-												items={SOFT_SKILLS}
-												name={"softSkills"}
-												loading={store.loading}
-												onSubmit={onSoftSkillChange}
-												multiSelect={multiSelect}
-											/>
+                        <div
+                          className="col-lg-6 ml-3"
+                          style={{ paddingTop: "10px" }}
+                        >
+                          <AutoComplete
+                            formik={formik}
+                            onChange={handleAddressChange}
+                            items={items}
+                            address={address}
+                            placeholder="Adresse"
+                            name={"location"}
+                            loading={store2.loading}
+                            onSubmit={onSubmitAddress}
+                          />
+                          {formik.touched.location && formik.errors.location ? (
+                            <div className="formikErrorAuto">
+                              {" "}
+                              {formik.errors.location.city}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+                <div className="d-flex pt-4">
+                  <div className="col-lg-12">
+                    <TextArea
+                      name="description"
+                      placeholder="Description"
+                      value={formik.values.description}
+                      onChange={handleChange}
+                      rows={3}
+                    />
+                    {formik.touched.description && formik.errors.description ? (
+                      <div className="formikErrorDesc">
+                        {" "}
+                        {formik.errors.description}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className=" d-flex pt-4">
+                  <div className="col-lg-12">
+                    <RadioButton
+                      options={RythmeOptions}
+                      className={classes.radioButton}
+                      name="alternationRhythm"
+                      label="Rythme alternances :"
+                      value={formik.values.alternationRhythm}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                {formik.touched.alternationRhythm &&
+                formik.errors.alternationRhythm ? (
+                  <div className="formikErrorAuto">
+                    {" "}
+                    {formik.errors.alternationRhythm}
+                  </div>
+                ) : null}
+                <div className="d-flex my-3">
+                  <div className="col-lg-6 softskills-input">
+                    <MultiAutoComplete
+                      formik={formik}
+                      placeholder="Compétences générales "
+                      items={SOFT_SKILLS}
+                      name={"softSkills"}
+                      loading={store.loading}
+                      onSubmit={onSoftSkillChange}
+                      multiSelect={multiSelect}
+                    />
 
-											{formik.touched.softSkills && formik.errors.softSkills ? (
-												<div className="formikErrorDate">
-													{formik.errors.softSkills}
-												</div>
-											) : null}
-										</div>
-									
-								</div>
-								{/* <div className="d-flex">
+                    {formik.touched.softSkills && formik.errors.softSkills ? (
+                      <div className="formikErrorDate">
+                        {formik.errors.softSkills}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                {/* <div className="d-flex">
 									{
 										softArray.map((item, index) => (
 
@@ -493,89 +486,88 @@ export default function BrowseOffers() {
 										))
 									}
 								</div> */}
-								<div className="d-flex">
-									<div className="col-lg-6 softskills-input">
-										<MultiAutoComplete
-											formik={formik}
-											placeholder="Compétences spécialisées"
-											items={HARD_SKILLS}
-											name={"hardSkills"}
-											loading={store2.loading}
-											onSubmit={onHardSkillChange}
-											multiSelect={multiSelect}
+                <div className="d-flex">
+                  <div className="col-lg-6 softskills-input">
+                    <MultiAutoComplete
+                      formik={formik}
+                      placeholder="Compétences spécialisées"
+                      items={HARD_SKILLS}
+                      name={"hardSkills"}
+                      loading={store2.loading}
+                      onSubmit={onHardSkillChange}
+                      multiSelect={multiSelect}
+                    />
 
-										/>
-
-										{formik.touched.hardSkills && formik.errors.hardSkills ? (
-											<div className="formikErrorDate">
-												{formik.errors.hardSkills}
-											</div>
-										) : null}
-									</div>
-								</div>
-							<div className="d-flex">
-								<div className="col-lg-12 text-right">
-									{store.loading ? (
-										<Button
-											className="Enregistrer"
-											type="submit"
-											variant="primary"
-											value="Loading...."
-											disabled={store.loading}
-										/>
-									) : (
-										<Button
-											className="Enregistrer"
-											type="submit"
-											variant="primary"
-											value="S’ENREGISTRER"
-											disabled={false}
-										/>
-									)}
-								</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</Tab>
-			</Tabs>
-		</>
-	);
+                    {formik.touched.hardSkills && formik.errors.hardSkills ? (
+                      <div className="formikErrorDate">
+                        {formik.errors.hardSkills}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="d-flex">
+                  <div className="col-lg-12 text-right">
+                    {store.loading ? (
+                      <Button
+                        className="Enregistrer"
+                        type="submit"
+                        variant="primary"
+                        value="Loading...."
+                        disabled={store.loading}
+                      />
+                    ) : (
+                      <Button
+                        className="Enregistrer"
+                        type="submit"
+                        variant="primary"
+                        value="S’ENREGISTRER"
+                        disabled={false}
+                      />
+                    )}
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </Tab>
+      </Tabs>
+    </>
+  );
 }
 // ******************************
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 const useStyles = makeStyles({
-	root: {
-		width: "15.6rem",
-	},
-	input: {
-		width: "5.4rem",
-		paddingLeft: 9,
-		position: "absolute",
-		marginLeft: "6.2rem",
-	},
-	radioButton: {
-		'& .MuiFormLabel-root': {
-			color: "#454545",
-			fontWeight: 600,
-		}
-	}
+  root: {
+    width: "15.6rem",
+  },
+  input: {
+    width: "5.4rem",
+    paddingLeft: 9,
+    position: "absolute",
+    marginLeft: "6.2rem",
+  },
+  radioButton: {
+    "& .MuiFormLabel-root": {
+      color: "#454545",
+      fontWeight: 600,
+    },
+  },
 });
 const schoolName = [
-	{ title: "The Shawshank Redemption", year: 1994 },
-	{ title: "The Godfather", year: 1972 },
-	{ title: "The Godfather: Part II", year: 1974 },
-	{ title: "The Dark Knight", year: 2008 },
+  { title: "The Shawshank Redemption", year: 1994 },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
 ];
 const marks = [
-	{
-		value: 0,
-		label: "0€",
-	},
-	{
-		value: 10000,
-		label: "10 000€",
-	},
+  {
+    value: 0,
+    label: "0€",
+  },
+  {
+    value: 10000,
+    label: "10 000€",
+  },
 ];

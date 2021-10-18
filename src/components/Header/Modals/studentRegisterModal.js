@@ -18,6 +18,7 @@ export default function StudentRegister(props) {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const store2 = useSelector((state) => state.globals);
+  const [address, setAddress] = useState("");
 
   //states
   const [items, setItems] = useState([]);
@@ -32,9 +33,10 @@ export default function StudentRegister(props) {
       let response = dispatch(Student_Signup(values));
 
       response.then((value) => {
-        if (value === false) {
+        if (value === true) {
           formik.setSubmitting(false);
           formik.handleReset();
+          setAddress("");
         } else {
           props.handleModal("student");
         }
@@ -55,13 +57,7 @@ export default function StudentRegister(props) {
   };
 
   const handleAddressChange = (value) => {
-    formik.setFieldValue("address", {
-      city: "",
-      street: "",
-      zip: "",
-      longitude: "",
-      latitude: "",
-    });
+    setAddress(value);
 
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
@@ -194,7 +190,7 @@ export default function StudentRegister(props) {
                     <div className="formikError">{formik.errors.phone}</div>
                   ) : null}
                 </div>
-                <div className="" style={{marginTop: "-30px"}}>
+                <div className="" style={{ marginTop: "-30px" }}>
                   <AutoComplete
                     formik={formik}
                     onChange={handleAddressChange}
@@ -204,6 +200,7 @@ export default function StudentRegister(props) {
                     standard="standard"
                     placeholder="Adresse"
                     name={"address"}
+                    address={address}
                     loading={store2.loading}
                     onSubmit={onSubmitAddress}
                   />

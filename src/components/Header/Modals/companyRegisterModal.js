@@ -26,6 +26,7 @@ const StudentRegister = (props) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.company);
   const store2 = useSelector((state) => state.globals);
+  const [address, setAddress] = useState("");
 
   //states
   const [items, setItems] = useState([]);
@@ -68,10 +69,11 @@ const StudentRegister = (props) => {
       ].forEach((e) => delete tempEducation[e]);
       let response = dispatch(Company_Signup(tempEducation));
       response.then((value) => {
-        if (value === false) {
+        if (value === true) {
           setLoading(false);
           formik.setSubmitting(false);
           formik.handleReset();
+          setAddress("");
         } else {
           setLoading(false);
           props.handleModal("company");
@@ -104,13 +106,8 @@ const StudentRegister = (props) => {
     }
   };
   const handleAddressChange = (value) => {
-    formik2.setFieldValue("address", {
-      city: "",
-      street: "",
-      zip: "",
-      longitude: "",
-      latitude: "",
-    });
+    setAddress(value);
+
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
       setItems(
@@ -127,7 +124,7 @@ const StudentRegister = (props) => {
       );
     }
   };
-  
+
   const onSubmitAddress = (value) => {
     formik2.setFieldValue("address", {
       city: value.city,
@@ -319,6 +316,7 @@ const StudentRegister = (props) => {
                         onChange={handleAddressChange}
                         placeholder="Adresse"
                         items={items}
+                        address={address}
                         loading={store2.loading}
                         name={"address"}
                         onSubmit={onSubmitAddress}

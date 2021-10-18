@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 
 export default function Hard_skilltab(props) {
   const {
@@ -20,6 +21,7 @@ export default function Hard_skilltab(props) {
     Notistack,
   } = props;
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   //   ************
   //   ******************************************
@@ -27,14 +29,34 @@ export default function Hard_skilltab(props) {
     initialValues: SKILLS_STATE,
     validationSchema: SKILLS_YUP,
     onSubmit: (values) => {
+      setLoading(true);
+
       let check = LANGUAGES_DB.some((sa) => sa.name === values.name);
       if (check === false) {
+        let skills = options.find(
+          (sa) => sa.title.toUpperCase() === values.name.toUpperCase()
+        );
+
+        delete Object.assign(skills, { ["name"]: skills["title"] })["title"];
+        console.log(options, values, DB_Array, skills, "");
+
         let obj = {};
-        DB_Array.push(values);
+        DB_Array.push(skills);
         obj.languages = DB_Array;
-        dispatch(Add_info_Student(obj, formik));
-        formik.handleReset();
+        let response = dispatch(Add_info_Student(obj));
+
+        response.then((value) => {
+          if (value === true) {
+            formik.setSubmitting(false);
+            formik.handleReset();
+            setLoading(false);
+          } else {
+            setLoading(false);
+          }
+        });
       } else {
+        setLoading(false);
+
         dispatch(
           Notistack.enqueueSnackbar(
             Notistack.snackBar("Le nom de la langue existait déjà", "error")
@@ -43,6 +65,20 @@ export default function Hard_skilltab(props) {
       }
     },
   });
+
+  const handleLanguageDelete = (id) => {
+    if (DB_Array.length > 0) {
+      let fifa = DB_Array.filter((dt) => dt.name !== id);
+      let obj = {};
+      obj.languages = fifa;
+      let response = dispatch(Add_info_Student(obj));
+      response.then((value) => {
+        if (value === true) {
+          props.setDB_Array(fifa);
+        }
+      });
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -70,7 +106,10 @@ export default function Hard_skilltab(props) {
                 />
 
                 {formik.touched.name && formik.errors.name ? (
-                  <div className="formikErrorAuto mt-2"> {formik.errors.name}</div>
+                  <div className="formikErrorAuto mt-2">
+                    {" "}
+                    {formik.errors.name}
+                  </div>
                 ) : null}
               </div>
               <div className="col-lg-4 col-md-6 ml-3">
@@ -83,18 +122,21 @@ export default function Hard_skilltab(props) {
                 />
 
                 {formik.touched.skill && formik.errors.skill ? (
-                  <div className="formikErrorAuto mt-2"> {formik.errors.skill}</div>
+                  <div className="formikErrorAuto mt-2">
+                    {" "}
+                    {formik.errors.skill}
+                  </div>
                 ) : null}
               </div>
             </div>
             <div className="d-flex">
-              {store.loading ? (
+              {loading ? (
                 <Button
                   className="Enregistrer"
                   type="submit"
                   variant="primary"
                   value="Loading...."
-                  disabled={store.loading}
+                  disabled={loading}
                 />
               ) : (
                 <Button
@@ -107,6 +149,29 @@ export default function Hard_skilltab(props) {
               )}
             </div>
           </form>
+          <div
+            className="offer-detail-date-container mt-4"
+            style={{ paddingLeft: "15px" }}
+          >
+            <div className="d-flex justify-content-between">
+              {DB_Array && DB_Array.length > 0
+                ? DB_Array.map((job) => {
+                    return (
+                      <div>
+                        <CardItem
+                          key={job.name}
+                          id={job.name}
+                          className="offer-detail-skills"
+                          content={job.name}
+                          handleDelete={handleLanguageDelete}
+                          times
+                        />
+                      </div>
+                    );
+                  })
+                : ""}
+            </div>
+          </div>
         </div>
       </div>
     </div>

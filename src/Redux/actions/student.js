@@ -69,17 +69,17 @@ export const Student_Signup = (user) => async (dispatch) => {
   } catch (error) {
     dispatch(set_loading(false));
     if (error.response) {
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-      }
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
     return false;
   }
 };
 
-export const Add_info_Student = (user, formik) => async (dispatch) => {
+export const Add_info_Student = (user) => async (dispatch) => {
   try {
     dispatch(set_loading_school(true));
     const res = await axios.put(
@@ -99,17 +99,18 @@ export const Add_info_Student = (user, formik) => async (dispatch) => {
     dispatch(
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
-    formik.setSubmitting(false);
+    return true;
   } catch (error) {
     // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-      }
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
+    return false;
   }
 };
 // update user image and video
@@ -137,12 +138,12 @@ export const Add_Image_info_Student = (user) => async (dispatch) => {
     // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-      }
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 
@@ -167,12 +168,12 @@ export const Delete_School_Info = (id) => async (dispatch) => {
     // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-      }
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 
@@ -198,12 +199,12 @@ export const Delete_Professional_Info = (id) => async (dispatch) => {
     // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(error.response.data.message, "error")
-      )
-    );
-      }
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(error.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 
@@ -212,22 +213,22 @@ export const Delete_Professional_Info = (id) => async (dispatch) => {
 // single job
 
 export const Get_Job = (id) => async (dispatch) => {
-    try {
-      dispatch(set_loading_data(true));
+  try {
+    dispatch(set_loading_data(true));
 
-      const res = await axios.get(`job/get-job/${id}`);
-      dispatch({
-        type: studentConstants.GET_STUDENT_JOB,
-        payload: { loading: false, job: res.data.job },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-      // dispatch(
-      //   Notistack.enqueueSnackbar(
-      //     Notistack.snackBar(error.response.data.message, "error")
-      //   )
-      // );
-    }
+    const res = await axios.get(`job/get-job/${id}`);
+    dispatch({
+      type: studentConstants.GET_STUDENT_JOB,
+      payload: { loading: false, job: res.data.job },
+    });
+  } catch (error) {
+    dispatch(set_loading_data(false));
+    // dispatch(
+    //   Notistack.enqueueSnackbar(
+    //     Notistack.snackBar(error.response.data.message, "error")
+    //   )
+    // );
+  }
 };
 //GET STUDENT APPLIED JOBS
 

@@ -44,14 +44,7 @@ export const login = (data, formik) => async (dispatch) => {
       type: authConstants.LOGIN_SUCCESS,
       payload: {
         token,
-        user,
-        loading: false,
-      },
-    });
-    dispatch({
-      type: studentConstants.STUDENT_DATA_SUCCESS,
-      payload: {
-        user,
+        user: res.data.user,
         loading: false,
       },
     });
@@ -64,11 +57,13 @@ export const login = (data, formik) => async (dispatch) => {
   } catch (err) {
     dispatch(set_loading(false));
     // console.log(err.response, "error");
-    dispatch(
-      Notistack.enqueueSnackbar(
-        Notistack.snackBar(err.response.data.message, "error")
-      )
-    );
+    if (err.response) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar(err.response.data.message, "error")
+        )
+      );
+    }
   }
 };
 
@@ -128,26 +123,24 @@ export const signout = () => async (dispatch) => {
 // get info user type=student
 
 export const Get_User_Student = () => async (dispatch) => {
-  if (user && token) {
-    try {
-      dispatch(set_loading_data(true));
+  try {
+    dispatch(set_loading_data(true));
 
-      const res = await axios.post(
-        `student/get-info`,
-        { type: user.type },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      dispatch({
-        type: studentConstants.STUDENT_DATA_SUCCESS,
-        payload: { loading: false, user: res.data.user },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-    }
+    const res = await axios.post(
+      `student/get-info`,
+      { type: user.type },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    dispatch({
+      type: studentConstants.STUDENT_DATA_SUCCESS,
+      payload: { loading: false, user: res.data.user },
+    });
+  } catch (error) {
+    dispatch(set_loading_data(false));
   }
 };
 
@@ -346,11 +339,11 @@ export const SocketNotifications = () => async (dispatch) => {
   try {
     dispatch(set_loading_data(true));
 
-    window.socket = io(baseUri, {
+    const socket = io(baseUri, {
       query: `userConnectionId=${user._id}`,
     });
-    if (window.socket) {
-      window.socket.on(`recieveNotification${user._id}`, (datas) => {
+    if (socket) {
+      socket.on(`recieveNotification${user._id}`, (datas) => {
         // setdata([...notificationsData, datas]);
         console.log(datas, "datas");
       });

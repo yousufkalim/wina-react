@@ -59,10 +59,10 @@ const ProfessionalProfile = () => {
     }
   }, []);
   const EditProfessionalCareerModal = (id) => {
-    if (!edit_profile_id) {
+    if (id) {
       setedit_profile_id(id);
+      setedit_school_show(!edit_school_show);
     }
-    setedit_school_show(!edit_school_show);
   };
   const ProfessionalCareerModal = () => {
     setShow(!show);
@@ -124,7 +124,7 @@ const ProfessionalProfile = () => {
         professionalArray={professionalArray}
       />
       <div style={{ position: "relative", height: "100%" }}>
-      <div
+        <div
           className="row importCV"
           // style={{ marginTop: "-6px", marginRight: "0 !important" }}
         >
@@ -142,10 +142,12 @@ const ProfessionalProfile = () => {
                 variant="contained"
                 color="primary"
                 component="span"
-                style={{
-                  // marginLeft: "-53rem !important",
-                  // position: "absolute",
-                }}
+                style={
+                  {
+                    // marginLeft: "-53rem !important",
+                    // position: "absolute",
+                  }
+                }
               >
                 Importer CV
               </Button>
@@ -153,11 +155,11 @@ const ProfessionalProfile = () => {
           </div>
           <div className="col-xs-6 pl-5">
             <div
-              // style={{
-              //   marginLeft: "-33rem",
-              //   marginTop: "1rem",
-              //   width: "10px",
-              // }}
+            // style={{
+            //   marginLeft: "-33rem",
+            //   marginTop: "1rem",
+            //   width: "10px",
+            // }}
             >
               {PDF ? (
                 <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
@@ -213,14 +215,12 @@ const ProfessionalProfile = () => {
             eventKey="generalPresentation"
             title="CV en ligne"
             className="h-100"
-            
           >
             <div className="AnnoncesViewOffersBox">
               <CVENGINE USER={USER} setKey={setKey} key={key} />
             </div>
           </Tab>
         </Tabs>
-        
       </div>
     </>
   );

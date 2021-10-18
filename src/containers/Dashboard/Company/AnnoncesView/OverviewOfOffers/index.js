@@ -243,16 +243,26 @@ const OverviewOfOffers = () => {
                   <div className="card-with-image-calender-container">
                     <div className="card-with-image-calender-wrapper">
                       <div className="card-with-image-calender-heading">
-                        Book a time slot
+                        Réserver un créneau horaire
                       </div>
                     </div>
 
                     <div className="card-with-image-calender-wrapper">
                       <div className="card-with-image-calender">
-                        <Calendar
-                          value={bookingSlot}
-                          onChange={(e) => setbookingSlot(e.target.value)}
-                        />
+                        <div className="d-flex jsutify-content-betweeen">
+                          <Calendar
+                            value={bookingSlot}
+                            onChange={(e) => setbookingSlot(e.target.value)}
+                          />
+                          <div className="ml-3">
+                            <SubmitButton
+                              className="Enregistrer "
+                              onClick={handleMultipleAppointments}
+                              variant="primary"
+                              value="Ajouter"
+                            />
+                          </div>
+                        </div>
                         <div>
                           {bookingError ? (
                             <div className="formikErrorAuto">
@@ -262,12 +272,6 @@ const OverviewOfOffers = () => {
                             ""
                           )}
                         </div>
-                        <SubmitButton
-                          className="Enregistrer"
-                          onClick={handleMultipleAppointments}
-                          variant="primary"
-                          value="Add"
-                        />
                       </div>
                     </div>
                     <div style={{ height: "200px", overflow: "auto" }}>
@@ -337,7 +341,6 @@ const OverviewOfOffers = () => {
                         type="company"
                         eventKey={key}
                         handleDetail={handleDetail}
-                        matchSentDetailHandler={matchSentDetailHandler}
                       />
                     ))
                   ) : (
@@ -353,6 +356,7 @@ const OverviewOfOffers = () => {
                       type="student_offers"
                       handleDetail={handleSentStudentDetail}
                       handleOfferRejected={handleCancelOffer}
+                      matchReceiveDetailHandler={matchReceiveDetailHandler}
                       offerID={offerID}
                     />
                   ))
