@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useFormik } from "formik";
 import { SCOOL_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { SCOOL_YUP } from "../../../../../../components/Formik/Student/yupValidation";
@@ -14,12 +14,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 import moment from "moment";
-import TextFieldRound from './../../../../../../components/UI/CustomTextField/TextFieldRound';
+import TextFieldRound from "./../../../../../../components/UI/CustomTextField/TextFieldRound";
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const [Image, setImage] = useState("");
-  const [ImageUri, setImageURI] = useState("");
+  const [ImageUri, setImageURI] = useState(
+    "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+  );
+  const hiddenFileInput = useRef(null);
 
   // formik
   const formik = useFormik({
@@ -44,7 +47,9 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
         setShow(false);
         formik.resetForm();
         setImage("");
-        setImageURI("");
+        setImageURI(
+          "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+        );
       } else {
         dispatch(
           Notistack.enqueueSnackbar(
@@ -61,9 +66,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
-        let uri = URL.createObjectURL(file);
-        setImageURI(uri);
         setImage(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => setImageURI(reader.result);
         formik.setFieldValue("image", file.name);
       } else {
         alert("Vous ne pouvez télécharger que des images");
@@ -87,6 +93,11 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       formik.setFieldValue(name, value);
     }
   };
+  // custom image
+
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
 
   return (
     <SchoolModal
@@ -101,8 +112,6 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
               <TextFieldRound
                 name="school"
                 label="École"
-                // className="Job_title"
-                // placeholder="École"
                 value={formik.school}
                 onChange={handleChange}
                 variant="outlined"
@@ -165,18 +174,24 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
 
           <div className="d-flex ">
             <div className="col-lg-6 mt-4">
-              <label className="inputLabel" for="files">
-                Ajouter une photo
-              </label>
-              <br />
-              {ImageUri && <img className="imageURI" src={ImageUri} />}
-              <Input
+              <img
+                onClick={handleClick}
+                src={ImageUri}
+                alt=""
+                style={{
+                  width: "200px",
+                  objectFit: "fill",
+                  height: "150px",
+                  borderRadius: "5px",
+                }}
+              />
+              <input
                 name="image"
-                placeholder="professional_Picture"
                 onChange={handleChange}
                 type="file"
+                ref={hiddenFileInput}
                 accept="image/*"
-                id="files"
+                style={{ display: "none" }}
               />
 
               {formik.touched.image && formik.errors.image ? (

@@ -42,6 +42,7 @@ const Input = (props) => {
             name={props.name}
             placeholder={props.placeholder}
             value={props.value}
+            ref={props.ref}
             onChange={props.onChange}
             {...props}
           />
@@ -56,7 +57,6 @@ const Input = (props) => {
           {props.label && <label>{props.label}</label>}
           <input
             type={props.type}
-         
             name={props.name}
             placeholder={props.placeholder}
             value={props.value}

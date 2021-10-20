@@ -1,4 +1,8 @@
-import { studentConstants, actionTypes } from "../actions/constants";
+import {
+  studentConstants,
+  actionTypes,
+  authConstants,
+} from "../actions/constants";
 
 const initState = {
   error: null,
@@ -51,13 +55,12 @@ export default (state = initState, action) => {
         loading: false,
         user: action.payload.user,
       };
-    case studentConstants.STUDENT_DATA_SUCCESS:
-      console.log(action.payload.user, " action.payload.user");
+    case authConstants.LOGIN_SUCCESS:
       state = {
         ...state,
-        loading: false,
         user: action.payload.user,
       };
+      break;
 
     case studentConstants.PROFESSIONAL_INFO_DELETE_SUCCESS:
       state = {

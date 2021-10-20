@@ -1,5 +1,5 @@
 import authReducer from "./auth";
-import studentReducer from "./student";
+import Student from "./student";
 
 import globals from "./globals";
 
@@ -12,7 +12,7 @@ import notistack from "./notistack";
 const rootReducer = combineReducers({
   auth: authReducer,
   company: Company,
-  student: studentReducer,
+  student: Student,
   globals: globals,
   admin: admin,
   notistack,

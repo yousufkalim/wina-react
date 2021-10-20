@@ -5,15 +5,15 @@ import { MdLocationOn } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { DEFAULT_IMAGE } from "../../../../../Globals";
 import { baseUri } from "../../../../../urlConfig";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    '& .MuiSvgIcon-root:focus':{
-      outline: "none"
-    }
-  }
-})
+    "& .MuiSvgIcon-root:focus": {
+      outline: "none",
+    },
+  },
+});
 export default function RecipeReviewCard(props) {
   const { cards, handleDetail } = props;
 
@@ -23,6 +23,13 @@ export default function RecipeReviewCard(props) {
       <div className="offer-card">
         <div className="offer-card-wrapper">
           <div className="offer-card-header">
+            {cards.score && cards.score * 100 > 0 ? (
+              <div className="student-offer-detail-percentage">
+                {Math.floor(cards.score * 100)}%
+              </div>
+            ) : (
+              ""
+            )}
             <img
               src={
                 cards.photo.image
@@ -43,10 +50,14 @@ export default function RecipeReviewCard(props) {
               {cards.company.address.city}
             </div>
             <div className="offer-card-price text-center">
-              <div className="offer-card-price-item offer-card-price-item-1">Domaine : {cards.domain}</div>
-              <div className="offer-card-price-item offer-card-price-item-2 mx-1">Durée : {cards.duration}</div>
+              <div className="offer-card-price-item offer-card-price-item-1">
+                Domaine : {cards.domain}
+              </div>
+              <div className="offer-card-price-item offer-card-price-item-2 mx-1">
+                Durée : {cards.duration}
+              </div>
               <div className="offer-card-price-item offer-card-price-item-3">
-              Niveau d’étude : {cards.levelOfEducation}
+                Niveau d’étude : {cards.levelOfEducation}
               </div>
             </div>
           </div>

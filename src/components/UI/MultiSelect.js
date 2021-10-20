@@ -4,43 +4,42 @@ import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles({
   root: {
-    '& .MuiAutocomplete-tag': {
+    "& .MuiAutocomplete-tag": {
       background: "#f6c40d",
       color: "#fff",
-      '& .MuiChip-deleteIcon': {
-        color: '#fff'
-      }
+      "& .MuiChip-deleteIcon": {
+        color: "#fff",
+      },
     },
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
       color: "#454545",
       fontWeight: 500,
-      '& .Mui-focused':{
+      "& .Mui-focused": {
         // color: "#2879d9"
-      }
+      },
     },
     // "& .MuiFormLabel-root.Mui-focused": {
     //   color: "#2879d9"
     // },
     "& .MuiInputBase-root": {
-
       fontSize: "1.375rem",
     },
-    '& .MuiIconButton-root': {
-      color: '#454545'
+    "& .MuiIconButton-root": {
+      color: "#454545",
     },
-    '& MuiSelect-icon': {
-      color: '#454545'
+    "& MuiSelect-icon": {
+      color: "#454545",
     },
-    '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#2879d9",
     },
-    '& .MuiOutlinedInput-root': {
-      borderRadius: "3.5rem"
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "3.5rem",
     },
 
     "& .MuiAutocomplete-inputRoot": {
@@ -59,8 +58,8 @@ const useStyle = makeStyles({
       //   borderColor: "#2879d9",
       // },
     },
-  }
-})
+  },
+});
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -72,13 +71,11 @@ export default function AutoComplete({
   loading,
   onSubmit,
   name,
-  multiSelect
+  multiSelect,
 }) {
-
   const [selectedBoxes, setSelectedBoxes] = useState([]);
-  
+
   const classes = useStyle();
-  console.log("all selected ", selectedBoxes)
   return (
     <>
       <Autocomplete

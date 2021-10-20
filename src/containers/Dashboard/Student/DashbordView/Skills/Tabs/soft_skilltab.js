@@ -3,6 +3,7 @@ import { Image, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 
 export default function Hard_skilltab(props) {
   const {
@@ -19,6 +20,7 @@ export default function Hard_skilltab(props) {
     Notistack,
   } = props;
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   //   ************
   //   ******************************************
@@ -29,14 +31,28 @@ export default function Hard_skilltab(props) {
     initialValues: SKILLS_STATE,
     validationSchema: SKILLS_YUP,
     onSubmit: (values) => {
+      setLoading(true);
       let check = SOFT_SKILLS_DB.some((sa) => sa === values.name);
       if (check === false) {
+        let skills = options.find((sa) => sa._id === values.name);
+
         let obj = {};
-        DB_Array.push(values.name);
+        DB_Array.push(skills);
         obj.softSkills = DB_Array;
-        dispatch(Add_info_Student(obj, formik));
-        formik.handleReset();
+        let response = dispatch(Add_info_Student(obj));
+
+        response.then((value) => {
+          if (value === true) {
+            formik.setSubmitting(false);
+            formik.handleReset();
+            setLoading(false);
+          } else {
+            setLoading(false);
+          }
+        });
       } else {
+        setLoading(false);
+
         dispatch(
           Notistack.enqueueSnackbar(
             Notistack.snackBar(
@@ -51,6 +67,20 @@ export default function Hard_skilltab(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     formik.setFieldValue(name, value);
+  };
+  const handleSoftSkillDelete = (id) => {
+    if (DB_Array.length > 0) {
+      let fifa = DB_Array.filter((dt) => dt._id !== id);
+      let obj = {};
+      obj.softSkills = fifa;
+      let response = dispatch(Add_info_Student(obj));
+
+      response.then((value) => {
+        if (value === true) {
+          props.setDB_Array(fifa);
+        }
+      });
+    }
   };
   return (
     <div className="GeneralSkillsBox">
@@ -75,17 +105,20 @@ export default function Hard_skilltab(props) {
               />
 
               {formik.touched.name && formik.errors.name ? (
-                <div className="formikErrorAuto mt-2" > {formik.errors.name}</div>
+                <div className="formikErrorAuto mt-2">
+                  {" "}
+                  {formik.errors.name}
+                </div>
               ) : null}
             </div>
 
-            {store.loading ? (
+            {loading ? (
               <Button
                 className="Enregistrer"
                 type="submit"
                 variant="primary"
                 value="Loading...."
-                disabled={store.loading}
+                disabled={loading}
               />
             ) : (
               <Button
@@ -97,6 +130,29 @@ export default function Hard_skilltab(props) {
               />
             )}
           </form>
+          <div
+            className="offer-detail-date-container mt-4"
+            style={{ paddingLeft: "15px" }}
+          >
+            <div className="d-flex justify-content-between">
+              {DB_Array && DB_Array.length > 0
+                ? DB_Array.map((job) => {
+                    return (
+                      <div>
+                        <CardItem
+                          key={job._id}
+                          id={job._id}
+                          className="offer-detail-skills"
+                          content={job.skillField}
+                          handleDelete={handleSoftSkillDelete}
+                          times
+                        />
+                      </div>
+                    );
+                  })
+                : ""}
+            </div>
+          </div>
         </div>
       </div>
     </div>

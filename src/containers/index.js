@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     dispatch(SocketNotifications());
   }, [loading]);
-
   return (
     <>
       {User ? (

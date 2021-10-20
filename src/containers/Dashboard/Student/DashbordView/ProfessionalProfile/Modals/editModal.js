@@ -17,21 +17,20 @@ import {
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 import Input from "../../../../../../components/UI/Input";
 import axios from "axios";
-import { baseUrl } from "../../../../../../urlConfig";
+import { baseUrl, baseUri } from "../../../../../../urlConfig";
 
 import { PROFESSIONAL_PROFILE_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { PROFESSIONAL_PROFILE_YUP } from "../../../../../../components/Formik/Student/yupValidation";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    '& .MuiTypography-body1': {
-      fontSize: '1.375rem',
+    "& .MuiTypography-body1": {
+      fontSize: "1.375rem",
       color: "#8D8D8D",
-
-    }
-  }
-})
+    },
+  },
+});
 
 const PPModal = ({
   show,
@@ -46,8 +45,14 @@ const PPModal = ({
   const classes = useStyles();
   // const classes = useStyles();
   const [Image, setImage] = useState("");
-  const [ImageUri, setImageURI] = useState("");
-
+  const [ImageUri, setImageURI] = useState(
+    "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+  );
+  const hiddenFileInput = React.useRef(null);
+  // custom image
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
   const formik = useFormik({
     initialValues: PROFESSIONAL_PROFILE_STATE,
     validationSchema: PROFESSIONAL_PROFILE_YUP,
@@ -90,6 +95,7 @@ const PPModal = ({
       let temp = data.find((dt) => dt._id === id);
 
       if (temp) {
+        console.log(temp, "temp");
         formik.setFieldValue("position", temp.position);
         formik.setFieldValue("end_date", temp.duration.end_date);
         formik.setFieldValue("start_date", temp.duration.start_date);
@@ -100,6 +106,7 @@ const PPModal = ({
         formik.setFieldValue("position_hold", temp.position_hold);
         formik.setFieldValue("description", temp.description);
         formik.setFieldValue("image", temp.image);
+        setImageURI(`${baseUri}/${temp.image}`);
       }
     }
   }, [id, data, show, setShow]);
@@ -109,8 +116,10 @@ const PPModal = ({
     if (name === "image") {
       let file = e.target.files[0];
       if (file.type === "image/png" || file.type === "image/jpeg") {
-        let uri = URL.createObjectURL(file);
-        setImageURI(uri);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => setImageURI(reader.result);
+
         setImage(file);
         formik.setFieldValue("image", file.name);
       } else {
@@ -138,7 +147,10 @@ const PPModal = ({
       </Modal.Header>
       <Modal.Body>
         {data && id ? (
-          <form onSubmit={formik.handleSubmit} className="mt-5 professional-modal-form">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="mt-5 professional-modal-form"
+          >
             <div className="professional-modal-form-first">
               <div className="professional-modal-form-position">
                 <CustomTextField
@@ -202,10 +214,9 @@ const PPModal = ({
                 ) : null}
               </div>
             </div>
-       
-            <div className="professional-modal-form-second mt-5 align-items-end">
 
-            <div className="professional-modal-form-checkbox">
+            <div className="professional-modal-form-second mt-5 align-items-end">
+              <div className="professional-modal-form-checkbox">
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -271,19 +282,35 @@ const PPModal = ({
             </div>
             <div className="d-flex ">
               <div className="col-lg-6">
-                <label className="inputLabel" for="professional_Picture">
-                  Ajouter une photo
-                </label>
-                <br />
-                {ImageUri && <img className="imageURI" src={ImageUri} />}
-                <Input
+                <img
+                  onClick={handleClick}
+                  src={ImageUri}
+                  alt=""
+                  style={{
+                    width: "200px",
+                    objectFit: "fill",
+                    height: "150px",
+                    borderRadius: "5px",
+                  }}
+                />
+                <input
                   name="image"
-                  placeholder="professional_Picture"
                   onChange={handleChange}
                   type="file"
+                  ref={hiddenFileInput}
                   accept="image/*"
-                  id="professional_Picture"
+                  style={{ display: "none" }}
                 />
+                <br />
+                <small
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    color: "red",
+                  }}
+                >
+                  **Ajouter une photo.**
+                </small>
 
                 {formik.touched.image && formik.errors.image ? (
                   <div className="formikErrorAuto"> {formik.errors.image}</div>
