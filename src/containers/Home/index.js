@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../../components/Header";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
-// import downChevron from "../../images/down-chevron.png"
-import "./style.css";
+// import downChevron from "../../images/down-chevron.png";
+// import "../style.css";
 
 /**
  * @author
@@ -20,15 +20,18 @@ const Home = (props) => {
             <Card>
               <Card.Header>
                 <a href="#more-info">
-                <Accordion.Toggle
-                  as={Button}
-                  variant="link"
-                  eventKey="1"
-                  className="clickIcons"
-                >
-                  <img className="down-chevron" src="../images/down-chevron.png" />
-                </Accordion.Toggle>
-                  </a>
+                  <Accordion.Toggle
+                    as={Button}
+                    variant="link"
+                    eventKey="1"
+                    className="clickIcons"
+                  >
+                    <img
+                      className="down-chevron"
+                      src="../images/down-chevron.png"
+                    />
+                  </Accordion.Toggle>
+                </a>
               </Card.Header>
               <Accordion.Collapse eventKey="1" id="more-info">
                 <Card.Body>
