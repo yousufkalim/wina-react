@@ -35,7 +35,7 @@ body {
 }
 .hero_heading {
   position: absolute;
-  top: 0;
+  top: 80px;
   left: 0;
 }
 .heroH2 {
@@ -74,7 +74,7 @@ body {
 }
 .boostP {
   font-size: 2rem;
-  margin-top: 33px;
+  margin-top: 20px;
 }
 .boost_div {
   display: flex;
@@ -110,4 +110,179 @@ body {
   justify-content: center;
   padding-right: 31px;
   margin: 19px 41px 50px 0;
+}
+/* Place component */
+.boost2 {
+  width: 100%;
+  padding: 87px 0 87px 0;
+}
+.plase_col2 {
+  width: 50%;
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 31px;
+  margin: 19px 41px 0px 30px;
+}
+/* Specialized component */
+.specialized {
+  width: 100%;
+  padding-bottom: 100px;
+}
+.specialized_container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+.specialized_heading {
+  margin-top: 50px;
+}
+.specializedH2 {
+  font-size: 3.7rem;
+  font-weight: 500;
+}
+.specializedP {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+.cv-container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+.cv_clm {
+  width: 16%;
+  margin: auto;
+  padding: 25px 0 10px 0;
+  border: 1px solid rgb(216, 215, 215);
+  box-shadow: 0px 4px 9px -3px;
+}
+.fa,
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-size: 50px;
+}
+/* Simplified component */
+.Simplified {
+  width: 100%;
+  background-color: #f8f8f8;
+}
+.Simplified_container {
+  margin-top: 50px;
+  width: 95%;
+  margin: auto;
+  display: flex;
+}
+.Simplified_headings {
+  width: 60%;
+  padding: 60px 0 56px 0;
+}
+.SimplifiedH3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.SimplifiedP {
+  font-size: 2rem;
+}
+.siple_btn {
+  display: flex;
+}
+.simle_button {
+  width: 160px;
+  color: #fff;
+  margin: 22px 0px;
+  text-decoration: none;
+  font-size: 10px;
+  background-color: black;
+  transition: background-color 0.25s linear;
+  border-radius: 56px;
+  margin-right: 32px;
+}
+.googleImg {
+  vertical-align: middle;
+  border-style: none;
+  padding: 10px 16px 10px 28px;
+  width: 135px;
+}
+.SimplifiedButon {
+  margin-top: 30px;
+  padding: 12px 39px 12px 39px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin-right: 33px;
+}
+.SimplifiedButon:hover {
+  background-color: #192349;
+  color: #fff;
+}
+.SimplifiedImg-container {
+  width: 40%;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.mobiIMg {
+  box-shadow: -44px 31px 117px -65px;
+  width: 100%;
+  height: 442px;
+}
+/* footer component */
+.footer {
+  background-color: #454545;
+  padding-bottom: 30px;
+}
+.footer-container {
+  padding: 50px 0;
+  width: 25%;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+}
+.footer-heading {
+  font-weight: 500;
+}
+.footerP {
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+.footerInput {
+  width: 75%;
+  padding: 8px 12px;
+  border: none;
+}
+.footerInputBtn {
+  padding: 8px 18px;
+  border: none;
+  background-color: #e0c399;
+}
+.footerBox {
+  width: 80%;
+  margin: auto;
+}
+
+.footerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footerLi {
+  display: inline-block;
+  color: #fff;
+  padding: 0 13px;
+  font-weight: 500;
+}
+.social_icon {
+  font-size: 25px;
+  width: 16%;
+  color: #fff;
+}
+.footerPera {
+  text-align: center;
+  padding: 10px 0;
+  background-color: black;
+  color: #fff;
 }
