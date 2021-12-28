@@ -1,14 +1,13 @@
 import React from "react";
-import Boostimg3 from "../../assets/Boostimg3.png";
 
-const Place = () => {
+const Place = (props) => {
   return (
     <>
       <div className="boost2">
         <div className="boost_container">
           <div className="boost_div">
             <div className="boost_col1">
-              <img className="boostGImg" src={Boostimg3} alt="" />
+              <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
             <div className="plase_col2">
               <h3 className="boostH3">Place à l’échange</h3>

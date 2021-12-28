@@ -8,7 +8,6 @@ const Simplified = () => {
     <>
       <div className="Simplified">
         <div className="Simplified_container">
-          {/* col-div */}
           <div className="Simplified_headings">
             <h3 className="SimplifiedH3">
               Simplifie-toi la vie, télécharge l’application Wina
@@ -17,7 +16,6 @@ const Simplified = () => {
               Tu peux matcher , swiper à n’importe quel moment de la journée.
               Wina sauvegarde toutes tes progressions et tes suivis journaliers.
             </p>
-            {/* ///////////////////////btn ///////////////////// */}
             <div className="siple_btn">
               <div className="simle_button">
                 <a className="app-btn blu flex vert" href="http:google.com">
@@ -30,7 +28,6 @@ const Simplified = () => {
                 </a>
               </div>
             </div>
-            {/* ///////////////////////btn ///////////////////// */}
             <p className="SimplifiedP">
               Facilite tes recherches de contrats d’apprentissage. <br />
               Inscris-toi dès maintenant !
@@ -40,7 +37,6 @@ const Simplified = () => {
               <button className="SimplifiedButon">Contacte-nous !</button>
             </div>
           </div>
-          {/* col-div */}
           <div className="SimplifiedImg-container">
             <div className="boxImg-div">
               <img className="mobiIMg" src={Mobilepic} alt="" />

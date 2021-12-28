@@ -1,8 +1,8 @@
 import React from "react";
-import Boostimg4 from "../../assets/Boostimg4.png";
+
 import "../../components/LandingPage/Style.css";
 
-const Recruited = () => {
+const Recruited = (props) => {
   return (
     <>
       <div className="boost1">
@@ -16,7 +16,7 @@ const Recruited = () => {
               </p>
             </div>
             <div className="boost_col1">
-              <img className="boostGImg" src={Boostimg4} alt="" />
+              <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
           </div>
         </div>

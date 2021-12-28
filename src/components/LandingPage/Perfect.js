@@ -1,7 +1,7 @@
 import React from "react";
-import Boostimg2 from "../../assets/Boostimg2.png";
+
 import "../../components/LandingPage/Style.css";
-const Perfect = () => {
+const Perfect = (props) => {
   return (
     <>
       <div className="boost1">
@@ -18,7 +18,7 @@ const Perfect = () => {
               </p>
             </div>
             <div className="boost_col1">
-              <img className="boostGImg" src={Boostimg2} alt="" />
+              <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
           </div>
         </div>
