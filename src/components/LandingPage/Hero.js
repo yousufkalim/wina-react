@@ -1,6 +1,4 @@
 import React from "react";
-// import Heroimg from "../../assets/Heroimg.png";
-import Videoicon from "../../assets/Videoicon.png";
 import "../../components/LandingPage/Style.css";
 
 const Hero = (props) => {
@@ -12,9 +10,9 @@ const Hero = (props) => {
             <img className="heroImg" src={props.srcImg} alt="" />
           </div>
           <div className="hero_heading">
-            <img className="heroimgicon" src={Videoicon} alt="" />
-            <h2 className="heroH2">Matching.Enhange.Recrutement</h2>
-            <button className="heroBtn">Créer mon profil étudiant</button>
+            <img className="heroimgico" src={props.srcImg3} alt="" />
+            <h2 className="heroH2">{props.h2text}</h2>
+            <button className="heroBtn">{props.btn}</button>
           </div>
         </div>
       </div>

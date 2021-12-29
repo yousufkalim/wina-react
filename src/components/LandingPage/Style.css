@@ -29,9 +29,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.heroimgicon {
+.heroimgico {
   width: 80px;
-  height: 80px;
   margin-bottom: 10px;
 }
 .hero_heading {

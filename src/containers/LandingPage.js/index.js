@@ -12,12 +12,17 @@ import Boostimg from "../../assets/Boostimg.png";
 import Boostimg2 from "../../assets/Boostimg2.png";
 import Boostimg3 from "../../assets/Boostimg3.png";
 import Boostimg4 from "../../assets/Boostimg4.png";
+import Videoicon from "../../assets/Videoicon.png";
 
 const Index = () => {
   return (
     <>
       <HomeHeader />
-      <Hero />
+      <Hero
+        srcImg3={Videoicon}
+        h2text="Matching.Echange.Recrutement"
+        btn="Créer mon profil étudiant"
+      />
       <Booste
         srcImg={Boostimg}
         text="Booste ton alternance avec Winaa"
