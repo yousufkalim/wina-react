@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.togather {
+  width: 100%;
+}
+.togather-container {
+  width: 90%;
+  margin: auto;
+}
+.togetherHeading {
+  margin: 50px 0;
+  text-align: center;
+}
+.togetherH1 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.togetherP {
+  font-size: 28px;
+  font-weight: 500;
+}
+.together-secondDiv {
+  display: flex;
+  padding: 20px 0 50px 0;
+}
+.togetherCol1 {
+  width: 10%;
+}
+.faIcon {
+  font-size: 35px;
+  margin-bottom: 28px;
+  background-color: #e0c399;
+  border-radius: 50%;
+}
+.faIcon2 {
+  font-size: 35px;
+  margin-top: 40px;
+  background-color: #e0c399;
+  border-radius: 50%;
+}
+.chackP {
+  font-size: 26px;
+  width: 98%;
+  margin-bottom: 25px;
+}
+/* ///// Animation component//// */
+.animaitn_div {
+  width: 100%;
+}
+.animaiton_container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+.animaiton_box {
+  width: 25%;
+  text-align: center;
+}
+.animationIMG {
+  width: 80%;
+  height: 45%;
+}
+.animaitonH4 {
+  background-color: #192349;
+  color: #fff;
+  width: 80%;
+  height: 38%;
+  margin: auto;
+  padding: 46px 12px 77px 12px;
+  font-size: 1.3rem;
+  margin-top: -10px;
+}
+.animaitonH42 {
+  background-color: #e0c399;
+  color: #fff;
+  width: 80%;
+  height: 38%;
+  margin: auto;
+  padding: 46px 12px 77px 12px;
+  font-size: 1.3rem;
+  margin-top: -10px;
+}
+.animBTN {
+  border: 5px solid #fff;
+  background: #192349;
+  font-size: 3rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -19px;
+  padding-top: 1px;
+  color: #fff;
+}
+.animBTN:active {
+  border: none;
+  outline: none;
+}
+.animBTN2 {
+  border: 5px solid #fff;
+  background: #e0c399;
+  font-size: 3rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -19px;
+  padding-top: 1px;
+  color: #fff;
+}
+/* Form component */
+.form {
+  width: 100%;
+  margin-bottom: 50px;
+  padding: 50px 0 100px 0;
+}
+.form-container {
+  width: 60%;
+  margin: auto;
+  border: 1px solid gray;
+}
+.form-inter-div {
+  width: 60%;
+  margin: auto;
+}
+.formH2 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  font-weight: 500;
+  font-size: 3rem;
+  padding-bottom: 20px;
+  margin-bottom: 80px;
+  margin-top: 50px;
+}
+.formInput {
+  width: 100%;
+  border: 1px solid #e0c399;
+  padding: 8px 15px;
+  margin-bottom: 30px;
+}
+.formBTN {
+  background-color: #e0c399;
+  border: none;
+  padding: 10px 50px;
+  margin-bottom: 60px;
+  color: #fff;
+}

@@ -5,6 +5,7 @@ import Signup from "../Signup";
 import LandingPage from "../LandingPage.js/index";
 import Business from "../Business/index";
 import Cfa from "../Cfa/index";
+import Student from "../Student/index";
 import Home from "../Home";
 
 export default function UnAuth() {
@@ -17,6 +18,7 @@ export default function UnAuth() {
       <Route exact path="/landing_page" component={LandingPage} />
       <Route exact path="/Business" component={Business} />
       <Route exact path="/Cfa" component={Cfa} />
+      <Route exact path="/Student" component={Student} />
       <Route exact path="/verifyEmail/:token" component={Home} />
 
       <Redirect from="*" to="/" />

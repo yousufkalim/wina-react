@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.application {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.application-heading {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.applicationH1 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.applicationP {
+  font-size: 26px;
+  font-weight: 400;
+}
+.application-heading-2 {
+  width: 50%;
+  margin: auto;
+}
+.applicationH12 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.applicationBTN {
+  border: 2px solid gray;
+  background: none;
+  padding: 8px 41px;
+  border-radius: 20px;
+  margin: 30px 50px 0px 19%;
+}
+.applicationBTN2 {
+  border: 2px solid gray;
+  background: none;
+  padding: 8px 41px;
+  border-radius: 20px;
+}
+.applicationBTN:hover,
+.applicationBTN2:hover {
+  background-color: #192349;
+  color: #fff;
+}
+.applicationP2 {
+  display: inline;
+  font-weight: 600;
+  margin-left: 46px;
+}
