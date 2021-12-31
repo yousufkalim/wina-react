@@ -10,7 +10,9 @@ const Place = (props) => {
               <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
             <div className="plase_col2">
-              <h3 className="boostH3">Place à l’échange</h3>
+              <div>
+                <h3 className="boostH3">Place à l’échange</h3>
+              </div>
               <p className="boostP">
                 Une fois le matching envoyé, il te suffit d’attendre la réponse
                 de l’entreprise. Après validation de ton profil, l’entreprise

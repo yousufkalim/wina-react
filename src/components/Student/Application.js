@@ -1,10 +1,10 @@
 import React from "react";
 import "../../components/Student/Style.css";
 
-const Application = () => {
+const Application = (props) => {
   return (
     <>
-      <div className="application">
+      <div className="application ">
         <div className="application-container">
           <div className="application-heading">
             <h1 className="applicationH1">
@@ -18,7 +18,7 @@ const Application = () => {
           <div className="application-heading-2">
             <h1 className="applicationH12">Nos packs étudiants</h1>
             <button className="applicationBTN">Mensuel</button>
-            <button className="applicationBTN2">Trimestriel</button>
+            <button className="applicationBTN2">{props.btnT} </button>
             <p className="applicationP2">Économisez 10%</p>
           </div>
         </div>

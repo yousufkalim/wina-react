@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.together-secondDiv2 {
+  display: flex;
+  padding: 20px 0 50px 0;
+  width: 70%;
+  margin: auto;
+}
+.chackP2 {
+  font-size: 25px;
+  width: 100%;
+  margin-bottom: 25px;
+  margin-left: 36px;
+}
+.AboutText {
+  width: 100%;
+}
+.AboutText-container {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 50px;
+}
+.AboutTextP {
+  font-size: 2.1rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 32px;
+}

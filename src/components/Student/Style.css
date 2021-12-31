@@ -15,6 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 15px;
 }
 .application-heading {
   margin-top: 50px;
@@ -27,6 +28,8 @@ body {
 .applicationP {
   font-size: 33px;
   font-weight: 500;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
 }
 .application-heading-2 {
   width: 50%;
@@ -124,4 +127,7 @@ body {
 .packBTN2:hover {
   color: #fff;
   background-color: #e0c399;
+}
+.mb-100 {
+  margin-bottom: 100px;
 }

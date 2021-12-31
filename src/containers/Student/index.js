@@ -9,7 +9,7 @@ const index = () => {
   return (
     <>
       <HomeHeader />
-      <Application />
+      <Application btnT="Trimestriel" />
       <Pack />
       <Footer />
     </>

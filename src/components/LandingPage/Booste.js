@@ -12,7 +12,9 @@ const Booste = (props) => {
               <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
             <div className="boost_col2">
-              <h3 className="boostH3">{props.text2}</h3>
+              <div className="heading-div">
+                <h3 className="boostH3">{props.text2}</h3>
+              </div>
               <p className="boostP">
                 Trouver l’entreprise idéale n’a jamais été une mince affaire.
                 Mais aujourd’hui, nous avons trouvé la solution qui te

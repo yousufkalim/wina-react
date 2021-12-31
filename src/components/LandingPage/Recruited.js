@@ -9,7 +9,9 @@ const Recruited = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <h3 className="boostH3">Recruté(e) !</h3>
+              <div>
+                <h3 className="boostH3">Recruté(e) !</h3>
+              </div>
               <p className="boostP">
                 Félicitations ! Tu as réussi à ton entretien. Il ne reste plus
                 qu’à signer ton contrat d’apprentissage .

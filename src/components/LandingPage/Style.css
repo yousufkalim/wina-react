@@ -71,6 +71,8 @@ body {
   font-size: 2.2rem;
   font-weight: 600;
   margin-top: 5px;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
 }
 .boostP {
   font-size: 2rem;
@@ -146,6 +148,8 @@ body {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 50px;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
 }
 .cv-container {
   display: flex;

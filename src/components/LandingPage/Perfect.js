@@ -8,7 +8,9 @@ const Perfect = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <h3 className="boostH3">Le Matching parfait</h3>
+              <div className="heading-div">
+                <h3 className="boostH3">Le Matching parfait</h3>
+              </div>
               <p className="boostP">
                 Nous mettons à ta disposition une application fun et intuitive
                 te permettant de matcher avec l’entreprise de ton choix. Rien de

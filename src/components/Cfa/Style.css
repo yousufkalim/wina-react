@@ -26,6 +26,16 @@ body {
 .togetherP {
   font-size: 28px;
   font-weight: 500;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
+  width: 80%;
+}
+.togetherP2 {
+  font-size: 28px;
+  font-weight: 500;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
+  width: 62%;
 }
 .together-secondDiv {
   display: flex;
