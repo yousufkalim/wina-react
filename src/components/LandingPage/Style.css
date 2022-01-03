@@ -407,6 +407,7 @@ body {
   }
   .hero_heading {
     height: 43vh;
+    top: 67px;
   }
   .heroImg {
     height: 40vh;
