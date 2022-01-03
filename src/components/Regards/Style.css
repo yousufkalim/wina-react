@@ -126,6 +126,10 @@ body {
   }
   .wina-col2 {
     width: 100%;
+    padding: 0 34px;
+  }
+  .winaPera {
+    padding: 0 12px;
   }
   .Services {
     padding: 26px 0;
@@ -166,6 +170,7 @@ body {
   }
   .wina-col2 {
     width: 100%;
+    padding: 0 65px;
   }
   .Services {
     padding: 26px 0;
@@ -186,5 +191,8 @@ body {
   }
   .ServicesH12 {
     font-size: 2.7rem;
+  }
+  .winaPera {
+    padding: 0 12px;
   }
 }
