@@ -179,6 +179,7 @@ body {
   .togetherP {
     font-size: 13px;
     padding-top: 5px;
+    border-bottom: 7px solid #e0c399;
   }
   .chackP {
     font-size: 19px;
