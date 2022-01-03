@@ -208,6 +208,12 @@ body {
     margin-bottom: 0;
     padding: 23px 0 31px 0;
   }
+  .animaitonH4 {
+    font-size: 15px;
+  }
+  .animaitonH42 {
+    font-size: 15px;
+  }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .togather {
@@ -254,5 +260,11 @@ body {
   .form {
     margin-bottom: 0;
     padding: 23px 0 31px 0;
+  }
+  .animaitonH4 {
+    font-size: 15px;
+  }
+  .animaitonH42 {
+    font-size: 15px;
   }
 }
