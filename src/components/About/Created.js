@@ -3,7 +3,7 @@ import React from "react";
 const Created = () => {
   return (
     <>
-      <div className="togather">
+      <div className="togather2">
         <div className="togather-container">
           <div className="togetherHeading">
             <p className="togetherP2">

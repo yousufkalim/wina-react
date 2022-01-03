@@ -131,3 +131,151 @@ body {
 .mb-100 {
   margin-bottom: 100px;
 }
+@media only screen and (max-width: 600px) {
+  .applicationH1 {
+    font-weight: 600;
+    font-size: 2.7rem;
+  }
+  .applicationP {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 8px solid #e0c399;
+    padding: 20px 0;
+  }
+  .application-heading {
+    margin-top: 0;
+    margin-bottom: 35px;
+  }
+  .application-heading-2 {
+    width: 100%;
+  }
+  .applicationH12 {
+    font-size: 2.8rem;
+  }
+  .application {
+    height: 43vh;
+  }
+  .applicationBTN {
+    width: 68%;
+    margin: 12px 0 12px 0px;
+  }
+  .applicationBTN2 {
+    display: block;
+    width: 68%;
+    margin: auto;
+  }
+  .applicationP2 {
+    display: block;
+    font-size: 11px;
+    margin: 10px 0 0 0;
+  }
+  .pack-container {
+    flex-direction: column;
+  }
+  .Pack {
+    padding-bottom: 0;
+  }
+  .pack-col1 {
+    width: 100%;
+    height: 762px;
+    margin-bottom: 23px;
+  }
+  .liPack {
+    font-size: 16px;
+  }
+  .liHeading {
+    padding: 27px 54px 0px 54px;
+    margin-bottom: 136px;
+  }
+  .liHeading2 {
+    margin-bottom: 78px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .applicationH1 {
+    font-weight: 600;
+    font-size: 2.7rem;
+  }
+  .applicationP {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 8px solid #e0c399;
+    padding: 20px 0;
+  }
+  .application-heading {
+    margin-top: 0;
+    margin-bottom: 35px;
+  }
+  .application-heading-2 {
+    width: 100%;
+  }
+  .applicationH12 {
+    font-size: 2.8rem;
+  }
+  .application {
+    height: 43vh;
+  }
+  .applicationBTN {
+    width: 68%;
+    margin: 12px 0 12px 0px;
+  }
+  .applicationBTN2 {
+    display: block;
+    width: 68%;
+    margin: auto;
+  }
+  .applicationP2 {
+    display: block;
+    font-size: 11px;
+    margin: 10px 0 0 0;
+  }
+  .pack-container {
+    flex-direction: column;
+  }
+  .Pack {
+    padding-bottom: 0;
+  }
+  .pack-col1 {
+    width: 100%;
+    height: 600px;
+    margin-bottom: 23px;
+  }
+  .liPack {
+    font-size: 16px;
+  }
+  .liHeading {
+    padding: 27px 54px 0px 54px;
+    margin-bottom: 136px;
+  }
+  .liHeading2 {
+    margin-bottom: 78px;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1500px) {
+  .application-heading-2 {
+    width: 100%;
+    margin-bottom: 16%;
+  }
+  .application-heading {
+    margin-top: 279px;
+    margin-bottom: 48px;
+  }
+  .applicationH1 {
+    font-size: 3.5rem;
+  }
+  .applicationP {
+    font-size: 33px;
+    font-weight: 300;
+    padding: 11px 0;
+  }
+  .liPack {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .Pack {
+    margin-top: 49px;
+  }
+  .applicationBTN {
+    margin: 30px 7% 0px 13%;
+  }
+}

@@ -162,3 +162,97 @@ body {
   margin-bottom: 60px;
   color: #fff;
 }
+@media only screen and (max-width: 600px) {
+  .togather {
+    margin-top: 0;
+  }
+  .togetherH1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+  .togetherHeading {
+    margin: 17px 0;
+  }
+  .togetherCol1 {
+    width: 20%;
+  }
+  .togetherP {
+    font-size: 13px;
+    padding-top: 5px;
+  }
+  .chackP {
+    font-size: 19px;
+    margin-bottom: 15px;
+    margin-left: 13px;
+  }
+  .faIcon {
+    font-size: 32px;
+    margin-bottom: 66px;
+  }
+  .faIcon2 {
+    font-size: 33px;
+    margin-top: 90px;
+  }
+  .animaiton_container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .animaiton_box {
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .form {
+    margin-bottom: 0;
+    padding: 23px 0 31px 0;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .togather {
+    margin-top: 0;
+  }
+  .togetherH1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+  .togetherHeading {
+    margin: 17px 0;
+  }
+  .togetherCol1 {
+    width: 20%;
+  }
+  .togetherP {
+    font-size: 13px;
+    padding-top: 5px;
+  }
+  .chackP {
+    font-size: 19px;
+    margin-bottom: 37px;
+    margin-left: 13px;
+  }
+  .faIcon {
+    font-size: 32px;
+    margin-bottom: 66px;
+  }
+  .faIcon2 {
+    font-size: 33px;
+    margin-top: 27px;
+  }
+  .animaiton_container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .animaiton_box {
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .form {
+    margin-bottom: 0;
+    padding: 23px 0 31px 0;
+  }
+}

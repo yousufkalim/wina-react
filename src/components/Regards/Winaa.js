@@ -14,7 +14,7 @@ const Winaa = (props) => {
           </div>
           <div className="wina-col2">
             <div className="winaTaxt">
-              <div>
+              <div className="winatext_container">
                 <p className="winaPera">{props.text}</p>
                 <p className="winaPera">{props.text2}</p>
                 <p className="winaPera">{props.text3}</p>
