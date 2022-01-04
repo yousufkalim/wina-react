@@ -1,0 +1,281 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.application {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.application-heading {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.applicationH1 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.applicationP {
+  font-size: 33px;
+  font-weight: 500;
+  border-bottom: 11px solid #e0c399;
+  display: inline-block;
+}
+.application-heading-2 {
+  width: 50%;
+  margin: auto;
+}
+.applicationH12 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.applicationBTN {
+  border: 2px solid gray;
+  background: none;
+  padding: 8px 53px;
+  border-radius: 20px;
+  margin: 30px 9% 0px 20%;
+}
+.applicationBTN2 {
+  border: 2px solid gray;
+  background: none;
+  padding: 8px 41px;
+  border-radius: 20px;
+}
+.applicationBTN:hover,
+.applicationBTN2:hover {
+  background-color: #192349;
+  color: #fff;
+}
+.applicationP2 {
+  display: inline;
+  font-weight: 600;
+  margin-left: 46px;
+}
+/* //////////// Pack component ///////////// */
+.Pack {
+  width: 100%;
+  padding-bottom: 70px;
+}
+.pack-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.pack-col1 {
+  border: 2px solid gray;
+  width: 45%;
+  height: 786px;
+}
+.boxHeading {
+  background-color: #192349;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+.boxHeading2 {
+  background-color: #e0c399;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+.packH1 {
+  font-weight: 600;
+  font-size: 3.5rem;
+}
+.packH3 {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.liHeading {
+  padding: 27px 77px 0px 50px;
+  margin-bottom: 200px;
+}
+.liHeading2 {
+  padding: 27px 77px 0px 50px;
+  margin-bottom: 115px;
+}
+.liPack {
+  font-size: 21px;
+  margin-bottom: 22px;
+}
+.packBTN,
+.packBTN2 {
+  display: block;
+  margin: auto;
+  border: 1px solid gray;
+  background: none;
+  padding: 8px 41px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+.packBTN:hover {
+  background-color: #192349;
+  color: #fff;
+}
+.packBTN2:hover {
+  color: #fff;
+  background-color: #e0c399;
+}
+.mb-100 {
+  margin-bottom: 100px;
+}
+@media only screen and (max-width: 600px) {
+  .applicationH1 {
+    font-weight: 600;
+    font-size: 2.7rem;
+  }
+  .applicationP {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 8px solid #e0c399;
+    padding: 20px 0;
+  }
+  .application-heading {
+    margin-top: 0;
+    margin-bottom: 35px;
+  }
+  .application-heading-2 {
+    width: 100%;
+  }
+  .applicationH12 {
+    font-size: 2.8rem;
+  }
+  .application {
+    height: 43vh;
+  }
+  .applicationBTN {
+    width: 68%;
+    margin: 12px 0 12px 0px;
+  }
+  .applicationBTN2 {
+    display: block;
+    width: 68%;
+    margin: auto;
+  }
+  .applicationP2 {
+    display: block;
+    font-size: 11px;
+    margin: 10px 0 0 0;
+  }
+  .pack-container {
+    flex-direction: column;
+  }
+  .Pack {
+    padding-bottom: 0;
+  }
+  .pack-col1 {
+    width: 100%;
+    height: 762px;
+    margin-bottom: 23px;
+  }
+  .liPack {
+    font-size: 16px;
+  }
+  .liHeading {
+    padding: 27px 54px 0px 54px;
+    margin-bottom: 136px;
+  }
+  .liHeading2 {
+    margin-bottom: 78px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .applicationH1 {
+    font-weight: 600;
+    font-size: 2.7rem;
+  }
+  .applicationP {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 8px solid #e0c399;
+    padding: 20px 0;
+  }
+  .application-heading {
+    margin-top: 0;
+    margin-bottom: 35px;
+  }
+  .application-heading-2 {
+    width: 100%;
+  }
+  .applicationH12 {
+    font-size: 2.8rem;
+  }
+  .application {
+    height: 43vh;
+  }
+  .applicationBTN {
+    width: 68%;
+    margin: 12px 0 12px 0px;
+  }
+  .applicationBTN2 {
+    display: block;
+    width: 68%;
+    margin: auto;
+  }
+  .applicationP2 {
+    display: block;
+    font-size: 11px;
+    margin: 10px 0 0 0;
+  }
+  .pack-container {
+    flex-direction: column;
+  }
+  .Pack {
+    padding-bottom: 0;
+  }
+  .pack-col1 {
+    width: 100%;
+    height: 600px;
+    margin-bottom: 23px;
+  }
+  .liPack {
+    font-size: 16px;
+  }
+  .liHeading {
+    padding: 27px 54px 0px 54px;
+    margin-bottom: 136px;
+  }
+  .liHeading2 {
+    margin-bottom: 78px;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1500px) {
+  .application-heading-2 {
+    width: 100%;
+    margin-bottom: 16%;
+  }
+  .application-heading {
+    margin-top: 279px;
+    margin-bottom: 48px;
+  }
+  .applicationH1 {
+    font-size: 3.5rem;
+  }
+  .applicationP {
+    font-size: 33px;
+    font-weight: 300;
+    padding: 11px 0;
+  }
+  .liPack {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .Pack {
+    margin-top: 49px;
+  }
+  .applicationBTN {
+    margin: 30px 7% 0px 13%;
+  }
+}
