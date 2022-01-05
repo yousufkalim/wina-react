@@ -1,4 +1,7 @@
 import React from "react";
+import Formsimg from "../../assets/Formsimg.png";
+import Speechimg from "../../assets/Speechimg.png";
+import Supportimg from "../../assets/Supportimg.png";
 
 const Specialized = () => {
   return (
@@ -12,15 +15,15 @@ const Specialized = () => {
           <div className="cv-box">
             <div className="cv-container">
               <div className="cv_clm">
-                <i className="spec_icon" class="far fa-file-alt"></i>
+                <img className="spec_icon" src={Formsimg} alt="" />
                 <p className="iconP">CV</p>
               </div>
               <div className="cv_clm">
-                <i className="spec_icon" class="far fa-comments"></i>
+                <img className="spec_icon" src={Speechimg} alt="" />
                 <p className="iconP">CV</p>
               </div>
               <div className="cv_clm">
-                <i className="spec_icon" class="far fa-handshake"></i>
+                <img className="spec_icon" src={Supportimg} alt="" />
                 <p className="iconP">CV</p>
               </div>
             </div>
