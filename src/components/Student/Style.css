@@ -10,7 +10,6 @@ body {
 }
 .application {
   width: 100%;
-  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +75,6 @@ body {
 .pack-col1 {
   border: 2px solid gray;
   width: 45%;
-  height: 786px;
 }
 .boxHeading {
   background-color: #192349;
@@ -152,9 +150,6 @@ body {
   .applicationH12 {
     font-size: 2.8rem;
   }
-  .application {
-    height: 43vh;
-  }
   .applicationBTN {
     width: 68%;
     margin: 12px 0 12px 0px;
@@ -177,7 +172,6 @@ body {
   }
   .pack-col1 {
     width: 100%;
-    height: 762px;
     margin-bottom: 23px;
   }
   .liPack {
@@ -212,9 +206,6 @@ body {
   .applicationH12 {
     font-size: 2.8rem;
   }
-  .application {
-    height: 43vh;
-  }
   .applicationBTN {
     width: 68%;
     margin: 12px 0 12px 0px;
@@ -237,7 +228,6 @@ body {
   }
   .pack-col1 {
     width: 100%;
-    height: 600px;
     margin-bottom: 23px;
   }
   .liPack {
@@ -254,17 +244,15 @@ body {
 @media only screen and (min-width: 993px) and (max-width: 1500px) {
   .application-heading-2 {
     width: 100%;
-    margin-bottom: 16%;
   }
   .application-heading {
-    margin-top: 279px;
-    margin-bottom: 48px;
+    margin-bottom: 70px;
   }
   .applicationH1 {
     font-size: 3.5rem;
   }
   .applicationP {
-    font-size: 33px;
+    font-size: 24px;
     font-weight: 300;
     padding: 11px 0;
   }
@@ -273,7 +261,7 @@ body {
     margin-bottom: 20px;
   }
   .Pack {
-    margin-top: 49px;
+    margin-top: 30px;
   }
   .applicationBTN {
     margin: 30px 7% 0px 13%;
