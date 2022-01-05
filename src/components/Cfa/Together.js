@@ -15,24 +15,26 @@ const Together = () => {
           <div className="together-secondDiv">
             <div className="togetherCol1">
               <div className="checkIcon">
-                <i class="faIcon far fa-check-circle"></i>
+                {/* <i class="faIcon far fa-check-circle"></i> */}
               </div>
               <div className="checkIcon">
-                <i class="faIcon far fa-check-circle"></i>
+                {/* <i class="faIcon far fa-check-circle"></i> */}
               </div>
               <div className="checkIcon">
-                <i class="faIcon2 far fa-check-circle"></i>
+                {/* <i class="faIcon2 far fa-check-circle"></i> */}
               </div>
             </div>
             {/* col 1*/}
             <div className="togetherCol2">
               <div className="togetherPera">
+                <i class="faIcon far fa-check-circle"></i>
                 <p className="chackP">
                   Favoriser une meilleure communication de la part des CFA sur
                   leurs formations.
                 </p>
               </div>
               <div className="togetherPera">
+                <i class="faIcon far fa-check-circle"></i>
                 <p className="chackP">
                   Proposer un accompagnement personnalisé aux apprentis et aux
                   entreprises pour renforcer l’attractivité de l’apprentissage
@@ -40,6 +42,7 @@ const Together = () => {
                 </p>
               </div>
               <div className="togetherPera">
+                <i class="faIcon2 far fa-check-circle"></i>
                 <p className="chackP">
                   Soutenir les CFA dans les différentes campagnes de rentrée
                   scolaire pour atteindre l’objectif de 100% de placement.

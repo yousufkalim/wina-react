@@ -30,7 +30,7 @@ body {
   align-items: center;
 }
 .heroimgico {
-  width: 80px;
+  width: 130px;
   margin-bottom: 10px;
 }
 .hero_heading {
@@ -65,7 +65,6 @@ body {
   text-align: center;
   font-weight: 600;
   font-size: 4rem;
-  margin-bottom: 46px;
 }
 .boostH3 {
   font-size: 2.2rem;
@@ -80,6 +79,7 @@ body {
 }
 .boost_div {
   display: flex;
+  padding: 70px 0;
 }
 .boost_col1 {
   width: 44%;
@@ -90,8 +90,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 19px;
-  margin-bottom: 50px;
 }
 .boostGImg {
   width: 100%;
@@ -99,7 +97,6 @@ body {
 /* Perfect component */
 .boost1 {
   width: 100%;
-  padding: 87px 0 30px 0;
   background-color: #ededed;
 }
 .perfect_col2 {
@@ -113,7 +110,7 @@ body {
 /* Place component */
 .boost2 {
   width: 100%;
-  padding: 87px 0 87px 0;
+  padding: 10px 0 0px 0;
 }
 .plase_col2 {
   width: 50%;
@@ -292,7 +289,7 @@ body {
     height: 3.5em;
   }
   .hero_heading {
-    height: 43vh;
+    height: 36vh;
   }
   .heroImg {
     height: 40vh;
@@ -300,13 +297,18 @@ body {
   .heroH2 {
     font-size: 2.2rem;
     margin-bottom: 26px;
+    text-align: center;
+  }
+  .boost {
+    padding: 14px 0;
   }
   .boostH1 {
-    font-size: 2.8rem;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 18px;
   }
   .boost_div {
     flex-direction: column;
+    padding: 0;
   }
   .boost_col1 {
     width: 100%;
@@ -314,13 +316,9 @@ body {
   .boost_col2 {
     width: 100%;
     padding: 10px;
-    height: 26vh;
     margin-left: 0;
-    margin-bottom: -28px;
   }
-  .boost1 {
-    padding: 35px 0 24px 0;
-  }
+
   .boostH3 {
     border-bottom: 6px solid #e0c399;
   }
@@ -329,18 +327,18 @@ body {
   }
   .perfect_col2 {
     width: 100%;
-    height: 17vh;
+    /* height: 17vh; */
     padding-right: 0;
-    margin: 19px 41px 50px 0;
+    margin: 0;
     padding: 10px;
   }
   .boost2 {
     width: 100%;
-    padding: 30px 0 0px 0;
+    padding: 10px 0 0px 0;
   }
   .plase_col2 {
     width: 100%;
-    height: 35vh;
+    /* height: 35vh; */
     padding-right: 0;
     margin: 0;
     padding: 10px;
@@ -407,6 +405,7 @@ body {
   }
   .hero_heading {
     height: 43vh;
+    top: 67px;
   }
   .heroImg {
     height: 40vh;
@@ -414,6 +413,7 @@ body {
   .heroH2 {
     font-size: 2.2rem;
     margin-bottom: 26px;
+    text-align: center;
   }
   .boostH1 {
     font-size: 2.8rem;
@@ -421,6 +421,7 @@ body {
   }
   .boost_div {
     flex-direction: column;
+    padding: 0;
   }
   .boost_col1 {
     width: 100%;
@@ -432,9 +433,6 @@ body {
     margin-left: 0;
     margin-bottom: -28px;
   }
-  .boost1 {
-    padding: 35px 0 24px 0;
-  }
   .boostH3 {
     border-bottom: 6px solid #e0c399;
   }
@@ -443,14 +441,13 @@ body {
   }
   .perfect_col2 {
     width: 100%;
-    height: 17vh;
     padding-right: 0;
     margin: 19px 41px 50px 0;
     padding: 10px;
   }
   .boost2 {
     width: 100%;
-    padding: 45px 0 0px 0;
+    padding: 10px 0 0px 0;
   }
   .plase_col2 {
     width: 100%;
