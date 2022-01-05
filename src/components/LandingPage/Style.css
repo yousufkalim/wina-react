@@ -297,6 +297,7 @@ body {
   .heroH2 {
     font-size: 2.2rem;
     margin-bottom: 26px;
+    text-align: center;
   }
   .boost {
     padding: 14px 0;
@@ -412,6 +413,7 @@ body {
   .heroH2 {
     font-size: 2.2rem;
     margin-bottom: 26px;
+    text-align: center;
   }
   .boostH1 {
     font-size: 2.8rem;

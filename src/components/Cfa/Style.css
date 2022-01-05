@@ -175,7 +175,7 @@ body {
   }
   .togetherH1 {
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   .togetherHeading {
     margin: 17px 0;
@@ -184,13 +184,15 @@ body {
     width: 20%;
   }
   .togetherP {
-    font-size: 13px;
+    font-size: 9px;
     padding-top: 5px;
     border-bottom: 7px solid #e0c399;
+    width: 96%;
   }
   .chackP {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 15px;
+    padding-left: 16px;
   }
   .faIcon {
     font-size: 32px;
