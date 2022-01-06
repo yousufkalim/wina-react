@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHeader from "../../components/Header/header";
+import HomeHeader2 from "../../components/Header/header2";
 import Winaa from "../../components/Regards/Winaa";
 import Aboutimg from "../../assets/Aboutimg.png";
 import Created from "../../components/About/Created";
@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 const index = () => {
   return (
     <div>
-      <HomeHeader />
+      <HomeHeader2 />
       <Winaa
         img={Aboutimg}
         text3="Travaillant dans ce secteur, Marie décide également d'intégrer Jean-Yves, professionnel de l’alternance depuis plus de 5 ans qui avait aussi pour ambition de contribuer à la croissance des formations en apprentissage."

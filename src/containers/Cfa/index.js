@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHeader from "../../components/Header/header";
+import HomeHeader2 from "../../components/Header/header2";
 import Hero from "../../components/LandingPage/Hero";
 import Cfaimg from "../../assets/Cfaimg.png";
 import Together from "../../components/Cfa/Together";
@@ -10,7 +10,7 @@ import Footer from "../../components/Footer";
 const index = () => {
   return (
     <>
-      <HomeHeader />
+      <HomeHeader2 />
       <Hero
         srcImg={Cfaimg}
         h2text="Optimisez L’accompagnement des alternants"

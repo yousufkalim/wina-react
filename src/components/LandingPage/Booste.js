@@ -15,14 +15,8 @@ const Booste = (props) => {
               <div className="heading-div">
                 <h3 className="boostH3">{props.text2}</h3>
               </div>
-              <p className="boostP">
-                Trouver l’entreprise idéale n’a jamais été une mince affaire.
-                Mais aujourd’hui, nous avons trouvé la solution qui te
-                correspond.
-                <br />
-                Pour t’aider dans tes recherches, Winaa te sélectionne les
-                entreprises en fonction de ton profil.
-              </p>
+              <p className="boostP">{props.text3}</p>
+              <p className="boostP2">{props.text4}</p>
             </div>
           </div>
         </div>

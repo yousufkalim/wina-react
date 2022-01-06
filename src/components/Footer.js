@@ -23,13 +23,13 @@ const Footer = () => {
             <a className="footerLi" href="">
               Application mobile
             </a>
-            <a className="footerLi" href="">
-              Application
+            <a className="footerLi" href="/regards">
+              A propos
             </a>
-            <a className="footerLi" href="">
+            <a className="footerLi" href="/about">
               Notre équipe
             </a>
-            <a className="footerLi" href="">
+            <a className="footerLi" href="/">
               FAQ
             </a>
             <a className="footerLi" href="">
