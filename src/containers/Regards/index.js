@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHeader from "../../components/Header/header";
+import HomeHeader2 from "../../components/Header/header2";
 import Winaa from "../../components/Regards/Winaa";
 import Services from "../../components/Regards/Services";
 import Contract from "../../components/Regards/Contract";
@@ -9,7 +9,7 @@ import LogoWina from "../../assets/LogoWina.png";
 const index = () => {
   return (
     <>
-      <HomeHeader />
+      <HomeHeader2 />
       <Winaa
         img={LogoWina}
         text4=" Notre atout ? notre collaboration avec les CFA afin de réaliser

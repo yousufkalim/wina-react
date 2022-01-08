@@ -11,16 +11,11 @@ const Place = (props) => {
             </div>
             <div className="plase_col2">
               <div>
-                <h3 className="boostH3">Place à l’échange</h3>
+                <h3 className="boostH3">{props.text}</h3>
               </div>
-              <p className="boostP">
-                Une fois le matching envoyé, il te suffit d’attendre la réponse
-                de l’entreprise. Après validation de ton profil, l’entreprise
-                revient vers toi pour mettre en place le processus de
-                recrutement. <br /> Qui dit échange, dit entretien ! <br /> Pas
-                de panique, Winaa te propose un coaching personnalisé juste
-                avant ton entretien.
-              </p>
+              <p className="boostP">{props.text3}</p>
+              <p className="boostP">{props.text4}</p>
+              <p className="boostP">{props.text5}</p>
             </div>
           </div>
         </div>

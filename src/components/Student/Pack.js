@@ -1,32 +1,30 @@
 import React from "react";
 import "../../components/Student/Style.css";
 
-const Pack = () => {
+const Pack = (props) => {
+  const { addUpperMargin } = props;
+
   return (
     <>
       <div className="Pack">
-        <div className="pack-container">
+        <div
+          className="pack-container"
+          style={addUpperMargin && { marginTop: "100px" }}
+        >
+          {/* div1 */}
           <div className="pack-col1">
             <div className="packbox">
               <div className="boxHeading">
-                <h1 className="packH1">Pack Découverte</h1>
-                <h3 className="packH3">9,99€ / mois</h3>
+                <h1 className="packH1">{props.texth1}</h1>
+                <h3 className="packH3">{props.texth3}</h3>
               </div>
               <div className="liHeading">
                 <ul>
-                  <li className="liPack">
-                    Recrutement facilité avec des offres qui te correspondent
-                  </li>
-                  <li className="liPack">Candidature envoyée en Swipe</li>
-                  <li className="liPack">Matching assuré</li>
-                  <li className="liPack">Matching assuré</li>
-                  <li className="liPack">
-                    Suivi simplifié de tes candidatures
-                  </li>
-                  <li className="liPack">
-                    Gratuit durant 1 semaine ensuite payant, puis 9,99€/mois,
-                    engagement 3 mois
-                  </li>
+                  <li className="liPack">{props.liPack}</li>
+                  <li className="liPack"> {props.liPack2}</li>
+                  <li className="liPack">{props.liPack3}</li>
+                  <li className="liPack">{props.liPack4}</li>
+                  <li className="liPack">{props.liPack5}</li>
                 </ul>
               </div>
               <button className="packBTN">Souscrire</button>
@@ -42,22 +40,12 @@ const Pack = () => {
               </div>
               <div className="liHeading2">
                 <ul>
-                  <li className="liPack">
-                    Recrutement facilité avec des offres qui te correspondent
-                  </li>
-                  <li className="liPack">Candidature envoyée en Swipe</li>
-                  <li className="liPack">Matching assuré</li>
-                  <li className="liPack">Matching assuré</li>
-                  <li className="liPack">
-                    Suivi simplifié de tes candidatures
-                  </li>
-                  <li className="liPack">
-                    Coaching & accompagnement lors de ta recherche : 1 séance
-                    Coaching + équipe dédiée pour répondre à tes questions
-                  </li>
-                  <li className="liPack">
-                    Equipe dédiée pour répondre à tes questions
-                  </li>
+                  <li className="liPack">{props.pliPack}</li>
+                  <li className="liPack">{props.pliPack2}</li>
+                  <li className="liPack">{props.pliPack3}</li>
+                  <li className="liPack">{props.pliPack4}</li>
+                  <li className="liPack">{props.pliPack5}</li>
+                  <li className="liPack">{props.pliPack6}</li>
                 </ul>
               </div>
               <button className="packBTN2">Souscrire</button>

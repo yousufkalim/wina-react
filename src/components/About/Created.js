@@ -12,22 +12,20 @@ const Created = () => {
           </div>
           <div className="together-secondDiv2">
             <div className="togetherCol1">
-              <div className="checkIcon">
-                <i class="faIcon far fa-check-circle"></i>
-              </div>
-              <div className="checkIcon">
-                <i class="faIcon far fa-check-circle"></i>
-              </div>
+              <div className="checkIcon"></div>
+              <div className="checkIcon"></div>
             </div>
             {/* col 1*/}
             <div className="togetherCol2">
               <div className="togetherPera">
+                <i class="faIcon far fa-check-circle"></i>
                 <p className="chackP2">
                   Encourager et faciliter la rencontre entre les apprenti(e)s et
                   les entreprises.
                 </p>
               </div>
               <div className="togetherPera">
+                <i class="faIcon far fa-check-circle"></i>
                 <p className="chackP2">
                   Permettre aux jeunes de se lancer dans la vie professionnelle
                   en étant mieux préparés et aux entreprises de disposer

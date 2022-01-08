@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHeader from "../../components/Header/header";
+import HomeHeader2 from "../../components/Header/header2";
 import Hero from "../../components/LandingPage/Hero";
 import Booste from "../../components/LandingPage/Booste";
 import Perfect from "../../components/LandingPage/Perfect";
@@ -12,13 +12,17 @@ import Heroimg from "../../assets/Heroimg.png";
 import BusImg1 from "../../assets/BusImg1.png";
 import BusImg2 from "../../assets/BusImg2.png";
 import BusImg3 from "../../assets/BusImg3.png";
-
 import BusImg4 from "../../assets/BusImg4.png";
+
+import Formsimg from "../../assets/Formsimg.png";
+import Speechimg from "../../assets/Speechimg.png";
+import Supportimg from "../../assets/Supportimg.png";
+import Cgv from "../../assets/Cgv.png";
 
 const Index = () => {
   return (
     <>
-      <HomeHeader />
+      <HomeHeader2 />
       <Hero
         srcImg={Heroimg}
         h2text="Matching.Echange.Recrutement"
@@ -28,11 +32,31 @@ const Index = () => {
         srcImg={BusImg1}
         text="Facilitez votre recrutement avec Winaa"
         text2=" Des profils adaptés à vos recherches "
+        text3=" Winaa vous donne accès à des profils opérationnels qui correspondent à vos critères de recherche préalablement renseignés.
+Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité. "
       />
-      <Perfect srcImg={BusImg2} />
-      <Place srcImg={BusImg3} />
-      <Recruited srcImg={BusImg4} />
-      <Specialized />
+      <Perfect
+        srcImg={BusImg2}
+        text="Le Matching parfait"
+        text2=" Nous mettons à votre disposition une application innovante et intuitive vous permettant d’être mis en relation directe avec des étudiants à la recherche d’un contrat d’apprentissage. Un outil basé sur des algorithmes de matching facilitant votre recrutement."
+      />
+      <Place
+        srcImg={BusImg3}
+        text="Place à l’échange"
+        text3=" Il vous sera permis de communiquer, échanger, évaluer la pertinence des profils proposés et ainsi, planifier un entretien d’embauche avec votre futur(e) alternant(e). "
+      />
+      <Recruited
+        srcImg={BusImg4}
+        text="Recrutez !"
+        text2="Félicitations  ! Vous avez trouvé votre alternant ! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
+      />
+      <Specialized
+        srcImg={Formsimg}
+        srcImg2={Speechimg}
+        srcImg3={Supportimg}
+        srcImg4={Cgv}
+        p="CGV"
+      />
       <Simplified />
       <Footer />
     </>

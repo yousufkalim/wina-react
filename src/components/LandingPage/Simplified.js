@@ -34,7 +34,7 @@ const Simplified = () => {
             </p>
             <div className="buttons2">
               <button className="SimplifiedButon">Je m’inscris</button>
-              <button className="SimplifiedButon">Contacte-nous !</button>
+              <button className="SimplifiedButon2">Contacte-nous !</button>
             </div>
           </div>
           <div className="SimplifiedImg-container">

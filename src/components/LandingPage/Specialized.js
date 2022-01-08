@@ -1,9 +1,6 @@
 import React from "react";
-import Formsimg from "../../assets/Formsimg.png";
-import Speechimg from "../../assets/Speechimg.png";
-import Supportimg from "../../assets/Supportimg.png";
 
-const Specialized = () => {
+const Specialized = (props) => {
   return (
     <>
       <div className="specialized">
@@ -15,16 +12,22 @@ const Specialized = () => {
           <div className="cv-box">
             <div className="cv-container">
               <div className="cv_clm">
-                <img className="spec_icon" src={Formsimg} alt="" />
+                <img className="spec_icon" src={props.srcImg} alt="" />
                 <p className="iconP">CV</p>
               </div>
               <div className="cv_clm">
-                <img className="spec_icon" src={Speechimg} alt="" />
-                <p className="iconP">CV</p>
+                <img className="spec_icon" src={props.srcImg2} alt="" />
+                <p className="iconP">Coaching</p>
               </div>
+              {props.srcImg4 && (
+                <div className="cv_clm">
+                  <img className="spec_icon" src={props.srcImg4} alt="" />
+                  <p className="iconP">{props.p}</p>
+                </div>
+              )}
               <div className="cv_clm">
-                <img className="spec_icon" src={Supportimg} alt="" />
-                <p className="iconP">CV</p>
+                <img className="spec_icon" src={props.srcImg3} alt="" />
+                <p className="iconP">Matching</p>
               </div>
             </div>
           </div>
