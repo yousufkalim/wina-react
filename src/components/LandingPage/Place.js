@@ -10,8 +10,9 @@ const Place = (props) => {
               <img className="boostGImg" src={props.srcImg} alt="" />
             </div>
             <div className="plase_col2">
-              <div>
+              <div className="plase-heading">
                 <h3 className="boostH3">{props.text}</h3>
+                <hr className="boost_hr3" />
               </div>
               <p className="boostP">{props.text3}</p>
               <p className="boostP">{props.text4}</p>

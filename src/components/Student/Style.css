@@ -20,6 +20,7 @@ body {
 .application-heading {
   margin-top: 50px;
   margin-bottom: 76px;
+  position: relative;
 }
 .applicationH1 {
   font-weight: 600;
@@ -28,8 +29,16 @@ body {
 .applicationP {
   font-size: 33px;
   font-weight: 500;
-  border-bottom: 11px solid #e0c399;
   display: inline-block;
+}
+.application_hr {
+  background-color: #e0c399;
+  width: 89%;
+  height: 10px;
+  position: absolute;
+  top: 65%;
+  left: 5.5%;
+  z-index: -1;
 }
 .application-heading-2 {
   width: 50%;

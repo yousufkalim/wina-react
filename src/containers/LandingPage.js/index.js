@@ -1,6 +1,6 @@
 import React from "react";
-import HomeHeader2 from "../../components/Header/header2";
-import Hero from "../../components/LandingPage/Hero";
+import HomeHeader2 from "../../components/Header";
+import Hero2 from "../../components/LandingPage/Hero2";
 import Booste from "../../components/LandingPage/Booste";
 import Perfect from "../../components/LandingPage/Perfect";
 import Place from "../../components/LandingPage/Place";
@@ -19,13 +19,17 @@ import Formsimg from "../../assets/Formsimg.png";
 import Speechimg from "../../assets/Speechimg.png";
 import Supportimg from "../../assets/Supportimg.png";
 
-const Index = () => {
+const Index = (props) => {
   return (
     <>
-      <HomeHeader2 />
-      <Hero
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
+      <Hero2
         srcImg3={Videoicon}
-        srcImg={Heroimg}
+        // srcImg={Heroimg}
         h2text="Matching.Echange.Recrutement"
         btn="Créer mon profil étudiant"
       />

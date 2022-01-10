@@ -10,7 +10,7 @@ const Simplified = () => {
         <div className="Simplified_container">
           <div className="Simplified_headings">
             <h3 className="SimplifiedH3">
-              Simplifie-toi la vie, télécharge l’application Wina
+              Simplifie-toi la vie, télécharge l’application Winaa
             </h3>
             <p className="SimplifiedP">
               Tu peux matcher , swiper à n’importe quel moment de la journée.

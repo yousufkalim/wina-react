@@ -17,6 +17,9 @@ body {
   width: 100%;
   position: relative;
 }
+.hero_img2 {
+  position: absolute;
+}
 .heroImg {
   width: 100%;
   height: 90vh;
@@ -35,6 +38,8 @@ body {
 .heroimgico {
   width: 100px;
   margin-bottom: 10px;
+  position: absolute;
+  top: 35%;
 }
 .hero_heading {
   position: absolute;
@@ -42,11 +47,28 @@ body {
   left: 0;
 }
 .heroH2 {
+  /* position: relative; */
   color: #fff;
   font-weight: 600;
   font-size: 4.2rem;
-  margin-bottom: 60px;
-  border-bottom: 11px solid #e0c399;
+  margin-bottom: 85px;
+  margin-top: 86px;
+}
+.H2_boost_hr {
+  background-color: #e0c399;
+  width: 54%;
+  height: 24px;
+  position: absolute;
+  top: 63%;
+  left: 23%;
+}
+.H2_boost_hr2 {
+  background-color: #e0c399;
+  width: 76%;
+  height: 24px;
+  position: absolute;
+  top: 63%;
+  left: 12%;
 }
 .heroBtn {
   background-color: #192247;
@@ -55,6 +77,7 @@ body {
   font-weight: 600;
   padding: 10px 30px;
   border-radius: 25px;
+  margin-bottom: 70px;
 }
 /* boost component */
 .boost {
@@ -70,13 +93,37 @@ body {
   font-weight: 600;
   font-size: 4.2rem;
 }
+.heading-div {
+  position: relative;
+}
+.heading-div2 {
+  position: relative;
+}
 .boostH3 {
   font-size: 2.2rem;
   font-weight: 600;
   margin-top: 5px;
-  border-bottom: 11px solid #e0c399;
   margin-bottom: 20px;
   display: inline-block;
+  z-index: 1;
+  position: relative;
+}
+.boost_hr {
+  background-color: #e0c399;
+  width: 78%;
+  height: 10px;
+  position: absolute;
+  top: 1px;
+  left: -34px;
+}
+.boost_hr2 {
+  background-color: #e0c399;
+  width: 37.6%;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  z-index: 0;
 }
 .boostP {
   font-size: 2.2rem;
@@ -115,6 +162,18 @@ body {
   padding-right: 31px;
   margin: 19px 41px 50px 0;
 }
+.perfact_hr {
+  position: relative;
+}
+.boost_hr4 {
+  background-color: #e0c399;
+  width: 23%;
+  height: 10px;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  z-index: 0;
+}
 /* Place component */
 .boost2 {
   width: 100%;
@@ -128,6 +187,18 @@ body {
   padding-right: 31px;
   margin: 19px 41px 0px 30px;
 }
+.plase-heading {
+  position: relative;
+}
+.boost_hr3 {
+  background-color: #e0c399;
+  width: 34%;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  z-index: 0;
+}
 /* Specialized component */
 .specialized {
   width: 100%;
@@ -140,6 +211,7 @@ body {
 }
 .specialized_heading {
   margin-top: 50px;
+  position: relative;
 }
 .specializedH2 {
   font-size: 3.7rem;
@@ -149,8 +221,25 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 50px;
-  border-bottom: 11px solid #e0c399;
   display: inline-block;
+  position: relative;
+}
+.boost_hr5 {
+  background-color: #e0c399;
+  width: 26%;
+  height: 8px;
+  position: absolute;
+  left: 37%;
+  bottom: 43px;
+  z-index: -1;
+}
+.boost_hr2_div {
+  background-color: #e0c399;
+  width: 72%;
+  height: 10px;
+  position: absolute;
+  top: 13px;
+  left: 0;
 }
 .cv-container {
   display: flex;

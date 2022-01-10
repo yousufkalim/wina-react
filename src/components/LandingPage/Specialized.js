@@ -8,6 +8,7 @@ const Specialized = (props) => {
           <div className="specialized_heading">
             <h2 className="specializedH2">Accompagnement spécialisé</h2>
             <p className="specializedP">Avec l’abonnement Winaa</p>
+            <hr className="boost_hr5" />
           </div>
           <div className="cv-box">
             <div className="cv-container">

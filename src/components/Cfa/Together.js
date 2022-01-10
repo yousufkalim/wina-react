@@ -11,6 +11,7 @@ const Together = () => {
             <p className="togetherP">
               Notre équipe spécialisée accompagne les CFA sur différents axes :
             </p>
+            <hr className="togather_hr" />
           </div>
           <div className="together-secondDiv">
             <div className="togetherCol1">

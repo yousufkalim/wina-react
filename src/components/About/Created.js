@@ -9,6 +9,7 @@ const Created = () => {
             <p className="togetherP2">
               Ils ont donc créé Winaa, avec un objectif simple :
             </p>
+            <hr className="togather_hr2" />
           </div>
           <div className="together-secondDiv2">
             <div className="togetherCol1">

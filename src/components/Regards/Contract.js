@@ -17,11 +17,13 @@ const Contract = () => {
           <ContractData
             heading="Rénumération "
             text2="Dans le cadre du contrat d’apprentissage, l’apprenti(e) bénéficie d’une rémunération variant en fonction de son âge ; en outre, sa rémunération progresse chaque nouvelle année d’exécution de son contrat. Le salaire minimum perçu par l’apprenti correspond à un pourcentage du Smic ou du SMC (salaire minimum conventionnel de l’emploi occupé) pour les plus de 21 ans."
+            showBorder={true}
           />
           <ContractData
             heading="Type de contrat"
             text="Le contrat d’apprentissage est conclu en contrat à durée limitée ou dans le cadre d’un contrat à durée indéterminée (CDI).
                    La durée varie en fonction de la formation choisie. La période d’apprentissage étant en principe de deux années, elle peut cependant être de 6 mois ou 3 ans dans un certains cas dérogatoires, voire 4 ans pour les travailleurs handicapés."
+            showBorders={true}
           />
         </div>
       </div>

@@ -11,6 +11,7 @@ const index = () => {
     <>
       <HomeHeader2 />
       <Winaa
+        heading="Winaa, booster d’alternance"
         img={LogoWina}
         text4=" Notre atout ? notre collaboration avec les CFA afin de réaliser
                 un véritable accompagnement lors du processus de placement des
@@ -26,7 +27,7 @@ const index = () => {
                "
       />
       <Services />
-      <Contract />
+      <Contract ServicesBorder={true} />
       <Footer />
     </>
   );

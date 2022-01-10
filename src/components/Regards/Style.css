@@ -28,7 +28,7 @@ body {
 }
 .winaH1 {
   font-weight: 600;
-  font-size: 3.4rem;
+  font-size: 4.4rem;
   margin-bottom: 50px;
 }
 .wina-col1 {
@@ -42,7 +42,7 @@ body {
   width: 100%;
 }
 .wina-col2 {
-  width: 60%;
+  width: 53%;
 }
 .winatext_container {
   overflow: scroll;
@@ -57,14 +57,15 @@ body {
   font-size: 2.2rem;
   line-height: 1.2;
   overflow: hidden;
+  margin-bottom: 0;
 }
 /* ///////////// Services /////////// */
 .Services {
   background-color: #f8f8f8;
-  padding: 80px 0;
+  padding: 60px 0;
 }
 .ServicesH1 {
-  font-size: 3.4rem;
+  font-size: 4.4rem;
   font-weight: 600;
   text-align: center;
 }
@@ -75,16 +76,55 @@ body {
 .ServicesHeading {
   padding: 22px 10px;
   text-align: center;
+  position: relative;
+}
+.ServicesHeading2 {
+  padding: 22px 10px;
+  text-align: center;
+  position: relative;
 }
 .ServicesH2 {
   font-weight: 600;
   font-size: 1.9rem;
-  border-bottom: 11px solid #e0c399;
+  position: relative;
+  z-index: 5;
+
   display: inline-block;
   margin-bottom: 20px;
   width: 15%;
   margin-top: 26px;
-  padding-bottom: 5px;
+}
+.Services_hr {
+  background-color: #e0c399;
+  width: 13%;
+  height: 8px;
+  position: absolute;
+  top: 76px;
+  left: 44%;
+}
+.Services_hr1 {
+  background-color: #e0c399;
+  width: 7%;
+  height: 9px;
+  position: absolute;
+  top: 69px;
+  left: 46.5%;
+}
+.Services_hr2 {
+  background-color: #e0c399;
+  width: 12%;
+  height: 9px;
+  position: absolute;
+  top: 69px;
+  left: 44%;
+}
+.Services_hr3 {
+  background-color: #e0c399;
+  width: 13.7%;
+  height: 9px;
+  position: absolute;
+  top: 69px;
+  left: 43.3%;
 }
 .ServicesP {
   font-size: 2.1rem;
@@ -105,7 +145,7 @@ body {
   padding: 65px 0 0 0;
 }
 .ServicesH12 {
-  font-size: 3.4rem;
+  font-size: 4.2rem;
   font-weight: 600;
   text-align: center;
 }
