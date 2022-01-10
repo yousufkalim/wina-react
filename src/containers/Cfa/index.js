@@ -15,6 +15,7 @@ const index = () => {
         srcImg={Cfaimg}
         h2text="Optimisez L’accompagnement des alternants"
         btn="Contactez-nous"
+        showBorderS={true}
       />
       <Together />
       <Animation />

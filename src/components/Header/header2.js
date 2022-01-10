@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Image } from "react-bootstrap";
 import "../../components/Header/Style.css";
+import StudentRegister from "./Modals/studentRegisterModal";
 
 export default function header2(props) {
   const { handleModal } = props;
@@ -36,11 +37,16 @@ export default function header2(props) {
         <Nav>
           <Nav.Link
             className=" navbar-right-link"
-            onClick={() => handleModal("main")}
+            onClick={() => handleModal("student")}
           >
             S’inscrire
           </Nav.Link>
-          <Nav.Link className=" navbar-right-link-end">Se connecter</Nav.Link>
+          <Nav.Link
+            className=" navbar-right-link-end"
+            onClick={() => handleModal("main")}
+          >
+            Se connecter
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

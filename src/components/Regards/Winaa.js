@@ -5,7 +5,7 @@ const Winaa = (props) => {
   return (
     <>
       <div className="winaa">
-        <h1 className="winaH1">Winaa, booster d’alternance</h1>
+        <h1 className="winaH1">{props.heading}</h1>
         <div className="wina-container">
           <div className="wina-col1">
             <div className="winaLogo">

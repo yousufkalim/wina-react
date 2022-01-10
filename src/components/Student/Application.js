@@ -14,6 +14,8 @@ const Application = (props) => {
               Il vous suffit simplement de choisir l’offre qui correspond le
               mieux à vos besoins.
             </p>
+            {/* <hrs className={`${props.showBorder && "H2_boost_hr"} */}
+            <hr className="application_hr" />
           </div>
           <div className="application-heading-2">
             <h1 className="applicationH12">Nos packs étudiants</h1>

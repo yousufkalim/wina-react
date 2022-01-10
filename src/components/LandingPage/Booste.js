@@ -14,6 +14,9 @@ const Booste = (props) => {
             <div className="boost_col2">
               <div className="heading-div">
                 <h3 className="boostH3">{props.text2}</h3>
+                <hr
+                  className={`boost_hr ${props.showBorer && "boost_hr2_div "}`}
+                />
               </div>
               <p className="boostP">{props.text3}</p>
               <p className="boostP2">{props.text4}</p>

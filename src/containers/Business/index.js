@@ -26,6 +26,7 @@ const Index = () => {
       <Hero
         srcImg={Heroimg}
         h2text="Matching.Echange.Recrutement"
+        showBorder={true}
         btn="Créer mon profil étudiant"
       />
       <Booste
@@ -34,6 +35,7 @@ const Index = () => {
         text2=" Des profils adaptés à vos recherches "
         text3=" Winaa vous donne accès à des profils opérationnels qui correspondent à vos critères de recherche préalablement renseignés.
 Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité. "
+        showBorer={true}
       />
       <Perfect
         srcImg={BusImg2}

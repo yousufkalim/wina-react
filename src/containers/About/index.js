@@ -11,6 +11,7 @@ const index = () => {
     <div>
       <HomeHeader2 />
       <Winaa
+        heading="L’équipe Winaa"
         img={Aboutimg}
         text3="Travaillant dans ce secteur, Marie décide également d'intégrer Jean-Yves, professionnel de l’alternance depuis plus de 5 ans qui avait aussi pour ambition de contribuer à la croissance des formations en apprentissage."
         text2="Elles ont pu constater d’une part la difficulté pour des jeunes à trouver une alternance et d'autre part, celle des entreprises à trouver un(e) apprenti(e) motivé(e) et rapidement opérationnel(le). Enfin, aucune entreprise n'avait encore choisi de se positionner de façon spécialisée sur le marché de l’apprentissage.

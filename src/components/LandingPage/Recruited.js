@@ -9,8 +9,9 @@ const Recruited = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <div>
+              <div className="perfact_hr">
                 <h3 className="boostH3">{props.text}</h3>
+                <hr className="boost_hr4" />
               </div>
               <p className="boostP">{props.text2}</p>
             </div>

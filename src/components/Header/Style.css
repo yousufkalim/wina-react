@@ -1,3 +1,7 @@
+.navbar {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 17px !important;
+}
 .dropbtn {
   color: rgb(83, 83, 83);
   border: none;

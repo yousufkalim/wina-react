@@ -19,6 +19,7 @@ body {
 .togetherHeading {
   margin: 50px 0;
   text-align: center;
+  position: relative;
 }
 .togetherH1 {
   font-weight: 600;
@@ -27,14 +28,30 @@ body {
 .togetherP {
   font-size: 28px;
   font-weight: 500;
-  border-bottom: 11px solid #e0c399;
   display: inline-block;
   width: 80%;
+}
+.togather_hr {
+  background-color: #e0c399;
+  width: 60.7%;
+  height: 10px;
+  position: absolute;
+  top: 65%;
+  left: 19.7%;
+  z-index: -1;
+}
+.togather_hr2 {
+  background-color: #e0c399;
+  width: 54.7%;
+  height: 8px;
+  position: absolute;
+  top: 28%;
+  left: 22.7%;
+  z-index: -1;
 }
 .togetherP2 {
   font-size: 28px;
   font-weight: 500;
-  border-bottom: 11px solid #e0c399;
   display: inline-block;
 }
 .together-secondDiv {
@@ -48,15 +65,15 @@ body {
   font-size: 35px;
   background-color: #e0c399;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 .faIcon2 {
   font-size: 35px;
   background-color: #e0c399;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 .chackP {
   font-size: 2.3rem;
@@ -86,7 +103,7 @@ body {
   background-color: #192349;
   color: #fff;
   width: 80%;
-  height: 38%;
+  height: 33%;
   margin: auto;
   padding: 46px 12px 77px 12px;
   font-size: 1.3rem;
@@ -96,7 +113,7 @@ body {
   background-color: #e0c399;
   color: #fff;
   width: 80%;
-  height: 38%;
+  height: 33%;
   margin: auto;
   padding: 46px 12px 77px 12px;
   font-size: 1.3rem;
@@ -113,9 +130,10 @@ body {
   padding-top: 1px;
   color: #fff;
 }
-.animBTN:active {
+.animBTN:focus {
   border: none;
   outline: none;
+  border: 5px solid #fff;
 }
 .animBTN2 {
   border: 5px solid #fff;
@@ -127,6 +145,11 @@ body {
   margin-top: -19px;
   padding-top: 1px;
   color: #fff;
+}
+.animBTN2:focus {
+  border: none;
+  outline: none;
+  border: 5px solid #fff;
 }
 /* Form component */
 .form {

@@ -8,8 +8,9 @@ const Perfect = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <div className="heading-div">
+              <div className="heading-div2" style={{ position: "relative" }}>
                 <h3 className="boostH3">{props.text}</h3>
+                <hr className="boost_hr2" />
               </div>
               <p className="boostP">{props.text2}</p>
             </div>

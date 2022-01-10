@@ -7,7 +7,8 @@ import ResetPasswordModal from "./Modals/resetModal";
 import EmailVerificationModal from "./Modals/emailVerificationModal";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
 
-import HomeHeader from "./header";
+import HomeHeader1 from "./header";
+import HomeHeader2 from "./header2";
 
 /**
  * @author
@@ -81,55 +82,62 @@ const Header = (props) => {
         handleModal={handleModal}
         id={props.token}
       />
-
       <div className="home_container">
-        <HomeHeader handleModal={handleModal} />
-        <div className="homeBackground">
-          <div className="homebackground-text">
-            <h1>
-              BOOSTER DE <br />
-              L’APPRENTISSAGE
-            </h1>
-            <p>Faire de l’alternance, la voix de l’excellence</p>
-          </div>
+        {props.header === "2" ? (
+          <HomeHeader2 handleModal={handleModal} />
+        ) : (
+          <HomeHeader1 handleModal={handleModal} />
+        )}
+        {props.header === "2" ? (
+          ""
+        ) : (
+          <div className="homeBackground">
+            <div className="homebackground-text">
+              <h1>
+                BOOSTER DE <br />
+                L’APPRENTISSAG
+              </h1>
+              <p>Faire de l’alternance, la voix de l’excellence</p>
+            </div>
 
-          <div className="post_mobile-view_responsive">
-            <div
-              className="post_mobile-view-content"
-              style={{ paddingBottom: "6rem" }}
-            >
-              <div className="post_icons">
-                <Image src="../images/PostAnOffer.png" alt="Post an offer" />
-                <div className="label">Poster une offre</div>
-              </div>
+            <div className="post_mobile-view_responsive">
+              <div
+                className="post_mobile-view-content"
+                style={{ paddingBottom: "6rem" }}
+              >
+                <div className="post_icons">
+                  <Image src="../images/PostAnOffer.png" alt="Post an offer" />
+                  <div className="label">Poster une offre</div>
+                </div>
 
-              <div className="post_icons">
-                <Image src="../images/faq.png" alt="Post an offer" />
-                <div className="label">FAQ</div>
-              </div>
+                <div className="post_icons">
+                  <Image src="../images/faq.png" alt="Post an offer" />
+                  <div className="label">FAQ</div>
+                </div>
 
-              <div className="post_icons">
-                <Image src="../images/uploadcv.png" alt="Post an offer" />
-                <div className="label">Télécharger votre CV</div>
-              </div>
+                <div className="post_icons">
+                  <Image src="../images/uploadcv.png" alt="Post an offer" />
+                  <div className="label">Télécharger votre CV</div>
+                </div>
 
-              <div className="post_icons">
-                <Image src="../images/register.png" alt="Post an offer" />
-                <div className="label">S’inscrire</div>
-              </div>
+                <div className="post_icons">
+                  <Image src="../images/register.png" alt="Post an offer" />
+                  <div className="label">S’inscrire</div>
+                </div>
 
-              <div className="post_icons">
-                <Image src="../images/contact_us.png" alt="Post an offer" />
-                <div className="label">Contactez-nous</div>
-              </div>
+                <div className="post_icons">
+                  <Image src="../images/contact_us.png" alt="Post an offer" />
+                  <div className="label">Contactez-nous</div>
+                </div>
 
-              <div className="post_icons">
-                <Image src="../images/cgv.png" alt="Post an offer" />
-                <div className="label">CGV</div>
+                <div className="post_icons">
+                  <Image src="../images/cgv.png" alt="Post an offer" />
+                  <div className="label">CGV</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
