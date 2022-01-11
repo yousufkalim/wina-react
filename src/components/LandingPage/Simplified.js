@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Googleplay from "../../assets/Googleplay.png";
 import Appstore from "../../assets/Appstore.png";
 import Mobilepic from "../../assets/Mobilepic.png";
+import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 
 const Simplified = () => {
+  const [studentModal, setstudentModal] = useState(false);
+
+  const handleModal = () => {
+    setstudentModal(!studentModal);
+  };
+
   return (
     <>
       <div className="Simplified">
@@ -33,9 +40,17 @@ const Simplified = () => {
               Inscris-toi dès maintenant !
             </p>
             <div className="buttons2">
-              <button className="SimplifiedButon">Je m’inscris</button>
-              <button className="SimplifiedButon2">Contacte-nous !</button>
+              <button
+                className="SimplifiedButon"
+                onClick={() => handleModal("student")}
+              >
+                Je m’inscris
+              </button>
+              <a href="/Cfa#form">
+                <button className="SimplifiedButon2">Contacte-nous !</button>
+              </a>
             </div>
+            <StudentRegister show={studentModal} handleModal={handleModal} />
           </div>
           <div className="SimplifiedImg-container">
             <div className="boxImg-div">

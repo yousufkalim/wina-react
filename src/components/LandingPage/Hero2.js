@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 
 const Hero2 = (props) => {
+  const [studentModal, setstudentModal] = useState(false);
+
+  const handleModal = () => {
+    setstudentModal(!studentModal);
+  };
   return (
     <div>
       <div className="hero_section">
@@ -15,9 +21,12 @@ const Hero2 = (props) => {
             <div style={{ position: "relative" }}>
               <h2 className="heroH2">{props.h2text}</h2>
             </div>
-            <button className="heroBtn">{props.btn}</button>
+            <button className="heroBtn" onClick={() => handleModal("student")}>
+              {props.btn}
+            </button>
           </div>
         </div>
+        <StudentRegister show={studentModal} handleModal={handleModal} />
       </div>
     </div>
   );

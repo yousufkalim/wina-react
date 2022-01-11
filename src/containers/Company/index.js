@@ -1,13 +1,17 @@
 import React from "react";
-import HomeHeader2 from "../../components/Header/header2";
+import HomeHeader2 from "../../components/Header";
 import Application from "../../components/Student/Application";
 import Pack from "../../components/Student/Pack";
 import Footer from "../../components/Footer";
-const index = () => {
+const index = (props) => {
   return (
     <div>
-      <HomeHeader2 />
-      <Application btnT="Annuel" />
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
+      <Application btnT="Annuel" text="Nos Packs entreprises" />
       <Pack
         addUpperMargin={true}
         texth1="Pack Recrutement"

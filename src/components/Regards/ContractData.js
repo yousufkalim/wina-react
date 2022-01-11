@@ -11,6 +11,7 @@ const ContractData = (props) => {
           className={`Services_hr1 ${props.showBorders && "Services_hr3"}`}
         />
         <p className="ServicesP">{props.text}</p>
+        <p className="ServicesP">{props.textP2}</p>
         <p className="ServicesP">{props.text2}</p>
         <p className="ServicesP">{props.text3}</p>
       </div>

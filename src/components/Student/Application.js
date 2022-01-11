@@ -18,7 +18,7 @@ const Application = (props) => {
             <hr className="application_hr" />
           </div>
           <div className="application-heading-2">
-            <h1 className="applicationH12">Nos packs étudiants</h1>
+            <h1 className="applicationH12">{props.text}</h1>
             <button className="applicationBTN">Mensuel</button>
             <button className="applicationBTN2">{props.btnT} </button>
             <p className="applicationP2">Économisez 10%</p>

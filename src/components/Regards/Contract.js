@@ -21,8 +21,8 @@ const Contract = () => {
           />
           <ContractData
             heading="Type de contrat"
-            text="Le contrat d’apprentissage est conclu en contrat à durée limitée ou dans le cadre d’un contrat à durée indéterminée (CDI).
-                   La durée varie en fonction de la formation choisie. La période d’apprentissage étant en principe de deux années, elle peut cependant être de 6 mois ou 3 ans dans un certains cas dérogatoires, voire 4 ans pour les travailleurs handicapés."
+            text="Le contrat d’apprentissage est conclu en contrat à durée limitée ou dans le cadre d’un contrat à durée indéterminée (CDI)."
+            textP2=" La durée varie en fonction de la formation choisie. La période d’apprentissage étant en principe de deux années, elle peut cependant être de 6 mois ou 3 ans dans un certains cas dérogatoires, voire 4 ans pour les travailleurs handicapés."
             showBorders={true}
           />
         </div>

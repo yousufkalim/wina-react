@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHeader2 from "../../components/Header/header2";
+import HomeHeader2 from "../../components/Header";
 import Hero from "../../components/LandingPage/Hero";
 import Booste from "../../components/LandingPage/Booste";
 import Perfect from "../../components/LandingPage/Perfect";
@@ -19,15 +19,19 @@ import Speechimg from "../../assets/Speechimg.png";
 import Supportimg from "../../assets/Supportimg.png";
 import Cgv from "../../assets/Cgv.png";
 
-const Index = () => {
+const Index = (props) => {
   return (
     <>
-      <HomeHeader2 />
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
       <Hero
         srcImg={Heroimg}
         h2text="Matching.Echange.Recrutement"
         showBorder={true}
-        btn="Créer mon profil étudiant"
+        btno="Créer mon profil  entreprise"
       />
       <Booste
         srcImg={BusImg1}

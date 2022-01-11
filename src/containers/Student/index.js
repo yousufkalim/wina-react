@@ -1,15 +1,19 @@
 import React from "react";
 import "../../components/Cfa/Style.css";
-import HomeHeader2 from "../../components/Header/header2";
+import HomeHeader2 from "../../components/Header";
 import Application from "../../components/Student/Application";
 import Pack from "../../components/Student/Pack";
 import Footer from "../../components/Footer";
 
-const index = () => {
+const index = (props) => {
   return (
     <>
-      <HomeHeader2 />
-      <Application btnT="Trimestriel" />
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
+      <Application btnT="Trimestriel" text="Nos packs étudiants" />
       <Pack
         texth1="Pack Découverte"
         texth3="9,99€ / mois"

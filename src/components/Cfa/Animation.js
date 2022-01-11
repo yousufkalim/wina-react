@@ -13,7 +13,10 @@ const Animation = () => {
           <div className="animaiton_box">
             <img src={AnimImg1} alt="" className="animationIMG" />
             <h4 className="animaitonH4">Animation d’atelier TRE</h4>
-            <button className="animBTN">+</button>
+            <button className="animBTN">
+              {" "}
+              <i class=" animIcon fas fa-plus"></i>
+            </button>
           </div>
           <div className="animaiton_box">
             <img src={AnimImg2} alt="" className="animationIMG" />
@@ -21,7 +24,10 @@ const Animation = () => {
               Coaching individuel à distance pour les alternants (savoir-être,
               présentation orale, simulation d’entretien)
             </h4>
-            <button className="animBTN2">+</button>
+            <button className="animBTN2">
+              {" "}
+              <i class=" animIcon fas fa-plus"></i>
+            </button>
           </div>
           <div className="animaiton_box">
             <img src={AnimImg3} alt="" className="animationIMG" />
@@ -29,7 +35,9 @@ const Animation = () => {
               Placement de candidats avec une entreprise sur des filières en
               tension
             </h4>
-            <button className="animBTN">+</button>
+            <button className="animBTN">
+              <i class=" animIcon fas fa-plus"></i>
+            </button>
           </div>
           <div className="animaiton_box">
             <img src={AnimImg4} alt="" className="animationIMG" />
@@ -37,7 +45,10 @@ const Animation = () => {
               Mise en relation entre CFA et grands groupes pour un besoin de
               recrutement massif (Job Dating)
             </h4>
-            <button className="animBTN2">+</button>
+            <button className="animBTN2">
+              {" "}
+              <i class=" animIcon fas fa-plus"></i>
+            </button>
           </div>
         </div>
       </div>

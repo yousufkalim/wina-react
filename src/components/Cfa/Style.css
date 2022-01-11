@@ -129,6 +129,8 @@ body {
   margin-top: -19px;
   padding-top: 1px;
   color: #fff;
+  position: relative;
+  top: -12px;
 }
 .animBTN:focus {
   border: none;
@@ -145,12 +147,21 @@ body {
   margin-top: -19px;
   padding-top: 1px;
   color: #fff;
+  position: relative;
+  top: -12px;
 }
 .animBTN2:focus {
   border: none;
   outline: none;
   border: 5px solid #fff;
 }
+.animIcon {
+  position: absolute;
+  font-size: 20px;
+  top: 10px;
+  left: 28%;
+}
+
 /* Form component */
 .form {
   width: 100%;

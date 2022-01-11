@@ -1,15 +1,19 @@
 import React from "react";
-import HomeHeader2 from "../../components/Header/header2";
+import HomeHeader2 from "../../components/Header";
 import Winaa from "../../components/Regards/Winaa";
 import Services from "../../components/Regards/Services";
 import Contract from "../../components/Regards/Contract";
 import Footer from "../../components/Footer";
 import LogoWina from "../../assets/LogoWina.png";
 
-const index = () => {
+const index = (props) => {
   return (
     <>
-      <HomeHeader2 />
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
       <Winaa
         heading="Winaa, booster d’alternance"
         img={LogoWina}
