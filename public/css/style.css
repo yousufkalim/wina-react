@@ -349,8 +349,8 @@ html {
 }
 
 .modal-left-side {
-  flex-basis: 100%;
-  font-size: 22px;
+  flex-basis: 50%;
+  /* font-size: 22px; */
 }
 .modal-right-side {
   flex-basis: 50%;
