@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../components/LandingPage/Style.css";
+import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 
 const Hero = (props) => {
+  const [studentModal, setstudentModal] = useState(false);
+
+  const handleModal = () => {
+    setstudentModal(!studentModal);
+  };
+
   return (
     <div>
       <div className="hero_section">
@@ -16,8 +23,11 @@ const Hero = (props) => {
             <div style={{ position: "relative" }}>
               <h2 className="heroH2">{props.h2text}</h2>
             </div>
-            <button className="heroBtn">{props.btn}</button>
+            <button className="heroBtn" onClick={() => handleModal("company")}>
+              {props.btno}
+            </button>
           </div>
+          <StudentRegister show={studentModal} handleModal={handleModal} />
         </div>
       </div>
     </div>

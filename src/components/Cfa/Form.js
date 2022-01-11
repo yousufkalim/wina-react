@@ -27,7 +27,7 @@ const Form = () => {
   };
   return (
     <>
-      <div className="form">
+      <div className="form" id="form">
         <div className="form-container">
           <div className="form-inter-div">
             <h2 className="formH2">Contactez-nous !</h2>

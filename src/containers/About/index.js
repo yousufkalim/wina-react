@@ -1,15 +1,19 @@
 import React from "react";
-import HomeHeader2 from "../../components/Header/header2";
+import HomeHeader2 from "../../components/Header";
 import Winaa from "../../components/Regards/Winaa";
 import Aboutimg from "../../assets/Aboutimg.png";
 import Created from "../../components/About/Created";
 import AboutText from "../../components/About/AboutText";
 import Footer from "../../components/Footer";
 
-const index = () => {
+const index = (props) => {
   return (
     <div>
-      <HomeHeader2 />
+      <HomeHeader2
+        id={props.match.params.id}
+        token={props.match.params.token}
+        header="2"
+      />
       <Winaa
         heading="L’équipe Winaa"
         img={Aboutimg}

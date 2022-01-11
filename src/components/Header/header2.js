@@ -36,13 +36,13 @@ export default function header2(props) {
         </Nav>
         <Nav>
           <Nav.Link
-            className=" navbar-right-link"
+            className=" navbar-right-link navbar-right-link2"
             onClick={() => handleModal("student")}
           >
             S’inscrire
           </Nav.Link>
           <Nav.Link
-            className=" navbar-right-link-end"
+            className=" navbar-right-link-end navbar-right-link-end2"
             onClick={() => handleModal("main")}
           >
             Se connecter

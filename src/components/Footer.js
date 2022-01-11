@@ -32,7 +32,7 @@ const Footer = () => {
             <a className="footerLi" href="/">
               FAQ
             </a>
-            <a className="footerLi" href="">
+            <a className="footerLi" href="/cfa#form">
               Contact
             </a>
             <a className="footerLi" href="">

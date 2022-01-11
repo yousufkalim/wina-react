@@ -49,27 +49,26 @@ body {
   font-size: 4rem;
 }
 .applicationBTN {
-  border: 2px solid gray;
+  border: 2px solid #192349;
   background: none;
   padding: 8px 53px;
   border-radius: 20px;
-  margin: 30px 9% 0px 20%;
+  margin: 30px 4% 0px 15%;
+  color: #192349 !important;
+  font-weight: 600;
 }
 .applicationBTN2 {
-  border: 2px solid gray;
-  background: none;
+  border: 2px solid #192349;
+  background-color: #192349;
   padding: 8px 41px;
   border-radius: 20px;
-}
-.applicationBTN:hover,
-.applicationBTN2:hover {
-  background-color: #192349;
+  font-weight: 600;
   color: #fff;
 }
 .applicationP2 {
   display: inline;
   font-weight: 600;
-  margin-left: 46px;
+  margin-left: 26px;
 }
 /* //////////// Pack component ///////////// */
 .Pack {
@@ -122,19 +121,17 @@ body {
 .packBTN2 {
   display: block;
   margin: auto;
-  border: 1px solid gray;
-  background: none;
+  border: 1px solid #192349;
+  background-color: #192349;
   padding: 8px 41px;
   border-radius: 20px;
   margin-bottom: 25px;
-}
-.packBTN:hover {
-  background-color: #192349;
   color: #fff;
+  font-weight: 600;
 }
-.packBTN2:hover {
-  color: #fff;
+.packBTN2 {
   background-color: #e0c399;
+  border: 1px solid #e0c399;
 }
 .mb-100 {
   margin-bottom: 100px;
