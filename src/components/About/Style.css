@@ -36,14 +36,24 @@ body {
   line-height: 1.3;
   margin-bottom: 32px;
 }
+.togather_hr2 {
+  background-color: #e0c399;
+  width: 44.7%;
+  height: 10px;
+  position: absolute;
+  top: 22%;
+  left: 27.7%;
+  z-index: -1;
+}
 @media only screen and (max-width: 600px) {
   .togather2 {
-    margin-top: 46%;
+    margin-top: 60%;
   }
   .togetherP2 {
-    font-size: 23px;
-    border-bottom: 8px solid #e0c399;
+    font-size: 14px;
     width: 100%;
+    font-weight: 600;
+    margin-bottom: 22px;
   }
   .together-secondDiv2 {
     width: 100%;
@@ -59,17 +69,18 @@ body {
   }
   .winatext_container {
     overflow: scroll;
-    height: 39vh;
+    height: 42vh;
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .togather2 {
-    margin-top: 46%;
+    margin-top: 34%;
   }
   .togetherP2 {
-    font-size: 23px;
-    border-bottom: 8px solid #e0c399;
+    font-size: 16px;
     width: 100%;
+    font-weight: 600;
+    margin-bottom: 22px;
   }
   .together-secondDiv2 {
     width: 100%;
@@ -85,10 +96,26 @@ body {
   }
   .winatext_container {
     overflow: scroll;
-    height: 25vh;
+    height: 45vh;
   }
-  .winatext_container {
-    overflow: scroll;
-    height: 50vh;
+  .togather_hr2 {
+    width: 56.7%;
+    height: 7px;
+    top: 12%;
+    left: 21.7%;
+  }
+  .togather_hr2 {
+    width: 56.7%;
+    height: 7px;
+    top: 12%;
+    left: 21.7%;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1500px) {
+  .togather_hr2 {
+    width: 54.7%;
+    height: 7px;
+    top: 30%;
+    left: 22.7%;
   }
 }

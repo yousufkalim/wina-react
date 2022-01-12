@@ -170,7 +170,7 @@ body {
   }
   .wina-col2 {
     width: 100%;
-    padding: 0 34px;
+    padding: 0 1px;
   }
   .winaPera {
     padding: 0 12px;
@@ -185,7 +185,6 @@ body {
     padding: 0;
   }
   .ServicesH2 {
-    border-bottom: 6px solid #e0c399;
     width: 36%;
     margin-top: 18px;
   }
@@ -195,22 +194,50 @@ body {
   .ServicesH12 {
     font-size: 2.7rem;
   }
+  .Services_hr {
+    width: 22%;
+    height: 6px;
+    top: 32px;
+    left: 39%;
+  }
+  .Services_hr1 {
+    width: 17%;
+    height: 7px;
+    top: 48px;
+    left: 42%;
+  }
+  .Services_hr2 {
+    width: 26%;
+    height: 8px;
+    top: 48px;
+    left: 37%;
+  }
+  .Services_hr3 {
+    width: 28%;
+    height: 8px;
+    top: 48px;
+    left: 36%;
+  }
 }
+
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .winaa {
-    padding: 16px 0 50px 0;
+    padding: 0 0 0px 0;
   }
   .wina-container {
     flex-direction: column;
     height: 50vh;
   }
   .winaH1 {
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 38px;
   }
   .wina-col1 {
     width: 100%;
     margin-bottom: 30px;
+  }
+  .winaImg {
+    width: 60%;
   }
   .wina-col2 {
     width: 100%;
@@ -220,15 +247,15 @@ body {
     padding: 26px 0;
   }
   .ServicesH1 {
-    font-size: 2.7rem;
+    font-size: 3.7rem;
   }
   .ServicesHeading {
     padding: 0;
   }
   .ServicesH2 {
-    border-bottom: 6px solid #e0c399;
     width: 36%;
     margin-top: 18px;
+    font-size: 2.9rem;
   }
   .Services2 {
     padding: 23px 0 21px 0;
@@ -237,6 +264,45 @@ body {
     font-size: 2.7rem;
   }
   .winaPera {
-    padding: 0 12px;
+    padding: 0 29px;
+  }
+  .Services_hr {
+    width: 14%;
+    height: 6px;
+    top: 41px;
+    left: 43%;
+  }
+  .Services_hr1 {
+    width: 12%;
+    height: 8px;
+    top: 55px;
+    left: 44%;
+  }
+  .Services_hr2 {
+    width: 22%;
+    height: 8px;
+    top: 54px;
+    left: 39%;
+  }
+  .Services_hr3 {
+    width: 24%;
+    height: 8px;
+    top: 55px;
+    left: 38%;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1500px) {
+  .winatext_container {
+    overflow: scroll;
+    height: 44vh;
+    padding-top: 15px;
+  }
+  .wina-container {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    text-align: center;
+    margin: auto;
+    height: 40vh;
   }
 }

@@ -220,7 +220,6 @@ body {
   .togetherP {
     font-size: 9px;
     padding-top: 5px;
-    border-bottom: 7px solid #e0c399;
     width: 96%;
   }
   .chackP {
@@ -257,11 +256,27 @@ body {
     margin-bottom: 0;
     padding: 23px 0 31px 0;
   }
+  .formH2 {
+    margin-bottom: 40px;
+    margin-top: 22px;
+  }
   .animaitonH4 {
     font-size: 15px;
   }
   .animaitonH42 {
     font-size: 15px;
+  }
+  .togather_hr {
+    width: 79.7%;
+    height: 4px;
+    top: 60%;
+    left: 10%;
+  }
+  .togather_hr2 {
+    width: 85.7%;
+    height: 7px;
+    top: 12%;
+    left: 7.7%;
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
@@ -315,5 +330,21 @@ body {
   }
   .animaitonH42 {
     font-size: 15px;
+  }
+  .togather_hr {
+    width: 74.7%;
+    height: 7px;
+    top: 65%;
+    left: 12.7%;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1500px) {
+  .togetherP {
+    font-size: 26px;
+  }
+  .togather_hr {
+    width: 72.7%;
+    top: 65%;
+    left: 13.7%;
   }
 }
