@@ -87,7 +87,7 @@ html {
   font-weight: bold;
 }
 .homeBackground .post_icons img {
-  height: 61px;
+  /* height: 61px; */
 }
 .homeBackground .post_icons .label {
   font-size: 10px;

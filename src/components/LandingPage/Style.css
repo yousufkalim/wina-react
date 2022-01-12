@@ -36,6 +36,16 @@ body {
   background: rgba(0, 0, 0, 0.3);
   padding-top: 200px;
 }
+.hero_heading2 {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding-top: 200px;
+}
 .heroimgico {
   width: 100px;
   margin-bottom: 10px;
@@ -414,14 +424,26 @@ body {
     width: 100%;
   }
   .hero_heading {
-    height: 0;
-    top: 60px;
+    height: 24vh;
+    padding-top: 154px;
+  }
+  .H2_boost_hr {
+    width: 64%;
+    height: 7px;
+    top: 21.7%;
+    left: 18%;
+  }
+  .heroBtn {
+    margin-bottom: 37px;
   }
   .hero_img2 {
     background-color: #e8e8e8;
   }
+  .hero_img {
+    top: 65px;
+  }
   .heroImg {
-    height: 40vh;
+    height: 24vh;
   }
   .heroimgico {
     width: 65px;
@@ -434,7 +456,7 @@ body {
     margin-top: -35px;
   }
   .boost {
-    padding: 14px 0;
+    padding: 0 0;
   }
   .boostH1 {
     font-size: 2rem;
@@ -571,6 +593,16 @@ body {
   .buttons2 {
     text-align: center;
   }
+  .heroImg2 {
+    height: 24vh;
+    width: 100%;
+  }
+  .H2_boost_hr2 {
+    width: 92%;
+    height: 9px;
+    top: 21.5%;
+    left: 4%;
+  }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .navbar-toggler-icon {
@@ -582,18 +614,36 @@ body {
     width: 100%;
   }
   .hero_section {
-    height: 51vh;
+    height: 38vh;
     margin-top: -22px;
   }
   .heroimgico {
-    top: 21%;
+    top: 18%;
+    width: 88px;
+  }
+  .hero_img {
+    top: 76px;
   }
   .hero_img2 {
     background-color: #e8e8e8;
   }
   .hero_heading {
-    height: 53vh;
-    top: 60px;
+    height: 37vh;
+  }
+  .H2_boost_hr {
+    width: 58%;
+    height: 14px;
+    top: 32.5%;
+    left: 21%;
+  }
+  .H2_boost_hr2 {
+    width: 82%;
+    height: 17px;
+    top: 32%;
+    left: 9%;
+  }
+  .heroBtn {
+    margin-bottom: 107px;
   }
   .heroImg {
     height: 40vh;
@@ -605,8 +655,14 @@ body {
     font-size: 4rem;
   }
   .boostH1 {
-    font-size: 2.8rem;
+    font-size: 4rem;
     margin-bottom: 40px;
+  }
+  .boostH3 {
+    font-size: 4rem;
+  }
+  .boostP {
+    font-size: 2.5rem;
   }
   .boost_div {
     flex-direction: column;
@@ -623,50 +679,30 @@ body {
     margin-bottom: -28px;
   }
   .boost_hr {
-    width: 45%;
-    height: 6px;
-    top: 8px;
+    width: 73%;
+    height: 10px;
+    top: 21px;
   }
   .boost_hr2 {
-    width: 89%;
-    height: 6px;
-    top: 8px;
+    width: 38%;
+    height: 10px;
+    top: 21px;
   }
-  .boost_hr2 {
-    width: 22.6%;
-    height: 7px;
-    top: 7px;
-  }
+
   .boost_hr3 {
-    width: 20% !important;
-    height: 6px;
-    top: 9px;
+    width: 34.5%;
+    height: 10px;
+    top: 20px;
   }
   .boost_hr4 {
-    width: 13% !important;
-    height: 6px;
-    top: 9px;
+    width: 20%;
+    height: 10px;
+    top: 19px;
   }
   .boost_hr5 {
-    width: 32% !important;
+    width: 30%;
     height: 6px;
-    left: 34% !important;
-    bottom: 46px;
-  }
-  .boost_hr3 {
-    width: 40%;
-    height: 6px;
-    top: 9px;
-  }
-  .boost_hr4 {
-    width: 27%;
-    height: 6px;
-    top: 9px;
-  }
-  .boost_hr5 {
-    width: 60%;
-    height: 6px;
-    left: 20%;
+    left: 35%;
     bottom: 46px;
   }
   .perfect_col2 {
@@ -711,7 +747,7 @@ body {
     padding: 30px 20px 40px 20px;
   }
   .SimplifiedImg-container {
-    width: 98%;
+    width: 100%;
     justify-content: center;
   }
   .SimplifiedButon2 {
@@ -751,6 +787,10 @@ body {
   .cv_clm {
     margin-bottom: 10px;
   }
+  .heroImg2 {
+    height: 37vh;
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 993px) and (max-width: 1500px) {
   .footerInput {
@@ -759,38 +799,70 @@ body {
   .SimplifiedH3 {
     font-size: 2.7rem;
   }
+  .navbar-toggler-icon {
+    width: 2.5em !important;
+    height: 2.5em !important;
+  }
+  .hero_heading {
+    top: 78px;
+    left: 0;
+    height: 60vh;
+  }
+  .heroimgico {
+    width: 123px;
+    top: 22%;
+  }
+  .heroImg {
+    height: 60vh;
+  }
+  .hero_img {
+    top: inherit;
+  }
+  .heroH2 {
+    margin-bottom: 54px;
+  }
+  .H2_boost_hr {
+    width: 60.4%;
+    height: 17px;
+    top: 43.5%;
+    left: 20%;
+  }
   .boost_hr {
-    width: 86% !important;
-    height: 6px;
-    top: 8px;
+    width: 84% !important;
+    height: 8px;
+    top: 11px;
   }
   .boost_hr2 {
-    width: 43.6% !important;
-    height: 6px;
-    top: 8px;
-  }
-  .boost_hr2 {
-    width: 22.6%;
-    height: 7px;
-    top: 7px;
+    width: 42.6%;
+    height: 10px;
+    top: 10px;
   }
   .boost_hr3 {
-    width: 41% !important;
-    height: 6px;
+    width: 39% !important;
+    height: 10px;
     top: 9px;
   }
   .boost_hr4 {
-    width: 27% !important;
-    height: 6px;
+    width: 25% !important;
+    height: 10px;
     top: 9px;
   }
   .boost_hr5 {
-    width: 30% !important;
+    width: 28% !important;
     height: 6px;
-    left: 35% !important;
+    left: 36% !important;
     bottom: 46px;
   }
   .footer-container {
     width: 30%;
+  }
+  .heroBtn {
+    margin-bottom: 131px;
+  }
+  .H2_boost_hr2 {
+    width: 84%;
+    height: 24px;
+    top: 43%;
+    left: 8%;
   }
 }

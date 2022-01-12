@@ -144,12 +144,11 @@ body {
   .applicationP {
     font-size: 14px;
     font-weight: 400;
-    border-bottom: 8px solid #e0c399;
     padding: 20px 0;
   }
   .application-heading {
     margin-top: 0;
-    margin-bottom: 35px;
+    margin-bottom: 6px;
   }
   .application-heading-2 {
     width: 100%;
@@ -160,16 +159,19 @@ body {
   .applicationBTN {
     width: 68%;
     margin: 12px 0 12px 0px;
+    font-size: 15px;
   }
   .applicationBTN2 {
     display: block;
     width: 68%;
     margin: auto;
+    font-size: 15px;
   }
   .applicationP2 {
     display: block;
     font-size: 11px;
     margin: 10px 0 0 0;
+    font-size: 14px;
   }
   .pack-container {
     flex-direction: column;
@@ -185,11 +187,20 @@ body {
     font-size: 16px;
   }
   .liHeading {
-    padding: 27px 54px 0px 54px;
-    margin-bottom: 136px;
+    padding: 27px 30px 0px 30px;
+    margin-bottom: 80px;
   }
   .liHeading2 {
     margin-bottom: 78px;
+    padding: 27px 30px 0px 30px;
+    margin-bottom: 80px;
+  }
+  .packBTN,
+  .packBTN2 {
+    font-size: 12px;
+  }
+  .application_hr {
+    display: none;
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
@@ -198,10 +209,15 @@ body {
     font-size: 2.7rem;
   }
   .applicationP {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
-    border-bottom: 8px solid #e0c399;
-    padding: 20px 0;
+    padding: 6px 0;
+  }
+  .application_hr {
+    width: 96.5%;
+    height: 6px;
+    top: 56%;
+    left: 1.5%;
   }
   .application-heading {
     margin-top: 0;
@@ -216,19 +232,24 @@ body {
   .applicationBTN {
     width: 68%;
     margin: 12px 0 12px 0px;
+    font-size: 17px;
   }
+
   .applicationBTN2 {
     display: block;
     width: 68%;
     margin: auto;
+    font-size: 17px;
   }
   .applicationP2 {
     display: block;
     font-size: 11px;
     margin: 10px 0 0 0;
+    font-size: 17px;
   }
   .pack-container {
     flex-direction: column;
+    width: 70%;
   }
   .Pack {
     padding-bottom: 0;
@@ -238,7 +259,7 @@ body {
     margin-bottom: 23px;
   }
   .liPack {
-    font-size: 16px;
+    font-size: 25px;
   }
   .liHeading {
     padding: 27px 54px 0px 54px;
@@ -246,6 +267,10 @@ body {
   }
   .liHeading2 {
     margin-bottom: 78px;
+  }
+  .packBTN,
+  .packBTN2 {
+    font-size: 17px;
   }
 }
 @media only screen and (min-width: 993px) and (max-width: 1500px) {
@@ -272,5 +297,10 @@ body {
   }
   .applicationBTN {
     margin: 30px 7% 0px 13%;
+  }
+  .application_hr {
+    width: 85%;
+    top: 60%;
+    left: 7.5%;
   }
 }
