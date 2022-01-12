@@ -190,8 +190,23 @@
   .homeNavBar .navbar-nav {
     align-items: center;
   }
+  .justify-content-between {
+    flex-direction: column;
+    padding: 0rem !important;
+  }
+  .modal-left-side {
+    flex-basis: 100%;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  .student-modal .modal-body .Register {
+    padding: 0px 24px 0px 34px;
+    border-left: none;
+  }
+  .student-modal .modal-body .heading {
+    padding-bottom: 0rem !important;
+  }
 }
-
 @media screen and (max-width: 1100px) {
   .generalInformation {
     height: auto;
@@ -342,6 +357,22 @@
 @media screen and (max-width: 800px) {
   html {
     font-size: 45%;
+  }
+  .justify-content-between {
+    flex-direction: column;
+    padding: 0rem !important;
+  }
+  .modal-left-side {
+    flex-basis: 100%;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  .student-modal .modal-body .Register {
+    padding: 0px 24px 0px 34px;
+    border-left: none;
+  }
+  .student-modal .modal-body .heading {
+    padding-bottom: 0rem !important;
   }
 }
 
