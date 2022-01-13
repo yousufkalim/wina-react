@@ -9,7 +9,7 @@ import { Verify_email } from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button";
 import * as Yup from "yup";
-import Texts from  '../../../Globals/Texts'
+import Texts from "../../../Globals/Texts";
 import { useHistory, useParams } from "react-router-dom";
 export default function StudentRegister(props) {
   // Dispatch
@@ -43,12 +43,12 @@ export default function StudentRegister(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <div className="d-flex justify-content-between p-3">
+        <div className="d-flex justify-content-between p-3 Connexion-container">
           <div className="modal-left-side">
             <div className="Login">
               <div className="heading pb-5">Connexion</div>
               <form onSubmit={formik.handleSubmit}>
-                <div>
+                <div className="contact-form">
                   <p>{Texts.CLICK_BELOW_TO_VERIFY_EMAIL}</p>
                 </div>
 

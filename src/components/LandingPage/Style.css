@@ -416,21 +416,21 @@ body {
     height: 3.5em;
   }
   .hero_section {
-    height: 27vh;
-    margin-top: -22px;
+    height: 42vh;
+    /* margin-top: -22px; */
   }
   .home_container {
-    height: 82px;
+    /* height: 82px; */
     width: 100%;
   }
   .hero_heading {
-    height: 24vh;
-    padding-top: 154px;
+    height: 40vh;
+    /* padding-top: 154px; */
   }
   .H2_boost_hr {
     width: 64%;
     height: 7px;
-    top: 21.7%;
+    top: 25%;
     left: 18%;
   }
   .heroBtn {
@@ -443,11 +443,11 @@ body {
     top: 65px;
   }
   .heroImg {
-    height: 24vh;
+    height: 32vh;
   }
   .heroimgico {
     width: 65px;
-    top: 11%;
+    top: 13%;
   }
   .heroH2 {
     font-size: 2.2rem;
@@ -600,50 +600,50 @@ body {
   .H2_boost_hr2 {
     width: 92%;
     height: 9px;
-    top: 21.5%;
+    top: 24.9%;
     left: 4%;
   }
 }
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
   .navbar-toggler-icon {
     width: 3.5em;
     height: 3.5em;
   }
   .home_container {
-    height: 12vh;
+    /* height: 12vh; */
     width: 100%;
   }
   .hero_section {
-    height: 38vh;
+    height: 48vh;
     margin-top: -22px;
   }
   .heroimgico {
-    top: 18%;
+    top: 15%;
     width: 88px;
   }
   .hero_img {
-    top: 76px;
+    top: 58px;
   }
   .hero_img2 {
     background-color: #e8e8e8;
   }
   .hero_heading {
-    height: 37vh;
+    height: 50vh;
   }
   .H2_boost_hr {
     width: 58%;
     height: 14px;
-    top: 32.5%;
+    top: 30.5%;
     left: 21%;
   }
   .H2_boost_hr2 {
     width: 82%;
     height: 17px;
-    top: 32%;
+    top: 30%;
     left: 9%;
   }
   .heroBtn {
-    margin-bottom: 107px;
+    margin-bottom: 50px;
   }
   .heroImg {
     height: 40vh;
@@ -792,7 +792,7 @@ body {
     width: 100%;
   }
 }
-@media only screen and (min-width: 993px) and (max-width: 1500px) {
+@media only screen and (min-width: 1201px) and (max-width: 1500px) {
   .footerInput {
     margin-bottom: 10px;
   }

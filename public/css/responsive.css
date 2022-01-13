@@ -131,7 +131,7 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1500px) {
   html {
     font-size: 70%;
   }
@@ -190,8 +190,32 @@
   .homeNavBar .navbar-nav {
     align-items: center;
   }
+  .justify-content-between {
+    flex-direction: column;
+    padding: 0rem !important;
+  }
+  .modal-left-side {
+    flex-basis: 100%;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  .student-modal .modal-body .Register {
+    padding: 0px 24px 0px 34px;
+    border-left: none;
+  }
+  .student-modal .modal-body .heading {
+    padding-bottom: 0rem !important;
+  }
+  .navbar {
+    font-weight: 300;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    z-index: 7;
+    position: fixed !important;
+  }
+  .navbar-expand-xl .navbar-collapse {
+    margin: 0 !important;
+  }
 }
-
 @media screen and (max-width: 1100px) {
   .generalInformation {
     height: auto;
@@ -225,7 +249,7 @@
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   html {
     font-size: 50%;
   }
@@ -303,7 +327,7 @@
   }
   .home_container {
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
   }
   .post_mobile-view-content {
     gap: 2rem;
@@ -342,6 +366,22 @@
 @media screen and (max-width: 800px) {
   html {
     font-size: 45%;
+  }
+  .justify-content-between {
+    flex-direction: column;
+    padding: 0rem !important;
+  }
+  .modal-left-side {
+    flex-basis: 100%;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  .student-modal .modal-body .Register {
+    padding: 0px 24px 0px 34px;
+    border-left: none;
+  }
+  .student-modal .modal-body .heading {
+    padding-bottom: 0rem !important;
   }
 }
 
