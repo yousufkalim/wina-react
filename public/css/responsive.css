@@ -131,7 +131,7 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1500px) {
   html {
     font-size: 70%;
   }
@@ -249,7 +249,7 @@
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   html {
     font-size: 50%;
   }
