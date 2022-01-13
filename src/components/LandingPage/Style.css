@@ -420,7 +420,7 @@ body {
     margin-top: -22px;
   }
   .home_container {
-    height: 82px;
+    /* height: 82px; */
     width: 100%;
   }
   .hero_heading {
@@ -610,7 +610,7 @@ body {
     height: 3.5em;
   }
   .home_container {
-    height: 12vh;
+    /* height: 12vh; */
     width: 100%;
   }
   .hero_section {

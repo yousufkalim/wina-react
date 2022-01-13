@@ -206,6 +206,15 @@
   .student-modal .modal-body .heading {
     padding-bottom: 0rem !important;
   }
+  .navbar {
+    font-weight: 300;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    z-index: 7;
+    position: fixed !important;
+  }
+  .navbar-expand-xl .navbar-collapse {
+    margin: 0 !important;
+  }
 }
 @media screen and (max-width: 1100px) {
   .generalInformation {
@@ -318,7 +327,7 @@
   }
   .home_container {
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
   }
   .post_mobile-view-content {
     gap: 2rem;
