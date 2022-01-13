@@ -25,7 +25,9 @@ const ServicesData = (props) => {
             <button className="ServicesBTN"> {props.btnText}</button>
           </a>
         ) : (
-          <button className="ServicesBTN">{props.btnText}</button>
+          <a href="/Company">
+            <button className="ServicesBTN">{props.btnText}</button>
+          </a>
         )}
       </div>
       <StudentRegister show={studentModal} handleModal={handleModal} />
