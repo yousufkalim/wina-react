@@ -430,13 +430,13 @@ const CardWithImage = (props) => {
             </div>
             <div className="card-with-image-content text-left">
               {item.positionSought && item.positionSought.position} <br />
-              <div className="card-with-image-location">
+              {/* <div className="card-with-image-location">
                 <span className="mr-2">
                   <ImLocation className="card-with-image-location-icon" />
                 </span>
                 {item.user.address.street},{item.user.address.zip}{" "}
                 {item.user.address.city}
-              </div>
+              </div> */}
               <br />
             </div>
 

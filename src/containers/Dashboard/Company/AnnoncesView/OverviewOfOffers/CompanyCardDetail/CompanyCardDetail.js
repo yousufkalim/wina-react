@@ -486,39 +486,39 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
                 </div>
-               
-                  <div className="col-lg-12 my-5 pt-3">
-                    <RadioButton
-                      options={RythmeOptions}
-                      name="alternationRhythm"
-                      label="Rythme alternances :"
-                      value={formik.values.alternationRhythm}
-                      onChange={handleChange}
-                    />
+
+                <div className="col-lg-12 my-5 pt-3">
+                  <RadioButton
+                    options={RythmeOptions}
+                    name="alternationRhythm"
+                    label="Rythme alternances :"
+                    value={formik.values.alternationRhythm}
+                    onChange={handleChange}
+                  />
+                </div>
+                {formik.touched.alternationRhythm &&
+                formik.errors.alternationRhythm ? (
+                  <div className="formikErrorAuto">
+                    {" "}
+                    {formik.errors.alternationRhythm}
                   </div>
-                  {formik.touched.alternationRhythm &&
-                  formik.errors.alternationRhythm ? (
-                    <div className="formikErrorAuto">
+                ) : null}
+                <div className="col-lg-12 mt-4">
+                  <TextArea
+                    name="description"
+                    placeholder="Description"
+                    value={formik.values.description}
+                    onChange={handleChange}
+                    rows={3}
+                  />
+                  {formik.touched.description && formik.errors.description ? (
+                    <div className="formikErrorDesc">
                       {" "}
-                      {formik.errors.alternationRhythm}
+                      {formik.errors.description}
                     </div>
                   ) : null}
-                  <div className="col-lg-12 mt-4">
-                    <TextArea
-                      name="description"
-                      placeholder="Description"
-                      value={formik.values.description}
-                      onChange={handleChange}
-                      rows={3}
-                    />
-                    {formik.touched.description && formik.errors.description ? (
-                      <div className="formikErrorDesc">
-                        {" "}
-                        {formik.errors.description}
-                      </div>
-                    ) : null}
-                  </div>
-              
+                </div>
+
                 <div className="mt-5">
                   <div className="col-lg-4 col-md-6 offer-detail-skill-container">
                     <MultiAutoComplete
@@ -580,7 +580,10 @@ const CompanyCardDetail = (props) => {
                     </div>
                   </Col>
                 </Row> */}
-                <div className="offer-detail-date-container mt-1" style={{paddingLeft: "15px"}}>
+                <div
+                  className="offer-detail-date-container mt-1"
+                  style={{ paddingLeft: "15px" }}
+                >
                   {softSkillsDB && softSkillsDB.length > 0
                     ? softSkillsDB.map((job) => {
                         return (
@@ -597,26 +600,29 @@ const CompanyCardDetail = (props) => {
                     : ""}
                 </div>
                 <div>
-                <div className="col-lg-4 col-md-6 offer-detail-skill-container">
-                  <MultiAutoComplete
-                    formik={formik}
-                    placeholder="Compétences spécialisées "
-                    items={HARD_SKILLS}
-                    name={"hardSkills"}
-                    loading={store2.loading}
-                    onSubmit={onHardSkillChange}
-                  />
+                  <div className="col-lg-4 col-md-6 offer-detail-skill-container">
+                    <MultiAutoComplete
+                      formik={formik}
+                      placeholder="Compétences spécialisées "
+                      items={HARD_SKILLS}
+                      name={"hardSkills"}
+                      loading={store2.loading}
+                      onSubmit={onHardSkillChange}
+                    />
 
-                  {formik.touched.hardSkills && formik.errors.hardSkills ? (
-                    <div className="formikErrorDate">
-                      {" "}
-                      {formik.errors.hardSkills}
-                    </div>
-                  ) : null}
+                    {formik.touched.hardSkills && formik.errors.hardSkills ? (
+                      <div className="formikErrorDate">
+                        {" "}
+                        {formik.errors.hardSkills}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 
-                <div className="offer-detail-date-container mt-1" style={{paddingLeft: "15px"}}>
+                <div
+                  className="offer-detail-date-container mt-1"
+                  style={{ paddingLeft: "15px" }}
+                >
                   {JOB.hardSkills && JOB.hardSkills.length > 0
                     ? JOB.hardSkills.map((job) => {
                         return (

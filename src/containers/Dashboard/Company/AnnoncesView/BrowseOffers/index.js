@@ -65,7 +65,7 @@ export default function BrowseOffers() {
 
   const [hardSkillsArray, sethardSkillsArray] = useState([]);
   const [items, setItems] = useState([]);
-
+  const [query, setQuery] = useState("");
   const [value, setValue] = React.useState(30);
   let SOFT_SKILLS = store2.soft_skills;
   let HARD_SKILLS = store2.hard_skills;
@@ -132,8 +132,8 @@ export default function BrowseOffers() {
   //   console.log(items);
   // }, [items]);
   useEffect(() => {
-    dispatch(getSkills("Soft Skill"));
-    dispatch(getSkills("Hard Skill"));
+    dispatch(getSkills("Soft Skill", query));
+    dispatch(getSkills("Hard Skill", query));
   }, []);
   useEffect(() => {
     if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
@@ -464,6 +464,8 @@ export default function BrowseOffers() {
                       loading={store.loading}
                       onSubmit={onSoftSkillChange}
                       multiSelect={multiSelect}
+                      query={query}
+                      setQuery={setQuery}
                     />
 
                     {formik.touched.softSkills && formik.errors.softSkills ? (
