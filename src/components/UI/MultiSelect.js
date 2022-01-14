@@ -72,6 +72,8 @@ export default function AutoComplete({
   onSubmit,
   name,
   multiSelect,
+  setQuery,
+  query,
 }) {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
 
@@ -116,6 +118,8 @@ export default function AutoComplete({
             // label="Search input"
             name={name}
             margin="normal"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             // onBlur={onBlur}
             variant="outlined"
             InputProps={{ ...params.InputProps, type: "search" }}

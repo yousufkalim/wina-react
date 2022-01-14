@@ -153,7 +153,6 @@ const languages = [
   { title: "English" },
   { title: "Urdu" },
   { title: "French" },
-  { title: "Saraiki" },
 ];
 const Levels = [
   { title: "beginner" },
