@@ -71,9 +71,9 @@ const Index = (props) => {
       />
       <Recruited
         srcImg={Boostimg4}
-        text="Recruté(e) !"
-        text2="  Félicitations ! Tu as réussi à ton entretien. Il ne reste plus
-                qu’à signer ton contrat d’apprentissage ."
+        text="Recruté(e)!"
+        text2="Félicitations! Tu as réussi à ton entretien. Il ne reste plus
+                qu’à signer ton contrat d’apprentissage."
       />
       <Specialized srcImg={Formsimg} srcImg2={Speechimg} srcImg3={Supportimg} />
       <Simplified />
