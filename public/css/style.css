@@ -363,7 +363,7 @@ html {
   /* font-size: 22px; */
 }
 .modal-right-side {
-  flex-basis: 100%;
+  flex-basis: 50%;
 }
 .student-modal .Login .forgetpassword {
   padding-top: 10px;
