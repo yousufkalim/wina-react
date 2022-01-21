@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3);
+  /* background: rgba(0, 0, 0, 0.3); */
   padding-top: 200px;
 }
 .hero_heading2 {
@@ -44,6 +44,16 @@ body {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.3);
+  padding-top: 200px;
+}
+.hero_heading3 {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: rgba(0, 0, 0, 0.3); */
   padding-top: 200px;
 }
 .heroimgico {

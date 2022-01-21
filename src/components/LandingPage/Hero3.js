@@ -17,7 +17,7 @@ const Hero3 = (props) => {
           </div>
           <hrs className={`${props.showBorder && "H2_boost_hr"}`} />
           <hrs className={`${props.showBorderS && "H2_boost_hr2"}`} />
-          <div className="hero_heading">
+          <div className="hero_heading3">
             <img className="heroimgico" src={props.srcImg3} alt="" />
             <div style={{ position: "relative" }}>
               <h2 className="heroH2">{props.h2text}</h2>
