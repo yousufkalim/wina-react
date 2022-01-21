@@ -54,7 +54,7 @@ Winaa leur a apporté une formation et une mise à niveau personnalisée afin de
       <Recruited
         srcImg={BusImg4}
         text="Recrutez !"
-        text2="Félicitations  ! Vous avez trouvé votre alternant ! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
+        text2="Félicitations! Vous avez trouvé votre alternant! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
       />
       <Specialized
         srcImg={Formsimg}

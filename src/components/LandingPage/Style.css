@@ -79,7 +79,7 @@ body {
   width: 54%;
   height: 24px;
   position: absolute;
-  top: 63%;
+  top: 67%;
   left: 23%;
 }
 .H2_boost_hr2 {
@@ -439,7 +439,7 @@ body {
   .H2_boost_hr {
     width: 64%;
     height: 7px;
-    top: 25%;
+    top: 24.9%;
     left: 18%;
   }
   .heroBtn {
@@ -470,6 +470,7 @@ body {
   .boostH1 {
     font-size: 2rem;
     margin-bottom: 18px;
+    /* margin-top: 16px; */
   }
   .boost_div {
     flex-direction: column;
@@ -645,7 +646,7 @@ body {
   .H2_boost_hr {
     width: 58%;
     height: 14px;
-    top: 30.5%;
+    top: 33%;
     left: 21%;
   }
   .H2_boost_hr2 {
@@ -1030,7 +1031,7 @@ body {
   .H2_boost_hr {
     width: 60.4%;
     height: 17px;
-    top: 43.5%;
+    top: 48.5%;
     left: 20%;
   }
   .boost_hr {
@@ -1070,5 +1071,8 @@ body {
     height: 24px;
     top: 43%;
     left: 8%;
+  }
+  .dropbtn {
+    font-size: 17px;
   }
 }
