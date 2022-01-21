@@ -35,7 +35,7 @@ const Index = (props) => {
       />
       <Booste
         srcImg={Boostimg}
-        text="Booste ton alternance avec Winaa"
+        text="Booste ton apprentissage avec Winaa"
         text2=" Une entreprise en fonction de ton profil"
         text3=" Trouver l’entreprise idéale n’a jamais été une mince affaire.
                 Mais aujourd’hui, nous avons trouvé la solution qui te
@@ -76,7 +76,11 @@ const Index = (props) => {
                 qu’à signer ton contrat d’apprentissage."
       />
       <Specialized srcImg={Formsimg} srcImg2={Speechimg} srcImg3={Supportimg} />
-      <Simplified />
+      <Simplified
+        heading=" Simplifie-toi la vie, télécharge l’application Winaa"
+        text=" Tu peux matcher , swiper à n’importe quel moment de la journée.
+              Wina sauvegarde toutes tes progressions et tes suivis journaliers."
+      />
       <Footer />
     </>
   );
