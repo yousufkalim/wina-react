@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../components/LandingPage/Style.css";
-import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
+import CompanyRegister from "../../components/Header/Modals/companyRegisterModal";
 
 const Hero = (props) => {
   const [studentModal, setstudentModal] = useState(false);
@@ -27,7 +27,7 @@ const Hero = (props) => {
               {props.btno}
             </button>
           </div>
-          <StudentRegister show={studentModal} handleModal={handleModal} />
+          <CompanyRegister show={studentModal} handleModal={handleModal} />
         </div>
       </div>
     </div>
