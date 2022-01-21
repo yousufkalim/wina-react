@@ -71,15 +71,15 @@ body {
   color: #fff;
   font-weight: 600;
   font-size: 4.2rem;
-  margin-bottom: 68px;
-  margin-top: 186px;
+  margin-bottom: 119px;
+  margin-top: 104px;
 }
 .H2_boost_hr {
   background-color: #e0c399;
   width: 54%;
   height: 24px;
   position: absolute;
-  top: 67%;
+  top: 60%;
   left: 23%;
 }
 .H2_boost_hr2 {
@@ -87,7 +87,7 @@ body {
   width: 76%;
   height: 24px;
   position: absolute;
-  top: 63%;
+  top: 60%;
   left: 12%;
 }
 .heroBtn {
@@ -1031,7 +1031,7 @@ body {
   .H2_boost_hr {
     width: 60.4%;
     height: 17px;
-    top: 48.5%;
+    top: 44%;
     left: 20%;
   }
   .boost_hr {
