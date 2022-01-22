@@ -4,7 +4,7 @@ import Appstore from "../../assets/Appstore.png";
 import Mobilepic from "../../assets/Mobilepic.png";
 import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 
-const Simplified = () => {
+const Simplified = (props) => {
   const [studentModal, setstudentModal] = useState(false);
 
   const handleModal = () => {
@@ -16,13 +16,8 @@ const Simplified = () => {
       <div className="Simplified">
         <div className="Simplified_container">
           <div className="Simplified_headings">
-            <h3 className="SimplifiedH3">
-              Simplifie-toi la vie, télécharge l’application Winaa
-            </h3>
-            <p className="SimplifiedP">
-              Tu peux matcher , swiper à n’importe quel moment de la journée.
-              Wina sauvegarde toutes tes progressions et tes suivis journaliers.
-            </p>
+            <h3 className="SimplifiedH3">{props.heading}</h3>
+            <p className="SimplifiedP">{props.text}</p>
             <div className="siple_btn">
               <div className="simle_button">
                 <a className="app-btn blu flex vert" href="http:google.com">
@@ -37,7 +32,7 @@ const Simplified = () => {
             </div>
             <p className="SimplifiedP">
               Facilite tes recherches de contrats d’apprentissage. <br />
-              Inscris-toi dès maintenant !
+              Inscris-toi dès maintenant!
             </p>
             <div className="buttons2">
               <button

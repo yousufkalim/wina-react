@@ -54,7 +54,7 @@ Winaa leur a apporté une formation et une mise à niveau personnalisée afin de
       <Recruited
         srcImg={BusImg4}
         text="Recrutez !"
-        text2="Félicitations  ! Vous avez trouvé votre alternant ! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
+        text2="Félicitations! Vous avez trouvé votre alternant! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
       />
       <Specialized
         srcImg={Formsimg}
@@ -63,7 +63,12 @@ Winaa leur a apporté une formation et une mise à niveau personnalisée afin de
         srcImg4={Cgv}
         p="CGV"
       />
-      <Simplified />
+      <Simplified
+        heading="Suivez vos progressions en téléchargeant l’application Winaa
+"
+        text="Vous pouvez matcher , swiper à n’importe quel moment de la journée. 
+Winaa sauvegarde toutes vos progressions et suivis journaliers. "
+      />
       <Footer />
     </>
   );

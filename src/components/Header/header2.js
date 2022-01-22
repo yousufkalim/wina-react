@@ -17,7 +17,7 @@ export default function header2(props) {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link className="navbar-left-link" href="/Student ">
+          <Nav.Link className="navbar-left-link" href="/">
             Etudiants
           </Nav.Link>
           <Nav.Link className="navbar-left-link" href="/Business">
