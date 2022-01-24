@@ -134,7 +134,7 @@ body {
   width: 76%;
   height: 10px;
   position: absolute;
-  top: 13px;
+  top: 17px;
   left: 0;
 }
 .boost_hr2 {
@@ -142,7 +142,7 @@ body {
   width: 37.6%;
   height: 8px;
   position: absolute;
-  top: 14px;
+  top: 19px;
   left: 0;
   z-index: 0;
 }
@@ -191,7 +191,7 @@ body {
   width: 21%;
   height: 10px;
   position: absolute;
-  top: 14px;
+  top: 17px;
   left: 0;
   z-index: 0;
 }
@@ -216,7 +216,7 @@ body {
   width: 34%;
   height: 8px;
   position: absolute;
-  top: 14px;
+  top: 19px;
   left: 0;
   z-index: 0;
 }
