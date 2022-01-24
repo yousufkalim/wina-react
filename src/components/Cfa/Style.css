@@ -26,18 +26,18 @@ body {
   font-size: 4rem;
 }
 .togetherP {
-  font-size: 28px;
+  font-size: 37px;
   font-weight: 500;
   display: inline-block;
   width: 80%;
 }
 .togather_hr {
   background-color: #e0c399;
-  width: 60.7%;
+  width: 64.7%;
   height: 10px;
   position: absolute;
   top: 74%;
-  left: 19.7%;
+  left: 17.7%;
   z-index: -1;
 }
 /* .togather_hr2 {
@@ -343,7 +343,7 @@ body {
 }
 @media only screen and (min-width: 993px) and (max-width: 1500px) {
   .togetherP {
-    font-size: 26px;
+    font-size: 23px;
   }
   .togather_hr {
     width: 72.7%;
