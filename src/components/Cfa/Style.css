@@ -36,7 +36,7 @@ body {
   width: 60.7%;
   height: 10px;
   position: absolute;
-  top: 65%;
+  top: 74%;
   left: 19.7%;
   z-index: -1;
 }
@@ -270,7 +270,7 @@ body {
   .togather_hr {
     width: 91.7%;
     height: 4px;
-    top: 59%;
+    top: 68%;
     left: 4%;
   }
 
@@ -336,8 +336,8 @@ body {
   }
   .togather_hr {
     width: 74.7%;
-    height: 7px;
-    top: 65%;
+    height: 5px;
+    top: 75%;
     left: 12.7%;
   }
 }
@@ -347,7 +347,7 @@ body {
   }
   .togather_hr {
     width: 72.7%;
-    top: 65%;
+    top: 71%;
     left: 13.7%;
   }
 }
