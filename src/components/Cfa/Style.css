@@ -40,7 +40,7 @@ body {
   left: 19.7%;
   z-index: -1;
 }
-.togather_hr2 {
+/* .togather_hr2 {
   background-color: #e0c399;
   width: 54.7%;
   height: 8px;
@@ -48,7 +48,7 @@ body {
   top: 28%;
   left: 22.7%;
   z-index: -1;
-}
+} */
 .togetherP2 {
   font-size: 28px;
   font-weight: 500;
@@ -218,7 +218,7 @@ body {
     width: 0;
   }
   .togetherP {
-    font-size: 9px;
+    font-size: 10px;
     padding-top: 5px;
     width: 96%;
   }
@@ -247,6 +247,7 @@ body {
   }
   .form-container {
     width: 80%;
+    margin-top: 50px;
   }
   .form-inter-div {
     width: 80%;
@@ -267,21 +268,22 @@ body {
     font-size: 15px;
   }
   .togather_hr {
-    width: 79.7%;
+    width: 91.7%;
     height: 4px;
-    top: 60%;
-    left: 10%;
+    top: 59%;
+    left: 4%;
   }
-  .togather_hr2 {
+
+  /* .togather_hr2 {
     width: 85.7%;
     height: 7px;
     top: 12%;
     left: 7.7%;
-  }
+  } */
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .togather {
-    margin-top: 0;
+    margin-top: 33px;
   }
   .togetherH1 {
     font-weight: 600;
@@ -293,7 +295,7 @@ body {
     width: 0;
   }
   .togetherP {
-    font-size: 17px;
+    font-size: 15px;
     padding-top: 5px;
   }
   .chackP {
@@ -320,6 +322,7 @@ body {
   }
   .form-container {
     width: 80%;
+    margin-top: 110px;
   }
   .form {
     margin-bottom: 0;
