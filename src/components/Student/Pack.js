@@ -2,10 +2,11 @@ import React from "react";
 import "../../components/Student/Style.css";
 
 const Pack = (props) => {
-  const { addUpperMargin } = props;
+  const { addUpperMargin, PackBTNn2 } = props;
 
   return (
     <>
+      {console.log(`THIS IS THE PackBTNn2: ${PackBTNn2}`)}
       <div className="Pack">
         <div
           className="pack-container"
@@ -48,7 +49,10 @@ const Pack = (props) => {
                   <li className="liPack">{props.pliPack6}</li>
                 </ul>
               </div>
-              <button className="packBTN2">Souscrire</button>
+              {/* <button className="packBTN2">Souscrire</button> */}
+              <button className={`packBTN2 ${PackBTNn2 && "PackBTNn2"}`}>
+                Souscrire
+              </button>
             </div>
           </div>
           {/* div2 */}

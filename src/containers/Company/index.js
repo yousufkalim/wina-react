@@ -34,6 +34,7 @@ en 3 clics la gestion des candidatures
 "
         pliPack5="Accompagnement dans les démarches administratives et légales ( création du CERFA, le processus à suivre pour le dépôt des contrats, etc)"
         pliPack6="Conseil en optimisation de recrutement "
+        PackBTNn2={true}
       />
       <Footer />
     </div>

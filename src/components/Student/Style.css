@@ -36,7 +36,7 @@ body {
   width: 85%;
   height: 10px;
   position: absolute;
-  top: 65%;
+  top: 74%;
   left: 7.5%;
   z-index: -1;
 }
@@ -128,6 +128,9 @@ body {
   margin-bottom: 25px;
   color: #fff;
   font-weight: 600;
+}
+.PackBTNn2 {
+  margin-top: 179px !important;
 }
 .packBTN2 {
   background-color: #e0c399;
@@ -319,6 +322,9 @@ body {
   }
   .liHeading2 {
     margin-bottom: 132px;
+  }
+  .PackBTNn2 {
+    margin-top: 0px !important;
   }
 }
 @media only screen and (min-width: 1201px) and (max-width: 1500px) {
