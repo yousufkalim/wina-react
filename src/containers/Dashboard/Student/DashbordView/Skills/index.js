@@ -4,6 +4,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import Select from "../../../../../components/UI/Select";
+import AutoComplete from "../../../../../components/UI/AutoComplete2";
 import ModalInput from "../../../../../components/UI/Input";
 
 import {
@@ -36,6 +37,8 @@ export default function Skills() {
   const dispatch = useDispatch();
   let SOFT_SKILLS = store2.soft_skills;
   let HARD_SKILLS = store2.hard_skills;
+  console.log("hard skills ,", HARD_SKILLS);
+  console.log("soft skills ,", SOFT_SKILLS);
 
   // state
   const [key, setKey] = useState("GeneralSkills");
@@ -72,6 +75,7 @@ export default function Skills() {
   }, [dispatch]);
   return (
     <>
+      {console.log("key is ", key)}
       <Tabs
         defaultActiveKey="GeneralSkills"
         id="Skills"
@@ -84,7 +88,7 @@ export default function Skills() {
           eventKey="GeneralSkills"
           title="Compétences générales"
           className="custom-box"
-          onSelect={(k) => setKey(k)}
+          // onSelect={(k) => setKey(k)}
         >
           <Tab1
             options={SOFT_SKILLS}
@@ -105,7 +109,7 @@ export default function Skills() {
           eventKey="SpecializedSkills"
           title="Compétences spécialisées"
           className="custom-box"
-          onSelect={(k) => setKey(k)}
+          // onSelect={(k) => setKey(k)}
         >
           <Tab2
             options={HARD_SKILLS}
@@ -120,13 +124,14 @@ export default function Skills() {
             Add_info_Student={Add_info_Student}
             HARD_SKILLS_DB={HARD_SKILLS_DB}
             Notistack={Notistack}
+            AutoComplete={AutoComplete}
           />
         </Tab>
         <Tab
           eventKey="Languages"
           title="Langues"
           className="custom-box"
-          onSelect={(k) => setKey(k)}
+          // onSelect={(k) => setKey(k)}
         >
           <Tab3
             options={languages}

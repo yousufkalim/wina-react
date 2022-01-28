@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles({
   root: {
-
-    '& .MuiOutlinedInput-root':{
+    "& .MuiOutlinedInput-root": {
       borderRadius: "3.5rem",
-      borderColor: "#2879d9"
+      borderColor: "#2879d9",
     },
-    '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#2879d9",
     },
 
-    '& .MuiInput-underline:before': {
-      borderBottom: '1px solid #f7c40d'
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px solid #f7c40d",
     },
 
     // '& .MuiFormLabel-root.Mui-focused': {
     //   color: "#2879d9"
     // },
-    '& .MuiInput-underline:after': {
-      borderBottom: '1px solid #f7c40d'
+    "& .MuiInput-underline:after": {
+      borderBottom: "1px solid #f7c40d",
     },
     "& .MuiAutocomplete-inputRoot": {
       // borderBottom: "1px solid #f7c40d",
@@ -40,36 +39,36 @@ const useStyle = makeStyles({
       //   borderColor: "#2879d9",
       // },
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.375rem',
-      '& .Mui-focused': {
-        color: "#fff"
-      }
+    "& .MuiFormLabel-root": {
+      fontSize: "1.375rem",
+      "& .Mui-focused": {
+        color: "#fff",
+      },
     },
-   
-    '& .MuiInputBase-root ': {
-      fontSize: '1.375rem'
-    }
+
+    "& .MuiInputBase-root ": {
+      fontSize: "1.375rem",
+    },
   },
 
   root2: {
-    '& .MuiOutlinedInput-root':{
+    "& .MuiOutlinedInput-root": {
       borderRadius: "3.5rem",
-      borderColor: "#2879d9"
+      borderColor: "#2879d9",
     },
-    '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#2879d9",
     },
 
-    '& .MuiInput-underline:before': {
-      borderBottom: '1px solid #f7c40d'
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px solid #f7c40d",
     },
 
     // '& .MuiFormLabel-root.Mui-focused': {
     //   color: "#2879d9"
     // },
-    '& .MuiInput-underline:after': {
-      borderBottom: '1px solid #f7c40d'
+    "& .MuiInput-underline:after": {
+      borderBottom: "1px solid #f7c40d",
     },
     "& .MuiAutocomplete-inputRoot": {
       // borderBottom: "1px solid #f7c40d",
@@ -87,24 +86,24 @@ const useStyle = makeStyles({
       //   borderColor: "#2879d9",
       // },
     },
-    '& .MuiFormLabel-root.Mui-focused': {
-        display: "none"
+    "& .MuiFormLabel-root.Mui-focused": {
+      display: "none",
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.12rem',
-      '& .Mui-focused': {
-        color: "#fff"
-      }
+    "& .MuiFormLabel-root": {
+      fontSize: "1.12rem",
+      "& .Mui-focused": {
+        color: "#fff",
+      },
     },
-    '& .MuiInputLabel-shrink ':{
-      display: "none"
+    "& .MuiInputLabel-shrink ": {
+      display: "none",
     },
-   
-    '& .MuiInputBase-root ': {
-      fontSize: '1.12rem'
-    }
-  }
-})
+
+    "& .MuiInputBase-root ": {
+      fontSize: "1.12rem",
+    },
+  },
+});
 export default function AutoComplete({
   formik,
   placeholder,
@@ -116,7 +115,7 @@ export default function AutoComplete({
   address,
   renderOption,
   standard,
-  studentModal
+  studentModal,
 }) {
   const getAddress = (event, value, reason) => {
     onChange(value);
@@ -164,7 +163,7 @@ export default function AutoComplete({
             name={name}
             margin="normal"
             // onBlur={onBlur}
-            variant={standard ? 'standard' : 'outlined'}
+            variant={standard ? "standard" : "outlined"}
             InputProps={{ ...params.InputProps, type: "text" }}
             label={placeholder}
           />
