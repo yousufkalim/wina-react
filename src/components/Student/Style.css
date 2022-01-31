@@ -130,7 +130,7 @@ body {
   font-weight: 600;
 }
 .PackBTNn2 {
-  margin-top: 179px !important;
+  margin-top: 0px !important;
 }
 .packBTN2 {
   background-color: #e0c399;
@@ -364,5 +364,10 @@ body {
   }
   .liHeading2 {
     margin-bottom: 149px;
+  }
+}
+@media only screen and (min-width: 1601px) {
+  .PackBTNn2 {
+    margin-top: 179px !important;
   }
 }
