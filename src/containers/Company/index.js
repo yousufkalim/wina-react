@@ -16,6 +16,7 @@ const index = (props) => {
         addUpperMargin={true}
         texth1="Pack Recrutement"
         texth3="29,99€ / mois"
+        texth4="99,99€ / mois"
         liPack="Recrutement facilité avec des soft skills et hard skills ciblées"
         liPack2="Accès à la plateforme Web avec un Tableau de bord intuitif et design"
         liPack3="Matching des profils potentiels sur l’application"

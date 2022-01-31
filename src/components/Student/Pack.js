@@ -37,7 +37,7 @@ const Pack = (props) => {
             <div className="packbox">
               <div className="boxHeading2">
                 <h1 className="packH1">Pack Accompagnement</h1>
-                <h3 className="packH3">29,99€ / mois</h3>
+                <h3 className="packH3">{props.texth4}</h3>
               </div>
               <div className="liHeading2">
                 <ul>
