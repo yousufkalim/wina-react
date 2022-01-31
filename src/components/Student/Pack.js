@@ -12,7 +12,6 @@ const Pack = (props) => {
           className="pack-container"
           style={addUpperMargin && { marginTop: "100px" }}
         >
-          {/* div1 */}
           <div className="pack-col1">
             <div className="packbox">
               <div className="boxHeading">
@@ -31,8 +30,6 @@ const Pack = (props) => {
               <button className="packBTN">Souscrire</button>
             </div>
           </div>
-
-          {/* div2 */}
           <div className="pack-col1">
             <div className="packbox">
               <div className="boxHeading2">
@@ -49,13 +46,11 @@ const Pack = (props) => {
                   <li className="liPack">{props.pliPack6}</li>
                 </ul>
               </div>
-              {/* <button className="packBTN2">Souscrire</button> */}
               <button className={`packBTN2 ${PackBTNn2 && "PackBTNn2"}`}>
                 Souscrire
               </button>
             </div>
           </div>
-          {/* div2 */}
         </div>
       </div>
     </>

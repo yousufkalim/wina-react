@@ -24,15 +24,9 @@ const index = (props) => {
         liPack5="Au lancement jusqu’à 6 mois max gratuit et sans engagement pour avoir de la donnée. Après 6 mois, Tarif : 29,99€ / mois "
         //////////
         pliPack=" Recrutement facilité avec des offres qui te correspondent"
-        pliPack2="Accès à la plateforme Web avec un 
-Tableau de bord intuitif et design 
-"
-        pliPack3="Matching des profils potentiels sur 
-l’application
-"
-        pliPack4="Accès à l’application pour maîtriser  
-en 3 clics la gestion des candidatures
-"
+        pliPack2="Accès à la plateforme Web avec un Tableau de bord intuitif et design"
+        pliPack3="Matching des profils potentiels sur l’application"
+        pliPack4="Accès à l’application pour maîtriser en 3 clics la gestion des candidatures"
         pliPack5="Accompagnement dans les démarches administratives et légales ( création du CERFA, le processus à suivre pour le dépôt des contrats, etc)"
         pliPack6="Conseil en optimisation de recrutement "
         PackBTNn2={true}
