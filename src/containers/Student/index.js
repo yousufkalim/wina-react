@@ -17,6 +17,7 @@ const index = (props) => {
       <Pack
         texth1="Pack Découverte"
         texth3="9,99€ / mois"
+        texth4="29,99€ / mois"
         liPack="Recrutement facilité avec des offres qui te correspondent"
         liPack2="Candidature envoyée en Swipe"
         liPack3="Matching assuré"
