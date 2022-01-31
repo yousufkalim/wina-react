@@ -1,11 +1,11 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { OutlinedInput  } from "@material-ui/core"
-import InputLabel from "@material-ui/core/InputLabel"
-import MenuItem from "@material-ui/core/MenuItem"
-import FormControl from "@material-ui/core/FormControl"
-import Select from "@material-ui/core/Select"
-import moment from "moment"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { OutlinedInput } from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import moment from "moment";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -30,25 +30,25 @@ function getStyles(name, personName, theme) {
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
-    width: '100%',
+    width: "100%",
     border: "none",
-    '& .MuiSelect-selectMenu': {
-      borderRadius: "3.4rem"
-  },
-  '& .MuiSelect-select:focus': {
-    background: "transparent"
-},
-    '& .MuiOutlinedInput-root':{
+    "& .MuiSelect-selectMenu": {
+      borderRadius: "3.4rem",
+    },
+    "& .MuiSelect-select:focus": {
+      background: "transparent",
+    },
+    "& .MuiOutlinedInput-root": {
       borderRadius: "3.5rem",
       borderColor: "#2879d9",
 
-      '& .MuiIconButton-root': {
-        color: '#454545'
+      "& .MuiIconButton-root": {
+        color: "#454545",
       },
-      '& MuiSelect-icon': {
-        color: '#454545'
+      "& MuiSelect-icon": {
+        color: "#454545",
       },
-       // borderBottom: "1px solid #f7c40d",
+      // borderBottom: "1px solid #f7c40d",
       // - The Input-root, inside the TextField-root
       "& fieldset": {
         // - The <fieldset> inside the Input-root
@@ -63,118 +63,108 @@ const useStyles = makeStyles((theme) => ({
       //   borderColor: "#2879d9",
       // },
     },
-    '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#2879d9",
     },
     // "& .MuiFormLabel-root.Mui-focused": {
     //   color: "#2879d9"
     // },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.37rem',
-      color: '#454545',
+    "& .MuiFormLabel-root": {
+      fontSize: "1.37rem",
+      color: "#454545",
       fontWeight: 600,
     },
-    '& .MuiInputLabel-formControl':{ 
+    "& .MuiInputLabel-formControl": {
       top: -6,
-      left: 15
+      left: 15,
     },
-    '& .MuiInputLabel-shrink': {
-      top: '-6px',
+    "& .MuiInputLabel-shrink": {
+      top: "-6px",
       center: 0,
       // width: '133.33%',
     },
-    '& .MuiInputBase-root ': {
-      fontSize: '1.375rem'
+    "& .MuiInputBase-root ": {
+      fontSize: "1.375rem",
     },
-    '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#2879d9",
     },
-    
-    
-    
   },
-formControlGrey: {
-// margin: theme.spacing(1),
-  width: '100%',
-  border: "none",
-  '& .MuiOutlinedInput-root':{
-    borderRadius: "3.5rem",
-    borderColor: "#2879d9",
-   // borderBottom: "1px solid #f7c40d",
-  // - The Input-root, inside the TextField-root
-  "& fieldset": {
-    // - The <fieldset> inside the Input-root
-    // borderColor: "pink",
-    // - Set the Input border
-  },
-  // "&:hover": {
-  //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
-  // },
-  // "&.Mui-focused fieldset": {
-  //   // - Set the Input border when parent is focused
-  //   borderColor: "#2879d9",
-  // },
-  
-},
+  formControlGrey: {
+    // margin: theme.spacing(1),
+    width: "100%",
+    border: "none",
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "3.5rem",
+      borderColor: "#2879d9",
+      // borderBottom: "1px solid #f7c40d",
+      // - The Input-root, inside the TextField-root
+      "& fieldset": {
+        // - The <fieldset> inside the Input-root
+        // borderColor: "pink",
+        // - Set the Input border
+      },
+      // "&:hover": {
+      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
+      // },
+      // "&.Mui-focused fieldset": {
+      //   // - Set the Input border when parent is focused
+      //   borderColor: "#2879d9",
+      // },
+    },
 
-'& .MuiOutlinedInput-notchedOutline':{
-  borderColor: "#2879d9",
-},
-// "& .MuiFormLabel-root.Mui-focused": {
-//   color: "#2879d9"
-// },
-'& .MuiFormLabel-root': {
-  fontSize: '1.37rem',
-  color: '#8D8D8D',
-  // fontWeight: 600,
-},
-'& .MuiInputLabel-formControl':{ 
-  top: -6,
-  left: 15
-},
-'& .MuiInputLabel-shrink': {
-  top: '-6px',
-  center: 0,
-  // width: '133.33%',
-},
-'& .MuiInputBase-root ': {
-  fontSize: '1.375rem'
-},
-'& .MuiOutlinedInput-notchedOutline':{
-  borderColor: "#2879d9",
-},
-
-
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#2879d9",
+    },
+    // "& .MuiFormLabel-root.Mui-focused": {
+    //   color: "#2879d9"
+    // },
+    "& .MuiFormLabel-root": {
+      fontSize: "1.37rem",
+      color: "#8D8D8D",
+      // fontWeight: 600,
+    },
+    "& .MuiInputLabel-formControl": {
+      top: -6,
+      left: 15,
+    },
+    "& .MuiInputLabel-shrink": {
+      top: "-6px",
+      center: 0,
+      // width: '133.33%',
+    },
+    "& .MuiInputBase-root ": {
+      fontSize: "1.375rem",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#2879d9",
+    },
   },
   textField: {
-
-    '& .MuiOutlinedInput-root':{
-
-      '& .MuiOutlinedInput-notchedOutline':{
+    "& .MuiOutlinedInput-root": {
+      "& .MuiOutlinedInput-notchedOutline": {
         borderColor: "#2879d9",
-      }
-    }
-  }
-}))
+      },
+    },
+  },
+}));
 
 export default function ControlledOpenSelect(props) {
-  const classes = useStyles()
-  const [open, setOpen] = React.useState(false)
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const handleOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
   if (props.type && props.type === "skills") {
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">
-            {props.label}
-          </InputLabel>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -184,7 +174,7 @@ export default function ControlledOpenSelect(props) {
             onOpen={handleOpen}
             name={props.name}
             variant="outlined"
-            InputLabelProps={{style: {fontSize: 40}}}
+            InputLabelProps={{ style: { fontSize: 40 } }}
             label={props.label}
             // input={<OutlinedInput label={props.label} />}
             value={props.value}
@@ -203,19 +193,17 @@ export default function ControlledOpenSelect(props) {
           </Select>
         </FormControl>
       </>
-    )
+    );
   } else if (props.type && props.type === "appointment") {
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">
-            {props.label}
-          </InputLabel>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             open={open}
-            InputLabelProps={{style: {fontSize: 40}}}
+            InputLabelProps={{ style: { fontSize: 40 } }}
             onClose={handleClose}
             label={props.label}
             onOpen={handleOpen}
@@ -241,21 +229,19 @@ export default function ControlledOpenSelect(props) {
           </Select>
         </FormControl>
       </>
-    )
+    );
   } else
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">
-            {props.label}
-          </InputLabel>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             open={open}
             onClose={handleClose}
             onOpen={handleOpen}
-            InputLabelProps={{style: {fontSize: 40}}}
+            InputLabelProps={{ style: { fontSize: 40 } }}
             variant="outlined"
             label={props.label}
             name={props.name}
@@ -275,5 +261,5 @@ export default function ControlledOpenSelect(props) {
           </Select>
         </FormControl>
       </>
-    )
+    );
 }
