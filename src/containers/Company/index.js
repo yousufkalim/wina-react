@@ -23,7 +23,7 @@ const index = (props) => {
         liPack4="Accès à l’application pour maîtriser en 3 clics la gestion des candidatures"
         liPack5="Au lancement jusqu’à 6 mois max gratuit et sans engagement pour avoir de la donnée. Après 6 mois, Tarif : 29,99€ / mois "
         //////////
-        pliPack=" Recrutement facilité avec des offres qui te correspondent"
+        pliPack=" Recrutement facilité avec des soft skills et hard skills ciblées"
         pliPack2="Accès à la plateforme Web avec un Tableau de bord intuitif et design"
         pliPack3="Matching des profils potentiels sur l’application"
         pliPack4="Accès à l’application pour maîtriser en 3 clics la gestion des candidatures"
