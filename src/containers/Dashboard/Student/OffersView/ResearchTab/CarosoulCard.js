@@ -41,13 +41,13 @@ export default function RecipeReviewCard(props) {
             {cards.score > 1 && Math.floor(cards.score)}
           </div>
           <div className="offer-card-body offer-card-body-1">
-            <div className="offer-card-description">{cards.company.name}</div>
+            {/* <div className="offer-card-description">{cards.company.name}</div> */}
             <div className="offer-card-content">
               <span>
                 <MdLocationOn />
               </span>{" "}
-              {cards.company.address.street},{cards.company.address.zip}{" "}
-              {cards.company.address.city}
+              {/* {cards.company.address.street},{cards.company.address.zip}{" "}
+              {cards.company.address.city} */}
             </div>
             <div className="offer-card-price text-center">
               <div className="offer-card-price-item offer-card-price-item-1">

@@ -182,7 +182,7 @@ const CompanyCardDetail = (props) => {
       setAddress(JOB.location.city);
 
       formik.setFieldValue("softSkills", JOB.softSkills[0].skillField);
-      formik.setFieldValue("hardSkills", JOB.hardSkills[0].skillField);
+      //formik.setFieldValue("hardSkills", JOB.hardSkills[0].skillField);
       formik.setFieldValue("photo", JOB.photo.image);
       formik.setFieldValue("alternationRhythm", JOB.alternationRhythm);
       formik.setFieldValue("levelOfEducation", JOB.levelOfEducation);
