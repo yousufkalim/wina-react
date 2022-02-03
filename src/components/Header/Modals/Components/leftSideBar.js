@@ -2,6 +2,8 @@ import React from "react";
 import { FaFacebookF, GrGooglePlus } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { googleLogin } from "../../../../Redux/actions";
+import { facebookLogin } from "../../../../Redux/actions";
 
 export default function Sidebar({
   ModalInput,
@@ -24,6 +26,12 @@ export default function Sidebar({
       formik.setFieldValue(name, value);
     },
   });
+  const handleFacebookClick = (props) => {
+    facebookLogin();
+  };
+  const handleGoogleClick = (props) => {
+    googleLogin();
+  };
   return (
     <div className="modal-left-side">
       <div className="Login">
@@ -71,16 +79,21 @@ export default function Sidebar({
           </div>
         </form>
         <div className="mt-5">
-          
           <div className="faceBookGoogleGroup">
             <div color="primary" className="w-100 modal-social-buttons">
-              <div className="modal-social-btn modal-facebook-btn">
+              <div
+                className="modal-social-btn modal-facebook-btn"
+                onClick={handleFacebookClick}
+              >
                 <span>
                   <FaFacebookF className="modal-social-icon" />
                 </span>
                 &nbsp;&nbsp; Facebook
               </div>
-              <div className="modal-social-btn modal-google-btn">
+              <div
+                className="modal-social-btn modal-google-btn"
+                onClick={handleGoogleClick}
+              >
                 <span>
                   <GrGooglePlus className="modal-social-icon-google mr-2" />
                 </span>

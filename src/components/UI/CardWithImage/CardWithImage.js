@@ -217,13 +217,14 @@ const CardWithImage = (props) => {
                 ) : (
                   <>
                     <div
-                      onClick={() =>
+                      onClick={() => {
+                        console.log({ props });
                         handleOfferAccepted(
-                          props.app.jobID,
-                          props.appointments,
+                          props?.item?._id,
+                          props?.appointments,
                           "accepted"
-                        )
-                      }
+                        );
+                      }}
                       className="card-with-image-btn card-with-image-btn-green"
                     >
                       Accepter

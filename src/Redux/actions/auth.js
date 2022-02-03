@@ -91,6 +91,23 @@ export const isUserLoggedIn = () => async (dispatch) => {
   }
 };
 
+export const googleLogin = async () => {
+  try {
+    const response = await axios.get(`/auth/google`);
+    console.log(response.data);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+export const facebookLogin = async () => {
+  try {
+    const response = await axios.get(`/auth/facebook`);
+    console.log(response.data);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
 export const signout = () => async (dispatch) => {
   try {
     dispatch(set_loading(true));
