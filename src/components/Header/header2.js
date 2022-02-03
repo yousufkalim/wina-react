@@ -26,13 +26,13 @@ export default function header2(props) {
           <Nav.Link className="navbar-left-link" href="/cfa">
             CFA
           </Nav.Link>
-          <div class="dropdown">
+          {/* <div class="dropdown">
             <button class="dropbtn">Tarifs</button>
             <div class="dropdown-content">
               <a href="/Student">Étudiants</a>
               <a href="/Company">Entreprise</a>
             </div>
-          </div>
+          </div> */}
         </Nav>
         <Nav>
           <Nav.Link
