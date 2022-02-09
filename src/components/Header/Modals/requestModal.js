@@ -37,7 +37,9 @@ export default function StudentRegister(props) {
         <div className="d-flex justify-content-between p-3">
           <div className="modal-left-side">
             <div className="Login">
-              <div className="heading pb-5">Connexion</div>
+              <div className="heading pb-5">
+                Quel est votre adresse e-mail ?
+              </div>
               <form onSubmit={formik.handleSubmit}>
                 <div>
                   <ModalInput
@@ -66,7 +68,7 @@ export default function StudentRegister(props) {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="réinitialiser le mot de passe"
                     disabled={false}
                   />
                 )}
