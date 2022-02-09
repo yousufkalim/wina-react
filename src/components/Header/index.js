@@ -6,10 +6,10 @@ import RequestForgotPasswordModal from "./Modals/requestModal";
 import ResetPasswordModal from "./Modals/resetModal";
 import EmailVerificationModal from "./Modals/emailVerificationModal";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
-
+import { getUser } from "../../Redux/actions";
 import HomeHeader1 from "./header";
 import HomeHeader2 from "./header2";
-
+import axios from "axios";
 /**
  * @author
  * @function Header
@@ -22,6 +22,7 @@ const Header = (props) => {
   const [requestModal, setrequestModal] = useState(false);
   const [resetModal, setresetModal] = useState(false);
   const [emailVerifyModal, setemailVerifyModal] = useState(false);
+  const [data, setData] = useState({});
 
   const handleModal = (name) => {
     if (name === "student") {
@@ -56,8 +57,12 @@ const Header = (props) => {
       setstudentModal(false);
     }
   };
-  useEffect(() => {
+  useEffect(async () => {
     if (props.id) {
+      let DATA = await axios.get(
+        `http://localhost:9190/api/v1/profile/getUser/${props.id}`
+      );
+      setData(DATA.data);
       setresetModal(!resetModal);
     } else if (props.token) {
       setemailVerifyModal(!emailVerifyModal);
@@ -76,6 +81,7 @@ const Header = (props) => {
         show={resetModal}
         handleModal={handleModal}
         id={props.id}
+        data={data}
       />
       <EmailVerificationModal
         show={emailVerifyModal}

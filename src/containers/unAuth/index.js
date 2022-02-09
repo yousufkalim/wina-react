@@ -16,7 +16,7 @@ export default function UnAuth() {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/reset/:id" component={LandingPage} />
+      <Route exact path="/réinitialiser/:id" component={LandingPage} />
       <Route exact path="/Business" component={Business} />
       <Route exact path="/Cfa" component={Cfa} />
       <Route exact path="/Student" component={Student} />
