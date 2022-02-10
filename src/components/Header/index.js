@@ -57,7 +57,7 @@ const Header = (props) => {
       setstudentModal(false);
     }
   };
-  useEffect(async () => {
+  const getUser = async () => {
     if (props.id) {
       let DATA = await axios.get(
         `http://localhost:9190/api/v1/profile/getUser/${props.id}`
@@ -67,6 +67,9 @@ const Header = (props) => {
     } else if (props.token) {
       setemailVerifyModal(!emailVerifyModal);
     }
+  };
+  useEffect(() => {
+    getUser();
   }, []);
   return (
     <>

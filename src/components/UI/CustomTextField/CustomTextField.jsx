@@ -11,7 +11,7 @@ const useStyles = makeStyles({
       color: "#8d8d8d",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#454545",
+      borderColor: "#2879d9",
     },
     "& .MuiInputBase-root": {
       borderRadius: 10,

@@ -201,11 +201,19 @@ const PPModal = ({
                 ) : null}
               </div>
               <div className="professional-modal-form-other">
-                <Select
+                {/* <Select
                   name="place"
                   value={formik.values.place}
                   onChange={handleChange}
                   options={CountryOptions}
+                  label="place d’emploi"
+                /> */}
+                <CustomTextField
+                  type="text"
+                  variant="outlined"
+                  name="place"
+                  value={formik.values.place}
+                  onChange={handleChange}
                   label="place d’emploi"
                 />
 

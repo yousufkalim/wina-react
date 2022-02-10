@@ -13,7 +13,7 @@ import RadioButton from "../../../../../components/UI/RadioButton";
 import CheckBox from "../../../../../components/UI/CheckBox";
 import Button from "../../../../../components/UI/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { Add_info_Student } from "../../../../../Redux/actions";
+import { Add_info_Student, domainList } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 import TextArea from "../../../../../components/UI/Textarea";
 import Texts from "../../../../../Globals/Texts.js";
@@ -30,6 +30,7 @@ import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yu
 import { classnames } from "classnames";
 
 const ResearchedJob = () => {
+  const [domain, setDomain] = useState([]);
   const store = useSelector((state) => state.student);
 
   const dispatch = useDispatch();
@@ -71,6 +72,17 @@ const ResearchedJob = () => {
       );
     }
   }, []);
+  const domainOption = async () => {
+    const res = await domainList();
+    let tempDomain = [];
+    res.data.domains.map((item) => {
+      tempDomain.push({ title: item.title });
+    });
+    setDomain(tempDomain);
+  };
+  useEffect(() => {
+    domainOption();
+  }, [domainList]);
   return (
     <>
       <Tabs
@@ -106,7 +118,7 @@ const ResearchedJob = () => {
                     name="domain"
                     value={formik.values.domain}
                     onChange={handleChange}
-                    options={DomainOptions}
+                    options={domain}
                     label="Domaine"
                   />
 

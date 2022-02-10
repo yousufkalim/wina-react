@@ -80,7 +80,7 @@ export const PROFESSIONAL_PROFILE_YUP = Yup.object({
     )
     .required(Texts.REQUIRED),
   description: Yup.string().required(Texts.REQUIRED),
-  image: Yup.string().required(Texts.REQUIRED),
+  image: Yup.string(),
 });
 export const POSITION_SOUGHT_YUP = Yup.object({
   domain: Yup.string().required(Texts.REQUIRED),
