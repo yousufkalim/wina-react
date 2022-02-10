@@ -90,7 +90,7 @@ export const isUserLoggedIn = () => async (dispatch) => {
     return Promise.resolve();
   }
 };
-
+//signin through google
 export const googleLogin = async () => {
   try {
     const response = await axios.get(`/auth/google`);
@@ -99,6 +99,8 @@ export const googleLogin = async () => {
     console.log(err.response);
   }
 };
+//signin through facebook
+
 export const facebookLogin = async () => {
   try {
     const response = await axios.get(`/auth/facebook`);
@@ -107,7 +109,7 @@ export const facebookLogin = async () => {
     console.log(err.response);
   }
 };
-
+//user which trying to recover password
 export const getUser = async (id) => {
   try {
     return await axios.get(`/profile/getUser/${id}`);

@@ -148,8 +148,6 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               <CustomTextField
                 name="position"
                 label="Intitulé du poste . Ex : Chef de projet"
-                // className="Job_title"
-                // placeholder="Intitulé du poste . Ex : Chef de projet"
                 value={formik.values.position}
                 variant="outlined"
                 onChange={handleChange}
@@ -173,11 +171,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
             <div className="professional-modal-form-other ">
-              <Select
+              <CustomTextField
+                type="text"
+                variant="outlined"
                 name="company"
                 value={formik.values.company}
                 onChange={handleChange}
-                options={CompanyOptions}
                 label="company d’emploi"
               />
 
@@ -186,11 +185,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
             <div className="professional-modal-form-other">
-              <Select
+              <CustomTextField
+                type="text"
+                variant="outlined"
                 name="place"
                 value={formik.values.place}
                 onChange={handleChange}
-                options={CountryOptions}
                 label="place d’emploi"
               />
 
@@ -232,6 +232,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
             </div>
             <div className="professional-modal-form-date">
               <DatePicker
+                disabled={formik.values.position_hold}
                 name="end_date"
                 label={"Date de fin"}
                 previous={true}
