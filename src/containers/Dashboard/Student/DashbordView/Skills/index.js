@@ -37,8 +37,6 @@ export default function Skills() {
   const dispatch = useDispatch();
   let SOFT_SKILLS = store2.soft_skills;
   let HARD_SKILLS = store2.hard_skills;
-  console.log("hard skills ,", HARD_SKILLS);
-  console.log("soft skills ,", SOFT_SKILLS);
 
   // state
   const [key, setKey] = useState("GeneralSkills");
@@ -75,7 +73,6 @@ export default function Skills() {
   }, [dispatch]);
   return (
     <>
-      {console.log("key is ", key)}
       <Tabs
         defaultActiveKey="GeneralSkills"
         id="Skills"
@@ -88,7 +85,6 @@ export default function Skills() {
           eventKey="GeneralSkills"
           title="Compétences générales"
           className="custom-box"
-          // onSelect={(k) => setKey(k)}
         >
           <Tab1
             options={SOFT_SKILLS}
