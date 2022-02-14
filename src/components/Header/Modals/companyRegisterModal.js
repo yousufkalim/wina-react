@@ -276,11 +276,10 @@ const StudentRegister = (props) => {
                     </div>
                     <div>
                       <Button
-                        value="Next"
+                        value="SUIVANT"
                         variant="primary"
                         className="Enregistrer"
                         type="submit"
-                        // onClick={handleNextChange}
                       />
                     </div>
                   </form>
