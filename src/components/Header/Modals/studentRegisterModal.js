@@ -405,7 +405,7 @@ export default function StudentRegister(props) {
                     <div className="formikError">{formik.errors.phone}</div>
                   ) : null}
                 </div>
-                <div className="" style={{ marginTop: "-30px" }}>
+                <div style={{ marginTop: "-18px" }}>
                   <Autocomplete
                     options={values}
                     clearOnEscape={true}
@@ -443,7 +443,7 @@ export default function StudentRegister(props) {
                       />
                     )}
                   />
-
+                  {console.log(formData, "daatatatta")}
                   {/* <AutoComplete
                     formik={formik}
                     onChange={handleAddressChange}
@@ -467,7 +467,7 @@ export default function StudentRegister(props) {
                 <button
                   className="modal-button modal-register-btn"
                   type="submit"
-                  disabled={store.loading}
+                  disabled={store.loading || formData.address}
                 >
                   {store.loading ? "Loading..." : "S’inscrire"}
                 </button>
