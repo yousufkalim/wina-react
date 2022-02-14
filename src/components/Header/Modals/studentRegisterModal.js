@@ -142,7 +142,6 @@ export default function StudentRegister(props) {
     validationSchema: SIGNUP_YUP,
     onSubmit: (values) => {
       let response = dispatch(Student_Signup(values));
-
       response.then((value) => {
         if (value === true) {
           formik.setSubmitting(false);
@@ -178,6 +177,7 @@ export default function StudentRegister(props) {
             id: item.properties.id,
             name: item.properties.label,
             city: item.properties.city,
+            street: item.properties.street,
             postalCode: item.properties.postcode,
             lat: item.geometry.coordinates[1],
             lng: item.geometry.coordinates[0],
@@ -189,7 +189,7 @@ export default function StudentRegister(props) {
   const onSubmitAddress = (value) => {
     formik.setFieldValue("address", {
       city: value.city,
-      street: "Street",
+      street: value.name,
       zip: value.PostalCode ? value.PostalCode : "40180",
       longitude: value.lng,
       latitude: value.lat,
@@ -205,6 +205,7 @@ export default function StudentRegister(props) {
     lat: "",
     lng: "",
     city: "",
+    street: "",
     postal_code: "",
     label: "",
     label2: "",
@@ -243,15 +244,18 @@ export default function StudentRegister(props) {
           res?.data?.features[i].properties.context
         }`,
         city: res?.data?.features[i].properties.city,
+        street: res?.data?.features[i].properties.name,
         PostalCode: res?.data?.features[i].properties.postcode,
         lat: res?.data?.features[i].geometry.coordinates[1],
         lng: res?.data?.features[i].geometry.coordinates[0],
       });
     }
+
     if (addressToSet.length === res?.data?.features.length) {
       setValues(addressToSet);
     }
   };
+
   // Set Address in  setAddressValue State
   const SetAddress = async (item) => {
     if (item.target.textContent) {
@@ -261,7 +265,9 @@ export default function StudentRegister(props) {
           var postal_code = values[i].PostalCode;
           var lat = values[i].lat;
           var lng = values[i].lng;
-          const city = values[i].city;
+          var city = values[i].city;
+          var street = values[i].street;
+
           await setAddressValue({
             ...addressValue,
             label: values[i].label,
@@ -270,10 +276,11 @@ export default function StudentRegister(props) {
             lat,
             lng,
             city,
+            street,
           });
           formik.setFieldValue("address", {
             city: city,
-            street: "Street",
+            street: street,
             zip: postal_code ? postal_code : "40180",
             longitude: lng,
             latitude: lat,
@@ -288,6 +295,7 @@ export default function StudentRegister(props) {
         lat: "",
         long: "",
         city: "",
+        street: "",
       });
     }
   };

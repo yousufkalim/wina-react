@@ -152,15 +152,11 @@ export const Get_User_Student = () => async (dispatch) => {
   try {
     dispatch(set_loading_data(true));
 
-    const res = await axios.post(
-      `student/get-info`,
-      { type: user.type },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await axios.post(`student/get-info`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     dispatch({
       type: studentConstants.STUDENT_DATA_SUCCESS,
       payload: { loading: false, user: res.data.user },

@@ -104,6 +104,9 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       }
     } else if (name === "position_hold") {
       formik.setFieldValue(name, e.target.checked);
+      let date = new Date();
+      let end_Dateis = moment(date).format("YYYY-MM-DD");
+      formik.setFieldValue("end_date", end_Dateis);
     } else if (formik.values.start_date && name === "end_date") {
       let end_Date = moment(value);
       let start_Date = moment(formik.values.start_date);

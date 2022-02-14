@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
+import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 
 export default function Hard_skilltab(props) {
   const {
-    options,
     Select,
     Button,
     store,
@@ -22,8 +22,6 @@ export default function Hard_skilltab(props) {
   } = props;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-
-  //   ************
   //   ******************************************
   const formik = useFormik({
     initialValues: SKILLS_STATE,
@@ -33,12 +31,7 @@ export default function Hard_skilltab(props) {
 
       let check = LANGUAGES_DB.some((sa) => sa.name === values.name);
       if (check === false) {
-        let skills = options.find(
-          (sa) => sa.title.toUpperCase() === values.name.toUpperCase()
-        );
-
-        delete Object.assign(skills, { ["name"]: skills["title"] })["title"];
-        console.log(options, values, DB_Array, skills, "");
+        let skills = { name: formik.values.name };
 
         let obj = {};
         DB_Array.push(skills);
@@ -97,17 +90,18 @@ export default function Hard_skilltab(props) {
           <form onSubmit={formik.handleSubmit} className="mt-5">
             <div className="d-flex mt-2 mb-5">
               <div className="col-lg-4 col-md-6 ">
-                <Select
+                {/* Textfield for language */}
+                <CustomTextField
+                  type="text"
+                  variant="outlined"
                   name="name"
                   value={formik.values.name}
                   onChange={handleChange}
-                  options={options}
                   label="Langue"
                 />
 
                 {formik.touched.name && formik.errors.name ? (
                   <div className="formikErrorAuto mt-2">
-                    {" "}
                     {formik.errors.name}
                   </div>
                 ) : null}
