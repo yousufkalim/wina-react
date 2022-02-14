@@ -33,6 +33,7 @@ import {
   getApiAdress,
   Create_Job,
 } from "../../../../../Redux/actions";
+import { domainList } from "../../../../../Redux/actions/company";
 import AutoComplete from "../../../../../components/UI/AutoComplete";
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
 import TextArea from "../../../../../components/UI/Textarea";
@@ -46,6 +47,8 @@ export default function BrowseOffers() {
   const classes = useStyles();
   const history = useHistory();
   const [show, setShow] = useState(false);
+  const [domain, setDomain] = useState([]);
+
   const [address, setAddress] = useState("");
   const [multiSelect, setmultiSelect] = useState(0);
 
@@ -220,7 +223,17 @@ export default function BrowseOffers() {
     setSoftArray(value);
     sethardSkillsArray(valueArray);
   };
-
+  const domainOption = async () => {
+    const res = await domainList();
+    let tempDomain = [];
+    res.data.domains.map((item) => {
+      tempDomain.push({ title: item.title });
+    });
+    setDomain(tempDomain);
+  };
+  useEffect(() => {
+    domainOption();
+  }, [domainList]);
   return (
     <>
       <Tabs defaultActiveKey="publish" id="publish" className="publish">
@@ -284,7 +297,7 @@ export default function BrowseOffers() {
                         </div>
                         <div className="col-lg-6 ml-3">
                           <CustomTextField
-                            label="Title"
+                            label="Titre"
                             name="title"
                             id="outlined-basic"
                             onChange={handleChange}
@@ -314,7 +327,7 @@ export default function BrowseOffers() {
                             name="domain"
                             value={formik.values.domain}
                             onChange={handleChange}
-                            options={DomainOptions}
+                            options={domain}
                             label="Domaine"
                           />
 
@@ -350,7 +363,7 @@ export default function BrowseOffers() {
                             value={formik.values.ageRange}
                             onChange={handleChange}
                             options={AgeRangeOptions}
-                            label="Age Range"
+                            label="Tranche d'âge"
                           />
 
                           {formik.touched.ageRange && formik.errors.ageRange ? (
