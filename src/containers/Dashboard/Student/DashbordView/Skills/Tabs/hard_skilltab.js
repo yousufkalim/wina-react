@@ -313,7 +313,7 @@ export default function Hard_skilltab(props) {
                 type="submit"
                 // onClick={OnhandleSubmit}
                 variant="primary"
-                value="S’ENREGISTRER"
+                value="Ajouter"
                 disabled={loading}
               />
             )}

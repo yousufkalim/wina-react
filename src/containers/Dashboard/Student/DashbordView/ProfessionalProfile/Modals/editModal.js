@@ -334,7 +334,7 @@ const PPModal = ({
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="Soumettre"
                     disabled={false}
                   />
                 )}

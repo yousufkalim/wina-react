@@ -20,7 +20,6 @@ import Texts from "../../../../../Globals/Texts.js";
 import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
 import {
-  DomainOptions,
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
@@ -248,7 +247,7 @@ const ResearchedJob = () => {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="Soumettre"
                     disabled={false}
                   />
                 )}
