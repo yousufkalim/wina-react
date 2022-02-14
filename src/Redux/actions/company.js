@@ -61,6 +61,14 @@ export const Company_Signup = (user) => async (dispatch) => {
     return false;
   }
 };
+// domian list
+export const domainList = async () => {
+  try {
+    return await axios.get(`/admin/domain-list`);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
 
 // jobs
 
@@ -85,7 +93,6 @@ export const Create_Job = (user) => async (dispatch) => {
     );
     return true;
   } catch (error) {
-   
     dispatch(set_loading(false));
     if (error.response) {
       dispatch(
@@ -95,7 +102,6 @@ export const Create_Job = (user) => async (dispatch) => {
       );
     }
     return false;
-
   }
 };
 // edit job
@@ -160,49 +166,44 @@ export const Search_Students = (id) => async (dispatch) => {
 //GET STUDENT APPLIED JOBS for company
 
 export const Get_Applied_Jobs = (id) => async (dispatch) => {
-  
-  
-    try {
-      dispatch(set_loading_data(true));
+  try {
+    dispatch(set_loading_data(true));
 
-      const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
-      dispatch({
-        type: companyConstants.GET_APPLIED_JOBS,
-        payload: { loading: false, student_appliedJobs: res.data.jobs },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-      // if (error.response) {
-      //   dispatch(
-      //     Notistack.enqueueSnackbar(
-      //       Notistack.snackBar(error.response.data.message, "error")
-      //     )
-      //   );
-      // }
-    }
-  
+    const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
+    dispatch({
+      type: companyConstants.GET_APPLIED_JOBS,
+      payload: { loading: false, student_appliedJobs: res.data.jobs },
+    });
+  } catch (error) {
+    dispatch(set_loading_data(false));
+    // if (error.response) {
+    //   dispatch(
+    //     Notistack.enqueueSnackbar(
+    //       Notistack.snackBar(error.response.data.message, "error")
+    //     )
+    //   );
+    // }
+  }
 };
 export const Get_Company_Applied_Jobs = (id) => async (dispatch) => {
+  try {
+    dispatch(set_loading_data(true));
 
-    try {
-      dispatch(set_loading_data(true));
-
-      const res = await axios.get(`job/GetAllCompanyAppliedJobs/${id}`);
-      dispatch({
-        type: companyConstants.GET_COMPANY_APPLIED_JOBS,
-        payload: { loading: false, company_appliedJobs: res.data.jobs },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-      // if (error.response) {
-      //   dispatch(
-      //     Notistack.enqueueSnackbar(
-      //       Notistack.snackBar(error.response.data.message, "error")
-      //     )
-      //   );
-      // }
-    }
-  
+    const res = await axios.get(`job/GetAllCompanyAppliedJobs/${id}`);
+    dispatch({
+      type: companyConstants.GET_COMPANY_APPLIED_JOBS,
+      payload: { loading: false, company_appliedJobs: res.data.jobs },
+    });
+  } catch (error) {
+    dispatch(set_loading_data(false));
+    // if (error.response) {
+    //   dispatch(
+    //     Notistack.enqueueSnackbar(
+    //       Notistack.snackBar(error.response.data.message, "error")
+    //     )
+    //   );
+    // }
+  }
 };
 //offer decision by company
 export const Offer_Decion_By_Company =

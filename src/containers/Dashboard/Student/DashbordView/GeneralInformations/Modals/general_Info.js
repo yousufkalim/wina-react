@@ -247,7 +247,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     onChange={handleChange}
                     onBlur={formik.handleBlur}
                     rows={3}
-                    placeholder="General Presentation"
+                    placeholder="Présentation Générale"
                   />
                   {formik.touched.general_Presentation &&
                   formik.errors.general_Presentation ? (
@@ -270,7 +270,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="MODIFIER"
                     disabled={false}
                   />
                 )}

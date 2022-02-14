@@ -318,7 +318,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                   className="Enregistrer"
                   type="submit"
                   variant="primary"
-                  value="S’ENREGISTRER"
+                  value="Soumettre"
                   disabled={false}
                 />
               )}
