@@ -46,10 +46,12 @@ export default function StudentRegister(props) {
         <div className="d-flex justify-content-between p-3 Connexion-container">
           <div className="modal-left-side">
             <div className="Login">
-              <div className="heading pb-5">Connexion</div>
+              <div className="heading pb-5">Confirmer</div>
               <form onSubmit={formik.handleSubmit}>
                 <div className="contact-form">
-                  <p>{Texts.CLICK_BELOW_TO_VERIFY_EMAIL}</p>
+                  <h3 style={{ marginBottom: "3rem" }}>
+                    {Texts.CLICK_BELOW_TO_VERIFY_EMAIL}
+                  </h3>
                 </div>
 
                 {store.loading ? (
@@ -65,7 +67,7 @@ export default function StudentRegister(props) {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="Confirmer"
                     disabled={false}
                   />
                 )}
