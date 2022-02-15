@@ -17,15 +17,84 @@ import Admin from "./Dashboard/Admin";
 import UnAuth from "./unAuth";
 import Loader from "../components/UI/Loader";
 import { user } from "../urlConfig";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import * as Notistack from "../Redux/actions/notistack";
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const store = useSelector((state) => state.auth);
-
   const [loading, setLoading] = useState(true);
   const [User, setUser] = useState("");
   let Token = localStorage.getItem("token");
   //componentDidMount or componentDidUpdate
+
+  useEffect(() => {
+    getUrlToken();
+  }, []);
+
+  const getUrlToken = async () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const urlToken = queryParams.get("token");
+    const reqFailed = queryParams.get("failed");
+
+    if (urlToken) {
+      localStorage.setItem("token", urlToken);
+      var config = {
+        method: "get",
+        url: process.env.REACT_APP_URL + `/auth/verify-user`,
+        headers: {
+          Authorization: "Bearer " + urlToken,
+        },
+      };
+      await axios(config)
+        .then(function (response) {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          if (
+            response.data.user.type &&
+            response.data.user.type === "student"
+          ) {
+            Get_Student_Jobs();
+            Get_User_Student();
+            GetAllNotifications();
+          } else if (
+            response.data.user.type &&
+            response.data.user.type === "company"
+          ) {
+            dispatch(Get_Company_Jobs());
+            GetAllNotifications();
+          }
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: {
+              urlToken,
+              user: response.data.user,
+              loading: false,
+            },
+          });
+          dispatch(
+            Notistack.enqueueSnackbar(
+              Notistack.snackBar("Connexion réussie", "success")
+            )
+          );
+          history.push("/");
+          window.location.reload();
+        })
+        .catch(function (error) {
+          console.log(error);
+          history.push("/");
+        });
+    } else if (reqFailed) {
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar("Utilisateur non trouvé", "error")
+        )
+      );
+      history.push("/");
+    }
+  };
+
   React.useEffect(() => {
     dispatch(isUserLoggedIn()).then((response) => {
       setUser(response);
@@ -42,6 +111,7 @@ function App() {
   useEffect(() => {
     dispatch(SocketNotifications());
   }, [loading]);
+
   return (
     <>
       {User ? (
@@ -54,6 +124,8 @@ function App() {
         ) : (
           <UnAuth />
         )
+      ) : window.location.pathname === "/goolgeLogin" ? (
+        <Loader.CenterProgress />
       ) : (
         <UnAuth />
       )}
