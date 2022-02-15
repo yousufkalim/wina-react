@@ -119,13 +119,13 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       reader.readAsDataURL(file);
       if (file.type !== "application/pdf") {
         if (file.type === "video/mp4") {
-          if (file.size <= 200000000) {
+          if (file.size <= 100000000) {
             reader.onload = () => setVideoURI(reader.result);
 
             setVideo(file);
             formik.setFieldValue("video", file.name);
           } else {
-            alert("vous pouvez télécharger jusqu'à 200 Mo de vidéo");
+            alert("La longueur maximale de la vidéo peut être de 100 Mo");
           }
         } else if (file.type === "image/png" || file.type === "image/jpeg") {
           reader.onload = () => setImageURI(reader.result);
@@ -135,7 +135,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
           setImage(file);
         }
       } else {
-        alert("Vous ne pouvez télécharger que des images ou des vidéos ");
+        alert("Vous ne pouvez télécharger que des images ou des vidéos");
       }
     }
   };
@@ -183,15 +183,14 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                   </small>
                 </div>
 
-                <div className="mb-2">
-                  <label className="inputLabel" for="professional_Picture">
+                <div className="mb-3">
+                  <label className="add_video" for="professional_Picture">
                     Ajouter une video
                   </label>
                   <br />
 
                   <iframe
                     className="embed-responsive-item"
-                    // src={`../images/video.mp4`}
                     src={VideoUri}
                     allowFullScreen
                   ></iframe>
@@ -248,7 +247,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     onChange={handleChange}
                     onBlur={formik.handleBlur}
                     rows={3}
-                    placeholder="General Presentation"
+                    placeholder="Présentation Générale"
                   />
                   {formik.touched.general_Presentation &&
                   formik.errors.general_Presentation ? (
@@ -271,7 +270,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="MODIFIER"
                     disabled={false}
                   />
                 )}

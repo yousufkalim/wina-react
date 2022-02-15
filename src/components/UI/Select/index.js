@@ -71,8 +71,7 @@ const useStyles = makeStyles((theme) => ({
     // },
     "& .MuiFormLabel-root": {
       fontSize: "1.37rem",
-      color: "#454545",
-      fontWeight: 600,
+      color: "#8d8d8d",
     },
     "& .MuiInputLabel-formControl": {
       top: -6,

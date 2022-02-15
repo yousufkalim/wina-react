@@ -46,7 +46,7 @@ export const FIRST_SIGNUP_YUP = Yup.object().shape({
       is: (val) => (val && val.length > 0 ? true : false),
       then: Yup.string().oneOf(
         [Yup.ref("password")],
-        "Both password need to be the same"
+        "Les mots de passe doivent être identiques"
       ),
     })
     .min(6, "Doit comporter 10 caractères")

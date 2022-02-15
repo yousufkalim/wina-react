@@ -90,7 +90,7 @@ export const isUserLoggedIn = () => async (dispatch) => {
     return Promise.resolve();
   }
 };
-
+//signin through google
 export const googleLogin = async () => {
   try {
     const response = await axios.get(`/auth/google`);
@@ -99,6 +99,8 @@ export const googleLogin = async () => {
     console.log(err.response);
   }
 };
+//signin through facebook
+
 export const facebookLogin = async () => {
   try {
     const response = await axios.get(`/auth/facebook`);
@@ -107,7 +109,14 @@ export const facebookLogin = async () => {
     console.log(err.response);
   }
 };
-
+//user which trying to recover password
+export const getUser = async (id) => {
+  try {
+    return await axios.get(`/profile/getUser/${id}`);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
 export const signout = () => async (dispatch) => {
   try {
     dispatch(set_loading(true));
@@ -143,15 +152,11 @@ export const Get_User_Student = () => async (dispatch) => {
   try {
     dispatch(set_loading_data(true));
 
-    const res = await axios.post(
-      `student/get-info`,
-      { type: user.type },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await axios.post(`student/get-info`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     dispatch({
       type: studentConstants.STUDENT_DATA_SUCCESS,
       payload: { loading: false, user: res.data.user },

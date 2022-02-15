@@ -126,7 +126,7 @@ export default function Hard_skilltab(props) {
                 className="Enregistrer"
                 type="submit"
                 variant="primary"
-                value="S’ENREGISTRER"
+                value="Ajouter"
                 disabled={false}
               />
             )}

@@ -185,11 +185,12 @@ const PPModal = ({
               </div>
 
               <div className="professional-modal-form-other">
-                <Select
+                <CustomTextField
+                  type="text"
+                  variant="outlined"
                   name="company"
                   value={formik.values.company}
                   onChange={handleChange}
-                  options={CompanyOptions}
                   label="company d’emploi"
                 />
 
@@ -201,11 +202,12 @@ const PPModal = ({
                 ) : null}
               </div>
               <div className="professional-modal-form-other">
-                <Select
+                <CustomTextField
+                  type="text"
+                  variant="outlined"
                   name="place"
                   value={formik.values.place}
                   onChange={handleChange}
-                  options={CountryOptions}
                   label="place d’emploi"
                 />
 
@@ -332,7 +334,7 @@ const PPModal = ({
                     className="Enregistrer"
                     type="submit"
                     variant="primary"
-                    value="S’ENREGISTRER"
+                    value="Soumettre"
                     disabled={false}
                   />
                 )}

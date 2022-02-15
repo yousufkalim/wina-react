@@ -37,7 +37,7 @@ const Dashboard = (props) => {
                       src="../images/twomen_hover.png"
                     />
                   </div>
-                  <div className="label">Coaching</div>
+                  <div className="label">Accompagnement</div>
                 </Nav.Link>
               </Nav.Item>
             </Nav>

@@ -104,6 +104,9 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       }
     } else if (name === "position_hold") {
       formik.setFieldValue(name, e.target.checked);
+      let date = new Date();
+      let end_Dateis = moment(date).format("YYYY-MM-DD");
+      formik.setFieldValue("end_date", end_Dateis);
     } else if (formik.values.start_date && name === "end_date") {
       let end_Date = moment(value);
       let start_Date = moment(formik.values.start_date);
@@ -148,8 +151,6 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               <CustomTextField
                 name="position"
                 label="Intitulé du poste . Ex : Chef de projet"
-                // className="Job_title"
-                // placeholder="Intitulé du poste . Ex : Chef de projet"
                 value={formik.values.position}
                 variant="outlined"
                 onChange={handleChange}
@@ -173,11 +174,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
             <div className="professional-modal-form-other ">
-              <Select
+              <CustomTextField
+                type="text"
+                variant="outlined"
                 name="company"
                 value={formik.values.company}
                 onChange={handleChange}
-                options={CompanyOptions}
                 label="company d’emploi"
               />
 
@@ -186,11 +188,12 @@ const PPModal = ({ show, setShow, professionalArray }) => {
               ) : null}
             </div>
             <div className="professional-modal-form-other">
-              <Select
+              <CustomTextField
+                type="text"
+                variant="outlined"
                 name="place"
                 value={formik.values.place}
                 onChange={handleChange}
-                options={CountryOptions}
                 label="place d’emploi"
               />
 
@@ -232,6 +235,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
             </div>
             <div className="professional-modal-form-date">
               <DatePicker
+                disabled={formik.values.position_hold}
                 name="end_date"
                 label={"Date de fin"}
                 previous={true}
@@ -314,7 +318,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                   className="Enregistrer"
                   type="submit"
                   variant="primary"
-                  value="S’ENREGISTRER"
+                  value="Soumettre"
                   disabled={false}
                 />
               )}

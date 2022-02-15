@@ -78,7 +78,14 @@ export const Student_Signup = (user) => async (dispatch) => {
     return false;
   }
 };
-
+// domian list
+export const domainList = async () => {
+  try {
+    return await axios.get(`/admin/domain-list`);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
 export const Add_info_Student = (user) => async (dispatch) => {
   try {
     dispatch(set_loading_school(true));

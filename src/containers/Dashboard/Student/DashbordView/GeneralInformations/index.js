@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { useDispatch, useSelector } from "react-redux";
+import Behance from "../../../../../assets/Behance.png";
+import Dribble from "../../../../../assets/Dribble.png";
 import {
   Delete_School_Info,
   Add_Image_info_Student,
@@ -156,7 +158,7 @@ const GeneralInformations = () => {
                   </ul>
                   <ul className="PLinks">
                     <li>
-                      <Image src="../images/behance.png" />
+                      <Image src={Behance} />
                     </li>
                     <li>Behance &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
@@ -178,7 +180,7 @@ const GeneralInformations = () => {
                   </ul>
                   <ul className="PLinks">
                     <li>
-                      <Image src="../images/dribble.png" />
+                      <Image src={Dribble} />
                     </li>
                     <li>Dribble &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
