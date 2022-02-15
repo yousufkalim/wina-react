@@ -7,7 +7,7 @@ import {
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
 import { token, baseUrl, user } from "../../urlConfig";
-export const set_loading = (loading) => ({
+export const set_loading_student = (loading) => ({
   type: actionTypes.SET_LOADING_USER,
   loading,
 });
@@ -22,14 +22,14 @@ export const headers = {
   },
 };
 
-export const set_loading_data = (loading) => ({
+export const set_loading_data_student = (loading) => ({
   type: actionGlobals.SET_DATA_LOADING,
   loading,
 });
 
 export const Student_Signup = (user) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_student(true));
 
     const res = await axios.post(`/auth/register`, {
       ...user,
@@ -41,7 +41,7 @@ export const Student_Signup = (user) => async (dispatch) => {
     });
 
     try {
-      dispatch(set_loading(true));
+      dispatch(set_loading_student(true));
 
       const res = await axios.post(`/auth/email-verfication`, {
         email: user.email,
@@ -56,9 +56,9 @@ export const Student_Signup = (user) => async (dispatch) => {
         )
       );
 
-      dispatch(set_loading(false));
+      dispatch(set_loading_student(false));
     } catch (error) {
-      dispatch(set_loading(false));
+      dispatch(set_loading_student(false));
 
       dispatch({
         type: studentConstants.STUDENT_EMAIL_SENT_FAILURE,
@@ -67,7 +67,7 @@ export const Student_Signup = (user) => async (dispatch) => {
     }
     return true;
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_student(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -214,7 +214,7 @@ export const Delete_Professional_Info = (id) => async (dispatch) => {
 
 export const Get_Job = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading_data(true));
+    dispatch(set_loading_data_student(true));
 
     const res = await axios.get(`job/get-job/${id}`);
     dispatch({
@@ -222,7 +222,7 @@ export const Get_Job = (id) => async (dispatch) => {
       payload: { loading: false, job: res.data.job },
     });
   } catch (error) {
-    dispatch(set_loading_data(false));
+    dispatch(set_loading_data_student(false));
     // dispatch(
     //   Notistack.enqueueSnackbar(
     //     Notistack.snackBar(error.response.data.message, "error")
@@ -235,7 +235,7 @@ export const Get_Job = (id) => async (dispatch) => {
 export const GetCompanyAppliedJobs = () => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_student(true));
 
       const res = await axios.get(`job/GetCompanyAppliedJobs`);
       dispatch({
@@ -243,7 +243,7 @@ export const GetCompanyAppliedJobs = () => async (dispatch) => {
         payload: { loading: false, company_appliedJobs: res.data.jobs },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_student(false));
 
       // dispatch(
       //   Notistack.enqueueSnackbar(
@@ -258,7 +258,7 @@ export const GetCompanyAppliedJobs = () => async (dispatch) => {
 export const GetStudentAppliedSuccessJobs = () => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_student(true));
 
       const res = await axios.get(`job/GetStudentAppliedSuccessJobs`);
       dispatch({
@@ -266,7 +266,7 @@ export const GetStudentAppliedSuccessJobs = () => async (dispatch) => {
         payload: { loading: false, student_Jobs: res.data.jobs },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_student(false));
 
       // dispatch(
       //   Notistack.enqueueSnackbar(
@@ -282,7 +282,7 @@ export const GetStudentAppliedSuccessJobs = () => async (dispatch) => {
 export const Get_Student_Applied_Jobs = () => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_student(true));
 
       const res = await axios.get(`job/GetStudentAppliedJobs`);
       dispatch({
@@ -290,7 +290,7 @@ export const Get_Student_Applied_Jobs = () => async (dispatch) => {
         payload: { loading: false, appliedJobs: res.data.jobs },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_student(false));
       // dispatch(
       //   Notistack.enqueueSnackbar(
       //     Notistack.snackBar(error.response.data.message, "error")
@@ -304,7 +304,7 @@ export const Get_Student_Applied_Jobs = () => async (dispatch) => {
 export const Get_Student_Rejected_Jobs = () => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_student(true));
 
       const res = await axios.get(`job/GetStudentRejectedJobs`);
       dispatch({
@@ -312,7 +312,7 @@ export const Get_Student_Rejected_Jobs = () => async (dispatch) => {
         payload: { loading: false, rejectedJobs: res.data.jobs },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_student(false));
       // dispatch(
       //   Notistack.enqueueSnackbar(
       //     Notistack.snackBar(error.response.data.message, "error")
@@ -327,7 +327,7 @@ export const Offer_Decion_By_Students =
   (id, decision, setisDetail) => async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_student(true));
 
         const res = await axios.post(`job/offer-decision-by-student/${id}`, {
           status: decision,
@@ -343,7 +343,7 @@ export const Offer_Decion_By_Students =
         );
         setisDetail(id);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_student(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(
@@ -360,7 +360,7 @@ export const RecievedOffer_Decion_By_Students =
   (id, decision, setKey, key, handleBooking) => async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_student(true));
 
         const res = await axios.post(
           `job/OffersRecievedDecisionByStudent/${id}`,
@@ -380,7 +380,7 @@ export const RecievedOffer_Decion_By_Students =
         handleBooking();
         setKey(key);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_student(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(
@@ -395,7 +395,7 @@ export const RecievedOffer_Decion_By_Students =
 export const Cancel_Offer_Decion_By_Students =
   (id, setisDetail) => async (dispatch) => {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_student(true));
 
       const res = await axios.post(
         `job/CancelOfferDecisionByStudent/${id}`,
@@ -412,7 +412,7 @@ export const Cancel_Offer_Decion_By_Students =
         payload: { loading: false },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_student(false));
       if (error.response) {
         dispatch(
           Notistack.enqueueSnackbar(
@@ -428,7 +428,7 @@ export const validateAppointment_By_Students =
   (decision, jobID, setBooking) => async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_student(true));
 
         const res = await axios.post(`student/validateAppointment/${jobID}`, {
           status: decision,
@@ -444,7 +444,7 @@ export const validateAppointment_By_Students =
         );
         setBooking(false);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_student(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(

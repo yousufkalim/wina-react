@@ -8,11 +8,11 @@ import { token, user, baseUrl } from "../../urlConfig";
 
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
-export const set_loading = (loading) => ({
+export const set_loading_company = (loading) => ({
   type: actionTypes.SET_LOADING_COMPANY,
   loading,
 });
-export const set_loading_data = (loading) => ({
+export const set_loading_data_compnay = (loading) => ({
   type: actionGlobals.SET_DATA_LOADING,
   loading,
 });
@@ -66,7 +66,7 @@ export const Company_Signup = (user) => async (dispatch) => {
 
 export const Create_Job = (user) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_company(true));
 
     let res = await axios({
       method: "post",
@@ -85,8 +85,7 @@ export const Create_Job = (user) => async (dispatch) => {
     );
     return true;
   } catch (error) {
-   
-    dispatch(set_loading(false));
+    dispatch(set_loading_company(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -95,7 +94,6 @@ export const Create_Job = (user) => async (dispatch) => {
       );
     }
     return false;
-
   }
 };
 // edit job
@@ -103,7 +101,7 @@ export const Create_Job = (user) => async (dispatch) => {
 export const Edit_Job = (user, id) => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading(true));
+      dispatch(set_loading_company(true));
 
       let res = await axios({
         method: "put",
@@ -123,7 +121,7 @@ export const Edit_Job = (user, id) => async (dispatch) => {
         )
       );
     } catch (error) {
-      dispatch(set_loading(false));
+      dispatch(set_loading_company(false));
       if (error.response) {
         dispatch(
           Notistack.enqueueSnackbar(
@@ -139,7 +137,7 @@ export const Edit_Job = (user, id) => async (dispatch) => {
 export const Search_Students = (id) => async (dispatch) => {
   if (user && token) {
     try {
-      dispatch(set_loading_data(true));
+      dispatch(set_loading_data_compnay(true));
 
       const res = await axios.post(`company/search-students/${id}`, {});
       dispatch({
@@ -147,7 +145,7 @@ export const Search_Students = (id) => async (dispatch) => {
         payload: { loading: false, studentBySearch: res.data.students },
       });
     } catch (error) {
-      dispatch(set_loading_data(false));
+      dispatch(set_loading_data_compnay(false));
       // dispatch(
       //   Notistack.enqueueSnackbar(
       //     Notistack.snackBar(error.response.data.message, "error")
@@ -160,49 +158,44 @@ export const Search_Students = (id) => async (dispatch) => {
 //GET STUDENT APPLIED JOBS for company
 
 export const Get_Applied_Jobs = (id) => async (dispatch) => {
-  
-  
-    try {
-      dispatch(set_loading_data(true));
+  try {
+    dispatch(set_loading_data_compnay(true));
 
-      const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
-      dispatch({
-        type: companyConstants.GET_APPLIED_JOBS,
-        payload: { loading: false, student_appliedJobs: res.data.jobs },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-      // if (error.response) {
-      //   dispatch(
-      //     Notistack.enqueueSnackbar(
-      //       Notistack.snackBar(error.response.data.message, "error")
-      //     )
-      //   );
-      // }
-    }
-  
+    const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
+    dispatch({
+      type: companyConstants.GET_APPLIED_JOBS,
+      payload: { loading: false, student_appliedJobs: res.data.jobs },
+    });
+  } catch (error) {
+    dispatch(set_loading_data_compnay(false));
+    // if (error.response) {
+    //   dispatch(
+    //     Notistack.enqueueSnackbar(
+    //       Notistack.snackBar(error.response.data.message, "error")
+    //     )
+    //   );
+    // }
+  }
 };
 export const Get_Company_Applied_Jobs = (id) => async (dispatch) => {
+  try {
+    dispatch(set_loading_data_compnay(true));
 
-    try {
-      dispatch(set_loading_data(true));
-
-      const res = await axios.get(`job/GetAllCompanyAppliedJobs/${id}`);
-      dispatch({
-        type: companyConstants.GET_COMPANY_APPLIED_JOBS,
-        payload: { loading: false, company_appliedJobs: res.data.jobs },
-      });
-    } catch (error) {
-      dispatch(set_loading_data(false));
-      // if (error.response) {
-      //   dispatch(
-      //     Notistack.enqueueSnackbar(
-      //       Notistack.snackBar(error.response.data.message, "error")
-      //     )
-      //   );
-      // }
-    }
-  
+    const res = await axios.get(`job/GetAllCompanyAppliedJobs/${id}`);
+    dispatch({
+      type: companyConstants.GET_COMPANY_APPLIED_JOBS,
+      payload: { loading: false, company_appliedJobs: res.data.jobs },
+    });
+  } catch (error) {
+    dispatch(set_loading_data_compnay(false));
+    // if (error.response) {
+    //   dispatch(
+    //     Notistack.enqueueSnackbar(
+    //       Notistack.snackBar(error.response.data.message, "error")
+    //     )
+    //   );
+    // }
+  }
 };
 //offer decision by company
 export const Offer_Decion_By_Company =
@@ -219,7 +212,7 @@ export const Offer_Decion_By_Company =
   async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_compnay(true));
 
         const res = await axios.post(`job/offer-decision-by-company/${id}`, {
           status: decision,
@@ -239,7 +232,7 @@ export const Offer_Decion_By_Company =
         setisDetail(false);
         handleBooking(id);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_compnay(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(
@@ -265,7 +258,7 @@ export const RecievedOffer_Decion_By_Company =
   async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_compnay(true));
 
         const res = await axios.post(
           `job/OffersRecievedDecisionByCompany/${id}`,
@@ -288,7 +281,7 @@ export const RecievedOffer_Decion_By_Company =
         setstudentDetail(false);
         setMatchReceiveDetail(false);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_compnay(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(
@@ -313,7 +306,7 @@ export const Cancel_Offer_Decion_By_Company =
   async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_compnay(true));
 
         const res = await axios.post(`job/CancelOfferDecisionByCompany/${id}`, {
           id: offerID,
@@ -332,7 +325,7 @@ export const Cancel_Offer_Decion_By_Company =
         setisDetail(false);
         setMatchReceiveDetail(false);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_compnay(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(
@@ -348,7 +341,7 @@ export const Booking_Decion_By_Company =
   (value, id, jobID) => async (dispatch) => {
     if (user && token) {
       try {
-        dispatch(set_loading_data(true));
+        dispatch(set_loading_data_compnay(true));
 
         const res = await axios.post(
           `company/book-coaching-appointment/${id}`,
@@ -368,7 +361,7 @@ export const Booking_Decion_By_Company =
         );
         // setBooking(false);
       } catch (error) {
-        dispatch(set_loading_data(false));
+        dispatch(set_loading_data_compnay(false));
         if (error.response) {
           dispatch(
             Notistack.enqueueSnackbar(

@@ -3,7 +3,7 @@ import Axios from "axios";
 import axios from "../../helpers/axios";
 import { token, user } from "../../urlConfig";
 
-export const set_loading = (loading) => ({
+export const set_loading_global = (loading) => ({
   type: actionGlobals.SET_ADDRESS_LOADING,
   loading,
 });
@@ -13,7 +13,7 @@ export const set_skill_loading = (loading) => ({
 });
 
 export const getApiAdress = (value) => async (dispatch) => {
-  dispatch(set_loading(true));
+  dispatch(set_loading_global(true));
 
   try {
     const res = await Axios.get(
@@ -25,9 +25,9 @@ export const getApiAdress = (value) => async (dispatch) => {
       type: actionGlobals.ADDRESS_TO_SUCCESS,
       items: res.data.features,
     });
-    dispatch(set_loading(false));
+    dispatch(set_loading_global(false));
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_global(false));
 
     // dispatch(Notistack.enqueueSnackbar(Notistack.snackBar(error, "error")));
   }
