@@ -62,7 +62,7 @@ export const Company_Signup = (user) => async (dispatch) => {
   }
 };
 // domian list
-export const domainList = async () => {
+export const domainListCompany = async () => {
   try {
     return await axios.get(`/admin/domain-list`);
   } catch (err) {
@@ -168,7 +168,6 @@ export const Search_Students = (id) => async (dispatch) => {
 export const Get_Applied_Jobs = (id) => async (dispatch) => {
   try {
     dispatch(set_loading_data_compnay(true));
-
     const res = await axios.get(`job/GetAllStudentAppliedJobs/${id}`);
     dispatch({
       type: companyConstants.GET_APPLIED_JOBS,

@@ -41,21 +41,21 @@ export default function Users() {
   const USERS = useSelector((state) => state.admin);
   function userdata() {
     let data = [];
-    if(USERS.users){
-    let newUsers=USERS.users.filter(dt=>dt.role!=='admin')
-    newUsers&&
-    newUsers.map((key, index) => {
-        data.push({
-          _id: key._id,
-          name: key.firstName + " " + key.lastName,
-          email: key.email,
-          phone: key.phone,
-          role: key.role,
-          type: key.type,
+    if (USERS.users) {
+      let newUsers = USERS.users.filter((dt) => dt.role !== "admin");
+      newUsers &&
+        newUsers.map((key, index) => {
+          data.push({
+            _id: key._id,
+            name: key.firstName + " " + key.lastName,
+            email: key.email,
+            phone: key.phone,
+            role: key.role,
+            type: key.type,
+          });
+          return data;
         });
-        return data;
-      });
-    setData(data);
+      setData(data);
     }
   }
   useEffect(() => {

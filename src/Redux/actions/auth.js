@@ -109,14 +109,7 @@ export const facebookLogin = async () => {
     console.log(err.response);
   }
 };
-//user which trying to recover password
-export const getUser = async (id) => {
-  try {
-    return await axios.get(`/profile/getUser/${id}`);
-  } catch (err) {
-    console.log(err.response);
-  }
-};
+
 export const signout = () => async (dispatch) => {
   try {
     dispatch(set_loading(true));
