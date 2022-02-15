@@ -2,26 +2,25 @@ import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
 import { token, user, baseUrl } from "../../urlConfig";
 import { adminConstants } from "./constants";
-export const set_loading = (loading) => ({
+export const set_loading_admin = (loading) => ({
   type: adminConstants.SET_LOADING,
   loading,
 });
-export const set_loading_data = (loading) => ({
+export const set_loading_data_admin = (loading) => ({
   type: adminConstants.SET_DATA_LOADING,
   loading,
 });
 
 export const getUser = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/user-list`);
     dispatch({
       type: adminConstants.GET_ALL_USERS,
       payload: { loading: false, users: res.data.listOfUsers },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -34,7 +33,7 @@ export const getUser = () => async (dispatch) => {
 
 export const deleteUser = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.put(`admin/delete-profile/${id}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
@@ -49,8 +48,7 @@ export const deleteUser = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -65,15 +63,14 @@ export const deleteUser = (id) => async (dispatch) => {
 
 export const listOfSkills = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/skill-list`);
     dispatch({
       type: adminConstants.GET_ALL_SKILLS,
       payload: { loading: false, skills: res.data.listOfSkills },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -86,7 +83,7 @@ export const listOfSkills = () => async (dispatch) => {
 
 export const deleteSkills = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.put(`admin/delete-skill/${id}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
@@ -101,7 +98,7 @@ export const deleteSkills = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -114,7 +111,7 @@ export const deleteSkills = (id) => async (dispatch) => {
 
 export const Create_skills = (data) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
 
     let res = await axios({
       method: "post",
@@ -131,9 +128,9 @@ export const Create_skills = (data) => async (dispatch) => {
     dispatch(
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -146,7 +143,7 @@ export const Create_skills = (data) => async (dispatch) => {
 
 export const Edit_skills = (_id, data) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
 
     let res = await axios({
       method: "put",
@@ -163,8 +160,7 @@ export const Edit_skills = (_id, data) => async (dispatch) => {
       )
     );
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -176,15 +172,14 @@ export const Edit_skills = (_id, data) => async (dispatch) => {
 };
 export const listOfJobs = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/job-list`);
     dispatch({
       type: adminConstants.GET_ALL_JOBS,
       payload: { loading: false, jobs: res.data.ListOfJobs },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -196,7 +191,7 @@ export const listOfJobs = () => async (dispatch) => {
 };
 export const deleteJobs = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.put(`admin/delete-job/${id}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
@@ -211,7 +206,7 @@ export const deleteJobs = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -223,15 +218,14 @@ export const deleteJobs = (id) => async (dispatch) => {
 };
 export const listOfCompany = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/company-list`);
     dispatch({
       type: adminConstants.GET_ALL_COMPANY,
       payload: { loading: false, Company: res.data.listOfCompanies },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -244,7 +238,7 @@ export const listOfCompany = () => async (dispatch) => {
 
 export const deleteCompany = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.put(`admin/delete-company/${id}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
@@ -259,7 +253,7 @@ export const deleteCompany = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -272,15 +266,14 @@ export const deleteCompany = (id) => async (dispatch) => {
 
 export const listOfAppointment = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/appointment-list`);
     dispatch({
       type: adminConstants.GET_ALL_APPOINTMENT,
       payload: { loading: false, Appointments: res.data.Appointments },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -293,7 +286,7 @@ export const listOfAppointment = () => async (dispatch) => {
 
 export const deleteAppointment = (id) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.put(`admin/delete-appointment/${id}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
@@ -308,7 +301,7 @@ export const deleteAppointment = (id) => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -321,7 +314,7 @@ export const deleteAppointment = (id) => async (dispatch) => {
 
 export const CreateConsultant = (data) => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     let res = await axios({
       method: "post",
       url: `${baseUrl}/admin/create-consultant-profile`,
@@ -340,7 +333,7 @@ export const CreateConsultant = (data) => async (dispatch) => {
     );
     return true;
   } catch (error) {
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -353,7 +346,7 @@ export const CreateConsultant = (data) => async (dispatch) => {
 };
 export const listOfConsultantStudent = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/consultant-profile-student`);
     dispatch({
       type: adminConstants.GET_CONSULTANT_STUDENT,
@@ -363,8 +356,7 @@ export const listOfConsultantStudent = () => async (dispatch) => {
       },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -377,7 +369,7 @@ export const listOfConsultantStudent = () => async (dispatch) => {
 
 export const listOfConsultantCompany = () => async (dispatch) => {
   try {
-    dispatch(set_loading(true));
+    dispatch(set_loading_admin(true));
     const res = await axios.get(`admin/consultant-profile-teacher`);
     dispatch({
       type: adminConstants.GET_CONSULTANT_COMPANY,
@@ -387,8 +379,7 @@ export const listOfConsultantCompany = () => async (dispatch) => {
       },
     });
   } catch (error) {
-    
-    dispatch(set_loading(false));
+    dispatch(set_loading_admin(false));
     if (error.response) {
       dispatch(
         Notistack.enqueueSnackbar(

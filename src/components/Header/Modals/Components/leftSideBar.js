@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, GrGooglePlus } from "react-icons/all";
+import { FaFacebookF, FcGoogle } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { googleLogin } from "../../../../Redux/actions";
@@ -81,24 +81,36 @@ export default function Sidebar({
         <div className="mt-5">
           <div className="faceBookGoogleGroup">
             <div color="primary" className="w-100 modal-social-buttons">
-              <div
+              <a
+                href={process.env.REACT_APP_URL + "/auth/facebook"}
                 className="modal-social-btn modal-facebook-btn"
-                onClick={handleFacebookClick}
               >
-                <span>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   <FaFacebookF className="modal-social-icon" />
                 </span>
-                &nbsp;&nbsp; Facebook
-              </div>
-              <div
-                className="modal-social-btn modal-google-btn"
-                onClick={handleGoogleClick}
+                &nbsp;&nbsp; <>Facebook</>
+              </a>
+              <a
+                href={process.env.REACT_APP_URL + "/auth/google"}
+                className="modal-social-btn-google modal-google-btn"
               >
-                <span>
-                  <GrGooglePlus className="modal-social-icon-google mr-2" />
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <FcGoogle className="modal-social-icon-google mr-2" />
                 </span>
-                Google +
-              </div>
+                <>Google</>
+              </a>
             </div>
           </div>
         </div>

@@ -281,21 +281,44 @@ html {
   font-weight: bold;
   align-items: center;
   justify-content: flex-start;
+  align-items: center;
+}
+.modal-social-btn-google {
+  color: black;
+  font-size: 1.5rem !important;
+  margin-top: 5rem;
+  cursor: pointer;
+  flex-basis: 50%;
+  padding: 0.61rem;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: center;
 }
 .modal-facebook-btn {
   background-color: #26468b;
   border-radius: 2.5rem 0 0 2.5rem;
 }
+.modal-facebook-btn:hover {
+  color: white;
+}
+
 .modal-google-btn {
-  background-color: #f44336;
+  background-color: white;
+  border: 2px solid #8d8d8d4d;
   border-radius: 0 2.5rem 2.5rem 0;
 }
+.modal-google-btn:hover {
+  color: black;
+}
+
 .modal-social-icon {
   font-size: 1.5rem;
   margin-left: 2rem;
 }
 .modal-social-icon-google {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   margin-left: 2rem;
 }
 .student-modal .modal-content {
