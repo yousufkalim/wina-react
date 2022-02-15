@@ -72,7 +72,7 @@ export default function MultiCarouselPage(props) {
         className="d-flex justify-content-start align-items-center"
         // style={{ height: "10%" }}
       >
-        <h5>Store & Supply </h5>
+        {/* <h5>Store & Supply </h5> */}
         <span className="offer-apply-btn ml-4">Postuler</span>
       </div>
       {JOBS && JOBS.length > 2 ? (
