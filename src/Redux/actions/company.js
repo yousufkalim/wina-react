@@ -62,7 +62,7 @@ export const Company_Signup = (user) => async (dispatch) => {
   }
 };
 // domian list
-export const domainList = async () => {
+export const domainListCompany = async () => {
   try {
     return await axios.get(`/admin/domain-list`);
   } catch (err) {

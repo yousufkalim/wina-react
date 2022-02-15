@@ -33,7 +33,7 @@ import {
   getApiAdress,
   Create_Job,
 } from "../../../../../Redux/actions";
-import { domainList } from "../../../../../Redux/actions/company";
+import { domainListCompany } from "../../../../../Redux/actions/company";
 import AutoComplete from "../../../../../components/UI/AutoComplete";
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
 import TextArea from "../../../../../components/UI/Textarea";
@@ -224,7 +224,7 @@ export default function BrowseOffers() {
     sethardSkillsArray(valueArray);
   };
   const domainOption = async () => {
-    const res = await domainList();
+    const res = await domainListCompany();
     let tempDomain = [];
     res.data.domains.map((item) => {
       tempDomain.push({ title: item.title });
@@ -233,7 +233,7 @@ export default function BrowseOffers() {
   };
   useEffect(() => {
     domainOption();
-  }, [domainList]);
+  }, [domainListCompany]);
   return (
     <>
       <Tabs defaultActiveKey="publish" id="publish" className="publish">
