@@ -8,6 +8,7 @@ import EmailVerificationModal from "./Modals/emailVerificationModal";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import { getUser } from "../../Redux/actions";
 import { TextField, Paper } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -18,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import HomeHeader1 from "./header";
 import HomeHeader2 from "./header2";
 import ModalInput from "../UI/Input";
-
 /**
  * @author
  * @function Header
@@ -75,6 +75,7 @@ const Header = (props) => {
   const [googleSignupModal, setGoogleSignupModal] = useState(false);
   const [user, setUser] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [data, setData] = useState({});
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [type, setType] = useState("");
@@ -165,7 +166,7 @@ const Header = (props) => {
   const getUser = async () => {
     if (props.id) {
       let DATA = await axios.get(
-        `http://localhost:9190/api/v1/profile/getUser/${props.id}`
+        `${process.env.REACT_APP_URL}/profile/getUser/${props.id}`
       );
       setData(DATA.data);
       setresetModal(!resetModal);
@@ -300,7 +301,6 @@ const Header = (props) => {
         });
     }
   };
-
   return (
     <>
       <MainModal show={mainModal} handleModal={handleModal} />
