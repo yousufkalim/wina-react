@@ -75,7 +75,6 @@ const Header = (props) => {
   const [googleSignupModal, setGoogleSignupModal] = useState(false);
   const [user, setUser] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [data, setData] = useState({});
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [type, setType] = useState("");
