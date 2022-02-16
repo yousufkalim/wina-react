@@ -29,11 +29,15 @@ export const DomainOptions = [
   { title: "Transport / Logistique" },
 ];
 export const RythmeOptions = [
-  { title: "1 semaine entreprise" },
-  { title: "1 semaine école" },
-  { title: "Choix 2" },
-  { title: "Choix 3" },
-  { title: "Choix 4" },
+  { title: "1 jour école/ 4 jours entreprise" },
+  { title: "2 jours  école/ 3 jours entreprise" },
+  { title: "1 semaine école / 1 semaine entreprise" },
+  { title: "1 semaine école / 3 semaines entreprise" },
+  { title: "1 semaine école/ 2 semaines entrepris" },
+  { title: "2 semaines école / 3 semaines entreprise" },
+  { title: "2 semaines entreprise / 2 semaines école" },
+  { title: "4 semaines école / 6 à 7 semaines entreprise" },
+  { title: "Autre ( avec possibilité de renseigner le rythme)" },
 ];
 export const DurationOptions = [
   { title: "1 an" },
