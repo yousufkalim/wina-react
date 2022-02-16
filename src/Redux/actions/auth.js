@@ -110,6 +110,16 @@ export const facebookLogin = async () => {
   }
 };
 
+// all hard and soft skills of student
+export const studentSkills = async (id, setSkills) => {
+  try {
+    const response = await axios.get(`/admin/all-skillslist/${id}`);
+    setSkills(response.data.allSkills);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
 export const signout = () => async (dispatch) => {
   try {
     dispatch(set_loading(true));
