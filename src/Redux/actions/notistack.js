@@ -28,5 +28,6 @@ export const snackBar = (message, variant) => ({
   options: {
     key: new Date().getTime() + Math.random(),
     variant,
+    autoHideDuration: 3000,
   },
 });

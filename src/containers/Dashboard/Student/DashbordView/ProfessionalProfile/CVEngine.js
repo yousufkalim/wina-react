@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Tab, Tabs, Image } from "react-bootstrap";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { baseUri } from "../../../../../urlConfig";
 import { useDispatch, useSelector } from "react-redux";
-import { Get_User_Student } from "../../../../../Redux/actions";
+import { Get_User_Student, studentSkills } from "../../../../../Redux/actions";
+import axios from "axios";
 export default function CVEngine(props) {
+  const [skills, setSkills] = useState([]);
+  const [student, setStudent] = useState({});
   const { USER, type, setKey, key } = props;
   const dispatch = useDispatch();
   const store = useSelector((state) => state.auth);
@@ -13,6 +16,18 @@ export default function CVEngine(props) {
       dispatch(Get_User_Student());
     }
   }, [setKey, key]);
+  useEffect(() => {
+    studentSkills(USER.student._id, setSkills);
+  }, [USER]);
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async () => {
+    let DATA = await axios.get(
+      `${process.env.REACT_APP_URL}/student/getStdById/${USER.student._id}`
+    );
+    setStudent(DATA.data);
+  };
 
   const ShowImage = (USER) => {
     const STUDENT_IMAGE =
@@ -167,8 +182,8 @@ export default function CVEngine(props) {
                 )}
                 <div className="formation mt-3 mb-3">Compétences générales</div>
                 <ul className="list-group">
-                  {USER.student && USER.student.softSkills.length > 0 ? (
-                    USER.student.softSkills.map((ed) => (
+                  {student?.std?.softSkills?.length > 0 ? (
+                    student?.std?.softSkills.map((ed) => (
                       <li className="list-group-item mt-1">{ed.skillField}</li>
                     ))
                   ) : (
@@ -181,8 +196,8 @@ export default function CVEngine(props) {
                   Compétences spécialisées
                 </div>
                 <ul className="list-group">
-                  {USER.student && USER.student.hardSkills.length > 0 ? (
-                    USER.student.hardSkills.map((ed) => (
+                  {student?.std?.hardSkills?.length > 0 ? (
+                    student?.std?.hardSkills?.map((ed) => (
                       <li className="list-group-item mt-1">{ed.skillField}</li>
                     ))
                   ) : (
@@ -193,8 +208,8 @@ export default function CVEngine(props) {
                 </ul>
                 <div className="formation mt-3 mb-3">Languages</div>
                 <ul className="list-group">
-                  {USER.student && USER.student.languages.length > 0 ? (
-                    USER.student.languages.map((ed) => <li>{ed.name}</li>)
+                  {student?.std?.languages?.length > 0 ? (
+                    student?.std?.languages.map((ed) => <li>{ed.name}</li>)
                   ) : (
                     <p className="text-center">No Languages info found.....</p>
                   )}
@@ -207,7 +222,7 @@ export default function CVEngine(props) {
         </div>
       </div>
     );
-  } else
+  } else {
     return (
       <div className="CVOnlineBox">
         <div className="CVOnline custom-box">
@@ -221,8 +236,6 @@ export default function CVEngine(props) {
                   {USER.firstName} {USER.lastName}
                 </div>
                 <div className="profileProfession">
-                  {/* <div className="pb-1">{USER.type}</div> */}
-
                   <div className="pb-1">
                     {USER.address.zip},{USER.address.street},{USER.address.city}
                   </div>
@@ -342,8 +355,8 @@ export default function CVEngine(props) {
                 )}
                 <div className="formation mt-3 mb-3">Compétences générales</div>
                 <ul className="list-group">
-                  {USER.student.softSkills.length > 0 ? (
-                    USER.student.softSkills.map((ed) => (
+                  {student?.std?.softSkills?.length > 0 ? (
+                    student?.std?.softSkills.map((ed) => (
                       <li className="list-group-item mt-1">{ed.skillField}</li>
                     ))
                   ) : (
@@ -356,8 +369,8 @@ export default function CVEngine(props) {
                   Compétences spécialisées
                 </div>
                 <ul className="list-group">
-                  {USER.student.hardSkills.length > 0 ? (
-                    USER.student.hardSkills.map((ed) => (
+                  {student?.std?.hardSkills?.length > 0 ? (
+                    student?.std?.hardSkills?.map((ed) => (
                       <li className="list-group-item">{ed.skillField}</li>
                     ))
                   ) : (
@@ -368,8 +381,8 @@ export default function CVEngine(props) {
                 </ul>
                 <div className="formation mt-3 mb-3">Languages</div>
                 <ul className="list-group">
-                  {USER.student && USER.student.languages.length > 0 ? (
-                    USER.student.languages.map((ed) => (
+                  {student?.std?.languages?.length > 0 ? (
+                    student?.std?.languages.map((ed) => (
                       <li className="list-group-item">{ed.name}</li>
                     ))
                   ) : (
@@ -384,4 +397,5 @@ export default function CVEngine(props) {
         </div>
       </div>
     );
+  }
 }
