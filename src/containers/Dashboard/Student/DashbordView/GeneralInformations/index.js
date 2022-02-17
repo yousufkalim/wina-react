@@ -10,6 +10,7 @@ import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { useDispatch, useSelector } from "react-redux";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
+import linkedIn from "../../../../../assets/linkedIn.png";
 import {
   Delete_School_Info,
   Add_Image_info_Student,
@@ -136,7 +137,7 @@ const GeneralInformations = () => {
                   <div className="professionalNetwork">Réseau pro</div>
                   <ul className="PLinks">
                     <li>
-                      <Image src="../images/linkedIn.png" />
+                      <Image src={linkedIn} />
                     </li>
                     <li>Linkedin &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&

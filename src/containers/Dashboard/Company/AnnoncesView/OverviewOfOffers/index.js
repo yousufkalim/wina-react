@@ -14,7 +14,6 @@ import SubmitButton from "../../../../../components/UI/Button";
 import BookingModal from "../../../../../components/UI/Modal";
 import Calendar from "../../../../../components/UI/DateTimePicker";
 import Chip from "../../../../../components/UI/Chip";
-
 import CVEngine from "../../../Student/DashbordView/ProfessionalProfile/CVEngine";
 import {
   Get_Company_Jobs,
@@ -26,6 +25,9 @@ import {
   Booking_Decion_By_Company,
   Get_Job,
 } from "../../../../../Redux/actions";
+import Behance from "../../../../../assets/Behance.png";
+import Dribble from "../../../../../assets/Dribble.png";
+import linkedIn from "../../../../../assets/linkedIn.png";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
   const dispatch = useDispatch();
@@ -479,7 +481,7 @@ const OverviewOfOffers = () => {
                         <div className="professionalNetwork">Réseau pro</div>
                         <ul className="PLinks">
                           <li>
-                            <Image src="../images/linkedIn.png" />
+                            <Image src={linkedIn} />
                           </li>
                           <li>Linkedin &nbsp;&nbsp;: </li>
                           <li>
@@ -495,7 +497,7 @@ const OverviewOfOffers = () => {
                         </ul>
                         <ul className="PLinks">
                           <li>
-                            <Image src="../images/behance.png" />
+                            <Image src={Behance} />
                           </li>
                           <li>Behance &nbsp;&nbsp;: </li>
                           <li>
@@ -511,7 +513,7 @@ const OverviewOfOffers = () => {
                         </ul>
                         <ul className="PLinks">
                           <li>
-                            <Image src="../images/dribble.png" />
+                            <Image src={Dribble} />
                           </li>
                           <li>Dribble &nbsp;&nbsp;: </li>
                           <li>

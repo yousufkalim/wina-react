@@ -5,6 +5,11 @@ import { baseUri } from "../../../../../urlConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { Get_User_Student, studentSkills } from "../../../../../Redux/actions";
 import axios from "axios";
+import Behance from "../../../../../assets/Behance.png";
+import Dribble from "../../../../../assets/Dribble.png";
+import linkedIn from "../../../../../assets/linkedIn.png";
+import github from "../../../../../assets/github.png";
+
 export default function CVEngine(props) {
   const [skills, setSkills] = useState([]);
   const [student, setStudent] = useState({});
@@ -16,9 +21,9 @@ export default function CVEngine(props) {
       dispatch(Get_User_Student());
     }
   }, [setKey, key]);
-  useEffect(() => {
-    studentSkills(USER.student._id, setSkills);
-  }, [USER]);
+  // useEffect(() => {
+  //   studentSkills(USER.student._id, setSkills);
+  // }, [USER]);
   useEffect(() => {
     getUser();
   }, []);
@@ -112,7 +117,7 @@ export default function CVEngine(props) {
                   <>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/linkedIn.png" />
+                        <Image src={linkedIn} />
                       </li>
                       <li>Linkedin &nbsp;&nbsp;: </li>
                       <li>
@@ -128,7 +133,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/behance.png" />
+                        <Image src={Behance} />
                       </li>
                       <li>Behance &nbsp;&nbsp;: </li>
                       <li>
@@ -144,7 +149,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/dribble.png" />
+                        <Image src={Dribble} />
                       </li>
                       <li>Dribble &nbsp;&nbsp;: </li>
                       <li>
@@ -160,7 +165,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/github.png" />
+                        <Image src={github} />
                       </li>
                       <li>Github &nbsp;&nbsp;: </li>
                       <li>
@@ -285,7 +290,7 @@ export default function CVEngine(props) {
                   <>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/linkedIn.png" />
+                        <Image src={linkedIn} />
                       </li>
                       <li>Linkedin &nbsp;&nbsp;: </li>
                       <li>
@@ -301,7 +306,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/behance.png" />
+                        <Image src={Behance} />
                       </li>
                       <li>Behance &nbsp;&nbsp;: </li>
                       <li>
@@ -317,7 +322,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/dribble.png" />
+                        <Image src={Dribble} />
                       </li>
                       <li>Dribble &nbsp;&nbsp;: </li>
                       <li>
@@ -333,7 +338,7 @@ export default function CVEngine(props) {
                     </ul>
                     <ul className="PLinks">
                       <li>
-                        <Image src="../images/github.png" />
+                        <Image src={github} />
                       </li>
                       <li>Github &nbsp;&nbsp;: </li>
                       <li>
