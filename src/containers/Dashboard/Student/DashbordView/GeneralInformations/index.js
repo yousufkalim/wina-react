@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
 import linkedIn from "../../../../../assets/linkedIn.png";
+import Github from "../../../../../assets/github.png";
 import {
   Delete_School_Info,
   Add_Image_info_Student,
@@ -88,17 +89,12 @@ const GeneralInformations = () => {
                 <Col lg={3} md={4} className="pt-4">
                   <div className="profileImage">
                     <Image
-                      alt="image2"
                       src={
                         store.user.student.professional_Picture.image
                           ? `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
                           : DEFAULT_IMAGE
                       }
-                      // hidden={
-                      //   store.user.student.professional_Picture.image
-                      //     ? false
-                      //     : true
-                      // }
+                      alt="Image 2"
                     />
                   </div>
                   <div className="profileImage">
@@ -110,12 +106,12 @@ const GeneralInformations = () => {
                             : true
                         }
                         className="embed-responsive-item"
-                        // src={`../images/video.mp4`}
                         src={
                           `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
                             ? `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
                             : `../images/video.mp4`
                         }
+                        alt="Video"
                         allowFullScreen
                       ></iframe>
                     </div>
@@ -203,7 +199,7 @@ const GeneralInformations = () => {
                   </ul>
                   <ul className="PLinks">
                     <li>
-                      <Image src="../images/github.png" />
+                      <Image src={Github} />
                     </li>
                     <li>Github &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
