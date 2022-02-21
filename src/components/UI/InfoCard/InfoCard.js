@@ -3,6 +3,7 @@ import "./InfoCard.css";
 import { FiEdit2, MdDelete } from "react-icons/all";
 import { DEFAULT_IMAGE } from "../../../Globals/index";
 import { baseUri } from "../../../urlConfig";
+import moment from "moment";
 
 const InfoCard = (props) => {
   const {
@@ -40,9 +41,11 @@ const InfoCard = (props) => {
             </div>
             <div className="info-card-content pb-3">
               <div className="info-card-content-position">{item.position}</div>
-              <div>
-                {item.duration.start_date}{" "}{item.duration.end_date}
-              </div>
+              <h6>
+                {moment(item.duration.start_date).format("DD/MM/YYYY")}
+                {"  "}
+                {moment(item.duration.end_date).format("DD/MM/YYYY")}
+              </h6>
             </div>
 
             <div className="info-card-desc">{item.description}</div>
@@ -66,22 +69,22 @@ const InfoCard = (props) => {
           <div className="info-card-container">
             <div className="info-card-title">
               <div>{item.school}</div>
-              {EditPermission && EditPermission == 'true' ? (
-                 <div className="modal-icon-2">
-                 
-                 <FiEdit2
-                   onClick={() => EditSchoolModalShow(item._id)}
-                   className="edit_Icon"
-                 />
-                 <MdDelete className="delete_icon" onClick={props.onDelete} />
-               </div>
+              {EditPermission && EditPermission == "true" ? (
+                <div className="modal-icon-2">
+                  <FiEdit2
+                    onClick={() => EditSchoolModalShow(item._id)}
+                    className="edit_Icon"
+                  />
+                  <MdDelete className="delete_icon" onClick={props.onDelete} />
+                </div>
               ) : (
-               ""
+                ""
               )}
             </div>
             <div className="info-card-content pb-3">
               <div>
-                {item.start_Date}{" "}{item.end_Date}
+                {moment(item.start_Date).format("DD/MM/YYYY")}{" "}
+                {moment(item.end_Date).format("DD/MM/YYYY")}
               </div>
             </div>
 

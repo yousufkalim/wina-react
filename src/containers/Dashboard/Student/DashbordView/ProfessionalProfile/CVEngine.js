@@ -9,6 +9,7 @@ import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
 import linkedIn from "../../../../../assets/linkedIn.png";
 import github from "../../../../../assets/github.png";
+import moment from "moment";
 
 export default function CVEngine(props) {
   const [skills, setSkills] = useState([]);
@@ -82,7 +83,8 @@ export default function CVEngine(props) {
                     <>
                       <div className="companyNameH">{ed.school}</div>
                       <div className="companydate">
-                        {ed.start_Date} {ed.end_Date}
+                        {moment(ed.start_Date).format("DD/MM/YYYY")}{" "}
+                        {ed.end_Date}
                         {/* Région de Paris, France */}
                       </div>
                       <div className="description">{ed.description}</div>
@@ -101,7 +103,10 @@ export default function CVEngine(props) {
                       <div className="companyName">{ed.place}</div>
 
                       <div className="companydateDuration">
-                        {ed.duration.start_date} {ed.duration.end_date}
+                        {/* {ed.duration.start_date} {ed.duration.end_date}
+                         */}
+                        {moment(ed.duration.start_date).format("DD/MM/YYYY")}{" "}
+                        {moment(ed.duration.end_date).format("DD/MM/YYYY")}
                       </div>
                       <div className="description">{ed.description}</div>
                     </>
@@ -255,7 +260,8 @@ export default function CVEngine(props) {
                     <>
                       <div className="companyNameH">{ed.school}</div>
                       <div className="companydate">
-                        {ed.start_Date} {ed.end_Date}
+                        {moment(ed.start_Date).format("DD/MM/YYYY")}{" "}
+                        {moment(ed.end_Date).format("DD/MM/YYYY")}
                         {/* Région de Paris, France */}
                       </div>
                       <div className="description">{ed.description}</div>
@@ -274,7 +280,11 @@ export default function CVEngine(props) {
                       <div className="companyName">{ed.place}</div>
 
                       <div className="companydateDuration">
-                        {ed.duration.start_date} {ed.duration.end_date}
+                        {/* {ed.duration.start_date} {ed.duration.end_date} */}
+                        {moment(ed.duration.start_date).format(
+                          "DD/MM/YYYY"
+                        )}{" "}
+                        {moment(ed.duration.end_date).format("DD/MM/YYYY")}
                       </div>
                       <div className="description">{ed.description}</div>
                     </>
