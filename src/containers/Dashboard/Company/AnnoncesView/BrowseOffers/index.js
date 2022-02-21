@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Row, Col, Nav, Tab, Tabs, Image, Form } from "react-bootstrap";
-import TextField from "@material-ui/core/TextField";
-import { Link } from "react-router-dom";
-import Checkbox from "@material-ui/core/Checkbox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { makeStyles } from "@material-ui/core/styles";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Company";
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Company/yupValidation";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import ModalInput from "../../../../../components/UI/TextField";
 import DatePicker from "../../../../../components/UI/DatePicker";
 import Select from "../../../../../components/UI/Select";
 import Button from "../../../../../components/UI/Button";
 import axios from "axios";
 import RadioButton from "../../../../../components/UI/RadioButton";
 import { useHistory } from "react-router-dom";
+import * as Notistack from "../../../../../Redux/actions/notistack";
 import {
-  DomainOptions,
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
@@ -38,38 +30,40 @@ import AutoComplete from "../../../../../components/UI/AutoComplete";
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
 import TextArea from "../../../../../components/UI/Textarea";
 import _ from "lodash";
-import Texts from "../../../../../Globals/Texts";
-import { baseUrl } from "../../../../../urlConfig";
-import Skills from "../../../Admin/skills/AddSkills";
 import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
+import { baseUrl } from "../../../../../urlConfig";
+import { Link } from "react-router-dom";
+import Checkbox from "@material-ui/core/Checkbox";
+import ModalInput from "../../../../../components/UI/TextField";
+import Texts from "../../../../../Globals/Texts";
+import Skills from "../../../Admin/skills/AddSkills";
 import CardItem from "../../../../../components/UI/SkillsItem/skillsItem";
+import Slider from "@material-ui/core/Slider";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
 export default function BrowseOffers() {
+  const myRef = useRef(null);
   const classes = useStyles();
-  const history = useHistory();
-  const [show, setShow] = useState(false);
+  const [softSkillsArray, setsoftSkillsArray] = useState([]);
   const [domain, setDomain] = useState([]);
-
   const [address, setAddress] = useState("");
   const [multiSelect, setmultiSelect] = useState(0);
-
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
-
   const store = useSelector((state) => state.company);
   const store3 = useSelector((state) => state.auth);
-
-  const COMPANY = store3.user && store3.user.company;
-
   const [image, setImage] = useState("");
+  const COMPANY = store3.user && store3.user.company;
   const [imageURI, setimageURI] = useState("");
-
-  const [softSkillsArray, setsoftSkillsArray] = useState([]);
-  const [softArray, setSoftArray] = useState([]);
-
   const [hardSkillsArray, sethardSkillsArray] = useState([]);
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState("");
   const [value, setValue] = React.useState(30);
+  const [softArray, setSoftArray] = useState([]);
+  const [show, setShow] = useState(false);
+  const history = useHistory();
   let SOFT_SKILLS = store2.soft_skills;
   let HARD_SKILLS = store2.hard_skills;
   let JOB_MESSAGE_SUCCESS = store.message;
@@ -125,7 +119,7 @@ export default function BrowseOffers() {
         setImage(file);
         formik.setFieldValue("photo", file.name);
       } else {
-        alert("You can upload only images ");
+        alert("Vous ne pouvez télécharger que des images ");
       }
     }
     formik.setFieldValue(name, value);
@@ -188,7 +182,7 @@ export default function BrowseOffers() {
   const onSubmitAddress = (value) => {
     formik.setFieldValue("location", {
       city: value.city,
-      street: "Street",
+      street: value.name,
       zip: value.postalCode ? value.postalCode : "40180",
       longitude: value.lng,
       latitude: value.lat,
@@ -223,6 +217,9 @@ export default function BrowseOffers() {
     setSoftArray(value);
     sethardSkillsArray(valueArray);
   };
+
+  const executeScroll = () =>
+    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   const domainOption = async () => {
     const res = await domainListCompany();
     let tempDomain = [];
@@ -234,6 +231,7 @@ export default function BrowseOffers() {
   useEffect(() => {
     domainOption();
   }, [domainListCompany]);
+
   return (
     <>
       <Tabs defaultActiveKey="publish" id="publish" className="publish">
@@ -268,7 +266,7 @@ export default function BrowseOffers() {
                     />
                   </Col>
                   <Col lg={8} md={8}>
-                    <div className="publish-header-content">
+                    <div ref={myRef} className="publish-header-content">
                       <div className="d-flex">
                         <div className="col-lg-6">
                           <CustomTextField
@@ -279,15 +277,7 @@ export default function BrowseOffers() {
                             value={formik.values.position}
                             variant="outlined"
                           />
-                          {/* <ModalInput
-														name="position"
-														label="Nom du poste"
-														// className="Job_title"
-														placeholder="Position"
-														value={formik.values.position}
-														onChange={handleChange}
-														type="text"
-													/> */}
+
                           {formik.touched.position && formik.errors.position ? (
                             <div className="formikErrorAuto">
                               {" "}
@@ -304,15 +294,7 @@ export default function BrowseOffers() {
                             value={formik.values.title}
                             variant="outlined"
                           />
-                          {/* <ModalInput
-														name="title"
-														label="Title"
-														// className="Job_title"
-														placeholder="Title"
-														value={formik.values.title}
-														onChange={handleChange}
-														type="text"
-													/> */}
+
                           {formik.touched.title && formik.errors.title ? (
                             <div className="formikErrorAuto">
                               {" "}
@@ -532,10 +514,11 @@ export default function BrowseOffers() {
                       />
                     ) : (
                       <Button
+                        onClick={executeScroll}
                         className="Enregistrer"
                         type="submit"
                         variant="primary"
-                        value="S’ENREGISTRER"
+                        value="Ajouter"
                         disabled={false}
                       />
                     )}
@@ -570,19 +553,3 @@ const useStyles = makeStyles({
     },
   },
 });
-const schoolName = [
-  { title: "The Shawshank Redemption", year: 1994 },
-  { title: "The Godfather", year: 1972 },
-  { title: "The Godfather: Part II", year: 1974 },
-  { title: "The Dark Knight", year: 2008 },
-];
-const marks = [
-  {
-    value: 0,
-    label: "0€",
-  },
-  {
-    value: 10000,
-    label: "10 000€",
-  },
-];
