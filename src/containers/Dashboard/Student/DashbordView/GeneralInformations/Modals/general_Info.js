@@ -151,6 +151,11 @@ const GeneralInformationsModal = ({ show, setShow }) => {
           <div className="row">
             <div className="col-lg-12 ">
               <form onSubmit={formik.handleSubmit}>
+                <label
+                  style={{ color: "#454545", fontSize: 16, fontWeight: 600 }}
+                >
+                  Cliquez pour ajouter une image
+                </label>
                 <div className="mb-2">
                   <img
                     onClick={handleClick}
@@ -159,8 +164,8 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     style={{
                       width: "200px",
                       objectFit: "fill",
-                      height: "150px",
-                      borderRadius: "5px",
+                      height: "200px",
+                      borderRadius: "7px",
                     }}
                   />
                   <input
@@ -171,24 +176,10 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     accept="image/*"
                     style={{ display: "none" }}
                   />
-                  <br />
-                  <small
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "red",
-                    }}
-                  >
-                    **Ajouter une photo.**
-                  </small>
                 </div>
+                <br />
 
                 <div className="mb-3">
-                  <label className="add_video" for="professional_Picture">
-                    Ajouter une video
-                  </label>
-                  <br />
-
                   <iframe
                     className="embed-responsive-item"
                     src={VideoUri}
@@ -202,6 +193,15 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     accept="video/*"
                     id="professional_Picture"
                   />
+                  <label
+                    className="add_video"
+                    for="professional_Picture"
+                    style={{
+                      fontWeight: 600,
+                    }}
+                  >
+                    Ajouter une video
+                  </label>
                 </div>
                 <div>
                   <ModalInput
