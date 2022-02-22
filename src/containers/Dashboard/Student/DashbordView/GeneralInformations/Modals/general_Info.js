@@ -96,7 +96,9 @@ const GeneralInformationsModal = ({ show, setShow }) => {
         setImageURI(`${Image_Uri}/${professional_Picture.image}`);
 
       presentation_Video.video &&
-        setVideoURI(`${baseUri}/views/uploads/${presentation_Video.video}`);
+        setVideoURI(
+          "https://transportscotlprodblob.blob.core.windows.net/cache/1/c/d/7/2/8/1cd7284341e8e9e068417ed0e3689644a209ff31.png"
+        );
     }
   }, [store.user.student, setShow, show]);
   // handle networks chnages
@@ -120,10 +122,14 @@ const GeneralInformationsModal = ({ show, setShow }) => {
       if (file.type !== "application/pdf") {
         if (file.type === "video/mp4") {
           if (file.size <= 100000000) {
-            reader.onload = () => setVideoURI(reader.result);
+            reader.onload = () =>
+              setVideoURI(
+                "https://transportscotlprodblob.blob.core.windows.net/cache/1/c/d/7/2/8/1cd7284341e8e9e068417ed0e3689644a209ff31.png"
+              );
 
             setVideo(file);
             formik.setFieldValue("video", file.name);
+            alert("Video uploaded Successfully");
           } else {
             alert("La longueur maximale de la vidéo peut être de 100 Mo");
           }
@@ -181,7 +187,12 @@ const GeneralInformationsModal = ({ show, setShow }) => {
 
                 <div className="mb-3">
                   <iframe
-                    className="embed-responsive-item"
+                    style={{
+                      width: "32.5%",
+                      objectFit: "fill",
+                      borderRadius: "7px",
+                      height: "205px",
+                    }}
                     src={VideoUri}
                     allowFullScreen
                   ></iframe>
