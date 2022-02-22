@@ -12,6 +12,7 @@ import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
 import linkedIn from "../../../../../assets/linkedIn.png";
 import Github from "../../../../../assets/github.png";
+import Video from "../../../../../assets/video.mp4";
 import {
   Delete_School_Info,
   Add_Image_info_Student,
@@ -109,7 +110,7 @@ const GeneralInformations = () => {
                         src={
                           `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
                             ? `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
-                            : `../images/video.mp4`
+                            : { Video }
                         }
                         alt="Video"
                         allowFullScreen
