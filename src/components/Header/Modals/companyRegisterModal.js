@@ -20,7 +20,7 @@ import AutoComplete from "../../UI/AutoComplete";
 import Button from "../../UI//Button";
 import _ from "lodash";
 import Texts from "../../../Globals/Texts";
-
+import Select from "../../UI/Select";
 const StudentRegister = (props) => {
   // Dispatch
   const dispatch = useDispatch();
@@ -328,8 +328,8 @@ const StudentRegister = (props) => {
                       ) : null}
                     </div>
                     <div className="my-4">
-                      <ModalInput
-                        placeholder="Type d Entreprise"
+                      <Select
+                        label="Type d Entreprise"
                         type="select"
                         options={Company_Types}
                         name="company_type"
@@ -337,6 +337,15 @@ const StudentRegister = (props) => {
                         onBlur={formik2.handleBlur}
                         value={formik2.values.company_type}
                       />
+                      {/* <ModalInput
+                        placeholder="Type d Entreprise"
+                        type="select"
+                        options={Company_Types}
+                        name="company_type"
+                        onChange={handleChange2}
+                        onBlur={formik2.handleBlur}
+                        value={formik2.values.company_type}
+                      /> */}
                       {formik2.touched.company_type &&
                       formik2.errors.company_type ? (
                         <div className="formikError">
