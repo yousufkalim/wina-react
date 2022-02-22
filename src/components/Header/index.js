@@ -109,7 +109,7 @@ const Header = (props) => {
           console.log(error);
         });
     }
-    history.push("/");
+    // history.push("/");
 
     if (props.id) {
       setresetModal(!resetModal);
