@@ -69,11 +69,11 @@ export default function CVEngine(props) {
                   </div>
 
                   <div className="pb-1">
-                    {USER.user.address.zip},{USER.user.address.street}
+                    {USER.user.address.zip}, {USER.user.address.street},
                     {USER.user.address.city}
                   </div>
 
-                  <div className="pb-1">Mobile :(+33) {USER.user.phone}</div>
+                  <div className="pb-1">Mobile : (+33) {USER.user.phone}</div>
 
                   <div className="pb-1">Email : {USER.user.email}</div>
                 </div>
@@ -247,12 +247,13 @@ export default function CVEngine(props) {
                 </div>
                 <div className="profileProfession">
                   <div className="pb-1">
-                    {USER.address.zip},{USER.address.street},{USER.address.city}
+                    {USER.address.zip},&nbsp;{USER.address.street},&nbsp;
+                    {USER.address.city}
                   </div>
 
-                  <div className="pb-1">Mobile :(+33) {USER.phone}</div>
+                  <div className="pb-1">Mobile :&nbsp;(+33) {USER.phone}</div>
 
-                  <div className="pb-1">Email : {USER.email}</div>
+                  <div className="pb-1">Email :&nbsp;{USER.email}</div>
                 </div>
                 <div className="formation">FORMATION</div>
                 {USER.student.education.length > 0 ? (
@@ -281,10 +282,12 @@ export default function CVEngine(props) {
 
                       <div className="companydateDuration">
                         {/* {ed.duration.start_date} {ed.duration.end_date} */}
-                        {moment(ed.duration.start_date).format(
-                          "DD/MM/YYYY"
-                        )}{" "}
-                        {moment(ed.duration.end_date).format("DD/MM/YYYY")}
+                        {moment(ed.duration.start_date).format("DD/MM/YYYY")}
+                        &nbsp;&nbsp;&nbsp;
+                        {moment(new Date()).format("DD/MM/YYYY") !==
+                        moment(ed.duration.end_date).format("DD/MM/YYYY")
+                          ? moment(ed.duration.end_date).format("DD/MM/YYYY")
+                          : "Present"}
                       </div>
                       <div className="description">{ed.description}</div>
                     </>
