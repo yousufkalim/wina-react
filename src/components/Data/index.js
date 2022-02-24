@@ -1,22 +1,22 @@
 export const Company_Types = [
   {
-    name: "Startup",
+    title: "Startup",
     value: "Startup",
   },
   {
-    name: "TPE",
+    title: "TPE",
     value: "TPE",
   },
   {
-    name: "PME ",
-    value: "PME ",
+    title: "PME",
+    value: "PME",
   },
   {
-    name: "GE  ",
-    value: "GE  ",
+    title: "GE",
+    value: "GE",
   },
   {
-    name: "ETI",
+    title: "ETI",
     value: "ETI",
   },
 ];

@@ -249,6 +249,7 @@ const PPModal = ({
               </div>
               <div className="professional-modal-form-date">
                 <DatePicker
+                  disabled={formik.values.position_hold}
                   name="end_date"
                   label={"Date de fin"}
                   previous={true}

@@ -487,14 +487,21 @@ const CompanyCardDetail = (props) => {
                   </div>
                 </div>
 
-                <div className="col-lg-12 my-5 pt-3">
-                  <RadioButton
+                <div className="col-lg-5 my-5 pt-3">
+                  <Select
                     options={RythmeOptions}
                     name="alternationRhythm"
-                    label="Rythme alternances :"
+                    label="Rythme alternances"
                     value={formik.values.alternationRhythm}
                     onChange={handleChange}
                   />
+                  {/* <RadioButton
+                    options={RythmeOptions}
+                    name="alternationRhythm"
+                    label="Rythme alternances"
+                    value={formik.values.alternationRhythm}
+                    onChange={handleChange}
+                  /> */}
                 </div>
                 {formik.touched.alternationRhythm &&
                 formik.errors.alternationRhythm ? (
