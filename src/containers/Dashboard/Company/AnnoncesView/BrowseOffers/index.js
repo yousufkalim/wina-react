@@ -45,7 +45,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 export default function BrowseOffers() {
   const myRef = useRef(null);
-  const classes = useStyles();
+  // const classes = useStyles();
   const [softSkillsArray, setsoftSkillsArray] = useState([]);
   const [domain, setDomain] = useState([]);
   const [address, setAddress] = useState("");
@@ -430,16 +430,23 @@ export default function BrowseOffers() {
                     ) : null}
                   </div>
                 </div>
-                <div className=" d-flex pt-4">
-                  <div className="col-lg-12">
-                    <RadioButton
+                <div className="d-flex my-3">
+                  <div className="col-lg-6 softskills-input">
+                    <Select
+                      options={RythmeOptions}
+                      name="alternationRhythm"
+                      label="Rythme alternances"
+                      value={formik.values.alternationRhythm}
+                      onChange={handleChange}
+                    />
+                    {/* <RadioButton
                       options={RythmeOptions}
                       className={classes.radioButton}
                       name="alternationRhythm"
                       label="Rythme alternances :"
                       value={formik.values.alternationRhythm}
                       onChange={handleChange}
-                    />
+                    /> */}
                   </div>
                 </div>
                 {formik.touched.alternationRhythm &&
@@ -533,23 +540,23 @@ export default function BrowseOffers() {
   );
 }
 // ******************************
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+// const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+// const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const useStyles = makeStyles({
-  root: {
-    width: "15.6rem",
-  },
-  input: {
-    width: "5.4rem",
-    paddingLeft: 9,
-    position: "absolute",
-    marginLeft: "6.2rem",
-  },
-  radioButton: {
-    "& .MuiFormLabel-root": {
-      color: "#454545",
-      fontWeight: 600,
-    },
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     width: "15.6rem",
+//   },
+//   input: {
+//     width: "5.4rem",
+//     paddingLeft: 9,
+//     position: "absolute",
+//     marginLeft: "6.2rem",
+//   },
+//   radioButton: {
+//     "& .MuiFormLabel-root": {
+//       color: "#454545",
+//       fontWeight: 600,
+//     },
+//   },
+// });
