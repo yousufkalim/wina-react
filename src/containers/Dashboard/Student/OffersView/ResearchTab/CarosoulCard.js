@@ -46,8 +46,8 @@ export default function RecipeReviewCard(props) {
               <span>
                 <MdLocationOn />
               </span>{" "}
-              {/* {cards.company.address.street},{cards.company.address.zip}{" "}
-              {cards.company.address.city} */}
+              {cards.company.address.street},{cards.company.address.zip}{" "}
+              {cards.company.address.city}
             </div>
             <div className="offer-card-price text-center">
               <div className="offer-card-price-item offer-card-price-item-1">
