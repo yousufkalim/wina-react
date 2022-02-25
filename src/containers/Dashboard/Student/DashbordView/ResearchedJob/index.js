@@ -195,14 +195,21 @@ const ResearchedJob = () => {
                 </div>
               </div>
               <div className="row mt-5">
-                <div className="col-md-12">
-                  <RadioButton
+                <div className="col-md-5">
+                  <Select
+                    options={RythmeOptions}
+                    name="alternationRhythm"
+                    label="Rythme alternances"
+                    value={formik.values.alternationRhythm}
+                    onChange={handleChange}
+                  />
+                  {/* <RadioButton
                     options={RythmeOptions}
                     name="alternationRhythm"
                     label="Rythme alternances :"
                     value={formik.values.alternationRhythm}
                     onChange={handleChange}
-                  />
+                  /> */}
                   {formik.touched.alternationRhythm &&
                   formik.errors.alternationRhythm ? (
                     <div className="formikErrorAuto">
