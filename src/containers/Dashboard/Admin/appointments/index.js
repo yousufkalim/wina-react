@@ -48,7 +48,7 @@ export default function Appointments() {
     let data = [];
     appointments &&
       appointments.map((key, index) => {
-        let dateTime = moment(key.timmings).format("DD,MM,YYYY , h:mm:ss");
+        let dateTime = moment(key.timmings).format("DD/MM/YYYY, h:mm:ss");
         data.push({
           _id: key._id,
           timmings: dateTime,
