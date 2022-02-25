@@ -223,7 +223,7 @@ const CompanyCardDetail = (props) => {
   const onSubmitAddress = (value) => {
     formik.setFieldValue("location", {
       city: value.city,
-      street: "Street",
+      street: value.name ? value.name : "",
       zip: value.postalCode ? value.postalCode : "40180",
       longitude: value.lng,
       latitude: value.lat,
