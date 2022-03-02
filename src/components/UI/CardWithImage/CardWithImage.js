@@ -166,7 +166,7 @@ const CardWithImage = (props) => {
               </div>
               {item.startDate && (
                 <div className="card-with-image-date">
-                  {moment(item.startDate).format("DD/MM/yyyy")}
+                  {moment(item.startDate).format("DD/MM/YYYY")}
                 </div>
               )}
             </div>
@@ -302,7 +302,7 @@ const CardWithImage = (props) => {
               </div>
               {item.startDate && (
                 <div className="card-with-image-date">
-                  {moment(item.startDate).format("DD/MM/yyyy")}
+                  {moment(item.startDate).format("DD/MM/YYYY")}
                 </div>
               )}
             </div>

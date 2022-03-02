@@ -3554,14 +3554,16 @@ textarea.form-control {
 }
 .offer-card-content {
   font-size: 0.8rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   margin-left: 10px;
 }
 
 .offer-card-price {
   display: flex;
   font-weight: 600;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   /* gap: 0.3rem; */
   width: 100%;
 }
@@ -3570,7 +3572,6 @@ textarea.form-control {
   border: 1px solid #fff;
   border-radius: 2.56rem;
   padding-block: 0.3rem;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: "----";
@@ -3578,12 +3579,18 @@ textarea.form-control {
 }
 .offer-card-price-item-1 {
   flex-basis: 40%;
+  margin-bottom: 6px;
+  width: 100%;
+  overflow: hidden;
 }
 .offer-card-price-item-2 {
-  flex-basis: 18%;
+  flex-basis: 40%;
+  margin-bottom: 6px;
+  width: 50%;
 }
 .offer-card-price-item-3 {
   flex-basis: 40%;
+  width: 50%;
 }
 /* .carosoulProfileBox .genProfile .MuiFab-root{
 	height: 10%;

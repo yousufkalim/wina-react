@@ -128,7 +128,7 @@ const StudentRegister = (props) => {
   const onSubmitAddress = (value) => {
     formik2.setFieldValue("address", {
       city: value.city,
-      street: "Street",
+      street: value.name,
       zip: value.PostalCode ? value.postalCode : "76520",
       longitude: value.lng,
       latitude: value.lat,

@@ -267,7 +267,6 @@ const OfferCardDetail = (props) => {
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
                   title="Domaine : "
-
                 />
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"

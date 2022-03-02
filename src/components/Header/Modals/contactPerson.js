@@ -66,7 +66,7 @@ export default function StudentRegister(props) {
   const onSubmitAddress = (value) => {
     formik.setFieldValue("address", {
       city: value.city,
-      street: "Street",
+      street: value.name ? value.name : "",
       zip: value.PostalCode,
       longitude: value.lng,
       latitude: value.lat,
