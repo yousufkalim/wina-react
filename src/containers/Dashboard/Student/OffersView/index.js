@@ -15,10 +15,12 @@ const OffersView = (props) => {
           <div className="dashbordLabel">Offers</div>
           <Nav variant="pills" className="flex-column">
             <Nav.Item>
-              <Nav.Link eventKey="first">Vue générale des offres</Nav.Link>
+              <Nav.Link eventKey="first">Suivi de mes candidatures</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="second">Recherche match</Nav.Link>
+              <Nav.Link eventKey="second">
+                Clique ici pour voir les matchs
+              </Nav.Link>
             </Nav.Item>
           </Nav>
           <Footer />
