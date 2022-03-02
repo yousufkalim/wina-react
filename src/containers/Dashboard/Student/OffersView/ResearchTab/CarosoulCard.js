@@ -51,7 +51,9 @@ export default function RecipeReviewCard(props) {
             </div>
             <div className="offer-card-price text-center">
               <div className="offer-card-price-item offer-card-price-item-1">
-                Domaine : {cards.domain}
+                <p style={{ marginLeft: 10, marginRight: 10 }}>
+                  Domaine : {cards.domain}
+                </p>
               </div>
               <div className="offer-card-price-item offer-card-price-item-2 mx-1">
                 Durée : {cards.duration}
