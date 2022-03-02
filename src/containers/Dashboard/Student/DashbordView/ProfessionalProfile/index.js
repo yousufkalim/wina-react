@@ -110,7 +110,6 @@ const ProfessionalProfile = () => {
   };
   return (
     <>
-      {console.log(professionalArray, "sp", Professional_Profile)}
       <PPModal
         show={show}
         setShow={setShow}
@@ -132,8 +131,8 @@ const ProfessionalProfile = () => {
           <div className="col-xs-6">
             <input
               accept="application/pdf"
-              id="contained-button-file"
               className={classes.input}
+              id="contained-button-file"
               onChange={handleFileUpload}
               type="file"
             />
