@@ -5,7 +5,6 @@ export const formik = useFormik({
     dispatch(signup(values));
     formik.setSubmitting(false);
     formik.handleReset();
-    // console.log(values, "values");
   },
 });
 
