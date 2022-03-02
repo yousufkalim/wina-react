@@ -13,7 +13,7 @@ export const SECOND_SIGNUP_STATE = {
     longitude: "",
     latitude: "",
   },
-}
+};
 export const FIRST_SIGNUP_STATE = {
   firstName: "",
   lastName: "",
@@ -22,19 +22,17 @@ export const FIRST_SIGNUP_STATE = {
   confirm_password: "",
   phone: "",
   positionHeld: "",
-}
+};
 export const LOGIN_STATE = {
   email: "",
   password: "",
-}
+};
 
 export const POSITION_SOUGHT_STATE = {
   description: "",
-
   domain: "",
   position: "",
   title: "",
-
   duration: "",
   startDate: "",
   alternationRhythm: "",
@@ -50,4 +48,4 @@ export const POSITION_SOUGHT_STATE = {
     longitude: "",
     latitude: "",
   },
-}
+};
