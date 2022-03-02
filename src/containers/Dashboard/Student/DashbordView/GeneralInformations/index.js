@@ -81,7 +81,7 @@ const GeneralInformations = () => {
       >
         <Tab
           eventKey="generalPresentation"
-          title="Présentation Générales"
+          title="Présentation Générale"
           className="h-100"
         >
           <div className="genProfileBox">
