@@ -63,10 +63,9 @@ export const LOGIN_YUP = Yup.object({
 // position sought
 
 export const POSITION_SOUGHT_YUP = Yup.object({
-  title: Yup.string().required(Texts.REQUIRED),
+  title: Yup.string(),
   domain: Yup.string().required(Texts.REQUIRED),
   description: Yup.string().required(Texts.REQUIRED),
-
   position: Yup.string().required(Texts.REQUIRED),
   duration: Yup.string().required(Texts.REQUIRED),
   startDate: Yup.string().required(Texts.REQUIRED),
@@ -75,7 +74,7 @@ export const POSITION_SOUGHT_YUP = Yup.object({
   softSkills: Yup.string().required(Texts.REQUIRED),
   hardSkills: Yup.string().required(Texts.REQUIRED),
   ageRange: Yup.string().required(Texts.REQUIRED),
-  photo: Yup.string().required(Texts.REQUIRED),
+  photo: Yup.string(),
   location: Yup.object().shape({
     street: Yup.string().required(Texts.REQUIRED),
     city: Yup.string().required(
