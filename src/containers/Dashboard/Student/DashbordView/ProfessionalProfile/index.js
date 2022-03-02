@@ -57,7 +57,7 @@ const ProfessionalProfile = () => {
     if (USER.student.resume !== "") {
       setPDF(USER.student.resume);
     }
-  }, []);
+  }, [Professional_Profile]);
   const EditProfessionalCareerModal = (id) => {
     if (id) {
       setedit_profile_id(id);
@@ -104,12 +104,13 @@ const ProfessionalProfile = () => {
         }
         setPDF(file.name);
       } else {
-        alert("You can upload only pdf ");
+        alert("Vous ne pouvez télécharger que des pdf");
       }
     }
   };
   return (
     <>
+      {console.log(professionalArray, "sp", Professional_Profile)}
       <PPModal
         show={show}
         setShow={setShow}
@@ -131,8 +132,8 @@ const ProfessionalProfile = () => {
           <div className="col-xs-6">
             <input
               accept="application/pdf"
-              className={classes.input}
               id="contained-button-file"
+              className={classes.input}
               onChange={handleFileUpload}
               type="file"
             />
@@ -181,7 +182,7 @@ const ProfessionalProfile = () => {
         >
           <Tab
             eventKey="Professionalcareer"
-            title="Parcours professionnels"
+            title="Parcours Professionnels"
             className="w-100 h-100"
           >
             <div className="ProfessionalcareerBox">
