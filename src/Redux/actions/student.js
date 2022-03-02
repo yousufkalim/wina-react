@@ -108,7 +108,6 @@ export const Add_info_Student = (user) => async (dispatch) => {
     );
     return true;
   } catch (error) {
-    // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
       dispatch(
@@ -142,7 +141,6 @@ export const Add_Image_info_Student = (user) => async (dispatch) => {
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
   } catch (error) {
-    // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
       dispatch(
@@ -172,7 +170,6 @@ export const Delete_School_Info = (id) => async (dispatch) => {
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
   } catch (error) {
-    // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
       dispatch(
@@ -203,7 +200,6 @@ export const Delete_Professional_Info = (id) => async (dispatch) => {
       Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success"))
     );
   } catch (error) {
-    // console.log(error, "error from school");
     dispatch(set_loading_school(false));
     if (error.response) {
       dispatch(
