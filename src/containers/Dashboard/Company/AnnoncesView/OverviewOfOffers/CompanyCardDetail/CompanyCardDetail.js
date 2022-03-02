@@ -295,7 +295,7 @@ const CompanyCardDetail = (props) => {
               justifyContent: "flex-start",
             }}
           />
-          Arrière
+          Retour
         </span>
 
         <div className="company-card-detail-container">

@@ -343,7 +343,7 @@ const OfferCardDetail = (props) => {
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`
                   }}
                 >
-                  Matcher
+                  Candidater
                 </Button>
                 <Button
                   onClick={() => handleOfferRejected(JOB._id, "rejected")}

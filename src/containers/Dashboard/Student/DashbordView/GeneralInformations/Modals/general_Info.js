@@ -129,7 +129,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
 
             setVideo(file);
             formik.setFieldValue("video", file.name);
-            alert("Video uploaded Successfully");
+            alert("Vidéo téléchargée avec succès");
           } else {
             alert("La longueur maximale de la vidéo peut être de 100 Mo");
           }
@@ -211,7 +211,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                       fontWeight: 600,
                     }}
                   >
-                    Ajouter une video
+                    Ajouter ma vidéo de présentation
                   </label>
                 </div>
                 <div>
@@ -258,7 +258,7 @@ const GeneralInformationsModal = ({ show, setShow }) => {
                     onChange={handleChange}
                     onBlur={formik.handleBlur}
                     rows={3}
-                    placeholder="Présentation Générale"
+                    placeholder="Décris ton projet professionnel en 3 lignes."
                   />
                   {formik.touched.general_Presentation &&
                   formik.errors.general_Presentation ? (

@@ -138,7 +138,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-custom-modal-styling-title">
-          Parcours professionnels
+          Parcours Professionnels
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -180,7 +180,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 name="company"
                 value={formik.values.company}
                 onChange={handleChange}
-                label="company d’emploi"
+                label="Nom entreprise"
               />
 
               {formik.touched.company && formik.errors.company ? (
@@ -194,7 +194,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 name="place"
                 value={formik.values.place}
                 onChange={handleChange}
-                label="place d’emploi"
+                label="Lieu"
               />
 
               {formik.touched.place && formik.errors.place ? (
@@ -289,15 +289,6 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 style={{ display: "none" }}
               />
               <br />
-              <small
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: "red",
-                }}
-              >
-                **Ajouter une photo.**
-              </small>
               {formik.touched.image && formik.errors.image ? (
                 <div className="formikErrorAuto"> {formik.errors.image}</div>
               ) : null}
@@ -342,18 +333,4 @@ const EmployeeTypeOptions = [
   { title: "Freelance" },
   { title: "CDD" },
   { title: "Alternance" },
-];
-const CompanyOptions = [
-  { title: "FALCON IT" },
-  { title: "NETSOL" },
-  { title: "SYSTEM LIMITED" },
-  { title: "PROGRAMMERS FORCE" },
-  { title: "NEXT BRIDGE" },
-];
-const CountryOptions = [
-  { title: "PAKISTAN" },
-  { title: "AMERICA" },
-  { title: "BHOTAN" },
-  { title: "GERMANY" },
-  { title: "ITALY" },
 ];

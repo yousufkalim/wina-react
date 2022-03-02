@@ -3578,19 +3578,21 @@ textarea.form-control {
   /* border: 1px solid #000000; */
 }
 .offer-card-price-item-1 {
+  display: flex;
   flex-basis: 40%;
   margin-bottom: 6px;
-  width: 100%;
+  width: 60%;
   overflow: hidden;
+  text-overflow: ellipsis !important;
 }
 .offer-card-price-item-2 {
   flex-basis: 40%;
   margin-bottom: 6px;
-  width: 50%;
+  width: 25%;
 }
 .offer-card-price-item-3 {
   flex-basis: 40%;
-  width: 50%;
+  width: 40%;
 }
 /* .carosoulProfileBox .genProfile .MuiFab-root{
 	height: 10%;

@@ -45,7 +45,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 export default function BrowseOffers() {
   const myRef = useRef(null);
-  // const classes = useStyles();
+
   const [softSkillsArray, setsoftSkillsArray] = useState([]);
   const [domain, setDomain] = useState([]);
   const [address, setAddress] = useState("");
@@ -109,7 +109,6 @@ export default function BrowseOffers() {
   });
   // onChange
   const handleChange = (e) => {
-    console.log("typingg....");
     const { name, value } = e.target;
     if (name === "photo") {
       let file = e.target.files[0];
@@ -124,10 +123,6 @@ export default function BrowseOffers() {
     }
     formik.setFieldValue(name, value);
   };
-  // useEffect
-  // useEffect(() => {
-  //   console.log(items);
-  // }, [items]);
   useEffect(() => {
     dispatch(getSkills("Soft Skill", query));
     dispatch(getSkills("Hard Skill", query));
@@ -268,7 +263,7 @@ export default function BrowseOffers() {
                   <Col lg={8} md={8}>
                     <div ref={myRef} className="publish-header-content">
                       <div className="d-flex">
-                        <div className="col-lg-6">
+                        <div className="col-lg-12">
                           <CustomTextField
                             label="Nom du poste"
                             name="position"
@@ -285,7 +280,7 @@ export default function BrowseOffers() {
                             </div>
                           ) : null}
                         </div>
-                        <div className="col-lg-6 ml-3">
+                        {/* <div className="col-lg-6 ml-3">
                           <CustomTextField
                             label="Titre"
                             name="title"
@@ -301,7 +296,7 @@ export default function BrowseOffers() {
                               {formik.errors.title}
                             </div>
                           ) : null}
-                        </div>
+                        </div> */}
                       </div>
                       <div className="d-flex mt-4">
                         <div className="col-lg-6 ">

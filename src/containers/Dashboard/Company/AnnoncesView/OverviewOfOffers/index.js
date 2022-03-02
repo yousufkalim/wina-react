@@ -234,7 +234,7 @@ const OverviewOfOffers = () => {
     return (
       <>
         <BookingModal
-          modalTitle="Aucune donnée disponible"
+          modalTitle="Bonne nouvelle ! Ce candidat match avec votre offre, proposez-lui un ou plusieurs créneaux pour l'entretien."
           show={booking}
           className="custom-modal"
           handleClose={() => setBooking(false)}
@@ -258,7 +258,7 @@ const OverviewOfOffers = () => {
                           />
                           <div className="ml-3">
                             <SubmitButton
-                              className="Enregistrer "
+                              className="Enregistrer"
                               onClick={handleMultipleAppointments}
                               variant="primary"
                               value="Ajouter"
@@ -285,7 +285,7 @@ const OverviewOfOffers = () => {
                         className="Enregistrer"
                         onClick={handleSubmitBooking}
                         variant="primary"
-                        value="S’ENREGISTRER"
+                        value="Envoyer mes propositions de RDV"
                       />
                     </div>
                   </div>
@@ -326,7 +326,7 @@ const OverviewOfOffers = () => {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">Il n’y a pas d’offres</h1>
+                  <h1 className="text-center">Il n'y a pas de candidats</h1>
                 )}
               </div>
             </div>
@@ -346,7 +346,7 @@ const OverviewOfOffers = () => {
                       />
                     ))
                   ) : (
-                    <h1 className="text-center">Il n’y a pas d’offres</h1>
+                    <h1 className="text-center">Il n'y a pas de candidats</h1>
                   )
                 ) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
                   SENT_OFFERS.map((item, index) => (
@@ -363,7 +363,7 @@ const OverviewOfOffers = () => {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">Il n’y a pas d’offres</h1>
+                  <h1 className="text-center">Il n'y a pas de candidats</h1>
                 )}
               </div>
             </div>
@@ -385,7 +385,7 @@ const OverviewOfOffers = () => {
                       />
                     ))
                   ) : (
-                    <h1 className="text-center">Il n’y a pas d’offres</h1>
+                    <h1 className="text-center">Il n'y a pas de candidats</h1>
                   )
                 ) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
                   RECIEVED_OFFERS.map((item, index) => (
@@ -404,7 +404,7 @@ const OverviewOfOffers = () => {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">Il n’y a pas d’offres</h1>
+                  <h1 className="text-center">Il n'y a pas de candidats</h1>
                 )}
               </div>
             </div>

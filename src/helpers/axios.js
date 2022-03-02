@@ -1,32 +1,30 @@
-import axios from "axios"
-import { api } from "../urlConfig"
-import store from "../Redux/store"
-import { authConstants } from "../Redux/actions/constants"
+import axios from "axios";
+import { api } from "../urlConfig";
+import store from "../Redux/store";
+import { authConstants } from "../Redux/actions/constants";
 
-const token = window.localStorage.getItem("token")
+const token = window.localStorage.getItem("token");
 
 const axiosIntance = axios.create({
   baseURL: api,
   headers: {
     Authorization: token ? `Bearer ${token}` : "",
   },
-})
+});
 axiosIntance.interceptors.request.use((req) => {
-  const { auth } = store.getState()
+  const { auth } = store.getState();
   if (auth.token) {
-    req.headers.Authorization = `Bearer ${auth.token}`
+    req.headers.Authorization = `Bearer ${auth.token}`;
   }
 
-  return req
-})
+  return req;
+});
 
 // axiosIntance.interceptors.response.use(
 //   (res) => {
-//     console.log(res);
 //     return res;
 //   },
 //   (error) => {
-//     console.log(error.response);
 //     const status = error.response ? error.response.status : 500;
 //     if (status && status === 500) {
 //       localStorage.clear();
@@ -36,4 +34,4 @@ axiosIntance.interceptors.request.use((req) => {
 //   }
 // );
 
-export default axiosIntance
+export default axiosIntance;

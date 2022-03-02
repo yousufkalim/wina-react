@@ -90,7 +90,7 @@ const CardWithImage = (props) => {
             className="matches"
             onClick={() => props.matchReceiveDetailHandler(item._id)}
           >
-            Match ({Math.floor(matchLength)})
+            {Math.floor(matchLength)} candidats
           </div>
         ) : (
           ""
@@ -470,7 +470,7 @@ const CardWithImage = (props) => {
                 className="card-with-image-btn card-with-image-btn-yellow"
                 onClick={() => handleDetail(item._id)}
               >
-                Voir
+                Consulter
               </div>
 
               <div

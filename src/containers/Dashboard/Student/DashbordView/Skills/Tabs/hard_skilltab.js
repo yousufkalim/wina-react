@@ -141,7 +141,6 @@ export default function Hard_skilltab(props) {
     initialValues: SKILLS_STATE,
     validationSchema: SKILLS_YUP,
     onSubmit: (values) => {
-      console.log("aa");
       setLoading(true);
 
       let check = HARD_SKILLS_DB.some((sa) => sa === values.name);
@@ -197,7 +196,6 @@ export default function Hard_skilltab(props) {
 
   // for autocomplete
   const getAllSkills = (e) => {
-    // console.log("e.targer", e.target.value, e.target.name);
     setSkill(e.target.value);
     // call api to get all
 
@@ -206,7 +204,6 @@ export default function Hard_skilltab(props) {
     // setValue(e.target.value)
   };
   const handleSetSkill = (event, value) => {
-    console.log("handleSetSkill", value);
     // setSkill and value name in also formik.setFieeldvalues
     setValue(value?._id);
     formik.setFieldValue("name", value?._id);

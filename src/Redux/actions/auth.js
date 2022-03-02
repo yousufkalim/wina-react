@@ -56,7 +56,6 @@ export const login = (data, formik) => async (dispatch) => {
     formik.handleReset();
   } catch (err) {
     dispatch(set_loading(false));
-    // console.log(err.response, "error");
     if (err.response) {
       dispatch(
         Notistack.enqueueSnackbar(
@@ -304,7 +303,6 @@ export const GetAllNotifications = () => async (dispatch) => {
       dispatch(set_loading_data(true));
 
       const res = await axios.get(`profile/getAllNotifications`);
-      // console.log(res.data.notifications, "resdata");
       let temp = res.data.notifications.sort((a, b) =>
         new Date(a.createdAt) < new Date(b.createdAt) ? 1 : -1
       );
@@ -336,7 +334,6 @@ export const UpdateNotifications = (id) => async (dispatch) => {
       dispatch(set_loading_data(true));
 
       const res = await axios.post(`profile/updateNotifications/${id}`, {});
-      // console.log(res.data.notifications, "resdata");
       dispatch({
         type: actionGlobals.UPDATE_NOTIFICATION,
         payload: { loading: false, notifications: res.data.notifications },

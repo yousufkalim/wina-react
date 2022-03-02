@@ -30,8 +30,6 @@ export default function StudentRegister(props) {
     validationSchema: SIGNUP_YUP,
     onSubmit: (values) => {
       dispatch(Student_Signup(values, formik));
-
-      // console.log(values, "values");
     },
   });
   // onChange

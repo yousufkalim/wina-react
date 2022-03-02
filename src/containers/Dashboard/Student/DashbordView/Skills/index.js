@@ -130,7 +130,6 @@ export default function Skills() {
           // onSelect={(k) => setKey(k)}
         >
           <Tab3
-            options={languages}
             options2={Levels}
             Select={Select}
             Button={Button}
@@ -150,16 +149,11 @@ export default function Skills() {
   );
 }
 
-const languages = [
-  { title: "English" },
-  { title: "Urdu" },
-  { title: "French" },
-];
 const Levels = [
-  { title: "beginner" },
-  { title: "intermediate" },
-  { title: "fluent" },
-  { title: "native" },
+  { title: "Débutant" },
+  { title: "Intermédiaire" },
+  { title: "Courant" },
+  { title: "Bilingue" },
 ];
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;

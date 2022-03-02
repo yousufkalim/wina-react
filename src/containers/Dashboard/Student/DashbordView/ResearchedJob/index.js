@@ -168,6 +168,7 @@ const ResearchedJob = () => {
                   <DatePicker
                     name="startDate"
                     label={"Date de début"}
+                    previous={true}
                     value={formik.values.startDate}
                     onChange={handleChange}
                   />

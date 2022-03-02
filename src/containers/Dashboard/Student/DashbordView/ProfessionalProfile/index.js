@@ -57,7 +57,7 @@ const ProfessionalProfile = () => {
     if (USER.student.resume !== "") {
       setPDF(USER.student.resume);
     }
-  }, []);
+  }, [Professional_Profile]);
   const EditProfessionalCareerModal = (id) => {
     if (id) {
       setedit_profile_id(id);
@@ -104,7 +104,7 @@ const ProfessionalProfile = () => {
         }
         setPDF(file.name);
       } else {
-        alert("You can upload only pdf ");
+        alert("Vous ne pouvez télécharger que des pdf");
       }
     }
   };
@@ -181,7 +181,7 @@ const ProfessionalProfile = () => {
         >
           <Tab
             eventKey="Professionalcareer"
-            title="Parcours professionnels"
+            title="Parcours Professionnels"
             className="w-100 h-100"
           >
             <div className="ProfessionalcareerBox">

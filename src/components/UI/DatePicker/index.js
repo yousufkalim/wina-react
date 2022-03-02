@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import moment from "moment";
+// import { registerLocale } from "react-datepicker";
+// import enGb from "date-fns/locale/fr";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -30,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DatePickers(props) {
   const classes = useStyles();
+
   return (
     <>
       <div className={classes.container}>
@@ -39,9 +42,7 @@ export default function DatePickers(props) {
             id="date"
             name={props.name}
             disabled={props.disabled}
-            // label="Birthday"
             type="date"
-            // placeholder="startDate"
             value={props.value}
             onChange={props.onChange}
             className={classes.textField}
@@ -54,8 +55,6 @@ export default function DatePickers(props) {
             id="date"
             name={props.name}
             disabled={props.disabled}
-            // label="Birthday"
-            // placeholder="startDate"
             type="date"
             value={props.value}
             onChange={props.onChange}

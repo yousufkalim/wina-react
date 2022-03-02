@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from "react"
-import { MdLocationOn } from "react-icons/all"
-import { Row, Col } from "react-bootstrap"
-import { Button, makeStyles } from "@material-ui/core"
-import Slider from "@material-ui/core/Slider"
-import Grid from "@material-ui/core/Grid"
-import Input from "@material-ui/core/Input"
-import InputAdornment from "@material-ui/core/InputAdornment"
-import CardItem from "../../../components/UI/CardWithImage/OfferCardItem"
-import { useDispatch, useSelector } from "react-redux"
-import { Get_Job } from "../../../Redux/actions"
-import Loader from "../../../components/UI/Loader"
+import React, { useState, useEffect } from "react";
+import { MdLocationOn } from "react-icons/all";
+import { Row, Col } from "react-bootstrap";
+import { Button, makeStyles } from "@material-ui/core";
+import Slider from "@material-ui/core/Slider";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import CardItem from "../../../components/UI/CardWithImage/OfferCardItem";
+import { useDispatch, useSelector } from "react-redux";
+import { Get_Job } from "../../../Redux/actions";
+import Loader from "../../../components/UI/Loader";
 const OfferCardDetail = (props) => {
-  const { offerID } = props
-  const dispatch = useDispatch()
-  const store = useSelector((state) => state.jobs)
-  const JOB = store.job && store.job
-  const classes = useStyles()
+  const { offerID } = props;
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state.jobs);
+  const JOB = store.job && store.job;
+  const classes = useStyles();
 
   // state
-  const [value, setValue] = useState(30)
+  const [value, setValue] = useState(30);
 
   useEffect(() => {
-    console.log(offerID, "OfferID")
-    if (offerID) dispatch(Get_Job(offerID))
-  }, [offerID])
+    if (offerID) dispatch(Get_Job(offerID));
+  }, [offerID]);
 
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value))
-  }
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
+  };
   const marks = [
     {
       value: 0,
@@ -41,14 +40,14 @@ const OfferCardDetail = (props) => {
       value: 10000,
       label: "10 000€",
     },
-  ]
+  ];
   const handleBlur = () => {
     if (value < 0) {
-      setValue(0)
+      setValue(0);
     } else if (value > 100) {
-      setValue(100)
+      setValue(100);
     }
-  }
+  };
   if (JOB && Object.keys(JOB).length > 0) {
     return (
       <>
@@ -170,13 +169,13 @@ const OfferCardDetail = (props) => {
           </div>
         </div>
       </>
-    )
+    );
   } else {
-    return <Loader.CenterProgress size={80} />
+    return <Loader.CenterProgress size={80} />;
   }
-}
+};
 
-export default OfferCardDetail
+export default OfferCardDetail;
 const useStyles = makeStyles({
   root: {
     width: "15.6rem",
@@ -225,4 +224,4 @@ const useStyles = makeStyles({
   label: {
     textTransform: "capitalize",
   },
-})
+});

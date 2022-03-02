@@ -95,14 +95,12 @@ const PPModal = ({
       let temp = data.find((dt) => dt._id === id);
 
       if (temp) {
-        console.log(temp, "temp");
         formik.setFieldValue("position", temp.position);
         formik.setFieldValue("end_date", temp.duration.end_date);
         formik.setFieldValue("start_date", temp.duration.start_date);
         formik.setFieldValue("company", temp.company);
         formik.setFieldValue("type", temp.type);
         formik.setFieldValue("place", temp.place);
-
         formik.setFieldValue("position_hold", temp.position_hold);
         formik.setFieldValue("description", temp.description);
         formik.setFieldValue("image", temp.image);
@@ -142,7 +140,7 @@ const PPModal = ({
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-custom-modal-styling-title">
-          Parcours professionnels
+          Parcours Professionnels
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -156,8 +154,6 @@ const PPModal = ({
                 <CustomTextField
                   name="position"
                   label="Intitulé du poste . Ex : Chef de projet"
-                  // className="Job_title"
-                  // placeholder="Intitulé du poste . Ex : Chef de projet"
                   variant="outlined"
                   value={formik.values.position}
                   onChange={handleChange}
@@ -180,7 +176,7 @@ const PPModal = ({
                 />
 
                 {formik.touched.type && formik.errors.type ? (
-                  <div className="formikErrorAuto"> {formik.errors.type}</div>
+                  <div className="formikErrorAuto">{formik.errors.type}</div>
                 ) : null}
               </div>
 
@@ -305,7 +301,7 @@ const PPModal = ({
                   style={{ display: "none" }}
                 />
                 <br />
-                <small
+                {/* <small
                   style={{
                     textAlign: "center",
                     fontWeight: "bold",
@@ -313,7 +309,7 @@ const PPModal = ({
                   }}
                 >
                   **Ajouter une photo.**
-                </small>
+                </small> */}
 
                 {formik.touched.image && formik.errors.image ? (
                   <div className="formikErrorAuto"> {formik.errors.image}</div>
@@ -353,44 +349,10 @@ const PPModal = ({
 export default PPModal;
 
 /* eslint-disable no-use-before-define */
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const schoolName = [
-  { name: "The Shawshank Redemption", year: 1994 },
-  { name: "The Godfather", year: 1972 },
-  { name: "The Godfather: Part II", year: 1974 },
-  { name: "The Dark Knight", year: 2008 },
-];
-const startDate = [
-  { title: "1994" },
-  { title: "1972" },
-  { title: "1974" },
-  { title: "2008" },
-];
 const EmployeeTypeOptions = [
   { title: "CDI" },
   { title: "Indépendant" },
   { title: "Freelance" },
   { title: "CDD" },
   { title: "Alternance" },
-];
-const CompanyOptions = [
-  { title: "FALCON IT" },
-  { title: "NETSOL" },
-  { title: "SYSTEM LIMITED" },
-  { title: "PROGRAMMERS FORCE" },
-  { title: "NEXT BRIDGE" },
-];
-const CountryOptions = [
-  { title: "PAKISTAN" },
-  { title: "AMERICA" },
-  { title: "BHOTAN" },
-  { title: "GERMANY" },
-  { title: "ITALY" },
-];
-const endDate = [
-  { title: "1994" },
-  { title: "1972" },
-  { title: "1974" },
-  { title: "2008" },
 ];
