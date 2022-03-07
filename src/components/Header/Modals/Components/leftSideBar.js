@@ -1,9 +1,9 @@
 import React from "react";
-import { FaFacebookF, FcGoogle } from "react-icons/all";
+import { FaFacebookF, FcGoogle, FaLinkedin } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { googleLogin } from "../../../../Redux/actions";
-import { facebookLogin } from "../../../../Redux/actions";
+import { LinkedInLogin } from "../../../../Redux/actions";
 
 export default function Sidebar({
   ModalInput,
@@ -27,7 +27,7 @@ export default function Sidebar({
     },
   });
   const handleFacebookClick = (props) => {
-    facebookLogin();
+    LinkedInLogin();
   };
   const handleGoogleClick = (props) => {
     googleLogin();
@@ -79,10 +79,10 @@ export default function Sidebar({
           </div>
         </form>
         <div className="mt-5">
-          <div className="faceBookGoogleGroup">
-            <div color="primary" className="w-100 modal-social-buttons">
+          <div className="linkedinGoogleGroup">
+            <div className="w-100 modal-social-buttons">
               <a
-                href={process.env.REACT_APP_URL + "/auth/facebook"}
+                href={process.env.REACT_APP_URL + "/auth/linkedin"}
                 className="modal-social-btn modal-facebook-btn"
               >
                 <span
@@ -90,11 +90,12 @@ export default function Sidebar({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    marginLeft: "4rem",
                   }}
                 >
-                  <FaFacebookF className="modal-social-icon" />
+                  <>LinkedIn</>
+                  <FaLinkedin className="modal-social-icon" />
                 </span>
-                &nbsp;&nbsp; <>Facebook</>
               </a>
               <a
                 href={process.env.REACT_APP_URL + "/auth/google"}

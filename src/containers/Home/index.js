@@ -29,6 +29,7 @@ const Home = (props) => {
                     <img
                       className="down-chevron"
                       src="../images/down-chevron.png"
+                      alt=""
                     />
                   </Accordion.Toggle>
                 </a>

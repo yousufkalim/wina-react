@@ -63,7 +63,7 @@ const OfferCardDetail = (props) => {
             <div className="student-offer-detail-percentage">90%</div>
             <div className="offer-detail-header">
               <div className="offer-detail-header-image text-right">
-                <img src={`../images/offer-card-detail.png`} />
+                <img src={`../images/offer-card-detail.png`} alt="" />
               </div>
               {/* <div className="offer-detail-line"></div> */}
               <div className="offer-detail-header-text text-left offer-detail-header-line">

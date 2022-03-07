@@ -100,9 +100,9 @@ export const googleLogin = async () => {
 };
 //signin through facebook
 
-export const facebookLogin = async () => {
+export const LinkedInLogin = async () => {
   try {
-    const response = await axios.get(`/auth/facebook`);
+    const response = await axios.get(`/auth/linkedin`);
     console.log(response.data);
   } catch (err) {
     console.log(err.response);

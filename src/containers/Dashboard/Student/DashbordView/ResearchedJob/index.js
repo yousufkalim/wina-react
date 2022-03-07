@@ -42,6 +42,7 @@ const ResearchedJob = () => {
       let obj = {};
       obj.positionSought = values;
       dispatch(Add_info_Student(obj, formik));
+      formik.resetForm();
     },
   });
 
@@ -55,12 +56,10 @@ const ResearchedJob = () => {
     if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
       formik.setFieldValue("domain", POSITION_SOUGHT.domain);
       formik.setFieldValue("description", POSITION_SOUGHT.description);
-
       formik.setFieldValue("position", POSITION_SOUGHT.position);
       formik.setFieldValue("duration", POSITION_SOUGHT.duration);
       formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
       formik.setFieldValue("dateOfBirth", POSITION_SOUGHT.dateOfBirth);
-
       formik.setFieldValue(
         "alternationRhythm",
         POSITION_SOUGHT.alternationRhythm
@@ -97,8 +96,6 @@ const ResearchedJob = () => {
                   <CustomTextField
                     name="position"
                     label="Intitulé du poste . Ex : Chef de projet"
-                    // className="Job_title"
-                    // placeholder="Intitulé du poste . Ex : Chef de projet"
                     value={formik.values.position}
                     onChange={handleChange}
                     type="text"
@@ -204,13 +201,6 @@ const ResearchedJob = () => {
                     value={formik.values.alternationRhythm}
                     onChange={handleChange}
                   />
-                  {/* <RadioButton
-                    options={RythmeOptions}
-                    name="alternationRhythm"
-                    label="Rythme alternances :"
-                    value={formik.values.alternationRhythm}
-                    onChange={handleChange}
-                  /> */}
                   {formik.touched.alternationRhythm &&
                   formik.errors.alternationRhythm ? (
                     <div className="formikErrorAuto">
@@ -224,11 +214,9 @@ const ResearchedJob = () => {
                 <div className="col-md-12 ptb-30">
                   <TextArea
                     name="description"
-                    // placeholder="Entrez une description"
                     label="Description"
                     value={formik.values.description}
                     onChange={handleChange}
-                    rows={3}
                   />
                   {formik.touched.description && formik.errors.description ? (
                     <div className="formikErrorDesc">
@@ -238,9 +226,6 @@ const ResearchedJob = () => {
                   ) : null}
                 </div>
               </div>
-              {/* <div className="jobIsProvided text-left">
-                <CheckBox onChange={handleChange} label="Le poste est pourvu" name="availibilty" />
-              </div> */}
               <div className="jobIsProvided text-right">
                 {store.loading ? (
                   <Button

@@ -271,12 +271,12 @@ html {
 }
 
 .modal-social-btn {
-  color: #fff;
+  color: #0a66c2;
   font-size: 1.5rem !important;
   margin-top: 5rem;
   cursor: pointer;
   flex-basis: 50%;
-  padding: 0.8rem;
+  padding: 0.61rem;
   display: flex;
   font-weight: bold;
   align-items: center;
@@ -297,11 +297,13 @@ html {
   align-items: center;
 }
 .modal-facebook-btn {
-  background-color: #26468b;
+  background-color: white;
+  border: 2px solid #8d8d8d4d;
+
   border-radius: 2.5rem 0 0 2.5rem;
 }
 .modal-facebook-btn:hover {
-  color: white;
+  color: #0063c7;
 }
 
 .modal-google-btn {
@@ -314,8 +316,8 @@ html {
 }
 
 .modal-social-icon {
-  font-size: 1.5rem;
-  margin-left: 2rem;
+  font-size: 1.8rem;
+  /* margin-left: 2rem; */
 }
 .modal-social-icon-google {
   font-size: 1.8rem;
@@ -3556,6 +3558,18 @@ textarea.form-control {
   font-size: 0.8rem;
   padding: 0.5rem 0;
   margin-left: 10px;
+}
+.offer-card-company-postion{
+font-size: 20px;
+font-weight: 550;
+
+}
+.offer-card-company-name{
+  font-size: 13px;
+font-weight: 550;
+}
+.offer-card-location-logo{
+  font-size: 20px;
 }
 
 .offer-card-price {

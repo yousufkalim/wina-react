@@ -2,7 +2,6 @@ import React from "react";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import { MdLocationOn } from "react-icons/all";
-import { Link } from "react-router-dom";
 import { DEFAULT_IMAGE } from "../../../../../Globals";
 import { baseUri } from "../../../../../urlConfig";
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,7 +24,10 @@ export default function RecipeReviewCard(props) {
           <div className="offer-card-header">
             {cards.score && cards.score * 100 > 0 ? (
               <div className="student-offer-detail-percentage">
-                {Math.floor(cards.score * 100)}%
+                {Math.floor(cards.score * 100) > 100
+                  ? "98"
+                  : Math.floor(cards.score * 100)}
+                %
               </div>
             ) : (
               ""
@@ -36,37 +38,36 @@ export default function RecipeReviewCard(props) {
                   ? `${baseUri}/${cards.photo.image}`
                   : DEFAULT_IMAGE
               }
+              alt=""
               className="offer-card-img"
             />
-            {cards.score > 1 && Math.floor(cards.score)}
           </div>
           <div className="offer-card-body offer-card-body-1">
-            {/* <div className="offer-card-description">{cards.company.name}</div> */}
             <div className="offer-card-content">
-              <span>
-                <MdLocationOn />
-              </span>{" "}
-              {cards.company.address.street},{cards.company.address.zip}{" "}
-              {cards.company.address.city}
+              <p className="offer-card-company-postion">
+                Position: {cards?.position}
+              </p>
             </div>
-            <div className="offer-card-price text-center">
-              <div className="offer-card-price-item offer-card-price-item-1">
-                <p style={{ marginLeft: 10, marginRight: 10 }}>
-                  Domaine : {cards.domain}
-                </p>
-              </div>
-              <div className="offer-card-price-item offer-card-price-item-2 mx-1">
-                Durée : {cards.duration}
-              </div>
-              <div className="offer-card-price-item offer-card-price-item-3">
-                Niveau d’étude : {cards.levelOfEducation}
-              </div>
+
+            <div className="offer-card-content">
+              <p className="offer-card-company-name">
+                Entreprise: {cards?.company.name}
+              </p>
+            </div>
+            <div className="offer-card-content">
+              <p className="offer-card-company-name">
+                <span>
+                  <MdLocationOn className="offer-card-location-logo" />
+                </span>
+                {cards?.company?.address?.street},{cards?.company?.address?.zip}{" "}
+                {cards?.company?.address?.city}
+              </p>
             </div>
           </div>
         </div>
         <div className="offer-card-overlay"></div>
         <Fab
-          onClick={() => handleDetail(cards._id)}
+          onClick={() => handleDetail(cards?._id)}
           color="primary"
           className={classes.root}
           aria-label="add"
