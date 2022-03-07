@@ -51,13 +51,14 @@ export const PROFESSIONAL_PROFILE_STATE = {
 }
 export const POSITION_SOUGHT_STATE = {
   domain: "",
-  dateOfBirth:"",
+  description: "",
   position: "",
   duration: "",
   startDate: "",
+  dateOfBirth: "",
   alternationRhythm: "",
   levelOfEducation: "",
-}
+};
 export const FORGOT_PASSWORD_STATE = {
   email: "",
 }
