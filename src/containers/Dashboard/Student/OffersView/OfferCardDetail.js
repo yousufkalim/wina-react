@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { MdLocationOn } from "react-icons/all";
-import { Row, Col } from "react-bootstrap";
 import { Button, makeStyles } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem";
 import { DEFAULT_IMAGE } from "../../../../Globals";
 import { baseUri } from "../../../../urlConfig";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Get_Job,
@@ -99,7 +96,10 @@ const OfferCardDetail = (props) => {
             <div className="offer-detail-container">
               {JOB.score && JOB.score * 100 > 0 ? (
                 <div className="student-offer-detail-percentage">
-                  {Math.floor(JOB.score * 100)}%
+                  {Math.floor(JOB.score * 100) > 100
+                    ? "98"
+                    : Math.floor(JOB.score * 100)}
+                  %
                 </div>
               ) : (
                 ""
@@ -112,6 +112,7 @@ const OfferCardDetail = (props) => {
                         ? `${baseUri}/${JOB.photo.image}`
                         : DEFAULT_IMAGE
                     }
+                    alt=""
                     // style={{ width: "500px", height: "280px" }}
                   />
                 </div>
@@ -231,7 +232,10 @@ const OfferCardDetail = (props) => {
             <div className="offer-detail-container">
               {JOB.score && JOB.score * 100 > 0 ? (
                 <div className="student-offer-detail-percentage">
-                  {Math.floor(JOB.score * 100)}%
+                  {Math.floor(JOB.score * 100) > 100
+                    ? "98"
+                    : Math.floor(JOB.score * 100)}
+                  %
                 </div>
               ) : (
                 ""
@@ -244,6 +248,7 @@ const OfferCardDetail = (props) => {
                         ? `${baseUri}/${JOB.photo.image}`
                         : DEFAULT_IMAGE
                     }
+                    alt=""
                     // style={{ width: "500px", height: "280px" }}
                   />
                 </div>
