@@ -317,6 +317,7 @@ const CompanyCardDetail = (props) => {
                           ? `${baseUri}/${JOB.photo.image}`
                           : "../images/add_image_icon.png"
                       }
+                      alt=""
                     />
                   </label>
                   <input
@@ -352,8 +353,6 @@ const CompanyCardDetail = (props) => {
                     <CustomTextField
                       name="position"
                       label="Nom du poste"
-                      // className="Job_title"
-                      // placeholder="Position"
                       value={formik.values.position}
                       onChange={handleChange}
                       type="text"
@@ -366,24 +365,7 @@ const CompanyCardDetail = (props) => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-lg-3 col-6 mt-lg-0 mt-5">
-                    <CustomTextField
-                      name="title"
-                      label="Title"
-                      // className="Job_title"
-                      // placeholder="Title"
-                      value={formik.values.title}
-                      onChange={handleChange}
-                      type="text"
-                      variant="outlined"
-                    />
-                    {formik.touched.title && formik.errors.title ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.title}
-                      </div>
-                    ) : null}
-                  </div>
+
                   <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <DatePicker
                       name="startDate"
