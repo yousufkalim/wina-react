@@ -124,7 +124,8 @@ function App() {
         ) : (
           <UnAuth />
         )
-      ) : window.location.pathname === "/goolgeLogin" ? (
+      ) : window.location.pathname === "/goolgeLogin" ||
+        window.location.pathname === "/linkedInLogin" ? (
         <Loader.CenterProgress />
       ) : (
         <UnAuth />
