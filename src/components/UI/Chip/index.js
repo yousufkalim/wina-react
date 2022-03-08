@@ -35,12 +35,12 @@ export default function ChipsArray(props) {
           return (
             <li key={index}>
               <Chip
-                label={moment(data).format('DD/MM/YYY HH:SS')}
+                label={moment(data).format("DD/MM/YYYY HH:SS")}
                 onDelete={handleDelete(data)}
                 className={classes.chip}
               />
             </li>
-          )
+          );
         })}
     </Paper>
   )
