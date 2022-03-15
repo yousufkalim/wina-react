@@ -25,6 +25,7 @@ import {
   Booking_Decion_By_Company,
   Get_Job,
 } from "../../../../../Redux/actions";
+import moment from "moment";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
 import linkedIn from "../../../../../assets/linkedIn.png";
@@ -51,6 +52,8 @@ const OverviewOfOffers = () => {
 
   const [RecievofferID, setRecievofferID] = useState("");
   const [bookingSlot, setbookingSlot] = useState();
+  const [date, setDate] = useState();
+
   const [AppointmentsArray, setAppointmentsArray] = useState("");
 
   const [SentfferID, setSentfferID] = useState("");
@@ -253,8 +256,13 @@ const OverviewOfOffers = () => {
                       <div className="card-with-image-calender">
                         <div className="d-flex jsutify-content-betweeen">
                           <Calendar
-                            value={bookingSlot}
-                            onChange={(e) => setbookingSlot(e.target.value)}
+                            dateValue={date}
+                            onChange={(d) => {
+                              setDate(d);
+                              setbookingSlot(
+                                moment(d).format("YYYY-MM-DDThh:mm")
+                              );
+                            }}
                           />
                           <div className="ml-3">
                             <SubmitButton
