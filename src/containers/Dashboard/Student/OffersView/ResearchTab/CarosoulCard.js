@@ -42,7 +42,7 @@ export default function RecipeReviewCard(props) {
               className="offer-card-img"
             />
           </div>
-          <div className="offer-card-body offer-card-body-1">
+          <div className="offer-card-body">
             <div className="offer-card-content">
               <p className="offer-card-company-postion">
                 Position: {cards?.position}
