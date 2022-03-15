@@ -11,6 +11,7 @@ import Button from "../../../../../../components/UI/Button";
 import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 import moment from "moment";
 import { useFormik } from "formik";
+// import DatePiker from "../../../../../../components/UI/DatePicker(NEW)/DatePicker";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,6 +41,9 @@ const PPModal = ({ show, setShow, professionalArray }) => {
   const classes = useStyles();
   const store = useSelector((state) => state.student);
   // const classes = useStyles();
+  // const [endDate, setEnddate] = useState(
+  //   moment(new Date()).format("YYYY-MM-DD")
+  // );
   const [Image, setImage] = useState("");
   const [ImageUri, setImageURI] = useState(
     "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
@@ -126,7 +130,7 @@ const PPModal = ({ show, setShow, professionalArray }) => {
       formik.setFieldValue(name, value);
     }
   };
-
+  
   return (
     <Modal
       show={show}
@@ -246,6 +250,16 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 <div className="formikErrorAuto"> {formik.errors.end_date}</div>
               ) : null}
             </div>
+            {/* <div className="professional-modal-form-date">
+              
+              <DatePiker
+                selected={endDate}
+                name="end_date"
+                label="Date de fin"
+                value={endDate}
+                onChange={() => onch()}
+              />
+            </div> */}
           </div>
           <div className="d-flex my-4 pt-3 ">
             <div className="col-lg-12">
