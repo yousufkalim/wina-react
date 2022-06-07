@@ -11,13 +11,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   textField: {
-    border: " 0.1px solid rgba(0, 0, 0, 0.23)",
+    border: "0px",
     padding: "12px 7px",
     width: "100%",
-    borderRadius: "3.5rem",
+    borderRadius: "5px",
     color: "#454545",
     fontSize: "1.3rem",
     borderColor: "#2879d9",
+    backgroundColor: "rgb(219, 232, 255,0.3) !important",
 
     "&:focus-visible": {
       outline: "none !important",
