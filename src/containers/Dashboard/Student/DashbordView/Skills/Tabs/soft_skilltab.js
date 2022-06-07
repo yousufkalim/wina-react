@@ -86,9 +86,7 @@ export default function Hard_skilltab(props) {
     <div className="GeneralSkillsBox">
       <div className="GeneralSkills">
         <div className="GSkillsBox">
-          <div className="skills-heading">
-            Dites-nous vos compétences générales :
-          </div>
+          <div className="skills-heading">Dites - nous vos compétences générales :</div>
           <div className="text-left">
             <div className="skills-heading-line"></div>
           </div>
@@ -106,35 +104,17 @@ export default function Hard_skilltab(props) {
               />
 
               {formik.touched.name && formik.errors.name ? (
-                <div className="formikErrorAuto mt-2">
-                  {" "}
-                  {formik.errors.name}
-                </div>
+                <div className="formikErrorAuto mt-2"> {formik.errors.name}</div>
               ) : null}
             </div>
 
             {loading ? (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="Loading...."
-                disabled={loading}
-              />
+              <Button className="Enregistrer" type="submit" variant="primary" value="Loading...." disabled={loading} />
             ) : (
-              <Button
-                className="Enregistrer"
-                type="submit"
-                variant="primary"
-                value="Ajouter"
-                disabled={false}
-              />
+              <Button className="Enregistrer" type="submit" variant="primary" value="Ajouter" disabled={false} />
             )}
           </form>
-          <div
-            className="offer-detail-date-container mt-4"
-            style={{ paddingLeft: "15px" }}
-          >
+          <div className="offer-detail-date-container mt-4" style={{ paddingLeft: "15px" }}>
             <div className="d-flex justify-content-between">
               {DB_Array && DB_Array.length > 0
                 ? DB_Array.map((job) => {
