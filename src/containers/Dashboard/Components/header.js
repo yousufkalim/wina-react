@@ -21,13 +21,24 @@ const Header = () => {
           <Image
             className="profilePic "
             roundedCircle
-            src={
-              STUDENT_IMAGE
-                ? `${baseUri}/views/uploads/${STUDENT_IMAGE}`
-                : DEFAULT_IMAGE
-            }
+            src={STUDENT_IMAGE ? `${baseUri}/views/uploads/${STUDENT_IMAGE}` : DEFAULT_IMAGE}
             style={{ width: "4rem" }}
           />
+          <div style={{ marginLeft: "19px" }}>
+            <p
+              style={{
+                display: "flex",
+                alignItem: "center",
+                justifyContent: "flex-start",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                color: "#25364F",
+              }}
+            >
+              {store.user.firstName} {store.user.lastName}
+            </p>
+            <p style={{ display: "flex", alignItem: "center", justifyContent: "flex-start" }}>{store.user.email}</p>
+          </div>
         </div>
       </div>
     </>

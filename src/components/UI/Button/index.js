@@ -11,8 +11,8 @@ const useStyles = makeStyles({
       border: "none",
       outline: "none",
     },
-    background: "#2879D9",
-    borderRadius: "2.56rem",
+    background: "#2B5AA6",
+    // borderRadius: "2.56rem",
     border: 0,
     fontSize: "1.37rem",
     fontWeight: "bold",
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     height: "3.7rem",
     padding: "0 3.6rem",
   },
-})
+});
 
 export default function CustomButton(props) {
 

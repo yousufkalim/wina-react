@@ -563,7 +563,7 @@ html {
   =========================================== */
 
 .dashbord {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -625,17 +625,20 @@ html {
 .dashbord .width-col-2 {
   padding-left: 0;
 }
-.dashbord .dashbordLayout {
-  flex-basis: 84%;
-  height: 100%;
-  padding: 1rem 1.5% 0% 4%;
+.dashbordLayout {
+  flex-basis: 100%;
+  height: 100vh ;
+  padding: 0.5rem 1.8% 0% 1%;
+  background-color:  rgb(249, 251, 255,1);
 }
 .dashbord .dashbord-column {
-  border: 1px solid #e6e6e6;
+  
+  border-left: 1px solid #e6e6e6;
   border-radius: 0px 6px 6px 0px;
-  height: 100%;
-  flex-basis: 16%;
-  position: relative;
+  /* height: 100%; */
+  /* flex-basis: 16%; */
+  /* position: relative; */
+  margin-right: 20px;
 }
 .dashbord .dashbordLabel {
   width: 85%;
@@ -648,26 +651,72 @@ html {
   color: white;
   margin: 2rem auto 3rem;
 }
+.dashbordlogo {
+  width: 85%;
+  padding: 1rem 1rem;
+  align-items: center;
+  margin: 1rem;
+  
+}
 /* .dashbord .nav-item {
   line-height: 3rem;
 } */
 .dashbord .nav-item .nav-link {
   border-left: 5px solid transparent;
-  color: var(--text-primary);
-  font-size: 1.125rem;
-  border-radius: 0px;
-  margin: 0.8rem 0px;
+  color: #8691A1;
+  font-size: 1rem;
+  margin: 0.2rem 0px;
 }
-.dashbord .dashbord-column .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+ .dashbord-column {
   background-color: transparent;
-  color: #f6c40d;
-  border-left: 5px solid #f6c40d;
-  border-radius: 0px;
-  font-weight: 500;
-  /* line-height: 40px; */
-  font-size: 1.125rem;
+  color: #2B5AA6;
+  border-left: 1px solid #E8EBF2;
+  line-height: 30px;
+  font-size: 1rem;
+  padding: 6px;
+  cursor: pointer;
+
 }
+.selected_option{
+  margin-left: 2.2rem;
+  border:1px solid #E7F0FF;
+  background-color:#E7F0FF;
+  padding: 10px;
+  border-radius: 9px;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 2rem;
+
+}
+.not_selected_option{
+  color: #8691A1;
+  margin-left: 2.2rem;
+  /* border:1px solid #E7F0FF; */
+  /* background-color:#E7F0FF; */
+  padding: 10px;
+  /* border-radius: 9px; */
+  line-height: 2rem;
+  font-size: 1rem;
+}
+
+/* .option .nav-pills .nav-link{
+border:none;
+padding: 0px;
+border-radius: 0px;
+} */
+
+/* .selected_option:active{
+border:1px solid #E7F0FF;
+background-color:#E7F0FF;
+padding: 12px;
+border-radius: 9px; */
+/* }
+.selected_option:hover{
+  border:1px solid #E7F0FF;
+background-color:#E7F0FF;
+padding: 10px;
+border-radius: 9px;
+} */
 
 /*    Sidebar bottom link   */
 .signoutLabel {
@@ -703,6 +752,7 @@ html {
 .diplomaSchoolBox {
   height: 100%;
   width: 100%;
+  overflow: scroll;
 }
 .offer-tab-3-perc {
   position: absolute;
@@ -730,17 +780,17 @@ html {
   width: 100%;
   padding: 0.7rem 0rem;
   padding-right: 2rem;
+  background-color:rgb(249, 251, 255,1);
+  border-bottom: 1px solid #E7E7F1;
 }
 .children-tab-container {
   height: 90%;
   width: 100%;
 }
-
 .children-tab-container .tab-content {
   height: 90%;
   overflow: hidden;
 }
-
 /*      Layout Searchbar   */
 .generalInformation .search_bar {
   flex-basis: 70%;
@@ -807,11 +857,11 @@ html {
                     TABS STYLING
     =============================================== */
 .custom-tabs .nav-item {
-  border-color: #2879d9 !important;
-  font-size: 1.25rem;
-  color: #454545;
+  border-color: #02196A!important;
+  font-size: 1rem;
+  color: #02196A;
   border-radius: 2.56rem;
-  border: 1px solid #2879d9;
+  border: 1px solid #02196A;
   border-top-left-radius: 2.56rem !important;
   border-top-right-radius: 2.56rem !important;
   border-bottom-left-radius: 2.56rem !important;
@@ -822,17 +872,16 @@ html {
 }
 
 .custom-tabs .nav-item:hover {
-  border: 1px solid #2879d9;
+  border: 1px solid #02196A;
 }
 .custom-tabs .nav-item.show .nav-link,
 .custom-tabs .nav-link.active {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #fff !important;
   border-radius: 2.56rem;
-  border-color: #2879d9 !important;
+  border-color: #02196A!important;
   border: 1px solid #707070;
-  background: #2879d9 !important;
-
+  background: #02196A !important;
   padding: 0.8rem 3rem;
   text-align: center;
 }
@@ -874,13 +923,13 @@ html {
   margin-top: 1.5rem;
 }
 .genProfileBox .genProfile {
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
+  border-radius: 8px;
   height: 95%;
   overflow: auto;
   padding: 1.2rem;
   width: 94%;
   position: relative;
+  background-color: white;
 }
 .genProfileBox .genProfile .profileImage {
   width: 100%;
@@ -908,42 +957,46 @@ html {
   object-fit: cover;
 }
 .genProfileBox .genProfile .profilename {
-  font-size: 3.4rem;
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight: 500;
   color: #454545;
+  padding-top: 2.5rem;
+  color: #292D35;
 }
 .genProfileBox .genProfile .profileProfession {
-  font-size: 1.12rem;
+  font-size: 1.5rem;
+  color: #2B5AA6;
+  font-weight: 400;
 }
 .genProfileBox .genProfile .generalDescription {
-  font-size: 1.37rem;
-  font-weight: bold;
-  padding-top: 4rem;
-  padding-bottom: 1.2rem;
+  font-size: 1.3rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1rem;
+  color: #292D35;
+
 }
 .genProfileBox .genProfile .description {
-  font-size: 1.12rem;
+  font-size: 1rem;
   color: #454545;
-  padding-bottom: 3rem;
+  padding-bottom: 1.4rem;
 }
 .genProfileBox .genProfile .professionalNetwork {
-  font-size: 1.37rem;
-  font-weight: bold;
+  font-size: 1.3rem;
   color: #454545;
   padding-bottom: 5px;
 }
 .genProfileBox .genProfile .PLinks {
   list-style: none;
   padding-left: 0px;
-  border: 1px solid #ebebeb;
-  border-radius: 6px;
+  /* border: 1px solid #ebebeb; */
+  /* border-radius: 6px; */
   margin-top: 10px;
 }
 .genProfileBox .genProfile .PLinks li {
   display: inline;
-  font-size: 0.93rem;
+  font-size: 1rem;
   color: #454545;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 .genProfileBox .genProfile .PLinks li img {
   width: 26px;
@@ -951,15 +1004,17 @@ html {
   margin-right: 12px;
 }
 .genProfileBox .genProfile .PLinks li a {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: #4a8ba8;
+  color: #1769FF;
   padding-left: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .genProfileBox .genProfile .edit_icons {
   position: absolute;
   right: 1rem;
-  top: 1rem;
+  bottom: 1rem;
 }
 .genProfileBox .genProfile .edit_icons img {
   width: 1.5rem;
@@ -974,15 +1029,17 @@ html {
 
 /*      Custom Modal small    */
 .custom-modal .modal-dialog {
-  width: 80% !important;
+  width: 60% !important;
   max-width: 80% !important;
   /* padding-bottom: 3rem; */
-  height: auto;
+  height: auto !important;
   /* min-height: 100% !important; */
   margin: auto !important;
 }
 .custom-modal .modal-content {
   padding: 3rem;
+  border-radius: 1.25rem !important;
+
 }
 .custom-modal .close {
   padding-top: 3rem;
@@ -1022,7 +1079,7 @@ html {
 
 /* diplomaSchoolBox */
 .diplomaSchoolBox .diplomaSchool {
-  border: 1px solid #e4e4e4;
+  /* border: 1px solid #e4e4e4; */
   border-radius: 5px;
   padding: 1.7rem;
   margin-top: 2.2rem;
@@ -1031,10 +1088,11 @@ html {
   position: relative;
   overflow: auto;
 }
-.diplomaSchool .modal-icon {
+ .diplomaSchoolBox .modal-icon {
   position: absolute;
-  right: 2.2rem;
-  width: 1.8rem;
+  top: 8.7rem;
+  right: 5rem;
+  width: 7.8rem;
   cursor: pointer;
 }
 
@@ -1091,12 +1149,12 @@ html {
 }
 .schoolDiplomaModal .modal-title {
   color: #454545;
-  font-size: 2.8rem;
-  font-weight: bold;
-  border-bottom: 1px solid #f7c40d;
+  font-size: 2.2rem;
+  font-weight: 500;
+  /* border-bottom: 1px solid #f7c40d; */
 }
 .schoolDiplomaModal .modal-body {
-  padding-top: 3rem;
+  padding-top: 1rem;
   padding-left: 0;
 }
 .schoolDiplomaModal .modal-body .schoolName .MuiInputBase-root {
@@ -1205,8 +1263,8 @@ html {
   font-size: 1.37rem;
 } */
 .schoolDiplomaModal .modal-body .Enregistrer {
-  border-radius: 2.5rem;
-  margin-top: 3rem;
+  /* border-radius: 2.5rem; */
+  margin-top: 2rem;
   width: 14rem;
   height: 4rem;
   margin-left: auto;
@@ -1224,7 +1282,7 @@ html {
 .custom-box {
   border: 1px solid #e4e4e4;
   border-radius: 5px;
-  padding: 3rem 2.1rem 2.1rem 3rem;
+  padding: 1rem 2.1rem 2.1rem 3rem;
   width: 95%;
   margin-top: 2rem;
   height: 94%;
@@ -1991,8 +2049,8 @@ html {
   align-items: baseline;
   border: none;
   position: absolute;
-  top: 1.8%;
-  left: 48%;
+  top: 1.8% !important;
+  left: 37% !important;
   transform: translate(-0%, 0%);
 }
 .importCV .MuiButton-containedPrimary {
@@ -2077,7 +2135,7 @@ html {
   flex-basis: 30%;
 }
 .professional-modal-form-other {
-  flex-basis: 20%;
+  flex-basis: 30%;
 }
 .professional-modal-form-position {
   flex-basis: 30%;
@@ -2337,10 +2395,10 @@ html {
   /* border-bottom: 1px solid #f7c40d; */
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .skills-heading-line {
-  background-color: #f7c40d;
+  background-color: #C8CFDE;
   height: 1px;
-  width: 70%;
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 15px;
   text-align: left;
 }
 
@@ -3794,7 +3852,7 @@ font-size: 23px;
   font-weight: 600;
 }
 .offer-detail-skills {
-  background-color: #f6c40d;
+  background-color: #2B5AA6;
   color: #fff;
   border-radius: 2.56rem;
   padding: 0.4rem 1rem;
@@ -3949,14 +4007,15 @@ font-size: 23px;
   font-size: 1.5rem;
   margin-left: 10px;
 }
-
+.modal-icon-2{
+  margin-right: 15px;
+}
 .modal-icon-2 .delete_icon {
   font-size: 1.5rem;
   margin-left: 10px;
 }
 .modal-icon-2 .edit_icon {
-  font-size: 1.5rem;
-  margin-left: 10px;
+  /* margin-bottom: 2rem; */
 }
 .diplomaSchool .modal-icon .delete_icon {
   font-size: 1.5rem;
@@ -4190,7 +4249,7 @@ input[type="file"] {
 
 .add-school-field {
   padding-right: 15px !important;
-  padding-left: 15px !important;
+  padding-left: 0px !important;
 }
 
 /*      CAROUSEL      */
@@ -4321,4 +4380,64 @@ input[type="file"] {
 }
 /* .carousel .slider-wrapper.axis-horizontal .slider .slide {
   min-width: 100% !important;
+} */
+
+
+/*================================================================
+=           Student Side Drawer           =
+==================================================================*/
+.main_drawer_div{
+  margin: 1rem;
+  width: 22%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  /* z-index: 999999999 !important; */
+  /* position:absolute;
+  top: 0;
+  left: 0; */
+}
+.drawer_head_text_div1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: 1px solid #E5E7ED; */
+  margin-top: 2rem;
+  height: 8%;
+  width: 85%;
+  cursor: pointer;
+}.drawer_head_text_div2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: 1px solid #E5E7ED; */
+  height: 8%;
+  width: 85%;
+  cursor: pointer;
+
+}
+.drawer_head_text{
+  font-size: 1.1rem;
+  color: #18214A;
+  font-weight: 500;
+  margin-left: 2rem;
+  text-align: center;
+}
+.drawer_left_text{
+  display: flex; 
+  align-items: center; 
+}
+.arrow_icon{
+  width: 0.8rem;
+}
+.home_icon{
+  width: 1.6rem;
+}
+/* .pills_div{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
 } */

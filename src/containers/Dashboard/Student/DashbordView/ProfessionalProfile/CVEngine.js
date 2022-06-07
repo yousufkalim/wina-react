@@ -7,7 +7,7 @@ import { Get_User_Student, studentSkills } from "../../../../../Redux/actions";
 import axios from "axios";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
-import linkedIn from "../../../../../assets/linkedIn.png";
+import linkedIn from "../../../../../assets/linkedIn.svg";
 import github from "../../../../../assets/github.png";
 import moment from "moment";
 

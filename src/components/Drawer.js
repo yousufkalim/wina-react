@@ -1,0 +1,204 @@
+import React, { useEffect, useState } from "react";
+import logo from "../assets/WinaaLogo.svg";
+import Dashboard from "../assets/Vector.svg";
+import ArrowDown from "../assets/Vector1.svg";
+import Offer from "../assets/Group2.svg";
+import Coaching from "../assets/Group3.svg";
+import ArrowUp from "../assets/Vector3.svg";
+import SignOut from "../assets/signout.svg";
+import { Tab, Nav } from "react-bootstrap";
+import Header from "../containers/Dashboard/Components/header";
+import Footer from "../containers/Dashboard/Components/footer";
+import GeneralInformations from "../containers/Dashboard/Student/DashbordView/GeneralInformations";
+import ProfessionalProfile from "../containers/Dashboard/Student/DashbordView/ProfessionalProfile";
+import Skills from "../containers/Dashboard/Student/DashbordView/Skills";
+import ResearchedJob from "../containers/Dashboard/Student/DashbordView/ResearchedJob";
+import Offers from "../containers/Dashboard/Student/CoachingView/Offres";
+import RDV from "../containers/Dashboard/Student/CoachingView/RDV";
+import ViewOffers from "../containers/Dashboard/Student/OffersView/OfferTab/ViewOffers";
+import { Image } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { signout } from "../Redux/actions";
+import MatchResearch from "../containers/Dashboard/Student/OffersView/ResearchTab/MatchResearch";
+const Drawer = () => {
+  const dispatch = useDispatch();
+
+  const [arrowUp1, setArrowUp1] = useState(false);
+  const [arrowUp2, setArrowUp2] = useState(false);
+  const [arrowUp3, setArrowUp3] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [selected, setSelected] = useState("");
+  useEffect(() => {
+    setSelected("GeneralInformations");
+    setArrowUp1(!arrowUp1);
+    setOpen1(!open1);
+  }, []);
+
+  const handleArrowUp1 = () => {
+    setArrowUp1(!arrowUp1);
+    setOpen1(!open1);
+    setArrowUp2(false);
+    setArrowUp3(false);
+    setOpen2(false);
+    setOpen3(false);
+  };
+  const handleArrowUp2 = () => {
+    setArrowUp2(!arrowUp2);
+    setOpen2(!open2);
+    setArrowUp1(false);
+    setArrowUp3(false);
+    setOpen1(false);
+    setOpen3(false);
+  };
+  const handleArrowUp3 = () => {
+    setArrowUp3(!arrowUp3);
+    setOpen3(!open3);
+    setArrowUp2(false);
+    setArrowUp1(false);
+    setOpen2(false);
+    setOpen1(false);
+  };
+  const handleClick = (e) => {
+    setSelected(e);
+  };
+  return (
+    <div>
+      <div style={{ display: "flex" }}>
+        <div className="main_drawer_div">
+          <div className="dashbordlogo">
+            <img src={logo} />
+          </div>
+          <div className="drawer_head_text_div1" style={{ borderBottom: !open1 && "1px solid #E5E7ED" }} onClick={handleArrowUp1}>
+            <div className="drawer_left_text">
+              <img src={Dashboard} className="home_icon" />
+              <span className="drawer_head_text">Dashboard</span>
+            </div>
+            <img src={arrowUp1 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
+          </div>
+          <div style={{ display: !open1 && "none" }}>
+            <div className="dashbord-column">
+              <div
+                onClick={() => handleClick("GeneralInformations")}
+                className={selected === "GeneralInformations" ? "selected_option" : "not_selected_option"}
+              >
+                Informations Générales
+              </div>
+              <div
+                onClick={() => handleClick("ProfessionalProfile")}
+                className={selected === "ProfessionalProfile" ? "selected_option" : "not_selected_option"}
+              >
+                Profil Professionnel
+              </div>
+              <div
+                onClick={() => handleClick("Skills")}
+                className={selected === "Skills" ? "selected_option" : "not_selected_option"}
+              >
+                Compétences
+              </div>
+              <div
+                onClick={() => handleClick("ResearchedJob")}
+                className={selected === "ResearchedJob" ? "selected_option" : "not_selected_option"}
+              >
+                Poste Recherché
+              </div>
+            </div>
+          </div>
+          <div
+            className="drawer_head_text_div2"
+            style={{
+              borderBottom: !open2 && "1px solid #E5E7ED",
+              borderTop: open1 && "1px solid #E5E7ED",
+              marginTop: open1 && "2.5rem",
+            }}
+            onClick={handleArrowUp2}
+          >
+            <div className="drawer_left_text">
+              <img src={Offer} className="home_icon" />
+              <span className="drawer_head_text">Offres</span>
+            </div>
+            <img src={arrowUp2 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
+          </div>
+          <div style={{ display: !open2 && "none" }}>
+            <div className="dashbord-column">
+              <div
+                onClick={() => handleClick("ViewOffers")}
+                className={selected === "ViewOffers" ? "selected_option" : "not_selected_option"}
+              >
+                Suivi de mes candidatures
+              </div>
+              <div
+                onClick={() => handleClick("MatchResearch")}
+                className={selected === "MatchResearch" ? "selected_option" : "not_selected_option"}
+              >
+                Clique ici pour voir les matchs
+              </div>
+            </div>
+          </div>
+          <div
+            className="drawer_head_text_div2"
+            style={{
+              borderBottom: !open3 && "1px solid #E5E7ED",
+              borderTop: open2 && "1px solid #E5E7ED",
+              marginTop: open2 && "2.5rem",
+            }}
+            onClick={handleArrowUp3}
+          >
+            <div className="drawer_left_text">
+              <img src={Coaching} className="home_icon" />
+              <span className="drawer_head_text">Coaching</span>
+            </div>
+            <img src={arrowUp3 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
+          </div>
+          <div style={{ display: !open3 && "none" }}>
+            <div className="dashbord-column">
+              <div
+                onClick={() => handleClick("Offers")}
+                className={selected === "Offers" ? "selected_option" : "not_selected_option"}
+              >
+                Offres
+              </div>
+              <div onClick={() => handleClick("RDV")} className={selected === "RDV" ? "selected_option" : "not_selected_option"}>
+                RDV
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => dispatch(signout())}
+            style={{ position: "absolute", bottom: "3%", left: "2.4%", color: "#FF285C", fontSize: "1.1rem", cursor: "pointer" }}
+          >
+            <Image src={SignOut} /> Se déconnecter
+          </div>
+        </div>
+
+        <div className="dashbordLayout">
+          <Header />
+          <div style={{ marginTop: "2rem", marginLeft: "3rem", overflowY: "scroll !important" }}>
+            {selected === "GeneralInformations" ? (
+              <GeneralInformations />
+            ) : selected === "ProfessionalProfile" ? (
+              <ProfessionalProfile />
+            ) : selected === "Skills" ? (
+              <Skills />
+            ) : selected === "ResearchedJob" ? (
+              <ResearchedJob />
+            ) : selected === "ViewOffers" ? (
+              <ViewOffers />
+            ) : selected === "MatchResearch" ? (
+              <MatchResearch />
+            ) : selected === "Offers" ? (
+              <Offers />
+            ) : selected === "RDV" ? (
+              <RDV />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Drawer;
