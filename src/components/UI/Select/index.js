@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
       background: "transparent",
     },
     "& .MuiOutlinedInput-root": {
-      borderRadius: "3.5rem",
-      borderColor: "#2879d9",
+      borderRadius: "5px",
+      borderColor: "#000B26 !important",
 
       "& .MuiIconButton-root": {
         color: "#454545",
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       // },
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
+      borderColor: "rgba(0, 11, 38, 0.1)",
     },
     // "& .MuiFormLabel-root.Mui-focused": {
     //   color: "#2879d9"
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.375rem",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
+      borderColor: "rgba(0, 11, 38, 0.1)",
     },
   },
   formControlGrey: {
@@ -222,9 +222,7 @@ export default function ControlledOpenSelect(props) {
                   </MenuItem>
                 ))
               : ""}
-            <MenuItem value="I am not available at the proposed time">
-              I am not available at the proposed time
-            </MenuItem>
+            <MenuItem value="I am not available at the proposed time">I am not available at the proposed time</MenuItem>
           </Select>
         </FormControl>
       </>
