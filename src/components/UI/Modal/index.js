@@ -17,19 +17,19 @@ const NewModal = (props) => {
       aria-labelledby="example-custom-modal-styling-title"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton style={{ borderBottom: "1px solid #DEE3EC" }}>
         <Modal.Title>{props.modalTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.children}</Modal.Body>
-        {props.buttons
-          ? props.buttons.map((btn, index) => (
+      {props.buttons
+        ? props.buttons.map((btn, index) => (
             <Modal.Footer>
               <Button key={index} variant={btn.color} onClick={btn.onClick}>
                 {btn.label}
               </Button>
-      </Modal.Footer>
-            ))
-          : ""}
+            </Modal.Footer>
+          ))
+        : ""}
     </Modal>
   );
 };
