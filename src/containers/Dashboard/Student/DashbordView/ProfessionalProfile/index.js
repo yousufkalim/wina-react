@@ -110,11 +110,7 @@ const ProfessionalProfile = () => {
   };
   return (
     <>
-      <PPModal
-        show={show}
-        setShow={setShow}
-        professionalArray={professionalArray}
-      />
+      <PPModal show={show} setShow={setShow} professionalArray={professionalArray} />
       <EditPPModal
         id={edit_profile_id}
         show={edit_school_show}
@@ -163,34 +159,17 @@ const ProfessionalProfile = () => {
             >
               {PDF ? (
                 <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
-                  <PictureAsPdfIcon
-                    className="path "
-                    style={{ fontSize: 40 }}
-                    color="primary"
-                  />
+                  <PictureAsPdfIcon className="path " style={{ fontSize: 40 }} color="primary" />
                 </a>
               ) : null}
             </div>
           </div>
         </div>
-        <Tabs
-          activeKey={key}
-          id="Profile"
-          className="Profile upper-nav custom-tabs"
-          onSelect={(k) => setKey(k)}
-        >
-          <Tab
-            eventKey="Professionalcareer"
-            title="Parcours Professionnels"
-            className="w-100 h-100"
-          >
+        <Tabs activeKey={key} id="Profile" className="Profile upper-nav custom-tabs" onSelect={(k) => setKey(k)}>
+          <Tab eventKey="Professionalcareer" title="Parcours Professionnels" className="w-100 h-100">
             <div className="ProfessionalcareerBox">
               <div className="Professionalcareer">
-                <Image
-                  className="modal-icon modal-add-icon"
-                  src="../images/add_icons.png"
-                  onClick={ProfessionalCareerModal}
-                />
+                <Image className="modal-icon modal-add-icon" src="../images/add_icons.png" onClick={ProfessionalCareerModal} />
 
                 {Professional_Profile && Professional_Profile.length > 0 ? (
                   Professional_Profile.map((card, index) => (
@@ -204,18 +183,12 @@ const ProfessionalProfile = () => {
                     />
                   ))
                 ) : (
-                  <h1 className="text-center">
-                    Ajoutez une expérience professionnelle
-                  </h1>
+                  <h1 className="text-center">Ajoutez une expérience professionnelle</h1>
                 )}
               </div>
             </div>
           </Tab>
-          <Tab
-            eventKey="generalPresentation"
-            title="CV en ligne"
-            className="h-100"
-          >
+          <Tab eventKey="generalPresentation" title="CV en ligne" className="h-100">
             <div className="AnnoncesViewOffersBox">
               <CVENGINE USER={USER} setKey={setKey} key={key} />
             </div>
