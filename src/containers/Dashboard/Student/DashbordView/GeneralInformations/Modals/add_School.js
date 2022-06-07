@@ -107,11 +107,11 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       modalTitle="Formation / École"
       children={
         <form onSubmit={formik.handleSubmit}>
-          <div className="d-flex mb-3 add-school-field">
-            <div className="col-lg-4">
+          <div className="add-school-field">
+            <div className="col-lg-12">
               <TextFieldRound
                 name="school"
-                label="École"
+                placeholder="École"
                 value={formik.school}
                 onChange={handleChange}
                 variant="outlined"
@@ -123,8 +123,8 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
             </div>
           </div>
 
-          <div className="d-flex mt-5 py-3">
-            <div className="col-lg-3">
+          <div className="d-flex mt-4 py-3 ml-4">
+            <div className="col-lg-4 mr-3">
               <DatePicker
                 name="start_Date"
                 previous={true}
@@ -133,13 +133,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 onChange={handleChange}
               />
               {formik.touched.start_Date && formik.errors.start_Date ? (
-                <div className="formikErrorDate">
-                  {" "}
-                  {formik.errors.start_Date}
-                </div>
+                <div className="formikErrorDate"> {formik.errors.start_Date}</div>
               ) : null}
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-4">
               <DatePicker
                 name="end_Date"
                 label={"Date de fin"}
@@ -152,28 +149,24 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
               ) : null}
             </div>
           </div>
-          <div className="d-flex mt-5">
+          <div className="d-flex mt-3">
             <div className="col-lg-12">
               <TextArea
                 name="description"
-                label="Description"
                 grey
                 value={formik.description}
                 onChange={handleChange}
                 rows={3}
-                // placeholder="Description"
+                placeholder="tapez votre descriptif"
               />
               {formik.touched.description && formik.errors.description ? (
-                <div className="formikErrorDesc">
-                  {" "}
-                  {formik.errors.description}
-                </div>
+                <div className="formikErrorDesc"> {formik.errors.description}</div>
               ) : null}
             </div>
           </div>
 
           <div className="d-flex ">
-            <div className="col-lg-6 mt-4">
+            <div className="col-lg-6 mt-3">
               <img
                 onClick={handleClick}
                 src={ImageUri}
@@ -194,29 +187,15 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 style={{ display: "none" }}
               />
 
-              {formik.touched.image && formik.errors.image ? (
-                <div className="formikErrorAuto"> {formik.errors.image}</div>
-              ) : null}
+              {formik.touched.image && formik.errors.image ? <div className="formikErrorAuto"> {formik.errors.image}</div> : null}
             </div>
           </div>
           <div className="d-flex ">
             <div className="col-lg-12 text-right">
               {store.loading ? (
-                <Button
-                  className="Enregistrer"
-                  type="submit"
-                  variant="primary"
-                  value="Loading...."
-                  disabled={store.loading}
-                />
+                <Button className="Enregistrer" type="submit" variant="primary" value="Loading...." disabled={store.loading} />
               ) : (
-                <Button
-                  className="Enregistrer"
-                  type="submit"
-                  variant="primary"
-                  value="nous faire parvenir"
-                  disabled={false}
-                />
+                <Button className="Enregistrer" type="submit" variant="primary" value="nous faire parvenir" disabled={false} />
               )}
             </div>
           </div>
