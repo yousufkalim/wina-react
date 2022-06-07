@@ -1,5 +1,16 @@
 .info-card {
   /* height: 100%; */
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 18.9254px 65.0561px -28.3881px rgba(0, 27, 67, 0.1);
+  width: 100%;
+  margin-top: 1.25rem;
+  padding-top: 3rem;
+}
+.info-card-professional{
+  background-color: transparent;
+  /* border-radius: 5px; */
+  /* box-shadow: 0px 18.9254px 65.0561px -28.3881px rgba(0, 27, 67, 0.1); */
   width: 100%;
   margin-top: 1.25rem;
   padding-top: 3rem;
@@ -17,22 +28,41 @@
   color: var(--text-primary);
 }
 .info-card-image {
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 6rem;
+  padding-top:1rem;
+}
+
+
+.info-card-image-professional {
   flex-basis: 20%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 3rem;
+  padding-left: 6rem;
+  /* padding-top:1rem; */
 }
 
 .info-card img {
   width: 100%;
   border-radius: 50%;
   /* height: 100%; */
-  height: 10rem;
-  width: 10rem;
+  height: 7rem;
+  width: 7rem;
   object-fit: cover;
 }
 
+.info-card-professional img {
+  width: 100%;
+  border-radius: 50%;
+  /* height: 100%; */
+  height: 7rem;
+  width: 7rem;
+  object-fit: cover;
+}
 .info-card-content-position {
   font-size: 1.12rem;
   font-weight: 500;
@@ -44,7 +74,7 @@
 }
 
 .info-card .info-card-title {
-  font-size: 1.37rem;
+  font-size: 1.5rem;
   font-weight: bold;
   display: flex;
   width: 100%;
@@ -55,13 +85,17 @@
 .info-card .info-card-content {
   /* margin-top: 5; */
   font-size: 1rem;
+  font-weight: 600;
 }
 
 .info-card-desc {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 1.125rem;
+  font-size: 0.9rem;
+  color: #292D35;
+  margin-bottom: 2rem;
+  width: 80%;
 }
 .info-card-location {
   margin: 10px 0px;
