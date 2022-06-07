@@ -28,7 +28,7 @@ import {
 import moment from "moment";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
-import linkedIn from "../../../../../assets/linkedIn.png";
+import linkedIn from "../../../../../assets/linkedIn.svg";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
   const dispatch = useDispatch();
