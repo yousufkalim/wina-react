@@ -103,11 +103,11 @@ const GeneralInformationsModal = ({
       children={
         data && id ? (
           <form onSubmit={formik.handleSubmit}>
-            <div className="d-flex mb-3 add-school-field">
-              <div className="col-lg-4 col-6">
+            <div className="add-school-field">
+              <div className="col-lg-12">
                 <TextFieldRound
                   name="school"
-                  label="École"
+                  // label="École"
                   // className="Job_title"
                   placeholder="École"
                   value={formik.values.school}
@@ -121,8 +121,8 @@ const GeneralInformationsModal = ({
               </div>
             </div>
 
-            <div className="d-flex mt-5 py-3">
-              <div className="col-lg-3 col-4">
+            <div className="d-flex mt-4 py-3 ml-4">
+              <div className="col-lg-4 mr-3">
                 <DatePicker
                   name="start_Date"
                   label={"Date de début"}
@@ -131,13 +131,10 @@ const GeneralInformationsModal = ({
                   onChange={handleChange}
                 />
                 {formik.touched.start_Date && formik.errors.start_Date ? (
-                  <div className="formikErrorDate">
-                    {" "}
-                    {formik.errors.start_Date}
-                  </div>
+                  <div className="formikErrorDate"> {formik.errors.start_Date}</div>
                 ) : null}
               </div>
-              <div className="col-lg-3 col-4">
+              <div className="col-lg-4">
                 <DatePicker
                   name="end_Date"
                   label={"Date de fin"}
@@ -146,14 +143,11 @@ const GeneralInformationsModal = ({
                   onChange={handleChange}
                 />
                 {formik.touched.end_Date && formik.errors.end_Date ? (
-                  <div className="formikErrorDate">
-                    {" "}
-                    {formik.errors.end_Date}
-                  </div>
+                  <div className="formikErrorDate"> {formik.errors.end_Date}</div>
                 ) : null}
               </div>
             </div>
-            <div className="d-flex mt-5">
+            <div className="d-flex mt-3">
               <div className="col-lg-12">
                 <TextArea
                   name="description"
@@ -162,19 +156,16 @@ const GeneralInformationsModal = ({
                   value={formik.values.description}
                   onChange={handleChange}
                   rows={3}
-                  // placeholder="Description"
+                  placeholder="Type your description"
                 />
                 {formik.touched.description && formik.errors.description ? (
-                  <div className="formikErrorDesc">
-                    {" "}
-                    {formik.errors.description}
-                  </div>
+                  <div className="formikErrorDesc"> {formik.errors.description}</div>
                 ) : null}
               </div>
             </div>
 
             <div className="d-flex ">
-              <div className="col-lg-6 mt-4">
+              <div className="col-lg-6 mt-3">
                 <img
                   onClick={handleClick}
                   src={ImageUri}
@@ -203,21 +194,9 @@ const GeneralInformationsModal = ({
             <div className="d-flex ">
               <div className="col-lg-12 text-right">
                 {store.loading ? (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Loading...."
-                    disabled={store.loading}
-                  />
+                  <Button className="Enregistrer" type="submit" variant="primary" value="Loading...." disabled={store.loading} />
                 ) : (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Soumettre"
-                    disabled={false}
-                  />
+                  <Button className="Enregistrer" type="submit" variant="primary" value="Soumettre" disabled={false} />
                 )}
               </div>
             </div>
