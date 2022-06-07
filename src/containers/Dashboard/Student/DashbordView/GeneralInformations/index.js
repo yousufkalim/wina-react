@@ -8,15 +8,12 @@ import { Link } from "react-router-dom";
 import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
 import { DEFAULT_IMAGE } from "../../../../../Globals/index";
 import { useDispatch, useSelector } from "react-redux";
-import Behance from "../../../../../assets/Behance.png";
-import Dribble from "../../../../../assets/Dribble.png";
-import linkedIn from "../../../../../assets/linkedIn.png";
-import Github from "../../../../../assets/github.png";
+import Behance from "../../../../../assets/behance.svg";
+import Dribble from "../../../../../assets/dribble.svg";
+import linkedIn from "../../../../../assets/linkedIn.svg";
+import Github from "../../../../../assets/github.svg";
 import Video from "../../../../../assets/video.mp4";
-import {
-  Delete_School_Info,
-  Add_Image_info_Student,
-} from "../../../../../Redux/actions";
+import { Delete_School_Info, Add_Image_info_Student } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 import { baseUri } from "../../../../../urlConfig";
 const GeneralInformations = () => {
@@ -25,9 +22,7 @@ const GeneralInformations = () => {
   const Loggin_User = store.user.firstName + " " + store.user.lastName;
   const Education = store.user.student && store.user.student.education;
   const STUDENT_IMAGE =
-    store.user.student && store.user.student.professional_Picture
-      ? store.user.student.professional_Picture.image
-      : "";
+    store.user.student && store.user.student.professional_Picture ? store.user.student.professional_Picture.image : "";
   const [show, setShow] = useState(false);
   const [edit_school_show, setedit_school_show] = useState(false);
   const [edit_school_id, setedit_school_id] = useState("");
@@ -74,16 +69,8 @@ const GeneralInformations = () => {
         setedit_school_id={setedit_school_id}
       />
 
-      <Tabs
-        defaultActiveKey="generalPresentation"
-        id="Profile"
-        className="Profile upper-nav custom-tabs"
-      >
-        <Tab
-          eventKey="generalPresentation"
-          title="Présentation Générale"
-          className="h-100"
-        >
+      <Tabs defaultActiveKey="generalPresentation" id="Profile" className="Profile upper-nav custom-tabs">
+        <Tab eventKey="generalPresentation" title="Présentation Générale" className="h-100">
           <div className="genProfileBox">
             <div className="genProfile">
               <Row className="p-3 w-100">
@@ -101,11 +88,7 @@ const GeneralInformations = () => {
                   <div className="profileImage">
                     <div className="embed-responsive embed-responsive-16by9">
                       <iframe
-                        hidden={
-                          store.user.student.presentation_Video.video
-                            ? false
-                            : true
-                        }
+                        hidden={store.user.student.presentation_Video.video ? false : true}
                         className="embed-responsive-item"
                         src={
                           `${baseUri}/views/uploads/${store.user.student.presentation_Video.video}`
@@ -120,16 +103,10 @@ const GeneralInformations = () => {
                 </Col>
                 <Col lg={9} md={8}>
                   <div className="profilename">{Loggin_User}</div>
-                  <div className="profileProfession">
-                    {store.user.type == "student"
-                      ? "Etudiant"
-                      : store.user.type}
-                  </div>
+                  <div className="profileProfession">{store.user.type == "student" ? "Etudiante" : store.user.type}</div>
                   <div className="generalDescription">Description générale</div>
                   <div className="description">
-                    {store.user.student.general_Presentation
-                      ? store.user.student.general_Presentation
-                      : ""}
+                    {store.user.student.general_Presentation ? store.user.student.general_Presentation : ""}
                   </div>
                   <div className="professionalNetwork">Réseau pro</div>
                   <ul className="PLinks">
@@ -138,13 +115,9 @@ const GeneralInformations = () => {
                     </li>
                     <li>Linkedin &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
-                    Object.keys(store.user.student.professional_networks)
-                      .length > 0 ? (
+                    Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a
-                          href={`${store.user.student.professional_networks.linkedIn}`}
-                          target="_blank"
-                        >
+                        <a href={`${store.user.student.professional_networks.linkedIn}`} target="_blank">
                           {store.user.student.professional_networks.linkedIn
                             ? store.user.student.professional_networks.linkedIn
                             : ""}
@@ -160,13 +133,9 @@ const GeneralInformations = () => {
                     </li>
                     <li>Behance &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
-                    Object.keys(store.user.student.professional_networks)
-                      .length > 0 ? (
+                    Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a
-                          href={`${store.user.student.professional_networks.Behance}`}
-                          target="_blank"
-                        >
+                        <a href={`${store.user.student.professional_networks.Behance}`} target="_blank">
                           {store.user.student.professional_networks.Behance
                             ? store.user.student.professional_networks.Behance
                             : ""}
@@ -182,13 +151,9 @@ const GeneralInformations = () => {
                     </li>
                     <li>Dribble &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
-                    Object.keys(store.user.student.professional_networks)
-                      .length > 0 ? (
+                    Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a
-                          href={`${store.user.student.professional_networks.Dribble}`}
-                          target="_blank"
-                        >
+                        <a href={`${store.user.student.professional_networks.Dribble}`} target="_blank">
                           {store.user.student.professional_networks.Dribble
                             ? store.user.student.professional_networks.Dribble
                             : ""}
@@ -204,16 +169,10 @@ const GeneralInformations = () => {
                     </li>
                     <li>Github &nbsp;&nbsp;: </li>
                     {store.user.student.professional_networks &&
-                    Object.keys(store.user.student.professional_networks)
-                      .length > 0 ? (
+                    Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a
-                          href={`${store.user.student.professional_networks.Github}`}
-                          target="_blank"
-                        >
-                          {store.user.student.professional_networks.Github
-                            ? store.user.student.professional_networks.Github
-                            : ""}
+                        <a href={`${store.user.student.professional_networks.Github}`} target="_blank">
+                          {store.user.student.professional_networks.Github ? store.user.student.professional_networks.Github : ""}
                         </a>
                       </li>
                     ) : (
@@ -222,10 +181,7 @@ const GeneralInformations = () => {
                   </ul>
                 </Col>
                 <Link to="#" className="edit_icons">
-                  <Image
-                    src="../images/edit_icon.png"
-                    onClick={GeneralInfoModalShow}
-                  />
+                  <Image src="../images/edit_icon.svg" onClick={GeneralInfoModalShow} style={{ width: "9rem" }} />
                 </Link>
               </Row>
             </div>
@@ -234,19 +190,10 @@ const GeneralInformations = () => {
 
         {/* DiplomaSchool Tab*/}
 
-        <Tab
-          eventKey="diplomaSchool"
-          title="Formation / École"
-          className="h-100"
-        >
+        <Tab eventKey="diplomaSchool" title="Formation / École" className="h-100">
           <div className="diplomaSchoolBox">
+            <Image className="modal-icon" src="../images/add_icons.svg" onClick={SchoolModalShow} />
             <div className="diplomaSchool">
-              <Image
-                className="modal-icon"
-                src="../images/add_icons.png"
-                onClick={SchoolModalShow}
-              />
-
               {Education && Education.length > 0 ? (
                 Education.map((card, index) => (
                   <InfoCard
