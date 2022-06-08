@@ -41,10 +41,7 @@ export default function MultiCarouselPage(props) {
     autoplaySpeed: 500,
     autoplayHoverPause: true,
     autoplay: true,
-    navText: [
-      "<i class='fa fa-chevron-left'></i>",
-      "<i class='fa fa-chevron-right'></i>",
-    ],
+    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
     responsive: {
       0: {
         items: 2,
@@ -89,12 +86,7 @@ export default function MultiCarouselPage(props) {
             >
               {JOBS &&
                 JOBS.map((card, index) => (
-                  <CarosoulCard
-                    handleDetail={props.handleDetail}
-                    cards={card}
-                    key={index}
-                    name="this is first"
-                  />
+                  <CarosoulCard handleDetail={props.handleDetail} cards={card} key={index} name="this is first" />
                 ))}
             </Carousel>
           </div>
@@ -105,60 +97,4 @@ export default function MultiCarouselPage(props) {
     </>
   );
 }
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
-// ******************************
 
-const offerCards = [
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-  {
-    image: "offer-card-1",
-    title: "Comundi",
-    location: "4 Rue du Général - 75015 Paris",
-    content1: "Domaine : Webdesign",
-    content2: "Durée : 1 an",
-    content3: "Niveau d’étude : Brevet",
-  },
-];

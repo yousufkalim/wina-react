@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdLocationOn } from "react-icons/all";
+import { ReactComponent as Location } from "../../../../assets/10-location.svg";
 import { Button, makeStyles } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
@@ -9,11 +9,7 @@ import { DEFAULT_IMAGE } from "../../../../Globals";
 import { baseUri } from "../../../../urlConfig";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Get_Job,
-  Cancel_Offer_Decion_By_Students,
-  Offer_Decion_By_Students,
-} from "../../../../Redux/actions";
+import { Get_Job, Cancel_Offer_Decion_By_Students, Offer_Decion_By_Students } from "../../../../Redux/actions";
 import Loader from "../../../../components/UI/Loader";
 
 const OfferCardDetail = (props) => {
@@ -67,15 +63,8 @@ const OfferCardDetail = (props) => {
     if (props.type && props.type === "student") {
       return (
         <>
-          <div
-            className="d-flex justify-content-start align-items-center"
-            style={{ height: "10%" }}
-          >
-            <span
-              className="offer-apply-btn"
-              onClick={() => setisDetail(false)}
-              style={{ cursor: "pointer" }}
-            >
+          <div className="d-flex justify-content-start align-items-center" style={{ height: "10%" }}>
+            <span className="offer-apply-btn" onClick={() => setisDetail(false)} style={{ cursor: "pointer" }}>
               <ArrowBackIosIcon
                 style={{
                   fontSize: "18",
@@ -85,10 +74,7 @@ const OfferCardDetail = (props) => {
 
               {JOB.company && JOB.company.name}
             </span>
-            <span
-              onClick={() => handleCancelRequest(JOB._id)}
-              className="offer-apply-btn offer-apply-btn-red ml-4"
-            >
+            <span onClick={() => handleCancelRequest(JOB._id)} className="offer-apply-btn offer-apply-btn-red ml-4">
               Se desinteressers
             </span>
           </div>
@@ -96,10 +82,7 @@ const OfferCardDetail = (props) => {
             <div className="offer-detail-container">
               {JOB.score && JOB.score * 100 > 0 ? (
                 <div className="student-offer-detail-percentage">
-                  {Math.floor(JOB.score * 100) > 100
-                    ? "98"
-                    : Math.floor(JOB.score * 100)}
-                  %
+                  {Math.floor(JOB.score * 100) > 100 ? "98" : Math.floor(JOB.score * 100)}%
                 </div>
               ) : (
                 ""
@@ -107,11 +90,7 @@ const OfferCardDetail = (props) => {
               <div className="offer-detail-header">
                 <div className="offer-detail-header-image text-left">
                   <img
-                    src={
-                      JOB.photo.image
-                        ? `${baseUri}/${JOB.photo.image}`
-                        : DEFAULT_IMAGE
-                    }
+                    src={JOB.photo.image ? `${baseUri}/${JOB.photo.image}` : DEFAULT_IMAGE}
                     alt=""
                     // style={{ width: "500px", height: "280px" }}
                   />
@@ -125,13 +104,13 @@ const OfferCardDetail = (props) => {
               <div className="offer-detail-date-container">
                 <div className="offer-detail-location text-left">
                   <span>
-                    <MdLocationOn className="offer-detail-location-icon" />
+                    <Location className="offer-detail-location-icon" />
                   </span>{" "}
                   {JOB.location.street},{JOB.location.zip} {JOB.location.city}
                 </div>
               </div>
 
-              <div className="offer-detail-content">
+              <div className="offer-detail-content01">
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
@@ -145,57 +124,33 @@ const OfferCardDetail = (props) => {
               </div>
 
               <div className="offer-detail-date-headings">
-                <div className="offer-detail-date-heading text-left">
-                  Date de début
-                </div>
+                <div className="offer-detail-date-heading text-left">Date de début</div>
                 <div className="offer-detail-date-heading text-left">Durée</div>
               </div>
               <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-date"
-                  content={JOB.startDate}
-                />
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-date"
-                  content={JOB.duration}
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.startDate} />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
               </div>
 
               <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-skills-heading"
-                  content="Compétences générales "
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences générales " />
               </div>
 
               <div className="offer-detail-date-container">
                 {JOB.softSkills && JOB.softSkills.length > 0 ? (
-                  JOB.softSkills.map((sf) => (
-                    <CardItem
-                      className="offer-detail-skills"
-                      content={sf.skillField}
-                    />
-                  ))
+                  JOB.softSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
                   <p>No Compétences générales found</p>
                 )}
               </div>
 
               <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-skills-heading"
-                  content="Compétences spécialisées "
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences spécialisées " />
               </div>
 
               <div className="offer-detail-date-container">
                 {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
-                  JOB.hardSkills.map((sf) => (
-                    <CardItem
-                      className="offer-detail-skills"
-                      content={sf.skillField}
-                    />
-                  ))
+                  JOB.hardSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
                   <p>No Compétences spécialisées found</p>
                 )}
@@ -207,10 +162,7 @@ const OfferCardDetail = (props) => {
     } else {
       return (
         <>
-          <div
-            className="d-flex justify-content-start align-items-center"
-            style={{ height: "10%" }}
-          >
+          <div className="d-flex justify-content-start align-items-center" style={{ height: "10%" }}>
             <span
               className="offer-apply-btn "
               onClick={() => setisDetail(false)}
@@ -232,42 +184,33 @@ const OfferCardDetail = (props) => {
             <div className="offer-detail-container">
               {JOB.score && JOB.score * 100 > 0 ? (
                 <div className="student-offer-detail-percentage">
-                  {Math.floor(JOB.score * 100) > 100
-                    ? "98"
-                    : Math.floor(JOB.score * 100)}
-                  %
+                  {Math.floor(JOB.score * 100) > 100 ? "98" : Math.floor(JOB.score * 100)}%
                 </div>
               ) : (
                 ""
               )}
               <div className="offer-detail-header">
-                <div className="offer-detail-header-image text-right">
+                {/* <div className="offer-detail-header-image text-right">
                   <img
-                    src={
-                      JOB.photo.image
-                        ? `${baseUri}/${JOB.photo.image}`
-                        : DEFAULT_IMAGE
-                    }
+                    src={JOB.photo.image ? `${baseUri}/${JOB.photo.image}` : DEFAULT_IMAGE}
                     alt=""
-                    // style={{ width: "500px", height: "280px" }}
+                    style={{ width: "500px", height: "280px" }}
                   />
-                </div>
+                </div> */}
                 {/* <div className="offer-detail-line"></div> */}
-                <div className="offer-detail-header-text text-left offer-detail-header-line">
-                  {JOB.company && JOB.company.name}
-                </div>
+                <div className="offer-detail-header-text  offer-detail-header-line">{JOB.company && JOB.company.name}</div>
               </div>
 
               <div className="offer-detail-date-container">
-                <div className="offer-detail-location text-left">
-                  <span>
-                    <MdLocationOn className="offer-detail-location-icon" />
-                  </span>{" "}
-                  {JOB.location.street},{JOB.location.zip} {JOB.location.city}
+                <div className="offer-detail-location">
+                  <span style={{ color: "#02196A" }}>
+                    <Location className="offer-detail-location-icon" /> {JOB.location.street}-{JOB.location.zip}{" "}
+                    {JOB.location.city}
+                  </span>
                 </div>
               </div>
 
-              <div className="offer-detail-content">
+              <div className="offer-detail-content" style={{ color: "#2E7BD6" }}>
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
@@ -281,66 +224,39 @@ const OfferCardDetail = (props) => {
               </div>
 
               <div className="offer-detail-date-headings">
-                <div className="offer-detail-date-heading text-left">
-                  Date de début
-                </div>
-                <div className="offer-detail-date-heading text-left">Durée</div>
+                <div className="offer-detail-date-heading ">Date de début</div>
+                <div className="offer-detail-date-heading">Durée</div>
               </div>
               <div className="offer-detail-date-container">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-date"
-                  content={JOB.startDate}
-                />
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-date"
-                  content={JOB.duration}
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.startDate} />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
               </div>
 
               <div className="offer-detail-date-container-2">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-skills-heading"
-                  content="Compétences générales "
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences générales " />
               </div>
 
-              <div className="offer-detail-date-container mb-5">
+              <div className="offer-detail-date-container mb-3">
                 {JOB.softSkills && JOB.softSkills.length > 0 ? (
-                  JOB.softSkills.map((sf) => (
-                    <CardItem
-                      className="offer-detail-skills"
-                      content={sf.skillField}
-                    />
-                  ))
+                  JOB.softSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
                   <p>No Compétences générales found</p>
                 )}
               </div>
 
               <div className="offer-detail-date-container-2">
-                <CardItem
-                  className="offer-card-item-bordered offer-detail-skills-heading"
-                  content="Compétences spécialisées "
-                />
+                <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences spécialisées " />
               </div>
 
               <div className="offer-detail-date-container mb-3">
                 {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
-                  JOB.hardSkills.map((sf) => (
-                    <CardItem
-                      className="offer-detail-skills"
-                      content={sf.skillField}
-                    />
-                  ))
+                  JOB.hardSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
                   <p>No Compétences spécialisées found</p>
                 )}
               </div>
 
-              <div
-                className="offer-detail-buttons-container "
-                style={{ justifyContent: "center" }}
-              >
+              <div className="offer-detail-buttons-container " style={{ justifyContent: "center" }}>
                 <Button
                   onClick={() => handleOfferAccepted(JOB._id, "requested")}
                   classes={{
@@ -382,38 +298,32 @@ const useStyles = makeStyles({
     marginLeft: "6.2rem",
   },
   root1: {
-    "&:hover": {
-      backgroundColor: "#3CBF31",
-    },
     "&:focus": {
       border: "none",
       outline: "none",
     },
-    background: "#3CBF31",
-    borderRadius: "2.56rem",
+    background: "#2B5AA6",
+    borderRadius: "5px",
     border: 0,
     fontSize: "1.37rem",
-    fontWeight: "bold",
     color: "white",
     height: "3.7rem",
     padding: "0 3.7rem",
+    boxShadow: "0px 13px 18px rgba(0, 35, 91, 0.15)",
   },
   root2: {
-    "&:hover": {
-      backgroundColor: "#E52B2B",
-    },
     "&:focus": {
       border: "none",
       outline: "none",
     },
-    background: "#E52B2B",
-    borderRadius: "2.56rem",
-    border: 0,
+    background: "white",
+    borderRadius: "5px",
+    border: "1px solid #2B5AA6",
     fontSize: "1.37rem",
-    fontWeight: "bold",
-    color: "white",
+    color: "#2B5AA6",
     height: "3.7rem",
     padding: "0 3.7rem",
+    boxShadow: "0px 13px 18px rgba(0, 35, 91, 0.15)",
   },
 
   label: {

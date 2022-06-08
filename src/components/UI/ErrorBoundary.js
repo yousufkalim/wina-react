@@ -62,8 +62,9 @@ class ErrorBoundary extends Component {
       return (
         <div className={classes.ErrorBoundary}>
           <p className={classes.Text404}>404, page not found.</p>
-          <p className={classes.Text404}>ERR INFO {this.state.errorInfo}</p>
-          <p className={classes.Text404}>ERR {this.state.error}</p>
+          {console.log("-------------->ERR INFO", this.state.errorInfo)}
+          {console.log("-------------->ERR", this.state.error)}
+
           <Button color="primary" variant="contained" className={classes.button} onClick={() => (window.location = "/")}>
             Home
           </Button>
