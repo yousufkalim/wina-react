@@ -174,7 +174,7 @@ const Drawer = () => {
 
         <div className="dashbordLayout">
           <Header />
-          <div style={{ marginTop: "2rem", marginLeft: "3rem", overflowY: "scroll !important" }}>
+          <div className="dashbord_view_div">
             {selected === "GeneralInformations" ? (
               <GeneralInformations />
             ) : selected === "ProfessionalProfile" ? (
