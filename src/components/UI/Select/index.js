@@ -181,7 +181,7 @@ export default function ControlledOpenSelect(props) {
             onChange={props.onChange}
           >
             <MenuItem value="">{props.label}</MenuItem>
-            {props.options.length > 0
+            {props.options?.length > 0
               ? props.options.map((op) => (
                   <MenuItem key={op._id} value={op._id}>
                     {op.skillField}
@@ -248,8 +248,8 @@ export default function ControlledOpenSelect(props) {
             onChange={props.onChange}
           >
             <MenuItem value="">{props.label}</MenuItem>
-            {props.options.length > 0
-              ? props.options.map((op, index) => (
+            {props.options?.length > 0
+              ? props.options?.map((op, index) => (
                   <MenuItem key={index} value={op.title}>
                     {op.title}
                   </MenuItem>
