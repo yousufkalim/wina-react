@@ -42,34 +42,27 @@ const ResearchedJob = () => {
       let obj = {};
       obj.positionSought = values;
       dispatch(Add_info_Student(obj, formik));
-      formik.resetForm();
+      // formik.resetForm();
     },
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     formik.setFieldValue(name, value);
   };
+  // if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
+  //   formik.setFieldValue("domain", POSITION_SOUGHT.domain);
+  //   formik.setFieldValue("description", POSITION_SOUGHT.description);
+  //   formik.setFieldValue("position", POSITION_SOUGHT.position);
+  //   formik.setFieldValue("duration", POSITION_SOUGHT.duration);
+  //   formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
+  //   formik.setFieldValue("dateOfBirth", POSITION_SOUGHT.dateOfBirth);
+  //   formik.setFieldValue("alternationRhythm", POSITION_SOUGHT.alternationRhythm);
+  //   formik.setFieldValue("levelOfEducation", POSITION_SOUGHT.levelOfEducation);
+  // }
 
-  useEffect(() => {
-    if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
-      formik.setFieldValue("domain", POSITION_SOUGHT.domain);
-      formik.setFieldValue("description", POSITION_SOUGHT.description);
-      formik.setFieldValue("position", POSITION_SOUGHT.position);
-      formik.setFieldValue("duration", POSITION_SOUGHT.duration);
-      formik.setFieldValue("startDate", POSITION_SOUGHT.startDate);
-      formik.setFieldValue("dateOfBirth", POSITION_SOUGHT.dateOfBirth);
-      formik.setFieldValue(
-        "alternationRhythm",
-        POSITION_SOUGHT.alternationRhythm
-      );
-      formik.setFieldValue(
-        "levelOfEducation",
-        POSITION_SOUGHT.levelOfEducation
-      );
-    }
-  }, []);
+  // useEffect(() => {}, []);
+
   const domainOption = async () => {
     const res = await domainList();
     let tempDomain = [];
@@ -210,5 +203,5 @@ const ResearchedJob = () => {
       </Tabs>
     </>
   );
-};
+};;;;
 export default ResearchedJob;
