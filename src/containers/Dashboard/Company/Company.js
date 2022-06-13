@@ -2,25 +2,21 @@ import React from "react";
 import { Row, Col, Tab, Nav, Image, Container } from "react-bootstrap";
 import Annonces from "./AnnoncesView";
 import Coaching from "./CoachingView";
+import CompanyDrawer from "../../../components/CompanyDrawer";
 
 const Dashboard = (props) => {
   return (
     <div className="dashbordMain">
-      <Tab.Container id="dashbordBox" defaultActiveKey="first">
+      <CompanyDrawer />
+      {/* <Tab.Container id="dashbordBox" defaultActiveKey="first">
         <div className="h-100 w-100 d-flex justify-content-between">
           <div className="main-coloum" style={{ height: "100vh" }}>
             <Nav variant="pills" className="flex-column align-items-center ">
               <Nav.Item>
                 <Nav.Link eventKey="first">
                   <div className="imagebackground">
-                    <Image
-                      className="hideOnactive"
-                      src="../images/offers.png"
-                    />
-                    <Image
-                      className="showonactive"
-                      src="../images/offer_hover.png"
-                    />
+                    <Image className="hideOnactive" src="../images/offers.png" />
+                    <Image className="showonactive" src="../images/offer_hover.png" />
                   </div>
                   <div className="label">Annonces</div>
                 </Nav.Link>
@@ -28,14 +24,8 @@ const Dashboard = (props) => {
               <Nav.Item>
                 <Nav.Link eventKey="second">
                   <div className="imagebackground">
-                    <Image
-                      className="showonactive"
-                      src="../images/twomen.png"
-                    />
-                    <Image
-                      className=" hideOnactive"
-                      src="../images/twomen_hover.png"
-                    />
+                    <Image className="showonactive" src="../images/twomen.png" />
+                    <Image className=" hideOnactive" src="../images/twomen_hover.png" />
                   </div>
                   <div className="label">Accompagnement</div>
                 </Nav.Link>
@@ -54,7 +44,7 @@ const Dashboard = (props) => {
             </Tab.Content>
           </div>
         </div>
-      </Tab.Container>
+      </Tab.Container> */}
     </div>
   );
 };
