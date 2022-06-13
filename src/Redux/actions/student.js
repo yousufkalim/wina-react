@@ -326,37 +326,28 @@ export const Get_Student_Rejected_Jobs = () => async (dispatch) => {
 };
 
 //offer decision by students
-export const Offer_Decion_By_Students =
-  (id, decision, setisDetail) => async (dispatch) => {
-    if (user && token) {
-      try {
-        dispatch(set_loading_data_student(true));
+export const Offer_Decion_By_Students = (id, decision, setisDetail) => async (dispatch) => {
+  if (user && token) {
+    try {
+      dispatch(set_loading_data_student(true));
 
-        const res = await axios.post(`job/offer-decision-by-student/${id}`, {
-          status: decision,
-        });
-        dispatch({
-          type: studentConstants.OFFER_DECISION_SUCCESS,
-          payload: { loading: false },
-        });
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(res.data.message, "success")
-          )
-        );
-        setisDetail(id);
-      } catch (error) {
-        dispatch(set_loading_data_student(false));
-        if (error.response) {
-          dispatch(
-            Notistack.enqueueSnackbar(
-              Notistack.snackBar(error.response.data.message, "error")
-            )
-          );
-        }
+      const res = await axios.post(`job/offer-decision-by-student/${id}`, {
+        status: decision,
+      });
+      dispatch({
+        type: studentConstants.OFFER_DECISION_SUCCESS,
+        payload: { loading: false },
+      });
+      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar(res.data.message, "success")));
+      setisDetail(id);
+    } catch (error) {
+      dispatch(set_loading_data_student(false));
+      if (error.response) {
+        dispatch(Notistack.enqueueSnackbar(Notistack.snackBar(error.response.data.message, "error")));
       }
     }
-  };
+  }
+};
 
 //offer decision by students
 export const RecievedOffer_Decion_By_Students =
