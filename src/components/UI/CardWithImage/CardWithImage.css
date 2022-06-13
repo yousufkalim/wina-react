@@ -3,7 +3,9 @@
   width: 100%;
   margin-bottom: 3rem;
   position: relative;
-  background: #fafafa;
+  background: white;
+  box-shadow: 0px 18.9254px 65.0561px -28.3881px rgba(0, 27, 67, 0.1);
+  border-radius: 10px;
 }
 
 .card-with-image .matches50 {
@@ -29,7 +31,8 @@
   justify-content: center;
 }
 .card-with-image-location-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  width: 1.2rem;
 }
 
 .card-with-image-name {
@@ -54,7 +57,7 @@
 
 .card-with-image-container {
   flex-basis: 75%;
-  padding: 1.9rem 1rem 2.5rem 1rem;
+  padding: 0.9rem 1rem 1.5rem 0.8rem;
   color: var(--text-primary);
 }
 .card-with-image .matches {
