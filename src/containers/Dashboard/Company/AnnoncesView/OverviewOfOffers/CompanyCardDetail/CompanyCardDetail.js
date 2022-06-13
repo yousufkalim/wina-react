@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdLocationOn } from "react-icons/all";
+import { ReactComponent as MdLocationOn } from "../../../../../../assets/10-location.svg";
 import { Row, Col, Dropdown, Form, Image } from "react-bootstrap";
 import { Button, makeStyles } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
@@ -27,21 +27,10 @@ import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { baseUrl } from "../../../../../../urlConfig";
 
-import {
-  DomainOptions,
-  DurationOptions,
-  RythmeOptions,
-  levelOfEducation,
-  AgeRangeOptions,
-} from "../../../../../../Globals";
+import { DomainOptions, DurationOptions, RythmeOptions, levelOfEducation, AgeRangeOptions } from "../../../../../../Globals";
 import RadioButton from "../../../../../../components/UI/RadioButton";
 
-import {
-  getSkills,
-  getApiAdress,
-  Search_Students,
-  Edit_Job,
-} from "../../../../../../Redux/actions";
+import { getSkills, getApiAdress, Search_Students, Edit_Job } from "../../../../../../Redux/actions";
 import AutoComplete from "../../../../../../components/UI/AutoComplete";
 import Texts from "../../../../../../Globals/Texts";
 import _ from "lodash";
@@ -51,13 +40,7 @@ import { baseUri } from "../../../../../../urlConfig";
 import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 
 const CompanyCardDetail = (props) => {
-  const {
-    offerID,
-    handleStudentDetail,
-    handleOfferAccepted,
-    handleOfferRejected,
-    setisDetail,
-  } = props;
+  const { offerID, handleStudentDetail, handleOfferAccepted, handleOfferRejected, setisDetail } = props;
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
 
@@ -83,9 +66,7 @@ const CompanyCardDetail = (props) => {
   const JOB = store3.job && store3.job;
   let HARD_SKILLS = store2.hard_skills;
   let JOB_MESSAGE_SUCCESS = store3.message;
-  let SEARCH_STUDENTS =
-    store3.studentBySearch &&
-    store3.studentBySearch.filter((st) => st.offer_status === "proposal");
+  let SEARCH_STUDENTS = store3.studentBySearch && store3.studentBySearch.filter((st) => st.offer_status === "proposal");
 
   // formik
   const formik = useFormik({
@@ -291,7 +272,6 @@ const CompanyCardDetail = (props) => {
           <ArrowBackIosIcon
             style={{
               fontSize: "18",
-
               justifyContent: "flex-start",
             }}
           />
@@ -301,21 +281,15 @@ const CompanyCardDetail = (props) => {
         <div className="company-card-detail-container">
           {isnext === false ? (
             <div className="company-card-detail-wrapper">
-              {!props.isPerc && (
-                <div className="student-offer-detail-percentage">90%</div>
-              )}
+              {!props.isPerc && <div className="student-offer-detail-percentage">90%</div>}
               <div className="offer-detail-header">
-                <div className="offer-detail-header-image text-right">
+                <div className="offer-detail-header-image">
                   <label htmlFor="upload-button2">
                     <img
                       width={450}
                       height={280}
                       src={
-                        imageURI
-                          ? imageURI
-                          : JOB.photo.image
-                          ? `${baseUri}/${JOB.photo.image}`
-                          : "../images/add_image_icon.png"
+                        imageURI ? imageURI : JOB.photo.image ? `${baseUri}/${JOB.photo.image}` : "../images/add_image_icon.svg"
                       }
                       alt=""
                     />
@@ -328,24 +302,19 @@ const CompanyCardDetail = (props) => {
                     style={{ display: "none" }}
                     onChange={handleChange}
                   />
-                  {formik.touched.photo && formik.errors.photo ? (
-                    <div className="formikError"> {formik.errors.photo}</div>
-                  ) : null}
+                  {formik.touched.photo && formik.errors.photo ? <div className="formikError"> {formik.errors.photo}</div> : null}
                 </div>
                 {/* <div className="offer-detail-line"></div> */}
-                <div className="offer-detail-header-text text-left offer-detail-header-line">
-                  {JOB.company && JOB.company.name}
-                </div>
+                <div className="offer-detail-header-text">{JOB.company && JOB.company.name}</div>
               </div>
 
               <div className="offer-detail-date-container">
-                <div className="offer-detail-location text-left">
+                {/* <div className="offer-detail-location text-left">
                   <span>
                     <MdLocationOn className="offer-detail-location-icon" />
                   </span>{" "}
-                  {formik.values.location.street},{formik.values.location.zip}{" "}
-                  {formik.values.location.city}
-                </div>
+                  {formik.values.location.street},{formik.values.location.zip} {formik.values.location.city}
+                </div> */}
               </div>
               <form onSubmit={formik.handleSubmit}>
                 <div className="d-flex flex-wrap align-items-center mb-4">
@@ -359,24 +328,14 @@ const CompanyCardDetail = (props) => {
                       variant="outlined"
                     />
                     {formik.touched.position && formik.errors.position ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.position}
-                      </div>
+                      <div className="formikErrorAuto"> {formik.errors.position}</div>
                     ) : null}
                   </div>
 
                   <div className="col-lg-3 col-6 mt-lg-0 mt-5">
-                    <DatePicker
-                      name="startDate"
-                      value={formik.values.startDate}
-                      onChange={handleChange}
-                    />
+                    <DatePicker name="startDate" value={formik.values.startDate} onChange={handleChange} />
                     {formik.touched.startDate && formik.errors.startDate ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.startDate}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.startDate}</div>
                     ) : null}
                   </div>
                   <div className="col-lg-3 col-6 mt-lg-0 mt-5">
@@ -391,10 +350,7 @@ const CompanyCardDetail = (props) => {
                       onSubmit={onSubmitAddress}
                     />
                     {formik.touched.location && formik.errors.location ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.location.city}
-                      </div>
+                      <div className="formikErrorAuto"> {formik.errors.location.city}</div>
                     ) : null}
                   </div>
                 </div>
@@ -410,10 +366,7 @@ const CompanyCardDetail = (props) => {
                     />
 
                     {formik.touched.domain && formik.errors.domain ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.domain}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.domain}</div>
                     ) : null}
                   </div>
                   <div className="col-lg-3 col-6">
@@ -426,10 +379,7 @@ const CompanyCardDetail = (props) => {
                     />
 
                     {formik.touched.ageRange && formik.errors.ageRange ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.ageRange}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.ageRange}</div>
                     ) : null}
                   </div>
 
@@ -443,10 +393,7 @@ const CompanyCardDetail = (props) => {
                     />
 
                     {formik.touched.duration && formik.errors.duration ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.duration}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.duration}</div>
                     ) : null}
                   </div>
 
@@ -459,12 +406,8 @@ const CompanyCardDetail = (props) => {
                       label="Niveau d’étude"
                     />
 
-                    {formik.touched.levelOfEducation &&
-                    formik.errors.levelOfEducation ? (
-                      <div className="formikErrorAuto">
-                        {" "}
-                        {formik.errors.levelOfEducation}
-                      </div>
+                    {formik.touched.levelOfEducation && formik.errors.levelOfEducation ? (
+                      <div className="formikErrorAuto"> {formik.errors.levelOfEducation}</div>
                     ) : null}
                   </div>
                 </div>
@@ -485,28 +428,9 @@ const CompanyCardDetail = (props) => {
                     onChange={handleChange}
                   /> */}
                 </div>
-                {formik.touched.alternationRhythm &&
-                formik.errors.alternationRhythm ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.alternationRhythm}
-                  </div>
+                {formik.touched.alternationRhythm && formik.errors.alternationRhythm ? (
+                  <div className="formikErrorAuto"> {formik.errors.alternationRhythm}</div>
                 ) : null}
-                <div className="col-lg-12 mt-4">
-                  <TextArea
-                    name="description"
-                    placeholder="Description"
-                    value={formik.values.description}
-                    onChange={handleChange}
-                    rows={3}
-                  />
-                  {formik.touched.description && formik.errors.description ? (
-                    <div className="formikErrorDesc">
-                      {" "}
-                      {formik.errors.description}
-                    </div>
-                  ) : null}
-                </div>
 
                 <div className="mt-5">
                   <div className="col-lg-4 col-md-6 offer-detail-skill-container">
@@ -520,10 +444,7 @@ const CompanyCardDetail = (props) => {
                     />
 
                     {formik.touched.softSkills && formik.errors.softSkills ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.softSkills}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.softSkills}</div>
                     ) : null}
                   </div>
                 </div>
@@ -569,10 +490,7 @@ const CompanyCardDetail = (props) => {
                     </div>
                   </Col>
                 </Row> */}
-                <div
-                  className="offer-detail-date-container mt-1"
-                  style={{ paddingLeft: "15px" }}
-                >
+                <div className="offer-detail-date-container mt-1" style={{ paddingLeft: "15px" }}>
                   {softSkillsDB && softSkillsDB.length > 0
                     ? softSkillsDB.map((job) => {
                         return (
@@ -600,18 +518,12 @@ const CompanyCardDetail = (props) => {
                     />
 
                     {formik.touched.hardSkills && formik.errors.hardSkills ? (
-                      <div className="formikErrorDate">
-                        {" "}
-                        {formik.errors.hardSkills}
-                      </div>
+                      <div className="formikErrorDate"> {formik.errors.hardSkills}</div>
                     ) : null}
                   </div>
                 </div>
 
-                <div
-                  className="offer-detail-date-container mt-1"
-                  style={{ paddingLeft: "15px" }}
-                >
+                <div className="offer-detail-date-container mt-1" style={{ paddingLeft: "15px" }}>
                   {JOB.hardSkills && JOB.hardSkills.length > 0
                     ? JOB.hardSkills.map((job) => {
                         return (
@@ -625,6 +537,18 @@ const CompanyCardDetail = (props) => {
                         );
                       })
                     : ""}
+                </div>
+                <div className="col-lg-12 mt-4">
+                  <TextArea
+                    name="description"
+                    placeholder="Description"
+                    value={formik.values.description}
+                    onChange={handleChange}
+                    rows={3}
+                  />
+                  {formik.touched.description && formik.errors.description ? (
+                    <div className="formikErrorDesc"> {formik.errors.description}</div>
+                  ) : null}
                 </div>
                 <div className="company-card-detail-buttons-container">
                   <Button
@@ -647,13 +571,7 @@ const CompanyCardDetail = (props) => {
                       //   disabled={store3.loading}
                     />
                   ) : (
-                    <ModifierButton
-                      className="Enregistrer"
-                      modifier
-                      type="submit"
-                      variant="primary"
-                      value="Modifier"
-                    />
+                    <ModifierButton className="Enregistrer" modifier type="submit" variant="primary" value="Modifier" />
                   )}
                 </div>
               </form>
@@ -859,57 +777,57 @@ export default CompanyCardDetail;
   /* ************************************************ */
 }
 
-const overviewOffers = [
-  {
-    image: "company-offer-card",
-    title: "Excellent",
-    content: "Marketing/Communication",
-    location: "4 Rue du Général de Larminat - 75015 Paris",
-    desc1: "Domaine : Webdesign",
-    desc2: "Durée : 1 an",
-    desc3: "Niveau d’étude : Brevet",
-    btn1: "En savoir plus",
-    btn2: "Matcher",
-    btn3: "Refuser",
-    matches: "90%",
-  },
-  {
-    image: "company-offer-card",
-    title: "Excellent",
-    content: "Marketing/Communication",
-    location: "4 Rue du Général de Larminat - 75015 Paris",
-    desc1: "Domaine : Webdesign",
-    desc2: "Durée : 1 an",
-    desc3: "Niveau d’étude : Brevet",
-    btn1: "En savoir plus",
-    btn2: "Matcher",
-    btn3: "Refuser",
-    matches: "90%",
-  },
-  {
-    image: "company-offer-card",
-    title: "Excellent",
-    content: "Marketing/Communication",
-    location: "4 Rue du Général de Larminat - 75015 Paris",
-    desc1: "Domaine : Webdesign",
-    desc2: "Durée : 1 an",
-    desc3: "Niveau d’étude : Brevet",
-    btn1: "En savoir plus",
-    btn2: "Matcher",
-    btn3: "Refuser",
-    matches: "90%",
-  },
-];
-const marks = [
-  {
-    value: 0,
-    label: "0€",
-  },
-  {
-    value: 10000,
-    label: "10 000€",
-  },
-];
+// const overviewOffers = [
+//   {
+//     image: "company-offer-card",
+//     title: "Excellent",
+//     content: "Marketing/Communication",
+//     location: "4 Rue du Général de Larminat - 75015 Paris",
+//     desc1: "Domaine : Webdesign",
+//     desc2: "Durée : 1 an",
+//     desc3: "Niveau d’étude : Brevet",
+//     btn1: "En savoir plus",
+//     btn2: "Matcher",
+//     btn3: "Refuser",
+//     matches: "90%",
+//   },
+//   {
+//     image: "company-offer-card",
+//     title: "Excellent",
+//     content: "Marketing/Communication",
+//     location: "4 Rue du Général de Larminat - 75015 Paris",
+//     desc1: "Domaine : Webdesign",
+//     desc2: "Durée : 1 an",
+//     desc3: "Niveau d’étude : Brevet",
+//     btn1: "En savoir plus",
+//     btn2: "Matcher",
+//     btn3: "Refuser",
+//     matches: "90%",
+//   },
+//   {
+//     image: "company-offer-card",
+//     title: "Excellent",
+//     content: "Marketing/Communication",
+//     location: "4 Rue du Général de Larminat - 75015 Paris",
+//     desc1: "Domaine : Webdesign",
+//     desc2: "Durée : 1 an",
+//     desc3: "Niveau d’étude : Brevet",
+//     btn1: "En savoir plus",
+//     btn2: "Matcher",
+//     btn3: "Refuser",
+//     matches: "90%",
+//   },
+// ];
+// const marks = [
+//   {
+//     value: 0,
+//     label: "0€",
+//   },
+//   {
+//     value: 10000,
+//     label: "10 000€",
+//   },
+// ];
 const useStyles = makeStyles({
   root: {
     width: "15.6rem",
