@@ -194,7 +194,6 @@ export default function BrowseOffers() {
       formik.setFieldValue("softSkills", "");
     }
     setSoftArray(value);
-
     setsoftSkillsArray(valueArray);
   };
   const onHardSkillChange = (value) => {
@@ -213,8 +212,7 @@ export default function BrowseOffers() {
     sethardSkillsArray(valueArray);
   };
 
-  const executeScroll = () =>
-    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  const executeScroll = () => myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   const domainOption = async () => {
     const res = await domainListCompany();
     let tempDomain = [];
@@ -238,16 +236,9 @@ export default function BrowseOffers() {
                   <Col lg={4} md={4}>
                     <div className="add_image_icon">
                       <label htmlFor="upload-button">
-                        <Image
-                          src={
-                            imageURI ? imageURI : "../images/add_image_icon.png"
-                          }
-                        />
+                        <Image src={imageURI ? imageURI : "../images/add_image_icon.svg"} style={{ cursor: "pointer" }} />
                         {formik.touched.photo && formik.errors.photo ? (
-                          <div className="formikError">
-                            {" "}
-                            {formik.errors.photo}
-                          </div>
+                          <div className="formikError"> {formik.errors.photo}</div>
                         ) : null}
                       </label>
                     </div>
@@ -274,10 +265,7 @@ export default function BrowseOffers() {
                           />
 
                           {formik.touched.position && formik.errors.position ? (
-                            <div className="formikErrorAuto">
-                              {" "}
-                              {formik.errors.position}
-                            </div>
+                            <div className="formikErrorAuto"> {formik.errors.position}</div>
                           ) : null}
                         </div>
                         {/* <div className="col-lg-6 ml-3">
@@ -309,13 +297,10 @@ export default function BrowseOffers() {
                           />
 
                           {formik.touched.domain && formik.errors.domain ? (
-                            <div className="formikErrorDate">
-                              {" "}
-                              {formik.errors.domain}
-                            </div>
+                            <div className="formikErrorDate"> {formik.errors.domain}</div>
                           ) : null}
                         </div>
-                        <div className="col-lg-6 ml-3">
+                        <div className="col-lg-6 ml-1">
                           <Select
                             name="levelOfEducation"
                             value={formik.values.levelOfEducation}
@@ -324,12 +309,8 @@ export default function BrowseOffers() {
                             label="Niveau d’étude"
                           />
 
-                          {formik.touched.levelOfEducation &&
-                          formik.errors.levelOfEducation ? (
-                            <div className="formikErrorAuto">
-                              {" "}
-                              {formik.errors.levelOfEducation}
-                            </div>
+                          {formik.touched.levelOfEducation && formik.errors.levelOfEducation ? (
+                            <div className="formikErrorAuto"> {formik.errors.levelOfEducation}</div>
                           ) : null}
                         </div>
                       </div>
@@ -344,13 +325,10 @@ export default function BrowseOffers() {
                           />
 
                           {formik.touched.ageRange && formik.errors.ageRange ? (
-                            <div className="formikErrorDate">
-                              {" "}
-                              {formik.errors.ageRange}
-                            </div>
+                            <div className="formikErrorDate"> {formik.errors.ageRange}</div>
                           ) : null}
                         </div>
-                        <div className="col-lg-6 ml-3">
+                        <div className="col-lg-6 ml-1">
                           <Select
                             name="duration"
                             value={formik.values.duration}
@@ -360,10 +338,7 @@ export default function BrowseOffers() {
                           />
 
                           {formik.touched.duration && formik.errors.duration ? (
-                            <div className="formikErrorDate">
-                              {" "}
-                              {formik.errors.duration}
-                            </div>
+                            <div className="formikErrorDate"> {formik.errors.duration}</div>
                           ) : null}
                         </div>
                       </div>
@@ -375,18 +350,12 @@ export default function BrowseOffers() {
                             value={formik.values.startDate}
                             onChange={handleChange}
                           />
-                          {formik.touched.startDate &&
-                          formik.errors.startDate ? (
-                            <div className="formikErrorDate">
-                              {formik.errors.startDate}
-                            </div>
+                          {formik.touched.startDate && formik.errors.startDate ? (
+                            <div className="formikErrorDate">{formik.errors.startDate}</div>
                           ) : null}
                         </div>
 
-                        <div
-                          className="col-lg-6 ml-3"
-                          style={{ paddingTop: "10px" }}
-                        >
+                        <div className="col-lg-6 ml-1" style={{ paddingTop: "10px" }}>
                           <AutoComplete
                             formik={formik}
                             onChange={handleAddressChange}
@@ -398,43 +367,20 @@ export default function BrowseOffers() {
                             onSubmit={onSubmitAddress}
                           />
                           {formik.touched.location && formik.errors.location ? (
-                            <div className="formikErrorAuto">
-                              {" "}
-                              {formik.errors.location.city}
-                            </div>
+                            <div className="formikErrorAuto"> {formik.errors.location.city}</div>
                           ) : null}
                         </div>
                       </div>
-                    </div>
-                  </Col>
-                </Row>
-                <div className="d-flex pt-4">
-                  <div className="col-lg-12">
-                    <TextArea
-                      name="description"
-                      placeholder="Description"
-                      value={formik.values.description}
-                      onChange={handleChange}
-                      rows={3}
-                    />
-                    {formik.touched.description && formik.errors.description ? (
-                      <div className="formikErrorDesc">
-                        {" "}
-                        {formik.errors.description}
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-                <div className="d-flex my-3">
-                  <div className="col-lg-6 softskills-input">
-                    <Select
-                      options={RythmeOptions}
-                      name="alternationRhythm"
-                      label="Rythme alternances"
-                      value={formik.values.alternationRhythm}
-                      onChange={handleChange}
-                    />
-                    {/* <RadioButton
+                      <div className="d-flex my-3">
+                        <div className="col-lg-12 softskills-input">
+                          <Select
+                            options={RythmeOptions}
+                            name="alternationRhythm"
+                            label="Rythme alternances"
+                            value={formik.values.alternationRhythm}
+                            onChange={handleChange}
+                          />
+                          {/* <RadioButton
                       options={RythmeOptions}
                       className={classes.radioButton}
                       name="alternationRhythm"
@@ -442,15 +388,50 @@ export default function BrowseOffers() {
                       value={formik.values.alternationRhythm}
                       onChange={handleChange}
                     /> */}
+                        </div>
+                      </div>
+                      {formik.touched.alternationRhythm && formik.errors.alternationRhythm ? (
+                        <div className="formikErrorAuto"> {formik.errors.alternationRhythm}</div>
+                      ) : null}
+                    </div>
+                  </Col>
+                </Row>
+                <div className="d-flex pt-4">
+                  <div className="col-lg-12">
+                    <TextArea
+                      name="description"
+                      placeholder="Type your Description"
+                      value={formik.values.description}
+                      onChange={handleChange}
+                      rows={3}
+                    />
+                    {formik.touched.description && formik.errors.description ? (
+                      <div className="formikErrorDesc"> {formik.errors.description}</div>
+                    ) : null}
                   </div>
                 </div>
-                {formik.touched.alternationRhythm &&
-                formik.errors.alternationRhythm ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.alternationRhythm}
-                  </div>
-                ) : null}
+                {/* <div className="d-flex my-3">
+                  <div className="col-lg-6 softskills-input">
+                    <Select
+                      options={RythmeOptions}
+                      name="alternationRhythm"
+                      label="Rythme alternances"
+                      value={formik.values.alternationRhythm}
+                      onChange={handleChange}
+                    /> */}
+                {/* <RadioButton
+                      options={RythmeOptions}
+                      className={classes.radioButton}
+                      name="alternationRhythm"
+                      label="Rythme alternances :"
+                      value={formik.values.alternationRhythm}
+                      onChange={handleChange}
+                    /> */}
+                {/* </div>
+                </div> */}
+                {/* {formik.touched.alternationRhythm && formik.errors.alternationRhythm ? (
+                  <div className="formikErrorAuto"> {formik.errors.alternationRhythm}</div>
+                ) : null} */}
                 <div className="d-flex my-3">
                   <div className="col-lg-6 softskills-input">
                     <MultiAutoComplete
@@ -466,9 +447,7 @@ export default function BrowseOffers() {
                     />
 
                     {formik.touched.softSkills && formik.errors.softSkills ? (
-                      <div className="formikErrorDate">
-                        {formik.errors.softSkills}
-                      </div>
+                      <div className="formikErrorDate">{formik.errors.softSkills}</div>
                     ) : null}
                   </div>
                 </div>
@@ -498,9 +477,7 @@ export default function BrowseOffers() {
                     />
 
                     {formik.touched.hardSkills && formik.errors.hardSkills ? (
-                      <div className="formikErrorDate">
-                        {formik.errors.hardSkills}
-                      </div>
+                      <div className="formikErrorDate">{formik.errors.hardSkills}</div>
                     ) : null}
                   </div>
                 </div>
