@@ -6,11 +6,11 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyle = makeStyles({
   root: {
     "& .MuiOutlinedInput-root": {
-      borderRadius: "3.5rem",
+      borderRadius: "5px",
       borderColor: "#2879d9",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
+      borderColor: "#E7E7F1",
     },
 
     "& .MuiInput-underline:before": {
