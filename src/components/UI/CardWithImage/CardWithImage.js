@@ -4,29 +4,18 @@ import { Button, makeStyles } from "@material-ui/core";
 import CardItem from "./OfferCardItem";
 import DoneIcon from "@material-ui/icons/Done";
 import Calendar from "react-calendar";
-import { ImLocation } from "react-icons/all";
+import { ReactComponent as Location } from "../../../assets/10-location.svg";
 import { DEFAULT_IMAGE } from "../../../Globals";
 import { baseUri } from "../../../urlConfig";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  getSkills,
-  getApiAdress,
-  Search_Students,
-  Edit_Job,
-} from "../../../Redux/actions";
+import { getSkills, getApiAdress, Search_Students, Edit_Job } from "../../../Redux/actions";
 const CardWithImage = (props) => {
   const dispatch = useDispatch();
 
   const classes = useStyles();
-  const {
-    item,
-    eventKey,
-    handleDetail,
-    handleOfferRejected,
-    handleOfferAccepted,
-  } = props;
+  const { item, eventKey, handleDetail, handleOfferRejected, handleOfferAccepted } = props;
   const [date, setdate] = useState("");
   const monthNames = [
     "Janvier",
@@ -42,40 +31,20 @@ const CardWithImage = (props) => {
     "Novembre",
     "Décembre",
   ];
-  var days = [
-    "Dimanche",
-    "Lundi",
-    "Mardi",
-    "Mercredi",
-    "Jeudi",
-    "Vendredi",
-    "Samedi",
-  ];
+  var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
   const store3 = useSelector((state) => state.company);
 
-  let SEARCH_STUDENTS =
-    store3.studentBySearch &&
-    store3.studentBySearch.filter((st) => st.offer_status === "proposal");
+  let SEARCH_STUDENTS = store3.studentBySearch && store3.studentBySearch.filter((st) => st.offer_status === "proposal");
   useEffect(() => {
     if (item._id) {
       dispatch(Search_Students(item._id));
     }
   }, []);
   const recievedStudentMatchedFunc = (item) => {
-    let matchLength = item.student_requests.filter(
-      (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length;
+    let matchLength = item.student_requests.filter((dt) => dt.status === "requested" || dt.status === "accepted").length;
 
     if (item.student_requests && item.student_requests.length > 0) {
-      return (
-        <div>
-          {matchLength > 0 ? (
-            <div className="matches">Match ({Math.floor(matchLength)})</div>
-          ) : (
-            ""
-          )}
-        </div>
-      );
+      return <div>{matchLength > 0 ? <div className="matches">Match ({Math.floor(matchLength)})</div> : ""}</div>;
     } else {
       return;
     }
@@ -86,10 +55,7 @@ const CardWithImage = (props) => {
     return (
       <div>
         {matchLength > 0 ? (
-          <div
-            className="matches"
-            onClick={() => props.matchReceiveDetailHandler(item._id)}
-          >
+          <div className="matches" onClick={() => props.matchReceiveDetailHandler(item._id)}>
             {Math.floor(matchLength)} candidats
           </div>
         ) : (
@@ -99,19 +65,9 @@ const CardWithImage = (props) => {
     );
   };
   const sendStudentMatchedFunc = (item) => {
-    let matchLength = item.company_requests.filter(
-      (dt) => dt.status === "requested" || dt.status === "accepted"
-    ).length;
+    let matchLength = item.company_requests.filter((dt) => dt.status === "requested" || dt.status === "accepted").length;
     if (item.company_requests && item.company_requests.length > 0) {
-      return (
-        <div>
-          {matchLength > 0 ? (
-            <div className="matches">Match ({Math.floor(matchLength)})</div>
-          ) : (
-            ""
-          )}
-        </div>
-      );
+      return <div>{matchLength > 0 ? <div className="matches">Match ({Math.floor(matchLength)})</div> : ""}</div>;
     } else {
       return;
     }
@@ -124,13 +80,7 @@ const CardWithImage = (props) => {
         <div className="card-with-image-wrapper">
           <div className="card-with-image-image">
             {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
-            <img
-              src={
-                item.photo.image
-                  ? `${baseUri}/views/uploads/${item.photo.image}`
-                  : DEFAULT_IMAGE
-              }
-            />
+            <img src={item.photo.image ? `${baseUri}/${item.photo.image}` : DEFAULT_IMAGE} alt="IMG" />
           </div>
           <div className="card-with-image-container">
             <div className="card-with-image-title">
@@ -139,9 +89,7 @@ const CardWithImage = (props) => {
                   <b>
                     {item.company && item.company.name}{" "}
                     {props.app && props.app.status === "Approved" && (
-                      <span className="ml-3 card-with-image-matched">
-                        Matched
-                      </span>
+                      <span className="ml-3 card-with-image-matched">Matched</span>
                     )}
                   </b>
                 </div>
@@ -150,31 +98,21 @@ const CardWithImage = (props) => {
                     {/* <h3 className="text-success">Matched</h3> */}
                     <div className="card-with-image-interview">
                       Interview is on {moment(props.app.timmings[0]).day()}
-                      th{" "}
-                      {
-                        monthNames[new Date(props.app.timmings[0]).getMonth()]
-                      }{" "}
-                      at{" "}
-                      {moment(new Date(props.app.timmings[0])).format(
-                        "HH:MM A"
-                      )}
+                      th {monthNames[new Date(props.app.timmings[0]).getMonth()]} at{" "}
+                      {moment(new Date(props.app.timmings[0])).format("HH:MM A")}
                     </div>
                   </>
                 ) : (
                   ""
                 )}
               </div>
-              {item.startDate && (
-                <div className="card-with-image-date">
-                  {moment(item.startDate).format("DD/MM/YYYY")}
-                </div>
-              )}
+              {item.startDate && <div className="card-with-image-date">{moment(item.startDate).format("DD/MM/YYYY")}</div>}
             </div>
             <div className="card-with-image-content text-left">
               {item.position} <br />
               <div className="card-with-image-location">
                 <span className="mr-2">
-                  <ImLocation className="card-with-image-location-icon" />
+                  <Location className="card-with-image-location-icon" />
                 </span>
                 {item.location.street},{item.location.zip} {item.location.city}
               </div>
@@ -206,10 +144,7 @@ const CardWithImage = (props) => {
             </div>
             {eventKey === "OffersRecieved" ? (
               <div className="card-with-image-buttons">
-                <div
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                  onClick={() => handleDetail(item._id)}
-                >
+                <div className="card-with-image-btn card-with-image-btn-yellow" onClick={() => handleDetail(item._id)}>
                   Voir
                 </div>
                 {props.app && props.app.status === "Approved" ? (
@@ -219,11 +154,7 @@ const CardWithImage = (props) => {
                     <div
                       onClick={() => {
                         console.log({ props });
-                        handleOfferAccepted(
-                          props?.item?._id,
-                          props?.appointments,
-                          "accepted"
-                        );
+                        handleOfferAccepted(props?.item?._id, props?.appointments, "accepted");
                       }}
                       className="card-with-image-btn card-with-image-btn-green"
                     >
@@ -241,23 +172,15 @@ const CardWithImage = (props) => {
               </div>
             ) : eventKey === "RefusedOffers" ? (
               <div className="card-with-image-buttons">
-                <div
-                  onClick={() => handleDetail(item._id)}
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                >
+                <div onClick={() => handleDetail(item._id)} className="card-with-image-btn card-with-image-btn-yellow">
                   Voir
                 </div>
 
-                <div className="card-with-image-btn card-with-image-btn-gray">
-                  Impossible
-                </div>
+                <div className="card-with-image-btn card-with-image-btn-gray">Impossible</div>
               </div>
             ) : eventKey === "PreSelectedOffers" ? (
               <div className="card-with-image-buttons">
-                <div
-                  onClick={() => handleDetail(item._id)}
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                >
+                <div onClick={() => handleDetail(item._id)} className="card-with-image-btn card-with-image-btn-yellow">
                   Voir
                 </div>
               </div>
@@ -285,13 +208,7 @@ const CardWithImage = (props) => {
           <div className="card-with-image-image">
             {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
 
-            <img
-              src={
-                item.photo.image
-                  ? `${baseUri}/${item.photo.image}`
-                  : DEFAULT_IMAGE
-              }
-            />
+            <img src={item.photo.image ? `${baseUri}/${item.photo.image}` : DEFAULT_IMAGE} alt="IMG" />
           </div>
           <div className="card-with-image-container">
             <div className="card-with-image-title">
@@ -300,17 +217,13 @@ const CardWithImage = (props) => {
                   <b>{item.company && item.company.name}</b>
                 </h3>
               </div>
-              {item.startDate && (
-                <div className="card-with-image-date">
-                  {moment(item.startDate).format("DD/MM/YYYY")}
-                </div>
-              )}
+              {item.startDate && <div className="card-with-image-date">{moment(item.startDate).format("DD/MM/YYYY")}</div>}
             </div>
             <div className="card-with-image-content text-left">
               {item.position} <br />
               <div className="card-with-image-location">
                 <span className="mr-2">
-                  <ImLocation className="card-with-image-location-icon" />
+                  <Location className="card-with-image-location-icon" />
                 </span>
                 {item.location.street},{item.location.zip} {item.location.city}
               </div>
@@ -342,28 +255,19 @@ const CardWithImage = (props) => {
             </div>
             {eventKey === "Offres" ? (
               <div className="card-with-image-buttons">
-                <div
-                  onClick={() => handleDetail(item._id)}
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                >
+                <div onClick={() => handleDetail(item._id)} className="card-with-image-btn card-with-image-btn-yellow">
                   Voir
                 </div>
               </div>
             ) : eventKey === "Matchsent" ? (
               <div className="card-with-image-buttons">
-                <div
-                  onClick={() => handleDetail(item._id)}
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                >
+                <div onClick={() => handleDetail(item._id)} className="card-with-image-btn card-with-image-btn-yellow">
                   Voir
                 </div>
               </div>
             ) : (
               <div className="card-with-image-buttons">
-                <div
-                  onClick={() => handleDetail(item._id)}
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                >
+                <div onClick={() => handleDetail(item._id)} className="card-with-image-btn card-with-image-btn-yellow">
                   Voir
                 </div>
               </div>
@@ -373,9 +277,7 @@ const CardWithImage = (props) => {
         {item.calender && (
           <div className="card-with-image-calender-container">
             <div className="card-with-image-calender-wrapper">
-              <div className="card-with-image-calender-heading">
-                Félicitations vous avez accepté le match !
-              </div>
+              <div className="card-with-image-calender-heading">Félicitations vous avez accepté le match !</div>
             </div>
 
             <div className="card-with-image-calender-wrapper">
@@ -412,9 +314,7 @@ const CardWithImage = (props) => {
             {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
             <img
               src={
-                item.professional_Picture.image
-                  ? `${baseUri}/views/uploads/${item.professional_Picture.image}`
-                  : DEFAULT_IMAGE
+                item.professional_Picture.image ? `${baseUri}/views/uploads/${item.professional_Picture.image}` : DEFAULT_IMAGE
               }
             />
           </div>
@@ -423,8 +323,7 @@ const CardWithImage = (props) => {
               <div>
                 <h3>
                   <b>
-                    {item.user && item.user.firstName}{" "}
-                    {item.user && item.user.lastName}
+                    {item.user && item.user.firstName} {item.user && item.user.lastName}
                   </b>
                 </h3>
               </div>
@@ -466,26 +365,19 @@ const CardWithImage = (props) => {
             </div>
 
             <div className="card-with-image-buttons">
-              <div
-                className="card-with-image-btn card-with-image-btn-yellow"
-                onClick={() => handleDetail(item._id)}
-              >
+              <div className="card-with-image-btn card-with-image-btn-yellow" onClick={() => handleDetail(item._id)}>
                 Consulter
               </div>
 
               <div
-                onClick={() =>
-                  handleOfferAccepted(item._id, props.offerID, "requested")
-                }
+                onClick={() => handleOfferAccepted(item._id, props.offerID, "requested")}
                 className="card-with-image-btn card-with-image-btn-green"
               >
                 Matcher
               </div>
 
               <div
-                onClick={() =>
-                  handleOfferRejected(item._id, props.offerID, "rejected")
-                }
+                onClick={() => handleOfferRejected(item._id, props.offerID, "rejected")}
                 className="card-with-image-btn card-with-image-btn-red"
               >
                 Refuser
@@ -496,9 +388,7 @@ const CardWithImage = (props) => {
         {item.calender && (
           <div className="card-with-image-calender-container">
             <div className="card-with-image-calender-wrapper">
-              <div className="card-with-image-calender-heading">
-                Félicitations vous avez accepté le match !
-              </div>
+              <div className="card-with-image-calender-heading">Félicitations vous avez accepté le match !</div>
             </div>
 
             <div className="card-with-image-calender-wrapper">
@@ -537,9 +427,7 @@ const CardWithImage = (props) => {
             {/* {item.image && <img src={`../images/${item.image}.png`} />} */}
             <img
               src={
-                item.professional_Picture.image
-                  ? `${baseUri}/views/uploads/${item.professional_Picture.image}`
-                  : DEFAULT_IMAGE
+                item.professional_Picture.image ? `${baseUri}/views/uploads/${item.professional_Picture.image}` : DEFAULT_IMAGE
               }
             />
           </div>
@@ -550,17 +438,13 @@ const CardWithImage = (props) => {
                   <div>
                     <h3>
                       <b>
-                        {item.user && item.user.firstName}{" "}
-                        {item.user && item.user.lastName}
+                        {item.user && item.user.firstName} {item.user && item.user.lastName}
                       </b>
                     </h3>
                   </div>
                   <div className="pl-3">
                     <h3 className="text-success">
-                      CA MATCH!{" "}
-                      <small className="text-dark">
-                        Sélectionnez une date d'entretien
-                      </small>
+                      CA MATCH! <small className="text-dark">Sélectionnez une date d'entretien</small>
                     </h3>
                   </div>
                 </div>
@@ -568,8 +452,7 @@ const CardWithImage = (props) => {
                 <div>
                   <h3>
                     <b>
-                      {item.user && item.user.firstName}{" "}
-                      {item.user && item.user.lastName}
+                      {item.user && item.user.firstName} {item.user && item.user.lastName}
                     </b>
                   </h3>
                 </div>
@@ -579,10 +462,9 @@ const CardWithImage = (props) => {
               {item.positionSought && item.positionSought.position} <br />
               <div className="card-with-image-location">
                 <span className="mr-2">
-                  <ImLocation className="card-with-image-location-icon" />
+                  <Location className="card-with-image-location-icon" />
                 </span>
-                {item.user.address.street},{item.user.address.zip}{" "}
-                {item.user.address.city}
+                {item.user.address.street},{item.user.address.zip} {item.user.address.city}
               </div>
               <br />
             </div>
@@ -612,10 +494,7 @@ const CardWithImage = (props) => {
             </div>
             {eventKey === "SentMatches" ? (
               <div className="card-with-image-buttons">
-                <div
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                  onClick={() => handleDetail(item._id)}
-                >
+                <div className="card-with-image-btn card-with-image-btn-yellow" onClick={() => handleDetail(item._id)}>
                   Voir
                 </div>
                 {props.status && props.status === "accepted" ? (
@@ -631,10 +510,7 @@ const CardWithImage = (props) => {
               </div>
             ) : (
               <div className="card-with-image-buttons">
-                <div
-                  className="card-with-image-btn card-with-image-btn-yellow"
-                  onClick={() => handleDetail(item._id)}
-                >
+                <div className="card-with-image-btn card-with-image-btn-yellow" onClick={() => handleDetail(item._id)}>
                   Voir
                 </div>
                 {props.status && props.status === "accepted" ? (
@@ -642,9 +518,7 @@ const CardWithImage = (props) => {
                 ) : (
                   <>
                     <div
-                      onClick={() =>
-                        handleOfferAccepted(item._id, props.jobID, "accepted")
-                      }
+                      onClick={() => handleOfferAccepted(item._id, props.jobID, "accepted")}
                       className="card-with-image-btn card-with-image-btn-green"
                     >
                       Matcher
@@ -665,9 +539,7 @@ const CardWithImage = (props) => {
         {item.calender && (
           <div className="card-with-image-calender-container">
             <div className="card-with-image-calender-wrapper">
-              <div className="card-with-image-calender-heading">
-                Félicitations vous avez accepté le match !
-              </div>
+              <div className="card-with-image-calender-heading">Félicitations vous avez accepté le match !</div>
             </div>
 
             <div className="card-with-image-calender-wrapper">

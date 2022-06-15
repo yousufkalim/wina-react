@@ -152,7 +152,6 @@ const GeneralInformationsModal = ({
                 <TextArea
                   name="description"
                   grey
-                  label="Description"
                   value={formik.values.description}
                   onChange={handleChange}
                   rows={3}

@@ -17,7 +17,7 @@ const useStyle = makeStyles({
     },
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
-      color: "#8d8d8d",
+      color: "#2E7BD6",
       fontWeight: 400,
       "& .Mui-focused": {
         // color: "#2879d9"

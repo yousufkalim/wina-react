@@ -170,7 +170,6 @@ const OverviewOfOffers = () => {
 
   const handleDetail = (id) => {
     dispatch(Get_Job(id));
-
     setofferID(id);
     setisDetail(!isDetail);
   };
@@ -200,9 +199,7 @@ const OverviewOfOffers = () => {
   };
   const handleSubmitBooking = () => {
     if (AppointmentsArray) {
-      dispatch(
-        Booking_Decion_By_Company(AppointmentsArray, bookingstudentID, jobID)
-      );
+      dispatch(Booking_Decion_By_Company(AppointmentsArray, bookingstudentID, jobID));
       setBooking(!booking);
     } else {
       setBookingError("Veuillez ajouter au moins un rendez-vous");
@@ -247,9 +244,7 @@ const OverviewOfOffers = () => {
                 <div className="col-lg-12 ">
                   <div className="card-with-image-calender-container">
                     <div className="card-with-image-calender-wrapper">
-                      <div className="card-with-image-calender-heading">
-                        Réserver un créneau horaire
-                      </div>
+                      <div className="card-with-image-calender-heading">Réserver un créneau horaire</div>
                     </div>
 
                     <div className="card-with-image-calender-wrapper">
@@ -259,9 +254,7 @@ const OverviewOfOffers = () => {
                             dateValue={date}
                             onChange={(d) => {
                               setDate(d);
-                              setbookingSlot(
-                                moment(d).format("YYYY-MM-DDThh:mm")
-                              );
+                              setbookingSlot(moment(d).format("YYYY-MM-DDThh:mm"));
                             }}
                           />
                           <div className="ml-3">
@@ -273,15 +266,7 @@ const OverviewOfOffers = () => {
                             />
                           </div>
                         </div>
-                        <div>
-                          {bookingError ? (
-                            <div className="formikErrorAuto">
-                              {bookingError}
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                        </div>
+                        <div>{bookingError ? <div className="formikErrorAuto">{bookingError}</div> : ""}</div>
                       </div>
                     </div>
                     <div style={{ height: "200px", overflow: "auto" }}>
@@ -303,7 +288,100 @@ const OverviewOfOffers = () => {
           }
         />
         {isDetail === false ? (
-          ""
+          <Tabs
+            activeKey={key}
+            id="OverviewOfOffers"
+            className="OverviewOfOffers upper-nav custom-tabs"
+            onSelect={(k) => handleTabSelect(k)}
+          >
+            <Tab eventKey="Offres" title="Offres" className="h-100">
+              <div className="AnnoncesViewOffersBox">
+                <div className="offers custom-box">
+                  {JOBS && JOBS.length > 0 ? (
+                    JOBS.map((item, index) => (
+                      // <div style={{ display: isDetail === true && "none" }}>
+                      <CardWithImage item={item} key={index} type="company" eventKey={key} handleDetail={handleDetail} />
+                      // </div>
+                    ))
+                  ) : (
+                    <h1 className="text-center">Il n'y a pas de candidats</h1>
+                  )}
+                </div>
+              </div>
+            </Tab>
+            <Tab eventKey="SentMatches" title="Match envoyé" className="h-100">
+              <div className="AnnoncesViewOffersBox">
+                <div className="offers custom-box">
+                  {matchSentDetail === false ? (
+                    JOBS && JOBS.length > 0 ? (
+                      JOBS.map((item, index) => (
+                        <CardWithImage key={index} item={item} type="company" eventKey={key} handleDetail={handleDetail} />
+                      ))
+                    ) : (
+                      <h1 className="text-center">Il n'y a pas de candidats</h1>
+                    )
+                  ) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
+                    SENT_OFFERS.map((item, index) => (
+                      <CardWithImage
+                        key={index}
+                        item={item.student}
+                        status={item.status}
+                        eventKey={key}
+                        type="student_offers"
+                        handleDetail={handleSentStudentDetail}
+                        handleOfferRejected={handleCancelOffer}
+                        matchReceiveDetailHandler={matchReceiveDetailHandler}
+                        offerID={offerID}
+                      />
+                    ))
+                  ) : (
+                    <h1 className="text-center">Il n'y a pas de candidats</h1>
+                  )}
+                </div>
+              </div>
+            </Tab>
+            <Tab eventKey="MatchReceived" title="Match reçu" className="h-100">
+              <div className="AnnoncesViewOffersBox">
+                <div className="offers custom-box">
+                  {matchReceiveDetail === false ? (
+                    JOBS && JOBS.length > 0 ? (
+                      JOBS.map((item, index) => (
+                        <CardWithImage
+                          key={index}
+                          item={item}
+                          eventKey={key}
+                          type="company"
+                          handleDetail={handleDetail}
+                          matchReceiveDetailHandler={matchReceiveDetailHandler}
+                          offerID={offerID}
+                        />
+                      ))
+                    ) : (
+                      <h1 className="text-center">Il n'y a pas de candidats</h1>
+                    )
+                  ) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
+                    RECIEVED_OFFERS.map((item, index) => (
+                      <CardWithImage
+                        key={index}
+                        item={item.student}
+                        eventKey={key}
+                        jobID={item.jobID}
+                        status={item.status}
+                        type="student_offers"
+                        handleBooking={handleBooking}
+                        handleDetail={handleRecievedStudentDetail}
+                        handleOfferAccepted={handlerRecievedOfferAccepted}
+                        handleOfferRejected={handlerRecievedOfferRejected}
+                        offerID={offerID}
+                      />
+                    ))
+                  ) : (
+                    <h1 className="text-center">Il n'y a pas de candidats</h1>
+                  )}
+                </div>
+              </div>
+            </Tab>
+          </Tabs>
         ) : (
           <CompanyCardDetail
             isPerc
@@ -314,127 +392,14 @@ const OverviewOfOffers = () => {
             handleOfferRejected={handleOfferRejected}
           />
         )}
-        <Tabs
-          activeKey={key}
-          id="OverviewOfOffers"
-          className="OverviewOfOffers upper-nav custom-tabs"
-          onSelect={(k) => handleTabSelect(k)}
-        >
-          <Tab eventKey="Offres" title="Offres" className="h-100">
-            <div className="AnnoncesViewOffersBox">
-              <div className="offers custom-box">
-                {JOBS && JOBS.length > 0 ? (
-                  JOBS.map((item, index) => (
-                    <CardWithImage
-                      item={item}
-                      key={index}
-                      type="company"
-                      eventKey={key}
-                      handleDetail={handleDetail}
-                    />
-                  ))
-                ) : (
-                  <h1 className="text-center">Il n'y a pas de candidats</h1>
-                )}
-              </div>
-            </div>
-          </Tab>
-          <Tab eventKey="SentMatches" title="Match envoyé" className="h-100">
-            <div className="AnnoncesViewOffersBox">
-              <div className="offers custom-box">
-                {matchSentDetail === false ? (
-                  JOBS && JOBS.length > 0 ? (
-                    JOBS.map((item, index) => (
-                      <CardWithImage
-                        key={index}
-                        item={item}
-                        type="company"
-                        eventKey={key}
-                        handleDetail={handleDetail}
-                      />
-                    ))
-                  ) : (
-                    <h1 className="text-center">Il n'y a pas de candidats</h1>
-                  )
-                ) : SENT_OFFERS && SENT_OFFERS.length > 0 ? (
-                  SENT_OFFERS.map((item, index) => (
-                    <CardWithImage
-                      key={index}
-                      item={item.student}
-                      status={item.status}
-                      eventKey={key}
-                      type="student_offers"
-                      handleDetail={handleSentStudentDetail}
-                      handleOfferRejected={handleCancelOffer}
-                      matchReceiveDetailHandler={matchReceiveDetailHandler}
-                      offerID={offerID}
-                    />
-                  ))
-                ) : (
-                  <h1 className="text-center">Il n'y a pas de candidats</h1>
-                )}
-              </div>
-            </div>
-          </Tab>
-          <Tab eventKey="MatchReceived" title="Match reçu" className="h-100">
-            <div className="AnnoncesViewOffersBox">
-              <div className="offers custom-box">
-                {matchReceiveDetail === false ? (
-                  JOBS && JOBS.length > 0 ? (
-                    JOBS.map((item, index) => (
-                      <CardWithImage
-                        key={index}
-                        item={item}
-                        eventKey={key}
-                        type="company"
-                        handleDetail={handleDetail}
-                        matchReceiveDetailHandler={matchReceiveDetailHandler}
-                        offerID={offerID}
-                      />
-                    ))
-                  ) : (
-                    <h1 className="text-center">Il n'y a pas de candidats</h1>
-                  )
-                ) : RECIEVED_OFFERS && RECIEVED_OFFERS.length > 0 ? (
-                  RECIEVED_OFFERS.map((item, index) => (
-                    <CardWithImage
-                      key={index}
-                      item={item.student}
-                      eventKey={key}
-                      jobID={item.jobID}
-                      status={item.status}
-                      type="student_offers"
-                      handleBooking={handleBooking}
-                      handleDetail={handleRecievedStudentDetail}
-                      handleOfferAccepted={handlerRecievedOfferAccepted}
-                      handleOfferRejected={handlerRecievedOfferRejected}
-                      offerID={offerID}
-                    />
-                  ))
-                ) : (
-                  <h1 className="text-center">Il n'y a pas de candidats</h1>
-                )}
-              </div>
-            </div>
-          </Tab>
-        </Tabs>
       </>
     );
   } else {
     return (
       <>
         {studentFormData && studentFormData.user ? (
-          <Tabs
-            activeKey={key2}
-            id="first"
-            className="OverviewOfOffers upper-nav custom-tabs"
-            onSelect={(k) => setKey2(k)}
-          >
-            <Tab
-              eventKey="first"
-              title="Présentation Générales"
-              className="h-100"
-            >
+          <Tabs activeKey={key2} id="first" className="OverviewOfOffers upper-nav custom-tabs" onSelect={(k) => setKey2(k)}>
+            <Tab eventKey="first" title="Présentation Générales" className="h-100">
               <div className="AnnoncesViewOffersBox">
                 <div className="genProfileBox">
                   <div className="genProfile">
@@ -453,11 +418,7 @@ const OverviewOfOffers = () => {
                         <div className="profileImage">
                           <div class="embed-responsive embed-responsive-16by9">
                             <iframe
-                              hidden={
-                                studentFormData.presentation_Video.video
-                                  ? false
-                                  : true
-                              }
+                              hidden={studentFormData.presentation_Video.video ? false : true}
                               className="embed-responsive-item"
                               // src={`../images/video.mp4`}
                               src={
@@ -472,19 +433,12 @@ const OverviewOfOffers = () => {
                       </Col>
                       <Col lg={9} md={8}>
                         <div className="profilename">
-                          {studentFormData.user.firstName}{" "}
-                          {studentFormData.user.lastName}
+                          {studentFormData.user.firstName} {studentFormData.user.lastName}
                         </div>
-                        <div className="profileProfession">
-                          {studentFormData.user.type}
-                        </div>
-                        <div className="generalDescription">
-                          Description générale
-                        </div>
+                        <div className="profileProfession">{studentFormData.user.type}</div>
+                        <div className="generalDescription">Description générale</div>
                         <div className="description">
-                          {studentFormData.general_Presentation
-                            ? studentFormData.general_Presentation
-                            : ""}
+                          {studentFormData.general_Presentation ? studentFormData.general_Presentation : ""}
                         </div>
                         <div className="professionalNetwork">Réseau pro</div>
                         <ul className="PLinks">
@@ -493,10 +447,7 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Linkedin &nbsp;&nbsp;: </li>
                           <li>
-                            <a
-                              href={`${studentFormData.professional_networks.linkedIn}`}
-                              target="_blank"
-                            >
+                            <a href={`${studentFormData.professional_networks.linkedIn}`} target="_blank">
                               {studentFormData.professional_networks.linkedIn
                                 ? studentFormData.professional_networks.linkedIn
                                 : ""}
@@ -509,13 +460,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Behance &nbsp;&nbsp;: </li>
                           <li>
-                            <a
-                              href={`${studentFormData.professional_networks.Behance}`}
-                              target="_blank"
-                            >
-                              {studentFormData.professional_networks.Behance
-                                ? studentFormData.professional_networks.Behance
-                                : ""}
+                            <a href={`${studentFormData.professional_networks.Behance}`} target="_blank">
+                              {studentFormData.professional_networks.Behance ? studentFormData.professional_networks.Behance : ""}
                             </a>
                           </li>
                         </ul>
@@ -525,13 +471,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Dribble &nbsp;&nbsp;: </li>
                           <li>
-                            <a
-                              href={`${studentFormData.professional_networks.Dribble}`}
-                              target="_blank"
-                            >
-                              {studentFormData.professional_networks.Dribble
-                                ? studentFormData.professional_networks.Dribble
-                                : ""}
+                            <a href={`${studentFormData.professional_networks.Dribble}`} target="_blank">
+                              {studentFormData.professional_networks.Dribble ? studentFormData.professional_networks.Dribble : ""}
                             </a>
                           </li>
                         </ul>
@@ -541,13 +482,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Github &nbsp;&nbsp;: </li>
                           <li>
-                            <a
-                              href={`${studentFormData.professional_networks.Github}`}
-                              target="_blank"
-                            >
-                              {studentFormData.professional_networks.Github
-                                ? studentFormData.professional_networks.Github
-                                : ""}
+                            <a href={`${studentFormData.professional_networks.Github}`} target="_blank">
+                              {studentFormData.professional_networks.Github ? studentFormData.professional_networks.Github : ""}
                             </a>
                           </li>
                         </ul>
@@ -560,16 +496,9 @@ const OverviewOfOffers = () => {
             <Tab eventKey="second" title="Formation / École" className="h-100">
               <div className="AnnoncesViewOffersBox">
                 <div className="offers custom-box">
-                  {studentFormData.education &&
-                  studentFormData.education.length > 0 ? (
+                  {studentFormData.education && studentFormData.education.length > 0 ? (
                     studentFormData.education.map((card, index) => (
-                      <InfoCard
-                        item={card}
-                        key={index}
-                        cindex={index}
-                        type="EDUCATION"
-                        EditPermission="false"
-                      />
+                      <InfoCard item={card} key={index} cindex={index} type="EDUCATION" EditPermission="false" />
                     ))
                   ) : (
                     <h1 className="text-center">Ajoutez une formation</h1>
@@ -579,16 +508,10 @@ const OverviewOfOffers = () => {
             </Tab>
             <Tab eventKey="third" title="CV en ligne" className="h-100">
               <div className="AnnoncesViewOffersBox">
-                {studentFormData.professional_profile &&
-                studentFormData.professional_profile.length > 0 ? (
-                  <CVEngine
-                    USER={studentFormData}
-                    type="student_professional_info"
-                  />
+                {studentFormData.professional_profile && studentFormData.professional_profile.length > 0 ? (
+                  <CVEngine USER={studentFormData} type="student_professional_info" />
                 ) : (
-                  <h1 className="text-center">
-                    Ajoutez une expérience professionnelle
-                  </h1>
+                  <h1 className="text-center">Ajoutez une expérience professionnelle</h1>
                 )}
               </div>
             </Tab>

@@ -2050,7 +2050,7 @@ border-radius: 9px;
   align-items: baseline;
   border: none;
   position: absolute;
-  top: 1.8% !important;
+  top: 0.1% !important;
   left: 37% !important;
   transform: translate(-0%, 0%);
 }
@@ -2059,7 +2059,7 @@ border-radius: 9px;
   color: white;
   font-size: 1.25rem;
   border-radius: 2.56rem;
-  padding: 0.75rem 3rem;
+  padding: 0.65rem 2.5rem;
   text-transform: lowercase;
   box-shadow: none;
 }
@@ -2857,8 +2857,8 @@ border-radius: 9px;
   border-color: none !important;
   font-size: 1.25rem;
   border-radius: 2.56rem;
-  border: 1px solid #f6c40d !important;
-  background-color: #f6c40d !important;
+  border: 1px solid #02196A !important;
+  background-color: #02196A !important;
   padding: 0.8rem 4rem;
   color: #fff !important;
   margin-top: 0.6rem;
@@ -2894,13 +2894,12 @@ border-radius: 9px;
 }
 .publish-header-content {
   width: 100%;
-  padding-left: 8rem;
+  padding-left: 1rem;
 }
 
 .publishBox .publish .add_image_icon {
   height: 100%;
   width: 100%;
-
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -3109,7 +3108,7 @@ textarea.form-control {
   border-radius: 0.6rem;
   margin-top: 6px;
   padding: 0.6rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .description .form-check-input {
   /* margin-top: 7px !important; */
@@ -3767,7 +3766,7 @@ font-size: 23px;
   padding-right: 1.2rem;
   flex-basis: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .offer-detail-header-image img {
@@ -3778,7 +3777,10 @@ font-size: 23px;
   object-fit: contain;
 }
 .offer-detail-header-text {
-  flex-basis: 50%;
+  /* display:flex;
+align-items: flex-start;
+justify-content: center; */
+  flex-basis: 80%;
   color: #454545;
   font-size: 3.4rem;
   font-weight: bold;
@@ -3836,8 +3838,8 @@ font-size: 23px;
 }
 .offer-detail-date-container {
   display: flex;
-  justify-content: center;
-  padding-bottom: 3rem;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
 }
 .offer-detail-date-container-2 {
   display: flex;
@@ -4045,7 +4047,7 @@ label#demo-controlled-open-select-label {
   font-size: 17px;
 }
 .offer-detail-skills.d-flex.justify-content-center {
-  flex-basis: 23%;
+  flex-basis: 20%;
 }
 
 .offer-detail-skill-container {

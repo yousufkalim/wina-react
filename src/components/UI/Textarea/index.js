@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     backgroundColor: "rgb(219, 232, 255,0.3) !important",
     border: "none",
     "& .MuiFormLabel-root": {
-      fontSize: "1.rem",
+      fontSize: "1.2rem",
     },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "none !important",
@@ -33,13 +33,13 @@ const useStyles = makeStyles({
     },
     "&::placeholder": {
       color: "#8D8D8D",
-      fontSize: "1rem",
+      fontSize: "1.2rem",
     },
     borderColor: "none",
     color: "#454545",
   },
   label: {
-    fontSize: "1.375rem",
+    fontSize: "1rem",
     color: "#8D8D8D",
     fontWeight: 400,
   },
