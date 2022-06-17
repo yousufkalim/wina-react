@@ -21,7 +21,9 @@ const Hero3 = (props) => {
           <div className="hero_heading3">
             <img className="heroimgico" src={props.srcImg3} alt="" />
             <div style={{ position: "relative" }}>
-              <h2 className="heroH2">{props.h2text}</h2>
+              <h2 className="heroH2" style={{ textAlign: "center" }}>
+                Optimisez L’accompagnement des <br /> apprentis
+              </h2>
             </div>
             <a href="#form" style={{ zIndex: "1" }}>
               <button className="heroBtn"> {props.btns}</button>

@@ -1,41 +1,35 @@
 import React from "react";
 import "../../components/Cfa/Style.css";
+import CfaBoostImg from "../../assets/CfaBoostImg.jpg";
+import Check from "../../assets/Check.svg";
 
 const Together = () => {
   return (
     <>
       <div className="togather">
         <div className="togather-container">
-          <div className="togetherHeading">
-            <h1 className="togetherH1">Ensemble, boostons l’apprentissage </h1>
-            <p className="togetherP">
-              Notre équipe spécialisée accompagne les CFA sur différents axes :
+          <div className="Accompagnement_content">
+            <p className="Accompagnement_avac">
+              Notre equipe specialisee accompagne les CFA sur differents axes
             </p>
-            <hr className="togather_hr" />
+            <h2 className="Accompagnement_h2" style={{ textAlign: "center" }}>
+              Ensemble boostons l’apprentissage
+            </h2>
           </div>
           <div className="together-secondDiv">
-            <div className="togetherCol1">
-              <div className="checkIcon">
-                {/* <i class="faIcon far fa-check-circle"></i> */}
-              </div>
-              <div className="checkIcon">
-                {/* <i class="faIcon far fa-check-circle"></i> */}
-              </div>
-              <div className="checkIcon">
-                {/* <i class="faIcon2 far fa-check-circle"></i> */}
-              </div>
-            </div>
             {/* col 1*/}
             <div className="togetherCol2">
               <div className="togetherPera">
-                <i class="faIcon far fa-check-circle"></i>
+                {/* <i class="faIcon far fa-check-circle"></i> */}
+                <img src={Check} alt="" className="chack_icons" />
                 <p className="chackP">
                   Favoriser une meilleure communication de la part des CFA sur
                   leurs formations.
                 </p>
               </div>
               <div className="togetherPera">
-                <i class="faIcon far fa-check-circle"></i>
+                {/* <i class="faIcon far fa-check-circle"></i> */}
+                <img src={Check} alt="" className="chack_icons" />
                 <p className="chackP">
                   Proposer un accompagnement personnalisé aux apprentis et aux
                   entreprises pour renforcer l’attractivité de l’apprentissage
@@ -43,11 +37,17 @@ const Together = () => {
                 </p>
               </div>
               <div className="togetherPera">
-                <i class="faIcon2 far fa-check-circle"></i>
+                {/* <i class="faIcon2 far fa-check-circle"></i> */}
+                <img src={Check} alt="" className="chack_icons" />
                 <p className="chackP">
                   Soutenir les CFA dans les différentes campagnes de rentrée
                   scolaire pour atteindre l’objectif de 100% de placement.
                 </p>
+              </div>
+            </div>
+            <div className="together_col_div">
+              <div className="togather_image_div">
+                <img src={CfaBoostImg} alt="" className="togather_bost_img" />
               </div>
             </div>
           </div>
