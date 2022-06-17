@@ -12,11 +12,13 @@ const Place = (props) => {
             <div className="plase_col2">
               <div className="plase-heading">
                 <h3 className="boostH3">{props.text}</h3>
-                <hr className="boost_hr3" />
               </div>
-              <p className="boostP">{props.text3}</p>
-              <p className="boostP">{props.text4}</p>
-              <p className="boostP">{props.text5}</p>
+              <p className="boostP">{props.text2}</p>
+              <a href="#" className="reed_more">
+                Read more &nbsp; &#5171;
+              </a>
+              {/* <p className="boostP">{props.text4}</p>
+              <p className="boostP">{props.text5}</p> */}
             </div>
           </div>
         </div>

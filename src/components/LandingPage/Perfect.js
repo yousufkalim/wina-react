@@ -8,11 +8,13 @@ const Perfect = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <div className="heading-div2" style={{ position: "relative" }}>
+              <div className="heading-div" style={{ position: "relative" }}>
                 <h3 className="boostH3">{props.text}</h3>
-                <hr className="boost_hr2" />
               </div>
               <p className="boostP">{props.text2}</p>
+              <a href="#" className="reed_more">
+                Read more &nbsp; &#5171;
+              </a>
             </div>
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />

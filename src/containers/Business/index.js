@@ -7,17 +7,22 @@ import Place from "../../components/LandingPage/Place";
 import Recruited from "../../components/LandingPage/Recruited";
 import Specialized from "../../components/LandingPage/Specialized";
 import Simplified from "../../components/LandingPage/Simplified";
+import Accompagnement from "../../components/LandingPage/Accompagnement";
 import Footer from "../../components/Footer";
 import Heroimg from "../../assets/Heroimg.png";
-import BusImg1 from "../../assets/BusImg1.png";
-import BusImg2 from "../../assets/BusImg2.png";
-import BusImg3 from "../../assets/BusImg3.png";
-import BusImg4 from "../../assets/BusImg4.png";
+// import BusImg1 from "../../assets/BusImg1.png";
+// import BusImg2 from "../../assets/BusImg2.png";
+// import BusImg3 from "../../assets/BusImg3.png";
+// import BusImg4 from "../../assets/BusImg4.png";
 
 import Formsimg from "../../assets/Formsimg.png";
 import Speechimg from "../../assets/Speechimg.png";
 import Supportimg from "../../assets/Supportimg.png";
 import Cgv from "../../assets/Cgv.png";
+import Boostimg11 from "../../assets/Boostimg11.jpg";
+import Boostimg22 from "../../assets/Boostimg22.jpg";
+import Boostimg3 from "../../assets/Boostimg3.jpg";
+import Boostimg44 from "../../assets/Boostimg44.svg";
 
 const Index = (props) => {
   return (
@@ -33,27 +38,36 @@ const Index = (props) => {
         showBorder={true}
         btno="Créer mon profil  entreprise"
       />
-      <Booste
+      <Accompagnement />
+      {/* <Booste
         srcImg={BusImg1}
         text="Facilitez votre recrutement avec Winaa"
         text2=" Des profils adaptés à vos recherches "
         text3=" Winaa vous donne accès à des profils opérationnels qui correspondent à vos critères de recherche préalablement renseignés.Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité. "
-        showBorer={true}
+      
+      /> */}
+      <Booste
+        srcImg={Boostimg11}
+        text="How It Works"
+        text2="Le Matching parfait"
+        text3="Nous mettons à votre disposition une application innovante et intuitive vous permettant d’être mis en relation directe avec des étudiants à la recherche d’un contrat d’apprentissage. Un outil basé sur des algorithmes de matching facilitant votre recrutement."
       />
       <Perfect
-        srcImg={BusImg2}
-        text="Le Matching parfait"
-        text2=" Nous mettons à votre disposition une application innovante et intuitive vous permettant d’être mis en relation directe avec des étudiants à la recherche d’un contrat d’apprentissage. Un outil basé sur des algorithmes de matching facilitant votre recrutement."
+        srcImg={Boostimg22}
+        text="Place a l’echange"
+        text2="Il vous sera permis de communiquer, échanger, évaluer la pertinence des profils proposés et ainsi, planifier un entretien d’embauche avec votre futur(e) alternant(e)."
       />
       <Place
-        srcImg={BusImg3}
-        text="Place à l’échange"
-        text3=" Il vous sera permis de communiquer, échanger, évaluer la pertinence des profils proposés et ainsi, planifier un entretien d’embauche avec votre futur(e) alternant(e). "
+        srcImg={Boostimg3}
+        text="Recrute(e) !"
+        text2="Félicitations ! Vous avez trouvé votre alternant ! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif du recrutement de l’apprenti. "
       />
       <Recruited
-        srcImg={BusImg4}
-        text="Recrutez !"
-        text2="Félicitations! Vous avez trouvé votre alternant! Nous sommes à votre disposition dans l’accompagnement contractuel et administratif  du recrutement de l’apprenti."
+        srcImg={Boostimg44}
+        heading="Facilitez votre recrutement avec Winaa"
+        text="Des profils adaptés à vos recherches"
+        text2="Winaa vous donne accès à des profils opérationnels qui correspondent à vos critères de recherche préalablement renseignés.
+        Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité."
       />
       <Specialized
         srcImg={Formsimg}
