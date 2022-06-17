@@ -181,7 +181,7 @@ html {
 }
 .homeNavBar .navbar-collapse {
   z-index: 1;
-  padding-right: 2rem;
+  padding-right: 1rem;
 }
 .homeNavBar .navbar-brand {
   padding-left: 2rem;
@@ -199,46 +199,45 @@ html {
 } */
 
 .homeNavBar .navbar-left-link {
-  font-size: 1.375rem !important;
+  font-size: 1.3rem !important;
   font-weight: 400 !important;
   padding: 0rem 1rem !important;
   align-items: center !important;
-  color: var(--text-primary) !important;
+  color: #192646 !important;
   display: flex !important;
 }
 .navbar-right-link {
-  border-radius: 41px !important;
+  /* border-radius: 41px !important; */
   color: #fff;
   padding: 0.5rem 2rem !important;
   background-color: #2879d9;
-  font-size: 1.375rem !important;
-  margin: 0rem 1rem !important;
+  font-size: 1.3rem !important;
+  /* margin: 0rem 1rem !important; */
   align-items: center !important;
   display: flex !important;
-  font-weight: bold !important;
+  font-weight: 400 !important;
 }
 .navbar-right-link2 {
   background-color: #fff;
-  border: 1px solid #192349;
+  /* border: 1px solid #192349; */
   color: #192349 !important;
 }
 .navbar-right-link-end2 {
-  background-color: #192349 !important;
+  background-color: #2B5AA6 !important;
   color: #fff !important;
-  border: 1px solid #192349 !important;
 }
 .navbar-right-link-end {
-  border-radius: 41px !important;
+  border-radius: 10px !important;
   color: #2879d9;
   padding: 0.5rem 1.5rem !important;
   background-color: #fff;
-  font-size: 1.375rem !important;
+  font-size: 1.2rem !important;
   border: 1px solid #2879d9;
-  margin-left: 1rem !important;
   align-items: center !important;
   display: flex !important;
-  margin-right: 1rem !important;
-  font-weight: bold !important;
+  margin-right: 3px !important;
+  font-weight: 400 !important;
+  box-shadow: 0px 13px 18px rgba(0, 35, 91, 0.15) !important;
 }
 /* ============================================
 					  NAVBAR END
@@ -249,13 +248,15 @@ html {
     ===========================================  */
 
 .student-modal {
+
   font-family: "Lato", sans-serif !important;
+
 }
 .student-modal .modal-dialog {
-  width: 80% !important;
-  max-width: 80% !important;
+  width: 30% !important;
+  max-width: 30% !important;
   /* padding-bottom: 5rem; */
-  height: 100%;
+  height: 40%;
   min-height: 100% !important;
   margin: auto !important;
 }
@@ -271,36 +272,31 @@ html {
 }
 
 .modal-social-btn {
-  color: #0a66c2;
-  font-size: 1.5rem !important;
-  margin-top: 5rem;
+  color: #19224A;
+  font-size: 1.2rem !important;
+  margin-top: 2rem;
   cursor: pointer;
   flex-basis: 50%;
   padding: 0.61rem;
   display: flex;
-  font-weight: bold;
   align-items: center;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
 }
 .modal-social-btn-google {
-  color: black;
-  font-size: 1.5rem !important;
-  margin-top: 5rem;
+  color: #19224A;
+  font-size: 1.2rem !important;
+  margin-top: 1rem;
   cursor: pointer;
   flex-basis: 50%;
   padding: 0.61rem;
   display: flex;
-  font-weight: bold;
   align-items: center;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
 }
 .modal-facebook-btn {
   background-color: white;
   border: 2px solid #8d8d8d4d;
-
-  border-radius: 2.5rem 0 0 2.5rem;
+  border-radius:  7px;
 }
 .modal-facebook-btn:hover {
   color: #0063c7;
@@ -309,7 +305,7 @@ html {
 .modal-google-btn {
   background-color: white;
   border: 2px solid #8d8d8d4d;
-  border-radius: 0 2.5rem 2.5rem 0;
+  border-radius: 7px;
 }
 .modal-google-btn:hover {
   color: black;
@@ -325,42 +321,41 @@ html {
 }
 .student-modal .modal-content {
   padding-bottom: 3rem;
+  border-radius: 1rem !important;
 }
 .student-modal .modal-sub-heading {
-  font-size: 1.56rem;
+  font-size: 1.2rem;
   color: var(--text-primary);
   text-align: center;
-  font-weight: 700;
   padding-top: 1.6rem;
   padding-bottom: 1rem;
 }
-.student-modal .Login .forgetpassword a {
-  font-size: 1.12rem;
-  color: #454545;
+.student-modal .Login .forgetpassword a{
+  font-size: 1.1rem;
+  color: #848D9F;
 }
 .student-modal .modal-button {
   text-align: center;
   width: 100%;
-  background-color: #2879d9;
-  border-radius: 2.6rem;
+  background-color: #2B5AA6;
+  border-radius: 7px;
   border: none;
   padding: 0.8rem;
   cursor: pointer;
   color: #fff;
-  font-size: 1.56rem;
-  font-weight: bold;
+  font-size: 1.46rem;
+  box-shadow: 0px 13px 18px rgba(0, 35, 91, 0.15);
 }
 
 .student-modal .modal-button:focus {
   outline: none;
 }
 .student-modal .modal-body .heading {
-  font-size: 2.8rem;
-  font-weight: bold;
+  font-size: 1.8rem;
   color: var(--text-primary);
 }
 .modal-register-btn {
-  margin-top: 6.4rem;
+  margin-top: 2rem;
 }
 
 .student-modal .modal-header {
@@ -408,12 +403,11 @@ html {
 
 .student-modal .modal-body .Register {
   padding: 0px 72px 0px 66px;
-  border-left: 1px solid #f7c40d;
 }
 
 .student-modal .modal-body .Register .studentRegisterbtn {
   padding-bottom: 59px;
-  border-bottom: 1px solid #f7c40d;
+  border-bottom: 1px solid #DBE8FF;
 }
 .student-modal .modal-body .Register .studentRegister {
   font-size: 25px;
@@ -424,14 +418,16 @@ html {
 }
 
 .student-modal .modal-body .Register button {
+  text-align: center;
   width: 100%;
-  /* height: 65px; */
-  font-weight: bold;
+  background-color: #2B5AA6;
+  border-radius: 7px;
   border: none;
-  font-size: 1.56rem;
-  background-color: #2879d9;
-  color: white;
-  border-radius: 2.6rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.46rem;
+  box-shadow: 0px 13px 18px rgba(0, 35, 91, 0.15);
 }
 .student-modal .modal-body .Register .one {
   margin-bottom: 34px;
