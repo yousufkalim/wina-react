@@ -14,7 +14,7 @@ const useStyle = makeStyles({
     },
 
     "& .MuiInput-underline:before": {
-      borderBottom: "1px solid #f7c40d",
+      borderBottom: "1px solid #DBE8FF",
     },
 
     // '& .MuiFormLabel-root.Mui-focused': {
