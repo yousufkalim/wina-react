@@ -1,35 +1,32 @@
 import React from "react";
+import BorderImg from "../../assets/BorderImg.svg";
+import MobleImg from "../../assets/MobleImg.png";
+import Apple from "../../assets/Apple.svg";
+import Google from "../../assets/Google.svg";
 
 const Specialized = (props) => {
   return (
     <>
       <div className="specialized">
         <div className="specialized_container">
-          <div className="specialized_heading">
-            <h2 className="specializedH2">Accompagnement spécialisé</h2>
-            <p className="specializedP">Avec l’abonnement Winaa</p>
-            <hr className="boost_hr5" />
+          <div className="spec_colmn">
+            <div className="areYou_div">
+              <h1 className="spec_h1">
+                Are you excited <br /> for Winaa?
+              </h1>
+              <img src={BorderImg} alt="" className="spec_border_img" />
+              <p className="spec_download_social">
+                Download the WinaApp today!
+              </p>
+              <div className="spec_plystor_div">
+                <img src={Google} alt="" className="Google_btn" />
+                <img src={Apple} alt="" className="AppStore_btn" />
+              </div>
+            </div>
           </div>
-          <div className="cv-box">
-            <div className="cv-container">
-              <div className="cv_clm">
-                <img className="spec_icon" src={props.srcImg} alt="" />
-                <p className="iconP">CV</p>
-              </div>
-              <div className="cv_clm">
-                <img className="spec_icon" src={props.srcImg2} alt="" />
-                <p className="iconP">Coaching</p>
-              </div>
-              {props.srcImg4 && (
-                <div className="cv_clm">
-                  <img className="spec_icon" src={props.srcImg4} alt="" />
-                  <p className="iconP">{props.p}</p>
-                </div>
-              )}
-              <div className="cv_clm">
-                <img className="spec_icon" src={props.srcImg3} alt="" />
-                <p className="iconP">Matching</p>
-              </div>
+          <div className="spec_colmn2">
+            <div className="spec_mobile_img">
+              <img src={MobleImg} alt="" className="spec_image" />
             </div>
           </div>
         </div>

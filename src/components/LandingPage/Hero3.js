@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../components/LandingPage/Style.css";
 import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
+import CfaBG from "../../assets/CfaBG.svg";
 
 const Hero3 = (props) => {
   const [studentModal, setstudentModal] = useState(false);
@@ -13,10 +14,10 @@ const Hero3 = (props) => {
       <div className="hero_section">
         <div className="hero_container">
           <div className="hero_img">
-            <img className="heroImg" src={props.srcImg} alt="" />
+            <img className="heroImg" src={CfaBG} alt="" />
           </div>
-          <hrs className={`${props.showBorder && "H2_boost_hr"}`} />
-          <hrs className={`${props.showBorderS && "H2_boost_hr2"}`} />
+          {/* <hrs className={`${props.showBorder && "H2_boost_hr"}`} />
+          <hrs className={`${props.showBorderS && "H2_boost_hr2"}`} /> */}
           <div className="hero_heading3">
             <img className="heroimgico" src={props.srcImg3} alt="" />
             <div style={{ position: "relative" }}>

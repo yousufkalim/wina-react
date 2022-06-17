@@ -1,51 +1,92 @@
 import React from "react";
-import Footerimg from "../assets/Footerimg.png";
+import Footerimg from "../assets/Footerimg.svg";
+import Home from "../assets/Home.svg";
+import Phone from "../assets/Phone.svg";
+import Email from "../assets/Email.svg";
+import In from "../assets/In.svg";
+import Insta from "../assets/Insta.svg";
+import Fb from "../assets/Fb.svg";
+import Twit from "../assets/Twit.svg";
 
 const Footer = () => {
   return (
     <>
       <div className="footer">
         <div className="footer-container">
-          <h2 className="footer-heading">NEWSLETTER</h2>
-          <p className="footerP">Abonnez-vous à la Newsletter</p>
-          <input
-            className="footerInput"
-            type="text"
-            placeholder="Exemple@gmail.com"
-          />
-          <button className="footerInputBtn">Envoyer</button>
+          <div className="foot_colmn">
+            <div className="foot_colm_content">
+              {/* logo  */}
+              <div className="foot_img_div">
+                <img src={Footerimg} alt="" className="foot_log" />
+              </div>
+              {/*footer menu  */}
+              <div className="foot_heading_div">
+                <img src={Home} alt="" />
+                <span className="foot_span">
+                  301 Edgewater Place Suite 330 <br /> &nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp; Wakefield, MA 01880
+                </span>
+              </div>
+              <div className="foot_heading_div">
+                <img src={Phone} alt="" />
+                <span className="foot_span">1234-567890</span>
+              </div>
+              <div className="foot_heading_div">
+                <img src={Email} alt="" />
+                <span className="foot_span">info@winaa.com</span>
+              </div>
+            </div>
+          </div>
+          {/* colmn2  */}
+          <div className="foot_colmn2">
+            <div className="foot_colm_content">
+              <div className="foot_img_div">
+                <h2 className="foot_title">About</h2>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">Enterprises</span>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">CTA</span>
+              </div>
+            </div>
+          </div>
+          <div className="foot_colmn2">
+            <div className="foot_colm_content">
+              <div className="foot_img_div">
+                <h2 className="foot_title">FAQ</h2>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">Hire Doctor</span>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">Patients</span>
+              </div>
+            </div>
+          </div>
+          <div className="foot_colmn2">
+            <div className="foot_colm_content">
+              <div className="foot_img_div">
+                <h2 className="foot_title">Support</h2>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">Contact</span>
+              </div>
+              <div className="foot_heading_div">
+                <span className="foot_span2">Resources</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="footerBox">
-          <div className="ftrimg">
-            <img src={Footerimg} alt="" />
-          </div>
-          <div className="manu">
-            <a className="footerLi" href="">
-              Application mobile
-            </a>
-            <a className="footerLi" href="/regards">
-              A propos
-            </a>
-            <a className="footerLi" href="/about">
-              Notre équipe
-            </a>
-            <a className="footerLi" href="/">
-              FAQ
-            </a>
-            <a className="footerLi" href="/cfa#form">
-              Contact
-            </a>
-            <a className="footerLi" href="">
-              Ressources
-            </a>
-          </div>
-          <div className="social_icon">
-            <i className="social_icon" class="fab fa-facebook-f"></i>
+        <div className="winaa_foot">
+          <p className="footerPera">Winaa. @ 2022. All Rights Reserved. </p>
+          <div className="winaa_foot_social_div">
+            <img src={In} alt="" className="winaa_foot_icons" />
+            <img src={Insta} alt="" className="winaa_foot_icons" />
+            <img src={Fb} alt="" className="winaa_foot_icons" />
+            <img src={Twit} alt="" className="winaa_foot_icons" />
           </div>
         </div>
-      </div>
-      <div className="blackFooter">
-        <p className="footerPera">Falcon Consulting - 2022</p>
       </div>
     </>
   );

@@ -7,13 +7,12 @@ const Recruited = (props) => {
     <>
       <div className="boost1">
         <div className="boost_container">
+          <h1 className="boost_h1">{props.heading}</h1>
           <div className="boost_div">
             <div className="perfect_col2">
-              <div className="perfact_hr">
-                <h3 className="boostH3">{props.text}</h3>
-                <hr className="boost_hr4" />
-              </div>
+              <h3 className="boostH3">{props.text}</h3>
               <p className="boostP">{props.text2}</p>
+              <button className="Learn_More">Learn More</button>
             </div>
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />

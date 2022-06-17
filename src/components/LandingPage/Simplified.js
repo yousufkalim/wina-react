@@ -15,42 +15,20 @@ const Simplified = (props) => {
     <>
       <div className="Simplified">
         <div className="Simplified_container">
-          <div className="Simplified_headings">
-            <h3 className="SimplifiedH3">{props.heading}</h3>
-            <p className="SimplifiedP">{props.text}</p>
-            <div className="siple_btn">
-              <div className="simle_button">
-                <a className="app-btn blu flex vert" href="http:google.com">
-                  <img className="googleImg" src={Googleplay} alt="" />
-                </a>
-              </div>
-              <div className="simle_button">
-                <a className="app-btn blu flex vert" href="http:google.com">
-                  <img className="googleImg" src={Appstore} alt="" />
-                </a>
-              </div>
-            </div>
-            <p className="SimplifiedP">
-              Facilite tes recherches de contrats d’apprentissage. <br />
-              Inscris-toi dès maintenant!
+          <div className="simp_content">
+            <h1 className="simp_h1">Hey! How can we help you?</h1>
+            <p className="simp_p">
+              Nam suscipit felis sit amet convallis condimentum nterdum et
+              malesuada <br /> fames ac ante.
             </p>
-            <div className="buttons2">
-              <button
-                className="SimplifiedButon"
-                onClick={() => handleModal("student")}
-              >
-                Je m’inscris
-              </button>
-              <a href="/Cfa#form">
-                <button className="SimplifiedButon2">Contacte-nous !</button>
-              </a>
-            </div>
-            <StudentRegister show={studentModal} handleModal={handleModal} />
           </div>
-          <div className="SimplifiedImg-container">
-            <div className="boxImg-div">
-              <img className="mobiIMg" src={Mobilepic} alt="" />
-            </div>
+          <div className="simp_email_div">
+            <input
+              type="text"
+              className="email_input"
+              placeholder="Your email"
+            />
+            <button className="simp_btn">Subscribe</button>
           </div>
         </div>
       </div>
