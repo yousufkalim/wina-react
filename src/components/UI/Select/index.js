@@ -239,7 +239,7 @@ export default function ControlledOpenSelect(props) {
             onClose={handleClose}
             onOpen={handleOpen}
             InputLabelProps={{ style: { fontSize: 40 } }}
-            variant="outlined"
+            variant={props.variant ? props.variant : "outlined"}
             label={props.label}
             name={props.name}
             // MenuProps={MenuProps}
