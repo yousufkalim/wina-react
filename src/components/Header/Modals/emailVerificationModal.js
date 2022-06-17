@@ -35,46 +35,37 @@ export default function StudentRegister(props) {
     formik.setFieldValue("token", params.token);
   }, [params.token]);
   return (
-    <Modal
-      className="student-modal"
-      show={props.show}
-      centered
-      onHide={() => props.handleModal("emailVerify")}
-    >
-      <Modal.Header closeButton></Modal.Header>
+    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("emailVerify")}>
+      <Modal.Header closeButton>
+        <p
+          className="heading"
+          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+        >
+          Confirmer
+        </p>
+      </Modal.Header>
       <Modal.Body>
-        <div className="d-flex justify-content-between p-3 Connexion-container">
-          <div className="modal-left-side">
-            <div className="Login">
-              <div className="heading pb-5">Confirmer</div>
-              <form onSubmit={formik.handleSubmit}>
-                <div className="contact-form">
-                  <h3 style={{ marginBottom: "3rem" }}>
-                    {Texts.CLICK_BELOW_TO_VERIFY_EMAIL}
-                  </h3>
-                </div>
-
-                {store.loading ? (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Loading...."
-                    disabled={store.loading}
-                  />
-                ) : (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Confirmer"
-                    disabled={false}
-                  />
-                )}
-              </form>
+        {/* <div className="d-flex justify-content-between p-3 Connexion-container">
+          <div className="modal-left-side"> */}
+        <div className="Login">
+          <form onSubmit={formik.handleSubmit}>
+            <div className="contact-form">
+              <p style={{ marginBottom: "1rem", marginTop: "3rem", fontSize: "1.8rem" }}>{Texts.CLICK_BELOW_TO_VERIFY_EMAIL}</p>
             </div>
-          </div>
+
+            {store.loading ? (
+              <button className="modal-button modal-register-btn" type="submit" variant="primary" disabled={store.loading}>
+                Loading....
+              </button>
+            ) : (
+              <button className="modal-button modal-register-btn" type="submit" variant="primary" disabled={false}>
+                Confirmer
+              </button>
+            )}
+          </form>
         </div>
+        {/* </div>
+        </div> */}
       </Modal.Body>
     </Modal>
   );

@@ -26,56 +26,39 @@ export default function StudentRegister(props) {
     },
   });
   return (
-    <Modal
-      className="student-modal"
-      show={props.show}
-      centered
-      onHide={() => props.handleModal("reqforgotPassword")}
-    >
+    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("reqforgotPassword")}>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <div className="d-flex justify-content-between p-3">
-          <div className="modal-left-side">
-            <div className="Login">
-              <div className="heading pb-5">
-                Quel est votre adresse e-mail ?
-              </div>
-              <form onSubmit={formik.handleSubmit}>
-                <div>
-                  <ModalInput
-                    placeholder="Adresse mail"
-                    type="email"
-                    name="email"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                  />
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="formikError">{formik.errors.email}</div>
-                  ) : null}
-                </div>
-
-                {store.loading ? (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Loading...."
-                    disabled={store.loading}
-                  />
-                ) : (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="réinitialiser le mot de passe"
-                    disabled={false}
-                  />
-                )}
-              </form>
+        {/* <div className="d-flex justify-content-between p-3">
+          <div className="modal-left-side"> */}
+        <div className="Login">
+          <div className="heading pb-5">Quel est votre adresse e-mail ?</div>
+          <form onSubmit={formik.handleSubmit}>
+            <div>
+              <ModalInput
+                placeholder="Adresse mail"
+                type="email"
+                name="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
             </div>
-          </div>
+
+            {store.loading ? (
+              <button className="modal-button modal-register-btn" type="submit" disabled={store.loading}>
+                Loading....
+              </button>
+            ) : (
+              <button className="modal-button modal-register-btn" type="submit" disabled={false}>
+                Confirmer
+              </button>
+            )}
+          </form>
         </div>
+        {/* </div>
+        </div> */}
       </Modal.Body>
     </Modal>
   );

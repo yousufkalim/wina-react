@@ -6,7 +6,7 @@
     width: 100%;
     outline: none !important;
     border: none;
-    border-bottom: 1px solid #F7C40D;
+    border-bottom: 1px solid #DBE8FF;
     font-size: 1.2rem;
     padding-bottom: 5px;
 }
@@ -15,6 +15,6 @@
 .modal-input input:hover{
     outline: none !important;
     border: none;
-    border-bottom: 1px solid #F7C40D;
+    border-bottom: 1px solid #2B5AA6;
     font-size: 1.2rem;
 }

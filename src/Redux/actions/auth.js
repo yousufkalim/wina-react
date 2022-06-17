@@ -362,10 +362,10 @@ export const SocketNotifications = () => async (dispatch) => {
     dispatch(set_loading_data(true));
 
     const socket = io(baseUri, {
-      query: `userConnectionId=${user._id}`,
+      query: `userConnectionId=${user?._id}`,
     });
     if (socket) {
-      socket.on(`recieveNotification${user._id}`, (datas) => {
+      socket.on(`recieveNotification${user?._id}`, (datas) => {
         // setdata([...notificationsData, datas]);
         console.log(datas, "datas");
       });

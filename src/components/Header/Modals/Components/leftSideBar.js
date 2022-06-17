@@ -33,89 +33,69 @@ export default function Sidebar({
     googleLogin();
   };
   return (
-    <div className="modal-left-side">
-      <div className="Login">
-        <div className="heading pb-5">Connexion</div>
-        <form onSubmit={formik.handleSubmit}>
-          <div>
-            <ModalInput
-              placeholder="Adresse mail"
-              type="email"
-              name="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="formikError">{formik.errors.email}</div>
-            ) : null}
-          </div>
+    // <div className="modal-left-side">
+    <div className="Login" style={{ borderTop: "1px solid #DBE8FF" }}>
+      <form onSubmit={formik.handleSubmit} style={{ marginTop: "2rem" }}>
+        <div>
+          <ModalInput
+            placeholder="Adresse mail"
+            type="email"
+            name="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
+        </div>
 
-          <div className="my-4 pb-5">
-            <ModalInput
-              placeholder="Mot de passe"
-              type="password"
-              name="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="formikError">{formik.errors.password}</div>
-            ) : null}
-          </div>
-          <button
-            className="modal-button "
-            type="submit"
-            disabled={store.loading}
-          >
-            {store.loading ? "LOADING...." : "Se connecter"}
-          </button>
-          <div className="forgetpassword">
-            <a onClick={() => handleModal("reqforgotPassword")}>
-              {" "}
-              Mot de passe oublié ?
+        <div className="my-4 pb-2">
+          <ModalInput
+            placeholder="Mot de passe"
+            type="password"
+            name="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {formik.touched.password && formik.errors.password ? <div className="formikError">{formik.errors.password}</div> : null}
+        </div>
+        <button className="modal-button" type="submit" disabled={store.loading}>
+          {store.loading ? "LOADING...." : "Se connecter"}
+        </button>
+        <div className="forgetpassword mt-1" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ textAlign: "center" }}>
+            <p style={{ fontSize: "1.1rem", color: "#848D9F" }}>
+              Don't have account?{" "}
+              <a onClick={() => handleModal("main")} style={{ color: "#2B5AA6", fontWeight: "600" }}>
+                Register
+              </a>
+            </p>
+          </span>
+
+          <span>
+            <a onClick={() => handleModal("reqforgotPassword")}> Mot de passe oublié ?</a>
+          </span>
+        </div>
+      </form>
+      <div className="mt-3">
+        <div className="linkedinGoogleGroup">
+          <div className="w-100">
+            <a href={process.env.REACT_APP_URL + "/auth/linkedin"} className="modal-social-btn modal-facebook-btn">
+              <span>
+                <FaLinkedin className="modal-social-icon mr-2" />
+                <>Connect with LinkedIn</>
+              </span>
             </a>
-          </div>
-        </form>
-        <div className="mt-5">
-          <div className="linkedinGoogleGroup">
-            <div className="w-100 modal-social-buttons">
-              <a
-                href={process.env.REACT_APP_URL + "/auth/linkedin"}
-                className="modal-social-btn modal-facebook-btn"
-              >
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginLeft: "4rem",
-                  }}
-                >
-                  <>LinkedIn</>
-                  <FaLinkedin className="modal-social-icon" />
-                </span>
-              </a>
-              <a
-                href={process.env.REACT_APP_URL + "/auth/google"}
-                className="modal-social-btn-google modal-google-btn"
-              >
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <FcGoogle className="modal-social-icon-google mr-2" />
-                </span>
-                <>Google</>
-              </a>
-            </div>
+            <a href={process.env.REACT_APP_URL + "/auth/google"} className="modal-social-btn-google modal-google-btn">
+              <span>
+                <FcGoogle className="modal-social-icon-google mr-2 ml-0" />
+                <>Connect with Google</>
+              </span>
+            </a>
           </div>
         </div>
       </div>
     </div>
+    // </div>
   );
 }

@@ -14,16 +14,18 @@ const StudentLogin = (props) => {
   let dispatch = useDispatch();
 
   return (
-    <Modal
-      className="student-modal"
-      show={show}
-      centered
-      onHide={() => handleModal("main")}
-    >
-      <Modal.Header closeButton></Modal.Header>
+    <Modal className="student-modal" show={show} centered onHide={() => handleModal("main")}>
+      <Modal.Header closeButton>
+        <p
+          className="heading"
+          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+        >
+          S’inscrire
+        </p>
+      </Modal.Header>
       <Modal.Body>
-        <div className="d-flex justify-content-between p-3">
-          <LeftSidebar
+        {/* <div className="d-flex justify-content-between p-3"> */}
+        {/* <LeftSidebar
             ModalInput={ModalInput}
             dispatch={dispatch}
             useFormik={useFormik}
@@ -32,31 +34,35 @@ const StudentLogin = (props) => {
             login={login}
             useSelector={useSelector}
             handleModal={handleModal}
-          />
-          <div className="modal-right-side">
-            <div className="Register">
-              <div className="heading">S’inscrire</div>
-              <div className="modal-sub-heading ">ÉTUDIANT</div>
-              <div className="studentRegisterbtn">
-                <div
-                  className="modal-button"
-                  onClick={() => handleModal("student")}
-                >
-                  S’inscrire
-                </div>
-              </div>
-              <div className="modal-sub-heading">ENTREPRISE</div>
-              <div className="BUSINESSRegisterbtn">
-                <div
-                  className="modal-button"
-                  onClick={() => handleModal("company")}
-                >
-                  Société
-                </div>
-              </div>
+          /> */}
+        {/* <div className="modal-right-side"> */}
+        <div className="Register">
+          <div className="modal-sub-heading" style={{ borderTop: "1px solid #DBE8FF" }}>
+            ÉTUDIANT
+          </div>
+          <div className="studentRegisterbtn">
+            <div className="modal-button" onClick={() => handleModal("student")}>
+              S’inscrire
             </div>
           </div>
+          <div className="modal-sub-heading">ENTREPRISE</div>
+          <div className="BUSINESSRegisterbtn">
+            <div className="modal-button" onClick={() => handleModal("company")}>
+              Société
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
+            <p style={{ color: "#848D9F", fontSize: "1.2rem" }}>Already have an account?</p>
+            <p
+              style={{ color: "Black", fontSize: "1.2rem", fontWeight: "600", marginLeft: "4px", cursor: "pointer" }}
+              onClick={() => handleModal("login")}
+            >
+              Login
+            </p>
+          </div>
         </div>
+        {/* </div> */}
+        {/* </div> */}
       </Modal.Body>
     </Modal>
   );

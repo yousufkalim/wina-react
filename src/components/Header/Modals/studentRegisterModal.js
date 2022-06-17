@@ -28,7 +28,7 @@ const useStyle = makeStyles({
     },
 
     "& .MuiInput-underline:before": {
-      borderBottom: "1px solid #f7c40d",
+      borderBottom: "1px solid #DBE8FF",
     },
 
     "& .MuiAutocomplete-popupIndicator": {
@@ -39,7 +39,7 @@ const useStyle = makeStyles({
     //   color: "#2879d9"
     // },
     "& .MuiInput-underline:after": {
-      borderBottom: "1px solid #f7c40d",
+      borderBottom: "1px solid #2B5AA6 !important",
     },
     "& .MuiAutocomplete-inputRoot": {
       // borderBottom: "1px solid #f7c40d",
@@ -221,9 +221,7 @@ export default function StudentRegister(props) {
     delete axios.defaults.headers.common["x-auth-token"];
 
     let res = await axios.get(
-      "https://api-adresse.data.gouv.fr/search/?q=" +
-        e.target.value +
-        "&type=housenumber&autocomplete=1",
+      "https://api-adresse.data.gouv.fr/search/?q=" + e.target.value + "&type=housenumber&autocomplete=1",
       {
         withCredentials: false,
       }
@@ -238,11 +236,7 @@ export default function StudentRegister(props) {
       addressToSet.push({
         id: i,
         label: res?.data?.features[i].properties.label,
-        label2: `${
-          res?.data?.features[i].properties.label +
-          "," +
-          res?.data?.features[i].properties.context
-        }`,
+        label2: `${res?.data?.features[i].properties.label + "," + res?.data?.features[i].properties.context}`,
         city: res?.data?.features[i].properties.city,
         street: res?.data?.features[i].properties.name,
         PostalCode: res?.data?.features[i].properties.postcode,
@@ -300,16 +294,18 @@ export default function StudentRegister(props) {
     }
   };
   return (
-    <Modal
-      className="student-modal"
-      show={props.show}
-      centered
-      onHide={() => props.handleModal("student")}
-    >
-      <Modal.Header closeButton></Modal.Header>
+    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("student")}>
+      <Modal.Header closeButton>
+        <p
+          className="heading"
+          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+        >
+          S’inscrire - ETUDIANT
+        </p>
+      </Modal.Header>
       <Modal.Body>
-        <div className="d-flex justify-content-between p-3">
-          <LeftSidebar
+        {/* <div className="d-flex justify-content-between p-3"> */}
+        {/* <LeftSidebar
             ModalInput={ModalInput}
             dispatch={dispatch}
             useFormik={useFormik}
@@ -318,133 +314,117 @@ export default function StudentRegister(props) {
             login={login}
             useSelector={useSelector}
             handleModal={props.handleModal}
-          />
-          <div className="modal-right-side">
-            <div className="Register">
-              <div className="heading pb-5">S’inscrire</div>
-              <form onSubmit={formik.handleSubmit}>
-                <div>
-                  <ModalInput
-                    name="firstName"
-                    placeholder="Prénom"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.firstName}
-                    type="text"
-                    require={true}
-                  />
-                  {formik.touched.firstName && formik.errors.firstName ? (
-                    <div className="formikError">{formik.errors.firstName}</div>
-                  ) : null}
-                </div>
-                <div className="my-4">
-                  <ModalInput
-                    placeholder="Nom"
-                    name="lastName"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.lastName}
-                    type="text"
-                  />
-                  {formik.touched.lastName && formik.errors.lastName ? (
-                    <div className="formikError">{formik.errors.lastName}</div>
-                  ) : null}
-                </div>
-                <div className="my-4">
-                  <ModalInput
-                    placeholder="Adresse mail"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                  />
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="formikError">{formik.errors.email}</div>
-                  ) : null}
-                </div>
-                <div className="my-4">
-                  <ModalInput
-                    placeholder={Texts.ENTER_PASSWORD}
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.password}
-                  />
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className="formikError">{formik.errors.password}</div>
-                  ) : null}
-                </div>
-                <div className="my-4">
-                  <ModalInput
-                    placeholder={Texts.ENTER_CONFIRM_PASSWORD}
-                    type="password"
-                    name="confirm_password"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.confirm_password}
-                  />
-                  {formik.touched.confirm_password &&
-                  formik.errors.confirm_password ? (
-                    <div className="formikError">
-                      {formik.errors.confirm_password}
-                    </div>
-                  ) : null}
-                </div>
-                <div className="mt-4">
-                  <ModalInput
-                    placeholder="Numéro de téléphone"
-                    type="text"
-                    name="phone"
-                    onChange={handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.phone}
-                  />
-                  {formik.touched.phone && formik.errors.phone ? (
-                    <div className="formikError">{formik.errors.phone}</div>
-                  ) : null}
-                </div>
-                <div className="" style={{ marginTop: "-18px" }}>
-                  <Autocomplete
-                    options={values}
-                    clearOnEscape={true}
-                    // disableClearable
+          /> */}
+        <div className="Register" style={{ marginTop: "15px" }}>
+          <form onSubmit={formik.handleSubmit}>
+            <div>
+              <ModalInput
+                name="firstName"
+                placeholder="Prénom"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.firstName}
+                type="text"
+                require={true}
+              />
+              {formik.touched.firstName && formik.errors.firstName ? (
+                <div className="formikError">{formik.errors.firstName}</div>
+              ) : null}
+            </div>
+            <div className="my-4">
+              <ModalInput
+                placeholder="Nom"
+                name="lastName"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.lastName}
+                type="text"
+              />
+              {formik.touched.lastName && formik.errors.lastName ? (
+                <div className="formikError">{formik.errors.lastName}</div>
+              ) : null}
+            </div>
+            <div className="my-4">
+              <ModalInput
+                placeholder="Adresse mail"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
+            </div>
+            <div className="my-4">
+              <ModalInput
+                placeholder={Texts.ENTER_PASSWORD}
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="formikError">{formik.errors.password}</div>
+              ) : null}
+            </div>
+            <div className="my-4">
+              <ModalInput
+                placeholder={Texts.ENTER_CONFIRM_PASSWORD}
+                type="password"
+                name="confirm_password"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.confirm_password}
+              />
+              {formik.touched.confirm_password && formik.errors.confirm_password ? (
+                <div className="formikError">{formik.errors.confirm_password}</div>
+              ) : null}
+            </div>
+            <div className="mt-4">
+              <ModalInput
+                placeholder="Numéro de téléphone"
+                type="text"
+                name="phone"
+                onChange={handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.phone}
+              />
+              {formik.touched.phone && formik.errors.phone ? <div className="formikError">{formik.errors.phone}</div> : null}
+            </div>
+            <div className="" style={{ marginTop: "-18px" }}>
+              <Autocomplete
+                options={values}
+                clearOnEscape={true}
+                // disableClearable
+                className={classes.root}
+                noOptionsText={<div style={{ color: "black", fontSize: "12px" }}> aucune option </div>}
+                PaperComponent={({ children }) => <Paper style={{ background: "" }}>{children}</Paper>}
+                getOptionLabel={(option) => option.label2 || ""}
+                onChange={SetAddress}
+                // hiddenLabel="true"
+                // style={{
+                //   width: "91%",
+                //   margin: "auto",
+                // }}
+                renderInput={(params) => (
+                  <TextField
+                    InputProps={{ ...params.InputProps, type: "text" }}
                     className={classes.root}
-                    noOptionsText={
-                      <div style={{ color: "black", fontSize: "12px" }}>
-                        {" "}
-                        aucune option{" "}
-                      </div>
-                    }
-                    PaperComponent={({ children }) => (
-                      <Paper style={{ background: "" }}>{children}</Paper>
-                    )}
-                    getOptionLabel={(option) => option.label2 || ""}
-                    onChange={SetAddress}
-                    // hiddenLabel="true"
-                    // style={{
-                    //   width: "91%",
-                    //   margin: "auto",
-                    // }}
-                    renderInput={(params) => (
-                      <TextField
-                        InputProps={{ ...params.InputProps, type: "text" }}
-                        className={classes.root}
-                        {...params}
-                        margin="normal"
-                        // onBlur={onBlur}
-                        variant={"standard"}
-                        placeholder="Adresse"
-                        style={{ color: "white" }}
-                        onChange={getAllAdress}
-                        name="address"
-                        // value={address}
-                      />
-                    )}
+                    {...params}
+                    margin="normal"
+                    // onBlur={onBlur}
+                    variant={"standard"}
+                    placeholder="Adresse"
+                    style={{ color: "white" }}
+                    onChange={getAllAdress}
+                    name="address"
+                    // value={address}
                   />
-                  {/* {console.log(formData, "daatatatta")} */}
-                  {/* <AutoComplete
+                )}
+              />
+              {/* {console.log(formData, "daatatatta")} */}
+              {/* <AutoComplete
                     formik={formik}
                     onChange={handleAddressChange}
                     placeholder={Texts.userProfile}
@@ -463,18 +443,13 @@ export default function StudentRegister(props) {
                       {formik.errors.address.city}
                     </div>
                   ) : null} */}
-                </div>
-                <button
-                  className="modal-button modal-register-btn"
-                  type="submit"
-                  disabled={store.loading}
-                >
-                  {store.loading ? "Loading..." : "S’inscrire"}
-                </button>
-              </form>
             </div>
-          </div>
+            <button className="modal-button modal-register-btn" type="submit" disabled={store.loading}>
+              {store.loading ? "Loading..." : "S’inscrire"}
+            </button>
+          </form>
         </div>
+        {/* </div> */}
       </Modal.Body>
     </Modal>
   );
