@@ -31,15 +31,7 @@ body {
   display: inline-block;
   width: 80%;
 }
-.togather_hr {
-  background-color: #e0c399;
-  width: 64.7%;
-  height: 10px;
-  position: absolute;
-  top: 74%;
-  left: 17.7%;
-  z-index: -1;
-}
+
 .togetherP2 {
   font-size: 28px;
   font-weight: 500;
@@ -48,6 +40,13 @@ body {
 .together-secondDiv {
   display: flex;
   padding: 20px 0 50px 0;
+  align-items: center;
+}
+.togetherCol2 {
+  width: 50%;
+}
+.together_col_div {
+  width: 50%;
 }
 .togetherCol1 {
   width: 0;
@@ -67,11 +66,19 @@ body {
   height: 32px;
 }
 .chackP {
-  font-size: 2.3rem;
+  font-size: 20px;
   width: 90%;
+  color: #192349;
   margin-bottom: 35px;
-  padding-left: 47px;
+  padding-left: 24px;
   padding-right: 10px;
+}
+.togather_bost_img {
+  width: 100%;
+  height: 100%;
+}
+.chack_icons {
+  margin: -70px 0 0 0;
 }
 /* ///// Animation component//// */
 .animaitn_div {
@@ -81,66 +88,47 @@ body {
   width: 90%;
   margin: auto;
   display: flex;
+  justify-content: space-between;
+  border-bottom: 1.05859px solid #dfe1e6;
+  padding-bottom: 50px;
 }
 .animaiton_box {
   width: 25%;
   text-align: center;
 }
 .animationIMG {
-  width: 80%;
-  height: 45%;
+  width: 100%;
+  /* height: 45%; */
 }
 .animaitonH4 {
-  background-color: #192349;
-  color: #fff;
-  width: 80%;
-  height: 33%;
+  color: #19234a;
+  width: 100%;
   margin: auto;
-  padding: 46px 12px 77px 12px;
-  font-size: 1.3rem;
-  margin-top: -10px;
+  padding: 0px 12px 32px 12px;
+  font-size: 21px;
+  font-weight: 600;
 }
-.animaitonH42 {
-  background-color: #e0c399;
-  color: #fff;
-  width: 80%;
-  height: 33%;
-  margin: auto;
-  padding: 46px 12px 77px 12px;
-  font-size: 1.3rem;
-  margin-top: -10px;
-}
+
 .animBTN {
   border: 5px solid #fff;
-  background: #192349;
+  background: #e0c399;
   font-size: 3rem;
   border-radius: 50%;
-  width: 50px;
+  width: 51px;
   height: 50px;
   margin-top: -19px;
   padding-top: 1px;
-  color: #fff;
+  color: black;
   position: relative;
   top: -12px;
+  left: 119px;
 }
 .animBTN:focus {
   border: none;
   outline: none;
   border: 5px solid #fff;
 }
-.animBTN2 {
-  border: 5px solid #fff;
-  background: #e0c399;
-  font-size: 3rem;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-top: -19px;
-  padding-top: 1px;
-  color: #fff;
-  position: relative;
-  top: -12px;
-}
+
 .animBTN2:focus {
   border: none;
   outline: none;
@@ -152,21 +140,60 @@ body {
   top: 10px;
   left: 28%;
 }
+.animaiton_box {
+  width: 23%;
+  border-radius: 20.4441px;
+  box-shadow: 0px 15.6738px 47.703px -8.85912px rgba(0, 8, 40, 0.08);
+}
 
 /* Form component */
 .form {
   width: 100%;
   margin-bottom: 50px;
-  padding: 50px 0 100px 0;
+  padding: 50px 0 0px 0;
 }
 .form-container {
-  width: 60%;
+  width: 90%;
   margin: auto;
-  border: 1px solid gray;
+  box-shadow: 0px 45px 74px rgb(0 17 77 / 8%);
 }
 .form-inter-div {
-  width: 60%;
   margin: auto;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.contact_from_headings {
+  color: #fff;
+  padding-bottom: 3rem;
+}
+.contact_from {
+  width: 35%;
+  background: url("../../assets/FormBg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.contact_from_content_div2 {
+  width: 85%;
+  margin: auto;
+  padding: 6vw 0 0 1vw;
+}
+.contact_from_h2 {
+  font-size: 26px;
+  font-weight: 500;
+}
+.contact_from_p {
+  font-size: 17px;
+  font-weight: 400;
+  color: #a5b9d9;
+}
+.form_label {
+  font-size: 13px;
+  color: #999ab4;
+}
+.form_colmn_div {
+  width: 65%;
+  padding: 3vw;
 }
 .formH2 {
   width: 100%;
@@ -179,20 +206,30 @@ body {
   margin-top: 50px;
 }
 .formInput {
-  width: 100%;
-  border: 1px solid #e0c399;
-  padding: 8px 15px;
-  margin-bottom: 30px;
-}
-.formBTN {
-  background-color: #e0c399;
   border: none;
-  padding: 10px 50px;
-  margin-bottom: 60px;
+  width: 100%;
+  border-bottom: 1px solid #e0c399;
+  padding: 5px 0px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.formBTN {
+  background-color: #2b5aa6;
+  border: none;
+  padding: 15px 30px;
   color: #fff;
+  box-shadow: 0px 13px 18px rgba(0, 35, 91, 0.15);
+  border-radius: 10px;
+  margin-left: auto;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
 }
 .togetherPera {
   display: flex;
+  padding-bottom: 15px;
 }
 @media only screen and (max-width: 600px) {
   .togather {
