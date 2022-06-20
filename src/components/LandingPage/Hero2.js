@@ -19,20 +19,16 @@ const Hero2 = (props) => {
               <div className="home_section_content">
                 <p className="find_p">
                   <img src={FindStar} alt="" className="find_star" />
-                  find/match your dream jobs
+                  &nbsp; find/match your dream jobs
                 </p>
                 <h1 className="home_seciton_h1">
                   MATCHER & <br />
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi
-                  sollicitudin a eros sed cured ed sus.{" "}
+                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
                 </p>
-                <button
-                  className="home_section_btn"
-                  onClick={() => handleModal("student")}
-                >
+                <button className="home_section_btn" onClick={() => handleModal("student")}>
                   Creer mon profil etudiant
                 </button>
               </div>

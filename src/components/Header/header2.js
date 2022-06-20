@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav, Image } from "react-bootstrap";
 import "../../components/Header/Style.css";
 import StudentRegister from "./Modals/studentRegisterModal";
@@ -31,10 +31,10 @@ export default function header2(props) {
             <Nav.Link className="navbar-left-link" href="/cfa">
               CFA
             </Nav.Link>
-            <Nav.Link className="navbar-left-link" href="">
+            <Nav.Link className="navbar-left-link" href="/">
               Tarifs
             </Nav.Link>
-            <Nav.Link className="navbar-left-link" href="">
+            <Nav.Link className="navbar-left-link" href="/">
               Assistance
             </Nav.Link>
             {/* <div class="dropdown">
