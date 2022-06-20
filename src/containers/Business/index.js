@@ -10,11 +10,6 @@ import Simplified from "../../components/LandingPage/Simplified";
 import Accompagnement from "../../components/LandingPage/Accompagnement";
 import Footer from "../../components/Footer";
 import Heroimg from "../../assets/Heroimg.png";
-// import BusImg1 from "../../assets/BusImg1.png";
-// import BusImg2 from "../../assets/BusImg2.png";
-// import BusImg3 from "../../assets/BusImg3.png";
-// import BusImg4 from "../../assets/BusImg4.png";
-
 import Formsimg from "../../assets/Formsimg.png";
 import Speechimg from "../../assets/Speechimg.png";
 import Supportimg from "../../assets/Supportimg.png";
@@ -39,13 +34,7 @@ const Index = (props) => {
         btno="Créer mon profil  entreprise"
       />
       <Accompagnement />
-      {/* <Booste
-        srcImg={BusImg1}
-        text="Facilitez votre recrutement avec Winaa"
-        text2=" Des profils adaptés à vos recherches "
-        text3=" Winaa vous donne accès à des profils opérationnels qui correspondent à vos critères de recherche préalablement renseignés.Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité. "
-      
-      /> */}
+
       <Booste
         srcImg={Boostimg11}
         text="How It Works"
