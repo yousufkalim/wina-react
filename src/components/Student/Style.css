@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish:ital@1&family=Raleway:wght@400;500;600;700&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 body {
   box-sizing: border-box;
@@ -17,19 +18,25 @@ body {
   text-align: center;
   margin-bottom: 15px;
 }
+.application-container {
+  width: 100%;
+}
 .application-heading {
-  margin-top: 50px;
-  margin-bottom: 76px;
+  padding-top: 7%;
+  padding-bottom: 7%;
   position: relative;
+  background-color: #21335f;
+  color: #fff;
 }
 .applicationH1 {
   font-weight: 600;
   font-size: 4rem;
 }
 .applicationP {
-  font-size: 39px;
+  font-size: 36px;
   font-weight: 500;
   display: inline-block;
+  color: #b0b8ce;
 }
 .application_hr {
   background-color: #e0c399;
@@ -43,32 +50,36 @@ body {
 .application-heading-2 {
   width: 50%;
   margin: auto;
+  padding: 35px 0 15px 0;
 }
 .applicationH12 {
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 42px;
 }
 .applicationBTN {
   border: 2px solid #192349;
   background: none;
   padding: 8px 53px;
-  border-radius: 20px;
-  margin: 30px 4% 0px 15%;
-  color: #192349 !important;
-  font-weight: 600;
+  border-radius: 80px;
+  margin: 6px 3% 0px 0;
+  color: black !important;
+  font-weight: 500;
+  font-size: 28px;
 }
 .applicationBTN2 {
   border: 2px solid #192349;
   background-color: #192349;
   padding: 8px 41px;
-  border-radius: 20px;
-  font-weight: 600;
+  border-radius: 80px;
+  font-weight: 500;
   color: #fff;
+  font-size: 28px;
 }
 .applicationP2 {
   display: inline;
   font-weight: 600;
   margin-left: 26px;
+  color: #e1c398;
 }
 /* //////////// Pack component ///////////// */
 .Pack {
@@ -83,51 +94,77 @@ body {
 }
 .pack-col1 {
   border: 1px solid #d7d3d3;
-  width: 45%;
+  width: 48%;
+  border-radius: 38px;
+  position: relative;
 }
 .boxHeading {
-  background-color: #192349;
-  color: #fff;
+  border-bottom: 1.74725px solid #e9ebf4;
+  color: black;
+  text-align: center;
+  padding: 4% 35px 3% 6%;
+  display: flex;
+  /* align-items: center; */
+}
+.pack_box_img {
+  margin-right: 33px;
+}
+/* .boxHeading {
+  border-bottom: 1.74725px solid #e9ebf4;
+  color: black;
   text-align: center;
   padding: 10px 0;
-}
-.boxHeading2 {
-  background-color: #e0c399;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-}
+} */
 .packH1 {
   font-weight: 600;
   font-size: 3.5rem;
 }
 .packH3 {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 28px;
+}
+.packH32 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.packH33 {
+  color: #67707e;
+  font-size: 24px;
 }
 .liHeading {
   padding: 27px 40px 0px 50px;
-  margin-bottom: 200px;
+  margin-bottom: 110px;
 }
 .liHeading2 {
   padding: 27px 40px 0px 50px;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 .liPack {
-  font-size: 26px;
-  margin-bottom: 22px;
+  font-size: 24px;
+  margin-bottom: 0;
+  line-height: 25px;
+  list-style: none;
+  margin-left: 30px;
 }
 .packBTN,
 .packBTN2 {
-  display: block;
+  width: 83%;
   margin: auto;
   border: 1px solid #192349;
   background-color: #192349;
-  padding: 8px 41px;
-  border-radius: 20px;
+  padding: 27px 94px;
   margin-bottom: 25px;
   color: #fff;
   font-weight: 600;
+  font-size: 32px;
+  box-shadow: 0px 57px 100px -28px rgb(0 10 49 / 10%);
+  border-radius: 13.3013px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 9%;
 }
 .PackBTNn2 {
   margin-top: 0px !important;
@@ -136,8 +173,25 @@ body {
   background-color: #e0c399;
   border: 1px solid #e0c399;
 }
+.btn_pack_arrow {
+  margin-left: 10%;
+}
 .mb-100 {
   margin-bottom: 100px;
+}
+.liHeading {
+  display: flex;
+}
+.check_check {
+  display: inline;
+}
+.pack_li_div {
+  display: flex;
+  align-items: center;
+  padding: 0 0 34px 0;
+}
+.packbox {
+  margin: 0 0 22% 0;
 }
 @media only screen and (max-width: 600px) {
   .applicationH1 {

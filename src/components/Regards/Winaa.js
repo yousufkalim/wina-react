@@ -5,11 +5,11 @@ const Winaa = (props) => {
   return (
     <>
       <div className="winaa">
-        <h1 className="winaH1">{props.heading}</h1>
         <div className="wina-container">
           <div className="wina-col1">
             <div className="winaLogo">
               <img className="winaImg" src={props.img} alt="" />
+              <h1 className="winaH1">{props.heading}</h1>
             </div>
           </div>
           <div className="wina-col2">
@@ -19,6 +19,8 @@ const Winaa = (props) => {
                 <p className="winaPera">{props.text2}</p>
                 <p className="winaPera">{props.text3}</p>
                 <p className="winaPera">{props.text4}</p>
+                <p className="winaPera">{props.text5}</p>
+                <p className="winaPera">{props.text6}</p>
               </div>
             </div>
           </div>

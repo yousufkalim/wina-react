@@ -3,6 +3,7 @@ import HomeHeader2 from "../../components/Header";
 import Application from "../../components/Student/Application";
 import Pack from "../../components/Student/Pack";
 import Footer from "../../components/Footer";
+import CheckCheck from "../../assets/CheckCheck.svg";
 const index = (props) => {
   return (
     <div>
@@ -11,12 +12,16 @@ const index = (props) => {
         token={props.match.params.token}
         header="2"
       />
-      <Application btnT="Annuel" text="Nos Packs entreprises" />
+      <Application btnT="Annuel" text="Nos packs Entreprises" />
       <Pack
+        img={CheckCheck}
+        img2={CheckCheck}
         addUpperMargin={true}
-        texth1="Pack Recrutement"
-        texth3="29,99€ / mois"
-        texth4="99,99€ / mois"
+        texth3="Matchez Recrutez "
+        texth32="29,99 "
+        texth33=" monthly subscription"
+        xth1="Recrutement & Conseil"
+        texth4="99,99"
         liPack="Recrutement facilité avec des soft skills et hard skills ciblées"
         liPack2="Accès à la plateforme Web avec un Tableau de bord intuitif et design"
         liPack3="Matching des profils potentiels sur l’application"
@@ -29,6 +34,7 @@ const index = (props) => {
         pliPack4="Accès à l’application pour maîtriser en 3 clics la gestion des candidatures"
         pliPack5="Accompagnement dans les démarches administratives et légales ( création du CERFA, le processus à suivre pour le dépôt des contrats, etc)"
         pliPack6="Conseil en optimisation de recrutement "
+        pliPack7="Accès à l’application pour maîtriser  en 3 clicks la gestion des candidatures "
         PackBTNn2={true}
       />
       <Footer />

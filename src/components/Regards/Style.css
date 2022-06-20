@@ -12,15 +12,31 @@ body {
 .winaa {
   width: 100%;
   text-align: center;
-  padding: 50px 0 50px 0;
+  /* padding: 50px 0 50px 0; */
+  color: #fff;
 }
 .wina-container {
-  display: flex;
+  background: url("../../assets/RegardsBG.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   align-items: center;
-  width: 95%;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  /* height: 60vh; */
+}
+.wina-container2 {
+  background: url("../../assets/Aboutimg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  width: 100%;
   text-align: center;
   margin: auto;
   height: 60vh;
+  position: relative;
 }
 .wina-text-container {
   overflow: scroll;
@@ -28,26 +44,33 @@ body {
 }
 .winaH1 {
   font-weight: 600;
-  font-size: 4.4rem;
-  margin-bottom: 50px;
+  font-size: 42px;
+  padding: 6px 0;
 }
 .wina-col1 {
-  width: 40%;
+  width: 100%;
 }
 .winaLogo {
   width: 80%;
   margin: auto;
+  padding: 5vw 0 0 0;
+}
+.winaLogo2 {
+  width: 80%;
+  margin: auto;
+  padding: 1vw 0 0 0;
 }
 .winaImg {
-  width: 100%;
+  /* width: 100%; */
 }
 .wina-col2 {
-  width: 53%;
+  width: 100%;
 }
 .winatext_container {
-  overflow: scroll;
-  height: 60vh;
-  padding-top: 15px;
+  padding: 0 0 77px 0;
+}
+.winatext_container2 {
+  padding: 0 0 20px 0;
 }
 .winaTaxt {
   display: flex;
@@ -55,10 +78,20 @@ body {
   justify-content: center;
 }
 .winaPera {
-  font-size: 2.2rem;
-  line-height: 1.2;
-  overflow: hidden;
-  margin-bottom: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #b0b8ce;
+  font-weight: 400;
+}
+.windaa2_about {
+  background-color: #21335f;
+  width: 90%;
+  margin: auto;
+  position: absolute;
+  bottom: -77px;
+  left: 5%;
+  padding: 0 4%;
+  line-height: 2px;
 }
 /* ///////////// Services /////////// */
 .Services {
@@ -74,6 +107,8 @@ body {
 .Services-container {
   width: 90%;
   margin: auto;
+  border-bottom: 1.05859px solid #dfe1e6;
+  padding-bottom: 63px;
 }
 .ServicesHeading {
   padding: 22px 10px;
@@ -132,19 +167,19 @@ body {
   font-weight: 300;
 }
 .ServicesBTN {
-  background-color: #192349;
-  font-size: 400;
+  color: #2b5aa6 !important;
+  border-radius: 10px;
+  border: 2px solid #2b5aa6 !important;
   margin-top: 20px;
-  border: none;
+  font-size: 400;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 20px;
   font-weight: 600;
 }
 /* ///////contract///////////// */
 .Services2 {
-  background-color: #fff;
-  padding: 65px 0 0 0;
+  background-color: #f8f8f8;
+  padding: 0px 0 0 0;
 }
 .ServicesH12 {
   font-size: 4.2rem;
