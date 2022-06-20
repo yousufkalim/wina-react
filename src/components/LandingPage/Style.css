@@ -110,6 +110,7 @@ p {
   font-size: 1.2vw;
   text-align: center;
   color: #7e8a94;
+  margin-bottom: 5rem;
 }
 .boostH3 {
   font-size: 2vw;
@@ -120,7 +121,7 @@ p {
 }
 
 .boostP {
-  font-size: 1.5vw;
+  font-size: 1.4vw;
   color: #ababbb;
   margin: 0;
   font-weight: 400;
@@ -161,6 +162,10 @@ p {
 }
 .boostGImg {
   width: 100%;
+border: 1px solid #FFFFFF;
+box-shadow :0px 51.871px 93.1561px rgba(8, 0, 54, 0.1);
+border-radius: 5.29296px;
+/* transform: matrix(-1, 0, 0, 1, 0, 0); */
 }
 .boost1 {
   width: 100%;
@@ -371,10 +376,14 @@ p {
 .home_seciton_h1 {
   font-size: 3vw;
   padding: 1vw 0vw;
+  font-weight: 600;
+  color:  #192646;
 }
 .home_seciton_p {
   font-size: 1.5vw;
   padding-bottom: 1vw;
+  color: #192646;
+  font-weight: 400;
 }
 .home_section_btn {
   background: #2b5aa6;
@@ -382,7 +391,7 @@ p {
   border-radius: 10px;
   color: #fff;
   border: none;
-  padding: 0.5vw 0.7vw;
+  padding: 0.9vw 0.8vw;
 }
 /* Accompagnement   */
 .Accompagnement_centerDiv {
@@ -391,9 +400,11 @@ p {
   text-align: center;
 }
 .Accompagnement_content {
-  padding: 3vw 0 2.5vw 0;
+  padding: 5vw 0 2.5vw 0;
+  margin-bottom: 10px;
 }
 .Accompagnement_avac {
+  margin-top: 5rem;
   color: #e0c399;
   font-size: 1.2vw;
   text-align: center;

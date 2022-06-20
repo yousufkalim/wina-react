@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../../components/LandingPage/Style.css";
-// import CompanyRegister from "../../components/Header/Modals/companyRegisterModal";
-import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
+import CompanyRegister from "../../components/Header/Modals/companyRegisterModal";
 import HomeImage from "../../assets/HomeImage.svg";
+import FindStar from "../../assets/FindStar.svg";
 
 const Hero = (props) => {
   const [studentModal, setstudentModal] = useState(false);
@@ -19,22 +19,18 @@ const Hero = (props) => {
             <div className="home_section_colmn">
               <div className="home_section_content">
                 <p className="find_p">
-                  <img src={props.srcImg3} alt="" className="find_star" />
-                  find/match your dream jobs
+                  <img src={FindStar} alt="" />
+                  &nbsp; find/match your dream jobs
                 </p>
                 <h1 className="home_seciton_h1">
                   MATCHER & <br />
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi
-                  sollicitudin a eros sed cured ed sus.{" "}
+                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
                 </p>
-                <button
-                  className="home_section_btn"
-                  onClick={() => handleModal("student")}
-                >
-                  Creer mon profil etudiant
+                <button className="home_section_btn" onClick={() => handleModal("company")}>
+                  Creer mon profil entreprise
                 </button>
               </div>
             </div>
@@ -58,7 +54,7 @@ const Hero = (props) => {
           </div> */}
         </div>
         {/* <CompanyRegister show={studentModal} handleModal={handleModal} /> */}
-        <StudentRegister show={studentModal} handleModal={handleModal} />
+        <CompanyRegister show={studentModal} handleModal={handleModal} />
       </div>
     </div>
   );
