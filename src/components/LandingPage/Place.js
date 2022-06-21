@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
 
 const Place = (props) => {
   return (
@@ -15,7 +16,7 @@ const Place = (props) => {
               </div>
               <p className="boostP">{props.text2}</p>
               <a href="#" className="reed_more">
-                Read more &nbsp; &#5171;
+                Read more &nbsp; <ArrowFront />
               </a>
               {/* <p className="boostP">{props.text4}</p>
               <p className="boostP">{props.text5}</p> */}

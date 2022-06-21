@@ -7,7 +7,7 @@ import Place from "../../components/LandingPage/Place";
 import Recruited from "../../components/LandingPage/Recruited";
 import Specialized from "../../components/LandingPage/Specialized";
 import Simplified from "../../components/LandingPage/Simplified";
-import Accompagnement from "../../components/LandingPage/Accompagnement";
+import Accompagnement2 from "../../components/LandingPage/Accompagnement2";
 import Footer from "../../components/Footer";
 import FindStar from "../../assets/FindStar.svg";
 import Boostimg from "../../assets/Boostimg.jpg";
@@ -24,18 +24,14 @@ import Supportimg from "../../assets/Supportimg.png";
 const Index = (props) => {
   return (
     <>
-      <HomeHeader2
-        id={props.match.params.id}
-        token={props.match.params.token}
-        header="2"
-      />
+      <HomeHeader2 id={props.match.params.id} token={props.match.params.token} header="2" />
       <Hero2
         srcImg3={FindStar}
         // srcImg={Heroimg}
         // h2text="Matching.Echange.Recrutement"
         // btn="Créer mon profil étudiant"
       />
-      <Accompagnement />
+      <Accompagnement2 />
       <Booste
         srcImg={Boostimg}
         text="How It Works"

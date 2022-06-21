@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import "../../components/LandingPage/Style.css";
 
 const Recruited = (props) => {

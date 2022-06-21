@@ -1,6 +1,9 @@
 import React from "react";
 import Dotted2 from "../../assets/Dotted2.svg";
+import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
 import "../../components/LandingPage/Style.css";
+
+
 const Perfect = (props) => {
   return (
     <>
@@ -13,7 +16,7 @@ const Perfect = (props) => {
               </div>
               <p className="boostP">{props.text2}</p>
               <a href="#" className="reed_more">
-                Read more &nbsp; &#5171;
+                Read more &nbsp; <ArrowFront />
               </a>
             </div>
             <div className="boost_col1">
