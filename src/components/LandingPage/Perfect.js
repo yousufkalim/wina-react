@@ -1,7 +1,9 @@
 import React from "react";
+import Dotted2 from "../../assets/Dotted2.svg";
 import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
-
 import "../../components/LandingPage/Style.css";
+
+
 const Perfect = (props) => {
   return (
     <>
@@ -19,6 +21,7 @@ const Perfect = (props) => {
             </div>
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />
+              <img src={Dotted2} alt="" className="dotted_line2" />
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@ body {
   padding-left: 26px;
   padding-right: 13px;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .AboutText {
   width: 100%;
@@ -52,17 +53,16 @@ body {
 }
 @media only screen and (max-width: 600px) {
   .togather2 {
-    margin-top: 60%;
+    margin-top: 32%;
   }
   .togetherP2 {
-    font-size: 13px;
-    width: 100%;
-    font-weight: 600;
+    font-size: 20px;
     margin-bottom: 22px;
   }
   .together-secondDiv2 {
     width: 100%;
     padding: 0 0 25px 0;
+    flex-direction: column;
   }
   .chackP2 {
     font-size: 16px;
@@ -70,64 +70,102 @@ body {
     padding-left: 16px;
   }
   .AboutText-container {
-    padding-bottom: 0;
+    padding-bottom: 40px;
   }
   .winatext_container {
     overflow: scroll;
     height: 42vh;
   }
-  .togather_hr2 {
-    width: 80.7%;
-    height: 6px;
-    top: 10%;
-    left: 10%;
+  .together-secondDiv {
+    flex-direction: column;
+  }
+  .togetherCol2 {
+    width: 100%;
+    margin: 45px 0;
+  }
+  .together_col_div {
+    width: 95%;
+  }
+  .togetherCol22 {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 800px) {
   .togather2 {
-    margin-top: 34%;
+    margin-top: 15%;
   }
   .togetherP2 {
-    font-size: 16px;
-    width: 100%;
-    font-weight: 600;
-    margin-bottom: 22px;
+    font-size: 25px;
+    margin-bottom: 0;
   }
   .together-secondDiv2 {
     width: 100%;
     padding: 0 0 25px 0;
+    flex-direction: column;
   }
   .chackP2 {
-    font-size: 17px;
-    margin-bottom: 18px;
-    margin-left: 9px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-left: 16px;
   }
   .AboutText-container {
-    padding-bottom: 0;
+    padding-bottom: 40px;
   }
   .winatext_container {
     overflow: scroll;
-    height: 45vh;
+    height: 42vh;
   }
-  .togather_hr2 {
-    width: 56.7%;
-    height: 7px;
-    top: 12%;
-    left: 21.7%;
+  .together-secondDiv {
+    flex-direction: column;
   }
-  .togather_hr2 {
-    width: 56.7%;
-    height: 7px;
-    top: 12%;
-    left: 21.7%;
+  .togetherCol2 {
+    width: 100%;
+    margin: 45px 0;
+  }
+  .together_col_div {
+    width: 95%;
+  }
+  .togetherCol22 {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
-  .togather_hr2 {
-    width: 80.7%;
-    height: 10px;
-    top: 32%;
-    left: 10%;
+  .togather2 {
+    margin-top: 15%;
+  }
+  .togetherP2 {
+    font-size: 25px;
+    margin-bottom: 0;
+  }
+  .together-secondDiv2 {
+    width: 100%;
+    padding: 0 0 25px 0;
+    flex-direction: column;
+  }
+  .chackP2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-left: 16px;
+  }
+  .AboutText-container {
+    padding-bottom: 40px;
+  }
+  .winatext_container {
+    overflow: scroll;
+    height: 42vh;
+  }
+  .together-secondDiv {
+    flex-direction: column;
+  }
+  .togetherCol2 {
+    width: 100%;
+    margin: 45px 0;
+  }
+  .together_col_div {
+    width: 95%;
+  }
+  .togetherCol22 {
+    width: 100%;
   }
 }
 

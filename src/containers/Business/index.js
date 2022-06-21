@@ -17,7 +17,7 @@ import Cgv from "../../assets/Cgv.png";
 import Boostimg11 from "../../assets/Boostimg11.jpg";
 import Boostimg22 from "../../assets/Boostimg22.jpg";
 import Boostimg3 from "../../assets/Boostimg3.jpg";
-import Boostimg44 from "../../assets/Boostimg44.svg";
+import Boostimg44 from "../../assets/Boostimg44.jpg";
 
 const Index = (props) => {
   return (
