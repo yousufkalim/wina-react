@@ -18,18 +18,16 @@ const Accompagnement = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">CV</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam mollis augue.
                 </p>
               </div>
             </div>
             <div className="Accompagnement_colmn">
-              <div className="Accompagnement_card2">
+              <div className="Accompagnement_card">
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Coaching</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam mollis augue.
                 </p>
               </div>
             </div>
@@ -38,8 +36,7 @@ const Accompagnement = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Matching</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam mollis augue.
                 </p>
               </div>
             </div>

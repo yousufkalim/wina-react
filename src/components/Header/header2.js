@@ -13,7 +13,7 @@ export default function header2(props) {
       className="homeNavBar"
       style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
     >
-      <div>
+      <div style={{ marginLeft: "1rem" }}>
         <Navbar.Brand href="/landing_page">
           <Image src="../images/logoWinaA-r.png" alt="logo" className="navbar-image" />
         </Navbar.Brand>
@@ -47,7 +47,7 @@ export default function header2(props) {
           </Nav>
         </Navbar.Collapse>
       </div>
-      <div>
+      <div style={{ marginRight: "2rem" }}>
         <Navbar.Collapse>
           <Nav>
             <Nav.Link className=" navbar-right-link navbar-right-link2" onClick={() => handleModal("login")}>

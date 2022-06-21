@@ -1,5 +1,6 @@
 import React from "react";
 import "../../components/LandingPage/Style.css";
+import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
 
 const Booste = (props) => {
   return (
@@ -25,7 +26,8 @@ const Booste = (props) => {
               </div>
               <p className="boostP">{props.text3}</p>
               <a href="#" className="reed_more">
-                Read more &nbsp; &#5171;
+                Read more &nbsp;
+                <ArrowFront />
               </a>
               {/* <p className="boostP2">{props.text4}</p> */}
             </div>
