@@ -40,7 +40,7 @@ body {
 }
 .together-secondDiv {
   display: flex;
-  padding: 20px 0 50px 0;
+  padding: 20px 0 70px 0;
   align-items: center;
 }
 .togetherCol2 {
@@ -73,9 +73,10 @@ body {
   font-size: 20px;
   width: 90%;
   color: #192349;
-  margin-bottom: 35px;
+  margin-bottom: 33px;
   padding-left: 24px;
-  padding-right: 10px;
+  padding-right: 8%;
+  font-weight: 600;
 }
 .togather_bost_img {
   width: 100%;

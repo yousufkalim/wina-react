@@ -123,7 +123,7 @@ p {
 }
 .boostH3 {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 20px;
   display: inline-block;
@@ -167,7 +167,7 @@ p {
 }
 .reed_more {
   color: #192349;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 21px;
   padding: 2vw 0;
   display: block;
@@ -293,6 +293,7 @@ p {
   background-color: #f9f9fb;
   margin: 5vw 5vw;
   text-align: center;
+  border-radius: 15px;
 }
 .simp_content {
   padding: 2vw 0;
@@ -313,12 +314,12 @@ p {
 .email_input {
   color: #fff;
   border: none;
-  padding: 10px;
+  padding: 15px;
   width: 25vw;
 }
 .simp_btn {
   background-color: #2b5aa6;
-  padding: 10px 20px;
+  padding: 15px 20px;
   color: #fff;
   border: none;
   border-top-right-radius: 5px;
@@ -393,7 +394,7 @@ p {
 }
 .home_section_image {
   width: 100%;
-  height: 104%;
+  height: 100%;
 }
 .home_section_content {
   width: 30vw;
@@ -455,11 +456,11 @@ p {
   width: 28%;
 }
 .Accompagnement_card {
-  width: 75%;
+  width: 80%;
   margin: auto;
   padding: 1vw 2vw;
   transition: 0.5s;
-border-radius: 24.1257px;
+  border-radius: 24.1257px;
 }
 .Accompagnement_card:hover {
   border: 0.804191px solid rgba(0, 0, 0, 0.05);
@@ -477,8 +478,9 @@ border-radius: 24.1257px;
   padding-bottom: 2vw;
   padding-top: 1vw;
 }
+
 .footerPera {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
 }
 .winaa_foot_icons {

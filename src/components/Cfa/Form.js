@@ -114,7 +114,7 @@ const Form = () => {
                   value={forms.textArea}
                   id=""
                   cols="30"
-                  rows="2"
+                  rows="3"
                 ></textarea>
                 <button className="formBTN">Send Message</button>
               </form>
