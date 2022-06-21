@@ -18,12 +18,18 @@ const useStyles = makeStyles({
       fontSize: "1.375rem",
     },
   },
+  label: {
+    fontSize: "1.1rem",
+    color: "#192646",
+    fontWeight: 400,
+  },
 });
 
 const CustomTextField = (props) => {
   const classes = useStyles();
   return (
     <>
+        <label className={`text-left ${classes.label}`}>{props.Label}</label>
       <TextField
         className={classes.root}
         id="outlined-basic"

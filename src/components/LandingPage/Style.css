@@ -94,7 +94,7 @@ p {
   background-color: #2b5aa6;
   color: #fff;
   border: none;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px 30px;
   margin-bottom: 80px;
   border-radius: 10px;
@@ -436,11 +436,11 @@ p {
 .Accompagnement_avac {
   margin-top: 5rem;
   color: #e0c399;
-  font-size: 22px;
+  font-size: 25px;
   text-align: center;
 }
 .Accompagnement_h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 600;
 }
 .Accompagnement_colmn_mainDiv {
@@ -462,8 +462,8 @@ p {
 border-radius: 24.1257px;
 }
 .Accompagnement_card:hover {
-  border: 0.804191px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0px 18.4964px 56.2934px -10.4545px rgba(0, 8, 40, 0.08);
+  border: 0.804191px solid rgba(99, 98, 98, 0.08);
+  box-shadow: 0px 18.4964px 56.2934px -10.4545px rgba(0, 6, 29, 0.08);
   transform: scale(1.2);
 }
 

@@ -28,15 +28,22 @@ function getStyles(name, personName, theme) {
 }
 
 const useStyles = makeStyles((theme) => ({
+  label: {
+    fontSize: "1.1rem",
+    color: "#192646",
+    fontWeight: 400,
+  },
   formControl: {
     // margin: theme.spacing(1),
     width: "100%",
     border: "none",
     "& .MuiSelect-selectMenu": {
-      borderRadius: "3.4rem",
+      background: "rgb(219, 232, 255,0.3) !important",
+      borderRadius: "5px",
+      border: "0px solid rgb(219, 232, 255,0.3) !important",
     },
     "& .MuiSelect-select:focus": {
-      background: "transparent",
+      background: "#DBE8FF",
     },
     "& .MuiOutlinedInput-root": {
       borderRadius: "5px",
@@ -86,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.375rem",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "rgba(0, 11, 38, 0.1)",
+      borderColor: "transparent",
     },
   },
   formControlGrey: {
@@ -160,6 +167,8 @@ export default function ControlledOpenSelect(props) {
     setOpen(true);
   };
   if (props.type && props.type === "skills") {
+    console.log("props.type ======>", props.type);
+
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
@@ -194,6 +203,7 @@ export default function ControlledOpenSelect(props) {
       </>
     );
   } else if (props.type && props.type === "appointment") {
+    console.log("props.type ======>", props.type);
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
@@ -230,8 +240,9 @@ export default function ControlledOpenSelect(props) {
   } else
     return (
       <>
+        {console.log("========>Other")}
         <FormControl fullWidth className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <label className={`text-left ${classes.label}`}>{props.Label}</label>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"

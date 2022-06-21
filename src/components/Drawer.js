@@ -78,25 +78,37 @@ const Drawer = () => {
             <img src={arrowUp1 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
           </div>
           <div style={{ display: !open1 && "none" }}>
-            <div className="dashbord-column">
+            <div
+              className="dashbord-column"
+              style={{ borderLeft: selected === "GeneralInformations" ? "4px solid #18214A" : "" }}
+            >
               <div
                 onClick={() => handleClick("GeneralInformations")}
                 className={selected === "GeneralInformations" ? "selected_option" : "not_selected_option"}
               >
                 Informations Générales
               </div>
+            </div>
+            <div
+              className="dashbord-column"
+              style={{ borderLeft: selected === "ProfessionalProfile" ? "4px solid #18214A" : "" }}
+            >
               <div
                 onClick={() => handleClick("ProfessionalProfile")}
                 className={selected === "ProfessionalProfile" ? "selected_option" : "not_selected_option"}
               >
                 Profil Professionnel
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "Skills" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("Skills")}
                 className={selected === "Skills" ? "selected_option" : "not_selected_option"}
               >
                 Compétences
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "ResearchedJob" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("ResearchedJob")}
                 className={selected === "ResearchedJob" ? "selected_option" : "not_selected_option"}
@@ -121,13 +133,15 @@ const Drawer = () => {
             <img src={arrowUp2 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
           </div>
           <div style={{ display: !open2 && "none" }}>
-            <div className="dashbord-column">
+            <div className="dashbord-column" style={{ borderLeft: selected === "ViewOffers" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("ViewOffers")}
                 className={selected === "ViewOffers" ? "selected_option" : "not_selected_option"}
               >
                 Suivi de mes candidatures
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "MatchResearch" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("MatchResearch")}
                 className={selected === "MatchResearch" ? "selected_option" : "not_selected_option"}
@@ -152,13 +166,15 @@ const Drawer = () => {
             <img src={arrowUp3 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
           </div>
           <div style={{ display: !open3 && "none" }}>
-            <div className="dashbord-column">
+            <div className="dashbord-column" style={{ borderLeft: selected === "Offers" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("Offers")}
                 className={selected === "Offers" ? "selected_option" : "not_selected_option"}
               >
                 Offres
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "RDV" ? "4px solid #18214A" : "" }}>
               <div onClick={() => handleClick("RDV")} className={selected === "RDV" ? "selected_option" : "not_selected_option"}>
                 RDV
               </div>

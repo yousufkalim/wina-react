@@ -65,13 +65,15 @@ const Drawer = () => {
             <img src={arrowUp1 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
           </div>
           <div style={{ display: !open1 && "none" }}>
-            <div className="dashbord-column">
+            <div className="dashbord-column" style={{ borderLeft: selected === "BrowseOffers" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("BrowseOffers")}
                 className={selected === "BrowseOffers" ? "selected_option" : "not_selected_option"}
               >
                 Parcourir les offres
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "OverviewOfOffers" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("OverviewOfOffers")}
                 className={selected === "OverviewOfOffers" ? "selected_option" : "not_selected_option"}
@@ -96,13 +98,15 @@ const Drawer = () => {
             <img src={arrowUp2 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
           </div>
           <div style={{ display: !open2 && "none" }}>
-            <div className="dashbord-column">
+            <div className="dashbord-column" style={{ borderLeft: selected === "Offers" ? "4px solid #18214A" : "" }}>
               <div
                 onClick={() => handleClick("Offers")}
                 className={selected === "Offers" ? "selected_option" : "not_selected_option"}
               >
                 Offres
               </div>
+            </div>
+            <div className="dashbord-column" style={{ borderLeft: selected === "RDV" ? "4px solid #18214A" : "" }}>
               <div onClick={() => handleClick("RDV")} className={selected === "RDV" ? "selected_option" : "not_selected_option"}>
                 RDV
               </div>
