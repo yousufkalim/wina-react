@@ -1,5 +1,6 @@
 import React from "react";
 import "../../components/LandingPage/Style.css";
+import Doted from "../../assets/Doted.svg";
 
 const Booste = (props) => {
   return (
@@ -15,6 +16,7 @@ const Booste = (props) => {
           <div className="boost_div">
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />
+              <img src={Doted} alt="" className="dotted_line" />
             </div>
             <div className="boost_col2">
               <div className="heading-div">

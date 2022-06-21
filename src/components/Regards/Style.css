@@ -53,7 +53,7 @@ body {
 .winaLogo {
   width: 80%;
   margin: auto;
-  padding: 5vw 0 0 0;
+  padding: 7% 0 0 0;
 }
 .winaLogo2 {
   width: 80%;
@@ -67,7 +67,7 @@ body {
   width: 100%;
 }
 .winatext_container {
-  padding: 0 0 77px 0;
+  padding: 0 0 6% 0;
 }
 .winatext_container2 {
   padding: 0 0 20px 0;
@@ -95,8 +95,8 @@ body {
 }
 /* ///////////// Services /////////// */
 .Services {
-  background-color: #f8f8f8;
-  padding: 60px 0;
+  background-color: #fff;
+  padding: 6% 0;
 }
 .ServicesH1 {
   font-size: 4.4rem;
@@ -107,7 +107,7 @@ body {
 .Services-container {
   width: 90%;
   margin: auto;
-  border-bottom: 1.05859px solid #dfe1e6;
+  border-bottom: 1.05859px solid #fff;
   padding-bottom: 63px;
 }
 .ServicesHeading {
@@ -122,12 +122,12 @@ body {
 }
 .ServicesH2 {
   font-weight: 600;
-  font-size: 1.9rem;
+  font-size: 32px;
   position: relative;
   z-index: 5;
   display: inline-block;
   margin-bottom: 20px;
-  width: 15%;
+  width: 100%;
   margin-top: 22px;
 }
 .Services_hr {
@@ -171,14 +171,14 @@ body {
   border-radius: 10px;
   border: 2px solid #2b5aa6 !important;
   margin-top: 20px;
-  font-size: 400;
   color: #fff;
   padding: 10px 20px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 24px;
 }
 /* ///////contract///////////// */
 .Services2 {
-  background-color: #f8f8f8;
+  background-color: #fff;
   padding: 0px 0 0 0;
 }
 .ServicesH12 {
@@ -188,7 +188,14 @@ body {
 }
 @media only screen and (max-width: 600px) {
   .winaa {
-    padding: 80px 0 0px 0;
+    padding: 0px 0 0px 0;
+  }
+  .winaLogo {
+    width: 90%;
+    margin-top: 43px;
+  }
+  .winaImg {
+    width: 40%;
   }
   .wina-container {
     flex-direction: column;
@@ -196,11 +203,11 @@ body {
   }
   .winaH1 {
     font-size: 3rem;
-    margin-bottom: 38px;
+    margin-bottom: 0px;
   }
   .wina-col1 {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 6px;
   }
   .wina-col2 {
     width: 100%;
@@ -208,19 +215,21 @@ body {
   }
   .winaPera {
     padding: 0 12px;
+    font-size: 10px;
   }
   .Services {
     padding: 26px 0;
   }
   .ServicesH1 {
-    font-size: 2.7rem;
+    font-size: 3.7rem;
   }
   .ServicesHeading {
     padding: 0;
   }
   .ServicesH2 {
-    width: 36%;
+    width: 100%;
     margin-top: 18px;
+    font-size: 20px;
   }
   .Services2 {
     padding: 23px 0 21px 0;
@@ -252,30 +261,45 @@ body {
     top: 48px;
     left: 36%;
   }
+  .togather_simple_Img {
+    width: 100%;
+  }
+  .ServicesBTN {
+    font-size: 14px;
+  }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 800px) {
   .winaa {
-    padding: 80px 0 0px 0;
+    padding: 0px 0 0px 0;
+  }
+  .winaLogo {
+    width: 90%;
+    margin-top: 43px;
+    padding: 3% 0 0 0;
+  }
+  .winaImg {
+    width: 40%;
   }
   .wina-container {
     flex-direction: column;
     height: 50vh;
   }
   .winaH1 {
-    font-size: 5rem;
-    margin-bottom: 38px;
+    font-size: 3rem;
+    margin-bottom: 0px;
   }
   .wina-col1 {
     width: 100%;
-    margin-bottom: 30px;
-  }
-  .winaImg {
-    width: 60%;
+    margin-bottom: 6px;
   }
   .wina-col2 {
     width: 100%;
-    padding: 0 65px;
+    padding: 0 1px;
+  }
+  .winaPera {
+    padding: 0 12px;
+    font-size: 12px;
   }
   .Services {
     padding: 26px 0;
@@ -287,9 +311,9 @@ body {
     padding: 0;
   }
   .ServicesH2 {
-    width: 36%;
+    width: 100%;
     margin-top: 18px;
-    font-size: 2.9rem;
+    font-size: 20px;
   }
   .Services2 {
     padding: 23px 0 21px 0;
@@ -297,32 +321,35 @@ body {
   .ServicesH12 {
     font-size: 2.7rem;
   }
-  .winaPera {
-    padding: 0 29px;
-  }
   .Services_hr {
-    width: 14%;
-    height: 6px;
-    top: 41px;
-    left: 43%;
-  }
-  .Services_hr1 {
-    width: 12%;
-    height: 8px;
-    top: 55px;
-    left: 44%;
-  }
-  .Services_hr2 {
     width: 22%;
-    height: 8px;
-    top: 54px;
+    height: 6px;
+    top: 32px;
     left: 39%;
   }
-  .Services_hr3 {
-    width: 24%;
+  .Services_hr1 {
+    width: 17%;
+    height: 7px;
+    top: 48px;
+    left: 42%;
+  }
+  .Services_hr2 {
+    width: 26%;
     height: 8px;
-    top: 55px;
-    left: 38%;
+    top: 48px;
+    left: 37%;
+  }
+  .Services_hr3 {
+    width: 28%;
+    height: 8px;
+    top: 48px;
+    left: 36%;
+  }
+  .togather_simple_Img {
+    width: 100%;
+  }
+  .ServicesBTN {
+    font-size: 14px;
   }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
@@ -341,7 +368,7 @@ body {
     width: 95%;
     text-align: center;
     margin: auto;
-    height: 40vh;
+    height: 50vh;
   }
   .Services_hr {
     height: 7px;
@@ -363,6 +390,9 @@ body {
     height: 9px;
     top: 56px;
     left: 43.5%;
+  }
+  .winaPera {
+    font-size: 18px;
   }
 }
 @media only screen and (min-width: 1201px) and (max-width: 1500px) {
@@ -397,5 +427,17 @@ body {
   .Services_hr3 {
     top: 62px;
     left: 43.3%;
+  }
+  .winaPera {
+    font-size: 20px;
+  }
+  .togather_simple_Img {
+    width: 100%;
+  }
+  .chackP2 {
+    font-size: 20px;
+  }
+  .togetherCol22 {
+    margin-left: 30px;
   }
 }

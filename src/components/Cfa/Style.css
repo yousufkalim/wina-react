@@ -18,7 +18,7 @@ body {
   margin: auto;
 }
 .togetherHeading {
-  margin: 50px 0;
+  margin: 11% 0 4% 0;
   text-align: center;
   position: relative;
 }
@@ -108,7 +108,7 @@ body {
   color: #19234a;
   width: 100%;
   margin: auto;
-  padding: 0px 12px 32px 12px;
+  padding: 0px 12px 50px 12px;
   font-size: 21px;
   font-weight: 600;
 }
@@ -140,9 +140,9 @@ body {
 }
 .animIcon {
   position: absolute;
-  font-size: 20px;
-  top: 10px;
-  left: 28%;
+  font-size: 24px;
+  top: 2px;
+  left: 32%;
 }
 .animaiton_box {
   width: 23%;
@@ -217,6 +217,7 @@ body {
   margin-bottom: 30px;
   font-size: 18px;
   font-weight: 400;
+  background: none !important;
 }
 
 .formBTN {
@@ -244,7 +245,7 @@ body {
     font-size: 2.4rem;
   }
   .togetherHeading {
-    margin: 17px 0;
+    margin: 17px 0 0 0;
   }
   .togetherCol1 {
     width: 0;
@@ -271,19 +272,20 @@ body {
   }
   .animaiton_container {
     flex-direction: column;
-    width: 100%;
+    width: 60%;
   }
   .animaiton_box {
     width: 100%;
     margin-bottom: 14px;
   }
   .form-container {
-    width: 80%;
+    width: 95%;
     margin-top: 50px;
   }
   .form-inter-div {
-    width: 80%;
+    width: 100%;
     margin: auto;
+    flex-direction: column;
   }
   .form {
     margin-bottom: 0;
@@ -305,13 +307,30 @@ body {
     top: 68%;
     left: 4%;
   }
-
-  /* .togather_hr2 {
-    width: 85.7%;
-    height: 7px;
-    top: 12%;
-    left: 7.7%;
-  } */
+  .contact_from_h2 {
+    font-size: 20px;
+  }
+  .contact_from_p {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  .contact_from {
+    width: 100%;
+  }
+  .contact_from_content_div2 {
+    padding: 6vw 0 20px 1vw;
+  }
+  .foot_span {
+    font-size: 15px;
+  }
+  .foot_heading_div {
+    padding: 2.9vw 0;
+    display: block;
+    text-align: center;
+  }
+  .form_colmn_div {
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .togather {
@@ -349,8 +368,8 @@ body {
     width: 100%;
   }
   .animaiton_box {
-    width: 100%;
-    margin-bottom: 14px;
+    width: 60%;
+    margin: 20px auto;
   }
   .form-container {
     width: 80%;
@@ -373,7 +392,7 @@ body {
     left: 12.7%;
   }
 }
-@media only screen and (min-width: 993px) and (max-width: 1500px) {
+@media only screen and (min-width: 993px) and (max-width: 1300px) {
   .togetherP {
     font-size: 23px;
   }
@@ -381,5 +400,22 @@ body {
     width: 72.7%;
     top: 71%;
     left: 13.7%;
+  }
+  .chackP {
+    font-size: 14px;
+  }
+  .chack_icons {
+    width: 5rem;
+  }
+  .animaitonH4 {
+    font-size: 14px;
+  }
+  .animBTN {
+    left: 57px;
+  }
+  .contact_from_p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #a5b9d9;
   }
 }
