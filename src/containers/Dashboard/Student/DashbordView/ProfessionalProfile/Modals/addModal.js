@@ -148,7 +148,9 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 value={formik.values.type}
                 onChange={handleChange}
                 options={EmployeeTypeOptions}
-                label="Type d’emploi"
+                // label="Type d’emploi"
+                Label="Type d’emploi"
+                placeholder="Type d’emploi"
               />
 
               {formik.touched.type && formik.errors.type ? <div className="formikErrorAuto"> {formik.errors.type}</div> : null}
@@ -160,7 +162,8 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 name="company"
                 value={formik.values.company}
                 onChange={handleChange}
-                label="Nom entreprise"
+                Label="Nom entreprise"
+                placeholder="Nom entreprise"
               />
               {formik.touched.company && formik.errors.company ? (
                 <div className="formikErrorAuto"> {formik.errors.company}</div>
@@ -173,7 +176,8 @@ const PPModal = ({ show, setShow, professionalArray }) => {
                 name="place"
                 value={formik.values.place}
                 onChange={handleChange}
-                label="Lieu"
+                Label="Lieu"
+                placeholder="Lieu"
               />
 
               {formik.touched.place && formik.errors.place ? <div className="formikErrorAuto"> {formik.errors.place}</div> : null}

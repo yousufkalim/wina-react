@@ -89,7 +89,7 @@ body {
   width: 100%;
 }
 .animaiton_container {
-  width: 90%;
+  width: 87%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -110,7 +110,7 @@ body {
   margin: auto;
   padding: 0px 12px 50px 12px;
   font-size: 21px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .animBTN {
@@ -212,12 +212,19 @@ body {
 .formInput {
   border: none;
   width: 100%;
-  border-bottom: 1px solid #e0c399;
+  border-bottom: 1px solid #ECEDF2;
   padding: 5px 0px;
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   background: none !important;
+}
+.formInput::placeholder{
+color: #999AB4 ;
+font-size: 17px;
+}
+.formInput:focus{
+  outline: none;
 }
 
 .formBTN {

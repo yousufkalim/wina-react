@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   label: {
     fontSize: "1.2rem",
-    color: "#8D8D8D",
+    color: "#192646",
     fontWeight: 400,
   },
 }));

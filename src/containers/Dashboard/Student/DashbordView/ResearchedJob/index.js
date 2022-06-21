@@ -17,13 +17,9 @@ import { Add_info_Student, domainList } from "../../../../../Redux/actions";
 import { useFormik } from "formik";
 import TextArea from "../../../../../components/UI/Textarea";
 import Texts from "../../../../../Globals/Texts.js";
-import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
+import CustomTextField from "../../../../../components/UI/CustomTextField/TextFieldRound";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Student";
-import {
-  DurationOptions,
-  RythmeOptions,
-  levelOfEducation,
-} from "../../../../../Globals";
+import { DurationOptions, RythmeOptions, levelOfEducation } from "../../../../../Globals";
 
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
 import { classnames } from "classnames";
@@ -84,7 +80,7 @@ const ResearchedJob = () => {
                 <div className="research-form-position">
                   <CustomTextField
                     name="position"
-                    label="Intitulé du poste . Ex : Chef de projet"
+                    Label="Intitulé du poste . Ex : Chef de projet"
                     value={formik.values.position}
                     onChange={handleChange}
                     type="text"
@@ -96,7 +92,7 @@ const ResearchedJob = () => {
                 </div>
 
                 <div className="research-form-other">
-                  <Select name="domain" value={formik.values.domain} onChange={handleChange} options={domain} label="Domaine" />
+                  <Select name="domain" value={formik.values.domain} onChange={handleChange} options={domain} Label="Domaine" />
 
                   {formik.touched.domain && formik.errors.domain ? (
                     <div className="formikErrorAuto"> {formik.errors.domain}</div>
@@ -108,7 +104,7 @@ const ResearchedJob = () => {
                     value={formik.values.levelOfEducation}
                     onChange={handleChange}
                     options={levelOfEducation}
-                    label="Niveau d’étude"
+                    Label="Niveau d’étude"
                     className="ml-3"
                   />
 
@@ -122,7 +118,7 @@ const ResearchedJob = () => {
                   <Select
                     options={RythmeOptions}
                     name="alternationRhythm"
-                    label="Rythme alternances"
+                    Label="Rythme alternances"
                     value={formik.values.alternationRhythm}
                     onChange={handleChange}
                   />
@@ -136,7 +132,7 @@ const ResearchedJob = () => {
                     value={formik.values.duration}
                     onChange={handleChange}
                     options={DurationOptions}
-                    label="Durée"
+                    Label="Durée"
                   />
 
                   {formik.touched.duration && formik.errors.duration ? (

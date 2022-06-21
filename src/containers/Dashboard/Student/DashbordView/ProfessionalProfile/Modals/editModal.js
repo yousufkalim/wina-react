@@ -8,12 +8,9 @@ import Select from "../../../../../../components/UI/Select";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import Button from "../../../../../../components/UI/Button";
-import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
+import CustomTextField from "../../../../../../components/UI/CustomTextField/TextFieldRound";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getApiAdress,
-  Add_Image_info_Student,
-} from "../../../../../../Redux/actions";
+import { getApiAdress, Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 import Input from "../../../../../../components/UI/Input";
 import axios from "axios";
@@ -32,22 +29,13 @@ const useStyles = makeStyles({
   },
 });
 
-const PPModal = ({
-  show,
-  setShow,
-  professionalArray,
-  data,
-  id,
-  setedit_profile_id,
-}) => {
+const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_id }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const classes = useStyles();
   // const classes = useStyles();
   const [Image, setImage] = useState("");
-  const [ImageUri, setImageURI] = useState(
-    "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
-  );
+  const [ImageUri, setImageURI] = useState("https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg");
   const hiddenFileInput = React.useRef(null);
   // custom image
   const handleClick = (event) => {
@@ -80,10 +68,7 @@ const PPModal = ({
 
         professionalArray[temp] = values;
         let form_data = new FormData();
-        form_data.append(
-          "professional_profile",
-          JSON.stringify(professionalArray)
-        );
+        form_data.append("professional_profile", JSON.stringify(professionalArray));
         dispatch(Add_Image_info_Student(form_data));
         setShow(false);
         setedit_profile_id("");
@@ -139,31 +124,23 @@ const PPModal = ({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="example-custom-modal-styling-title">
-          Parcours Professionnels
-        </Modal.Title>
+        <Modal.Title id="example-custom-modal-styling-title">Parcours Professionnels</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {data && id ? (
-          <form
-            onSubmit={formik.handleSubmit}
-            className="mt-5 professional-modal-form"
-          >
+          <form onSubmit={formik.handleSubmit} className="mt-5 professional-modal-form">
             <div className="professional-modal-form-first">
-              <div className="professional-modal-form-position">
+              <div className="professional-modal-form col-lg-12 mb-2">
                 <CustomTextField
                   name="position"
-                  label="Intitulé du poste . Ex : Chef de projet"
+                  placeholder="Intitulé du poste . Ex : Chef de projet"
                   variant="outlined"
                   value={formik.values.position}
                   onChange={handleChange}
                   type="text"
                 />
                 {formik.touched.position && formik.errors.position ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.position}
-                  </div>
+                  <div className="formikErrorAuto"> {formik.errors.position}</div>
                 ) : null}
               </div>
               <div className="professional-modal-form-other">
@@ -172,12 +149,10 @@ const PPModal = ({
                   value={formik.values.type}
                   onChange={handleChange}
                   options={EmployeeTypeOptions}
-                  label="Type d’emploi"
+                  Label="Type d’emploi"
                 />
 
-                {formik.touched.type && formik.errors.type ? (
-                  <div className="formikErrorAuto">{formik.errors.type}</div>
-                ) : null}
+                {formik.touched.type && formik.errors.type ? <div className="formikErrorAuto">{formik.errors.type}</div> : null}
               </div>
 
               <div className="professional-modal-form-other">
@@ -187,14 +162,11 @@ const PPModal = ({
                   name="company"
                   value={formik.values.company}
                   onChange={handleChange}
-                  label="company d’emploi"
+                  Label="Company d’emploi"
                 />
 
                 {formik.touched.company && formik.errors.company ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.company}
-                  </div>
+                  <div className="formikErrorAuto"> {formik.errors.company}</div>
                 ) : null}
               </div>
               <div className="professional-modal-form-other">
@@ -204,7 +176,7 @@ const PPModal = ({
                   name="place"
                   value={formik.values.place}
                   onChange={handleChange}
-                  label="place d’emploi"
+                  Label="Place d’emploi"
                 />
 
                 {formik.touched.place && formik.errors.place ? (
@@ -214,20 +186,6 @@ const PPModal = ({
             </div>
 
             <div className="professional-modal-form-second mt-5 align-items-end">
-              <div className="professional-modal-form-checkbox">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={formik.values.position_hold}
-                      onChange={handleChange}
-                      name="position_hold"
-                      color="primary"
-                    />
-                  }
-                  className={classes.root}
-                  label="J’occupe actuellement ce poste"
-                />
-              </div>
               <div className="professional-modal-form-date ">
                 <DatePicker
                   name="start_date"
@@ -237,10 +195,7 @@ const PPModal = ({
                   onChange={handleChange}
                 />
                 {formik.touched.start_date && formik.errors.start_date ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.start_date}
-                  </div>
+                  <div className="formikErrorAuto"> {formik.errors.start_date}</div>
                 ) : null}
               </div>
               <div className="professional-modal-form-date">
@@ -253,10 +208,7 @@ const PPModal = ({
                   onChange={handleChange}
                 />
                 {formik.touched.end_date && formik.errors.end_date ? (
-                  <div className="formikErrorAuto">
-                    {" "}
-                    {formik.errors.end_date}
-                  </div>
+                  <div className="formikErrorAuto"> {formik.errors.end_date}</div>
                 ) : null}
               </div>
             </div>
@@ -265,17 +217,14 @@ const PPModal = ({
                 <TextArea
                   name="description"
                   grey
-                  label="Description"
                   value={formik.values.description}
                   onChange={handleChange}
-                  rows={3}
+                  rows={9}
+                  placeholder="Type your description"
                   // placeholder="Description"
                 />
                 {formik.touched.description && formik.errors.description ? (
-                  <div className="formikErrorDesc">
-                    {" "}
-                    {formik.errors.description}
-                  </div>
+                  <div className="formikErrorDesc"> {formik.errors.description}</div>
                 ) : null}
               </div>
             </div>
@@ -317,23 +266,25 @@ const PPModal = ({
               </div>
             </div>
             <div className="row ">
+              <div className="professional-modal-form-checkbox col-lg-6">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={formik.values.position_hold}
+                      onChange={handleChange}
+                      name="position_hold"
+                      color="primary"
+                    />
+                  }
+                  className={classes.root}
+                  label="J’occupe actuellement ce poste"
+                />
+              </div>
               <div className="col-lg-12 text-right">
                 {store.loading ? (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Loading...."
-                    disabled={store.loading}
-                  />
+                  <Button className="Enregistrer" type="submit" variant="primary" value="Loading...." disabled={store.loading} />
                 ) : (
-                  <Button
-                    className="Enregistrer"
-                    type="submit"
-                    variant="primary"
-                    value="Soumettre"
-                    disabled={false}
-                  />
+                  <Button className="Enregistrer" type="submit" variant="primary" value="Soumettre" disabled={false} />
                 )}
               </div>
             </div>

@@ -9,8 +9,8 @@ const useStyles = makeStyles({
     flexDirection: "column",
   },
   label: {
-    fontSize: "1.2rem",
-    color: "black",
+    fontSize: "1.1rem",
+    color: "#192646",
     fontWeight: 400,
   },
   root: {
@@ -27,9 +27,9 @@ const useStyles = makeStyles({
     //   //   borderColor: "#fff"
     // },
 
-    // "& .MuiOutlinedInput-notchedOutline": {
-    //   borderColor: "#2879d9",
-    // },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
     "& .MuiInputBase-input": {
       backgroundColor: "rgb(219, 232, 255,0.3) !important",
     },
@@ -41,7 +41,7 @@ const TextFieldRound = (props) => {
   return (
     <>
       <div className={classes.container}>
-        <label className={`text-left ${classes.label}`}>{props.label}</label>
+        <label className={`text-left ${classes.label}`}>{props.Label}</label>
         <TextField
           variant="filled"
           className={classes.root}

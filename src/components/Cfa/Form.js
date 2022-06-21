@@ -43,8 +43,7 @@ const Form = () => {
                     {/* <img src={Footerimg} alt="" className="foot_log" /> */}
                     <h2 className="contact_from_h2">Contact Informaiton</h2>
                     <p className="contact_from_p">
-                      Lorem ipsum dolor sit amet, consec <br /> etur adipiscing
-                      elit.
+                      Lorem ipsum dolor sit amet, consec <br /> etur adipiscing elit.
                     </p>
                   </div>
                   {/*footer menu  */}
@@ -74,7 +73,7 @@ const Form = () => {
                   required
                   className="formInput"
                   type="text"
-                  placeholder="First name"
+                  placeholder="Your first name"
                   name="firstName"
                   value={forms.firstName}
                 />
@@ -86,7 +85,7 @@ const Form = () => {
                   required
                   className="formInput"
                   type="text"
-                  placeholder="Last name"
+                  placeholder="Your last name"
                   name="lastName"
                   value={forms.lastName}
                 />
@@ -98,7 +97,7 @@ const Form = () => {
                   required
                   className="formInput"
                   type="email"
-                  placeholder="Email adresse "
+                  placeholder="Your Email adresse "
                   name="email"
                   value={forms.email}
                 />
