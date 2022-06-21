@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
-import VideoImage from "../../assets/VideoImage.svg";
+import VideoImage from "../../assets/VideoImage.jpg";
 import FindStar from "../../assets/FindStar.svg";
 
 const Hero2 = (props) => {
@@ -26,9 +26,13 @@ const Hero2 = (props) => {
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
+                  sce varius justo et scelerisque varius ullam mollis orbi
+                  sollicitudin a eros sed cured ed sus.{" "}
                 </p>
-                <button className="home_section_btn" onClick={() => handleModal("student")}>
+                <button
+                  className="home_section_btn"
+                  onClick={() => handleModal("student")}
+                >
                   Creer mon profil etudiant
                 </button>
               </div>

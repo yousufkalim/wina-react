@@ -354,48 +354,88 @@ body {
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
   .winaa {
-    padding: 80px 0 0px 0;
+    padding: 0px 0 0px 0;
   }
-
-  .winatext_container {
-    overflow: scroll;
-    height: 44vh;
-    padding-top: 15px;
+  .winaLogo {
+    width: 90%;
+    margin-top: 43px;
+    padding: 3% 0 0 0;
+  }
+  .winaImg {
+    width: 40%;
   }
   .wina-container {
-    display: flex;
-    align-items: center;
-    width: 95%;
-    text-align: center;
-    margin: auto;
+    flex-direction: column;
     height: 50vh;
   }
-  .Services_hr {
-    height: 7px;
-    top: 63px;
+  .winaH1 {
+    font-size: 3rem;
+    margin-bottom: 0px;
   }
-  .Services_hr1 {
-    height: 8px;
-    top: 57px;
-    left: 46.5%;
+  .wina-col1 {
+    width: 100%;
+    margin-bottom: 6px;
   }
-  .Services_hr2 {
-    width: 13%;
-    height: 9px;
-    top: 56px;
-    left: 43.5%;
-  }
-  .Services_hr3 {
-    width: 13%;
-    height: 9px;
-    top: 56px;
-    left: 43.5%;
+  .wina-col2 {
+    width: 100%;
+    padding: 0 1px;
   }
   .winaPera {
-    font-size: 18px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+  .Services {
+    padding: 26px 0;
+  }
+  .ServicesH1 {
+    font-size: 3.7rem;
+  }
+  .ServicesHeading {
+    padding: 0;
+  }
+  .ServicesH2 {
+    width: 100%;
+    margin-top: 18px;
+    font-size: 20px;
+  }
+  .Services2 {
+    padding: 23px 0 21px 0;
+  }
+  .ServicesH12 {
+    font-size: 2.7rem;
+  }
+  .Services_hr {
+    width: 22%;
+    height: 6px;
+    top: 32px;
+    left: 39%;
+  }
+  .Services_hr1 {
+    width: 17%;
+    height: 7px;
+    top: 48px;
+    left: 42%;
+  }
+  .Services_hr2 {
+    width: 26%;
+    height: 8px;
+    top: 48px;
+    left: 37%;
+  }
+  .Services_hr3 {
+    width: 28%;
+    height: 8px;
+    top: 48px;
+    left: 36%;
+  }
+  .togather_simple_Img {
+    width: 100%;
+  }
+  .ServicesBTN {
+    font-size: 14px;
   }
 }
-@media only screen and (min-width: 1201px) and (max-width: 1500px) {
+@media only screen and (min-width: 1201px) and (max-width: 100px) {
   .winatext_container {
     overflow: scroll;
     height: 44vh;
