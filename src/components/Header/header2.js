@@ -35,8 +35,8 @@ export default function header2(props) {
             <div className="dropdown">
               <button className="dropbtn">Tarifs</button>
               <div className="dropdown-content">
-                <a href="/Student">Student</a>
-                <a href="/Company">Company</a>
+                <a href="/Student">Etudiants</a>
+                <a href="/Company">Entreprise</a>
               </div>
             </div>
             {/* <Nav.Link className="navbar-left-link" href="/">
