@@ -44,7 +44,28 @@ const CardWithImage = (props) => {
     let matchLength = item.student_requests.filter((dt) => dt.status === "requested" || dt.status === "accepted").length;
 
     if (item.student_requests && item.student_requests.length > 0) {
-      return <div>{matchLength > 0 ? <div className="matches">Match ({Math.floor(matchLength)})</div> : ""}</div>;
+      return (
+        <div>
+          {matchLength > 0 ? (
+            <div
+              className="matches"
+              style={{
+                borderRadius: "2rem",
+                fontWeight: "500",
+                position: "absolute",
+                bottom: "11px",
+                right: "20px",
+                paddingTop: "5px",
+                paddingBottom: "5px",
+              }}
+            >
+              Match ({Math.floor(matchLength)})
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      );
     } else {
       return;
     }
@@ -55,7 +76,19 @@ const CardWithImage = (props) => {
     return (
       <div>
         {matchLength > 0 ? (
-          <div className="matches" onClick={() => props.matchReceiveDetailHandler(item._id)}>
+          <div
+            className="matches"
+            style={{
+              borderRadius: "2rem",
+              fontWeight: "500",
+              position: "absolute",
+              bottom: "11px",
+              right: "20px",
+              paddingTop: "5px",
+              paddingBottom: "5px",
+            }}
+            onClick={() => props.matchReceiveDetailHandler(item._id)}
+          >
             {Math.floor(matchLength)} candidats
           </div>
         ) : (
@@ -67,7 +100,28 @@ const CardWithImage = (props) => {
   const sendStudentMatchedFunc = (item) => {
     let matchLength = item.company_requests.filter((dt) => dt.status === "requested" || dt.status === "accepted").length;
     if (item.company_requests && item.company_requests.length > 0) {
-      return <div>{matchLength > 0 ? <div className="matches">Match ({Math.floor(matchLength)})</div> : ""}</div>;
+      return (
+        <div>
+          {matchLength > 0 ? (
+            <div
+              className="matches"
+              style={{
+                borderRadius: "2rem",
+                fontWeight: "500",
+                position: "absolute",
+                bottom: "11px",
+                right: "20px",
+                paddingTop: "5px",
+                paddingBottom: "5px",
+              }}
+            >
+              Match ({Math.floor(matchLength)})
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      );
     } else {
       return;
     }
@@ -153,7 +207,6 @@ const CardWithImage = (props) => {
                   <>
                     <div
                       onClick={() => {
-                        console.log({ props });
                         handleOfferAccepted(props?.item?._id, props?.appointments, "accepted");
                       }}
                       className="card-with-image-btn card-with-image-btn-green"
