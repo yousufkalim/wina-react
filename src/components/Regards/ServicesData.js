@@ -14,10 +14,7 @@ const ServicesData = (props) => {
         {/* <hrs className={`Services_hr ${props.showBorder && "Services_hr1"}`} /> */}
         <p className="ServicesP">{props.text}</p>
         {props.btnValue === "register" ? (
-          <button
-            className="ServicesBTN"
-            onClick={() => handleModal("student")}
-          >
+          <button className="ServicesBTN" onClick={() => handleModal("student")}>
             {props.btnText}
           </button>
         ) : props.btnValue === "cfa" ? (
@@ -25,9 +22,7 @@ const ServicesData = (props) => {
             <button className="ServicesBTN"> {props.btnText}</button>
           </a>
         ) : (
-          <a href="/Company">
-            <button className="ServicesBTN">{props.btnText}</button>
-          </a>
+          ""
         )}
       </div>
       <StudentRegister show={studentModal} handleModal={handleModal} />

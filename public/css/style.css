@@ -630,7 +630,6 @@ html {
 .dashbord .dashbord-column {
   
   border-left: 1px solid #e6e6e6;
-  border-radius: 0px 6px 6px 0px;
   /* height: 100%; */
   /* flex-basis: 16%; */
   /* position: relative; */
@@ -667,6 +666,7 @@ html {
   background-color: transparent;
   color: #2B5AA6;
   border-left: 1px solid #E8EBF2;
+  margin-left: 0.6rem;
   line-height: 30px;
   font-size: 1rem;
   padding: 6px;
@@ -674,25 +674,26 @@ html {
 
 }
 .selected_option{
-  margin-left: 2.2rem;
+  width: 75%;
+  margin-left: 2rem;
   border:1px solid #E7F0FF;
   background-color:#E7F0FF;
   padding: 10px;
   border-radius: 9px;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 13px;
   line-height: 2rem;
 font-weight: 600;
 }
 .not_selected_option{
   color: #8691A1;
-  margin-left: 2.2rem;
+  margin-left: 2rem;
   /* border:1px solid #E7F0FF; */
   /* background-color:#E7F0FF; */
   padding: 10px;
   /* border-radius: 9px; */
   line-height: 2rem;
-  font-size: 1.1rem;
+  font-size: 13px;
 font-weight: 500;
 
 }
@@ -3200,9 +3201,9 @@ textarea.form-control {
   background-color: #3cbf31;
   color: white;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   position: absolute;
-  padding: 15px 50px;
+  padding: 25px 50px;
   bottom: 0%;
   right: 0%;
 }
@@ -4393,12 +4394,12 @@ input[type="file"] {
 =           Student Side Drawer           =
 ==================================================================*/
 .main_drawer_div{
-  margin: 1rem;
+  margin: 0rem 0rem 0rem 2.7rem;
   width: 22%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   background-color: #FFFFFF;
   /* z-index: 999999999 !important; */
   /* position:absolute;
@@ -4425,7 +4426,7 @@ input[type="file"] {
 
 }
 .drawer_head_text{
-  font-size: 1.1rem;
+  font-size: 14px;
   color: #18214A;
   font-weight: 500;
   margin-left: 2rem;
@@ -4448,9 +4449,10 @@ input[type="file"] {
   flex-direction: column;
 } */
 .dashbord_view_div{
-  margin-top: 2rem;
-  margin-left: 3rem;
+  margin: 2rem 3rem 0rem 0rem ;
+  /* margin-top: 2rem; */
+  /* margin-left: 3rem; */
   position: relative;
-  max-height: 850px;
+  max-height: 680px;
   overflow-y:scroll;
 }

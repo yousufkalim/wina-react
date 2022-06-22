@@ -13,7 +13,9 @@ const Recruited = (props) => {
             <div className="perfect_col2">
               <h3 className="boostH3">{props.text}</h3>
               <p className="boostP">{props.text2}</p>
-              <button className="Learn_More">Learn More</button>
+              <a href="/about">
+                <button className="Learn_More">Learn More</button>
+              </a>
             </div>
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />

@@ -1,6 +1,7 @@
 import React from "react";
 import "../../components/Regards/Style.css";
 import ServicesData from "./ServicesData";
+import CompanyServices from "./CompanyServices";
 
 const Services = () => {
   return (
@@ -14,7 +15,7 @@ const Services = () => {
             btnText="Je crée mon profil"
             btnValue={"register"}
           />
-          <ServicesData
+          <CompanyServices
             heading="Entreprises"
             text="Conscient de la difficulté de trouver un contrat d’apprentissage, Winaa t’aide à trouver une entreprise d’accueil dans ton domaine d’activité à travers une application fun et innovante. Les équipes Winaa sont aussi là pour t’accompagner dans ta recherche, te coacher et te préparer à tes futurs entretiens. Nous t’assurons une disponibilité quotidienne pour t’aider à trouver une alternance. 
                   Les équipes Winaa sont aussi là pour vous conseiller et vous accompagner dans la gestion de vos contrats d'apprentissage. Pour plus d’information, découvrez nos différentes prestations."
@@ -24,6 +25,7 @@ const Services = () => {
             heading="CFA"
             text="Conscient de la difficulté de trouver un contrat d’apprentissage, Winaa t’aide à trouver une entreprise d’accueil dans ton domaine d’activité à travers une application fun et innovante. Les équipes Winaa sont aussi là pour t’accompagner dans ta recherche, te coacher et te préparer à tes futurs entretiens. Nous t’assurons une disponibilité quotidienne pour t’aider à trouver une alternance. "
             btnText={"Contactez-nous"}
+            btnValue={"cfa"}
           />
         </div>
       </div>
