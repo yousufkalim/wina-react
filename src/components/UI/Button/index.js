@@ -2,28 +2,46 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  root1: {
-    "&:hover": {
-      backgroundColor: "#2879D9",
-    },
-    "&:focus": {
-      border: "none",
-      outline: "none",
-    },
-    background: "#2B5AA6",
-    // borderRadius: "2.56rem",
-    border: 0,
-    fontSize: "1.37rem",
-    fontWeight: "bold",
-    color: "white",
-    height: "3.7rem",
-    padding: "0 3.6rem",
-  },
-});
+// const useStyles = makeStyles({
+//   root1: {
+//     "&:hover": {
+//       backgroundColor: "#2879D9",
+//     },
+//     "&:focus": {
+//       border: "none",
+//       outline: "none",
+//     },
+//     background: "#2B5AA6",
+//     borderRadius: props.borderRadius && "2.56rem",
+//     border: 0,
+//     fontSize: "1.37rem",
+//     fontWeight: "bold",
+//     color: "white",
+//     height: "3.7rem",
+//     padding: "0 3.6rem",
+//   },
+// });
 
 export default function CustomButton(props) {
-
+  const useStyles = makeStyles({
+    root1: {
+      "&:hover": {
+        backgroundColor: "#2879D9",
+      },
+      "&:focus": {
+        border: "none",
+        outline: "none",
+      },
+      background: "#2B5AA6",
+      // borderRadius: props.borderRadius ? props.borderRadius : "2.56rem",
+      border: 0,
+      fontSize: "1.37rem",
+      fontWeight: "bold",
+      color: "white",
+      height: "3.7rem",
+      padding: "0 3.6rem",
+    },
+  });
   const classes = useStyles();
   return (
     <Button
