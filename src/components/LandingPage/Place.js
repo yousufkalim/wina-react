@@ -15,7 +15,7 @@ const Place = (props) => {
                 <h3 className="boostH3">{props.text}</h3>
               </div>
               <p className="boostP">{props.text2}</p>
-              <a href="#" className="reed_more">
+              <a href="/about" className="reed_more">
                 Read more &nbsp; <ArrowFront />
               </a>
               {/* <p className="boostP">{props.text4}</p>

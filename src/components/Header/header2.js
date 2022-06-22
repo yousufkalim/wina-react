@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, Image } from "react-bootstrap";
 import "../../components/Header/Style.css";
 import StudentRegister from "./Modals/studentRegisterModal";
+import Logo from "../../assets/WinaaLogoNew.svg";
 
 export default function header2(props) {
   const { handleModal } = props;
@@ -15,7 +16,7 @@ export default function header2(props) {
     >
       <div style={{ marginLeft: "1rem" }}>
         <Navbar.Brand href="/landing_page">
-          <Image src="../images/logoWinaA-r.png" alt="logo" className="navbar-image" />
+          <Image src={Logo} alt="logo" className="navbar-image" />
         </Navbar.Brand>
       </div>
       <div>
@@ -23,7 +24,7 @@ export default function header2(props) {
         <Navbar.Collapse>
           <Nav style={{ marginLeft: "10rem" }}>
             <Nav.Link className="navbar-left-link" href="/">
-              Etudiants
+              Apprenti
             </Nav.Link>
             <Nav.Link className="navbar-left-link" href="/Business">
               Entreprise
@@ -31,19 +32,19 @@ export default function header2(props) {
             <Nav.Link className="navbar-left-link" href="/cfa">
               CFA
             </Nav.Link>
-            <Nav.Link className="navbar-left-link" href="/">
+            <div className="dropdown">
+              <button className="dropbtn">Tarifs</button>
+              <div className="dropdown-content">
+                <a href="/Student">Student</a>
+                <a href="/Company">Company</a>
+              </div>
+            </div>
+            {/* <Nav.Link className="navbar-left-link" href="/">
               Tarifs
-            </Nav.Link>
-            <Nav.Link className="navbar-left-link" href="/">
+            </Nav.Link> */}
+            <Nav.Link className="navbar-left-link" href="/Regards">
               Assistance
             </Nav.Link>
-            {/* <div class="dropdown">
-            <button class="dropbtn">Tarifs</button>
-            <div class="dropdown-content">
-            <a href="/Student">Étudiants</a>
-            <a href="/Company">Entreprise</a>
-            </div>
-          </div> */}
           </Nav>
         </Navbar.Collapse>
       </div>

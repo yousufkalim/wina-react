@@ -51,10 +51,7 @@ const OfferCardDetail = (props) => {
   if (JOB && Object.keys(JOB).length > 0) {
     return (
       <>
-        <div
-          className="d-flex justify-content-start align-items-center"
-          style={{ height: "10%" }}
-        >
+        <div className="d-flex justify-content-start align-items-center" style={{ height: "10%" }}>
           <h5>{JOB.company && JOB.company.name}</h5>
           <span className="offer-apply-btn ml-4">Postuler</span>
         </div>
@@ -66,9 +63,7 @@ const OfferCardDetail = (props) => {
                 <img src={`../images/offer-card-detail.png`} alt="" />
               </div>
               {/* <div className="offer-detail-line"></div> */}
-              <div className="offer-detail-header-text text-left offer-detail-header-line">
-                {JOB.company && JOB.company.name}
-              </div>
+              <div className="offer-detail-header-text text-left offer-detail-header-line">{JOB.company && JOB.company.name}</div>
             </div>
 
             <div className="offer-detail-date-container">
@@ -81,10 +76,7 @@ const OfferCardDetail = (props) => {
             </div>
 
             <div className="offer-detail-content">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-content-detail text-center"
-                content={JOB.domain}
-              />
+              <CardItem className="offer-card-item-bordered offer-detail-content-detail text-center" content={JOB.domain} />
               <CardItem
                 className="offer-card-item-bordered offer-detail-content-detail text-center"
                 content={JOB.levelOfEducation}
@@ -92,57 +84,33 @@ const OfferCardDetail = (props) => {
             </div>
 
             <div className="offer-detail-date-headings">
-              <div className="offer-detail-date-heading text-left">
-                Date de début
-              </div>
+              <div className="offer-detail-date-heading text-left">Date de début</div>
               <div className="offer-detail-date-heading text-left">Durée</div>
             </div>
             <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-date"
-                content={JOB.startDate}
-              />
-              <CardItem
-                className="offer-card-item-bordered offer-detail-date"
-                content={JOB.duration}
-              />
+              <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.startDate} />
+              <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
             </div>
 
             <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-skills-heading"
-                content="Compétences générales "
-              />
+              <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences générales " />
             </div>
 
             <div className="offer-detail-date-container">
               {JOB.softSkills && JOB.softSkills.length > 0 ? (
-                JOB.softSkills.map((sf) => (
-                  <CardItem
-                    className="offer-detail-skills"
-                    content={sf.skillField}
-                  />
-                ))
+                JOB.softSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
               ) : (
                 <p>No Compétences générales found</p>
               )}
             </div>
 
             <div className="offer-detail-date-container">
-              <CardItem
-                className="offer-card-item-bordered offer-detail-skills-heading"
-                content="Compétences spécialisées "
-              />
+              <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences spécialisées " />
             </div>
 
             <div className="offer-detail-date-container">
               {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
-                JOB.hardSkills.map((sf) => (
-                  <CardItem
-                    className="offer-detail-skills"
-                    content={sf.skillField}
-                  />
-                ))
+                JOB.hardSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
               ) : (
                 <p>No Compétences spécialisées found</p>
               )}

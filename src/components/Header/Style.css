@@ -2,8 +2,12 @@
   color: rgb(83, 83, 83);
   border: none;
   background: none;
-  font-size: 22px;
+  font-size: 1.3rem;
   padding-left: 10px;
+  padding-right: 10px;
+}
+.dropbtn:focus{
+  outline: none;
 }
 
 .dropdown {
@@ -12,6 +16,7 @@
 }
 
 .dropdown-content {
+  z-index: 999999;
   display: none;
   position: absolute;
   background-color: #f1f1f1;

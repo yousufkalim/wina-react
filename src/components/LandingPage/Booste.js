@@ -27,7 +27,7 @@ const Booste = (props) => {
                 /> */}
               </div>
               <p className="boostP">{props.text3}</p>
-              <a href="#" className="reed_more">
+              <a href="/about" className="reed_more">
                 Read more &nbsp;
                 <ArrowFront />
               </a>
