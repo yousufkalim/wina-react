@@ -10,7 +10,8 @@ const useStyle = makeStyles({
       borderColor: "#2879d9",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#E7E7F1",
+      borderColor: "transparent",
+      backgroundColor: "rgb(219, 232, 255,0.3) !important",
     },
 
     "& .MuiInput-underline:before": {
@@ -31,13 +32,13 @@ const useStyle = makeStyles({
         // borderColor: "pink",
         // - Set the Input border
       },
-      // "&:hover": {
-      //   borderColor: "#2879d9", // - Set the Input border when parent has :hover
-      // },
-      // "&.Mui-focused fieldset": {
-      //   // - Set the Input border when parent is focused
-      //   borderColor: "#2879d9",
-      // },
+      "&:hover": {
+        borderColor: "transparent", // - Set the Input border when parent has :hover
+      },
+      "&.Mui-focused fieldset": {
+        // - Set the Input border when parent is focused
+        borderColor: "transparent",
+      },
     },
     "& .MuiFormLabel-root": {
       fontSize: "1.375rem",
@@ -49,8 +50,16 @@ const useStyle = makeStyles({
     "& .MuiInputBase-root ": {
       fontSize: "1.375rem",
     },
+    "& .MuiFormControl-marginNormal": {
+      marignTop: "0px !important",
+      marignBottom: "0px !important",
+    },
   },
-
+  label: {
+    fontSize: "1.1rem",
+    color: "#192646",
+    fontWeight: 400,
+  },
   root2: {
     "& .MuiOutlinedInput-root": {
       borderRadius: "3.5rem",
@@ -116,6 +125,7 @@ export default function AutoComplete({
   renderOption,
   standard,
   studentModal,
+  Label,
 }) {
   const getAddress = (event, value, reason) => {
     onChange(value);
@@ -128,6 +138,7 @@ export default function AutoComplete({
   const classes = useStyle();
   return (
     <>
+      <label className={`text-left ${classes.label}`}>{Label}</label>
       <Autocomplete
         freeSolo
         id={name}
@@ -161,7 +172,7 @@ export default function AutoComplete({
             {...params}
             // label="Search input"
             name={name}
-            margin="normal"
+            // margin="normal"
             // onBlur={onBlur}
             variant={standard ? "standard" : "outlined"}
             InputProps={{ ...params.InputProps, type: "text" }}
