@@ -30,7 +30,7 @@ import AutoComplete from "../../../../../components/UI/AutoComplete";
 import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
 import TextArea from "../../../../../components/UI/Textarea";
 import _ from "lodash";
-import CustomTextField from "../../../../../components/UI/CustomTextField/CustomTextField";
+import CustomTextField from "../../../../../components/UI/CustomTextField/TextFieldRound";
 import { baseUrl } from "../../../../../urlConfig";
 import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -256,7 +256,7 @@ export default function BrowseOffers() {
                       <div className="d-flex">
                         <div className="col-lg-12">
                           <CustomTextField
-                            label="Nom du poste"
+                            Label="Nom du poste"
                             name="position"
                             id="outlined-basic"
                             onChange={handleChange}
@@ -293,7 +293,7 @@ export default function BrowseOffers() {
                             value={formik.values.domain}
                             onChange={handleChange}
                             options={domain}
-                            label="Domaine"
+                            Label="Domaine"
                           />
 
                           {formik.touched.domain && formik.errors.domain ? (
@@ -306,7 +306,7 @@ export default function BrowseOffers() {
                             value={formik.values.levelOfEducation}
                             onChange={handleChange}
                             options={levelOfEducation}
-                            label="Niveau d’étude"
+                            Label="Niveau d’étude"
                           />
 
                           {formik.touched.levelOfEducation && formik.errors.levelOfEducation ? (
@@ -321,7 +321,7 @@ export default function BrowseOffers() {
                             value={formik.values.ageRange}
                             onChange={handleChange}
                             options={AgeRangeOptions}
-                            label="Tranche d'âge"
+                            Label="Tranche d'âge"
                           />
 
                           {formik.touched.ageRange && formik.errors.ageRange ? (
@@ -334,7 +334,7 @@ export default function BrowseOffers() {
                             value={formik.values.duration}
                             onChange={handleChange}
                             options={DurationOptions}
-                            label="Durée"
+                            Label="Durée"
                           />
 
                           {formik.touched.duration && formik.errors.duration ? (
@@ -355,13 +355,13 @@ export default function BrowseOffers() {
                           ) : null}
                         </div>
 
-                        <div className="col-lg-6 ml-1" style={{ paddingTop: "10px" }}>
+                        <div className="col-lg-6 ml-1">
                           <AutoComplete
                             formik={formik}
                             onChange={handleAddressChange}
                             items={items}
                             address={address}
-                            placeholder="Adresse"
+                            Label="Adresse"
                             name={"location"}
                             loading={store2.loading}
                             onSubmit={onSubmitAddress}
@@ -371,12 +371,12 @@ export default function BrowseOffers() {
                           ) : null}
                         </div>
                       </div>
-                      <div className="d-flex my-3">
+                      <div className="d-flex my-2">
                         <div className="col-lg-12 softskills-input">
                           <Select
                             options={RythmeOptions}
                             name="alternationRhythm"
-                            label="Rythme alternances"
+                            Label="Rythme alternances"
                             value={formik.values.alternationRhythm}
                             onChange={handleChange}
                           />
@@ -396,7 +396,7 @@ export default function BrowseOffers() {
                     </div>
                   </Col>
                 </Row>
-                <div className="d-flex pt-4">
+                <div className="d-flex pt-2">
                   <div className="col-lg-12">
                     <TextArea
                       name="description"
