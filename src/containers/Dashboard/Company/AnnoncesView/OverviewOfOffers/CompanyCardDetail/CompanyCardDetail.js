@@ -37,7 +37,7 @@ import _ from "lodash";
 import MultiAutoComplete from "../../../../../../components/UI/MultiSelect";
 import { SignalCellularConnectedNoInternet3BarRounded } from "@material-ui/icons";
 import { baseUri } from "../../../../../../urlConfig";
-import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
+import CustomTextField from "../../../../../../components/UI/CustomTextField/TextFieldRound";
 
 const CompanyCardDetail = (props) => {
   const { offerID, handleStudentDetail, handleOfferAccepted, handleOfferRejected, setisDetail } = props;
@@ -321,7 +321,7 @@ const CompanyCardDetail = (props) => {
                   <div className="col-lg-3 col-6 mt-lg-0 mt-5">
                     <CustomTextField
                       name="position"
-                      label="Nom du poste"
+                      Label="Nom du poste"
                       value={formik.values.position}
                       onChange={handleChange}
                       type="text"
@@ -333,7 +333,12 @@ const CompanyCardDetail = (props) => {
                   </div>
 
                   <div className="col-lg-3 col-6 mt-lg-0 mt-5">
-                    <DatePicker name="startDate" value={formik.values.startDate} onChange={handleChange} />
+                    <DatePicker
+                      name="startDate"
+                      value={formik.values.startDate}
+                      onChange={handleChange}
+                      label={"Date de début"}
+                    />
                     {formik.touched.startDate && formik.errors.startDate ? (
                       <div className="formikErrorDate"> {formik.errors.startDate}</div>
                     ) : null}
@@ -342,7 +347,7 @@ const CompanyCardDetail = (props) => {
                     <AutoComplete
                       formik={formik}
                       onChange={handleAddressChange}
-                      placeholder={Texts.userProfile}
+                      Label={Texts.userProfile}
                       items={items}
                       name={"location"}
                       address={address}
@@ -362,7 +367,7 @@ const CompanyCardDetail = (props) => {
                       value={formik.values.domain}
                       onChange={handleChange}
                       options={DomainOptions}
-                      label="Domaine"
+                      Label="Domaine"
                     />
 
                     {formik.touched.domain && formik.errors.domain ? (
@@ -375,7 +380,7 @@ const CompanyCardDetail = (props) => {
                       value={formik.values.ageRange}
                       onChange={handleChange}
                       options={AgeRangeOptions}
-                      label="Age Range"
+                      Label="Age Range"
                     />
 
                     {formik.touched.ageRange && formik.errors.ageRange ? (
@@ -389,7 +394,7 @@ const CompanyCardDetail = (props) => {
                       value={formik.values.duration}
                       onChange={handleChange}
                       options={DurationOptions}
-                      label="Durée"
+                      Label="Durée"
                     />
 
                     {formik.touched.duration && formik.errors.duration ? (
@@ -403,7 +408,7 @@ const CompanyCardDetail = (props) => {
                       value={formik.values.levelOfEducation}
                       onChange={handleChange}
                       options={levelOfEducation}
-                      label="Niveau d’étude"
+                      Label="Niveau d’étude"
                     />
 
                     {formik.touched.levelOfEducation && formik.errors.levelOfEducation ? (
@@ -416,7 +421,7 @@ const CompanyCardDetail = (props) => {
                   <Select
                     options={RythmeOptions}
                     name="alternationRhythm"
-                    label="Rythme alternances"
+                    Label="Rythme alternances"
                     value={formik.values.alternationRhythm}
                     onChange={handleChange}
                   />
@@ -847,7 +852,7 @@ const useStyles = makeStyles({
       outline: "none",
     },
     background: "#3CBF31",
-    borderRadius: "2.56rem",
+    borderRadius: "5px",
     border: 0,
     fontSize: "1.37rem",
     fontWeight: "bold",
