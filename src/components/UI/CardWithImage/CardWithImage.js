@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./CardWithImage.css";
 import { Button, makeStyles } from "@material-ui/core";
 import CardItem from "./OfferCardItem";
-import DoneIcon from "@material-ui/icons/Done";
 import Calendar from "react-calendar";
 import { ReactComponent as Location } from "../../../assets/10-location.svg";
 import { DEFAULT_IMAGE } from "../../../Globals";
@@ -16,7 +15,6 @@ const CardWithImage = (props) => {
 
   const classes = useStyles();
   const { item, eventKey, handleDetail, handleOfferRejected, handleOfferAccepted } = props;
-  const [date, setdate] = useState("");
   const monthNames = [
     "Janvier",
     "Février",
@@ -369,6 +367,7 @@ const CardWithImage = (props) => {
               src={
                 item.professional_Picture.image ? `${baseUri}/views/uploads/${item.professional_Picture.image}` : DEFAULT_IMAGE
               }
+              alt=""
             />
           </div>
           <div className="card-with-image-container">
@@ -482,6 +481,7 @@ const CardWithImage = (props) => {
               src={
                 item.professional_Picture.image ? `${baseUri}/views/uploads/${item.professional_Picture.image}` : DEFAULT_IMAGE
               }
+              alt=""
             />
           </div>
           <div className="card-with-image-container">

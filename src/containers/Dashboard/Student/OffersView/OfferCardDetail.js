@@ -210,7 +210,7 @@ const OfferCardDetail = (props) => {
                 </div>
               </div>
 
-              <div className="offer-detail-content" style={{ color: "#2E7BD6" }}>
+              <div className="offer-detail-content" style={{ color: "#2E7BD6", marginTop: "2rem" }}>
                 <CardItem
                   className="offer-card-item-bordered offer-detail-content-detail"
                   content={JOB.domain}
@@ -232,11 +232,11 @@ const OfferCardDetail = (props) => {
                 <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
               </div>
 
-              <div className="offer-detail-date-container-2">
+              <div className="offer-detail-date-container-2" style={{ marginTop: "2rem", color: "#2E7BD6" }}>
                 <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences générales " />
               </div>
 
-              <div className="offer-detail-date-container mb-3">
+              <div className="offer-detail-date-container mb-2">
                 {JOB.softSkills && JOB.softSkills.length > 0 ? (
                   JOB.softSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
@@ -244,11 +244,11 @@ const OfferCardDetail = (props) => {
                 )}
               </div>
 
-              <div className="offer-detail-date-container-2">
+              <div className="offer-detail-date-container-2" style={{ marginTop: "2rem" }}>
                 <CardItem className="offer-card-item-bordered offer-detail-skills-heading" content="Compétences spécialisées " />
               </div>
 
-              <div className="offer-detail-date-container mb-3">
+              <div className="offer-detail-date-container mb-2">
                 {JOB.hardSkills && JOB.hardSkills.length > 0 ? (
                   JOB.hardSkills.map((sf) => <CardItem className="offer-detail-skills" content={sf.skillField} />)
                 ) : (
@@ -298,11 +298,7 @@ const useStyles = makeStyles({
     marginLeft: "6.2rem",
   },
   root1: {
-    "&:focus": {
-      border: "none",
-      outline: "none",
-    },
-    background: "#2B5AA6",
+    backgroundColor: "#2B5AA6",
     borderRadius: "5px",
     border: 0,
     fontSize: "1.37rem",
@@ -316,7 +312,7 @@ const useStyles = makeStyles({
       border: "none",
       outline: "none",
     },
-    background: "white",
+    backgroundColor: "white",
     borderRadius: "5px",
     border: "1px solid #2B5AA6",
     fontSize: "1.37rem",
