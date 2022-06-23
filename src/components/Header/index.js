@@ -200,7 +200,9 @@ const Header = (props) => {
 
   const getUser = async () => {
     if (props.id) {
-      let DATA = await axios.get(`${process.env.REACT_APP_URL}/profile/getUser/${props.id}`);
+      let DATA = await axios.get(
+        `${process.env.REACT_APP_URL}/profile/getUser/${props.id}`
+      );
       setData(DATA.data);
       setresetModal(!resetModal);
     } else if (props.token) {
@@ -217,7 +219,9 @@ const Header = (props) => {
     delete axios.defaults.headers.common["x-auth-token"];
 
     let res = await axios.get(
-      "https://api-adresse.data.gouv.fr/search/?q=" + e.target.value + "&type=housenumber&autocomplete=1",
+      "https://api-adresse.data.gouv.fr/search/?q=" +
+        e.target.value +
+        "&type=housenumber&autocomplete=1",
       {
         withCredentials: false,
       }
@@ -232,7 +236,11 @@ const Header = (props) => {
       addressToSet.push({
         id: i,
         label: res?.data?.features[i].properties.label,
-        label2: `${res?.data?.features[i].properties.label + "," + res?.data?.features[i].properties.context}`,
+        label2: `${
+          res?.data?.features[i].properties.label +
+          "," +
+          res?.data?.features[i].properties.context
+        }`,
         city: res?.data?.features[i].properties.city,
         PostalCode: res?.data?.features[i].properties.postcode,
         lat: res?.data?.features[i].geometry.coordinates[1],
@@ -286,10 +294,18 @@ const Header = (props) => {
   const handleClick = async (e) => {
     setDisable(true);
     if (address === "") {
-      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("L'adresse ne peut pas être vide", "warning")));
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar("L'adresse ne peut pas être vide", "warning")
+        )
+      );
       setDisable(false);
     } else if (phone === "") {
-      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("Le téléphone ne peut pas être vide", "warning")));
+      dispatch(
+        Notistack.enqueueSnackbar(
+          Notistack.snackBar("Le téléphone ne peut pas être vide", "warning")
+        )
+      );
       setDisable(false);
     } else {
       if (SignupByGoogle) {
@@ -307,7 +323,12 @@ const Header = (props) => {
               window.location.reload();
             }
             dispatch(
-              Notistack.enqueueSnackbar(Notistack.snackBar("Inscription réussie ! Essayez de vous reconnecter", "success"))
+              Notistack.enqueueSnackbar(
+                Notistack.snackBar(
+                  "Inscription réussie ! Essayez de vous reconnecter",
+                  "success"
+                )
+              )
             );
           })
           .catch(function (error) {
@@ -329,7 +350,12 @@ const Header = (props) => {
               window.location.reload();
             }
             dispatch(
-              Notistack.enqueueSnackbar(Notistack.snackBar("Inscription réussie ! Essayez de vous reconnecter", "success"))
+              Notistack.enqueueSnackbar(
+                Notistack.snackBar(
+                  "Inscription réussie ! Essayez de vous reconnecter",
+                  "success"
+                )
+              )
             );
           })
           .catch(function (error) {
@@ -351,23 +377,46 @@ const Header = (props) => {
       <LoginModal show={login} handleModal={handleModal} />
       <StudentRegister show={studentModal} handleModal={handleModal} />
       <CompanyRegister show={companyModal} handleModal={handleModal} />
-      <RequestForgotPasswordModal show={requestModal} handleModal={handleModal} />
-      <ResetPasswordModal show={resetModal} handleModal={handleModal} id={props.id} data={data} />
-      <EmailVerificationModal show={emailVerifyModal} handleModal={handleModal} id={props.token} />
-      <Modal className="student-modal" show={googleSignupModal || linkedInSignupModal} centered onHide={() => handleModalClose()}>
+      <RequestForgotPasswordModal
+        show={requestModal}
+        handleModal={handleModal}
+      />
+      <ResetPasswordModal
+        show={resetModal}
+        handleModal={handleModal}
+        id={props.id}
+        data={data}
+      />
+      <EmailVerificationModal
+        show={emailVerifyModal}
+        handleModal={handleModal}
+        id={props.token}
+      />
+      <Modal
+        className="student-modal"
+        show={googleSignupModal || linkedInSignupModal}
+        centered
+        onHide={() => handleModalClose()}
+      >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
             <div className="heading pb-5">Continuer l'inscription</div>
             <div className="modal-sub-heading ">ÉTUDIANT</div>
             <div className="studentRegisterbtn">
-              <div className="modal-button" onClick={() => handleModal("student2")}>
+              <div
+                className="modal-button"
+                onClick={() => handleModal("student2")}
+              >
                 S’inscrire
               </div>
             </div>
             <div className="modal-sub-heading">ENTREPRISE</div>
             <div className="BUSINESSRegisterbtn">
-              <div className="modal-button" onClick={() => handleModal("company2")}>
+              <div
+                className="modal-button"
+                onClick={() => handleModal("company2")}
+              >
                 Société
               </div>
             </div>
@@ -375,19 +424,33 @@ const Header = (props) => {
         </Modal.Body>
       </Modal>
 
-      <Modal className="student-modal" show={studentModal2} centered onHide={() => setstudentModal2(false)}>
+      <Modal
+        className="student-modal"
+        show={studentModal2}
+        centered
+        onHide={() => setstudentModal2(false)}
+      >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
-            <div className="heading pb-5">Continuer l'inscription des étudiants</div>
+            <div className="heading pb-5">
+              Continuer l'inscription des étudiants
+            </div>
             <div className="" style={{ marginTop: "-30px" }}>
               <Autocomplete
                 options={values}
                 clearOnEscape={true}
                 // disableClearable
                 className={classes.root}
-                noOptionsText={<div style={{ color: "black", fontSize: "12px" }}> aucune option </div>}
-                PaperComponent={({ children }) => <Paper style={{ background: "" }}>{children}</Paper>}
+                noOptionsText={
+                  <div style={{ color: "black", fontSize: "12px" }}>
+                    {" "}
+                    aucune option{" "}
+                  </div>
+                }
+                PaperComponent={({ children }) => (
+                  <Paper style={{ background: "" }}>{children}</Paper>
+                )}
                 getOptionLabel={(option) => option.label2 || ""}
                 onChange={SetAddress}
                 renderInput={(params) => (
@@ -416,18 +479,29 @@ const Header = (props) => {
                 value={phone}
               />
             </div>
-            <button className="modal-button" onClick={() => handleClick()} disabled={disable}>
+            <button
+              className="modal-button"
+              onClick={() => handleClick()}
+              disabled={disable}
+            >
               S’inscrire
             </button>
           </div>
         </Modal.Body>
       </Modal>
 
-      <Modal className="student-modal" show={companyModal2} centered onHide={() => setcompanyModal2(false)}>
+      <Modal
+        className="student-modal"
+        show={companyModal2}
+        centered
+        onHide={() => setcompanyModal2(false)}
+      >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
-            <div className="heading pb-5">Continuez enregistrement de la Entreprise</div>
+            <div className="heading pb-5">
+              Continuez enregistrement de la Entreprise
+            </div>
             <div className="mt-4">
               <ModalInput
                 placeholder="Numéro de téléphone"
@@ -437,7 +511,11 @@ const Header = (props) => {
                 value={phone}
               />
             </div>
-            <button className="modal-button" onClick={() => handleClick()} disabled={disable}>
+            <button
+              className="modal-button"
+              onClick={() => handleClick()}
+              disabled={disable}
+            >
               S’inscrire
             </button>
           </div>
@@ -445,7 +523,11 @@ const Header = (props) => {
       </Modal>
 
       <div className="home_container">
-        {props.header === "2" ? <HomeHeader2 handleModal={handleModal} /> : <HomeHeader1 handleModal={handleModal} />}
+        {props.header === "2" ? (
+          <HomeHeader2 handleModal={handleModal} />
+        ) : (
+          <HomeHeader1 handleModal={handleModal} />
+        )}
         {props.header === "2" ? (
           ""
         ) : (
@@ -459,7 +541,10 @@ const Header = (props) => {
             </div>
 
             <div className="post_mobile-view_responsive">
-              <div className="post_mobile-view-content" style={{ paddingBottom: "6rem" }}>
+              <div
+                className="post_mobile-view-content"
+                style={{ paddingBottom: "6rem" }}
+              >
                 <div className="post_icons">
                   <Image src="../images/PostAnOffer.png" alt="Post an offer" />
                   <div className="label">Poster une offre</div>

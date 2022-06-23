@@ -105,17 +105,10 @@ body {
   text-align: center;
   padding: 4% 35px 3% 6%;
   display: flex;
-  /* align-items: center; */
 }
 .pack_box_img {
   margin-right: 33px;
 }
-/* .boxHeading {
-  border-bottom: 1.74725px solid #e9ebf4;
-  color: black;
-  text-align: center;
-  padding: 10px 0;
-} */
 .packH1 {
   font-weight: 600;
   font-size: 3.5rem;
@@ -201,12 +194,12 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 60vh;
+    height: 50vh;
   }
   .applicationP {
     font-size: 14px;
     font-weight: 400;
-    padding: 20px 0;
+    padding: 0px 0;
   }
   .application-heading {
     margin-top: 0;
@@ -244,9 +237,11 @@ body {
   .pack-col1 {
     width: 100%;
     margin-bottom: 23px;
+    border-radius: 17px;
   }
   .liPack {
     font-size: 16px;
+    margin-left: 18px;
   }
   .liHeading {
     padding: 27px 30px 0px 30px;
@@ -261,17 +256,14 @@ body {
   .packBTN2 {
     font-size: 20px;
     left: 7%;
-    padding: 16px 36px;
-  }
-  .application_hr {
-    display: none;
+    padding: 7px 20px;
   }
   .boxHeading {
     padding: 4% 23px 2% 4%;
   }
   .pack_box_img {
     margin-right: 17px;
-    width: 13rem;
+    width: 10rem;
   }
   .packH3 {
     font-size: 20px;
@@ -290,12 +282,12 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 60vh;
+    height: 53vh;
   }
   .applicationP {
     font-size: 14px;
     font-weight: 400;
-    padding: 20px 0;
+    padding: 5px 0;
   }
   .application-heading {
     margin-top: 0;
@@ -342,7 +334,6 @@ body {
     margin-bottom: 80px;
   }
   .liHeading2 {
-    margin-bottom: 78px;
     padding: 27px 30px 0px 30px;
     margin-bottom: 80px;
   }
@@ -379,7 +370,7 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 80vh;
+    height: 53vh;
   }
   .applicationP {
     font-size: 19px;
@@ -387,7 +378,7 @@ body {
     padding: 15px 0;
   }
   .application-heading {
-    padding-top: 18%;
+    padding-top: 11%;
     margin-bottom: 6px;
   }
   .application-heading-2 {
@@ -462,45 +453,6 @@ body {
     font-size: 16px;
   }
 }
-/* @media only screen and (min-width: 1201px) and (max-width: 1500px) {
-  .application-heading-2 {
-    width: 100%;
-  }
-  .application {
-    margin-bottom: 15px;
-    height: 42vh;
-  }
-
-  .application-heading {
-    margin-bottom: 70px;
-  }
-  .applicationH1 {
-    font-size: 3.5rem;
-  }
-  .applicationP {
-    font-size: 24px;
-    font-weight: 300;
-    padding: 11px 0;
-  }
-  .liPack {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  .Pack {
-    margin-top: 30px;
-  }
-  .applicationBTN {
-    margin: 30px 7% 0px 13%;
-  }
-  .application_hr {
-    width: 85%;
-    top: 60%;
-    left: 7.5%;
-  }
-  .liHeading2 {
-    margin-bottom: 149px;
-  }
-} */
 @media only screen and (min-width: 1601px) {
   .PackBTNn2 {
     margin-top: 179px !important;

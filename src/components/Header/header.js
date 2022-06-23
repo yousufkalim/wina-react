@@ -35,6 +35,7 @@ export default function header(props) {
           >
             Étudiant
           </Nav.Link>
+
           <Nav.Link
             className=" navbar-right-link"
             onClick={() => handleModal("main")}
