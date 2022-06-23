@@ -63,11 +63,20 @@ const Drawer = () => {
   const handleClick = (e) => {
     setSelected(e);
   };
+  const handleLogoClick = () => {
+    setSelected("GeneralInformations");
+    setArrowUp1(!arrowUp1);
+    setOpen1(!open1);
+    setArrowUp2(false);
+    setArrowUp3(false);
+    setOpen2(false);
+    setOpen3(false);
+  };
   return (
     <div>
       <div style={{ display: "flex" }}>
         <div className="main_drawer_div">
-          <div className="dashbordlogo">
+          <div className="dashbordlogo" onClick={handleLogoClick} style={{ cursor: "pointer" }}>
             <img src={logo} />
           </div>
           <div className="drawer_head_text_div1" style={{ borderBottom: !open1 && "1px solid #E5E7ED" }} onClick={handleArrowUp1}>
