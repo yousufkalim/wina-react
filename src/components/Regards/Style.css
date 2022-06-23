@@ -12,7 +12,6 @@ body {
 .winaa {
   width: 100%;
   text-align: center;
-  /* padding: 50px 0 50px 0; */
   color: #fff;
 }
 .wina-container {
@@ -24,7 +23,6 @@ body {
   width: 100%;
   text-align: center;
   margin: auto;
-  /* height: 60vh; */
 }
 .wina-container2 {
   background: url("../../assets/Aboutimg.svg");
@@ -104,6 +102,7 @@ body {
   font-weight: 600;
   text-align: center;
   margin-bottom: 0;
+  color: #192349;
 }
 .Services-container {
   width: 90%;
@@ -130,6 +129,7 @@ body {
   margin-bottom: 20px;
   width: 100%;
   margin-top: 22px;
+  color: #192349;
 }
 .Services_hr {
   background-color: #e0c399;
@@ -186,6 +186,7 @@ body {
   font-size: 4.2rem;
   font-weight: 600;
   text-align: center;
+  color: #192349;
 }
 @media only screen and (max-width: 600px) {
   .winaa {
@@ -216,10 +217,10 @@ body {
   }
   .winaPera {
     padding: 0 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .Services {
-    padding: 26px 0;
+    padding: 26px 0 0 0;
   }
   .ServicesH1 {
     font-size: 3.7rem;
@@ -233,7 +234,7 @@ body {
     font-size: 20px;
   }
   .Services2 {
-    padding: 23px 0 21px 0;
+    padding: 0px 0 0px 0;
   }
   .ServicesH12 {
     font-size: 2.7rem;
@@ -266,7 +267,11 @@ body {
     width: 100%;
   }
   .ServicesBTN {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  .ServicesHeading2 {
+    padding: 0px 10px;
   }
 }
 
@@ -284,7 +289,7 @@ body {
   }
   .wina-container {
     flex-direction: column;
-    height: 50vh;
+    height: 45vh;
   }
   .winaH1 {
     font-size: 3rem;
@@ -300,7 +305,7 @@ body {
   }
   .winaPera {
     padding: 0 12px;
-    font-size: 12px;
+    font-size: 13px;
   }
   .Services {
     padding: 26px 0;
@@ -320,7 +325,7 @@ body {
     padding: 23px 0 21px 0;
   }
   .ServicesH12 {
-    font-size: 2.7rem;
+    font-size: 3.7rem;
   }
   .Services_hr {
     width: 22%;
@@ -351,6 +356,12 @@ body {
   }
   .ServicesBTN {
     font-size: 14px;
+  }
+  .Services-container {
+    padding-bottom: 0;
+  }
+  .ServicesHeading2 {
+    padding: 7px 10px;
   }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
@@ -367,7 +378,7 @@ body {
   }
   .wina-container {
     flex-direction: column;
-    height: 50vh;
+    height: 56vh;
   }
   .winaH1 {
     font-size: 3rem;
@@ -383,7 +394,7 @@ body {
   }
   .winaPera {
     padding: 0 12px;
-    font-size: 12px;
+    font-size: 16px;
   }
   .Services {
     padding: 26px 0;
@@ -411,29 +422,17 @@ body {
     top: 32px;
     left: 39%;
   }
-  .Services_hr1 {
-    width: 17%;
-    height: 7px;
-    top: 48px;
-    left: 42%;
-  }
-  .Services_hr2 {
-    width: 26%;
-    height: 8px;
-    top: 48px;
-    left: 37%;
-  }
-  .Services_hr3 {
-    width: 28%;
-    height: 8px;
-    top: 48px;
-    left: 36%;
-  }
   .togather_simple_Img {
     width: 100%;
   }
   .ServicesBTN {
     font-size: 14px;
+  }
+  .Services-container {
+    padding-bottom: 0;
+  }
+  .ServicesHeading2 {
+    padding: 11px 10px;
   }
 }
 @media only screen and (min-width: 1201px) and (max-width: 100px) {

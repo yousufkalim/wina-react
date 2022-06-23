@@ -12,7 +12,11 @@ const index = (props) => {
         token={props.match.params.token}
         header="2"
       />
-      <Application btnT="Annuel" text="Nos packs Entreprises" />
+      <Application
+        btnT="Annuel"
+        text="Nos packs Entreprises"
+        textp="Il vous suffit simplement de choisir l’offre qui correspond le mieux à vos besoins."
+      />
       <Pack
         img={CheckCheck}
         img2={CheckCheck}
