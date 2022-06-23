@@ -289,7 +289,7 @@ body {
   }
   .wina-container {
     flex-direction: column;
-    height: 39vh;
+    height: 45vh;
   }
   .winaH1 {
     font-size: 3rem;
@@ -378,7 +378,7 @@ body {
   }
   .wina-container {
     flex-direction: column;
-    height: 50vh;
+    height: 56vh;
   }
   .winaH1 {
     font-size: 3rem;
