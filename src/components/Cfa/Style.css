@@ -76,7 +76,7 @@ body {
   margin-bottom: 33px;
   padding-left: 24px;
   padding-right: 8%;
-  font-weight: 600;
+  font-weight: 500;
 }
 .togather_bost_img {
   width: 100%;
@@ -103,7 +103,6 @@ body {
 }
 .animationIMG {
   width: 100%;
-  /* height: 45%; */
 }
 .animaitonH4 {
   color: #19234a;
@@ -213,18 +212,18 @@ body {
 .formInput {
   border: none;
   width: 100%;
-  border-bottom: 1px solid #ECEDF2;
+  border-bottom: 1px solid #ecedf2;
   padding: 5px 0px;
   margin-bottom: 30px;
   font-size: 17px;
   font-weight: 400;
   background: none !important;
 }
-.formInput::placeholder{
-color: #999AB4 ;
-font-size: 17px;
+.formInput::placeholder {
+  color: #999ab4;
+  font-size: 17px;
 }
-.formInput:focus{
+.formInput:focus {
   outline: none;
 }
 
@@ -281,6 +280,7 @@ font-size: 17px;
   .animaiton_container {
     flex-direction: column;
     width: 60%;
+    padding-bottom: 22px;
   }
   .animaiton_box {
     width: 100%;
@@ -288,7 +288,7 @@ font-size: 17px;
   }
   .form-container {
     width: 95%;
-    margin-top: 50px;
+    margin-top: 27p;
   }
   .form-inter-div {
     width: 100%;
@@ -297,7 +297,7 @@ font-size: 17px;
   }
   .form {
     margin-bottom: 0;
-    padding: 23px 0 31px 0;
+    padding: 0px 0 31px 0;
   }
   .formH2 {
     margin-bottom: 40px;
@@ -342,7 +342,11 @@ font-size: 17px;
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .togather {
-    margin-top: 33px;
+    margin-top: 5px;
+  }
+  .Accompagnement_content {
+    padding: 1vw 0 1vw 0;
+    margin-bottom: 0;
   }
   .togetherH1 {
     font-weight: 600;
