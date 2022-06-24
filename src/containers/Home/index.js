@@ -1,9 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
 import { Image, Accordion, Card, Button } from "react-bootstrap";
-// import downChevron from "../../images/down-chevron.png";
-// import "../style.css";
-
 /**
  * @author
  * @function Home

@@ -2,12 +2,6 @@
   html {
     font-size: 90%;
   }
-  /* .importCV {
-    top: 1.8%;
-    left: 45%;
-  } */
-}
-@media screen and (max-width: 1700px) {
 }
 @media screen and (max-width: 1600px) {
   html {
@@ -36,10 +30,6 @@
   .dashbordMain .main-coloum img {
     width: 4rem;
   }
-  /* .dashbord .dashbordLayout {
-    flex-basis: 83%;
-    padding: 1% 2% 0% 4%;
-  } */
   .dashbord .dashbordLayout {
     flex-basis: 84%;
     height: 100%;
@@ -76,14 +66,7 @@
   .carosoulProfileBox .genProfile .multiCarosoul {
     width: 68vw;
   }
-  /*  ===================================================
-                  Studnet Section End
-    ================================================= */
-
-  /*  ===================================================
-                Company Section
-    ================================================= */
-
+  /* Company Section  */
   /*      Company Coaching Card   */
   .company-coaching {
     height: 100%;
@@ -103,9 +86,6 @@
   .coaching-card-body {
     height: 46%;
   }
-
-  /*      Company Coaching Card End   */
-
   /*      Student Professional Modal    */
   .professional-modal-first {
     padding-right: 2rem;
@@ -178,6 +158,21 @@
   .homeNavBar .navbar-nav {
     gap: 1rem;
     margin-top: 1rem;
+    margin-left: 0 !important;
+  }
+  .Hide_menu {
+    display: none !important;
+  }
+  .Show_menu {
+    display: block !important;
+  }
+  .navbar-image {
+    width: 10rem;
+    padding: 5px 0;
+  }
+  .homeNavBar .navbar-left-link {
+    justify-content: center;
+    margin: 10px 0 !important;
   }
   .homeNavBar .navbar-collapse {
     background-color: #fff;
@@ -211,9 +206,16 @@
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
     z-index: 7;
     position: fixed !important;
+    align-items: inherit !important;
+    padding: 20px 0 !important;
   }
   .navbar-expand-xl .navbar-collapse {
     margin: 0 !important;
+    display: block !important;
+  }
+  .nav_menu_btn {
+    display: none;
+    margin-right: 2rem;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -223,7 +225,6 @@
   }
   .carosoulProfileBox .genProfile .multiCarosoul {
     height: 90%;
-    /* width: 70vw; */
   }
   .upper-nav.nav.nav-tabs {
     height: auto;
@@ -254,10 +255,10 @@
     font-size: 50%;
   }
   .homeNavBar .navbar-brand {
-    padding-left: 3rem;
+    padding-left: 0rem;
   }
   .homeNavBar {
-    padding: 0px 0rem !important;
+    padding: 0px 4rem !important;
   }
   .homeNavBar .navbar-toggler {
     padding-right: 2.5rem;
@@ -277,7 +278,6 @@
 
   .professional-modal-form-first {
     justify-content: space-between;
-    /* gap: 1.3rem; */
     flex-wrap: no-wrap;
     padding-left: 15px;
   }
@@ -291,9 +291,7 @@
 
   .research-form-first {
     justify-content: space-between;
-    /* gap: 1.3rem; */
     flex-wrap: no-wrap;
-    /* padding-left: 15px; */
   }
   .research-form-position {
     flex-basis: 48%;
@@ -303,14 +301,8 @@
     flex-basis: 48%;
   }
 
-  /*      Home page For Tab     */
-  /* .homeNavBar {
-    height: 8vh;
-  } */
-
   .homeBackground {
     height: 92vh;
-    /* position: relative; */
   }
   .collapseMenu {
     display: none;
@@ -327,7 +319,6 @@
   }
   .home_container {
     overflow: hidden;
-    /* position: relative; */
   }
   .post_mobile-view-content {
     gap: 2rem;
@@ -366,8 +357,11 @@
     color: rgb(83, 83, 83);
     border: none;
     background: none;
-    font-size: 1.375rem !important;
-    padding-left: 0px !important;
+    font-size: 2.2rem !important;
+    padding-left: 5px !important;
+  }
+  .dropdown-content a {
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 800px) {
@@ -413,18 +407,12 @@
     border-left: none;
     padding: 0px;
   }
-  /* .homeNavBar .navbar-brand img {
-    width: 120px;
-  } */
   .homeNavBar .navbar-right {
     margin-left: 0px;
     flex-direction: row;
     padding-top: 12px;
     padding-bottom: 10px;
   }
-  /* .homeBackground {
-    background-size: contain;
-  } */
   .homeBackground .container {
     padding: 10px;
   }
@@ -434,115 +422,48 @@
   .homeBackground .container p {
     font-size: 18px;
   }
-  /* .homeBackground .post_icons {
-    background: white;
-    border-radius: 6px;
-    text-align: center;
-    padding: 20px 0px 10px;
-    margin: 20px auto 0px;
-    width: 260px;
-    border: 1px solid #454545;
-  } */
-}
-@media (min-width: 576px) and (max-width: 767px) {
-  .homeNavBar .navbar-left .upload_cv {
-    padding: 0px;
+  .animBTN {
+    top: -4px !important;
+    left: 70px !important;
   }
-  .homeNavBar .navbar-center {
-    padding: 10px 0px 0px;
-  }
-  .homeNavBar .navbar-center .btn-primary {
-    padding: 6px 0px !important;
-    font-size: 16px;
-    width: 163px;
-  }
-  .homeBackground .post_icons .label {
-    text-align: center;
-  }
-  .homeNavBar .navbar-left .nav-link {
-    font-size: 17px;
-  }
-  .homeNavBar .navbar-right .nav-link {
-    font-size: 13px;
-    width: 82px;
-    border-left: none;
-    padding: 0px;
-  }
-  /* .homeNavBar .navbar-brand img {
-    width: 120px;
-  } */
-  .homeNavBar .navbar-right {
-    margin-left: 0px;
-    flex-direction: row;
-    padding-top: 12px;
-    padding-bottom: 10px;
-  }
-  /* .homeBackground {
-    background-size: contain;
-  }
-  .homeBackground .container {
-    padding: 10px;
-  } */
-  .homeBackground .container h1 {
-    font-size: 25px;
-  }
-  .homeBackground .container p {
-    font-size: 18px;
-  }
-  /* .homeBackground .post_icons {
-    background: white;
-    border-radius: 6px;
-    text-align: center;
-    padding: 20px 0px 10px;
-    margin: 20px auto 0px;
-    width: 260px;
-    border: 1px solid #454545;
-  } */
-  .homeBackground .post_mobile-view .col-lg-2 {
-    width: 50%;
+  @media (min-width: 576px) and (max-width: 767px) {
+    .homeNavBar .navbar-left .upload_cv {
+      padding: 0px;
+    }
+    .homeNavBar .navbar-center {
+      padding: 10px 0px 0px;
+    }
+    .homeNavBar .navbar-center .btn-primary {
+      padding: 6px 0px !important;
+      font-size: 16px;
+      width: 163px;
+    }
+    .homeBackground .post_icons .label {
+      text-align: center;
+    }
+    .homeNavBar .navbar-left .nav-link {
+      font-size: 17px;
+    }
+    .homeNavBar .navbar-right .nav-link {
+      font-size: 13px;
+      width: 82px;
+      border-left: none;
+      padding: 0px;
+    }
+    .homeNavBar .navbar-right {
+      margin-left: 0px;
+      flex-direction: row;
+      padding-top: 12px;
+      padding-bottom: 10px;
+    }
+    .homeBackground .container h1 {
+      font-size: 25px;
+    }
+    .homeBackground .container p {
+      font-size: 18px;
+    }
+    .homeBackground .post_mobile-view .col-lg-2 {
+      width: 50%;
+    }
   }
 }
-/* @media (min-width: 768px) and (max-width: 800px) {
-	.importCV {
-		top: 34%;
-		right: 28%;
-	}
-}
-
-@media (min-width: 800px) and (max-width: 991px) {
-	.importCV {
-		top: 38%;
-		right: 24%;
-	}
-}
-@media (min-width: 992px) and (max-width: 1100px) {
-	.importCV {
-		top: 45%;
-		right: 24%;
-	}
-}
-@media (min-width: 1100px) and (max-width: 1200px) {
-	.importCV {
-		top: 90px;
-		right: 31%;
-	}
-} */
-/* @media (min-width: 768px) and (max-width: 991px) {
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-}
-@media (min-width: 1200px) and (max-width: 1365px) {
-}
-@media (min-width: 1366px) and (max-width: 1400px) {
-}
-@media (min-width: 1401px) and (max-width: 1440px) {
-}
-@media (min-width: 1441px) and (max-width: 1600px) {
-}
-@media (min-width: 1601px) and (max-width: 1680px) {
-}
-@media (min-width: 1681px) and (max-width: 1919px) {
-}
-@media (min-width: 1801px) and (max-width: 1900px) {
-  
-} */
