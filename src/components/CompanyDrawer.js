@@ -3,12 +3,9 @@ import logo from "../assets/WinaaLogo.svg";
 import Dashboard from "../assets/Vector.svg";
 import ArrowDown from "../assets/Vector1.svg";
 import Offer from "../assets/Group2.svg";
-import Coaching from "../assets/Group3.svg";
 import ArrowUp from "../assets/Vector3.svg";
 import SignOut from "../assets/signout.svg";
-import { Tab, Nav } from "react-bootstrap";
 import Header from "../containers/Dashboard/Components/header";
-import Footer from "../containers/Dashboard/Components/footer";
 import BrowseOffers from "../containers/Dashboard/Company/AnnoncesView/BrowseOffers";
 import OverviewOfOffers from "../containers/Dashboard/Company/AnnoncesView/OverviewOfOffers";
 import RDV from "../containers/Dashboard/Company/CoachingView/RDV";
@@ -27,11 +24,13 @@ const Drawer = () => {
 
   const [selected, setSelected] = useState("");
   useEffect(() => {
+    handleStart();
+  }, []);
+  const handleStart = () => {
     setSelected("BrowseOffers");
     setArrowUp1(!arrowUp1);
     setOpen1(!open1);
-  }, []);
-
+  };
   const handleArrowUp1 = () => {
     setArrowUp1(!arrowUp1);
     setOpen1(!open1);
@@ -61,14 +60,14 @@ const Drawer = () => {
       <div style={{ display: "flex" }}>
         <div className="main_drawer_div">
           <div className="dashbordlogo" onClick={handleLogoClick} style={{ cursor: "pointer" }}>
-            <img src={logo} />
+            <img src={logo} alt="" />
           </div>
           <div className="drawer_head_text_div1" style={{ borderBottom: !open1 && "1px solid #E5E7ED" }} onClick={handleArrowUp1}>
             <div className="drawer_left_text">
-              <img src={Dashboard} className="home_icon" />
+              <img src={Dashboard} className="home_icon" alt="" />
               <span className="drawer_head_text">Annonces</span>
             </div>
-            <img src={arrowUp1 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
+            <img src={arrowUp1 === false ? ArrowDown : ArrowUp} className="arrow_icon" alt="" />
           </div>
           <div style={{ display: !open1 && "none" }}>
             <div className="dashbord-column" style={{ borderLeft: selected === "BrowseOffers" ? "4px solid #18214A" : "" }}>
@@ -98,10 +97,10 @@ const Drawer = () => {
             onClick={handleArrowUp2}
           >
             <div className="drawer_left_text">
-              <img src={Offer} className="home_icon" />
+              <img src={Offer} className="home_icon" alt="" />
               <span className="drawer_head_text">Accompagnement</span>
             </div>
-            <img src={arrowUp2 === false ? ArrowDown : ArrowUp} className="arrow_icon" />
+            <img src={arrowUp2 === false ? ArrowDown : ArrowUp} className="arrow_icon" alt="" />
           </div>
           <div style={{ display: !open2 && "none" }}>
             <div className="dashbord-column" style={{ borderLeft: selected === "Offers" ? "4px solid #18214A" : "" }}>

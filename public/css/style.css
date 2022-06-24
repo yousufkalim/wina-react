@@ -3293,6 +3293,7 @@ textarea.form-control {
 }
 .student-offer-detail-percentage {
   display: inline-block;
+  border-radius: 10px;
   background-color: #3cbf31;
   color: #fff;
   position: absolute;
@@ -3324,6 +3325,7 @@ textarea.form-control {
   object-fit: contain;
 }
 .offer-detail-header-text {
+margin-top: 3rem;
   flex-basis: 80%;
   color: #454545;
   font-size: 3.4rem;
@@ -3376,8 +3378,9 @@ textarea.form-control {
   font-size: 1.3rem;
 }
 .offer-detail-date-container {
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding-bottom: 1rem;
 }
 .offer-detail-date-container-2 {

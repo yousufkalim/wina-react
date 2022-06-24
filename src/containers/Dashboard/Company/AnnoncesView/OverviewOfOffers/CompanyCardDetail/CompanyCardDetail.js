@@ -15,7 +15,6 @@ import CardWithImage from "../../../../../../components/UI/CardWithImage/CardWit
 import { useDispatch, useSelector } from "react-redux";
 import { Get_Job } from "../../../../../../Redux/actions";
 import Loader from "../../../../../../components/UI/Loader";
-import ModalInput from "../../../../../../components/UI/TextField";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import Select from "../../../../../../components/UI/Select";
 import ModifierButton from "../../../../../../components/UI/Button";
@@ -23,21 +22,21 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { POSITION_SOUGHT_STATE } from "../../../../../../Globals/InitialValues/Company";
 import { POSITION_SOUGHT_YUP } from "../../../../../../components/Formik/Company/yupValidation";
-import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { baseUrl } from "../../../../../../urlConfig";
-
 import { DomainOptions, DurationOptions, RythmeOptions, levelOfEducation, AgeRangeOptions } from "../../../../../../Globals";
-import RadioButton from "../../../../../../components/UI/RadioButton";
-
 import { getSkills, getApiAdress, Search_Students, Edit_Job } from "../../../../../../Redux/actions";
 import AutoComplete from "../../../../../../components/UI/AutoComplete";
 import Texts from "../../../../../../Globals/Texts";
 import _ from "lodash";
 import MultiAutoComplete from "../../../../../../components/UI/MultiSelect";
-import { SignalCellularConnectedNoInternet3BarRounded } from "@material-ui/icons";
 import { baseUri } from "../../../../../../urlConfig";
 import CustomTextField from "../../../../../../components/UI/CustomTextField/TextFieldRound";
+
+import ModalInput from "../../../../../../components/UI/TextField";
+import { Link } from "react-router-dom";
+import RadioButton from "../../../../../../components/UI/RadioButton";
+import { SignalCellularConnectedNoInternet3BarRounded } from "@material-ui/icons";
 
 const CompanyCardDetail = (props) => {
   const { offerID, handleStudentDetail, handleOfferAccepted, handleOfferRejected, setisDetail } = props;
