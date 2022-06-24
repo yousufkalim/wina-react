@@ -160,12 +160,11 @@
     margin-top: 1rem;
     margin-left: 0 !important;
   }
-  .Hide_menu {
-    display: none !important;
-  }
-  .Show_menu {
+  .navbar-expand-xl .navbar-collapse {
+    margin: 0 !important;
     display: block !important;
   }
+
   .navbar-image {
     width: 10rem;
     padding: 5px 0;
@@ -176,7 +175,8 @@
   }
   .homeNavBar .navbar-collapse {
     background-color: #fff;
-    padding-bottom: 2rem;
+    padding-bottom: 0;
+    padding-top: 5px;
   }
   .generalInformation .search_bar {
     height: 5rem;
@@ -184,6 +184,7 @@
 
   .homeNavBar .navbar-nav {
     align-items: center;
+    flex-direction: inherit !important;
   }
   .justify-content-between {
     flex-direction: column;
@@ -209,13 +210,13 @@
     align-items: inherit !important;
     padding: 20px 0 !important;
   }
-  .navbar-expand-xl .navbar-collapse {
-    margin: 0 !important;
-    display: block !important;
-  }
+
   .nav_menu_btn {
-    display: none;
-    margin-right: 2rem;
+    display: block !important;
+    margin-right: 0rem !important;
+  }
+  .nav_menu_btn2 {
+    display: none !important;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -259,6 +260,18 @@
   }
   .homeNavBar {
     padding: 0px 4rem !important;
+    justify-content: flex-end !important;
+  }
+  .landing_logo_div {
+    margin-right: auto !important;
+    display: block;
+  }
+  .landing_logo_div2 {
+    display: none !important;
+    margin-right: auto !important;
+  }
+  .responsive_manu {
+    margin: auto;
   }
   .homeNavBar .navbar-toggler {
     padding-right: 2.5rem;
@@ -363,10 +376,25 @@
   .dropdown-content a {
     font-size: 14px;
   }
+  .student-modal .modal-dialog {
+    width: 60% !important;
+    max-width: 60% !important;
+    height: 60%;
+  }
 }
 @media screen and (max-width: 800px) {
   html {
     font-size: 45%;
+  }
+  .Hide_menu {
+    display: none !important;
+  }
+  .Show_menu {
+    display: block !important;
+  }
+  .navbar-expand-xl .navbar-collapse {
+    margin: 0 !important;
+    display: block !important;
   }
   .justify-content-between {
     flex-direction: column;
@@ -384,12 +412,21 @@
   .student-modal .modal-body .heading {
     padding-bottom: 0rem !important;
   }
+  .student-modal .modal-dialog {
+    width: 60% !important;
+    max-width: 60% !important;
+    height: 60%;
+  }
+  .navbar-right-link {
+    padding: 0.5rem 0rem !important;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 576px) {
   .homeNavBar .navbar-left .upload_cv {
     padding: 0px;
   }
+
   .homeNavBar .navbar-center {
     padding: 10px 0px 0px;
   }
@@ -397,6 +434,11 @@
     padding: 6px 0px !important;
     font-size: 16px;
     width: 163px;
+  }
+  .student-modal .modal-dialog {
+    width: 80% !important;
+    max-width: 80% !important;
+    height: 40%;
   }
   .homeNavBar .navbar-left .nav-link {
     font-size: 17px;
@@ -426,6 +468,11 @@
     top: -4px !important;
     left: 70px !important;
   }
+  .homeNavBar {
+    padding: 0px 2rem !important;
+    justify-content: flex-end !important;
+  }
+
   @media (min-width: 576px) and (max-width: 767px) {
     .homeNavBar .navbar-left .upload_cv {
       padding: 0px;
@@ -465,5 +512,14 @@
     .homeBackground .post_mobile-view .col-lg-2 {
       width: 50%;
     }
+  }
+}
+@media screen and (max-width: 320px) {
+  .homeNavBar {
+    padding: 0px 1rem !important;
+    justify-content: flex-end !important;
+  }
+  .home_seciton_p {
+    font-size: 8px !important;
   }
 }

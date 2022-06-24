@@ -25,7 +25,10 @@ export default function Header2(props) {
         justifyContent: "space-between",
       }}
     >
-      <div style={{ marginLeft: "1rem" }}>
+      <div
+        style={{ marginLeft: "1rem" }}
+        className={showMenu ? "landing_logo_div" : "landing_logo_div2"}
+      >
         <Navbar.Brand href="/landing_page">
           <Image
             src={Logo}
@@ -35,7 +38,7 @@ export default function Header2(props) {
         </Navbar.Brand>
       </div>
 
-      <div>
+      <div className="responsive_manu">
         <Navbar.Collapse>
           <Nav
             style={{ marginLeft: "10rem", textAlign: "center" }}
@@ -63,8 +66,11 @@ export default function Header2(props) {
           </Nav>
         </Navbar.Collapse>
       </div>
-      <div style={{ marginRight: "2rem" }} className="nav_menu_btn">
-        <Navbar.Collapse>
+      <div
+        style={{ marginRight: "2rem" }}
+        className={showMenu ? "nav_menu_btn" : "nav_menu_btn2"}
+      >
+        <Navbar.Collapse className="nav_menu_collapse">
           <Nav>
             <Nav.Link
               className=" navbar-right-link navbar-right-link2"
