@@ -1027,18 +1027,10 @@ html {
   border: none;
   outline: none;
 }
-.schoolDiplomaModal
-  .modal-body
-  .schoolName
-  .MuiInputBase-root:focus-within
-  input {
+.schoolDiplomaModal .modal-body .schoolName .MuiInputBase-root:focus-within input {
   color: white;
 }
-.schoolDiplomaModal
-  .modal-body
-  .schoolName
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.schoolDiplomaModal .modal-body .schoolName .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .schoolDiplomaModal .modal-body .schoolName .MuiSvgIcon-root:focus {
@@ -1074,24 +1066,12 @@ html {
   border: none;
   outline: none;
 }
-.schoolDiplomaModal
-  .modal-body
-  .startDate
-  .MuiInputBase-root:focus-within
-  input,
+.schoolDiplomaModal .modal-body .startDate .MuiInputBase-root:focus-within input,
 .schoolDiplomaModal .modal-body .endDate .MuiInputBase-root:focus-within input {
   color: white;
 }
-.schoolDiplomaModal
-  .modal-body
-  .startDate
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root,
-.schoolDiplomaModal
-  .modal-body
-  .endDate
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.schoolDiplomaModal .modal-body .startDate .MuiInputBase-root:focus-within .MuiButtonBase-root,
+.schoolDiplomaModal .modal-body .endDate .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 
@@ -1890,33 +1870,19 @@ html {
   border-radius: 3rem !important;
   border: 1px solid #2879d9;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Type_of_employment
-  .MuiInputBase-root:focus-within {
+.ProfessionalCareerModal .modal-body .Type_of_employment .MuiInputBase-root:focus-within {
   background-color: #2879d9;
   color: white;
   border: none;
   outline: none;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Type_of_employment
-  .MuiInputBase-root:focus-within
-  input {
+.ProfessionalCareerModal .modal-body .Type_of_employment .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Type_of_employment
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.ProfessionalCareerModal .modal-body .Type_of_employment .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Type_of_employment
-  .MuiSvgIcon-root:focus {
+.ProfessionalCareerModal .modal-body .Type_of_employment .MuiSvgIcon-root:focus {
   color: white;
 }
 
@@ -1933,18 +1899,10 @@ html {
   border: none;
   outline: none;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Business
-  .MuiInputBase-root:focus-within
-  input {
+.ProfessionalCareerModal .modal-body .Business .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Business
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.ProfessionalCareerModal .modal-body .Business .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 
@@ -1967,18 +1925,10 @@ html {
   border: none;
   outline: none;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Location
-  .MuiInputBase-root:focus-within
-  input {
+.ProfessionalCareerModal .modal-body .Location .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .Location
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.ProfessionalCareerModal .modal-body .Location .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .ProfessionalCareerModal .modal-body .Location .MuiSvgIcon-root:focus {
@@ -2013,27 +1963,16 @@ html {
   border-radius: 3rem !important;
   border: 1px solid #2879d9;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .startEndDate
-  .MuiInputBase-root:focus-within {
+.ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root:focus-within {
   background-color: #2879d9;
   color: white;
   border: none;
   outline: none;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .startEndDate
-  .MuiInputBase-root:focus-within
-  input {
+.ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal
-  .modal-body
-  .startEndDate
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .ProfessionalCareerModal .modal-body .startEndDate .MuiSvgIcon-root:focus {
@@ -2095,11 +2034,7 @@ html {
   border-radius: 3rem !important;
   border: 1px solid #2879d9;
 }
-.GeneralSkillsBox
-  .GeneralSkills
-  .GSkillsBox
-  .skills
-  .MuiInputBase-root:focus-within {
+.GeneralSkillsBox .GeneralSkills .GSkillsBox .skills .MuiInputBase-root:focus-within {
   background-color: #2879d9;
   color: white;
   border: none;
@@ -2108,12 +2043,7 @@ html {
 .GeneralSkillsBox .GeneralSkills .skills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.GeneralSkillsBox
-  .GeneralSkills
-  .GSkillsBox
-  .skills
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.GeneralSkillsBox .GeneralSkills .GSkillsBox .skills .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .skills .MuiSvgIcon-root:focus {
@@ -2137,11 +2067,7 @@ html {
   font-size: 1.37rem;
   color: #8d8d8d;
 }
-.GeneralSkillsBox
-  .GeneralSkills
-  .GSkillsBox
-  .description
-  textarea::placeholder {
+.GeneralSkillsBox .GeneralSkills .GSkillsBox .description textarea::placeholder {
   color: #8d8d8d;
 }
 /* GeneralSkillsBox*/
@@ -2177,52 +2103,27 @@ html {
   width: 770px;
 }
 
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .SSkillsBox
-  .skills
-  .MuiFormControl-fullWidth {
+.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiFormControl-fullWidth {
   max-width: 283px;
   margin-top: 54px;
 }
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .SSkillsBox
-  .skills
-  .MuiInputBase-root {
+.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiInputBase-root {
   border-radius: 50px !important;
   border: 1px solid #2879d9;
 }
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .SSkillsBox
-  .skills
-  .MuiInputBase-root:focus-within {
+.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiInputBase-root:focus-within {
   background-color: #2879d9;
   color: white;
   border: none;
   outline: none;
 }
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .skills
-  .MuiInputBase-root:focus-within
-  input {
+.SpecializedSkillsBox .SpecializedSkills .skills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .SSkillsBox
-  .skills
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
-.SpecializedSkillsBox
-  .SpecializedSkills
-  .SSkillsBox
-  .skills
-  .MuiSvgIcon-root:focus {
+.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiSvgIcon-root:focus {
   color: white;
 }
 .SpecializedSkillsBox .SpecializedSkills .SSkillsBox .description {
@@ -2289,12 +2190,7 @@ html {
 .LanguagesBox .Languages .skills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.LanguagesBox
-  .Languages
-  .LgBox
-  .skills
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.LanguagesBox .Languages .LgBox .skills .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .LanguagesBox .Languages .LgBox .skills .MuiSvgIcon-root:focus {
@@ -2442,18 +2338,10 @@ html {
   border: none;
   outline: none;
 }
-.ResearchBox
-  .levelofStudyBox
-  .LevelOfStudy
-  .MuiInputBase-root:focus-within
-  input {
+.ResearchBox .levelofStudyBox .LevelOfStudy .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ResearchBox
-  .levelofStudyBox
-  .LevelOfStudy
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.ResearchBox .levelofStudyBox .LevelOfStudy .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .ResearchBox .levelofStudyBox .LevelOfStudy .MuiSvgIcon-root:focus {
@@ -2617,47 +2505,19 @@ html {
   border-radius: 2.56rem !important;
   border: 1px solid #2879d9;
 }
-.publishBox
-  .publish
-  .startDateandDuration
-  .startDate
-  .MuiInputBase-root:focus-within,
-.publishBox
-  .publish
-  .startDateandDuration
-  .Duration
-  .MuiInputBase-root:focus-within {
+.publishBox .publish .startDateandDuration .startDate .MuiInputBase-root:focus-within,
+.publishBox .publish .startDateandDuration .Duration .MuiInputBase-root:focus-within {
   background-color: #2879d9;
   color: white;
   border: none;
   outline: none;
 }
-.publishBox
-  .publish
-  .startDateandDuration
-  .startDate
-  .MuiInputBase-root:focus-within
-  input,
-.publishBox
-  .publish
-  .startDateandDuration
-  .Duration
-  .MuiInputBase-root:focus-within
-  input {
+.publishBox .publish .startDateandDuration .startDate .MuiInputBase-root:focus-within input,
+.publishBox .publish .startDateandDuration .Duration .MuiInputBase-root:focus-within input {
   color: white;
 }
-.publishBox
-  .publish
-  .startDateandDuration
-  .startDate
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root,
-.publishBox
-  .publish
-  .startDateandDuration
-  .Duration
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.publishBox .publish .startDateandDuration .startDate .MuiInputBase-root:focus-within .MuiButtonBase-root,
+.publishBox .publish .startDateandDuration .Duration .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .DateRow {
@@ -2680,11 +2540,7 @@ html {
   justify-content: flex-start;
   gap: 2rem;
 }
-.GeneralSkillsBox
-  .GeneralSkills
-  .GSkillsBox-2
-  .skills
-  .MuiFormControl-fullWidth {
+.GeneralSkillsBox .GeneralSkills .GSkillsBox-2 .skills .MuiFormControl-fullWidth {
   width: 18rem;
 }
 .generalSkills-skills {
@@ -2704,11 +2560,7 @@ html {
 .publishBox .publish .generalSkills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.publishBox
-  .publish
-  .generalSkills
-  .MuiInputBase-root:focus-within
-  .MuiButtonBase-root {
+.publishBox .publish .generalSkills .MuiInputBase-root:focus-within .MuiButtonBase-root {
   color: white;
 }
 .publishBox .publish .generalSkills .MuiSvgIcon-root:focus {
@@ -3325,7 +3177,7 @@ textarea.form-control {
   object-fit: contain;
 }
 .offer-detail-header-text {
-margin-top: 3rem;
+  margin-top: 3rem;
   flex-basis: 80%;
   color: #454545;
   font-size: 3.4rem;
@@ -3466,9 +3318,7 @@ margin-top: 3rem;
 .sliderBox .makeStyles-input-2 {
   top: 0rem !important;
 }
-.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
-  .offer-detail-container
-  .makeStyles-input-14 {
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .offer-detail-container .makeStyles-input-14 {
   top: 0rem;
 }
 /* Company Offering card page       */
@@ -3792,11 +3642,7 @@ input[type="file"] {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.16);
 }
 
-.carousel
-  .slider-wrapper.axis-horizontal
-  .slider
-  .slide.selected
-  .offer-card-body {
+.carousel .slider-wrapper.axis-horizontal .slider .slide.selected .offer-card-body {
   background-color: #18214a;
 }
 
@@ -3806,11 +3652,7 @@ input[type="file"] {
   border: 0.3rem solid #fff;
 }
 
-.carousel
-  .slider-wrapper.axis-horizontal
-  .slider
-  .slide.selected
-  .MuiFab-primary {
+.carousel .slider-wrapper.axis-horizontal .slider .slide.selected .MuiFab-primary {
   color: #fff;
   background-color: #2879d9;
   border: 0.3rem solid #fff;

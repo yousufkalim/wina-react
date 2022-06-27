@@ -7,10 +7,10 @@ import OfferCardDetail from "./OfferCardDetail";
 export default function Student(props) {
   return (
     <Switch>
-      <Route exact path="/" exact component={StudentDashboard} />
+      <Route exact path="/students/dashboard" exact component={StudentDashboard} />
       <Route exact path="/jobDesc" exact component={OfferCardDetail} />
 
-      <Redirect from="*" to="/" />
+      <Redirect from="*" to="/students/dashboard" />
     </Switch>
   );
 }

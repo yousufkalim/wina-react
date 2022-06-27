@@ -12,9 +12,11 @@ import RDV from "../containers/Dashboard/Company/CoachingView/RDV";
 import Offers from "../containers/Dashboard/Company/CoachingView/Offres";
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { signout } from "../Redux/actions";
 const Drawer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [arrowUp1, setArrowUp1] = useState(false);
   const [arrowUp2, setArrowUp2] = useState(false);
@@ -49,11 +51,7 @@ const Drawer = () => {
     setSelected(e);
   };
   const handleLogoClick = () => {
-    setSelected("BrowseOffers");
-    setArrowUp1(!arrowUp1);
-    setOpen1(!open1);
-    setArrowUp2(false);
-    setOpen2(false);
+    history.push("/");
   };
   return (
     <div>
@@ -118,7 +116,9 @@ const Drawer = () => {
             </div>
           </div>
           <div
-            onClick={() => dispatch(signout())}
+            onClick={() => {
+              dispatch(signout(history));
+            }}
             style={{ position: "absolute", bottom: "3%", left: "2.4%", color: "#FF285C", fontSize: "1.1rem", cursor: "pointer" }}
           >
             <Image src={SignOut} /> Se déconnecter

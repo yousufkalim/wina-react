@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Login from "../Signin";
 import Signup from "../Signup";
 import LandingPage from "../LandingPage.js/index";
@@ -11,6 +11,7 @@ import Regards from "../Regards/index";
 import About from "../About/index";
 
 export default function UnAuth() {
+  const history = useHistory();
   return (
     <Switch>
       <Route exact path="/" component={LandingPage} />
@@ -25,7 +26,18 @@ export default function UnAuth() {
       <Route exact path="/About" component={About} />
       <Route exact path="/verifyEmail/:token" component={LandingPage} />
 
-      <Redirect from="*" to="/" />
+      {/* Redirection on 404 routes */}
+      <Route
+        exact
+        path="/*"
+        render={() => {
+          let { pathname } = window.location;
+          pathname = pathname.split("/")[1];
+          if (pathname !== "students" && pathname !== "companies" && pathname !== "admins") {
+            history.push("/");
+          }
+        }}
+      />
     </Switch>
   );
 }

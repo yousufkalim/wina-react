@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../components/LandingPage/Style.css";
 import CompanyRegister from "../../components/Header/Modals/companyRegisterModal";
 import HomeImage from "../../assets/HomeImage.jpg";
 import FindStar from "../../assets/FindStar.svg";
+import { useSelector } from "react-redux";
 
 const Hero = (props) => {
   const [studentModal, setstudentModal] = useState(false);
-
+  const [User, setUser] = useState({});
+  const store = useSelector((state) => state.student);
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
   const handleModal = () => {
     setstudentModal(!studentModal);
   };
@@ -27,15 +32,16 @@ const Hero = (props) => {
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi
-                  sollicitudin a eros sed cured ed sus.{" "}
+                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
                 </p>
-                <button
-                  className="home_section_btn"
-                  onClick={() => handleModal("company")}
-                >
-                  Creer mon profil entreprise
-                </button>
+
+                {User ? (
+                  ""
+                ) : (
+                  <button className="home_section_btn" onClick={() => handleModal("company")}>
+                    Creer mon profil entreprise
+                  </button>
+                )}
               </div>
             </div>
             <div className="home_section_colmn">

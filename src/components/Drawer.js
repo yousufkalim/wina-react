@@ -18,8 +18,10 @@ import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { signout } from "../Redux/actions";
 import MatchResearch from "../containers/Dashboard/Student/OffersView/ResearchTab/MatchResearch";
+import { useHistory } from "react-router-dom";
 const Drawer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [arrowUp1, setArrowUp1] = useState(false);
   const [arrowUp2, setArrowUp2] = useState(false);
@@ -65,13 +67,7 @@ const Drawer = () => {
     setSelected(e);
   };
   const handleLogoClick = () => {
-    setSelected("GeneralInformations");
-    setArrowUp1(!arrowUp1);
-    setOpen1(!open1);
-    setArrowUp2(false);
-    setArrowUp3(false);
-    setOpen2(false);
-    setOpen3(false);
+    history.push("/");
   };
   return (
     <div>
@@ -191,7 +187,7 @@ const Drawer = () => {
             </div>
           </div>
           <div
-            onClick={() => dispatch(signout())}
+            onClick={() => dispatch(signout(history))}
             style={{ position: "absolute", bottom: "3%", left: "2.4%", color: "#FF285C", fontSize: "1.1rem", cursor: "pointer" }}
           >
             <Image src={SignOut} alt="" /> Se déconnecter

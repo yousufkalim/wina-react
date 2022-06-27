@@ -167,8 +167,6 @@ export default function ControlledOpenSelect(props) {
     setOpen(true);
   };
   if (props.type && props.type === "skills") {
-    console.log("props.type ======>", props.type);
-
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
@@ -203,7 +201,6 @@ export default function ControlledOpenSelect(props) {
       </>
     );
   } else if (props.type && props.type === "appointment") {
-    console.log("props.type ======>", props.type);
     return (
       <>
         <FormControl fullWidth className={classes.formControl}>
@@ -240,7 +237,6 @@ export default function ControlledOpenSelect(props) {
   } else
     return (
       <>
-        {console.log("========>Other")}
         <FormControl fullWidth className={classes.formControl}>
           <label className={`text-left ${classes.label}`}>{props.Label}</label>
           <Select
