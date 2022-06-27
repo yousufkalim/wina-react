@@ -6,6 +6,7 @@ import { login } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+
 /**
  * @author
  * @function Signin
@@ -14,8 +15,10 @@ import { Redirect } from "react-router-dom";
 const Signin = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
+  const store = useSelector((state) => state.student);
 
   const dispatch = useDispatch();
 
@@ -29,11 +32,21 @@ const Signin = (props) => {
 
     dispatch(login(user));
   };
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
 
   if (auth.authenticate) {
-    return <Redirect to={`/`} />;
+    return user.type === "student" ? (
+      <Redirect to={`/students/dashboard`} />
+    ) : user.type === "company" ? (
+      <Redirect to={`/companies/dashboard`} />
+    ) : user.type === "admin" ? (
+      <Redirect to={`/admins/dashboard`} />
+    ) : (
+      <Redirect to={`/`} />
+    );
   }
-
   return (
     <Layout>
       <Container>
