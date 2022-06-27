@@ -14,23 +14,14 @@ import Boostimg from "../../assets/Boostimg.jpg";
 import Boostimg2 from "../../assets/Boostimg2.jpg";
 import Boostimg3 from "../../assets/Boostimg3.jpg";
 import Boostimg4 from "../../assets/Boostimg4.svg";
-// import Videoicon from "../../assets/Videoicon.png";
-// import Heroimg from "../../assets/Heroimg.png";
-
 import Formsimg from "../../assets/Formsimg.png";
 import Speechimg from "../../assets/Speechimg.png";
 import Supportimg from "../../assets/Supportimg.png";
-
 const Index = (props) => {
   return (
     <>
       <HomeHeader2 id={props.match.params.id} token={props.match.params.token} header="2" />
-      <Hero2
-        srcImg3={FindStar}
-        // srcImg={Heroimg}
-        // h2text="Matching.Echange.Recrutement"
-        // btn="Créer mon profil étudiant"
-      />
+      <Hero2 srcImg3={FindStar} />
       <Accompagnement2 />
       <Booste
         srcImg={Boostimg}
@@ -55,11 +46,7 @@ const Index = (props) => {
         text2="Dusce varius justo et scelerisque varius usce varius justo et scelerisque varius sce varius justo et scelerisque varius."
       />
       <Specialized srcImg={Formsimg} srcImg2={Speechimg} srcImg3={Supportimg} />
-      <Simplified
-      // heading=" Simplifie-toi la vie, télécharge l’application Winaa"
-      // text=" Tu peux matcher , swiper à n’importe quel moment de la journée.
-      //       Wina sauvegarde toutes tes progressions et tes suivis journaliers."
-      />
+      <Simplified />
       <Footer />
     </>
   );
