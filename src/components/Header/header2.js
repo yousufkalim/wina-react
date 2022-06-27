@@ -7,7 +7,6 @@ import { ReactComponent as Menu } from "../../assets/Menu.svg";
 import { ReactComponent as Cross } from "../../assets/Cross.svg";
 import { baseUri } from "../../urlConfig";
 import { DEFAULT_IMAGE } from "../../Globals";
-import { ReactComponent as SignOut } from "../../assets/signout.svg";
 import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
@@ -84,9 +83,6 @@ export default function Header2(props) {
       {User ? (
         <div style={{ marginRight: "4rem" }}>
           <div className="header-profile row d-flex justify-content-start align-items-center">
-            {/* <div>
-              <SignOut /> Se déconnecter
-            </div> */}
             <div onClick={handleProfile} style={{ cursor: "pointer" }}>
               <Image
                 className="profilePic "
