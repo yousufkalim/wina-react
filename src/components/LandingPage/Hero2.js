@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 import VideoImage from "../../assets/VideoImage.jpg";
 import FindStar from "../../assets/FindStar.svg";
+import { useSelector } from "react-redux";
 
 const Hero2 = (props) => {
   const [studentModal, setstudentModal] = useState(false);
-
+  const [user, setUser] = useState({});
+  const store = useSelector((state) => state.student);
+  useEffect(() => {
+    setUser(store.user);
+  }, [store.user]);
   const handleModal = () => {
     setstudentModal(!studentModal);
   };
@@ -26,15 +31,15 @@ const Hero2 = (props) => {
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi
-                  sollicitudin a eros sed cured ed sus.{" "}
+                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
                 </p>
-                <button
-                  className="home_section_btn"
-                  onClick={() => handleModal("student")}
-                >
-                  Creer mon profil etudiant
-                </button>
+                {user ? (
+                  ""
+                ) : (
+                  <button className="home_section_btn" onClick={() => handleModal("student")}>
+                    Creer mon profil etudiant
+                  </button>
+                )}
               </div>
             </div>
             <div className="home_section_colmn">
