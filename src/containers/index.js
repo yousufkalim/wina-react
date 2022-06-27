@@ -18,7 +18,7 @@ import UnAuth from "./unAuth";
 import Loader from "../components/UI/Loader";
 import { user } from "../urlConfig";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Route, Redirect } from "react-router-dom";
 import * as Notistack from "../Redux/actions/notistack";
 
 function App() {
@@ -51,17 +51,11 @@ function App() {
       await axios(config)
         .then(function (response) {
           localStorage.setItem("user", JSON.stringify(response.data.user));
-          if (
-            response.data.user.type &&
-            response.data.user.type === "student"
-          ) {
+          if (response.data.user.type && response.data.user.type === "student") {
             Get_Student_Jobs();
             Get_User_Student();
             GetAllNotifications();
-          } else if (
-            response.data.user.type &&
-            response.data.user.type === "company"
-          ) {
+          } else if (response.data.user.type && response.data.user.type === "company") {
             dispatch(Get_Company_Jobs());
             GetAllNotifications();
           }
@@ -73,11 +67,7 @@ function App() {
               loading: false,
             },
           });
-          dispatch(
-            Notistack.enqueueSnackbar(
-              Notistack.snackBar("Connexion réussie", "success")
-            )
-          );
+          dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("Connexion réussie", "success")));
           history.push("/");
           window.location.reload();
         })
@@ -86,11 +76,7 @@ function App() {
           history.push("/");
         });
     } else if (reqFailed) {
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar("Utilisateur non trouvé", "error")
-        )
-      );
+      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("Utilisateur non trouvé", "error")));
       history.push("/");
     }
   };
@@ -116,20 +102,18 @@ function App() {
     <>
       {User ? (
         User.type === "student" ? (
-          <Student />
+          <Route exact path="/students/*" component={Student} />
         ) : User.type === "company" ? (
-          <Company />
-        ) : User.role === "admin" ? (
-          <Admin />
+          <Route exact path="/companies/*" component={Company} />
         ) : (
-          <UnAuth />
+          User.type === "admin" && <Route exact path="/admins/*" component={Admin} />
         )
-      ) : window.location.pathname === "/goolgeLogin" ||
-        window.location.pathname === "/linkedInLogin" ? (
-        <Loader.CenterProgress />
       ) : (
-        <UnAuth />
+        window.location.pathname === "/goolgeLogin" ||
+        (window.location.pathname === "/linkedInLogin" && <Loader.CenterProgress />)
       )}
+
+      <Route exact path="/*" component={UnAuth} />
     </>
   );
 }
