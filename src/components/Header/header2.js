@@ -55,7 +55,7 @@ export default function Header2(props) {
         </Link>
       </div>
 
-      <div>
+      <div className="responsive_manu">
         <Navbar.Collapse>
           <Nav style={{ marginLeft: "10rem", textAlign: "center" }} className={showMenu ? "Hide_menu" : "Show_menu"}>
             <Link className="navbar-left-link" to="/">
