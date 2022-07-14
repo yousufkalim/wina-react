@@ -23,7 +23,7 @@ const Animation = () => {
               <i class=" animIcon">+</i>
             </button>
             <h4 className="animaitonH4">
-              Coaching individuel à distance pour les alternants (savoir-être,
+              Coaching individuel à <br /> distance pour les alternants <br />(savoir-être,
               présenta
             </h4>
           </div>
@@ -33,7 +33,7 @@ const Animation = () => {
               <i class=" animIcon">+</i>
             </button>
             <h4 className="animaitonH4">
-              Placement de candidats avec une entreprise sur des filières en
+              Placement de candidats <br />avec une entreprise sur<br /> des filières en
               tension
             </h4>
           </div>
@@ -43,8 +43,8 @@ const Animation = () => {
               <i class=" animIcon">+</i>
             </button>
             <h4 className="animaitonH4">
-              Mise en relation entre CFA et grands groupes pour un besoin de
-              recrutement massif Job Dating)
+              Mise en relation entre CFA<br /> et grands groupes pour un<br /> besoin de
+              recrutement<br /> massif Job Dating)
             </h4>
           </div>
         </div>

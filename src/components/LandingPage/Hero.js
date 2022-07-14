@@ -32,7 +32,7 @@ const Hero = (props) => {
                   ECHANGER
                 </h1>
                 <p className="home_seciton_p">
-                  sce varius justo et scelerisque varius ullam mollis orbi sollicitudin a eros sed cured ed sus.{" "}
+                  Winaa est la première plateforme de mise en relation 100% dédiée à l’alternance et à l’apprentissage. Winaa vous propose une sélection de candidats répondants à vos critères de recherche
                 </p>
 
                 {User ? (

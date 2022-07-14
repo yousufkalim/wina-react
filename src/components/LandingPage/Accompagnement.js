@@ -9,21 +9,20 @@ const Accompagnement = () => {
           {/* content  */}
           <div className="Accompagnement_content">
             <p className="Accompagnement_avac">Avec l’abonnement Winaa</p>
-            <h2 className="Accompagnement_h2">Accompagnement specialise</h2>
+            <h2 className="Accompagnement_h2">Accompagnement specialisé</h2>
           </div>
           {/* colmns  */}
           <div className="Accompagnement_colmn_mainDiv">
             <div className="Accompagnement_colmn">
               <div className="Accompagnement_card">
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
-                <h2 className="Accompagnement_title">CV</h2>
+                <h2 className="Accompagnement_title">Offres</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Publier gratuitement <br /> votre offre d’alternance 
                 </p>
               </div>
             </div>
-            <div className="Accompagnement_colmn">
+            {/* <div className="Accompagnement_colmn">
               <div className="Accompagnement_card">
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Coaching</h2>
@@ -32,14 +31,13 @@ const Accompagnement = () => {
                   mollis augue.
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="Accompagnement_colmn">
               <div className="Accompagnement_card">
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
-                <h2 className="Accompagnement_title">CVG</h2>
+                <h2 className="Accompagnement_title">Accompagnement</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Nous déléguer toute la partie recrutement, administrative <br />et contractuelle avec <br />l’apprenti et l’école
                 </p>
               </div>
             </div>
@@ -48,8 +46,7 @@ const Accompagnement = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Matching</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Déroulé l’ensemble des <br />profils étudiants afin de <br />trouver le match parfait et<br /> débuter vos entretiens.
                 </p>
               </div>
             </div>

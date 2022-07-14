@@ -37,9 +37,9 @@ const Created = () => {
                 {/* <i class="faIcon far fa-check-circle"></i> */}
                 <img className="faIcon" src={CheckImg} alt="" />
                 <p className="chackP2">
-                  Permettre aux jeunes de se lancer dans la vie professionnelle
-                  en étant mieux préparés et aux entreprises de disposer
-                  d’apprenti(e)s performant(e)s et d'avoir des conseils pour
+                  Permettre aux jeunes de se lancer dans la vie professionnelle<br />
+                  en étant mieux préparés et aux entreprises de disposer<br />
+                  d’apprenti(e)s performant(e)s et d'avoir des conseils <br />pour
                   assurer l’optimisation et le bon fonctionnement de ce
                   processus
                 </p>

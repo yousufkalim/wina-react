@@ -14,7 +14,7 @@ const Recruited = (props) => {
               <h3 className="boostH3">{props.text}</h3>
               <p className="boostP">{props.text2}</p>
               <a href="/about">
-                <button className="Learn_More">Learn More</button>
+                <button className="Learn_More">En savoir plus</button>
               </a>
             </div>
             <div className="boost_col1">

@@ -23,8 +23,7 @@ const Footer = () => {
               <div className="foot_heading_div">
                 <img src={Home} alt="" />
                 <span className="foot_span">
-                  301 Edgewater Place Suite 330 <br /> &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp; Wakefield, MA 01880
+                  47 rue dutot 75015 paris 
                 </span>
               </div>
               <div className="foot_heading_div">
@@ -33,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="foot_heading_div">
                 <img src={Email} alt="" />
-                <span className="foot_span">info@winaa.com</span>
+                <span className="foot_span">entreprise@winaa.fr</span>
               </div>
             </div>
           </div>
@@ -57,10 +56,10 @@ const Footer = () => {
                 <h2 className="foot_title">FAQ</h2>
               </div>
               <div className="foot_heading_div">
-                <span className="foot_span2">Hire Doctor</span>
+                {/* <span className="foot_span2">Hire Doctor</span> */}
               </div>
               <div className="foot_heading_div">
-                <span className="foot_span2">Patients</span>
+                {/* <span className="foot_span2">Patients</span> */}
               </div>
             </div>
           </div>
