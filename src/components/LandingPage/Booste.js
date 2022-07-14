@@ -8,12 +8,12 @@ const Booste = (props) => {
     <>
       <div className="boost">
         <div className="boost_container">
-          <p className="Accompagnement_avac">PROCESS</p>
-          <h1 className="boostH1">{props.text}</h1>
-          <p className="boost_pera">
+          {/* <p className="Accompagnement_avac">PROCESS</p> */}
+          <h1 className="boostH1" style={{ marginTop: "6rem", marginBottom: "5rem" }}>{props.text}</h1>
+          {/* <p className="boost_pera">
             am suscipit felis sit amet convallis condimentum nterdu <br />
             malesuada fames ac ante
-          </p>
+          </p> */}
           <div className="boost_div">
             <div className="boost_col1">
               <img className="boostGImg" src={props.srcImg} alt="" />
@@ -28,7 +28,7 @@ const Booste = (props) => {
               </div>
               <p className="boostP">{props.text3}</p>
               <a href="/about" className="reed_more">
-                Read more &nbsp;
+                En savoir plus &nbsp;
                 <ArrowFront />
               </a>
               {/* <p className="boostP2">{props.text4}</p> */}

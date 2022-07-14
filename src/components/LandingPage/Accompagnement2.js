@@ -9,7 +9,7 @@ const Accompagnement2 = () => {
           {/* content  */}
           <div className="Accompagnement_content">
             <p className="Accompagnement_avac">Avec l’abonnement Winaa</p>
-            <h2 className="Accompagnement_h2">Accompagnement specialise</h2>
+            <h2 className="Accompagnement_h2">Accompagnement specialisé</h2>
           </div>
           {/* colmns  */}
           <div className="Accompagnement_colmn_mainDiv">
@@ -18,8 +18,8 @@ const Accompagnement2 = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">CV</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  personnalise ton CV pour mettre toute tes chances
+                  de ton coté en mettant en valeur des Hard/soft skills
                 </p>
               </div>
             </div>
@@ -28,8 +28,7 @@ const Accompagnement2 = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Coaching</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Nous te proposons de te coacher et de te trouver une offre d’alternance qui répond à ta formation
                 </p>
               </div>
             </div>
@@ -39,8 +38,7 @@ const Accompagnement2 = () => {
                 <img src={Cvimg} alt="" className="Accompagnement_card_img" />
                 <h2 className="Accompagnement_title">Matching</h2>
                 <p className="Accompagnement_p">
-                  Fusce varius justo et <br /> scelerisque varius. <br /> Nullam
-                  mollis augue.
+                  Swipe à droite pour liker une offre et à gauche pour passer à la suivante. Si le like est réciproque c’est un entretien !
                 </p>
               </div>
             </div>

@@ -16,7 +16,7 @@ const Place = (props) => {
               </div>
               <p className="boostP">{props.text2}</p>
               <a href="/about" className="reed_more">
-                Read more &nbsp; <ArrowFront />
+                En savoir plus &nbsp; <ArrowFront />
               </a>
               {/* <p className="boostP">{props.text4}</p>
               <p className="boostP">{props.text5}</p> */}

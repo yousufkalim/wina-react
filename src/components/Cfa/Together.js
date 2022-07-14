@@ -20,21 +20,21 @@ const Together = () => {
               <div className="togetherPera">
                 {/* <i class="faIcon far fa-check-circle"></i> */}
                 <img src={Check} alt="" className="chack_icons" />
-                <p className="chackP">Favoriser une meilleure communication de la part des CFA sur leurs formations.</p>
+                <p className="chackP">Favoriser une meilleure communication de la part des CFA sur <br />leurs formations.</p>
               </div>
               <div className="togetherPera">
                 {/* <i class="faIcon far fa-check-circle"></i> */}
                 <img src={Check} alt="" className="chack_icons" />
                 <p className="chackP">
-                  Proposer un accompagnement personnalisé aux apprentis et aux entreprises pour renforcer l’attractivité de
-                  l’apprentissage comme la voie royale vers le marché de l’emploi.
+                  Proposer un accompagnement personnalisé aux apprentis et <br /> aux entreprises pour renforcer l’attractivité de
+                  l’apprentissage<br /> comme la voie royale vers le marché de l’emploi.
                 </p>
               </div>
               <div className="togetherPera">
                 {/* <i class="faIcon2 far fa-check-circle"></i> */}
                 <img src={Check} alt="" className="chack_icons" />
                 <p className="chackP">
-                  Soutenir les CFA dans les différentes campagnes de rentrée scolaire pour atteindre l’objectif de 100% de
+                  Soutenir les CFA dans les différentes campagnes de rentrée <br />scolaire pour atteindre l’objectif de 100% de
                   placement.
                 </p>
               </div>

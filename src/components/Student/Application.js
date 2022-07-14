@@ -2,6 +2,8 @@ import React from "react";
 import "../../components/Student/Style.css";
 
 const Application = (props) => {
+
+
   return (
     <>
       <div className="application ">
@@ -17,6 +19,10 @@ const Application = (props) => {
           <div className="application-heading-2">
             <p className="applicationP2">Économisez 10%</p>
             <h1 className="applicationH12">{props.text}</h1>
+
+
+
+
             <button className="applicationBTN">Mensuel</button>
             <button className="applicationBTN2">{props.btnT} </button>
           </div>

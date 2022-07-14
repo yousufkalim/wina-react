@@ -16,7 +16,7 @@ const Perfect = (props) => {
               </div>
               <p className="boostP">{props.text2}</p>
               <a href="/about" className="reed_more">
-                Read more &nbsp; <ArrowFront />
+                En savoir plus &nbsp; <ArrowFront />
               </a>
             </div>
             <div className="boost_col1">

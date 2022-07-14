@@ -53,11 +53,11 @@ const Form = () => {
                   </div>
                   <div className="foot_heading_div">
                     <img src={Email2} alt="" />
-                    <span className="foot_span">hello@winaa.com</span>
+                    <span className="foot_span">entreprise@winaa.fr</span>
                   </div>
                   <div className="foot_heading_div">
                     <img src={Locat} alt="" />
-                    <span className="foot_span">Winaa location</span>
+                    <span className="foot_span">47 rue dutot 75015 paris</span>
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@ const Form = () => {
             <div className="form_colmn_div">
               <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="" className="form_label">
-                  First Name
+                  Prénom
                 </label>
                 <input
                   onChange={handleChange}
@@ -78,7 +78,7 @@ const Form = () => {
                   value={forms.firstName}
                 />
                 <label htmlFor="" className="form_label">
-                  Last Name
+                  Nom
                 </label>
                 <input
                   onChange={handleChange}
@@ -107,7 +107,7 @@ const Form = () => {
                 <textarea
                   onChange={handleChange}
                   required
-                  placeholder="Write your message"
+                  placeholder="Ecrivez votre message"
                   className="formInput"
                   name="textArea"
                   value={forms.textArea}
@@ -115,7 +115,7 @@ const Form = () => {
                   cols="30"
                   rows="3"
                 ></textarea>
-                <button className="formBTN">Send Message</button>
+                <button className="formBTN">Envoyer le message</button>
               </form>
             </div>
           </div>

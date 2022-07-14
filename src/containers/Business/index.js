@@ -37,9 +37,10 @@ const Index = (props) => {
 
       <Booste
         srcImg={Boostimg11}
-        text="How It Works"
+        text="Comment ça marche ?"
         text2="Le Matching parfait"
-        text3="Nous mettons à votre disposition une application innovante et intuitive vous permettant d’être mis en relation directe avec des étudiants à la recherche d’un contrat d’apprentissage. Un outil basé sur des algorithmes de matching facilitant votre recrutement."
+        text3="Nous mettons à votre disposition une 
+        application innovante et intuitive vous permettant d’être mis en relation directe avec des étudiants à la recherche d’un contrat d’apprentissage. Un outil basé sur des algorithmes de matching facilitant votre recrutement."
       />
       <Perfect
         srcImg={Boostimg22}
