@@ -39,7 +39,7 @@ import RadioButton from "../../../../../../components/UI/RadioButton";
 import { SignalCellularConnectedNoInternet3BarRounded } from "@material-ui/icons";
 
 const CompanyCardDetail = (props) => {
-  const { offerID, handleStudentDetail, handleOfferAccepted, handleOfferRejected, setisDetail } = props;
+  const { offerID, handleStudentDetail, handleOfferAccepted, handleOfferRejected, setisDetail, setIsNext, isnext } = props;
   const dispatch = useDispatch();
   const store2 = useSelector((state) => state.globals);
 
@@ -48,7 +48,7 @@ const CompanyCardDetail = (props) => {
   const classes = useStyles();
 
   const [value, setValue] = useState(30);
-  const [isnext, setIsNext] = useState(false);
+
 
   const [imageURI, setimageURI] = useState("");
   const [image, setImage] = useState("");
@@ -241,7 +241,7 @@ const CompanyCardDetail = (props) => {
       setValue(100);
     }
   };
-
+  // console.log(isnext, "isnext")
   useEffect(() => {
     setIsNext(false);
   }, []);
@@ -452,48 +452,6 @@ const CompanyCardDetail = (props) => {
                     ) : null}
                   </div>
                 </div>
-                {/* <Row>
-                  <Col className="col-lg-12">
-                    <div className="sliderBox">
-                      <div className={(classes.root, "slider")}>
-                        <Grid container spacing={2} alignItems="center">
-                          <Grid item xs>
-                            <Slider
-                              // disabled
-                              // disabledaria-labelledby="disabled-slider"
-                              value={typeof value === "number" ? value : 0}
-                              onChange={handleSliderChange}
-                              marks={marks}
-                              min={0}
-                              max={10000}
-                            />
-                          </Grid>
-                          <Grid item>
-                            <Input
-                              className={classes.input}
-                              value={value}
-                              margin="dense"
-                              onChange={handleInputChange}
-                              onBlur={handleBlur}
-                              endAdornment={
-                                <InputAdornment position="end">
-                                  €
-                                </InputAdornment>
-                              }
-                              inputProps={{
-                                step: 10,
-                                min: 0,
-                                max: 10000,
-                                type: "number",
-                                "aria-labelledby": "input-slider",
-                              }}
-                            />
-                          </Grid>
-                        </Grid>
-                      </div>
-                    </div>
-                  </Col>
-                </Row> */}
                 <div className="offer-detail-date-container mt-1" style={{ paddingLeft: "15px" }}>
                   {softSkillsDB && softSkillsDB.length > 0
                     ? softSkillsDB.map((job) => {
@@ -605,233 +563,6 @@ const CompanyCardDetail = (props) => {
 
 export default CompanyCardDetail;
 
-{
-  /* ****************** */
-}
-{
-  /* 
-  <div className="offer-detail-content">
-				<CardItem
-				  className="offer-card-item-bordered offer-detail-content-detail text-center"
-				  content={JOB.domain}
-				/>
-			    
-				<CardItem
-				  className="offer-card-item-bordered offer-detail-content-detail text-center"
-				  content="Niveau d’étude : Brevet"
-				/>
-			  </div>
-
-			  <div className="company-card-detail-date-headings">
-				<div className="company-card-detail-date-heading text-left">
-				  Date de début
-				</div>
-				<div className="company-card-detail-date-heading text-left">
-				  Durée
-				</div>
-			  </div>
-			  <div className="company-card-detail-date-container">
-				<Dropdown className="custom-dropdown date-dropdown">
-				  <Dropdown.Toggle id="dropdown-basic">
-					{JOB.startDate}
-				  </Dropdown.Toggle>
-
-				  <Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">2021</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">2022</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">2023</Dropdown.Item>
-				  </Dropdown.Menu>
-				</Dropdown>
-				<Dropdown className="custom-dropdown date-dropdown">
-				  <Dropdown.Toggle id="dropdown-basic">
-					{JOB.duration}
-				  </Dropdown.Toggle>
-				  <Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-				  </Dropdown.Menu>
-				</Dropdown>
-			  </div>
-
-			  <Row>
-				<Col className="col-lg-12">
-				  <div className="sliderBox">
-					<div className="label">Tranche de salaire</div>
-					<div className={(classes.root, "slider")}>
-					  <Grid container spacing={2} alignItems="center">
-						<Grid item xs>
-						  <Slider
-							// disabled
-							// disabledaria-labelledby="disabled-slider"
-							value={typeof value === "number" ? value : 0}
-							onChange={handleSliderChange}
-							marks={marks}
-							min={0}
-							max={10000}
-						  />
-						</Grid>
-						<Grid item>
-						  <Input
-							className={classes.input}
-							value={value}
-							margin="dense"
-							onChange={handleInputChange}
-							onBlur={handleBlur}
-							endAdornment={
-							  <InputAdornment position="end">€</InputAdornment>
-							}
-							inputProps={{
-							  step: 10,
-							  min: 0,
-							  max: 10000,
-							  type: "number",
-							  "aria-labelledby": "input-slider",
-							}}
-						  />
-						</Grid>
-					  </Grid>
-					</div>
-				  </div>
-				</Col>
-			  </Row>
-
-			  <div className="company-card-detail-date-container">
-				<Dropdown className="custom-dropdown skills-dropdown">
-				  <Dropdown.Toggle id="dropdown-basic">
-					Compétences générales
-				  </Dropdown.Toggle>
-				  <Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-				  </Dropdown.Menu>
-				</Dropdown>
-			  </div>
-
-			  <div className="offer-detail-date-container">
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-			  </div>
-			  <div className="company-card-detail-description">
-				<Form.Group controlId="exampleForm.ControlTextarea1">
-				  <Form.Control
-					as="textarea"
-					rows={3}
-					placeholder="Description"
-				  />
-				</Form.Group>
-			  </div>
-
-			  <div className="company-card-detail-date-container">
-				<Dropdown className="custom-dropdown skills-dropdown">
-				  <Dropdown.Toggle id="dropdown-basic">
-					Compétences générales
-				  </Dropdown.Toggle>
-				  <Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">2 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">3 an</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">4 an</Dropdown.Item>
-				  </Dropdown.Menu>
-				</Dropdown>
-			  </div>
-
-			  <div className="offer-detail-date-container">
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-				<CardItem
-				  className="offer-detail-skills"
-				  content="Compétences"
-				  times
-				/>
-			  </div>
-
-			  <div className="company-card-detail-description">
-				<Form.Group controlId="exampleForm.ControlTextarea1">
-				  <Form.Control
-					as="textarea"
-					rows={3}
-					placeholder="Description"
-				  />
-				</Form.Group>
-			  </div> */
-}
-{
-  /* ************************************************ */
-}
-
-// const overviewOffers = [
-//   {
-//     image: "company-offer-card",
-//     title: "Excellent",
-//     content: "Marketing/Communication",
-//     location: "4 Rue du Général de Larminat - 75015 Paris",
-//     desc1: "Domaine : Webdesign",
-//     desc2: "Durée : 1 an",
-//     desc3: "Niveau d’étude : Brevet",
-//     btn1: "En savoir plus",
-//     btn2: "Matcher",
-//     btn3: "Refuser",
-//     matches: "90%",
-//   },
-//   {
-//     image: "company-offer-card",
-//     title: "Excellent",
-//     content: "Marketing/Communication",
-//     location: "4 Rue du Général de Larminat - 75015 Paris",
-//     desc1: "Domaine : Webdesign",
-//     desc2: "Durée : 1 an",
-//     desc3: "Niveau d’étude : Brevet",
-//     btn1: "En savoir plus",
-//     btn2: "Matcher",
-//     btn3: "Refuser",
-//     matches: "90%",
-//   },
-//   {
-//     image: "company-offer-card",
-//     title: "Excellent",
-//     content: "Marketing/Communication",
-//     location: "4 Rue du Général de Larminat - 75015 Paris",
-//     desc1: "Domaine : Webdesign",
-//     desc2: "Durée : 1 an",
-//     desc3: "Niveau d’étude : Brevet",
-//     btn1: "En savoir plus",
-//     btn2: "Matcher",
-//     btn3: "Refuser",
-//     matches: "90%",
-//   },
-// ];
-// const marks = [
-//   {
-//     value: 0,
-//     label: "0€",
-//   },
-//   {
-//     value: 10000,
-//     label: "10 000€",
-//   },
-// ];
 const useStyles = makeStyles({
   root: {
     width: "15.6rem",

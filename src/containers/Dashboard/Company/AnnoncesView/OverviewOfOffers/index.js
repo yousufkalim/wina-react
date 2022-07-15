@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import OfferCardItem from "../../../../../components/UI/CardWithImage/OfferCardItem";
 import CardWithImage from "../../../../../components/UI/CardWithImage/CardWithImage";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import CompanyCardDetail from "./CompanyCardDetail/CompanyCardDetail";
 import { useDispatch, useSelector } from "react-redux";
 import { baseUri } from "../../../../../urlConfig";
@@ -28,7 +29,7 @@ import {
 import moment from "moment";
 import Behance from "../../../../../assets/Behance.png";
 import Dribble from "../../../../../assets/Dribble.png";
-import linkedIn from "../../../../../assets/linkedIn.svg";
+import Linkedin from "../../../../../assets/linkedIn.svg";
 const OverviewOfOffers = () => {
   const store = useSelector((state) => state.company);
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const OverviewOfOffers = () => {
   const [studentDetail, setstudentDetail] = useState(false);
   const [studentID, setstudentID] = useState("");
   const [bookingstudentID, setbookingstudentID] = useState("");
-
+  const [isnext, setIsNext] = useState(false);
   const [studentFormData, setstudentFormData] = useState("");
   // offers functions
   const handleOfferAccepted = (id, offerID, decision) => {
@@ -158,6 +159,9 @@ const OverviewOfOffers = () => {
       setstudentFormData(fill);
     }
   }, [studentID]);
+  useEffect(() => {
+    setIsNext(false);
+  }, []);
 
   useEffect(() => {
     dispatch(Get_Company_Jobs());
@@ -183,7 +187,6 @@ const OverviewOfOffers = () => {
   const matchReceiveDetailHandler = (id) => {
     setRecievofferID(id);
     dispatch(Get_Applied_Jobs(id));
-
     setMatchReceiveDetail(!matchReceiveDetail);
   };
 
@@ -230,6 +233,7 @@ const OverviewOfOffers = () => {
       setBookingError("Obligatoire");
     }
   };
+  // console.log(isDetail, "qwerty", studentDetail)
   if (studentDetail === false) {
     return (
       <>
@@ -390,6 +394,8 @@ const OverviewOfOffers = () => {
             handleStudentDetail={handleStudentDetail}
             handleOfferAccepted={handleOfferAccepted}
             handleOfferRejected={handleOfferRejected}
+              isnext={isnext}
+              setIsNext={setIsNext}
           />
         )}
       </>
@@ -410,7 +416,7 @@ const OverviewOfOffers = () => {
                             alt="iamge2"
                             src={
                               studentFormData.professional_Picture.image
-                                ? `${baseUri}/views/uploads/${studentFormData.professional_Picture.image}`
+                                ? `${baseUri}/${studentFormData.professional_Picture.image}`
                                 : DEFAULT_IMAGE
                             }
                           />
@@ -433,23 +439,23 @@ const OverviewOfOffers = () => {
                       </Col>
                       <Col lg={9} md={8}>
                         <div className="profilename">
-                          {studentFormData.user.firstName} {studentFormData.user.lastName}
+                          {studentFormData?.user?.firstName} {studentFormData?.user?.lastName}
                         </div>
-                        <div className="profileProfession">{studentFormData.user.type}</div>
+                        <div className="profileProfession">{studentFormData?.user?.type}</div>
                         <div className="generalDescription">Description générale</div>
                         <div className="description">
-                          {studentFormData.general_Presentation ? studentFormData.general_Presentation : ""}
+                          {studentFormData?.general_Presentation ? studentFormData?.general_Presentation : ""}
                         </div>
                         <div className="professionalNetwork">Réseau pro</div>
                         <ul className="PLinks">
                           <li>
-                            <Image src={linkedIn} />
+                            <Image src={Linkedin} />
                           </li>
                           <li>Linkedin &nbsp;&nbsp;: </li>
                           <li>
-                            <a href={`${studentFormData.professional_networks.linkedIn}`} target="_blank">
-                              {studentFormData.professional_networks.linkedIn
-                                ? studentFormData.professional_networks.linkedIn
+                            <a href={`${studentFormData?.professional_networks?.linkedIn}`} target="_blank">
+                              {studentFormData.professional_networks?.linkedIn
+                                ? studentFormData.professional_networks?.linkedIn
                                 : ""}
                             </a>
                           </li>
@@ -460,8 +466,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Behance &nbsp;&nbsp;: </li>
                           <li>
-                            <a href={`${studentFormData.professional_networks.Behance}`} target="_blank">
-                              {studentFormData.professional_networks.Behance ? studentFormData.professional_networks.Behance : ""}
+                            <a href={`${studentFormData?.professional_networks?.Behance}`} target="_blank">
+                              {studentFormData?.professional_networks?.Behance ? studentFormData?.professional_networks?.Behance : ""}
                             </a>
                           </li>
                         </ul>
@@ -471,8 +477,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Dribble &nbsp;&nbsp;: </li>
                           <li>
-                            <a href={`${studentFormData.professional_networks.Dribble}`} target="_blank">
-                              {studentFormData.professional_networks.Dribble ? studentFormData.professional_networks.Dribble : ""}
+                            <a href={`${studentFormData?.professional_networks?.Dribble}`} target="_blank">
+                              {studentFormData?.professional_networks?.Dribble ? studentFormData?.professional_networks?.Dribble : ""}
                             </a>
                           </li>
                         </ul>
@@ -482,8 +488,8 @@ const OverviewOfOffers = () => {
                           </li>
                           <li>Github &nbsp;&nbsp;: </li>
                           <li>
-                            <a href={`${studentFormData.professional_networks.Github}`} target="_blank">
-                              {studentFormData.professional_networks.Github ? studentFormData.professional_networks.Github : ""}
+                            <a href={`${studentFormData?.professional_networks?.Github}`} target="_blank">
+                              {studentFormData?.professional_networks?.Github ? studentFormData?.professional_networks?.Github : ""}
                             </a>
                           </li>
                         </ul>
@@ -508,12 +514,18 @@ const OverviewOfOffers = () => {
             </Tab>
             <Tab eventKey="third" title="CV en ligne" className="h-100">
               <div className="AnnoncesViewOffersBox">
-                {studentFormData.professional_profile && studentFormData.professional_profile.length > 0 ? (
+                {studentFormData?.professional_profile && studentFormData?.professional_profile?.length > 0 ? (
                   <CVEngine USER={studentFormData} type="student_professional_info" />
                 ) : (
                   <h1 className="text-center">Ajoutez une expérience professionnelle</h1>
                 )}
               </div>
+            </Tab>
+            <Tab eventKey="fourth" title="Retour" className="h-100" onEntering={() => {
+              setstudentDetail(false)
+              setIsNext(true)
+              setisDetail(false)
+            }}>
             </Tab>
           </Tabs>
         ) : (
