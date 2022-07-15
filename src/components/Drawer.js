@@ -152,7 +152,7 @@ const Drawer = () => {
                 onClick={() => handleClick("MatchResearch")}
                 className={selected === "MatchResearch" ? "selected_option" : "not_selected_option"}
               >
-                Clique ici pour voir les matchs
+                Offres d'alternances
               </div>
             </div>
           </div>
