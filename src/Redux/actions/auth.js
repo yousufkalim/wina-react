@@ -7,9 +7,8 @@ import {
 } from "./constants";
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
-import io from "socket.io-client";
-
-import { token, user, baseUri } from "../../urlConfig";
+import socket from '../../helpers/socket'
+import { token, user } from "../../urlConfig";
 export const set_loading = (loading) => ({
   type: actionTypes.SET_LOADING_AUTH,
   loading,
@@ -331,13 +330,12 @@ export const SocketNotifications = () => async (dispatch) => {
   try {
     dispatch(set_loading_data(true));
 
-    const socket = io(baseUri, {
-      query: `userConnectionId=${user?._id}`,
-    });
     if (socket) {
       socket.on(`recieveNotification${user?._id}`, (datas) => {
-        // setdata([...notificationsData, datas]);
-        console.log(datas, "datas");
+        dispatch({
+          type: actionGlobals.GET_NOTIFICATION,
+          notification: datas
+        })
       });
     }
   } catch (error) {

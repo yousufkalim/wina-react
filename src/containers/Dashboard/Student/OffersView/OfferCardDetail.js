@@ -53,11 +53,11 @@ const OfferCardDetail = (props) => {
     }
   };
   // offers functions
-  const handleOfferAccepted = (id, decision) => {
-    dispatch(Offer_Decion_By_Students(id, decision, setisDetail));
+  const handleOfferAccepted = (id, decision, company) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail, company));
   };
-  const handleOfferRejected = (id, decision) => {
-    dispatch(Offer_Decion_By_Students(id, decision, setisDetail));
+  const handleOfferRejected = (id, decision, company) => {
+    dispatch(Offer_Decion_By_Students(id, decision, setisDetail, company));
   };
   if (JOB && Object.keys(JOB).length > 0) {
     if (props.type && props.type === "student") {
@@ -258,7 +258,7 @@ const OfferCardDetail = (props) => {
 
               <div className="offer-detail-buttons-container " style={{ justifyContent: "center" }}>
                 <Button
-                  onClick={() => handleOfferAccepted(JOB._id, "requested")}
+                  onClick={() => handleOfferAccepted(JOB._id, "requested", JOB.company.contactPerson.person)}
                   classes={{
                     root: classes.root1, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`
@@ -267,7 +267,7 @@ const OfferCardDetail = (props) => {
                   Candidater
                 </Button>
                 <Button
-                  onClick={() => handleOfferRejected(JOB._id, "rejected")}
+                  onClick={() => handleOfferRejected(JOB._id, "rejected", JOB.company.contactPerson.person)}
                   classes={{
                     root: classes.root2, // class name, e.g. `classes-nesting-root-x`
                     label: classes.label, // class name, e.g. `classes-nesting-label-x`

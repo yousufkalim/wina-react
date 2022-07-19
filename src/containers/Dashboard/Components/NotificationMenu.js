@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
+import React, { useState, useEffect, useRef } from "react";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -8,31 +7,28 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import NotificationList from "./NotificationList";
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Badge from "@material-ui/core/Badge";
 import { Image } from "react-bootstrap";
 import {
   GetAllNotifications,
   UpdateNotifications,
+  SocketNotifications,
 } from "../../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../../components/UI/Loader";
 
 const useStyles = makeStyles((theme) => ({
   stepDiv2: { overFlowY: "auto", height: "100px" },
 }));
 
 export default function MenuListComposition() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const dispatch = useDispatch();
   const store = useSelector((state) => state.globals);
   const NOTIFICATIONS = store.notifications;
-  const [open, setOpen] = React.useState(false);
-  const [count, setCount] = useState(0);
-  const anchorRef = React.useRef(null);
-
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
   const handleToggle = () => {
-    if (open == false) {
+    if (open === false) {
       setOpen((prevOpen) => !prevOpen);
     }
   };
@@ -41,7 +37,6 @@ export default function MenuListComposition() {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
@@ -51,12 +46,15 @@ export default function MenuListComposition() {
       setOpen(false);
     }
   }
-  React.useEffect(() => {
+  useEffect(() => {
+    dispatch(SocketNotifications());
+  }, []);
+  useEffect(() => {
     dispatch(GetAllNotifications());
   }, [setOpen, open]);
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
@@ -105,8 +103,8 @@ export default function MenuListComposition() {
                 transformOrigin:
                   placement === "right" ? "right top" : "right bottom",
 
-                width: "30rem",
-                marginRight: "2rem",
+                width: "23rem",
+                marginRight: "18rem",
               }}
             >
               <Paper>

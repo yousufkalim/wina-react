@@ -20,6 +20,7 @@ import { user } from "../urlConfig";
 import axios from "axios";
 import { useHistory, Route, Redirect } from "react-router-dom";
 import * as Notistack from "../Redux/actions/notistack";
+import socket from "../helpers/socket";
 
 function App() {
   const dispatch = useDispatch();
@@ -81,10 +82,10 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(isUserLoggedIn()).then((response) => {
       setUser(response);
-      if (response && response.type == "student") {
+      if (response && response.type === "student") {
         dispatch(Get_User_Student());
         dispatch(Get_Student_Jobs());
       } else if (response && response.type === "company") {
@@ -96,6 +97,7 @@ function App() {
   }, [loading, Token]);
   useEffect(() => {
     dispatch(SocketNotifications());
+    return () => socket.off(`recieveNotification${user?._id}`);
   }, [loading]);
 
   return (

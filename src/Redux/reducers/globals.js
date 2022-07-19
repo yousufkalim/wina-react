@@ -64,6 +64,13 @@ export default (state = initialState, action) => {
         notifications: action.payload.notifications,
       };
       break;
+    case actionGlobals.GET_NOTIFICATION:
+      state = {
+        ...state,
+        error: null,
+        notifications: [action.notification, ...state.notifications],
+      };
+      break
   }
 
   return state;
