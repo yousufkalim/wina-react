@@ -7,6 +7,7 @@ import {
 import axios from "../../helpers/axios";
 import * as Notistack from "./notistack";
 import { token, baseUrl, user } from "../../urlConfig";
+import socket from "../../helpers/socket";
 export const set_loading_student = (loading) => ({
   type: actionTypes.SET_LOADING_USER,
   loading,
@@ -326,7 +327,7 @@ export const Get_Student_Rejected_Jobs = () => async (dispatch) => {
 };
 
 //offer decision by students
-export const Offer_Decion_By_Students = (id, decision, setisDetail) => async (dispatch) => {
+export const Offer_Decion_By_Students = (id, decision, setisDetail, company) => async (dispatch) => {
   if (user && token) {
     try {
       dispatch(set_loading_data_student(true));
@@ -334,6 +335,7 @@ export const Offer_Decion_By_Students = (id, decision, setisDetail) => async (di
       const res = await axios.post(`job/offer-decision-by-student/${id}`, {
         status: decision,
       });
+      socket.emit("sendNotification", { id: company });
       dispatch({
         type: studentConstants.OFFER_DECISION_SUCCESS,
         payload: { loading: false },

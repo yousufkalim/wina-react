@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import { DEFAULT_IMAGE } from "../../../Globals";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
+		overflow: "hidden",
 		width: "100%",
-		maxWidth: "36ch",
+		maxWidth: "40ch",
 		backgroundColor: theme.palette.background.paper,
 	},
 	// inline: {
@@ -23,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AlignItemsList({ not, onChangeStatus }) {
 	const classes = useStyles();
-	const [color, setColor] = useState(false);
-
 	const HandleChangeStatus = (notify) => {
 		onChangeStatus(notify);
 	};
@@ -36,7 +33,7 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 				paddingBottom: "0px",
 				backgroundColor: not.color,
 				margin: 0,
-				fontSize: "18px",
+				fontSize: "16px",
 				padding: 0,
 			}}
 		>
@@ -53,20 +50,22 @@ export default function AlignItemsList({ not, onChangeStatus }) {
 					<Avatar alt="Remy Sharp" src={DEFAULT_IMAGE} />
 				</ListItemAvatar>
 				<ListItemText
-					style={{
-						fontSize: "2rem",
-					}}
-					primary={not.title}
+
+					primary={
+						<React.Fragment>
+							<p style={{ fontSize: "14px", fontWeight: "600" }}>
+								{not.title}
+							</p>
+						</React.Fragment>
+					}
 					secondary={
-						<React.Fragment style={{ fontSize: "2rem" }}>
-							<p className="ml-2">{not.description}</p>
-							{not.color === "#ccc" ? (
-								<div className="text-right">
+						<React.Fragment>
+							<p className="ml-2" style={{ fontSize: "14px" }}>{not.description}</p>
+							{not.statusNew === true ? (
+								<div className="text-right" style={{ fontSize: "13px" }}>
 									<Chip
-										//   icon={icon}
 										label={"Mark as read"}
 										onClick={() => HandleChangeStatus(not)}
-										// className={classes.chip}
 									/>
 								</div>
 							) : (

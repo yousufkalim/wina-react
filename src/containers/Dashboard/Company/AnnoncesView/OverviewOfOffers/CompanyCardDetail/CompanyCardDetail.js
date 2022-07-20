@@ -66,7 +66,8 @@ const CompanyCardDetail = (props) => {
   let HARD_SKILLS = store2.hard_skills;
   let JOB_MESSAGE_SUCCESS = store3.message;
   let SEARCH_STUDENTS = store3.studentBySearch && store3.studentBySearch.filter((st) => st.offer_status === "proposal");
-
+  let SORTED_SEARCH_STUDENTS = SEARCH_STUDENTS.sort((a,b)=>{return new Date(b.createdAt) - new Date(a.createdAt)
+  })
   // formik
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
@@ -539,7 +540,7 @@ const CompanyCardDetail = (props) => {
               </form>
             </div>
           ) : SEARCH_STUDENTS && SEARCH_STUDENTS.length > 0 ? (
-            SEARCH_STUDENTS.map((item, index) => (
+            SORTED_SEARCH_STUDENTS.map((item, index) => (
               <CardWithImage
                 key={index}
                 item={item}
