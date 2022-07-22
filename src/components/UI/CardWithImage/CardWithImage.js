@@ -623,6 +623,82 @@ const CardWithImage = (props) => {
         )}
       </div>
     );
+  } else if (props.type && props.type === "matchSent") {
+    return (
+      <div className="card-with-image">
+        <div className="card-with-image-wrapper">
+          <div className="card-with-image-image">
+            <img
+              src={
+                item?.student?.user?.professional_Picture?.image ? `${baseUri}/views/uploads/${item?.professional_Picture?.image}` : DEFAULT_IMAGE
+              }
+              alt=""
+            />
+          </div>
+          <div className="card-with-image-container">
+            <div className="card-with-image-title">
+              <div>
+                <h3>
+                  <b>
+                    {item.student.user.firstName} { item.student.user.lastName}
+                  </b>
+                </h3>
+              </div>
+            </div>
+            <div className="card-with-image-content text-left">
+              {item.student.positionSought.position} <br />
+              <div className="card-with-image-location">
+                <span className="mr-2">
+                <Location className="card-with-image-location-icon" />
+                </span>
+                {item.student.user.address.street},{item.student.user.address.zip}{" "}
+                {item.student.user.address.city}
+              </div>
+              <br />
+            </div>
+
+            <div className="card-with-image-desc">
+              {item.student.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.student.positionSought.domain}
+                  title="Domaine : "
+                />
+              )}
+              {item.student.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.student.positionSought.duration}
+                  title="Durée : "
+                />
+              )}
+              {item.student.positionSought && (
+                <CardItem
+                  className="offer-card-item-bordered company-offer-detail-content"
+                  content={item.student.positionSought.levelOfEducation}
+                  title="Niveau d’étude : "
+                />
+              )}
+            </div>
+
+        <div className="card-with-image-buttons">
+              <div className="card-with-image-btn card-with-image-btn-yellow" onClick={() => handleDetail(item.student._id)}>
+                Voir
+              </div>
+            </div> 
+          </div>
+        </div>
+        {item.student.score && item.student.score * 100 > 0 ? (
+          item.score * 100 > 50 ? (
+            <div className="matches">{Math.floor(item.student.score * 100)}%</div>
+          ) : (
+            <div className="matches50">{Math.floor(item.student.score * 100)}%</div>
+          )
+        ) : (
+          ""
+        )}
+      </div>
+    );
   } else {
     return (
       <div>
