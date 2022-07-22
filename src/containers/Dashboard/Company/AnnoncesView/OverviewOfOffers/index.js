@@ -39,10 +39,21 @@ const OverviewOfOffers = () => {
     JOBS && JOBS.filter((jb) => jb.offer_status === "accepted");
   let RECIEVED_OFFERS = store.student_appliedJobs && store.student_appliedJobs;
   let SENT_OFFERS = store.company_appliedJobs && store.company_appliedJobs;
+  let OFFER_SENT = [];
+  JOBS.map((item) =>
+    item.company_requests.map((offer) => {
+      if (offer.status === "requested") OFFER_SENT.push(offer);
+    })
+  );
+  let OFFER_REJECTED = [];
+  JOBS.map((item) =>
+    item.company_requests.map((offer) => {
+      if (offer.status === "rejected") OFFER_REJECTED.push(offer);
+    })
+  );
 
   const [key, setKey] = useState("Offres");
   const [key2, setKey2] = useState("first");
-
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const [matchSentDetail, setMatchSentDetail] = useState(false);
@@ -50,19 +61,14 @@ const OverviewOfOffers = () => {
   const [userDetail, setUserDetail] = useState(false);
   const [isDetail, setisDetail] = useState(false);
   const [offerID, setofferID] = useState("");
-
   const [RecievofferID, setRecievofferID] = useState("");
   const [bookingSlot, setbookingSlot] = useState();
   const [date, setDate] = useState();
-
   const [AppointmentsArray, setAppointmentsArray] = useState("");
-
   const [SentfferID, setSentfferID] = useState("");
   const [jobID, setjobID] = useState("");
-
   const [booking, setBooking] = useState(false);
   const [bookingError, setBookingError] = useState("");
-
   const [studentDetail, setstudentDetail] = useState(false);
   const [studentID, setstudentID] = useState("");
   const [bookingstudentID, setbookingstudentID] = useState("");
@@ -71,18 +77,7 @@ const OverviewOfOffers = () => {
   // offers functions
   const handleOfferAccepted = (id, offerID, decision) => {
     setjobID(offerID);
-    dispatch(
-      Offer_Decion_By_Company(
-        id,
-        offerID,
-        decision,
-        setKey,
-        "Offres",
-        setisDetail,
-        setstudentDetail,
-        handleBooking
-      )
-    );
+    dispatch(Offer_Decion_By_Company(id, offerID, decision, setKey, "Offres", setisDetail, setstudentDetail, handleBooking));
   };
   const handlerRecievedOfferAccepted = (id, jobID, decision) => {
     setjobID(jobID);
@@ -102,24 +97,12 @@ const OverviewOfOffers = () => {
   };
   const handlerRecievedOfferRejected = (id, decision) => {
     dispatch(
-      RecievedOffer_Decion_By_Company(
-        id,
-        RecievofferID,
-        decision,
-        setKey,
-        "Offres",
-        setstudentDetail,
-        setMatchReceiveDetail
-      )
+      RecievedOffer_Decion_By_Company(id, RecievofferID, decision, setKey, "Offres", setstudentDetail, setMatchReceiveDetail)
     );
   };
 
-  //
-
   const handleOfferRejected = (id, offerID, decision) => {
-    dispatch(
-      Offer_Decion_By_Company(id, offerID, decision, setKey, "MatchReceived")
-    );
+    dispatch(Offer_Decion_By_Company(id, offerID, decision, setKey, "MatchReceived"));
   };
 
   const handleStudentDetail = (id) => {
@@ -141,17 +124,7 @@ const OverviewOfOffers = () => {
     }
   };
   const handleCancelOffer = (id, decision) => {
-    dispatch(
-      Cancel_Offer_Decion_By_Company(
-        id,
-        SentfferID,
-        setKey,
-        "Offres",
-        setstudentDetail,
-        setMatchSentDetail,
-        setisDetail
-      )
-    );
+    dispatch(Cancel_Offer_Decion_By_Company(id, SentfferID, setKey, "Offres", setstudentDetail, setMatchSentDetail, setisDetail));
   };
   useEffect(() => {
     if (studentID && STUDENT) {
@@ -233,7 +206,6 @@ const OverviewOfOffers = () => {
       setBookingError("Obligatoire");
     }
   };
-  // console.log(isDetail, "qwerty", studentDetail)
   if (studentDetail === false) {
     return (
       <>
@@ -317,10 +289,10 @@ const OverviewOfOffers = () => {
               <div className="AnnoncesViewOffersBox">
                 <div className="offers custom-box">
                   {matchSentDetail === false ? (
-                    JOBS && JOBS.length > 0 ? (
-                      JOBS.map((item, index) => (
-                        <CardWithImage key={index} item={item} type="company" eventKey={key} handleDetail={handleDetail} />
-                      ))
+                    OFFER_SENT && OFFER_SENT.length > 0 ? (
+                      OFFER_SENT.map((item, index) => {
+                        return <CardWithImage key={index} item={item} type="matchSent" handleDetail={handleStudentDetail} />;
+                      })
                     ) : (
                       <h1 className="text-center">Il n'y a pas de candidats</h1>
                     )
@@ -348,16 +320,14 @@ const OverviewOfOffers = () => {
               <div className="AnnoncesViewOffersBox">
                 <div className="offers custom-box">
                   {matchReceiveDetail === false ? (
-                    JOBS && JOBS.length > 0 ? (
-                      JOBS.map((item, index) => (
+                    OFFER_REJECTED && OFFER_REJECTED.length > 0 ? (
+                      OFFER_REJECTED.map((item, index) => (
                         <CardWithImage
                           key={index}
                           item={item}
                           eventKey={key}
-                          type="company"
-                          handleDetail={handleDetail}
-                          matchReceiveDetailHandler={matchReceiveDetailHandler}
-                          offerID={offerID}
+                          type="matchSent"
+                          handleDetail={handleStudentDetail}
                         />
                       ))
                     ) : (
@@ -394,8 +364,8 @@ const OverviewOfOffers = () => {
             handleStudentDetail={handleStudentDetail}
             handleOfferAccepted={handleOfferAccepted}
             handleOfferRejected={handleOfferRejected}
-              isnext={isnext}
-              setIsNext={setIsNext}
+            isnext={isnext}
+            setIsNext={setIsNext}
           />
         )}
       </>
@@ -467,7 +437,9 @@ const OverviewOfOffers = () => {
                           <li>Behance &nbsp;&nbsp;: </li>
                           <li>
                             <a href={`${studentFormData?.professional_networks?.Behance}`} target="_blank">
-                              {studentFormData?.professional_networks?.Behance ? studentFormData?.professional_networks?.Behance : ""}
+                              {studentFormData?.professional_networks?.Behance
+                                ? studentFormData?.professional_networks?.Behance
+                                : ""}
                             </a>
                           </li>
                         </ul>
@@ -478,7 +450,9 @@ const OverviewOfOffers = () => {
                           <li>Dribble &nbsp;&nbsp;: </li>
                           <li>
                             <a href={`${studentFormData?.professional_networks?.Dribble}`} target="_blank">
-                              {studentFormData?.professional_networks?.Dribble ? studentFormData?.professional_networks?.Dribble : ""}
+                              {studentFormData?.professional_networks?.Dribble
+                                ? studentFormData?.professional_networks?.Dribble
+                                : ""}
                             </a>
                           </li>
                         </ul>
@@ -489,7 +463,9 @@ const OverviewOfOffers = () => {
                           <li>Github &nbsp;&nbsp;: </li>
                           <li>
                             <a href={`${studentFormData?.professional_networks?.Github}`} target="_blank">
-                              {studentFormData?.professional_networks?.Github ? studentFormData?.professional_networks?.Github : ""}
+                              {studentFormData?.professional_networks?.Github
+                                ? studentFormData?.professional_networks?.Github
+                                : ""}
                             </a>
                           </li>
                         </ul>
@@ -521,12 +497,17 @@ const OverviewOfOffers = () => {
                 )}
               </div>
             </Tab>
-            <Tab eventKey="fourth" title="Retour" className="h-100" onEntering={() => {
-              setstudentDetail(false)
-              setIsNext(true)
-              setisDetail(false)
-            }}>
-            </Tab>
+            <Tab
+              eventKey="fourth"
+              title="Retour"
+              className="h-100"
+              onEntering={() => {
+                setstudentDetail(false);
+                setIsNext(true);
+                setisDetail(false);
+                setKey2("first");
+              }}
+            ></Tab>
           </Tabs>
         ) : (
           <h1 className="text-center">Aucune donnée disponible</h1>
