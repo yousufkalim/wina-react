@@ -1,5 +1,5 @@
-import React from "react";
-import "../../components/Regards/Style.css";
+import React from 'react';
+import '../../components/Regards/Style.css';
 
 const Winaa2 = (props) => {
   return (
@@ -16,12 +16,15 @@ const Winaa2 = (props) => {
             <div className="wina-col2">
               <div className="winaTaxt">
                 <div className="winatext_container2">
-                  <p className="winaPera">{props.text}</p>
-                  <p className="winaPera">{props.text2}</p>
+                  <p className="winaPera">
+                    {props.text} {props.text2} {props.text3} {props.text4} {props.text5}{' '}
+                    {props.text6}
+                  </p>
+                  {/* <p className="winaPera">{props.text2}</p>
                   <p className="winaPera">{props.text3}</p>
                   <p className="winaPera">{props.text4}</p>
                   <p className="winaPera">{props.text5}</p>
-                  <p className="winaPera">{props.text6}</p>
+                  <p className="winaPera">{props.text6}</p> */}
                 </div>
               </div>
             </div>

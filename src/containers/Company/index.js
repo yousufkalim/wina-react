@@ -39,7 +39,7 @@ const Index = (props) => {
             <p className="applicationP2">Économisez 10%</p>
             <h1 className="applicationH12">Sélectionne l’offre qui correspond le mieux à vos besoins</h1>
             <button className={activeMonth ? "applicationBTN2" : "applicationBTN"} onClick={handleMonth}>Mensuel</button>
-            <button style={{ marginLeft: "1rem" }} className={activeYear ? "applicationBTN2" : "applicationBTN"} onClick={handleYear}>Annuel</button>
+            <button  className={activeYear ? "applicationBTN2" : "applicationBTN"} onClick={handleYear}>Annuel</button>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   height: 100%;
 }
 html {
@@ -216,7 +216,7 @@ html {
 }
 /* STUDENT MODAL  */
 .student-modal {
-  font-family: "Lato", sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
 }
 .student-modal .modal-dialog {
   width: 30% !important;
@@ -335,7 +335,7 @@ html {
   padding: 0px;
 }
 .student-modal .modal-body .Login {
-  padding: 0px 5rem 0px 4rem;
+  padding: 0px 2rem 0px 2rem;
 }
 
 .student-modal .modal-body .Login .email {
@@ -509,7 +509,7 @@ html {
   margin-bottom: 34px;
 }
 .HomePagefontStyle {
-  font-family: "Lato", sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
 }
 /* STUDENT DASHBOARD  */
 .dashbord {
@@ -1196,7 +1196,7 @@ html {
 .ViewOffersBox .offers .OfferDomain .button {
   color: #2879d9;
   border: 1px solid #2879d9;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 45px;
   font-size: 15px;
@@ -1216,7 +1216,7 @@ html {
   background: #f6c40d;
   color: #fff;
   border: 1px solid #f6c40d;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 40px;
   font-size: 18px;
@@ -1229,7 +1229,7 @@ html {
   background: #aaaaaa;
   color: #fff;
   border: 1px solid #aaaaaa;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 46px;
   font-size: 18px;
@@ -1240,7 +1240,7 @@ html {
   background: #f6c40d;
   color: #fff;
   border: 1px solid #f6c40d;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 40px;
   font-size: 18px;
@@ -1253,7 +1253,7 @@ html {
   background: #3cbf31;
   color: #fff;
   border: 1px solid #3cbf31;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 58px;
   font-size: 18px;
@@ -1274,7 +1274,7 @@ html {
   background: #e52b2b;
   color: #fff;
   border: 1px solid #e52b2b;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 58px;
   font-size: 18px;
@@ -1454,7 +1454,7 @@ html {
 .ResearchBox .OfferDomain .button {
   color: #2879d9;
   border: 1px solid #2879d9;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 45px;
   font-size: 15px;
@@ -1475,7 +1475,7 @@ html {
   background: #f6c40d;
   color: #fff;
   border: 1px solid #f6c40d;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 40px;
   font-size: 18px;
@@ -1488,7 +1488,7 @@ html {
   background: #aaaaaa;
   color: #fff;
   border: 1px solid #aaaaaa;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 46px;
   font-size: 18px;
@@ -1499,7 +1499,7 @@ html {
   background: #f6c40d;
   color: #fff;
   border: 1px solid #f6c40d;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 40px;
   font-size: 18px;
@@ -1512,7 +1512,7 @@ html {
   background: #3cbf31;
   color: #fff;
   border: 1px solid #3cbf31;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 30px;
   font-size: 18px;
@@ -1526,7 +1526,7 @@ html {
   background: #e52b2b;
   color: #fff;
   border: 1px solid #e52b2b;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 41px;
   padding: 0px 58px;
   font-size: 18px;
@@ -1879,7 +1879,11 @@ html {
 .ProfessionalCareerModal .modal-body .Type_of_employment .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal .modal-body .Type_of_employment .MuiInputBase-root:focus-within .MuiButtonBase-root {
+.ProfessionalCareerModal
+  .modal-body
+  .Type_of_employment
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root {
   color: white;
 }
 .ProfessionalCareerModal .modal-body .Type_of_employment .MuiSvgIcon-root:focus {
@@ -1972,7 +1976,11 @@ html {
 .ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root:focus-within input {
   color: white;
 }
-.ProfessionalCareerModal .modal-body .startEndDate .MuiInputBase-root:focus-within .MuiButtonBase-root {
+.ProfessionalCareerModal
+  .modal-body
+  .startEndDate
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root {
   color: white;
 }
 .ProfessionalCareerModal .modal-body .startEndDate .MuiSvgIcon-root:focus {
@@ -2043,7 +2051,12 @@ html {
 .GeneralSkillsBox .GeneralSkills .skills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.GeneralSkillsBox .GeneralSkills .GSkillsBox .skills .MuiInputBase-root:focus-within .MuiButtonBase-root {
+.GeneralSkillsBox
+  .GeneralSkills
+  .GSkillsBox
+  .skills
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root {
   color: white;
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .skills .MuiSvgIcon-root:focus {
@@ -2120,7 +2133,12 @@ html {
 .SpecializedSkillsBox .SpecializedSkills .skills .MuiInputBase-root:focus-within input {
   color: white;
 }
-.SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiInputBase-root:focus-within .MuiButtonBase-root {
+.SpecializedSkillsBox
+  .SpecializedSkills
+  .SSkillsBox
+  .skills
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root {
   color: white;
 }
 .SpecializedSkillsBox .SpecializedSkills .SSkillsBox .skills .MuiSvgIcon-root:focus {
@@ -2482,7 +2500,7 @@ html {
 .publishBox
   .publish
   .startDateandDuration
-  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']
   .MuiAutocomplete-input:first-child {
   font-size: 1.37rem;
   font-weight: bold;
@@ -2491,7 +2509,7 @@ html {
 .publishBox
   .publish
   .startDateandDuration
-  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']
   .MuiAutocomplete-input:focus {
   color: white;
 }
@@ -2516,8 +2534,18 @@ html {
 .publishBox .publish .startDateandDuration .Duration .MuiInputBase-root:focus-within input {
   color: white;
 }
-.publishBox .publish .startDateandDuration .startDate .MuiInputBase-root:focus-within .MuiButtonBase-root,
-.publishBox .publish .startDateandDuration .Duration .MuiInputBase-root:focus-within .MuiButtonBase-root {
+.publishBox
+  .publish
+  .startDateandDuration
+  .startDate
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root,
+.publishBox
+  .publish
+  .startDateandDuration
+  .Duration
+  .MuiInputBase-root:focus-within
+  .MuiButtonBase-root {
   color: white;
 }
 .DateRow {
@@ -2613,7 +2641,7 @@ textarea.form-control {
 .publishBox
   .publish
   .generalSkills
-  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']
   .MuiAutocomplete-input:first-child {
   font-size: 1.37rem;
   font-weight: bold;
@@ -2626,7 +2654,7 @@ textarea.form-control {
   .publish
   .generalSkills
   .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon
-  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root'] {
   padding-right: 0.7rem;
   padding-left: 1.12rem;
 }
@@ -2749,7 +2777,7 @@ textarea.form-control {
 .AnnoncesViewOffersBox .offers .OfferDomain .button {
   color: #2879d9;
   border: 1px solid #2879d9;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 2.56rem;
   padding: 0px 2.8rem;
   font-size: 0.9rem;
@@ -2761,7 +2789,7 @@ textarea.form-control {
   background: #f6c40d;
   color: #fff;
   border: 1px solid #f6c40d;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   border-radius: 2.56rem;
   padding: 0px 2.5rem;
   font-size: 1.12rem;
@@ -2813,7 +2841,7 @@ textarea.form-control {
   width: 100%;
   display: flex;
   justify-content: center;
-  background: url("../images/coaching_card.png");
+  background: url('../images/coaching_card.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   align-items: center;
@@ -3068,7 +3096,7 @@ textarea.form-control {
   padding-block: 0.3rem;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: "----";
+  text-overflow: '----';
 }
 .offer-card-price-item-1 {
   display: flex;
@@ -3318,7 +3346,9 @@ textarea.form-control {
 .sliderBox .makeStyles-input-2 {
   top: 0rem !important;
 }
-.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .offer-detail-container .makeStyles-input-14 {
+.MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']
+  .offer-detail-container
+  .makeStyles-input-14 {
   top: 0rem;
 }
 /* Company Offering card page       */
@@ -3428,7 +3458,7 @@ label#demo-controlled-open-select-label {
     margin-left: -0 !important;
   }
 }
-input[type="file"] {
+input[type='file'] {
   display: none !important;
 }
 .inputLabel {
@@ -3476,7 +3506,7 @@ input[type="file"] {
   transition: 0.5s;
 }
 .partner-slides.owl-carousel .owl-item::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -3597,13 +3627,13 @@ input[type="file"] {
 .carousel .control-next.control-arrow:before {
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
-  content: url("../images/right.png") !important;
+  content: url('../images/right.png') !important;
   border-left: 0px !important ;
 }
 .carousel .control-prev.control-arrow:before {
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
-  content: url("../images/left.png") !important;
+  content: url('../images/left.png') !important;
   border-right: 0px !important;
 }
 
@@ -3616,7 +3646,7 @@ input[type="file"] {
   margin: 0 5px;
   display: inline-block;
   background: transparent !important;
-  content: "";
+  content: '';
 }
 .carousel-status {
   display: none;

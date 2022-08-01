@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import "../../components/Cfa/Style.css";
-import HomeHeader2 from "../../components/Header";
-import Application from "../../components/Student/Application";
-import Pack from "../../components/Student/Pack";
-import Footer from "../../components/Footer";
-import CheckCheck from "../../assets/CheckCheck.svg";
+import React, { useState } from 'react';
+import '../../components/Cfa/Style.css';
+import HomeHeader2 from '../../components/Header';
+import Application from '../../components/Student/Application';
+import Pack from '../../components/Student/Pack';
+import Footer from '../../components/Footer';
+import CheckCheck from '../../assets/CheckCheck.svg';
 
 const Index = (props) => {
-
-  const [activeMonth, setActiveMonth] = useState(false)
-  const [activeYear, setActiveYear] = useState(true)
+  const [activeMonth, setActiveMonth] = useState(false);
+  const [activeYear, setActiveYear] = useState(true);
   const handleMonth = () => {
-    setActiveMonth(true)
-    setActiveYear(false)
-  }
+    setActiveMonth(true);
+    setActiveYear(false);
+  };
   const handleYear = () => {
-    setActiveYear(true)
-    setActiveMonth(false)
-  }
+    setActiveYear(true);
+    setActiveMonth(false);
+  };
 
   return (
     <>
-      <HomeHeader2
-        id={props.match.params.id}
-        token={props.match.params.token}
-        header="2"
-      />
+      <HomeHeader2 id={props.match.params.id} token={props.match.params.token} header="2" />
       {/* <Application
         btnT="Trimestriel"
         text="Nos Packs Etudiants"
@@ -41,24 +36,34 @@ const Index = (props) => {
           </div>
           <div className="application-heading-2">
             <p className="applicationP2">Économisez 10%</p>
-            <h1 className="applicationH12">Sélectionne l’offre qui correspond le mieux à vos besoins</h1>
-            <button className={activeMonth ? "applicationBTN2" : "applicationBTN"} onClick={handleMonth}>Mensuel</button>
-            <button style={{ marginLeft: "1rem" }} className={activeYear ? "applicationBTN2" : "applicationBTN"} onClick={handleYear}>Trimestriel</button>
+            <h1 className="applicationH12">
+              Sélectionne l’offre qui correspond le mieux à vos besoins
+            </h1>
+            <button
+              className={activeMonth ? 'applicationBTN2' : 'applicationBTN'}
+              onClick={handleMonth}
+            >
+              Mensuel
+            </button>
+            <button
+              className={activeYear ? 'applicationBTN2' : 'applicationBTN'}
+              onClick={handleYear}
+            >
+              Trimestriel
+            </button>
           </div>
         </div>
       </div>
       <Pack
         img={CheckCheck}
         texth3="Pack Decouverte "
-        texth32={activeMonth ? "11,98" : activeYear ? "107,90" : "NAN"}
-
+        texth32={activeMonth ? '11,98' : activeYear ? '107,90' : 'NAN'}
         // 131.76
-
 
         // 11.988
         texth33=" monthly subscription"
         xth1="Pack Accompagnement"
-        texth4={activeMonth ? "32,98" : activeYear ? "324" : "NAN"}
+        texth4={activeMonth ? '32,98' : activeYear ? '324' : 'NAN'}
         liPack="Recrutement facilité avec des offres qui te correspondent"
         liPack2="Candidature envoyée en Swipe"
         // liPack3="Matching assuré"
