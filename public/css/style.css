@@ -286,7 +286,7 @@ html {
 .student-modal .modal-content {
   padding-bottom: 3rem;
   border-radius: 1rem !important;
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem 2rem 2rem !important;
 }
 .student-modal .modal-sub-heading {
   font-size: 1.2rem;
@@ -367,6 +367,7 @@ html {
 
 .student-modal .modal-body .Register {
   /* padding: 0px 72px 0px 66px; */
+  padding: 0 !important;
 }
 
 .student-modal .modal-body .Register .studentRegisterbtn {
