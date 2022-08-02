@@ -19,7 +19,7 @@ p {
 }
 .hero_img {
   width: 100%;
-  background: url("../../assets/CfaBG.svg");
+  background: url('../../assets/CfaBG.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -637,6 +637,9 @@ p {
   }
   .together-secondDiv {
     flex-direction: column;
+  }
+  .foot_img_div {
+    text-align: left;
   }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {

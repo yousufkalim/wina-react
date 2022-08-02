@@ -1,50 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
-import ModalInput from "../../UI/Input";
-import LeftSidebar from "./Components/leftSideBar";
-import { useFormik } from "formik";
-import {
-  SIGNUP_STATE,
-  LOGIN_STATE,
-} from "../../../Globals/InitialValues/Student";
-import { SIGNUP_YUP, LOGIN_YUP } from "../../Formik/Student/yupValidation";
-import { Student_Signup, login, getApiAdress } from "../../../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
+import ModalInput from '../../UI/Input';
+import LeftSidebar from './Components/leftSideBar';
+import { useFormik } from 'formik';
+import { SIGNUP_STATE, LOGIN_STATE } from '../../../Globals/InitialValues/Student';
+import { SIGNUP_YUP, LOGIN_YUP } from '../../Formik/Student/yupValidation';
+import { Student_Signup, login, getApiAdress } from '../../../Redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 // import AutoComplete from "../../UI/AutoComplete2";
-import { TextField, Checkbox, Paper } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
-import Texts from "../../../Globals/Texts";
+import { TextField, Checkbox, Paper } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
+import Texts from '../../../Globals/Texts';
 
 const useStyle = makeStyles({
   root: {
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "3.5rem",
-      borderColor: "#2879d9",
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '3.5rem',
+      borderColor: '#2879d9',
     },
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
-    },
-
-    "& .MuiInput-underline:before": {
-      borderBottom: "1px solid #DBE8FF",
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#2879d9',
     },
 
-    "& .MuiAutocomplete-popupIndicator": {
-      display: "none",
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid #DBE8FF',
+    },
+
+    '& .MuiAutocomplete-popupIndicator': {
+      display: 'none',
     },
 
     // '& .MuiFormLabel-root.Mui-focused': {
     //   color: "#2879d9"
     // },
-    "& .MuiInput-underline:after": {
-      borderBottom: "1px solid #2B5AA6 !important",
+    '& .MuiInput-underline:after': {
+      borderBottom: '1px solid #2B5AA6 !important',
     },
-    "& .MuiAutocomplete-inputRoot": {
+    '& .MuiAutocomplete-inputRoot': {
       // borderBottom: "1px solid #f7c40d",
       // - The Input-root, inside the TextField-root
-      "& fieldset": {
+      '& fieldset': {
         // - The <fieldset> inside the Input-root
         // borderColor: "pink",
         // - Set the Input border
@@ -57,41 +54,41 @@ const useStyle = makeStyles({
       //   borderColor: "#2879d9",
       // },
     },
-    "& .MuiFormLabel-root": {
-      fontSize: "1.375rem",
-      "& .Mui-focused": {
-        color: "#fff",
+    '& .MuiFormLabel-root': {
+      fontSize: '1.375rem',
+      '& .Mui-focused': {
+        color: '#fff',
       },
     },
 
-    "& .MuiInputBase-root ": {
-      fontSize: "1.375rem",
+    '& .MuiInputBase-root ': {
+      fontSize: '1.375rem',
     },
   },
 
   root2: {
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "3.5rem",
-      borderColor: "#2879d9",
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '3.5rem',
+      borderColor: '#2879d9',
     },
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#2879d9',
     },
 
-    "& .MuiInput-underline:before": {
-      borderBottom: "1px solid #f7c40d",
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid #f7c40d',
     },
 
     // '& .MuiFormLabel-root.Mui-focused': {
     //   color: "#2879d9"
     // },
-    "& .MuiInput-underline:after": {
-      borderBottom: "1px solid #f7c40d",
+    '& .MuiInput-underline:after': {
+      borderBottom: '1px solid #f7c40d',
     },
-    "& .MuiAutocomplete-inputRoot": {
+    '& .MuiAutocomplete-inputRoot': {
       // borderBottom: "1px solid #f7c40d",
       // - The Input-root, inside the TextField-root
-      "& fieldset": {
+      '& fieldset': {
         // - The <fieldset> inside the Input-root
         // borderColor: "pink",
         // - Set the Input border
@@ -104,21 +101,21 @@ const useStyle = makeStyles({
       //   borderColor: "#2879d9",
       // },
     },
-    "& .MuiFormLabel-root.Mui-focused": {
-      display: "none",
+    '& .MuiFormLabel-root.Mui-focused': {
+      display: 'none',
     },
-    "& .MuiFormLabel-root": {
-      fontSize: "1.12rem",
-      "& .Mui-focused": {
-        color: "#fff",
+    '& .MuiFormLabel-root': {
+      fontSize: '1.12rem',
+      '& .Mui-focused': {
+        color: '#fff',
       },
     },
-    "& .MuiInputLabel-shrink ": {
-      display: "none",
+    '& .MuiInputLabel-shrink ': {
+      display: 'none',
     },
 
-    "& .MuiInputBase-root ": {
-      fontSize: "1.12rem",
+    '& .MuiInputBase-root ': {
+      fontSize: '1.12rem',
     },
   },
 });
@@ -129,7 +126,7 @@ export default function StudentRegister(props) {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const store2 = useSelector((state) => state.globals);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
 
   //states
   const [items, setItems] = useState([]);
@@ -146,9 +143,9 @@ export default function StudentRegister(props) {
         if (value === true) {
           formik.setSubmitting(false);
           formik.handleReset();
-          setAddress("");
+          setAddress('');
         } else {
-          props.handleModal("student");
+          props.handleModal('student');
         }
       });
     },
@@ -157,9 +154,9 @@ export default function StudentRegister(props) {
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "phone") {
+    if (name === 'phone') {
       if (value.length <= 10) {
-        formik.setFieldValue(name, value.replace(/\D/g, ""));
+        formik.setFieldValue(name, value.replace(/\D/g, ''));
       }
     } else {
       formik.setFieldValue(name, value);
@@ -187,10 +184,10 @@ export default function StudentRegister(props) {
     }
   };
   const onSubmitAddress = (value) => {
-    formik.setFieldValue("address", {
+    formik.setFieldValue('address', {
       city: value.city,
       street: value.name,
-      zip: value.PostalCode ? value.PostalCode : "40180",
+      zip: value.PostalCode ? value.PostalCode : '40180',
       longitude: value.lng,
       latitude: value.lat,
     });
@@ -198,17 +195,17 @@ export default function StudentRegister(props) {
 
   // initialize States
   const [formData, setFormData] = useState({
-    address: "",
+    address: '',
   });
   // state for address details
   const [addressValue, setAddressValue] = useState({
-    lat: "",
-    lng: "",
-    city: "",
-    street: "",
-    postal_code: "",
-    label: "",
-    label2: "",
+    lat: '',
+    lng: '',
+    city: '',
+    street: '',
+    postal_code: '',
+    label: '',
+    label2: '',
   });
   const [values, setValues] = useState([]);
   // Get All Address in drop down List from API
@@ -218,17 +215,19 @@ export default function StudentRegister(props) {
       [e.target.name]: e.target.value,
     });
 
-    delete axios.defaults.headers.common["x-auth-token"];
+    delete axios.defaults.headers.common['x-auth-token'];
 
     let res = await axios.get(
-      "https://api-adresse.data.gouv.fr/search/?q=" + e.target.value + "&type=housenumber&autocomplete=1",
+      'https://api-adresse.data.gouv.fr/search/?q=' +
+        e.target.value +
+        '&type=housenumber&autocomplete=1',
       {
         withCredentials: false,
       }
     );
 
     if (localStorage.token) {
-      axios.defaults.headers.common["x-auth-token"] = localStorage.token;
+      axios.defaults.headers.common['x-auth-token'] = localStorage.token;
     }
 
     var addressToSet = []; // //debugger;
@@ -236,7 +235,9 @@ export default function StudentRegister(props) {
       addressToSet.push({
         id: i,
         label: res?.data?.features[i].properties.label,
-        label2: `${res?.data?.features[i].properties.label + "," + res?.data?.features[i].properties.context}`,
+        label2: `${
+          res?.data?.features[i].properties.label + ',' + res?.data?.features[i].properties.context
+        }`,
         city: res?.data?.features[i].properties.city,
         street: res?.data?.features[i].properties.name,
         PostalCode: res?.data?.features[i].properties.postcode,
@@ -272,10 +273,10 @@ export default function StudentRegister(props) {
             city,
             street,
           });
-          formik.setFieldValue("address", {
+          formik.setFieldValue('address', {
             city: city,
             street: street,
-            zip: postal_code ? postal_code : "40180",
+            zip: postal_code ? postal_code : '40180',
             longitude: lng,
             latitude: lat,
           });
@@ -284,21 +285,26 @@ export default function StudentRegister(props) {
     } else {
       await setAddressValue({
         ...addressValue,
-        address: "",
-        zip_code: "",
-        lat: "",
-        long: "",
-        city: "",
-        street: "",
+        address: '',
+        zip_code: '',
+        lat: '',
+        long: '',
+        city: '',
+        street: '',
       });
     }
   };
   return (
-    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("student")}>
+    <Modal
+      className="student-modal"
+      show={props.show}
+      centered
+      onHide={() => props.handleModal('student')}
+    >
       <Modal.Header closeButton>
         <p
           className="heading"
-          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+          style={{ marginTop: '2rem', fontSize: '1.5rem', fontWeight: 600, color: '#30343E' }}
         >
           S’inscrire - ETUDIANT
         </p>
@@ -315,7 +321,7 @@ export default function StudentRegister(props) {
             useSelector={useSelector}
             handleModal={props.handleModal}
           /> */}
-        <div className="Register" style={{ marginTop: "15px" }}>
+        <div className="Register" style={{ marginTop: '15px' }}>
           <form onSubmit={formik.handleSubmit}>
             <div>
               <ModalInput
@@ -353,7 +359,9 @@ export default function StudentRegister(props) {
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
               />
-              {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
+              {formik.touched.email && formik.errors.email ? (
+                <div className="formikError">{formik.errors.email}</div>
+              ) : null}
             </div>
             <div className="my-4">
               <ModalInput
@@ -390,17 +398,23 @@ export default function StudentRegister(props) {
                 onBlur={formik.handleBlur}
                 value={formik.values.phone}
               />
-              {formik.touched.phone && formik.errors.phone ? <div className="formikError">{formik.errors.phone}</div> : null}
+              {formik.touched.phone && formik.errors.phone ? (
+                <div className="formikError">{formik.errors.phone}</div>
+              ) : null}
             </div>
-            <div className="" style={{ marginTop: "-18px" }}>
+            <div className="" style={{ marginTop: '-18px' }}>
               <Autocomplete
                 options={values}
                 clearOnEscape={true}
                 // disableClearable
                 className={classes.root}
-                noOptionsText={<div style={{ color: "black", fontSize: "12px" }}> aucune option </div>}
-                PaperComponent={({ children }) => <Paper style={{ background: "" }}>{children}</Paper>}
-                getOptionLabel={(option) => option.label2 || ""}
+                noOptionsText={
+                  <div style={{ color: 'black', fontSize: '12px' }}> aucune option </div>
+                }
+                PaperComponent={({ children }) => (
+                  <Paper style={{ background: '' }}>{children}</Paper>
+                )}
+                getOptionLabel={(option) => option.label2 || ''}
                 onChange={SetAddress}
                 // hiddenLabel="true"
                 // style={{
@@ -409,14 +423,14 @@ export default function StudentRegister(props) {
                 // }}
                 renderInput={(params) => (
                   <TextField
-                    InputProps={{ ...params.InputProps, type: "text" }}
+                    InputProps={{ ...params.InputProps, type: 'text' }}
                     className={classes.root}
                     {...params}
                     margin="normal"
                     // onBlur={onBlur}
-                    variant={"standard"}
+                    variant={'standard'}
                     placeholder="Adresse"
-                    style={{ color: "white" }}
+                    style={{ color: 'white' }}
                     onChange={getAllAdress}
                     name="address"
                     // value={address}
@@ -444,8 +458,12 @@ export default function StudentRegister(props) {
                     </div>
                   ) : null} */}
             </div>
-            <button className="modal-button modal-register-btn" type="submit" disabled={store.loading}>
-              {store.loading ? "Loading..." : "S’inscrire"}
+            <button
+              className="modal-button modal-register-btn"
+              type="submit"
+              disabled={store.loading}
+            >
+              {store.loading ? 'Loading...' : 'S’inscrire'}
             </button>
           </form>
         </div>

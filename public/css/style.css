@@ -228,7 +228,7 @@ html {
 
 .student-modal .modal-header .close {
   padding-top: 3rem;
-  padding-right: 2.7rem;
+  padding-right: 0.7rem;
   font-size: 2.75rem;
   font-weight: 300;
   color: #454545;
@@ -286,6 +286,7 @@ html {
 .student-modal .modal-content {
   padding-bottom: 3rem;
   border-radius: 1rem !important;
+  padding: 0 2rem 2rem 2rem;
 }
 .student-modal .modal-sub-heading {
   font-size: 1.2rem;
@@ -335,7 +336,7 @@ html {
   padding: 0px;
 }
 .student-modal .modal-body .Login {
-  padding: 0px 2rem 0px 2rem;
+  padding: 0px 0;
 }
 
 .student-modal .modal-body .Login .email {
@@ -365,7 +366,7 @@ html {
 }
 
 .student-modal .modal-body .Register {
-  padding: 0px 72px 0px 66px;
+  /* padding: 0px 72px 0px 66px; */
 }
 
 .student-modal .modal-body .Register .studentRegisterbtn {

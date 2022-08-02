@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
-import ModalInput from "../../UI/Input";
-import LeftSidebar from "./Components/leftSideBar";
-import { useFormik } from "formik";
-import {
-  SIGNUP_STATE,
-  LOGIN_STATE,
-} from "../../../Globals/InitialValues/Student";
-import { SIGNUP_YUP, LOGIN_YUP } from "../../Formik/Student/yupValidation";
-import { Student_Signup, login, getApiAdress } from "../../../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import AutoComplete from "../../UI/AutoComplete";
-import Texts from "../../../Globals/Texts";
+import React, { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
+import ModalInput from '../../UI/Input';
+import LeftSidebar from './Components/leftSideBar';
+import { useFormik } from 'formik';
+import { SIGNUP_STATE, LOGIN_STATE } from '../../../Globals/InitialValues/Student';
+import { SIGNUP_YUP, LOGIN_YUP } from '../../Formik/Student/yupValidation';
+import { Student_Signup, login, getApiAdress } from '../../../Redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import AutoComplete from '../../UI/AutoComplete';
+import Texts from '../../../Globals/Texts';
 
 export default function StudentRegister(props) {
   // Dispatch
@@ -35,9 +32,9 @@ export default function StudentRegister(props) {
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "phone") {
+    if (name === 'phone') {
       if (value.length <= 10) {
-        formik.setFieldValue(name, value.replace(/\D/g, ""));
+        formik.setFieldValue(name, value.replace(/\D/g, ''));
       }
     } else {
       formik.setFieldValue(name, value);
@@ -62,20 +59,25 @@ export default function StudentRegister(props) {
     }
   };
   const onSubmitAddress = (value) => {
-    formik.setFieldValue("address", {
+    formik.setFieldValue('address', {
       city: value.city,
-      street: value.name ? value.name : "",
+      street: value.name ? value.name : '',
       zip: value.PostalCode,
       longitude: value.lng,
       latitude: value.lat,
     });
   };
   return (
-    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("student")}>
+    <Modal
+      className="student-modal"
+      show={props.show}
+      centered
+      onHide={() => props.handleModal('student')}
+    >
       <Modal.Header closeButton>
         <p
           className="heading"
-          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+          style={{ marginTop: '2rem', fontSize: '1.5rem', fontWeight: 600, color: '#30343E' }}
         >
           S’inscrire
         </p>
@@ -131,7 +133,9 @@ export default function StudentRegister(props) {
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
               />
-              {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
+              {formik.touched.email && formik.errors.email ? (
+                <div className="formikError">{formik.errors.email}</div>
+              ) : null}
             </div>
             <div className="my-4">
               <ModalInput
@@ -168,7 +172,9 @@ export default function StudentRegister(props) {
                 onBlur={formik.handleBlur}
                 value={formik.values.phone}
               />
-              {formik.touched.phone && formik.errors.phone ? <div className="formikError">{formik.errors.phone}</div> : null}
+              {formik.touched.phone && formik.errors.phone ? (
+                <div className="formikError">{formik.errors.phone}</div>
+              ) : null}
             </div>
             <div className="my-4">
               <AutoComplete
@@ -176,7 +182,7 @@ export default function StudentRegister(props) {
                 onChange={handleAddressChange}
                 placeholder={Texts.userProfile}
                 items={items}
-                name={"address"}
+                name={'address'}
                 loading={store2.loading}
                 onSubmit={onSubmitAddress}
               />
@@ -184,8 +190,12 @@ export default function StudentRegister(props) {
                 <div className="formikErrorAuto"> {formik.errors.address.city}</div>
               ) : null}
             </div>
-            <button className="modal-button modal-register-btn" type="submit" disabled={store.loading}>
-              {store.loading ? "Loading..." : "S’inscrire"}
+            <button
+              className="modal-button modal-register-btn"
+              type="submit"
+              disabled={store.loading}
+            >
+              {store.loading ? 'Loading...' : 'S’inscrire'}
             </button>
           </form>
         </div>

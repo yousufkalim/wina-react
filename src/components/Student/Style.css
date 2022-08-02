@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish:ital@1&family=Raleway:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Mulish:ital@1&family=Raleway:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -55,6 +55,7 @@ body {
 .applicationH12 {
   font-weight: 600;
   font-size: 42px;
+  color: #19234a;
 }
 .applicationBTN {
   border: 2px solid #192349;
@@ -210,6 +211,7 @@ body {
   }
   .applicationH12 {
     font-size: 2.8rem;
+    padding: 0 2%;
   }
   .applicationBTN {
     width: 68%;

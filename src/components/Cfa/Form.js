@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "../../components/Cfa/Style.css";
-import Footerimg from "../../assets/Footerimg.svg";
-import Locat from "../../assets/locat.svg";
-import Phone2 from "../../assets/Phone2.svg";
-import Email2 from "../../assets/Email2.svg";
+import React, { useState } from 'react';
+import '../../components/Cfa/Style.css';
+import Footerimg from '../../assets/Footerimg.svg';
+import Locat from '../../assets/locat.svg';
+import Phone2 from '../../assets/Phone2.svg';
+import Email2 from '../../assets/Email2.svg';
 
 const Form = () => {
   const [forms, setForms] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    textArea: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    textArea: '',
   });
 
   const handleChange = (event) => {
@@ -23,10 +23,10 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setForms({
-      firstName: "",
-      lastName: "",
-      email: "",
-      textArea: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      textArea: '',
     });
   };
   return (
@@ -41,9 +41,10 @@ const Form = () => {
                   {/* logo  */}
                   <div className="contact_from_headings">
                     {/* <img src={Footerimg} alt="" className="foot_log" /> */}
-                    <h2 className="contact_from_h2">Contact Informaiton</h2>
+                    <h2 className="contact_from_h2">Informations de contact</h2>
                     <p className="contact_from_p">
-                      Lorem ipsum dolor sit amet, consec <br /> etur adipiscing elit.
+                      Nous restons à votre disposition pour <br /> toutes infirmations
+                      complémentaires
                     </p>
                   </div>
                   {/*footer menu  */}
@@ -73,7 +74,7 @@ const Form = () => {
                   required
                   className="formInput"
                   type="text"
-                  placeholder="Your first name"
+                  placeholder="Ton prénom"
                   name="firstName"
                   value={forms.firstName}
                 />
@@ -85,7 +86,8 @@ const Form = () => {
                   required
                   className="formInput"
                   type="text"
-                  placeholder="Your last name"
+                  placeholder="
+                  Votre nom de famille"
                   name="lastName"
                   value={forms.lastName}
                 />
@@ -97,7 +99,7 @@ const Form = () => {
                   required
                   className="formInput"
                   type="email"
-                  placeholder="Your Email adresse "
+                  placeholder="Votre adresse e-mail "
                   name="email"
                   value={forms.email}
                 />
