@@ -1,9 +1,9 @@
-import React from "react";
-import "../../components/Student/Style.css";
-import PackBox from "../../assets/PackBox.svg";
-import CheckCheck from "../../assets/CheckCheck.svg";
-import CheckCheck2 from "../../assets/CheckCheck2.svg";
-import BtnArrow from "../../assets/BtnArrow.svg";
+import React from 'react';
+import '../../components/Student/Style.css';
+import PackBox from '../../assets/PackBox.svg';
+import CheckCheck from '../../assets/CheckCheck.svg';
+import CheckCheck2 from '../../assets/CheckCheck2.svg';
+import BtnArrow from '../../assets/BtnArrow.svg';
 
 const Pack = (props) => {
   const { addUpperMargin, PackBTNn2 } = props;
@@ -17,12 +17,12 @@ const Pack = (props) => {
             <div className="packbox">
               <div className="boxHeading">
                 <img src={PackBox} alt="" className="pack_box_img" />
-                <div style={{ textAlign: "left" }}>
+                <div style={{ textAlign: 'left' }}>
                   <h1 className="packH1">{props.texth1}</h1>
                   <p className="packH3">{props.texth3}</p>
                   <p className="packH32">
-                    <sup style={{ color: "#B7B8BC" }}>€ </sup>
                     {props.texth32}
+                    <sup style={{ color: '#B7B8BC' }}> €</sup>
                   </p>
                   <p className="packH33">{props.texth33}</p>
                 </div>
@@ -69,8 +69,7 @@ const Pack = (props) => {
                 </ul>
               </div>
               <button className="packBTN">
-                Souscrire{" "}
-                <img src={BtnArrow} alt="" className="btn_pack_arrow" />
+                Souscrire <img src={BtnArrow} alt="" className="btn_pack_arrow" />
               </button>
             </div>
           </div>
@@ -79,12 +78,12 @@ const Pack = (props) => {
             <div className="packbox">
               <div className="boxHeading">
                 <img src={CheckCheck2} alt="" className="pack_box_img" />
-                <div style={{ textAlign: "left" }}>
+                <div style={{ textAlign: 'left' }}>
                   <h1 className="packH1">{props.texth1}</h1>
                   <p className="packH3">{props.xth1}</p>
                   <p className="packH32">
-                    <sup style={{ color: "#B7B8BC" }}>€ </sup>
                     {props.texth4}
+                    <sup style={{ color: '#B7B8BC' }}> €</sup>
                   </p>
                   <p className="packH33">{props.texth33}</p>
                 </div>
@@ -148,7 +147,7 @@ const Pack = (props) => {
                   </div>
                 </ul>
               </div>
-              <button className={`packBTN2 ${PackBTNn2 && "PackBTNn2"}`}>
+              <button className={`packBTN2 ${PackBTNn2 && 'PackBTNn2'}`}>
                 Souscrire
                 <img src={BtnArrow} alt="" className="btn_pack_arrow" />
               </button>

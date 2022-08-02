@@ -57,13 +57,13 @@ const Index = (props) => {
       <Pack
         img={CheckCheck}
         texth3="Pack Decouverte "
-        texth32={activeMonth ? '11,98' : activeYear ? '107,90' : 'NAN'}
+        texth32={activeMonth ? '11,98' : activeYear ? '10,98' : 'NAN'}
         // 131.76
 
         // 11.988
         texth33=" monthly subscription"
         xth1="Pack Accompagnement"
-        texth4={activeMonth ? '32,98' : activeYear ? '324' : 'NAN'}
+        texth4={activeMonth ? '32,98' : activeYear ? '299.9' : 'NAN'}
         liPack="Recrutement facilité avec des offres qui te correspondent"
         liPack2="Candidature envoyée en Swipe"
         // liPack3="Matching assuré"

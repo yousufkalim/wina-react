@@ -1,27 +1,23 @@
-import React, { useState } from "react";
-import HomeHeader2 from "../../components/Header";
-import Application from "../../components/Student/Application";
-import Pack from "../../components/Student/Pack";
-import Footer from "../../components/Footer";
-import CheckCheck from "../../assets/CheckCheck.svg";
+import React, { useState } from 'react';
+import HomeHeader2 from '../../components/Header';
+import Application from '../../components/Student/Application';
+import Pack from '../../components/Student/Pack';
+import Footer from '../../components/Footer';
+import CheckCheck from '../../assets/CheckCheck.svg';
 const Index = (props) => {
-  const [activeMonth, setActiveMonth] = useState(false)
-  const [activeYear, setActiveYear] = useState(true)
+  const [activeMonth, setActiveMonth] = useState(false);
+  const [activeYear, setActiveYear] = useState(true);
   const handleMonth = () => {
-    setActiveMonth(true)
-    setActiveYear(false)
-  }
+    setActiveMonth(true);
+    setActiveYear(false);
+  };
   const handleYear = () => {
-    setActiveYear(true)
-    setActiveMonth(false)
-  }
+    setActiveYear(true);
+    setActiveMonth(false);
+  };
   return (
     <div>
-      <HomeHeader2
-        id={props.match.params.id}
-        token={props.match.params.token}
-        header="2"
-      />
+      <HomeHeader2 id={props.match.params.id} token={props.match.params.token} header="2" />
       {/* <Application
         btnT="Annuel"
         text="Nos packs Entreprises"
@@ -37,9 +33,21 @@ const Index = (props) => {
           </div>
           <div className="application-heading-2">
             <p className="applicationP2">Économisez 10%</p>
-            <h1 className="applicationH12">Sélectionne l’offre qui correspond le mieux à vos besoins</h1>
-            <button className={activeMonth ? "applicationBTN2" : "applicationBTN"} onClick={handleMonth}>Mensuel</button>
-            <button  className={activeYear ? "applicationBTN2" : "applicationBTN"} onClick={handleYear}>Annuel</button>
+            <h1 className="applicationH12">
+              Sélectionne l’offre qui correspond le mieux à vos besoins
+            </h1>
+            <button
+              className={activeMonth ? 'applicationBTN2' : 'applicationBTN'}
+              onClick={handleMonth}
+            >
+              Mensuel
+            </button>
+            <button
+              className={activeYear ? 'applicationBTN2' : 'applicationBTN'}
+              onClick={handleYear}
+            >
+              Annuel
+            </button>
           </div>
         </div>
       </div>
@@ -48,10 +56,10 @@ const Index = (props) => {
         img2={CheckCheck}
         addUpperMargin={true}
         texth3="Matchez Recrutez "
-        texth32={activeMonth ? "32,98" : activeYear ? "324" : "NAN"}
+        texth32={activeMonth ? '32,98' : activeYear ? '299.9' : 'NAN'}
         texth33=" monthly subscription"
         xth1="Recrutement & Conseil"
-        texth4={activeMonth ? "109,98" : activeYear ? "1,080" : "NAN"}
+        texth4={activeMonth ? '109,98' : activeYear ? '99.99' : 'NAN'}
         liPack="Recrutement facilité avec des soft skills et hard skills ciblées"
         liPack2="Accès à la plateforme Web avec un Tableau de bord intuitif et design"
         liPack3="Matching des profils potentiels sur l’application"

@@ -75,7 +75,7 @@ export default function Sidebar({
               Vous n'avez pas de compte ?
               <a
                 onClick={() => handleModal('main')}
-                style={{ color: '#2B5AA6', fontWeight: '600' }}
+                style={{ color: '#2B5AA6', fontWeight: '600', marginLeft: '5px' }}
               >
                 S'inscrire
               </a>
@@ -96,7 +96,7 @@ export default function Sidebar({
             >
               <span>
                 <FaLinkedin className="modal-social-icon mr-2" />
-                <>Connect with LinkedIn</>
+                <>Connectez-vous avec LinkedIn</>
               </span>
             </a>
             <a
@@ -105,7 +105,7 @@ export default function Sidebar({
             >
               <span>
                 <FcGoogle className="modal-social-icon-google mr-2 ml-0" />
-                <>Connect with Google</>
+                <>Connectez-vous avec Google</>
               </span>
             </a>
           </div>

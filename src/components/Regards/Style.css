@@ -15,7 +15,7 @@ body {
   color: #fff;
 }
 .wina-container {
-  background: url("../../assets/RegardsBG.svg");
+  background: url('../../assets/RegardsBG.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,7 +25,7 @@ body {
   margin: auto;
 }
 .wina-container2 {
-  background: url("../../assets/Aboutimg.svg");
+  background: url('../../assets/Aboutimg.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -272,6 +272,9 @@ body {
   }
   .ServicesHeading2 {
     padding: 0px 10px;
+  }
+  .foot_heading_div {
+    text-align: left !important;
   }
 }
 

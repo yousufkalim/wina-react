@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
-import VideoImage from "../../assets/VideoImage.jpg";
-import FindStar from "../../assets/FindStar.svg";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import StudentRegister from '../../components/Header/Modals/studentRegisterModal';
+import VideoImage from '../../assets/VideoImage.jpg';
+import FindStar from '../../assets/FindStar.svg';
+import { useSelector } from 'react-redux';
 
 const Hero2 = (props) => {
   const [studentModal, setstudentModal] = useState(false);
@@ -24,19 +24,21 @@ const Hero2 = (props) => {
               <div className="home_section_content">
                 <p className="find_p">
                   <img src={FindStar} alt="" className="find_star" />
-                  &nbsp; find/match your dream jobs
+                  &nbsp; trouvez/correspondez aux emplois de vos rêves
                 </p>
                 <h1 className="home_seciton_h1">
                   MATCHER & <br />
-                  ECHANGER
+                  ÉCHANGEUR
                 </h1>
                 <p className="home_seciton_p">
-                  Winaa est la première plateforme de mise en relation 100% dédiée à l’alternance et l’apprentissage. Winaa te propose des offres d’alternance en lien avec tes critères de recherche. 
+                  Winaa est la première plateforme de mise en relation 100% dédiée à l’alternance et
+                  l’apprentissage. Winaa te propose des offres d’alternance en lien avec tes
+                  critères de recherche.
                 </p>
                 {user ? (
-                  ""
+                  ''
                 ) : (
-                  <button className="home_section_btn" onClick={() => handleModal("student")}>
+                  <button className="home_section_btn" onClick={() => handleModal('student')}>
                     Creer mon profil etudiant
                   </button>
                 )}

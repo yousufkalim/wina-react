@@ -22,7 +22,6 @@ const StudentLogin = (props) => {
             marginTop: '2rem',
             fontSize: '1.5rem',
             fontWeight: 600,
-            marginLeft: '4rem',
             color: '#30343E',
           }}
         >

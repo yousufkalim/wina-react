@@ -1,8 +1,8 @@
-import React from "react";
-import BorderImg from "../../assets/BorderImg.svg";
-import MobleImg from "../../assets/MobleImg.png";
-import Apple from "../../assets/Apple.svg";
-import Google from "../../assets/Google.svg";
+import React from 'react';
+import BorderImg from '../../assets/BorderImg.svg';
+import MobleImg from '../../assets/MobleImg.png';
+import Apple from '../../assets/Apple.svg';
+import Google from '../../assets/Google.svg';
 
 const Specialized = (props) => {
   return (
@@ -12,12 +12,10 @@ const Specialized = (props) => {
           <div className="spec_colmn">
             <div className="areYou_div">
               <h1 className="spec_h1">
-                Are you excited <br /> for Winaa?
+                Êtes-vous excité <br /> pour Winaa ?
               </h1>
               <img src={BorderImg} alt="" className="spec_border_img" />
-              <p className="spec_download_social">
-                Download the WinaApp today!
-              </p>
+              <p className="spec_download_social">Téléchargez WinaApp dès aujourd'hui !</p>
               <div className="spec_plystor_div">
                 <img src={Google} alt="" className="Google_btn" />
                 <img src={Apple} alt="" className="AppStore_btn" />

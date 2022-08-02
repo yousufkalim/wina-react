@@ -1,32 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
-import ModalInput from "../../UI/Input";
-import { Company_Types } from "../../Data";
-import LeftSidebar from "./Components/leftSideBar";
+import React, { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
+import ModalInput from '../../UI/Input';
+import { Company_Types } from '../../Data';
+import LeftSidebar from './Components/leftSideBar';
 import {
   FIRST_SIGNUP_STATE,
   SECOND_SIGNUP_STATE,
   LOGIN_STATE,
-} from "../../../Globals/InitialValues/Company";
-import {
-  FIRST_SIGNUP_YUP,
-  SECOND_SIGNUP_YUP,
-  LOGIN_YUP,
-} from "../../Formik/Company/yupValidation";
-import { login, getApiAdress, Company_Signup } from "../../../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
-import AutoComplete from "../../UI/AutoComplete";
-import Button from "../../UI//Button";
-import _ from "lodash";
-import Texts from "../../../Globals/Texts";
-import Select from "../../UI/Select";
+} from '../../../Globals/InitialValues/Company';
+import { FIRST_SIGNUP_YUP, SECOND_SIGNUP_YUP, LOGIN_YUP } from '../../Formik/Company/yupValidation';
+import { login, getApiAdress, Company_Signup } from '../../../Redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import AutoComplete from '../../UI/AutoComplete';
+import Button from '../../UI//Button';
+import _ from 'lodash';
+import Texts from '../../../Globals/Texts';
+import Select from '../../UI/Select';
 const StudentRegister = (props) => {
   // Dispatch
   const dispatch = useDispatch();
   const store = useSelector((state) => state.company);
   const store2 = useSelector((state) => state.globals);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
 
   //states
   const [items, setItems] = useState([]);
@@ -59,13 +55,13 @@ const StudentRegister = (props) => {
         positionHeld: formik.values.positionHeld,
       };
       [
-        "firstName",
-        "lastName",
-        "email",
-        "password",
-        "confirm_password",
-        "phone",
-        "positionHeld",
+        'firstName',
+        'lastName',
+        'email',
+        'password',
+        'confirm_password',
+        'phone',
+        'positionHeld',
       ].forEach((e) => delete tempEducation[e]);
       let response = dispatch(Company_Signup(tempEducation));
       response.then((value) => {
@@ -73,10 +69,10 @@ const StudentRegister = (props) => {
           setLoading(false);
           formik.setSubmitting(false);
           formik.handleReset();
-          setAddress("");
+          setAddress('');
         } else {
           setLoading(false);
-          props.handleModal("company");
+          props.handleModal('company');
         }
       });
 
@@ -87,9 +83,9 @@ const StudentRegister = (props) => {
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "phone") {
+    if (name === 'phone') {
       if (value.length <= 10) {
-        formik.setFieldValue(name, value.replace(/\D/g, ""));
+        formik.setFieldValue(name, value.replace(/\D/g, ''));
       }
     } else {
       formik.setFieldValue(name, value);
@@ -97,9 +93,9 @@ const StudentRegister = (props) => {
   };
   const handleChange2 = (e) => {
     const { name, value } = e.target;
-    if (name === "phone") {
+    if (name === 'phone') {
       if (value.length <= 10) {
-        formik2.setFieldValue(name, value.replace(/\D/g, ""));
+        formik2.setFieldValue(name, value.replace(/\D/g, ''));
       }
     } else {
       formik2.setFieldValue(name, value);
@@ -126,10 +122,10 @@ const StudentRegister = (props) => {
   };
 
   const onSubmitAddress = (value) => {
-    formik2.setFieldValue("address", {
+    formik2.setFieldValue('address', {
       city: value.city,
       street: value.name,
-      zip: value.PostalCode ? value.postalCode : "76520",
+      zip: value.PostalCode ? value.postalCode : '76520',
       longitude: value.lng,
       latitude: value.lat,
     });
@@ -142,11 +138,16 @@ const StudentRegister = (props) => {
   };
 
   return (
-    <Modal className="student-modal" show={props.show} centered onHide={() => props.handleModal("company")}>
+    <Modal
+      className="student-modal"
+      show={props.show}
+      centered
+      onHide={() => props.handleModal('company')}
+    >
       <Modal.Header closeButton>
         <p
           className="heading"
-          style={{ marginTop: "2rem", fontSize: "1.5rem", fontWeight: 600, marginLeft: "4rem", color: "#30343E" }}
+          style={{ marginTop: '2rem', fontSize: '1.5rem', fontWeight: 600, color: '#30343E' }}
         >
           S’inscrire - Société
         </p>
@@ -206,7 +207,9 @@ const StudentRegister = (props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
                   />
-                  {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className="formikError">{formik.errors.email}</div>
+                  ) : null}
                 </div>
                 <div className="my-4">
                   <ModalInput
@@ -243,7 +246,9 @@ const StudentRegister = (props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.phone}
                   />
-                  {formik.touched.phone && formik.errors.phone ? <div className="formikError">{formik.errors.phone}</div> : null}
+                  {formik.touched.phone && formik.errors.phone ? (
+                    <div className="formikError">{formik.errors.phone}</div>
+                  ) : null}
                 </div>
                 <div className="my-4">
                   <ModalInput
@@ -267,7 +272,11 @@ const StudentRegister = (props) => {
             <>
               <form onSubmit={formik2.handleSubmit}>
                 <div>
-                  <button className="modal-button modal-register-btn" style={{ marginTop: "-20px" }} onClick={handleNextChange}>
+                  <button
+                    className="modal-button modal-register-btn"
+                    style={{ marginTop: '-20px' }}
+                    onClick={handleNextChange}
+                  >
                     Back
                   </button>
                 </div>
@@ -280,7 +289,9 @@ const StudentRegister = (props) => {
                     value={formik2.values.name}
                     type="text"
                   />
-                  {formik2.touched.name && formik2.errors.name ? <div className="formikError">{formik2.errors.name}</div> : null}
+                  {formik2.touched.name && formik2.errors.name ? (
+                    <div className="formikError">{formik2.errors.name}</div>
+                  ) : null}
                 </div>
                 <div>
                   <AutoComplete
@@ -291,7 +302,7 @@ const StudentRegister = (props) => {
                     items={items}
                     address={address}
                     loading={store2.loading}
-                    name={"address"}
+                    name={'address'}
                     onSubmit={onSubmitAddress}
                   />
                   {formik2.touched.address && formik2.errors.address ? (
@@ -365,8 +376,12 @@ const StudentRegister = (props) => {
                     value={formik2.values.groupName}
                   />
                 </div>
-                <button className="modal-button modal-register-btn" type="submit" disabled={loading}>
-                  {loading === true ? "Loading..." : "S’inscrire"}
+                <button
+                  className="modal-button modal-register-btn"
+                  type="submit"
+                  disabled={loading}
+                >
+                  {loading === true ? 'Loading...' : 'S’inscrire'}
                 </button>
               </form>
             </>
