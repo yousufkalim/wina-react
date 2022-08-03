@@ -1,7 +1,7 @@
-import React from "react";
-import "../../components/LandingPage/Style.css";
-import Doted from "../../assets/Doted.svg";
-import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
+import React from 'react';
+import '../../components/LandingPage/Style.css';
+import Doted from '../../assets/Doted.svg';
+import { ReactComponent as ArrowFront } from '../../assets/Arrorwfront.svg';
 
 const Booste = (props) => {
   return (
@@ -9,7 +9,9 @@ const Booste = (props) => {
       <div className="boost">
         <div className="boost_container">
           {/* <p className="Accompagnement_avac">PROCESS</p> */}
-          <h1 className="boostH1" style={{ marginTop: "6rem", marginBottom: "5rem" }}>{props.text}</h1>
+          <h1 className="boostH1" style={{ marginTop: '6rem', marginBottom: '7rem' }}>
+            {props.text}
+          </h1>
           {/* <p className="boost_pera">
             am suscipit felis sit amet convallis condimentum nterdu <br />
             malesuada fames ac ante

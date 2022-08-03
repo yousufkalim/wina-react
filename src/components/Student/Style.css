@@ -22,8 +22,8 @@ body {
   width: 100%;
 }
 .application-heading {
-  padding-top: 7%;
-  padding-bottom: 7%;
+  padding-top: 9%;
+  padding-bottom: 9%;
   position: relative;
   background-color: #21335f;
   color: #fff;
@@ -99,16 +99,19 @@ body {
   width: 48%;
   border-radius: 38px;
   position: relative;
+  box-shadow: 0px 57px 100px -28px rgb(0 10 49 / 10%);
+  margin-top: 20px;
 }
 .boxHeading {
   border-bottom: 1.74725px solid #e9ebf4;
   color: black;
   text-align: center;
-  padding: 4% 35px 3% 6%;
+  padding: 4% 0px 3% 0;
   display: flex;
 }
 .pack_box_img {
   margin-right: 33px;
+  width: 9rem;
 }
 .packH1 {
   font-weight: 600;
@@ -127,11 +130,11 @@ body {
   font-size: 24px;
 }
 .liHeading {
-  padding: 27px 40px 0px 50px;
+  padding: 27px 0px 0px 0px;
   margin-bottom: 110px;
 }
 .liHeading2 {
-  padding: 27px 40px 0px 50px;
+  padding: 27px 0px 0px 0px;
   margin-bottom: 40px;
 }
 .liPack {
@@ -148,7 +151,7 @@ body {
   border: 1px solid #192349;
   background-color: #192349;
   padding: 27px 94px;
-  margin-bottom: 25px;
+  margin-bottom: 42px;
   color: #fff;
   font-weight: 600;
   font-size: 32px;
@@ -187,6 +190,7 @@ body {
 }
 .packbox {
   margin: 0 0 22% 0;
+  padding: 0 6%;
 }
 @media only screen and (max-width: 600px) {
   .applicationH1 {
@@ -196,7 +200,7 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 50vh;
+    /* height: 50vh; */
   }
   .applicationP {
     font-size: 14px;
@@ -204,7 +208,7 @@ body {
     padding: 0px 0;
   }
   .application-heading {
-    margin-top: 0;
+    padding-top: 18%;
     margin-bottom: 6px;
   }
   .application-heading-2 {
@@ -247,12 +251,12 @@ body {
     margin-left: 18px;
   }
   .liHeading {
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .liHeading2 {
     margin-bottom: 78px;
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .packBTN,
@@ -262,7 +266,7 @@ body {
     padding: 7px 20px;
   }
   .boxHeading {
-    padding: 4% 23px 2% 4%;
+    padding: 4% 0px 2% 0;
   }
   .pack_box_img {
     margin-right: 17px;
@@ -285,7 +289,7 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 53vh;
+    /* height: 53vh; */
   }
   .applicationP {
     font-size: 14px;
@@ -333,11 +337,11 @@ body {
     font-size: 16px;
   }
   .liHeading {
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .liHeading2 {
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .packBTN,
@@ -350,7 +354,7 @@ body {
     display: none;
   }
   .boxHeading {
-    padding: 4% 23px 2% 4%;
+    padding: 4% 0px 2% 0;
   }
   .pack_box_img {
     margin-right: 17px;
@@ -373,7 +377,7 @@ body {
   }
   .application {
     margin-bottom: 0px;
-    height: 53vh;
+    /* height: 53vh; */
   }
   .applicationP {
     font-size: 19px;
@@ -422,12 +426,12 @@ body {
     font-size: 20px;
   }
   .liHeading {
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .liHeading2 {
     margin-bottom: 78px;
-    padding: 27px 30px 0px 30px;
+    padding: 27px 0px 0px 0px;
     margin-bottom: 80px;
   }
   .packBTN,
@@ -440,7 +444,7 @@ body {
     display: none;
   }
   .boxHeading {
-    padding: 4% 23px 2% 4%;
+    padding: 4% 0px 2% 0;
   }
   .pack_box_img {
     margin-right: 17px;

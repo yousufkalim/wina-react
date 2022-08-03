@@ -37,6 +37,7 @@ body {
   font-size: 42px;
   font-weight: 600;
   display: inline-block;
+  color: #192349;
 }
 .together-secondDiv {
   display: flex;
@@ -172,7 +173,7 @@ body {
 }
 .contact_from {
   width: 35%;
-  background: url("../../assets/FormBg.svg");
+  background: url('../../assets/FormBg.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -218,6 +219,7 @@ body {
   font-size: 17px;
   font-weight: 400;
   background: none !important;
+  resize: none;
 }
 .formInput::placeholder {
   color: #999ab4;

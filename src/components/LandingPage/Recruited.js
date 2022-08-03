@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
-
-import "../../components/LandingPage/Style.css";
+import '../../components/LandingPage/Style.css';
 
 const Recruited = (props) => {
   return (
@@ -13,6 +12,7 @@ const Recruited = (props) => {
             <div className="perfect_col2">
               <h3 className="boostH3">{props.text}</h3>
               <p className="boostP">{props.text2}</p>
+              <p className="boostP">{props.text3}</p>
               <a href="/about">
                 <button className="Learn_More">En savoir plus</button>
               </a>

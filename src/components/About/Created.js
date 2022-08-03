@@ -1,6 +1,6 @@
-import React from "react";
-import SimpleImg from "../../assets/SimpleImg.svg";
-import CheckImg from "../../assets/CheckImg.svg";
+import React from 'react';
+import SimpleImg from '../../assets/SimpleImg.svg';
+import CheckImg from '../../assets/CheckImg.svg';
 
 const Created = () => {
   return (
@@ -8,9 +8,7 @@ const Created = () => {
       <div className="togather2">
         <div className="togather-container">
           <div className="togetherHeading">
-            <p className="togetherP2">
-              Ils ont donc créé Winaa, avec un objectif simple
-            </p>
+            <p className="togetherP2">Ils ont donc créé Winaa, avec un objectif simple</p>
             {/* <hr className="togather_hr2" /> */}
           </div>
           <div className="together-secondDiv2">
@@ -29,19 +27,18 @@ const Created = () => {
                 {/* <i class="faIcon far fa-check-circle">k</i> */}
                 <img className="faIcon" src={CheckImg} alt="" />
                 <p className="chackP2">
-                  Encourager et faciliter la rencontre entre les apprenti(e)s et
-                  les entreprises.
+                  Encourager et faciliter la rencontre entre les apprenti(e)s et les entreprises.
                 </p>
               </div>
               <div className="togetherPera">
                 {/* <i class="faIcon far fa-check-circle"></i> */}
                 <img className="faIcon" src={CheckImg} alt="" />
                 <p className="chackP2">
-                  Permettre aux jeunes de se lancer dans la vie professionnelle<br />
-                  en étant mieux préparés et aux entreprises de disposer<br />
-                  d’apprenti(e)s performant(e)s et d'avoir des conseils <br />pour
-                  assurer l’optimisation et le bon fonctionnement de ce
-                  processus
+                  Permettre aux jeunes de se lancer dans la vie professionnelle en étant mieux
+                  préparés et aux entreprises de disposer
+                  <br />
+                  d’apprenti(e)s performant(e)s et d'avoir des conseils <br />
+                  pour assurer l’optimisation et le bon fonctionnement de ce processus
                 </p>
               </div>
             </div>

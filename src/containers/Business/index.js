@@ -1,32 +1,28 @@
-import React from "react";
-import HomeHeader2 from "../../components/Header";
-import Hero from "../../components/LandingPage/Hero";
-import Booste from "../../components/LandingPage/Booste";
-import Perfect from "../../components/LandingPage/Perfect";
-import Place from "../../components/LandingPage/Place";
-import Recruited from "../../components/LandingPage/Recruited";
-import Specialized from "../../components/LandingPage/Specialized";
-import Simplified from "../../components/LandingPage/Simplified";
-import Accompagnement from "../../components/LandingPage/Accompagnement";
-import Footer from "../../components/Footer";
-import Heroimg from "../../assets/Heroimg.png";
-import Formsimg from "../../assets/Formsimg.png";
-import Speechimg from "../../assets/Speechimg.png";
-import Supportimg from "../../assets/Supportimg.png";
-import Cgv from "../../assets/Cgv.png";
-import Boostimg11 from "../../assets/Boostimg11.jpg";
-import Boostimg22 from "../../assets/Boostimg22.jpg";
-import Boostimg3 from "../../assets/Boostimg3.jpg";
-import Boostimg44 from "../../assets/Boostimg44.jpg";
+import React from 'react';
+import HomeHeader2 from '../../components/Header';
+import Hero from '../../components/LandingPage/Hero';
+import Booste from '../../components/LandingPage/Booste';
+import Perfect from '../../components/LandingPage/Perfect';
+import Place from '../../components/LandingPage/Place';
+import Recruited from '../../components/LandingPage/Recruited';
+import Specialized from '../../components/LandingPage/Specialized';
+import Simplified from '../../components/LandingPage/Simplified';
+import Accompagnement from '../../components/LandingPage/Accompagnement';
+import Footer from '../../components/Footer';
+import Heroimg from '../../assets/Heroimg.png';
+import Formsimg from '../../assets/Formsimg.png';
+import Speechimg from '../../assets/Speechimg.png';
+import Supportimg from '../../assets/Supportimg.png';
+import Cgv from '../../assets/Cgv.png';
+import Boostimg11 from '../../assets/Boostimg11.jpg';
+import Boostimg22 from '../../assets/Boostimg22.jpg';
+import Boostimg3 from '../../assets/Boostimg3.jpg';
+import Boostimg44 from '../../assets/Boostimg44.jpg';
 
 const Index = (props) => {
   return (
     <>
-      <HomeHeader2
-        id={props.match.params.id}
-        token={props.match.params.token}
-        header="2"
-      />
+      <HomeHeader2 id={props.match.params.id} token={props.match.params.token} header="2" />
       <Hero
         srcImg={Heroimg}
         h2text="Matching.Echange.Recrutement"
@@ -60,6 +56,7 @@ const Index = (props) => {
         Winaa leur a apporté une formation et une mise à niveau personnalisée afin de faciliter leur employabilité."
       />
       <Specialized
+        text="Téléchargez l’application maintenant !"
         srcImg={Formsimg}
         srcImg2={Speechimg}
         srcImg3={Supportimg}
