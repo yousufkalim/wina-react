@@ -33,7 +33,7 @@ body {
   width: 100%;
   text-align: center;
   margin: auto;
-  height: 60vh;
+  height: 80vh;
   position: relative;
 }
 .wina-text-container {
@@ -80,6 +80,7 @@ body {
   line-height: 1.5;
   color: #b0b8ce;
   font-weight: 400;
+  padding: 0 6%;
 }
 .windaa2_about {
   background-color: #21335f;
@@ -88,17 +89,17 @@ body {
   position: absolute;
   bottom: -77px;
   left: 5%;
-  padding: 0 4%;
+  padding: 30px 4%;
   line-height: 2px;
   border-radius: 1.1rem;
 }
 /* ///////////// Services /////////// */
 .Services {
   background-color: #fff;
-  padding: 6% 0;
+  padding: 4% 0;
 }
 .ServicesH1 {
-  font-size: 4.4rem;
+  font-size: 4rem;
   font-weight: 600;
   text-align: center;
   margin-bottom: 0;
@@ -171,8 +172,7 @@ body {
   color: #2b5aa6 !important;
   border-radius: 10px;
   border: 2px solid #2b5aa6 !important;
-  margin-top: 20px;
-  color: #fff;
+  margin-top: 25px;
   padding: 10px 20px;
   font-weight: 500;
   font-size: 24px;
@@ -183,7 +183,7 @@ body {
   padding: 0px 0 0 0;
 }
 .ServicesH12 {
-  font-size: 4.2rem;
+  font-size: 4rem;
   font-weight: 600;
   text-align: center;
   color: #192349;
@@ -195,6 +195,7 @@ body {
   .winaLogo {
     width: 90%;
     margin-top: 43px;
+    padding: 4% 0 0 0;
   }
   .winaImg {
     width: 40%;
@@ -204,7 +205,7 @@ body {
     height: 50vh;
   }
   .winaH1 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     margin-bottom: 0px;
   }
   .wina-col1 {

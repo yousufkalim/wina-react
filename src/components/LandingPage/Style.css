@@ -157,7 +157,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 13vw 0 1vw;
+  padding: 0 0vw 0 1vw;
 }
 .reed_more {
   color: #192349;
@@ -190,7 +190,7 @@ p {
   width: 50%;
 
   margin: 19px 41px 50px 0;
-  padding: 0 13vw 0 0vw;
+  padding: 0 2vw 0 0vw;
 }
 .boost2 {
   width: 100%;
@@ -249,8 +249,8 @@ p {
   margin: 0;
 }
 .spec_border_img {
-  width: 40%;
-  margin: 0 9vw 0 auto;
+  width: 28%;
+  margin: 0 24vw 40px auto;
   display: block;
 }
 .spec_download_social {
@@ -307,12 +307,12 @@ p {
 .email_input {
   color: #fff;
   border: none;
-  padding: 15px;
+  padding: 15px 28px;
   width: 25vw;
 }
 .simp_btn {
   background-color: #2b5aa6;
-  padding: 15px 20px;
+  padding: 15px 40px;
   color: #fff;
   border: none;
   border-top-right-radius: 5px;
@@ -390,7 +390,7 @@ p {
   height: 100%;
 }
 .home_section_content {
-  width: 30vw;
+  width: 34vw;
 }
 .find_p {
   color: #e0c399;
@@ -447,7 +447,7 @@ p {
   border-bottom: 1.05859px solid #dfe1e6;
 }
 .Accompagnement_colmn {
-  width: 28%;
+  width: 27%;
 }
 .Accompagnement_card {
   width: 80%;
@@ -471,12 +471,13 @@ p {
   color: #8395a9;
   font-size: 18px;
   padding-bottom: 2vw;
-  padding-top: 1vw;
+  padding-top: 0vw;
 }
 
 .footerPera {
   font-size: 17px;
   font-weight: 400;
+  color: #7c84a2;
 }
 .winaa_foot_icons {
   padding-left: 1.5vw;
@@ -499,7 +500,7 @@ p {
     display: none;
   }
   .home_seciton_p {
-    font-size: 12px;
+    font-size: 8px !important;
   }
   .home_section_btn {
     padding: 1vw 2vw;
@@ -553,10 +554,10 @@ p {
   }
   .Accompagnement_card {
     margin: 20px auto 28px auto;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
   .Accompagnement_card2 {
-    padding: 10px 0;
+    padding: 10px 20px;
   }
   .Accompagnement_title {
     padding: 5.5vw 0 0.5vw 0;
@@ -621,8 +622,8 @@ p {
     font-size: 15px;
   }
   .email_input {
-    width: 60vw;
-    font-size: 15px;
+    width: 48vw;
+    font-size: 14px;
   }
   .hero_img {
     height: 30vh;
@@ -640,6 +641,23 @@ p {
   }
   .foot_img_div {
     text-align: left;
+  }
+  .simp_email_div {
+    display: flex;
+    justify-content: center;
+  }
+  .simp_btn {
+    font-size: 14px;
+  }
+  .formBTN {
+    padding: 11px 22px !important;
+    font-size: 14px !important;
+  }
+  .foot_span2 {
+    font-size: 15px;
+  }
+  .simp_content {
+    padding: 6vw 2px;
   }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {

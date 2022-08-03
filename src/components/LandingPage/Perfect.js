@@ -1,8 +1,7 @@
-import React from "react";
-import Dotted2 from "../../assets/Dotted2.svg";
-import { ReactComponent as ArrowFront } from "../../assets/Arrorwfront.svg";
-import "../../components/LandingPage/Style.css";
-
+import React from 'react';
+import Dotted2 from '../../assets/Dotted2.svg';
+import { ReactComponent as ArrowFront } from '../../assets/Arrorwfront.svg';
+import '../../components/LandingPage/Style.css';
 
 const Perfect = (props) => {
   return (
@@ -11,10 +10,12 @@ const Perfect = (props) => {
         <div className="boost_container">
           <div className="boost_div">
             <div className="perfect_col2">
-              <div className="heading-div" style={{ position: "relative" }}>
+              <div className="heading-div" style={{ position: 'relative' }}>
                 <h3 className="boostH3">{props.text}</h3>
               </div>
               <p className="boostP">{props.text2}</p>
+              <p className="boostP">{props.text3}</p>
+              <p className="boostP">{props.text4}</p>
               <a href="/about" className="reed_more">
                 En savoir plus &nbsp; <ArrowFront />
               </a>

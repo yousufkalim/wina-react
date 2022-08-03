@@ -11,11 +11,9 @@ const Specialized = (props) => {
         <div className="specialized_container">
           <div className="spec_colmn">
             <div className="areYou_div">
-              <h1 className="spec_h1">
-                Êtes-vous excité <br /> pour Winaa ?
-              </h1>
+              <h1 className="spec_h1">{props.text}</h1>
               <img src={BorderImg} alt="" className="spec_border_img" />
-              <p className="spec_download_social">Téléchargez WinaApp dès aujourd'hui !</p>
+              <p className="spec_download_social">{props.text1}</p>
               <div className="spec_plystor_div">
                 <img src={Google} alt="" className="Google_btn" />
                 <img src={Apple} alt="" className="AppStore_btn" />
