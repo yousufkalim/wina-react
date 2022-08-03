@@ -160,7 +160,7 @@ html {
 
 .navbar-image {
   width: 10rem;
-  margin-left: 5%;
+  margin-left: 17% !important;
 }
 .homeNavBar .navbar-left-link {
   font-size: 1.2rem !important;
