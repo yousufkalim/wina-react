@@ -192,6 +192,7 @@ body {
   .applicationH1 {
     font-weight: 600;
     font-size: 2.7rem;
+    padding: 0 2%;
   }
   .application {
     margin-bottom: 0px;

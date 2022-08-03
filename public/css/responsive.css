@@ -172,6 +172,7 @@
   .homeNavBar .navbar-left-link {
     justify-content: center;
     margin: 10px 0 !important;
+    font-size: 2.2rem !important;
   }
   .homeNavBar .navbar-collapse {
     background-color: #fff;
