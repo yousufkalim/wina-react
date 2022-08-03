@@ -652,6 +652,9 @@ p {
     padding: 11px 22px !important;
     font-size: 14px !important;
   }
+  .foot_span2 {
+    font-size: 15px;
+  }
 }
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
   .foot_span {
