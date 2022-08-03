@@ -49,7 +49,7 @@ export default function Header2(props) {
         justifyContent: 'space-between',
       }}
     >
-      <div className="navbar_div">
+      <div style={{ marginLeft: '2rem' }}>
         <Link to="/landing_page">
           <Image src={Logo} alt="logo" className={showMenu ? 'navbar-image' : 'Hide_menu'} />
         </Link>

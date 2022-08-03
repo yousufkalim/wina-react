@@ -156,9 +156,9 @@ html {
 .homeNavBar .navbar-toggler {
   padding-right: 2rem;
 }
-.navbar_div {
+/* .navbar_div {
   margin-left: 2% !important;
-}
+} */
 .navbar-image {
   width: 10rem;
 }
