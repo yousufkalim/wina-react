@@ -58,21 +58,15 @@ const Index = (props) => {
         img={CheckCheck}
         texth3="Pack Decouverte "
         texth32={activeMonth ? '11,98' : activeYear ? '10,98' : 'NAN'}
-        // 131.76
-
-        // 11.988
         texth33=" monthly subscription"
         xth1="Pack Accompagnement"
         texth4={activeMonth ? '32,98' : activeYear ? '299.9' : 'NAN'}
         liPack="Recrutement facilité avec des offres qui te correspondent"
         liPack2="Candidature envoyée en Swipe"
-        // liPack3="Matching assuré"
         liPack4="Suivi simplifié de tes candidatures"
         liPack5="Gratuit durant 1 semaine ensuite payant, puis 9,99€/mois, engagement 3 mois"
-        ////////////////////
         pliPack=" Recrutement facilité avec des offres qui te correspondent"
         pliPack2="Candidature envoyée en Swipe"
-        // pliPack3="Matching assuré"
         pliPack4="Suivi simplifié de tes candidatures"
         pliPack5="Coaching & accompagnement lors de ta recherche : 1 séance Coaching + équipe dédiée pour répondre à tes questions"
         pliPack6="Equipe dédiée pour répondre à tes questions"
