@@ -22,7 +22,7 @@ const Pack = (props) => {
                   <p className="packH3">{props.texth3}</p>
                   <p className="packH32">
                     {props.texth32}
-                    <sup style={{ color: '#B7B8BC' }}> €</sup>
+                    <span style={{ color: '#B7B8BC' }}> €</span>
                   </p>
                   <p className="packH33">{props.texth33}</p>
                 </div>
@@ -83,7 +83,7 @@ const Pack = (props) => {
                   <p className="packH3">{props.xth1}</p>
                   <p className="packH32">
                     {props.texth4}
-                    <sup style={{ color: '#B7B8BC' }}> €</sup>
+                    <span style={{ color: '#B7B8BC' }}> €</span>
                   </p>
                   <p className="packH33">{props.texth33}</p>
                 </div>
