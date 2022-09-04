@@ -1,9 +1,11 @@
-export const baseUrl = process.env.REACT_APP_URL;
-export const baseUri = process.env.REACT_APP_URI;
-export const Image_Uri = process.env.REACT_APP_IMAGE_URI;
+import { baseUrl, url, mediaUrl } from './config';
 
-export const token = localStorage.getItem("token");
-export const user = JSON.parse(localStorage.getItem("user"));
+export { baseUrl };
+export const baseUri = url;
+export const Image_Uri = mediaUrl;
+
+export const token = localStorage.getItem('token');
+export const user = JSON.parse(localStorage.getItem('user'));
 export const api = `${baseUrl}`;
 
 export const generatePublicUrl = (fileName) => {

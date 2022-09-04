@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Tab, Tabs, Image } from "react-bootstrap";
-import { DEFAULT_IMAGE } from "../../../../../Globals/index";
-import { baseUri } from "../../../../../urlConfig";
-import { useDispatch, useSelector } from "react-redux";
-import { Get_User_Student, studentSkills } from "../../../../../Redux/actions";
-import axios from "axios";
-import Behance from "../../../../../assets/Behance.png";
-import Dribble from "../../../../../assets/Dribble.png";
-import linkedIn from "../../../../../assets/linkedIn.svg";
-import github from "../../../../../assets/github.png";
-import moment from "moment";
+import React, { useEffect, useState } from 'react';
+import { Row, Col, Tab, Tabs, Image } from 'react-bootstrap';
+import { DEFAULT_IMAGE } from '../../../../../Globals/index';
+import { baseUri, baseUrl } from '../../../../../urlConfig';
+import { useDispatch, useSelector } from 'react-redux';
+import { Get_User_Student, studentSkills } from '../../../../../Redux/actions';
+import axios from 'axios';
+import Behance from '../../../../../assets/Behance.png';
+import Dribble from '../../../../../assets/Dribble.png';
+import linkedIn from '../../../../../assets/linkedIn.svg';
+import github from '../../../../../assets/github.png';
+import moment from 'moment';
 
 export default function CVEngine(props) {
   const [skills, setSkills] = useState([]);
@@ -18,7 +18,7 @@ export default function CVEngine(props) {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.auth);
   useEffect(() => {
-    if (store.user && store.user.type === "student") {
+    if (store.user && store.user.type === 'student') {
       dispatch(Get_User_Student());
     }
   }, [setKey, key]);
@@ -29,28 +29,15 @@ export default function CVEngine(props) {
     getUser();
   }, []);
   const getUser = async () => {
-    let DATA = await axios.get(
-      `${process.env.REACT_APP_URL}/student/getStdById/${USER.student._id}`
-    );
+    let DATA = await axios.get(`${baseUrl}/student/getStdById/${USER.student._id}`);
     setStudent(DATA.data);
   };
 
   const ShowImage = (USER) => {
-    const STUDENT_IMAGE =
-      USER.student && USER.student.professional_Picture
-        ? USER.student.professional_Picture.image
-        : "";
-    return (
-      <Image
-        src={
-          STUDENT_IMAGE
-            ? `${baseUri}/views/uploads/${STUDENT_IMAGE}`
-            : DEFAULT_IMAGE
-        }
-      />
-    );
+    const STUDENT_IMAGE = USER.student && USER.student.professional_Picture ? USER.student.professional_Picture.image : '';
+    return <Image src={STUDENT_IMAGE ? `${baseUri}/views/uploads/${STUDENT_IMAGE}` : DEFAULT_IMAGE} />;
   };
-  if (type && type === "student_professional_info") {
+  if (type && type === 'student_professional_info') {
     return (
       <div className="CVOnlineBox">
         <div className="CVOnline custom-box">
@@ -64,13 +51,10 @@ export default function CVEngine(props) {
                   {USER.user.firstName} {USER.user.lastName}
                 </div>
                 <div className="profileProfession">
-                  <div className="pb-1">
-                    {USER.user.type == "student" ? "Etudiant" : USER.user.type}
-                  </div>
+                  <div className="pb-1">{USER.user.type == 'student' ? 'Etudiant' : USER.user.type}</div>
 
                   <div className="pb-1">
-                    {USER.user.address.zip}, {USER.user.address.street},
-                    {USER.user.address.city}
+                    {USER.user.address.zip}, {USER.user.address.street},{USER.user.address.city}
                   </div>
 
                   <div className="pb-1">Mobile : (+33) {USER.user.phone}</div>
@@ -83,8 +67,7 @@ export default function CVEngine(props) {
                     <>
                       <div className="companyNameH">{ed.school}</div>
                       <div className="companydate">
-                        {moment(ed.start_Date).format("DD/MM/YYYY")}{" "}
-                        {ed.end_Date}
+                        {moment(ed.start_Date).format('DD/MM/YYYY')} {ed.end_Date}
                         {/* Région de Paris, France */}
                       </div>
                       <div className="description">{ed.description}</div>
@@ -105,20 +88,16 @@ export default function CVEngine(props) {
                       <div className="companydateDuration">
                         {/* {ed.duration.start_date} {ed.duration.end_date}
                          */}
-                        {moment(ed.duration.start_date).format("DD/MM/YYYY")}{" "}
-                        {moment(ed.duration.end_date).format("DD/MM/YYYY")}
+                        {moment(ed.duration.start_date).format('DD/MM/YYYY')} {moment(ed.duration.end_date).format('DD/MM/YYYY')}
                       </div>
                       <div className="description">{ed.description}</div>
                     </>
                   ))
                 ) : (
-                  <p className="text-center">
-                    Ajoutez une expérience professionnelle.....
-                  </p>
+                  <p className="text-center">Ajoutez une expérience professionnelle.....</p>
                 )}
                 <div className="formation">Professional Networks</div>
-                {USER.professional_networks &&
-                Object.keys(USER.professional_networks).length > 0 ? (
+                {USER.professional_networks && Object.keys(USER.professional_networks).length > 0 ? (
                   <>
                     <ul className="PLinks">
                       <li>
@@ -126,13 +105,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Linkedin &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.professional_networks.linkedIn}`}
-                          target="_blank"
-                        >
-                          {USER.professional_networks.linkedIn
-                            ? USER.professional_networks.linkedIn
-                            : ""}
+                        <a href={`${USER.professional_networks.linkedIn}`} target="_blank">
+                          {USER.professional_networks.linkedIn ? USER.professional_networks.linkedIn : ''}
                         </a>
                       </li>
                     </ul>
@@ -142,13 +116,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Behance &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.professional_networks.Behance}`}
-                          target="_blank"
-                        >
-                          {USER.professional_networks.Behance
-                            ? USER.professional_networks.Behance
-                            : ""}
+                        <a href={`${USER.professional_networks.Behance}`} target="_blank">
+                          {USER.professional_networks.Behance ? USER.professional_networks.Behance : ''}
                         </a>
                       </li>
                     </ul>
@@ -158,13 +127,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Dribble &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.professional_networks.Dribble}`}
-                          target="_blank"
-                        >
-                          {USER.professional_networks.Dribble
-                            ? USER.professional_networks.Dribble
-                            : ""}
+                        <a href={`${USER.professional_networks.Dribble}`} target="_blank">
+                          {USER.professional_networks.Dribble ? USER.professional_networks.Dribble : ''}
                         </a>
                       </li>
                     </ul>
@@ -174,46 +138,29 @@ export default function CVEngine(props) {
                       </li>
                       <li>Github &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.professional_networks.Github}`}
-                          target="_blank"
-                        >
-                          {USER.professional_networks.Github
-                            ? USER.professional_networks.Github
-                            : ""}
+                        <a href={`${USER.professional_networks.Github}`} target="_blank">
+                          {USER.professional_networks.Github ? USER.professional_networks.Github : ''}
                         </a>
                       </li>
                     </ul>
                   </>
                 ) : (
-                  <p className="text-center">
-                    Ajoutez une expérience professionnelle.....
-                  </p>
+                  <p className="text-center">Ajoutez une expérience professionnelle.....</p>
                 )}
                 <div className="formation mt-3 mb-3">Compétences générales</div>
                 <ul className="list-group">
                   {student?.std?.softSkills?.length > 0 ? (
-                    student?.std?.softSkills.map((ed) => (
-                      <li className="list-group-item mt-1">{ed.skillField}</li>
-                    ))
+                    student?.std?.softSkills.map((ed) => <li className="list-group-item mt-1">{ed.skillField}</li>)
                   ) : (
-                    <p className="text-center">
-                      No Compétences générales info found.....
-                    </p>
+                    <p className="text-center">No Compétences générales info found.....</p>
                   )}
                 </ul>
-                <div className="formation mt-3 mb-3">
-                  Compétences spécialisées
-                </div>
+                <div className="formation mt-3 mb-3">Compétences spécialisées</div>
                 <ul className="list-group">
                   {student?.std?.hardSkills?.length > 0 ? (
-                    student?.std?.hardSkills?.map((ed) => (
-                      <li className="list-group-item mt-1">{ed.skillField}</li>
-                    ))
+                    student?.std?.hardSkills?.map((ed) => <li className="list-group-item mt-1">{ed.skillField}</li>)
                   ) : (
-                    <p className="text-center">
-                      No Compétences spécialisées info found.....
-                    </p>
+                    <p className="text-center">No Compétences spécialisées info found.....</p>
                   )}
                 </ul>
                 <div className="formation mt-3 mb-3">Languages</div>
@@ -261,8 +208,7 @@ export default function CVEngine(props) {
                     <>
                       <div className="companyNameH">{ed.school}</div>
                       <div className="companydate">
-                        {moment(ed.start_Date).format("DD/MM/YYYY")}{" "}
-                        {moment(ed.end_Date).format("DD/MM/YYYY")}
+                        {moment(ed.start_Date).format('DD/MM/YYYY')} {moment(ed.end_Date).format('DD/MM/YYYY')}
                         {/* Région de Paris, France */}
                       </div>
                       <div className="description">{ed.description}</div>
@@ -282,24 +228,20 @@ export default function CVEngine(props) {
 
                       <div className="companydateDuration">
                         {/* {ed.duration.start_date} {ed.duration.end_date} */}
-                        {moment(ed.duration.start_date).format("DD/MM/YYYY")}
+                        {moment(ed.duration.start_date).format('DD/MM/YYYY')}
                         &nbsp;&nbsp;&nbsp;
-                        {moment(new Date()).format("DD/MM/YYYY") !==
-                        moment(ed.duration.end_date).format("DD/MM/YYYY")
-                          ? moment(ed.duration.end_date).format("DD/MM/YYYY")
-                          : "Present"}
+                        {moment(new Date()).format('DD/MM/YYYY') !== moment(ed.duration.end_date).format('DD/MM/YYYY')
+                          ? moment(ed.duration.end_date).format('DD/MM/YYYY')
+                          : 'Present'}
                       </div>
                       <div className="description">{ed.description}</div>
                     </>
                   ))
                 ) : (
-                  <p className="text-center">
-                    Ajoutez une expérience professionnelle.....
-                  </p>
+                  <p className="text-center">Ajoutez une expérience professionnelle.....</p>
                 )}
                 <div className="formation">Professional Networks</div>
-                {USER.student.professional_networks &&
-                Object.keys(USER.student.professional_networks).length > 0 ? (
+                {USER.student.professional_networks && Object.keys(USER.student.professional_networks).length > 0 ? (
                   <>
                     <ul className="PLinks">
                       <li>
@@ -307,13 +249,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Linkedin &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.student.professional_networks.linkedIn}`}
-                          target="_blank"
-                        >
-                          {USER.student.professional_networks.linkedIn
-                            ? USER.student.professional_networks.linkedIn
-                            : ""}
+                        <a href={`${USER.student.professional_networks.linkedIn}`} target="_blank">
+                          {USER.student.professional_networks.linkedIn ? USER.student.professional_networks.linkedIn : ''}
                         </a>
                       </li>
                     </ul>
@@ -323,13 +260,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Behance &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.student.professional_networks.Behance}`}
-                          target="_blank"
-                        >
-                          {USER.student.professional_networks.Behance
-                            ? USER.student.professional_networks.Behance
-                            : ""}
+                        <a href={`${USER.student.professional_networks.Behance}`} target="_blank">
+                          {USER.student.professional_networks.Behance ? USER.student.professional_networks.Behance : ''}
                         </a>
                       </li>
                     </ul>
@@ -339,13 +271,8 @@ export default function CVEngine(props) {
                       </li>
                       <li>Dribble &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.student.professional_networks.Dribble}`}
-                          target="_blank"
-                        >
-                          {USER.student.professional_networks.Dribble
-                            ? USER.student.professional_networks.Dribble
-                            : ""}
+                        <a href={`${USER.student.professional_networks.Dribble}`} target="_blank">
+                          {USER.student.professional_networks.Dribble ? USER.student.professional_networks.Dribble : ''}
                         </a>
                       </li>
                     </ul>
@@ -355,54 +282,35 @@ export default function CVEngine(props) {
                       </li>
                       <li>Github &nbsp;&nbsp;: </li>
                       <li>
-                        <a
-                          href={`${USER.student.professional_networks.Github}`}
-                          target="_blank"
-                        >
-                          {USER.student.professional_networks.Github
-                            ? USER.student.professional_networks.Github
-                            : ""}
+                        <a href={`${USER.student.professional_networks.Github}`} target="_blank">
+                          {USER.student.professional_networks.Github ? USER.student.professional_networks.Github : ''}
                         </a>
                       </li>
                     </ul>
                   </>
                 ) : (
-                  <p className="text-center">
-                    Ajoutez une expérience professionnelle.....
-                  </p>
+                  <p className="text-center">Ajoutez une expérience professionnelle.....</p>
                 )}
                 <div className="formation mt-3 mb-3">Compétences générales</div>
                 <ul className="list-group">
                   {student?.std?.softSkills?.length > 0 ? (
-                    student?.std?.softSkills.map((ed) => (
-                      <li className="list-group-item mt-1">{ed.skillField}</li>
-                    ))
+                    student?.std?.softSkills.map((ed) => <li className="list-group-item mt-1">{ed.skillField}</li>)
                   ) : (
-                    <p className="text-center">
-                      No Compétences générales info found.....
-                    </p>
+                    <p className="text-center">No Compétences générales info found.....</p>
                   )}
                 </ul>
-                <div className="formation mt-3 mb-3">
-                  Compétences spécialisées
-                </div>
+                <div className="formation mt-3 mb-3">Compétences spécialisées</div>
                 <ul className="list-group">
                   {student?.std?.hardSkills?.length > 0 ? (
-                    student?.std?.hardSkills?.map((ed) => (
-                      <li className="list-group-item">{ed.skillField}</li>
-                    ))
+                    student?.std?.hardSkills?.map((ed) => <li className="list-group-item">{ed.skillField}</li>)
                   ) : (
-                    <p className="text-center">
-                      No Compétences spécialisées info found.....
-                    </p>
+                    <p className="text-center">No Compétences spécialisées info found.....</p>
                   )}
                 </ul>
                 <div className="formation mt-3 mb-3">Languages</div>
                 <ul className="list-group">
                   {student?.std?.languages?.length > 0 ? (
-                    student?.std?.languages.map((ed) => (
-                      <li className="list-group-item">{ed.name}</li>
-                    ))
+                    student?.std?.languages.map((ed) => <li className="list-group-item">{ed.name}</li>)
                   ) : (
                     <p className="text-center">No Languages info found.....</p>
                   )}

@@ -4,16 +4,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { googleLogin } from '../../../../Redux/actions';
 import { LinkedInLogin } from '../../../../Redux/actions';
+import { baseUrl } from '../../../../config';
 
-export default function Sidebar({
-  ModalInput,
-  dispatch,
-  useFormik,
-  LOGIN_STATE,
-  LOGIN_YUP,
-  login,
-  handleModal,
-}) {
+export default function Sidebar({ ModalInput, dispatch, useFormik, LOGIN_STATE, LOGIN_YUP, login, handleModal }) {
   const store = useSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: LOGIN_STATE,
@@ -45,9 +38,7 @@ export default function Sidebar({
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="formikError">{formik.errors.email}</div>
-          ) : null}
+          {formik.touched.email && formik.errors.email ? <div className="formikError">{formik.errors.email}</div> : null}
         </div>
 
         <div className="my-4 pb-2">
@@ -59,24 +50,16 @@ export default function Sidebar({
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="formikError">{formik.errors.password}</div>
-          ) : null}
+          {formik.touched.password && formik.errors.password ? <div className="formikError">{formik.errors.password}</div> : null}
         </div>
         <button className="modal-button" type="submit" disabled={store.loading}>
           {store.loading ? 'LOADING....' : 'Se connecter'}
         </button>
-        <div
-          className="forgetpassword mt-1"
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        >
+        <div className="forgetpassword mt-1" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '1.1rem', color: '#848D9F' }}>
               Vous n'avez pas de compte ?
-              <a
-                onClick={() => handleModal('main')}
-                style={{ color: '#2B5AA6', fontWeight: '600', marginLeft: '5px' }}
-              >
+              <a onClick={() => handleModal('main')} style={{ color: '#2B5AA6', fontWeight: '600', marginLeft: '5px' }}>
                 S'inscrire
               </a>
             </p>
@@ -90,19 +73,13 @@ export default function Sidebar({
       <div className="mt-3">
         <div className="linkedinGoogleGroup">
           <div className="w-100">
-            <a
-              href={process.env.REACT_APP_URL + '/auth/linkedin'}
-              className="modal-social-btn modal-facebook-btn"
-            >
+            <a href={baseUrl + '/auth/linkedin'} className="modal-social-btn modal-facebook-btn">
               <span>
                 <FaLinkedin className="modal-social-icon mr-2" />
                 <>Connectez-vous avec LinkedIn</>
               </span>
             </a>
-            <a
-              href={process.env.REACT_APP_URL + '/auth/google'}
-              className="modal-social-btn-google modal-google-btn"
-            >
+            <a href={baseUrl + '/auth/google'} className="modal-social-btn-google modal-google-btn">
               <span>
                 <FcGoogle className="modal-social-icon-google mr-2 ml-0" />
                 <>Connectez-vous avec Google</>

@@ -1,65 +1,66 @@
-import React, { useState, useEffect } from "react";
-import MainModal from "./Modals/mainModal";
-import StudentRegister from "./Modals/studentRegisterModal";
-import LoginModal from "./Modals/Login";
-import CompanyRegister from "./Modals/companyRegisterModal";
-import RequestForgotPasswordModal from "./Modals/requestModal";
-import ResetPasswordModal from "./Modals/resetModal";
-import EmailVerificationModal from "./Modals/emailVerificationModal";
-import { Image, Accordion, Card, Button } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
-import axios from "axios";
-import { getUser } from "../../Redux/actions";
-import { TextField, Paper } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import { makeStyles } from "@material-ui/core/styles";
-import * as Notistack from "../../Redux/actions/notistack";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import MainModal from './Modals/mainModal';
+import StudentRegister from './Modals/studentRegisterModal';
+import LoginModal from './Modals/Login';
+import CompanyRegister from './Modals/companyRegisterModal';
+import RequestForgotPasswordModal from './Modals/requestModal';
+import ResetPasswordModal from './Modals/resetModal';
+import EmailVerificationModal from './Modals/emailVerificationModal';
+import { Image, Accordion, Card, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import axios from 'axios';
+import { getUser } from '../../Redux/actions';
+import { TextField, Paper } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core/styles';
+import * as Notistack from '../../Redux/actions/notistack';
+import { useDispatch, useSelector } from 'react-redux';
 
-import HomeHeader1 from "./header";
-import HomeHeader2 from "./header2";
-import ModalInput from "../UI/Input";
+import HomeHeader1 from './header';
+import HomeHeader2 from './header2';
+import ModalInput from '../UI/Input';
+import { baseUrl } from '../../config';
 /**
  * @author
  * @function Header
  **/
 
 const queryParams = new URLSearchParams(window.location.search);
-const SignupByGoogle = queryParams.get("SignupByGoogle");
-const SignupBylinkedIn = queryParams.get("SignupBylinkedIn");
-const token = queryParams.get("user");
+const SignupByGoogle = queryParams.get('SignupByGoogle');
+const SignupBylinkedIn = queryParams.get('SignupBylinkedIn');
+const token = queryParams.get('user');
 
 const useStyle = makeStyles({
   root: {
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "3.5rem",
-      borderColor: "#2879d9",
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '3.5rem',
+      borderColor: '#2879d9',
     },
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#2879d9",
-    },
-
-    "& .MuiInput-underline:before": {
-      borderBottom: "1px solid #f7c40d",
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#2879d9',
     },
 
-    "& .MuiAutocomplete-popupIndicator": {
-      display: "none",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottom: "1px solid #f7c40d",
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid #f7c40d',
     },
 
-    "& .MuiFormLabel-root": {
-      fontSize: "1.375rem",
-      "& .Mui-focused": {
-        color: "#fff",
+    '& .MuiAutocomplete-popupIndicator': {
+      display: 'none',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottom: '1px solid #f7c40d',
+    },
+
+    '& .MuiFormLabel-root': {
+      fontSize: '1.375rem',
+      '& .Mui-focused': {
+        color: '#fff',
       },
     },
 
-    "& .MuiInputBase-root ": {
-      fontSize: "1.375rem",
+    '& .MuiInputBase-root ': {
+      fontSize: '1.375rem',
     },
   },
 });
@@ -82,16 +83,16 @@ const Header = (props) => {
   const [linkedInSignupModal, setLinkedInSignupModal] = useState(false);
   const [user, setUser] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [type, setType] = useState("");
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+  const [type, setType] = useState('');
   const [addressValue, setAddressValue] = useState({
-    lat: "",
-    lng: "",
-    city: "",
-    postal_code: "",
-    label: "",
-    label2: "",
+    lat: '',
+    lng: '',
+    city: '',
+    postal_code: '',
+    label: '',
+    label2: '',
   });
   const [values, setValues] = useState([]);
 
@@ -99,10 +100,10 @@ const Header = (props) => {
     if (SignupByGoogle) {
       setGoogleSignupModal(true);
       var config = {
-        method: "get",
-        url: process.env.REACT_APP_URL + `/auth/verify-user`,
+        method: 'get',
+        url: baseUrl + `/auth/verify-user`,
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: 'Bearer ' + token,
         },
       };
       axios(config)
@@ -112,14 +113,14 @@ const Header = (props) => {
         .catch(function (error) {
           console.log(error);
         });
-      history.push("/");
+      history.push('/');
     } else if (SignupBylinkedIn) {
       setLinkedInSignupModal(true);
       var config = {
-        method: "get",
-        url: process.env.REACT_APP_URL + `/auth/verify-user`,
+        method: 'get',
+        url: baseUrl + `/auth/verify-user`,
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: 'Bearer ' + token,
         },
       };
       axios(config)
@@ -129,7 +130,7 @@ const Header = (props) => {
         .catch(function (error) {
           console.log(error);
         });
-      history.push("/");
+      history.push('/');
     }
 
     if (props.id) {
@@ -140,33 +141,33 @@ const Header = (props) => {
   }, []);
 
   const handleModal = (name) => {
-    if (name === "login") {
+    if (name === 'login') {
       setLogin(!login);
       setstudentModal(false);
       setmainModal(false);
       setcompanyModal(false);
-    } else if (name === "student") {
+    } else if (name === 'student') {
       setstudentModal(!studentModal);
       setLogin(false);
       setmainModal(false);
       setcompanyModal(false);
-    } else if (name === "company") {
+    } else if (name === 'company') {
       setcompanyModal(!companyModal);
       setLogin(false);
       setstudentModal(false);
       setmainModal(false);
-    } else if (name === "main") {
+    } else if (name === 'main') {
       setmainModal(!mainModal);
       setLogin(false);
       setcompanyModal(false);
       setstudentModal(false);
-    } else if (name === "reqforgotPassword") {
+    } else if (name === 'reqforgotPassword') {
       setrequestModal(!requestModal);
       setLogin(false);
       setmainModal(false);
       setcompanyModal(false);
       setstudentModal(false);
-    } else if (name === "emailVerify") {
+    } else if (name === 'emailVerify') {
       setemailVerifyModal(!emailVerifyModal);
       setLogin(false);
       setresetModal(false);
@@ -174,15 +175,15 @@ const Header = (props) => {
       setmainModal(false);
       setcompanyModal(false);
       setstudentModal(false);
-    } else if (name === "student2") {
-      setType("student");
+    } else if (name === 'student2') {
+      setType('student');
       setstudentModal2(!studentModal);
       setLogin(false);
       setGoogleSignupModal(false);
       setLinkedInSignupModal(false);
       setcompanyModal2(false);
-    } else if (name === "company2") {
-      setType("company");
+    } else if (name === 'company2') {
+      setType('company');
       setcompanyModal2(!companyModal);
       setLogin(false);
       setstudentModal2(false);
@@ -200,9 +201,7 @@ const Header = (props) => {
 
   const getUser = async () => {
     if (props.id) {
-      let DATA = await axios.get(
-        `${process.env.REACT_APP_URL}/profile/getUser/${props.id}`
-      );
+      let DATA = await axios.get(`${baseUrl}/profile/getUser/${props.id}`);
       setData(DATA.data);
       setresetModal(!resetModal);
     } else if (props.token) {
@@ -216,19 +215,17 @@ const Header = (props) => {
 
   // Get All Address in drop down List from API
   const getAllAdress = async (e) => {
-    delete axios.defaults.headers.common["x-auth-token"];
+    delete axios.defaults.headers.common['x-auth-token'];
 
     let res = await axios.get(
-      "https://api-adresse.data.gouv.fr/search/?q=" +
-        e.target.value +
-        "&type=housenumber&autocomplete=1",
+      'https://api-adresse.data.gouv.fr/search/?q=' + e.target.value + '&type=housenumber&autocomplete=1',
       {
         withCredentials: false,
       }
     );
 
     if (localStorage.token) {
-      axios.defaults.headers.common["x-auth-token"] = localStorage.token;
+      axios.defaults.headers.common['x-auth-token'] = localStorage.token;
     }
 
     var addressToSet = []; // //debugger;
@@ -236,11 +233,7 @@ const Header = (props) => {
       addressToSet.push({
         id: i,
         label: res?.data?.features[i].properties.label,
-        label2: `${
-          res?.data?.features[i].properties.label +
-          "," +
-          res?.data?.features[i].properties.context
-        }`,
+        label2: `${res?.data?.features[i].properties.label + ',' + res?.data?.features[i].properties.context}`,
         city: res?.data?.features[i].properties.city,
         PostalCode: res?.data?.features[i].properties.postcode,
         lat: res?.data?.features[i].geometry.coordinates[1],
@@ -272,8 +265,8 @@ const Header = (props) => {
           });
           setAddress({
             city: city,
-            street: "Street",
-            zip: postal_code ? postal_code : "40180",
+            street: 'Street',
+            zip: postal_code ? postal_code : '40180',
             longitude: lng,
             latitude: lat,
           });
@@ -282,53 +275,40 @@ const Header = (props) => {
     } else {
       await setAddressValue({
         ...addressValue,
-        address: "",
-        zip_code: "",
-        lat: "",
-        long: "",
-        city: "",
+        address: '',
+        zip_code: '',
+        lat: '',
+        long: '',
+        city: '',
       });
     }
   };
 
   const handleClick = async (e) => {
     setDisable(true);
-    if (address === "") {
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar("L'adresse ne peut pas être vide", "warning")
-        )
-      );
+    if (address === '') {
+      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar("L'adresse ne peut pas être vide", 'warning')));
       setDisable(false);
-    } else if (phone === "") {
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar("Le téléphone ne peut pas être vide", "warning")
-        )
-      );
+    } else if (phone === '') {
+      dispatch(Notistack.enqueueSnackbar(Notistack.snackBar('Le téléphone ne peut pas être vide', 'warning')));
       setDisable(false);
     } else {
       if (SignupByGoogle) {
         axios
-          .post(process.env.REACT_APP_URL + `/auth/google-register`, {
+          .post(baseUrl + `/auth/google-register`, {
             address: address,
             phone: phone,
             type: type,
             userId: user._id,
           })
           .then(function (response) {
-            if (response.data.user.status === "active") {
-              localStorage.setItem("token", response.data.token);
-              localStorage.setItem("user", JSON.stringify(response.data.user));
+            if (response.data.user.status === 'active') {
+              localStorage.setItem('token', response.data.token);
+              localStorage.setItem('user', JSON.stringify(response.data.user));
               window.location.reload();
             }
             dispatch(
-              Notistack.enqueueSnackbar(
-                Notistack.snackBar(
-                  "Inscription réussie ! Essayez de vous reconnecter",
-                  "success"
-                )
-              )
+              Notistack.enqueueSnackbar(Notistack.snackBar('Inscription réussie ! Essayez de vous reconnecter', 'success'))
             );
           })
           .catch(function (error) {
@@ -337,25 +317,20 @@ const Header = (props) => {
           });
       } else {
         axios
-          .post(process.env.REACT_APP_URL + `/auth/linkedIn-register`, {
+          .post(baseUrl + `/auth/linkedIn-register`, {
             address: address,
             phone: phone,
             type: type,
             userId: user._id,
           })
           .then(function (response) {
-            if (response.data.user.status === "active") {
-              localStorage.setItem("token", response.data.token);
-              localStorage.setItem("user", JSON.stringify(response.data.user));
+            if (response.data.user.status === 'active') {
+              localStorage.setItem('token', response.data.token);
+              localStorage.setItem('user', JSON.stringify(response.data.user));
               window.location.reload();
             }
             dispatch(
-              Notistack.enqueueSnackbar(
-                Notistack.snackBar(
-                  "Inscription réussie ! Essayez de vous reconnecter",
-                  "success"
-                )
-              )
+              Notistack.enqueueSnackbar(Notistack.snackBar('Inscription réussie ! Essayez de vous reconnecter', 'success'))
             );
           })
           .catch(function (error) {
@@ -377,46 +352,23 @@ const Header = (props) => {
       <LoginModal show={login} handleModal={handleModal} />
       <StudentRegister show={studentModal} handleModal={handleModal} />
       <CompanyRegister show={companyModal} handleModal={handleModal} />
-      <RequestForgotPasswordModal
-        show={requestModal}
-        handleModal={handleModal}
-      />
-      <ResetPasswordModal
-        show={resetModal}
-        handleModal={handleModal}
-        id={props.id}
-        data={data}
-      />
-      <EmailVerificationModal
-        show={emailVerifyModal}
-        handleModal={handleModal}
-        id={props.token}
-      />
-      <Modal
-        className="student-modal"
-        show={googleSignupModal || linkedInSignupModal}
-        centered
-        onHide={() => handleModalClose()}
-      >
+      <RequestForgotPasswordModal show={requestModal} handleModal={handleModal} />
+      <ResetPasswordModal show={resetModal} handleModal={handleModal} id={props.id} data={data} />
+      <EmailVerificationModal show={emailVerifyModal} handleModal={handleModal} id={props.token} />
+      <Modal className="student-modal" show={googleSignupModal || linkedInSignupModal} centered onHide={() => handleModalClose()}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
             <div className="heading pb-5">Continuer l'inscription</div>
             <div className="modal-sub-heading ">ÉTUDIANT</div>
             <div className="studentRegisterbtn">
-              <div
-                className="modal-button"
-                onClick={() => handleModal("student2")}
-              >
+              <div className="modal-button" onClick={() => handleModal('student2')}>
                 S’inscrire
               </div>
             </div>
             <div className="modal-sub-heading">ENTREPRISE</div>
             <div className="BUSINESSRegisterbtn">
-              <div
-                className="modal-button"
-                onClick={() => handleModal("company2")}
-              >
+              <div className="modal-button" onClick={() => handleModal('company2')}>
                 Société
               </div>
             </div>
@@ -424,45 +376,31 @@ const Header = (props) => {
         </Modal.Body>
       </Modal>
 
-      <Modal
-        className="student-modal"
-        show={studentModal2}
-        centered
-        onHide={() => setstudentModal2(false)}
-      >
+      <Modal className="student-modal" show={studentModal2} centered onHide={() => setstudentModal2(false)}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
-            <div className="heading pb-5">
-              Continuer l'inscription des étudiants
-            </div>
-            <div className="" style={{ marginTop: "-30px" }}>
+            <div className="heading pb-5">Continuer l'inscription des étudiants</div>
+            <div className="" style={{ marginTop: '-30px' }}>
               <Autocomplete
                 options={values}
                 clearOnEscape={true}
                 // disableClearable
                 className={classes.root}
-                noOptionsText={
-                  <div style={{ color: "black", fontSize: "12px" }}>
-                    {" "}
-                    aucune option{" "}
-                  </div>
-                }
-                PaperComponent={({ children }) => (
-                  <Paper style={{ background: "" }}>{children}</Paper>
-                )}
-                getOptionLabel={(option) => option.label2 || ""}
+                noOptionsText={<div style={{ color: 'black', fontSize: '12px' }}> aucune option </div>}
+                PaperComponent={({ children }) => <Paper style={{ background: '' }}>{children}</Paper>}
+                getOptionLabel={(option) => option.label2 || ''}
                 onChange={SetAddress}
                 renderInput={(params) => (
                   <TextField
-                    InputProps={{ ...params.InputProps, type: "text" }}
+                    InputProps={{ ...params.InputProps, type: 'text' }}
                     className={classes.root}
                     {...params}
                     margin="normal"
                     // onBlur={onBlur}
-                    variant={"standard"}
+                    variant={'standard'}
                     placeholder="Adresse"
-                    style={{ color: "white" }}
+                    style={{ color: 'white' }}
                     onChange={getAllAdress}
                     name="address"
                     // value={address}
@@ -479,29 +417,18 @@ const Header = (props) => {
                 value={phone}
               />
             </div>
-            <button
-              className="modal-button"
-              onClick={() => handleClick()}
-              disabled={disable}
-            >
+            <button className="modal-button" onClick={() => handleClick()} disabled={disable}>
               S’inscrire
             </button>
           </div>
         </Modal.Body>
       </Modal>
 
-      <Modal
-        className="student-modal"
-        show={companyModal2}
-        centered
-        onHide={() => setcompanyModal2(false)}
-      >
+      <Modal className="student-modal" show={companyModal2} centered onHide={() => setcompanyModal2(false)}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <div className="Register">
-            <div className="heading pb-5">
-              Continuez enregistrement de la Entreprise
-            </div>
+            <div className="heading pb-5">Continuez enregistrement de la Entreprise</div>
             <div className="mt-4">
               <ModalInput
                 placeholder="Numéro de téléphone"
@@ -511,11 +438,7 @@ const Header = (props) => {
                 value={phone}
               />
             </div>
-            <button
-              className="modal-button"
-              onClick={() => handleClick()}
-              disabled={disable}
-            >
+            <button className="modal-button" onClick={() => handleClick()} disabled={disable}>
               S’inscrire
             </button>
           </div>
@@ -523,13 +446,9 @@ const Header = (props) => {
       </Modal>
 
       <div className="home_container">
-        {props.header === "2" ? (
-          <HomeHeader2 handleModal={handleModal} />
-        ) : (
-          <HomeHeader1 handleModal={handleModal} />
-        )}
-        {props.header === "2" ? (
-          ""
+        {props.header === '2' ? <HomeHeader2 handleModal={handleModal} /> : <HomeHeader1 handleModal={handleModal} />}
+        {props.header === '2' ? (
+          ''
         ) : (
           <div className="homeBackground">
             <div className="homebackground-text">
@@ -541,10 +460,7 @@ const Header = (props) => {
             </div>
 
             <div className="post_mobile-view_responsive">
-              <div
-                className="post_mobile-view-content"
-                style={{ paddingBottom: "6rem" }}
-              >
+              <div className="post_mobile-view-content" style={{ paddingBottom: '6rem' }}>
                 <div className="post_icons">
                   <Image src="../images/PostAnOffer.png" alt="Post an offer" />
                   <div className="label">Poster une offre</div>
