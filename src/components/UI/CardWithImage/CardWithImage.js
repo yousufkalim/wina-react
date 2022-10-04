@@ -9,7 +9,11 @@ import { baseUri } from "../../../urlConfig";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getSkills, getApiAdress, Search_Students, Edit_Job } from "../../../Redux/actions";
+import {
+  // getSkills, getApiAdress, 
+  Search_Students
+  // , Edit_Job 
+} from "../../../Redux/actions";
 const CardWithImage = (props) => {
   const dispatch = useDispatch();
 
@@ -29,7 +33,7 @@ const CardWithImage = (props) => {
     "Novembre",
     "Décembre",
   ];
-  var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+  // var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
   const store3 = useSelector((state) => state.company);
 
   let SEARCH_STUDENTS = store3.studentBySearch && store3.studentBySearch.filter((st) => st.offer_status === "proposal");

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  // useState,
+  useEffect
+} from "react";
 import { ReactComponent as Location } from "../../../../assets/10-location.svg";
 import { Button, makeStyles } from "@material-ui/core";
-import Slider from "@material-ui/core/Slider";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
+// import Slider from "@material-ui/core/Slider";
+// import Input from "@material-ui/core/Input";
+// import InputAdornment from "@material-ui/core/InputAdornment";
 import CardItem from "../../../../components/UI/CardWithImage/OfferCardItem";
 import { DEFAULT_IMAGE } from "../../../../Globals";
 import { baseUri } from "../../../../urlConfig";
@@ -14,44 +17,52 @@ import Loader from "../../../../components/UI/Loader";
 
 const OfferCardDetail = (props) => {
   const { offerID, setisDetail } = props;
+
+
+
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
   const JOB = store.job && store.job;
   const classes = useStyles();
 
   // state
-  const [value, setValue] = useState(30);
+  // const [value, setValue] = useState(30);
 
   useEffect(() => {
     if (offerID) dispatch(Get_Job(offerID));
   }, [offerID]);
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleSliderChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+
   const handleCancelRequest = (id) => {
     dispatch(Cancel_Offer_Decion_By_Students(id, setisDetail));
   };
-  const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
-  const marks = [
-    {
-      value: 0,
-      label: "0€",
-    },
-    {
-      value: 10000,
-      label: "10 000€",
-    },
-  ];
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+  // const handleInputChange = (event) => {
+  //   setValue(event.target.value === "" ? "" : Number(event.target.value));
+  // };
+  // const marks = [
+  //   {
+  //     value: 0,
+  //     label: "0€",
+  //   },
+  //   {
+  //     value: 10000,
+  //     label: "10 000€",
+  //   },
+  // ];
+  // const handleBlur = () => {
+  //   if (value < 0) {
+  //     setValue(0);
+  //   } else if (value > 100) {
+  //     setValue(100);
+  //   }
+  // };
+
+
+
+
   // offers functions
   const handleOfferAccepted = (id, decision, company) => {
     dispatch(Offer_Decion_By_Students(id, decision, setisDetail, company));

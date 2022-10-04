@@ -1,68 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React
+  // ,{ useState, useEffect }
+  from "react";
 import "react-multi-carousel/lib/styles.css";
 import CarosoulCard from "./CarosoulCard";
-import { BsChevronRight, BsChevronLeft } from "react-icons/all";
-import { useDispatch, useSelector } from "react-redux";
-import OwlCarousel from "react-owl-carousel3";
+// import { BsChevronRight, BsChevronLeft } from "react-icons/all";
+import {
+  // useDispatch,
+  useSelector
+} from "react-redux";
+// import OwlCarousel from "react-owl-carousel3";
 
 //  react carousel
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div style={{ marginLeft: "0.5rem" }} onClick={onClick}>
-      <BsChevronRight style={{ fontSize: "2rem" }} />
-    </div>
-  );
-}
+// function SampleNextArrow(props) {
+//   const { onClick } = props;
+//   return (
+//     <div style={{ marginLeft: "0.5rem" }} onClick={onClick}>
+//       <BsChevronRight style={{ fontSize: "2rem" }} />
+//     </div>
+//   );
+// }
 
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div style={{ marginRight: "0.5rem" }} onClick={onClick}>
-      <BsChevronLeft style={{ fontSize: "2rem" }} />
-    </div>
-  );
-}
+// function SamplePrevArrow(props) {
+//   const { onClick } = props;
+//   return (
+//     <div style={{ marginRight: "0.5rem" }} onClick={onClick}>
+//       <BsChevronLeft style={{ fontSize: "2rem" }} />
+//     </div>
+//   );
+// }
 
 export default function MultiCarouselPage(props) {
   const store = useSelector((state) => state.student);
   let JOBS = store.jobs && store.jobs;
-  const [isGoDetail, setIsGoDetail] = useState(false);
-  const options = {
-    loop: true,
-    nav: true,
-    margin: 80,
-    items: 3,
-    dots: false,
-    //   autoplayTimeout: 2000,
-    autoplaySpeed: 500,
-    autoplayHoverPause: true,
-    autoplay: true,
-    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-    responsive: {
-      0: {
-        items: 2,
-        margin: 20,
-      },
-      600: {
-        items: 2,
-      },
-      768: {
-        items: 3,
-        margin: 30,
-      },
-      1000: {
-        items: 3,
-      },
-    },
-  };
+  // const [    isGoDetail, setIsGoDetail] = useState(false);
+  // const options = {
+  //   loop: true,
+  //   nav: true,
+  //   margin: 80,
+  //   items: 3,
+  //   dots: false,
+  //   //   autoplayTimeout: 2000,
+  //   autoplaySpeed: 500,
+  //   autoplayHoverPause: true,
+  //   autoplay: true,
+  //   navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+  //   responsive: {
+  //     0: {
+  //       items: 2,
+  //       margin: 20,
+  //     },
+  //     600: {
+  //       items: 2,
+  //     },
+  //     768: {
+  //       items: 3,
+  //       margin: 30,
+  //     },
+  //     1000: {
+  //       items: 3,
+  //     },
+  //   },
+  // };
 
-  useEffect(() => {
-    setIsGoDetail(false);
-  }, []);
+  // useEffect(() => {
+  //   setIsGoDetail(false);
+  // }, []);
   return (
     <>
       <div

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Image, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Image, Form } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 
 export default function Hard_skilltab(props) {
@@ -10,23 +10,18 @@ export default function Hard_skilltab(props) {
     options,
     Select,
     Button,
-    store,
+    // store,
     SKILLS_STATE,
     SKILLS_YUP,
-    ModalInput,
+    // ModalInput,
     DB_Array,
     Add_info_Student,
     SOFT_SKILLS_DB,
     Notistack,
   } = props;
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-
-  //   ************
-  //   ******************************************
   // states
-
-  //
+  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: SKILLS_STATE,
     validationSchema: SKILLS_YUP,

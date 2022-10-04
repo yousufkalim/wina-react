@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../components/Cfa/Style.css';
 import HomeHeader2 from '../../components/Header';
-import Application from '../../components/Student/Application';
+// import Application from '../../components/Student/Application';
 import Pack from '../../components/Student/Pack';
 import Footer from '../../components/Footer';
 import CheckCheck from '../../assets/CheckCheck.svg';

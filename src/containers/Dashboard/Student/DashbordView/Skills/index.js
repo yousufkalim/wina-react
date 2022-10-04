@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import Select from "../../../../../components/UI/Select";
@@ -77,7 +76,6 @@ export default function Skills() {
         defaultActiveKey="GeneralSkills"
         id="Skills"
         activeKey={key}
-        id="controlled-tab-example"
         className="Skills upper-nav custom-tabs"
         onSelect={(k) => handleChange(k)}
       >
@@ -155,5 +153,5 @@ const Levels = [
   { title: "Courant" },
   { title: "Bilingue" },
 ];
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+// const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+// const checkedIcon = <CheckBoxIcon fontSize="small" />;

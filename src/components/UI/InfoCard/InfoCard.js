@@ -1,6 +1,9 @@
 import React from "react";
 import "./InfoCard.css";
-import { FiEdit2, MdDelete } from "react-icons/all";
+import {
+  // FiEdit2,
+  MdDelete
+} from "react-icons/all";
 import { DEFAULT_IMAGE } from "../../../Globals/index";
 import { baseUri } from "../../../urlConfig";
 import { ReactComponent as EditDiploma } from "../../../assets/EditDiploma.svg";
@@ -56,7 +59,7 @@ const InfoCard = (props) => {
           <div className="info-card-container">
             <div className="info-card-title">
               <div>{item.school}</div>
-              {EditPermission && EditPermission == "true" ? (
+              {EditPermission && EditPermission === "true" ? (
                 <div className="modal-icon-2">
                   <EditDiploma onClick={() => EditSchoolModalShow(item._id)} className="edit_Icon" style={{ width: "3rem" }} />
                   <MdDelete className="delete_icon" onClick={props.onDelete} />
