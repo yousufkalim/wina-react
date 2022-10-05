@@ -158,7 +158,7 @@ const ProfessionalProfile = () => {
             // }}
             >
               {PDF ? (
-                <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank">
+                <a href={`${baseUri}/views/uploads/${PDF}`} target="_blank" rel="noreferrer">
                   <PictureAsPdfIcon className="path " style={{ fontSize: 40 }} color="primary" />
                 </a>
               ) : null}

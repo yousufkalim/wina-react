@@ -6,13 +6,16 @@ import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import SchoolModal from "../../../../../../components/UI/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import ModalInput from "../../../../../../components/UI/TextField";
+// import ModalInput from "../../../../../../components/UI/TextField";
 import Button from "../../../../../../components/UI/Button";
-import Input from "../../../../../../components/UI/Input";
+// import Input from "../../../../../../components/UI/Input";
 import { baseUrl, baseUri } from "../../../../../../urlConfig";
 import axios from "axios";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import TextFieldRound from "./../../../../../../components/UI/CustomTextField/TextFieldRound";
+import moment from "moment";
+import * as Notistack from "../../../../../../Redux/actions/notistack";
+
 
 const GeneralInformationsModal = ({
   show,
@@ -62,15 +65,14 @@ const GeneralInformationsModal = ({
       let temp = data.find((dt) => dt._id === id);
       if (temp) {
         formik.setFieldValue("description", temp.description);
-        formik.setFieldValue("end_Date", temp.end_Date);
-        formik.setFieldValue("start_Date", temp.start_Date);
+        formik.setFieldValue("end_Date", new Date(temp.end_Date));
+        formik.setFieldValue("start_Date", new Date(temp.start_Date));
         formik.setFieldValue("school", temp.school);
         formik.setFieldValue("image", temp.image);
         setImageURI(`${baseUri}/${temp.image}`);
       }
     }
   }, [id, show, setShow]);
-  // conso,showle.log(formik, "formik");
 
   // onChange
   const handleChange = (e) => {
@@ -94,6 +96,28 @@ const GeneralInformationsModal = ({
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
+
+
+  const handleDateChange = (name, value) => {
+    if (formik.values.start_Date && name === "end_Date") {
+      let end_Date = moment(value);
+      let start_Date = moment(formik.values.start_Date);
+      if (start_Date.isSame(end_Date, "day")) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(
+              "La date de fin ne peut pas être antérieure à la date de début",
+              "error"
+            )
+          )
+        );
+      } else {
+        formik.setFieldValue(name, value);
+      }
+    } else {
+      formik.setFieldValue(name, value);
+    }
+  }
   return (
     <SchoolModal
       show={show}
@@ -125,10 +149,11 @@ const GeneralInformationsModal = ({
               <div className="col-lg-4 mr-3">
                 <DatePicker
                   name="start_Date"
-                  label={"Date de début"}
+                  placeholderText={"Date de début"}
                   previous={true}
-                  value={formik.values.start_Date}
-                  onChange={handleChange}
+                  selected={formik.values.start_Date}
+                  onChange={(date) => handleDateChange("start_Date", date)}
+
                 />
                 {formik.touched.start_Date && formik.errors.start_Date ? (
                   <div className="formikErrorDate"> {formik.errors.start_Date}</div>
@@ -137,10 +162,10 @@ const GeneralInformationsModal = ({
               <div className="col-lg-4">
                 <DatePicker
                   name="end_Date"
-                  label={"Date de fin"}
+                  placeholderText={"Date de fin"}
                   previous={true}
-                  value={formik.values.end_Date}
-                  onChange={handleChange}
+                  selected={formik.values.end_Date}
+                  onChange={(date) => handleDateChange("end_Date", date)}
                 />
                 {formik.touched.end_Date && formik.errors.end_Date ? (
                   <div className="formikErrorDate"> {formik.errors.end_Date}</div>

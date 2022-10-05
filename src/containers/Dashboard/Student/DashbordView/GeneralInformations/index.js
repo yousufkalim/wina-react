@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image } from "react-bootstrap";
+import {
+  Row, Col
+  // , Nav
+  , Tab, Tabs, Image
+} from "react-bootstrap";
 import AddSchool from "./Modals/add_School";
 import EditSchool from "./Modals/edit_School";
 import General_Info from "./Modals/general_Info";
@@ -13,8 +17,11 @@ import Dribble from "../../../../../assets/dribble.svg";
 import linkedIn from "../../../../../assets/linkedIn.svg";
 import Github from "../../../../../assets/github.svg";
 import Video from "../../../../../assets/video.mp4";
-import { Delete_School_Info, Add_Image_info_Student } from "../../../../../Redux/actions";
-import { useFormik } from "formik";
+import {
+  Delete_School_Info
+  // , Add_Image_info_Student 
+} from "../../../../../Redux/actions";
+// import { useFormik } from "formik";
 import { baseUri } from "../../../../../urlConfig";
 const GeneralInformations = () => {
   const store = useSelector((state) => state.student);
@@ -22,14 +29,16 @@ const GeneralInformations = () => {
   const Loggin_User = store.user.firstName + " " + store.user.lastName;
   const Education = store.user.student && store.user.student.education;
   const STUDENT_IMAGE =
-    store.user.student && store.user.student.professional_Picture ? store.user.student.professional_Picture.image : "";
+    store.user.student && store.user.student.professional_Picture ?
+      store.user.student.professional_Picture.image
+      : "";
   const [show, setShow] = useState(false);
   const [edit_school_show, setedit_school_show] = useState(false);
   const [edit_school_id, setedit_school_id] = useState("");
   const [general_info, setgeneral_info] = useState(false);
   const [schoolsArray, setschoolsArray] = useState([]);
 
-  const formik = useFormik({});
+  // const formik = useFormik({});
   // useEffect
   useEffect(() => {
     let tempEducation = _.cloneDeep(Education);
@@ -88,6 +97,8 @@ const GeneralInformations = () => {
                   <div className="profileImage">
                     <div className="embed-responsive embed-responsive-16by9">
                       <iframe
+                        id="Video"
+                        title="Video"
                         hidden={store.user.student.presentation_Video.video ? false : true}
                         className="embed-responsive-item"
                         src={
@@ -103,7 +114,7 @@ const GeneralInformations = () => {
                 </Col>
                 <Col lg={9} md={8}>
                   <div className="profilename">{Loggin_User}</div>
-                  <div className="profileProfession">{store.user.type == "student" ? "Etudiante" : store.user.type}</div>
+                  <div className="profileProfession">{store.user.type === "student" ? "Etudiante" : store.user.type}</div>
                   <div className="generalDescription">Description générale</div>
                   <div className="description">
                     {store.user.student.general_Presentation ? store.user.student.general_Presentation : ""}
@@ -117,7 +128,7 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a href={`${store.user.student.professional_networks.linkedIn}`} target="_blank">
+                          <a href={`${store.user.student.professional_networks.linkedIn}`} target="_blank" rel="noreferrer">
                           {store.user.student.professional_networks.linkedIn
                             ? store.user.student.professional_networks.linkedIn
                             : ""}
@@ -135,7 +146,7 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a href={`${store.user.student.professional_networks.Behance}`} target="_blank">
+                          <a href={`${store.user.student.professional_networks.Behance}`} target="_blank" rel="noreferrer">
                           {store.user.student.professional_networks.Behance
                             ? store.user.student.professional_networks.Behance
                             : ""}
@@ -153,7 +164,7 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a href={`${store.user.student.professional_networks.Dribble}`} target="_blank">
+                          <a href={`${store.user.student.professional_networks.Dribble}`} target="_blank" rel="noreferrer">
                           {store.user.student.professional_networks.Dribble
                             ? store.user.student.professional_networks.Dribble
                             : ""}
@@ -171,7 +182,7 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                        <a href={`${store.user.student.professional_networks.Github}`} target="_blank">
+                          <a href={`${store.user.student.professional_networks.Github}`} target="_blank" rel="noreferrer">
                           {store.user.student.professional_networks.Github ? store.user.student.professional_networks.Github : ""}
                         </a>
                       </li>

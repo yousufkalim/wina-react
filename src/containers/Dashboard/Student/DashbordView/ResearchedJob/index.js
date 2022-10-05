@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Tab, Tabs } from "react-bootstrap";
+import {
+  // Row, Col,
+  Tab, Tabs
+} from "react-bootstrap";
 // import Checkbox from "@material-ui/core/Checkbox";
 // import TextField from "@material-ui/core/TextField";
 // import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -22,14 +25,14 @@ import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Stud
 import { DurationOptions, RythmeOptions, levelOfEducation } from "../../../../../Globals";
 
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Student/yupValidation";
-import { classnames } from "classnames";
+// import { classnames } from "classnames";
 
 const ResearchedJob = () => {
   const [domain, setDomain] = useState([]);
   const store = useSelector((state) => state.student);
 
   const dispatch = useDispatch();
-  const POSITION_SOUGHT = store.user && store.user.student.positionSought;
+  // const POSITION_SOUGHT = store.user && store.user.student.positionSought;
 
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
@@ -44,6 +47,9 @@ const ResearchedJob = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    formik.setFieldValue(name, value);
+  };
+  const handleDateChange = (name, value) => {
     formik.setFieldValue(name, value);
   };
   // if (POSITION_SOUGHT && Object.keys(POSITION_SOUGHT).length > 0) {
@@ -62,9 +68,7 @@ const ResearchedJob = () => {
   const domainOption = async () => {
     const res = await domainList();
     let tempDomain = [];
-    res.data.domains.map((item) => {
-      tempDomain.push({ title: item.title });
-    });
+    res?.data?.domains.map((item) => tempDomain.push({ title: item.title }));
     setDomain(tempDomain);
   };
   useEffect(() => {
@@ -107,7 +111,6 @@ const ResearchedJob = () => {
                     Label="Niveau d’étude"
                     className="ml-3"
                   />
-
                   {formik.touched.levelOfEducation && formik.errors.levelOfEducation ? (
                     <div className="formikErrorAuto"> {formik.errors.levelOfEducation}</div>
                   ) : null}
@@ -145,9 +148,10 @@ const ResearchedJob = () => {
                   <DatePicker
                     name="startDate"
                     label={"Date de début"}
+                    placeholderText={"dd/mm/yyyy"}
                     previous={true}
-                    value={formik.values.startDate}
-                    onChange={handleChange}
+                    selected={formik.values.startDate}
+                    onChange={(date) => handleDateChange("startDate", date)}
                   />
                   {formik.touched.startDate && formik.errors.startDate ? (
                     <div className="formikErrorAuto"> {formik.errors.startDate}</div>
@@ -157,9 +161,10 @@ const ResearchedJob = () => {
                   <DatePicker
                     name="dateOfBirth"
                     label={Texts.DATE_OF_BIRTH}
-                    value={formik.values.dateOfBirth}
+                    placeholderText={"dd/mm/yyyy"}
+                    selected={formik.values.dateOfBirth}
                     previous={true}
-                    onChange={handleChange}
+                    onChange={(date) => handleDateChange("dateOfBirth", date)}
                   />
                   {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
                     <div className="formikErrorAuto"> {formik.errors.dateOfBirth}</div>

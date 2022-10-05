@@ -61,7 +61,7 @@ const InfoCard = (props) => {
               <div>{item.school}</div>
               {EditPermission && EditPermission === "true" ? (
                 <div className="modal-icon-2">
-                  <EditDiploma onClick={() => EditSchoolModalShow(item._id)} className="edit_Icon" style={{ width: "3rem" }} />
+                  <EditDiploma onClick={() => EditSchoolModalShow(item._id)} className="edit_Icon" style={{ width: "3rem", cursor: "pointer" }} />
                   <MdDelete className="delete_icon" onClick={props.onDelete} />
                 </div>
               ) : (

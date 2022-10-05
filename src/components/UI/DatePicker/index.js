@@ -2,13 +2,16 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 // import TextField from "@material-ui/core/TextField";
 import moment from "moment";
+import DatePicker from 'react-datepicker';
+import frLocale from "date-fns/locale/fr";
+
 // import { registerLocale } from "react-datepicker";
 // import enGb from "date-fns/locale/fr";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexWrap: "nowrap",
-    flexDirection: "column",
+    flexDirection: "column", 
   },
   textField: {
     border: "0px",
@@ -39,7 +42,8 @@ export default function DatePickers(props) {
       <div className={classes.container}>
         <label className={`text-left ${classes.label}`}>{props.label}</label>
         {props.previous && props.previous === true ? (
-          <input
+          <>
+            {/* <input
             id="date"
             name={props.name}
             disabled={props.disabled}
@@ -50,7 +54,22 @@ export default function DatePickers(props) {
             InputLabelProps={{
               shrink: true,
             }}
-          />
+            /> */}
+            <DatePicker
+              disabled={props.disabled}
+              selected={props.selected}
+              name={props.name}
+              placeholderText={props.placeholderText}
+              className={classes.textField}
+              // minDate={addDays(new Date(), 1)}
+              showYearDropdown
+              dateFormat="dd/MM/yyyy"
+              yearDropdownItemNumber={15}
+              scrollableYearDropdown
+              locale={frLocale}
+              onChange={props.onChange}
+            />
+          </>
         ) : (
           <input
             id="date"

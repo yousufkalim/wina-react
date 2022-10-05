@@ -14,6 +14,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Get_Job, Cancel_Offer_Decion_By_Students, Offer_Decion_By_Students } from "../../../../Redux/actions";
 import Loader from "../../../../components/UI/Loader";
+import moment from "moment";
 
 const OfferCardDetail = (props) => {
   const { offerID, setisDetail } = props;
@@ -139,7 +140,7 @@ const OfferCardDetail = (props) => {
                 <div className="offer-detail-date-heading text-left">Durée</div>
               </div>
               <div className="offer-detail-date-container">
-                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.startDate} />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={moment(JOB.startDate).format("DD/MM/YYYY")} />
                 <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
               </div>
 
@@ -239,7 +240,7 @@ const OfferCardDetail = (props) => {
                 <div className="offer-detail-date-heading">Durée</div>
               </div>
               <div className="offer-detail-date-container">
-                <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.startDate} />
+                <CardItem className="offer-card-item-bordered offer-detail-date" content={moment(JOB.startDate).format("DD/MM/YYYY")} />
                 <CardItem className="offer-card-item-bordered offer-detail-date" content={JOB.duration} />
               </div>
 
