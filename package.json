@@ -77,7 +77,7 @@
     ]
   },
   "engines": {
-    "node": "12.x"
+    "node": "16.x"
   },
   "devDependencies": {
     "husky": "^8.0.0",
