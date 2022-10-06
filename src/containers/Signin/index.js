@@ -16,7 +16,7 @@ const Signin = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   const store = useSelector((state) => state.student);
 

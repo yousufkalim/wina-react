@@ -1,13 +1,14 @@
 import * as Yup from "yup";
 import Texts from "../../../Globals/Texts";
 
-const address_object = Yup.object({
-  street: Yup.string().required(),
-  city: Yup.string().required(),
-  zip: Yup.string().required(),
-  latitude: Yup.number().required(),
-  longitude: Yup.number().required(),
-});
+// const address_object = Yup.object({
+//   street: Yup.string().required(),
+//   city: Yup.string().required(),
+//   zip: Yup.string().required(),
+//   latitude: Yup.number().required(),
+//   longitude: Yup.number().required(),
+// });
+
 export const SECOND_SIGNUP_YUP = Yup.object().shape({
   name: Yup.string().required(Texts.REQUIRED),
   company_type: Yup.string().required(Texts.REQUIRED),
@@ -61,7 +62,6 @@ export const LOGIN_YUP = Yup.object({
 });
 
 // position sought
-
 export const POSITION_SOUGHT_YUP = Yup.object({
   title: Yup.string(),
   domain: Yup.string().required(Texts.REQUIRED),

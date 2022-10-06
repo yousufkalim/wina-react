@@ -7,14 +7,18 @@ import Button from "../../../../../../components/UI/Button";
 import axios from "axios";
 import TextArea from "../../../../../../components/UI/Textarea";
 import SchoolModal from "../../../../../../components/UI/Modal";
-import ModalInput from "../../../../../../components/UI/TextField";
-import Input from "../../../../../../components/UI/Input";
 import { baseUrl } from "../../../../../../urlConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { Add_Image_info_Student } from "../../../../../../Redux/actions";
 import * as Notistack from "../../../../../../Redux/actions/notistack";
 import moment from "moment";
 import TextFieldRound from "./../../../../../../components/UI/CustomTextField/TextFieldRound";
+
+
+
+
+
+
 const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.student);
@@ -60,6 +64,25 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
     },
   });
 
+  const handleDateChange = (name, value) => {
+    if (formik.values.start_Date && name === "end_Date") {
+      let end_Date = moment(value);
+      let start_Date = moment(formik.values.start_Date);
+      if (start_Date.isSame(end_Date, "day")) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(
+              "La date de fin ne peut pas être antérieure à la date de début",
+              "error")));
+      } else {
+        formik.setFieldValue(name, value);
+      }
+    } else {
+      formik.setFieldValue(name, value);
+    }
+  }
+
+
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,30 +97,33 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
       } else {
         alert("Vous ne pouvez télécharger que des images");
       }
-    } else if (formik.values.start_Date && name == "end_Date") {
-      let end_Date = moment(value);
-      let start_Date = moment(formik.values.start_Date);
-      if (start_Date.isSame(end_Date, "day")) {
-        dispatch(
-          Notistack.enqueueSnackbar(
-            Notistack.snackBar(
-              "La date de fin ne peut pas être antérieure à la date de début",
-              "error"
-            )
-          )
-        );
-      } else {
-        formik.setFieldValue(name, value);
-      }
-    } else {
+    } 
+    // else if (formik.values.start_Date && name === "end_Date") {
+    //   let end_Date = moment(value);
+    //   let start_Date = moment(formik.values.start_Date);
+    //   if (start_Date.isSame(end_Date, "day")) {
+    //     dispatch(
+    //       Notistack.enqueueSnackbar(
+    //         Notistack.snackBar(
+    //           "La date de fin ne peut pas être antérieure à la date de début",
+    //           "error"
+    //         )
+    //       )
+    //     );
+    //   } else {
+    //     formik.setFieldValue(name, value);
+    //   }
+    // } 
+    else {
       formik.setFieldValue(name, value);
     }
   };
-  // custom image
 
+  // custom image
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
+
 
   return (
     <SchoolModal
@@ -123,26 +149,30 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
             </div>
           </div>
 
-          <div className="d-flex mt-4 py-3 ml-4">
-            <div className="col-lg-4 mr-3">
+          <div
+            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "97%", marginTop: "1rem" }}
+          >
+            <div className="col-lg-5 mr-3 ml-3" >
               <DatePicker
                 name="start_Date"
                 previous={true}
-                label={"Date de début"}
-                value={formik.values.start_Date}
-                onChange={handleChange}
+                // label={"Date de début"}
+                placeholderText={"Date de début"}
+                selected={formik.values.start_Date}
+                onChange={(date) => handleDateChange("start_Date", date)}
               />
               {formik.touched.start_Date && formik.errors.start_Date ? (
                 <div className="formikErrorDate"> {formik.errors.start_Date}</div>
               ) : null}
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-5">
               <DatePicker
                 name="end_Date"
-                label={"Date de fin"}
+                // label={"Date de fin"}
+                placeholderText={"Date de fin"}
                 previous={true}
-                value={formik.values.end_Date}
-                onChange={handleChange}
+                selected={formik.values.end_Date}
+                onChange={(date) => handleDateChange("end_Date", date)}
               />
               {formik.touched.end_Date && formik.errors.end_Date ? (
                 <div className="formikErrorDate"> {formik.errors.end_Date}</div>

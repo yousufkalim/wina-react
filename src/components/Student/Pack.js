@@ -1,12 +1,14 @@
 import React from 'react';
 import '../../components/Student/Style.css';
 import PackBox from '../../assets/PackBox.svg';
-import CheckCheck from '../../assets/CheckCheck.svg';
+// import CheckCheck from '../../assets/CheckCheck.svg';
 import CheckCheck2 from '../../assets/CheckCheck2.svg';
 import BtnArrow from '../../assets/BtnArrow.svg';
 
 const Pack = (props) => {
-  const { addUpperMargin, PackBTNn2 } = props;
+  const {
+    // addUpperMargin,
+    PackBTNn2 } = props;
 
   return (
     <>

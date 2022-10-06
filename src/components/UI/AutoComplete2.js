@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React
+  // , { useState, useEffect }
+  from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -145,7 +147,6 @@ export default function AutoComplete({
         className={studentModal ? classes.root2 : classes.root}
         noOptionsText={
           <div style={{ color: "black", fontSize: "12px" }}>
-            {" "}
             aucune option{" "}
           </div>
         }

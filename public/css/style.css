@@ -1639,6 +1639,8 @@ html {
 }
 .Professionalcareer .modal-icon .delete_icon {
   font-size: 1.5rem;
+  cursor: pointer;
+
 }
 /*CVOnline*/
 .CVOnlineBox {
@@ -1805,12 +1807,13 @@ html {
 }
 
 .professional-modal-form-first {
+  margin-left: rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1.3rem;
   flex-wrap: wrap;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 
 .professional-modal-form-second {
@@ -3418,17 +3421,24 @@ textarea.form-control {
 .Professionalcareer .modal-icon .delete_icon {
   font-size: 1.5rem;
   margin-left: 10px;
+  cursor: pointer;
+
 }
 .modal-icon-2 {
   margin-right: 15px;
+  cursor: pointer;
+
 }
 .modal-icon-2 .delete_icon {
   font-size: 1.5rem;
   margin-left: 10px;
+  cursor: pointer;
 }
 .diplomaSchool .modal-icon .delete_icon {
   font-size: 1.5rem;
   margin-left: 10px;
+  cursor: pointer;
+
 }
 .GeneralSkillsBox .GeneralSkills .GSkillsBox .languagesDiv {
   display: flex;
