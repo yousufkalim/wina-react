@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+// import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+// import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import Select from "../../../../../components/UI/Select";
 import AutoComplete from "../../../../../components/UI/AutoComplete2";
 import ModalInput from "../../../../../components/UI/Input";

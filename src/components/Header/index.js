@@ -6,16 +6,22 @@ import CompanyRegister from './Modals/companyRegisterModal';
 import RequestForgotPasswordModal from './Modals/requestModal';
 import ResetPasswordModal from './Modals/resetModal';
 import EmailVerificationModal from './Modals/emailVerificationModal';
-import { Image, Accordion, Card, Button } from 'react-bootstrap';
+import {
+  Image
+  // , Accordion, Card, Button 
+} from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import axios from 'axios';
-import { getUser } from '../../Redux/actions';
+// import { getUser } from '../../Redux/actions';
 import { TextField, Paper } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import * as Notistack from '../../Redux/actions/notistack';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch
+  // , useSelector 
+} from 'react-redux';
 
 import HomeHeader1 from './header';
 import HomeHeader2 from './header2';

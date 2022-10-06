@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import '../../components/Header/Style.css';
-import StudentRegister from './Modals/studentRegisterModal';
+// import StudentRegister from './Modals/studentRegisterModal';
 import Logo from '../../assets/WinaaLogoNew.svg';
 import { ReactComponent as Menu } from '../../assets/Menu.svg';
 import { ReactComponent as Cross } from '../../assets/Cross.svg';
