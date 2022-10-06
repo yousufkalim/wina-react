@@ -3,22 +3,26 @@ import { Modal } from "react-bootstrap";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useFormik } from "formik";
-import ModalInput from "../../../../../../components/UI/TextField";
+// import ModalInput from "../../../../../../components/UI/TextField";
 import Select from "../../../../../../components/UI/Select";
 import DatePicker from "../../../../../../components/UI/DatePicker";
 import TextArea from "../../../../../../components/UI/Textarea";
 import Button from "../../../../../../components/UI/Button";
 import CustomTextField from "../../../../../../components/UI/CustomTextField/TextFieldRound";
 import { useDispatch, useSelector } from "react-redux";
-import { getApiAdress, Add_Image_info_Student } from "../../../../../../Redux/actions";
-import * as Notistack from "../../../../../../Redux/actions/notistack";
-import Input from "../../../../../../components/UI/Input";
+import {
+  // getApiAdress,
+  Add_Image_info_Student
+} from "../../../../../../Redux/actions";
+// import * as Notistack from "../../../../../../Redux/actions/notistack";
+// import Input from "../../../../../../components/UI/Input";
 import axios from "axios";
 import { baseUrl, baseUri } from "../../../../../../urlConfig";
-
+import moment from "moment";
 import { PROFESSIONAL_PROFILE_STATE } from "../../../../../../Globals/InitialValues/Student";
 import { PROFESSIONAL_PROFILE_YUP } from "../../../../../../components/Formik/Student/yupValidation";
 import { makeStyles } from "@material-ui/core/styles";
+import * as Notistack from "../../../../../../Redux/actions/notistack";
 
 const useStyles = makeStyles({
   root: {
@@ -81,8 +85,8 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
 
       if (temp) {
         formik.setFieldValue("position", temp.position);
-        formik.setFieldValue("end_date", temp.duration.end_date);
-        formik.setFieldValue("start_date", temp.duration.start_date);
+        formik.setFieldValue("end_date", new Date(temp.duration.end_date));
+        formik.setFieldValue("start_date", new Date(temp.duration.start_date));
         formik.setFieldValue("company", temp.company);
         formik.setFieldValue("type", temp.type);
         formik.setFieldValue("place", temp.place);
@@ -93,6 +97,8 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
       }
     }
   }, [id, data, show, setShow]);
+
+
   // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -114,6 +120,23 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
       formik.setFieldValue(name, value);
     }
   };
+  const handleDateChange = (name, value) => {
+    if (formik.values.start_Date && name === "end_Date") {
+      let end_Date = moment(value);
+      let start_Date = moment(formik.values.start_Date);
+      if (start_Date.isSame(end_Date, "day")) {
+        dispatch(
+          Notistack.enqueueSnackbar(
+            Notistack.snackBar(
+              "La date de fin ne peut pas être antérieure à la date de début",
+              "error")));
+      } else {
+        formik.setFieldValue(name, value);
+      }
+    } else {
+      formik.setFieldValue(name, value);
+    }
+  }
   return (
     <Modal
       show={show}
@@ -128,9 +151,9 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
       </Modal.Header>
       <Modal.Body>
         {data && id ? (
-          <form onSubmit={formik.handleSubmit} className="mt-5 professional-modal-form">
-            <div className="professional-modal-form-first">
-              <div className="professional-modal-form col-lg-12 mb-2">
+          <form onSubmit={formik.handleSubmit} className="professional-modal-form">
+            <div className="professional-modal-form-first" style={{ marginBottom: "1rem" }}>
+              <div style={{ width: "100%" }}>
                 <CustomTextField
                   name="position"
                   placeholder="Intitulé du poste . Ex : Chef de projet"
@@ -143,6 +166,8 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
                   <div className="formikErrorAuto"> {formik.errors.position}</div>
                 ) : null}
               </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div className="professional-modal-form-other">
                 <Select
                   name="type"
@@ -154,7 +179,6 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
 
                 {formik.touched.type && formik.errors.type ? <div className="formikErrorAuto">{formik.errors.type}</div> : null}
               </div>
-
               <div className="professional-modal-form-other">
                 <CustomTextField
                   type="text"
@@ -183,16 +207,19 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
                   <div className="formikErrorAuto"> {formik.errors.place}</div>
                 ) : null}
               </div>
+
             </div>
 
-            <div className="professional-modal-form-second mt-5 align-items-end">
+            <div className="professional-modal-form-second mt-3">
               <div className="professional-modal-form-date ">
                 <DatePicker
                   name="start_date"
-                  label={"Date de début"}
                   previous={true}
-                  value={formik.values.start_date}
-                  onChange={handleChange}
+                  label={"Date de début"}
+                  placeholderText={"dd/mm/yyyy"}
+                  selected={formik.values.start_date}
+                  onChange={(date) => handleDateChange("start_date", date)}
+
                 />
                 {formik.touched.start_date && formik.errors.start_date ? (
                   <div className="formikErrorAuto"> {formik.errors.start_date}</div>
@@ -203,9 +230,10 @@ const PPModal = ({ show, setShow, professionalArray, data, id, setedit_profile_i
                   disabled={formik.values.position_hold}
                   name="end_date"
                   label={"Date de fin"}
+                  placeholderText={"dd/mm/yyyy"}
                   previous={true}
-                  value={formik.values.end_date}
-                  onChange={handleChange}
+                  selected={formik.values.end_date}
+                  onChange={(date) => handleDateChange("end_date", date)}
                 />
                 {formik.touched.end_date && formik.errors.end_date ? (
                   <div className="formikErrorAuto"> {formik.errors.end_date}</div>

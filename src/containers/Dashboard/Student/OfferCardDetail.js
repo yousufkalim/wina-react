@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  // useState,
+  useEffect
+} from "react";
 import { MdLocationOn } from "react-icons/all";
-import { Row, Col } from "react-bootstrap";
+// import { Row, Col } from "react-bootstrap";
 import { Button, makeStyles } from "@material-ui/core";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
+// import Slider from "@material-ui/core/Slider";
+// import Grid from "@material-ui/core/Grid";
+// import Input from "@material-ui/core/Input";
+// import InputAdornment from "@material-ui/core/InputAdornment";
 import CardItem from "../../../components/UI/CardWithImage/OfferCardItem";
 import { useDispatch, useSelector } from "react-redux";
 import { Get_Job } from "../../../Redux/actions";
@@ -18,36 +21,36 @@ const OfferCardDetail = (props) => {
   const classes = useStyles();
 
   // state
-  const [value, setValue] = useState(30);
+  // const [value, setValue] = useState(30);
 
   useEffect(() => {
     if (offerID) dispatch(Get_Job(offerID));
   }, [offerID]);
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleSliderChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
-  const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
-  const marks = [
-    {
-      value: 0,
-      label: "0€",
-    },
-    {
-      value: 10000,
-      label: "10 000€",
-    },
-  ];
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+  // const handleInputChange = (event) => {
+  //   setValue(event.target.value === "" ? "" : Number(event.target.value));
+  // };
+  // const marks = [
+  //   {
+  //     value: 0,
+  //     label: "0€",
+  //   },
+  //   {
+  //     value: 10000,
+  //     label: "10 000€",
+  //   },
+  // ];
+  // const handleBlur = () => {
+  //   if (value < 0) {
+  //     setValue(0);
+  //   } else if (value > 100) {
+  //     setValue(100);
+  //   }
+  // };
   if (JOB && Object.keys(JOB).length > 0) {
     return (
       <>

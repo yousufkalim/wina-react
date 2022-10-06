@@ -1,13 +1,18 @@
 import React from "react";
-import { Nav, Tab, Image } from "react-bootstrap";
+import {
+  Nav, Tab,
+  // Image
+} from "react-bootstrap";
 import ViewOffers from "./OfferTab/ViewOffers";
 import MatchResearch from "./ResearchTab/MatchResearch";
 import Header from "../../Components/header";
+
+
 import Footer from "../../Components/footer";
 const OffersView = (props) => {
-  const selectTab = () => {
-    window.location.reload(true);
-  };
+  // const selectTab = () => {
+  //   window.location.reload(true);
+  // };
   return (
     <Tab.Container id="dashbord" defaultActiveKey="first" className="h-100">
       <div className="dashbord">

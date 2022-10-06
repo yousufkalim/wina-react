@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image, Form } from "react-bootstrap";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Row, Col,
+  //  Nav,Form ,
+  Tab, Tabs, Image
+} from "react-bootstrap";
+// import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+// import CheckBoxIcon from "@material-ui/icons/CheckBox";
+// import { makeStyles } from "@material-ui/core/styles";
 import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Company";
 import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Company/yupValidation";
 import { useFormik } from "formik";
@@ -11,9 +15,9 @@ import DatePicker from "../../../../../components/UI/DatePicker";
 import Select from "../../../../../components/UI/Select";
 import Button from "../../../../../components/UI/Button";
 import axios from "axios";
-import RadioButton from "../../../../../components/UI/RadioButton";
-import { useHistory } from "react-router-dom";
-import * as Notistack from "../../../../../Redux/actions/notistack";
+// import RadioButton from "../../../../../components/UI/RadioButton";
+// import { useHistory } from "react-router-dom";
+// import * as Notistack from "../../../../../Redux/actions/notistack";
 import {
   DurationOptions,
   RythmeOptions,
@@ -32,20 +36,19 @@ import TextArea from "../../../../../components/UI/Textarea";
 import _ from "lodash";
 import CustomTextField from "../../../../../components/UI/CustomTextField/TextFieldRound";
 import { baseUrl } from "../../../../../urlConfig";
-import { Link } from "react-router-dom";
-import Checkbox from "@material-ui/core/Checkbox";
-import ModalInput from "../../../../../components/UI/TextField";
-import Texts from "../../../../../Globals/Texts";
-import Skills from "../../../Admin/skills/AddSkills";
-import CardItem from "../../../../../components/UI/SkillsItem/skillsItem";
-import Slider from "@material-ui/core/Slider";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import TextField from "@material-ui/core/TextField";
+// import { Link } from "react-router-dom";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import ModalInput from "../../../../../components/UI/TextField";
+// import Texts from "../../../../../Globals/Texts";
+// import Skills from "../../../Admin/skills/AddSkills";
+// import CardItem from "../../../../../components/UI/SkillsItem/skillsItem";
+// import Slider from "@material-ui/core/Slider";
+// import Grid from "@material-ui/core/Grid";
+// import Input from "@material-ui/core/Input";
+// import InputAdornment from "@material-ui/core/InputAdornment";
+// import TextField from "@material-ui/core/TextField";
 export default function BrowseOffers() {
   const myRef = useRef(null);
-
   const [softSkillsArray, setsoftSkillsArray] = useState([]);
   const [domain, setDomain] = useState([]);
   const [address, setAddress] = useState("");
@@ -62,11 +65,11 @@ export default function BrowseOffers() {
   const [query, setQuery] = useState("");
   const [value, setValue] = React.useState(30);
   const [softArray, setSoftArray] = useState([]);
-  const [show, setShow] = useState(false);
-  const history = useHistory();
+  // const [show, setShow] = useState(false);
+  // const history = useHistory();
   let SOFT_SKILLS = store2.soft_skills;
   let HARD_SKILLS = store2.hard_skills;
-  let JOB_MESSAGE_SUCCESS = store.message;
+  // let JOB_MESSAGE_SUCCESS = store.message;
   // formik
   const formik = useFormik({
     initialValues: POSITION_SOUGHT_STATE,
@@ -127,6 +130,8 @@ export default function BrowseOffers() {
     dispatch(getSkills("Soft Skill", query));
     dispatch(getSkills("Hard Skill", query));
   }, []);
+
+
   useEffect(() => {
     if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
       const {
@@ -141,21 +146,21 @@ export default function BrowseOffers() {
       });
     }
   }, []);
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleSliderChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
-  const handleInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
+  // const handleInputChange = (event) => {
+  //   setValue(event.target.value === "" ? "" : Number(event.target.value));
+  // };
 
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+  // const handleBlur = () => {
+  //   if (value < 0) {
+  //     setValue(0);
+  //   } else if (value > 100) {
+  //     setValue(100);
+  //   }
+  // };
   const handleAddressChange = (value) => {
     setAddress(value);
     dispatch(getApiAdress(value));
@@ -216,9 +221,7 @@ export default function BrowseOffers() {
   const domainOption = async () => {
     const res = await domainListCompany();
     let tempDomain = [];
-    res.data.domains.map((item) => {
-      tempDomain.push({ title: item.title });
-    });
+    res.data.domains.map((item) => tempDomain.push({ title: item.title }));
     setDomain(tempDomain);
   };
   useEffect(() => {

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Nav, Tab, Tabs, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {
+  //  Row, Col, Nav, 
+  Tab, Tabs
+  // , Image 
+} from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import CardWithImage from "../../../../../components/UI/CardWithImage/CardWithImage";
 import SubmitButton from "../../../../../components/UI/Button";
 import Select from "../../../../../components/UI/Select";
@@ -8,9 +12,9 @@ import Select from "../../../../../components/UI/Select";
 import { useDispatch, useSelector } from "react-redux";
 import OfferCardDetail from "../OfferCardDetail";
 import BookingModal from "../../../../../components/UI/Modal";
-import { levelOfEducation } from "../../../../../Globals";
+// import { levelOfEducation } from "../../../../../Globals";
 import {
-  Offer_Decion_By_Students,
+  // Offer_Decion_By_Students,
   Get_Student_Jobs,
   Get_Student_Applied_Jobs,
   Get_Student_Rejected_Jobs,
@@ -22,7 +26,7 @@ import {
 export default function ViewOffers() {
   // store
   const dispatch = useDispatch();
-  const [bookingstudentID, setbookingstudentID] = useState("");
+  // const [bookingstudentID, setbookingstudentID] = useState("");
   const [booking, setBooking] = useState(false);
   const [bookingSlot, setbookingSlot] = useState();
   const [jobID, setjobID] = useState("");
@@ -35,9 +39,9 @@ export default function ViewOffers() {
   const store2 = useSelector((state) => state.auth);
   let student_ID = store2.user && store2.user.student._id;
 
-  let JOBS = store.jobs && store.jobs;
+  // let JOBS = store.jobs && store.jobs;
   let APPLIED_JOBS = store.appliedJobs && store.appliedJobs;
-  let ACCEPTED_JOBS = store.student_Jobs && store.student_Jobs;
+  // let ACCEPTED_JOBS = store.student_Jobs && store.student_Jobs;
 
   let COMPANY_APPLIED_JOBS =
     store.company_appliedJobs && store.company_appliedJobs;
@@ -54,11 +58,11 @@ export default function ViewOffers() {
   };
 
   // offers functions
-  const handleOfferAccepted = (id, decision) => {
-    dispatch(
-      Offer_Decion_By_Students(id, decision, setKey, "PreSelectedOffers")
-    );
-  };
+  // const handleOfferAccepted = (id, decision) => {
+  //   dispatch(
+  //     Offer_Decion_By_Students(id, decision, setKey, "PreSelectedOffers")
+  //   );
+  // };
   const handlerRecievedOfferAccepted = (id, appointments, decision) => {
     setAppointments(appointments);
     setjobID(id);
@@ -77,9 +81,9 @@ export default function ViewOffers() {
       RecievedOffer_Decion_By_Students(id, decision, setKey, "RefusedOffers")
     );
   };
-  const handleOfferRejected = (id, decision) => {
-    dispatch(Offer_Decion_By_Students(id, decision, setKey, "RefusedOffers"));
-  };
+  // const handleOfferRejected = (id, decision) => {
+  //   dispatch(Offer_Decion_By_Students(id, decision, setKey, "RefusedOffers"));
+  // };
   useEffect(() => {
     dispatch(Get_Student_Jobs());
     dispatch(Get_Student_Applied_Jobs());
@@ -114,6 +118,7 @@ export default function ViewOffers() {
       }
     }
   }, [Appointments, booking, setBooking]);
+
   const handleChange = (e) => {
     const { value } = e.target;
     if (value === "I am not available at the proposed time") {

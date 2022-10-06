@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../components/Cfa/Style.css';
-import Footerimg from '../../assets/Footerimg.svg';
+// import Footerimg from '../../assets/Footerimg.svg';
 import Locat from '../../assets/locat.svg';
 import Phone2 from '../../assets/Phone2.svg';
 import Email2 from '../../assets/Email2.svg';

@@ -1,16 +1,13 @@
 import React from "react";
-import { Row, Col, Nav, Tab, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Nav, Tab } from "react-bootstrap";
 import GeneralInformations from "./GeneralInformations";
 import ResearchedJob from "./ResearchedJob";
 import Skills from "./Skills";
 import ProfessionalProfile from "./ProfessionalProfile";
 import Header from "../../Components/header";
-
 import Footer from "../../Components/footer";
 
-const DashbordView = (props) => {
-
+const DashbordView = () => {
   return (
     <Tab.Container id="dashbord" defaultActiveKey="first" className="h-100">
       <div className="dashbord">

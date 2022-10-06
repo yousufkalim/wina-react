@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles"
 // import TextField from "@material-ui/core/TextField"
 import DatePicker, { registerLocale } from "react-datepicker";
 import fr from "date-fns/locale/fr"; 
-import TimePicker from "react-time-picker";
+// import TimePicker from "react-time-picker";
 import "react-datepicker/dist/react-datepicker.css"
-import { NoEncryption } from "@material-ui/icons";
+// import { NoEncryption } from "@material-ui/icons";
 registerLocale("fr", fr); 
 const useStyles = makeStyles((theme) => ({
   container: {
