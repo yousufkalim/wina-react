@@ -109,18 +109,13 @@ function App() {
   return (
     <>
       {User ? (
-        User.type === 'student' ? (
-          <Route exact path="/students/*" component={Student} />
-        ) : User.type === 'company' ? (
-          <Route exact path="/companies/*" component={Company} />
-        ) : (
-          User.type === 'admin' && <Route exact path="/admins/*" component={Admin} />
-        )
+        User.type === 'student' ? (<Route exact path="/students/*" component={Student} />) :
+          User.type === 'company' ? (<Route exact path="/companies/*" component={Company} />) :
+            (User.type === 'admin' && <Route exact path="/admins/*" component={Admin} />)
       ) : (
         window.location.pathname === '/goolgeLogin' ||
         (window.location.pathname === '/linkedInLogin' && <Loader.CenterProgress />)
       )}
-
       <Route exact path="/*" component={UnAuth} />
     </>
   );

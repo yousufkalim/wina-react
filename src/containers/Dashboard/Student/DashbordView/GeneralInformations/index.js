@@ -1,45 +1,39 @@
 import React, { useState, useEffect } from "react";
-import {
-  Row, Col
-  // , Nav
-  , Tab, Tabs, Image
-} from "react-bootstrap";
-import AddSchool from "./Modals/add_School";
-import EditSchool from "./Modals/edit_School";
-import General_Info from "./Modals/general_Info";
-import _ from "lodash";
-import { Link } from "react-router-dom";
-import InfoCard from "../../../../../components/UI/InfoCard/InfoCard";
-import { DEFAULT_IMAGE } from "../../../../../Globals/index";
-import { useDispatch, useSelector } from "react-redux";
-import Behance from "../../../../../assets/behance.svg";
-import Dribble from "../../../../../assets/dribble.svg";
-import linkedIn from "../../../../../assets/linkedIn.svg";
-import Github from "../../../../../assets/github.svg";
-import Video from "../../../../../assets/video.mp4";
+import { Row, Col, Tab, Tabs, Image } from 'react-bootstrap';
+import AddSchool from './Modals/add_School';
+import EditSchool from './Modals/edit_School';
+import General_Info from './Modals/general_Info';
+import _ from 'lodash';
+import { Link } from 'react-router-dom';
+import InfoCard from '../../../../../components/UI/InfoCard/InfoCard';
+import { DEFAULT_IMAGE } from '../../../../../Globals/index';
+import { useDispatch, useSelector } from 'react-redux';
+import Behance from '../../../../../assets/behance.svg';
+import Dribble from '../../../../../assets/dribble.svg';
+import linkedIn from '../../../../../assets/linkedIn.svg';
+import Github from '../../../../../assets/github.svg';
+import Video from '../../../../../assets/video.mp4';
 import {
   Delete_School_Info
-  // , Add_Image_info_Student 
-} from "../../../../../Redux/actions";
+  // , Add_Image_info_Student
+} from '../../../../../Redux/actions';
 // import { useFormik } from "formik";
-import { baseUri } from "../../../../../urlConfig";
+import { baseUri } from '../../../../../urlConfig';
 const GeneralInformations = () => {
-  const store = useSelector((state) => state.student);
+  const store = useSelector(state =>  state.student);
   const dispatch = useDispatch();
-  const Loggin_User = store.user.firstName + " " + store.user.lastName;
+  const Loggin_User = store.user.firstName + ' ' + store.user.lastName;
   const Education = store.user.student && store.user.student.education;
   const STUDENT_IMAGE =
-    store.user.student && store.user.student.professional_Picture ?
-      store.user.student.professional_Picture.image
-      : "";
+    store.user.student && store.user.student.professional_Picture
+      ? store.user.student.professional_Picture.image
+      : '';
   const [show, setShow] = useState(false);
   const [edit_school_show, setedit_school_show] = useState(false);
-  const [edit_school_id, setedit_school_id] = useState("");
+  const [edit_school_id, setedit_school_id] = useState('');
   const [general_info, setgeneral_info] = useState(false);
   const [schoolsArray, setschoolsArray] = useState([]);
 
-  // const formik = useFormik({});
-  // useEffect
   useEffect(() => {
     let tempEducation = _.cloneDeep(Education);
     tempEducation.forEach(function (v) {
@@ -53,12 +47,12 @@ const GeneralInformations = () => {
   const GeneralInfoModalShow = () => {
     setgeneral_info(!general_info);
   };
-  const handleDeleteSchool = (id) => {
+  const handleDeleteSchool = id => {
     if (id) {
       dispatch(Delete_School_Info(id));
     }
   };
-  const EditSchoolModalShow = (id) => {
+  const EditSchoolModalShow = id => {
     if (id) {
       setedit_school_id(id);
       setedit_school_show(!edit_school_show);
@@ -78,7 +72,10 @@ const GeneralInformations = () => {
         setedit_school_id={setedit_school_id}
       />
 
-      <Tabs defaultActiveKey="generalPresentation" id="Profile" className="Profile upper-nav custom-tabs">
+      <Tabs
+        defaultActiveKey="generalPresentation"
+        id="Profile"
+        className="Profile upper-nav custom-tabs">
         <Tab eventKey="generalPresentation" title="Présentation Générale" className="h-100">
           <div className="genProfileBox">
             <div className="genProfile">
@@ -88,7 +85,7 @@ const GeneralInformations = () => {
                     <Image
                       src={
                         store.user.student.professional_Picture.image
-                          ? `${baseUri}/views/uploads/${store.user.student.professional_Picture.image}`
+                          ? `${baseUri}/views/uploads/${store?.user?.student?.professional_Picture?.image}`
                           : DEFAULT_IMAGE
                       }
                       alt="Image 2"
@@ -107,17 +104,20 @@ const GeneralInformations = () => {
                             : { Video }
                         }
                         alt="Video"
-                        allowFullScreen
-                      ></iframe>
+                        allowFullScreen></iframe>
                     </div>
                   </div>
                 </Col>
                 <Col lg={9} md={8}>
                   <div className="profilename">{Loggin_User}</div>
-                  <div className="profileProfession">{store.user.type === "student" ? "Etudiante" : store.user.type}</div>
+                  <div className="profileProfession">
+                    {store.user.type === 'student' ? 'Etudiante' : store.user.type}
+                  </div>
                   <div className="generalDescription">Description générale</div>
                   <div className="description">
-                    {store.user.student.general_Presentation ? store.user.student.general_Presentation : ""}
+                    {store.user.student.general_Presentation
+                      ? store.user.student.general_Presentation
+                      : ''}
                   </div>
                   <div className="professionalNetwork">Réseau pro</div>
                   <ul className="PLinks">
@@ -128,14 +128,17 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                          <a href={`${store.user.student.professional_networks.linkedIn}`} target="_blank" rel="noreferrer">
+                        <a
+                          href={`${store.user.student.professional_networks.linkedIn}`}
+                          target="_blank"
+                          rel="noreferrer">
                           {store.user.student.professional_networks.linkedIn
                             ? store.user.student.professional_networks.linkedIn
-                            : ""}
+                            : ''}
                         </a>
                       </li>
                     ) : (
-                      ""
+                      ''
                     )}
                   </ul>
                   <ul className="PLinks">
@@ -146,14 +149,17 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                          <a href={`${store.user.student.professional_networks.Behance}`} target="_blank" rel="noreferrer">
+                        <a
+                          href={`${store.user.student.professional_networks.Behance}`}
+                          target="_blank"
+                          rel="noreferrer">
                           {store.user.student.professional_networks.Behance
                             ? store.user.student.professional_networks.Behance
-                            : ""}
+                            : ''}
                         </a>
                       </li>
                     ) : (
-                      ""
+                      ''
                     )}
                   </ul>
                   <ul className="PLinks">
@@ -164,14 +170,17 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                          <a href={`${store.user.student.professional_networks.Dribble}`} target="_blank" rel="noreferrer">
+                        <a
+                          href={`${store.user.student.professional_networks.Dribble}`}
+                          target="_blank"
+                          rel="noreferrer">
                           {store.user.student.professional_networks.Dribble
                             ? store.user.student.professional_networks.Dribble
-                            : ""}
+                            : ''}
                         </a>
                       </li>
                     ) : (
-                      ""
+                      ''
                     )}
                   </ul>
                   <ul className="PLinks">
@@ -182,17 +191,26 @@ const GeneralInformations = () => {
                     {store.user.student.professional_networks &&
                     Object.keys(store.user.student.professional_networks).length > 0 ? (
                       <li>
-                          <a href={`${store.user.student.professional_networks.Github}`} target="_blank" rel="noreferrer">
-                          {store.user.student.professional_networks.Github ? store.user.student.professional_networks.Github : ""}
+                        <a
+                          href={`${store.user.student.professional_networks.Github}`}
+                          target="_blank"
+                          rel="noreferrer">
+                          {store.user.student.professional_networks.Github
+                            ? store.user.student.professional_networks.Github
+                            : ''}
                         </a>
                       </li>
                     ) : (
-                      ""
+                      ''
                     )}
                   </ul>
                 </Col>
                 <Link to="#" className="edit_icons">
-                  <Image src="../images/edit_icon.svg" onClick={GeneralInfoModalShow} style={{ width: "9rem" }} />
+                  <Image
+                    src="../images/edit_icon.svg"
+                    onClick={GeneralInfoModalShow}
+                    style={{ width: '9rem' }}
+                  />
                 </Link>
               </Row>
             </div>
