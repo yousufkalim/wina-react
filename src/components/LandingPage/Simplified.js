@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import Googleplay from "../../assets/Googleplay.png";
-import Appstore from "../../assets/Appstore.png";
-import Mobilepic from "../../assets/Mobilepic.png";
-import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
+import React
+  // , { useState }
+  from "react";
+// import Googleplay from "../../assets/Googleplay.png";
+// import Appstore from "../../assets/Appstore.png";
+// import Mobilepic from "../../assets/Mobilepic.png";
+// import StudentRegister from "../../components/Header/Modals/studentRegisterModal";
 
 const Simplified = (props) => {
-  const [studentModal, setstudentModal] = useState(false);
+  // const [studentModal, setstudentModal] = useState(false);
 
-  const handleModal = () => {
-    setstudentModal(!studentModal);
-  };
+  // const handleModal = () => {
+  //   setstudentModal(!studentModal);
+  // };
 
   return (
     <>

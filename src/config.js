@@ -14,7 +14,7 @@ if (window.location.host === 'wina-dev.falconweb.app') {
   baseUrl = 'https://wina-api-staging.falconweb.app/api/v1';
   url = 'https://wina-api-staging.falconweb.app';
   mediaUrl = 'https://wina-api-staging.falconweb.app/views/uploads';
-} else if (window.location.host === 'winaa.fr') {
+} else if (window.location.host === 'winaa.fr' || window.location.host === 'www.winaa.fr') {
   baseUrl = 'https://api.winaa.fr/api/v1';
   url = 'https://api.winaa.fr';
   mediaUrl = 'https://api.winaa.fr/views/uploads';

@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaFacebookF, FcGoogle, FaLinkedin } from 'react-icons/all';
-import { Link } from 'react-router-dom';
+import { FcGoogle, FaLinkedin } from 'react-icons/all';
+// import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { googleLogin } from '../../../../Redux/actions';
-import { LinkedInLogin } from '../../../../Redux/actions';
+// import { googleLogin } from '../../../../Redux/actions';
+// import { LinkedInLogin } from '../../../../Redux/actions';
 import { baseUrl } from '../../../../config';
 
 export default function Sidebar({ ModalInput, dispatch, useFormik, LOGIN_STATE, LOGIN_YUP, login, handleModal }) {
@@ -19,12 +19,13 @@ export default function Sidebar({ ModalInput, dispatch, useFormik, LOGIN_STATE, 
       formik.setFieldValue(name, value);
     },
   });
-  const handleFacebookClick = (props) => {
-    LinkedInLogin();
-  };
-  const handleGoogleClick = (props) => {
-    googleLogin();
-  };
+  // const handleFacebookClick = (props) => {
+  //   LinkedInLogin();
+  // };
+
+  // const handleGoogleClick = (props) => {
+  //   googleLogin();
+  // };
   return (
     // <div className="modal-left-side">
     <div className="Login" style={{ borderTop: '1px solid #DBE8FF' }}>
@@ -59,27 +60,27 @@ export default function Sidebar({ ModalInput, dispatch, useFormik, LOGIN_STATE, 
           <span style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '1.1rem', color: '#848D9F' }}>
               Vous n'avez pas de compte ?
-              <a onClick={() => handleModal('main')} style={{ color: '#2B5AA6', fontWeight: '600', marginLeft: '5px' }}>
+              <a onClick={() => handleModal('main')} style={{ color: '#2B5AA6', fontWeight: '600', marginLeft: '5px' }} target={"_blank"} rel={"noreferrer"}>
                 S'inscrire
               </a>
             </p>
           </span>
 
           <span>
-            <a onClick={() => handleModal('reqforgotPassword')}> Mot de passe oublié ?</a>
+            <a onClick={() => handleModal('reqforgotPassword')} target={"_blank"} rel={"noreferrer"}> Mot de passe oublié ?</a>
           </span>
         </div>
       </form>
       <div className="mt-3">
         <div className="linkedinGoogleGroup">
           <div className="w-100">
-            <a href={baseUrl + '/auth/linkedin'} className="modal-social-btn modal-facebook-btn">
+            <a href={baseUrl + '/auth/linkedin'} className="modal-social-btn modal-facebook-btn" target={"_blank"} rel={"noreferrer"}>
               <span>
                 <FaLinkedin className="modal-social-icon mr-2" />
                 <>Connectez-vous avec LinkedIn</>
               </span>
             </a>
-            <a href={baseUrl + '/auth/google'} className="modal-social-btn-google modal-google-btn">
+            <a href={baseUrl + '/auth/google'} className="modal-social-btn-google modal-google-btn" target={"_blank"} rel={"noreferrer"}>
               <span>
                 <FcGoogle className="modal-social-icon-google mr-2 ml-0" />
                 <>Connectez-vous avec Google</>

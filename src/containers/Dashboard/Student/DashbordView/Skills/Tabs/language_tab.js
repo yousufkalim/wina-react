@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Image, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Image, Form } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  useDispatch
+  // ,useSelector
+} from "react-redux";
 import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 import CustomTextField from "../../../../../../components/UI/CustomTextField/CustomTextField";
 
@@ -10,10 +13,10 @@ export default function Hard_skilltab(props) {
   const {
     Select,
     Button,
-    store,
+    // store,
     SKILLS_STATE,
     SKILLS_YUP,
-    ModalInput,
+    // ModalInput,
     options2,
     DB_Array,
     Add_info_Student,

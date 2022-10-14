@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import Login from "../Signin";
 import Signup from "../Signup";
 import LandingPage from "../LandingPage.js/index";

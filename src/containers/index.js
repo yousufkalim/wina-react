@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import {
   isUserLoggedIn,
   Get_User_Student,
@@ -18,14 +21,17 @@ import UnAuth from './unAuth';
 import Loader from '../components/UI/Loader';
 import { baseUrl, user } from '../urlConfig';
 import axios from 'axios';
-import { useHistory, Route, Redirect } from 'react-router-dom';
+import {
+  useHistory, Route,
+  //  Redirect
+} from 'react-router-dom';
 import * as Notistack from '../Redux/actions/notistack';
 import socket from '../helpers/socket';
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const store = useSelector((state) => state.auth);
+  // const store = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(true);
   const [User, setUser] = useState('');
   let Token = localStorage.getItem('token');
@@ -103,18 +109,13 @@ function App() {
   return (
     <>
       {User ? (
-        User.type === 'student' ? (
-          <Route exact path="/students/*" component={Student} />
-        ) : User.type === 'company' ? (
-          <Route exact path="/companies/*" component={Company} />
-        ) : (
-          User.type === 'admin' && <Route exact path="/admins/*" component={Admin} />
-        )
+        User.type === 'student' ? (<Route exact path="/students/*" component={Student} />) :
+          User.type === 'company' ? (<Route exact path="/companies/*" component={Company} />) :
+            (User.type === 'admin' && <Route exact path="/admins/*" component={Admin} />)
       ) : (
         window.location.pathname === '/goolgeLogin' ||
         (window.location.pathname === '/linkedInLogin' && <Loader.CenterProgress />)
       )}
-
       <Route exact path="/*" component={UnAuth} />
     </>
   );

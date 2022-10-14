@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Image, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Image, Form } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import CardItem from "../../../../../../components/UI/CardWithImage/OfferCardItem";
 
@@ -115,12 +115,12 @@ const useStyle = makeStyles({
 export default function Hard_skilltab(props) {
   const {
     options,
-    Select,
+    // Select,
     Button,
-    store,
+    // store,
     SKILLS_STATE,
     SKILLS_YUP,
-    ModalInput,
+    // ModalInput,
     DB_Array,
     Add_info_Student,
     HARD_SKILLS_DB,
@@ -128,15 +128,12 @@ export default function Hard_skilltab(props) {
     // Autocomplete,
   } = props;
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const classes = useStyle();
   const [value, setValue] = useState("");
-
   const [skill, setSkill] = useState("");
 
-  //   ************
-  //   ******************************************
+
   const formik = useFormik({
     initialValues: SKILLS_STATE,
     validationSchema: SKILLS_YUP,
@@ -188,11 +185,11 @@ export default function Hard_skilltab(props) {
       });
     }
   };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
 
-    formik.setFieldValue(name, value);
-  };
+  //   formik.setFieldValue(name, value);
+  // };
 
   // for autocomplete
   const getAllSkills = (e) => {
@@ -208,38 +205,38 @@ export default function Hard_skilltab(props) {
     setValue(value?._id);
     formik.setFieldValue("name", value?._id);
   };
-  const OnhandleSubmit = () => {
-    setLoading(true);
+  // const OnhandleSubmit = () => {
+  //   setLoading(true);
 
-    let check = HARD_SKILLS_DB.some((sa) => sa === value);
-    if (check === false) {
-      let skills = options.find((sa) => sa._id === value);
-      let obj = {};
-      DB_Array.push(skills);
-      obj.hardSkills = DB_Array;
-      let response = dispatch(Add_info_Student(obj));
-      response.then((value) => {
-        if (value === true) {
-          formik.setSubmitting(false);
-          formik.handleReset();
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      });
-    } else {
-      setLoading(false);
+  //   let check = HARD_SKILLS_DB.some((sa) => sa === value);
+  //   if (check === false) {
+  //     let skills = options.find((sa) => sa._id === value);
+  //     let obj = {};
+  //     DB_Array.push(skills);
+  //     obj.hardSkills = DB_Array;
+  //     let response = dispatch(Add_info_Student(obj));
+  //     response.then((value) => {
+  //       if (value === true) {
+  //         formik.setSubmitting(false);
+  //         formik.handleReset();
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(false);
+  //       }
+  //     });
+  //   } else {
+  //     setLoading(false);
 
-      dispatch(
-        Notistack.enqueueSnackbar(
-          Notistack.snackBar(
-            "Le nom de la compétence matérielle existait déjà",
-            "error"
-          )
-        )
-      );
-    }
-  };
+  //     dispatch(
+  //       Notistack.enqueueSnackbar(
+  //         Notistack.snackBar(
+  //           "Le nom de la compétence matérielle existait déjà",
+  //           "error"
+  //         )
+  //       )
+  //     );
+  //   }
+  // };
   return (
     <div className="GeneralSkillsBox">
       <div className="GeneralSkills">

@@ -1,7 +1,7 @@
 import React from "react";
 import HomeHeader2 from "../../components/Header";
 import Winaa2 from "../../components/Regards/Winaa2";
-import Aboutimg from "../../assets/Aboutimg.svg";
+// import Aboutimg from "../../assets/Aboutimg.svg";
 import Created from "../../components/About/Created";
 import AboutText from "../../components/About/AboutText";
 import Footer from "../../components/Footer";
