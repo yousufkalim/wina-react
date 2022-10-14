@@ -150,16 +150,20 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
           </div>
 
           <div
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "97%", marginTop: "1rem" }}
-          >
-            <div className="col-lg-5 mr-3 ml-3" >
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '97%',
+              marginTop: '1rem'
+            }}>
+            <div className="col-lg-5 mr-3 ml-3">
               <DatePicker
                 name="start_Date"
                 previous={true}
-                // label={"Date de début"}
-                placeholderText={"Date de début"}
+                placeholderText={'Date de début'}
                 selected={formik.values.start_Date}
-                onChange={(date) => handleDateChange("start_Date", date)}
+                onChange={date => handleDateChange('start_Date', date)}
               />
               {formik.touched.start_Date && formik.errors.start_Date ? (
                 <div className="formikErrorDate"> {formik.errors.start_Date}</div>
@@ -168,11 +172,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
             <div className="col-lg-5">
               <DatePicker
                 name="end_Date"
-                // label={"Date de fin"}
-                placeholderText={"Date de fin"}
+                placeholderText={'Date de fin'}
                 previous={true}
                 selected={formik.values.end_Date}
-                onChange={(date) => handleDateChange("end_Date", date)}
+                onChange={date => handleDateChange('end_Date', date)}
               />
               {formik.touched.end_Date && formik.errors.end_Date ? (
                 <div className="formikErrorDate"> {formik.errors.end_Date}</div>
@@ -202,10 +205,10 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 src={ImageUri}
                 alt=""
                 style={{
-                  width: "200px",
-                  objectFit: "fill",
-                  height: "150px",
-                  borderRadius: "5px",
+                  width: '200px',
+                  objectFit: 'fill',
+                  height: '150px',
+                  borderRadius: '5px'
                 }}
               />
               <input
@@ -214,18 +217,32 @@ const GeneralInformationsModal = ({ show, setShow, schoolsArray }) => {
                 type="file"
                 ref={hiddenFileInput}
                 accept="image/*"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               />
 
-              {formik.touched.image && formik.errors.image ? <div className="formikErrorAuto"> {formik.errors.image}</div> : null}
+              {formik.touched.image && formik.errors.image ? (
+                <div className="formikErrorAuto"> {formik.errors.image}</div>
+              ) : null}
             </div>
           </div>
           <div className="d-flex ">
             <div className="col-lg-12 text-right">
               {store.loading ? (
-                <Button className="Enregistrer" type="submit" variant="primary" value="Loading...." disabled={store.loading} />
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="Loading...."
+                  disabled={store.loading}
+                />
               ) : (
-                <Button className="Enregistrer" type="submit" variant="primary" value="nous faire parvenir" disabled={false} />
+                <Button
+                  className="Enregistrer"
+                  type="submit"
+                  variant="primary"
+                  value="nous faire parvenir"
+                  disabled={false}
+                />
               )}
             </div>
           </div>
