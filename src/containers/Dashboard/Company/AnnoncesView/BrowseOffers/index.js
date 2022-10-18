@@ -1,20 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  Row, Col,
+  Row,
+  Col,
   //  Nav,Form ,
-  Tab, Tabs, Image
-} from "react-bootstrap";
+  Tab,
+  Tabs,
+  Image
+} from 'react-bootstrap';
 // import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 // import CheckBoxIcon from "@material-ui/icons/CheckBox";
 // import { makeStyles } from "@material-ui/core/styles";
-import { POSITION_SOUGHT_STATE } from "../../../../../Globals/InitialValues/Company";
-import { POSITION_SOUGHT_YUP } from "../../../../../components/Formik/Company/yupValidation";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import DatePicker from "../../../../../components/UI/DatePicker";
-import Select from "../../../../../components/UI/Select";
-import Button from "../../../../../components/UI/Button";
-import axios from "axios";
+import { POSITION_SOUGHT_STATE } from '../../../../../Globals/InitialValues/Company';
+import { POSITION_SOUGHT_YUP } from '../../../../../components/Formik/Company/yupValidation';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import DatePicker from '../../../../../components/UI/DatePicker';
+import Select from '../../../../../components/UI/Select';
+import Button from '../../../../../components/UI/Button';
+import axios from 'axios';
 // import RadioButton from "../../../../../components/UI/RadioButton";
 // import { useHistory } from "react-router-dom";
 // import * as Notistack from "../../../../../Redux/actions/notistack";
@@ -22,20 +25,16 @@ import {
   DurationOptions,
   RythmeOptions,
   levelOfEducation,
-  AgeRangeOptions,
-} from "../../../../../Globals";
-import {
-  getSkills,
-  getApiAdress,
-  Create_Job,
-} from "../../../../../Redux/actions";
-import { domainListCompany } from "../../../../../Redux/actions/company";
-import AutoComplete from "../../../../../components/UI/AutoComplete";
-import MultiAutoComplete from "../../../../../components/UI/MultiSelect";
-import TextArea from "../../../../../components/UI/Textarea";
-import _ from "lodash";
-import CustomTextField from "../../../../../components/UI/CustomTextField/TextFieldRound";
-import { baseUrl } from "../../../../../urlConfig";
+  AgeRangeOptions
+} from '../../../../../Globals';
+import { getSkills, getApiAdress, Create_Job } from '../../../../../Redux/actions';
+import { domainListCompany } from '../../../../../Redux/actions/company';
+import AutoComplete from '../../../../../components/UI/AutoComplete';
+import MultiAutoComplete from '../../../../../components/UI/MultiSelect';
+import TextArea from '../../../../../components/UI/Textarea';
+import _ from 'lodash';
+import CustomTextField from '../../../../../components/UI/CustomTextField/TextFieldRound';
+import { baseUrl } from '../../../../../urlConfig';
 // import { Link } from "react-router-dom";
 // import Checkbox from "@material-ui/core/Checkbox";
 // import ModalInput from "../../../../../components/UI/TextField";
@@ -51,18 +50,18 @@ export default function BrowseOffers() {
   const myRef = useRef(null);
   const [softSkillsArray, setsoftSkillsArray] = useState([]);
   const [domain, setDomain] = useState([]);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   const [multiSelect, setmultiSelect] = useState(0);
   const dispatch = useDispatch();
-  const store2 = useSelector((state) => state.globals);
-  const store = useSelector((state) => state.company);
-  const store3 = useSelector((state) => state.auth);
-  const [image, setImage] = useState("");
+  const store2 = useSelector(state => state.globals);
+  const store = useSelector(state => state.company);
+  const store3 = useSelector(state => state.auth);
+  const [image, setImage] = useState('');
   const COMPANY = store3.user && store3.user.company;
-  const [imageURI, setimageURI] = useState("");
+  const [imageURI, setimageURI] = useState('');
   const [hardSkillsArray, sethardSkillsArray] = useState([]);
   const [items, setItems] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [value, setValue] = React.useState(30);
   const [softArray, setSoftArray] = useState([]);
   // const [show, setShow] = useState(false);
@@ -77,72 +76,71 @@ export default function BrowseOffers() {
     onSubmit: async (values, actions) => {
       let tempValues = _.cloneDeep(values);
       const formdataImage = new FormData();
-      formdataImage.append("image", image);
+      formdataImage.append('image', image);
       const imageData = await axios({
-        method: "post",
+        method: 'post',
         url: `${baseUrl}/FileUpload`,
-        data: formdataImage,
+        data: formdataImage
       });
       let imagePath = imageData.data;
       tempValues.softSkills = softSkillsArray;
       tempValues.hardSkills = hardSkillsArray;
       tempValues.photo = imagePath;
       let response = dispatch(Create_Job(tempValues));
-      response.then((value) => {
+      response.then(value => {
         if (value === true) {
-          formik.setFieldValue("location", {
-            city: "",
-            street: "",
-            zip: "",
-            longitude: "",
-            latitude: "",
+          formik.setFieldValue('location', {
+            city: '',
+            street: '',
+            zip: '',
+            longitude: '',
+            latitude: ''
           });
-          setAddress("");
+          setAddress('');
           setmultiSelect(multiSelect + 1);
           formik.setSubmitting(false);
           formik.handleReset();
           setsoftSkillsArray([]);
           sethardSkillsArray([]);
           setItems([]);
-          setimageURI("");
-          setImage("");
+          setimageURI('');
+          setImage('');
         }
       });
-    },
+    }
   });
   // onChange
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    if (name === "photo") {
+    if (name === 'photo') {
       let file = e.target.files[0];
-      if (file.type === "image/png" || file.type === "image/jpeg") {
+      if (file.type === 'image/png' || file.type === 'image/jpeg') {
         let uri = URL.createObjectURL(file);
         setimageURI(uri);
         setImage(file);
-        formik.setFieldValue("photo", file.name);
+        formik.setFieldValue('photo', file.name);
       } else {
-        alert("Vous ne pouvez télécharger que des images ");
+        alert('Vous ne pouvez télécharger que des images ');
       }
     }
     formik.setFieldValue(name, value);
   };
   useEffect(() => {
-    dispatch(getSkills("Soft Skill", query));
-    dispatch(getSkills("Hard Skill", query));
+    dispatch(getSkills('Soft Skill', query));
+    dispatch(getSkills('Hard Skill', query));
   }, []);
-
 
   useEffect(() => {
     if (COMPANY && COMPANY.address && Object.keys(COMPANY).length > 0) {
       const {
-        address: { city, street, zip, longitude, latitude },
+        address: { city, street, zip, longitude, latitude }
       } = COMPANY;
-      formik.setFieldValue("location", {
+      formik.setFieldValue('location', {
         city: city,
         street: street,
         zip: zip,
         longitude: longitude,
-        latitude: latitude,
+        latitude: latitude
       });
     }
   }, []);
@@ -161,47 +159,47 @@ export default function BrowseOffers() {
   //     setValue(100);
   //   }
   // };
-  const handleAddressChange = (value) => {
+  const handleAddressChange = value => {
     setAddress(value);
     dispatch(getApiAdress(value));
     if (store2.items.length > 0) {
       setItems(
-        store2.items.map((item) => {
+        store2.items.map(item => {
           return {
             id: item.properties.id,
             name: item.properties.label,
             city: item.properties.city,
             postalCode: item.properties.citycode,
             lat: item.geometry.coordinates[1],
-            lng: item.geometry.coordinates[0],
+            lng: item.geometry.coordinates[0]
           };
         })
       );
     }
   };
-  const onSubmitAddress = (value) => {
-    formik.setFieldValue("location", {
+  const onSubmitAddress = value => {
+    formik.setFieldValue('location', {
       city: value.city,
       street: value.name,
-      zip: value.postalCode ? value.postalCode : "40180",
+      zip: value.postalCode ? value.postalCode : '40180',
       longitude: value.lng,
-      latitude: value.lat,
+      latitude: value.lat
     });
   };
-  const onSoftSkillChange = (value) => {
+  const onSoftSkillChange = value => {
     const valueArray = [];
     for (let i = 0; i < value.length; i++) {
       valueArray.push(value[i]._id);
     }
     if (valueArray.length > 0) {
-      formik.setFieldValue("softSkills", valueArray[0]);
+      formik.setFieldValue('softSkills', valueArray[0]);
     } else {
-      formik.setFieldValue("softSkills", "");
+      formik.setFieldValue('softSkills', '');
     }
     setSoftArray(value);
     setsoftSkillsArray(valueArray);
   };
-  const onHardSkillChange = (value) => {
+  const onHardSkillChange = value => {
     const valueArray = [];
     const allArray = [];
     for (let i = 0; i < value.length; i++) {
@@ -209,24 +207,25 @@ export default function BrowseOffers() {
       allArray.push(value[i]);
     }
     if (valueArray.length > 0) {
-      formik.setFieldValue("hardSkills", valueArray[0]);
+      formik.setFieldValue('hardSkills', valueArray[0]);
     } else {
-      formik.setFieldValue("hardSkills", "");
+      formik.setFieldValue('hardSkills', '');
     }
     setSoftArray(value);
     sethardSkillsArray(valueArray);
   };
 
-  const executeScroll = () => myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const domainOption = async () => {
     const res = await domainListCompany();
     let tempDomain = [];
-    res.data.domains.map((item) => tempDomain.push({ title: item.title }));
+    res.data.domains.map(item => tempDomain.push({ title: item.title }));
     setDomain(tempDomain);
   };
   useEffect(() => {
     domainOption();
   }, [domainListCompany]);
+  console.log('09090909090909 in the comonentr from route');
 
   return (
     <>
@@ -239,7 +238,10 @@ export default function BrowseOffers() {
                   <Col lg={4} md={4}>
                     <div className="add_image_icon">
                       <label htmlFor="upload-button">
-                        <Image src={imageURI ? imageURI : "../images/add_image_icon.svg"} style={{ cursor: "pointer" }} />
+                        <Image
+                          src={imageURI ? imageURI : '../images/add_image_icon.svg'}
+                          style={{ cursor: 'pointer' }}
+                        />
                         {formik.touched.photo && formik.errors.photo ? (
                           <div className="formikError"> {formik.errors.photo}</div>
                         ) : null}
@@ -250,7 +252,7 @@ export default function BrowseOffers() {
                       id="upload-button"
                       name="photo"
                       accept="image/*"
-                      style={{ display: "none" }}
+                      style={{ display: 'none' }}
                       onChange={handleChange}
                     />
                   </Col>
@@ -349,7 +351,7 @@ export default function BrowseOffers() {
                         <div className="col-lg-6 ">
                           <DatePicker
                             name="startDate"
-                            label={"Date de début"}
+                            label={'Date de début'}
                             value={formik.values.startDate}
                             onChange={handleChange}
                           />
@@ -365,7 +367,7 @@ export default function BrowseOffers() {
                             items={items}
                             address={address}
                             Label="Adresse"
-                            name={"location"}
+                            name={'location'}
                             loading={store2.loading}
                             onSubmit={onSubmitAddress}
                           />
@@ -441,7 +443,7 @@ export default function BrowseOffers() {
                       formik={formik}
                       placeholder="Compétences générales "
                       items={SOFT_SKILLS}
-                      name={"softSkills"}
+                      name={'softSkills'}
                       loading={store.loading}
                       onSubmit={onSoftSkillChange}
                       multiSelect={multiSelect}
@@ -473,7 +475,7 @@ export default function BrowseOffers() {
                       formik={formik}
                       placeholder="Compétences spécialisées"
                       items={HARD_SKILLS}
-                      name={"hardSkills"}
+                      name={'hardSkills'}
                       loading={store2.loading}
                       onSubmit={onHardSkillChange}
                       multiSelect={multiSelect}

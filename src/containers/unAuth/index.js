@@ -1,14 +1,14 @@
-import React from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
-import Login from "../Signin";
-import Signup from "../Signup";
-import LandingPage from "../LandingPage.js/index";
-import Business from "../Business/index";
-import Cfa from "../Cfa/index";
-import Student from "../Student/index";
-import Company from "../Company/index";
-import Regards from "../Regards/index";
-import About from "../About/index";
+import React from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import Login from '../Signin';
+import Signup from '../Signup';
+import LandingPage from '../LandingPage.js/index';
+import Business from '../Business/index';
+import Cfa from '../Cfa/index';
+import Student from '../Student/index';
+import Company from '../Company/index';
+import Regards from '../Regards/index';
+import About from '../About/index';
 
 export default function UnAuth() {
   const history = useHistory();
@@ -27,17 +27,17 @@ export default function UnAuth() {
       <Route exact path="/verifyEmail/:token" component={LandingPage} />
 
       {/* Redirection on 404 routes */}
-      <Route
+      {/* <Route
         exact
         path="/*"
         render={() => {
           let { pathname } = window.location;
-          pathname = pathname.split("/")[1];
-          if (pathname !== "students" && pathname !== "companies" && pathname !== "admins") {
-            history.push("/");
+          pathname = pathname.split('/')[1];
+          if (pathname !== 'students' && pathname !== 'companies' && pathname !== 'admins') {
+            history.push('/');
           }
         }}
-      />
+      /> */}
     </Switch>
   );
 }
